@@ -1,6 +1,28 @@
 # Research Workspace
 
-AI 研究领域的知识管理工作区，基于 Obsidian。
+An Obsidian-based knowledge management workspace for AI research, with AI-assisted paper reading workflow.
+
+基于 Obsidian 的 AI 研究知识管理工作区，支持 AI 辅助论文阅读。
+
+## Features
+
+- **Paper Notes** — 结构化论文笔记模板（含 Mermaid Mind Map）
+- **Research Ideas** — 灵感记录，双向链接到相关论文
+- **Project Tracking** — 研究项目进展追踪
+- **Literature Survey** — 按主题整理多篇论文对比
+- **Meeting Notes** — 会议/讨论记录
+- **AI Workflow** — 用 Claude Code 或其他 AI 工具自动生成论文笔记
+
+## Getting Started
+
+1. Clone this repo and open it as an Obsidian vault
+2. Obsidian settings are pre-configured (templates, attachments, link format)
+3. Start creating notes using templates: `Ctrl/Cmd + P` → "Templates: Insert template"
+
+### Prerequisites
+
+- [Obsidian](https://obsidian.md/) (free)
+- [Claude Code](https://claude.ai/code) (optional, for AI-assisted paper reading)
 
 ## Structure
 
@@ -18,33 +40,63 @@ AI 研究领域的知识管理工作区，基于 Obsidian。
 
 ## Templates
 
-使用 Obsidian 核心 Templates 插件（已配置好，模板文件夹为 `Templates/`）。
-
-新建笔记后，`Ctrl/Cmd + P` → "Templates: Insert template" → 选择对应模板。
-
-| Template | 用途 |
-|----------|------|
-| Paper | 论文笔记（含 Mind Map） |
-| Idea | 研究灵感 |
-| Project | 项目追踪 |
-| Topic | 主题综述/文献对比 |
-| Meeting | 会议记录 |
+| Template | Purpose |
+|----------|---------|
+| Paper | 论文笔记（含 YAML frontmatter、Mind Map、Connections） |
+| Idea | 研究灵感（status: raw → developing → validated → archived） |
+| Project | 项目追踪（status: planning → active → paused → completed） |
+| Topic | 主题综述/文献对比（含论文对比表格） |
+| Meeting | 会议记录（含 Action Items） |
 | Daily | 每日研究日志 |
+
+## AI-Assisted Paper Reading
+
+### With Claude Code (recommended)
+
+Tell Claude Code a paper name or link, it will automatically fetch, summarize, and save structured notes:
+
+```
+读这篇论文 https://arxiv.org/abs/xxxx，按 Templates/Paper.md 格式生成笔记，保存到 Papers/
+```
+
+Claude Code will:
+1. Fetch paper content via web search / URL
+2. Generate notes following the Paper template
+3. Save to `Papers/AuthorYear-ShortTitle.md`
+
+### With other AI tools
+
+Copy the prompt from [Resources/AI-Prompts.md](Resources/AI-Prompts.md), paste it along with the paper info into any AI chat, then paste the output into Obsidian.
 
 ## Tags
 
-使用术语的通用写法，保持扁平：
+Flat tags using canonical English terms:
 
-- **领域**: `LLM`, `CV`, `RL`, `multimodal`, `diffusion`
-- **方法**: `transformer`, `RLHF`, `distillation`, `RAG`
-- **会议**（可选）: `NeurIPS`, `ICML`, `ICLR`, `ACL`, `CVPR`
-- **任务**: `text-generation`, `image-classification`, `alignment`
+- **Domain**: `LLM`, `CV`, `RL`, `multimodal`, `diffusion`
+- **Method**: `transformer`, `RLHF`, `distillation`, `RAG`
+- **Venue** (optional): `NeurIPS`, `ICML`, `ICLR`, `ACL`, `CVPR`
+- **Task**: `text-generation`, `image-classification`, `alignment`
 
-## AI Workflow
+## Linking Strategy
 
-1. 把论文关键词/链接发给 AI（Claude），附上 [AI-Prompts](Resources/AI-Prompts.md) 里的 prompt
-2. AI 按 Paper 模板格式输出笔记
-3. 粘贴到 Obsidian，阅读修改
-4. 补充 frontmatter 元数据、双向链接和 tags
+Notes are connected via `[[wikilinks]]` to form a knowledge graph:
 
-可通过 Claudian 插件在 Obsidian 内直接使用，或在外部 Claude 对话中使用。
+- Paper ↔ Paper (related work)
+- Idea → Paper (inspiration source)
+- Project → Paper + Idea (foundations)
+- Topic → Papers (literature survey)
+- Meeting → Project / Paper (follow-ups)
+
+Use Obsidian's **Graph View** to visualize your research knowledge network.
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=liqing-ustc/Research&type=Date)](https://star-history.com/#liqing-ustc/Research&Date)
+
+## Author
+
+**Qing Li** — [liqing.io](https://liqing.io/)
+
+## License
+
+Feel free to use this as a template for your own research workspace.

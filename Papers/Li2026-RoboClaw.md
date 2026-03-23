@@ -85,7 +85,7 @@ mindmap
 ```
 
 ## Connections
-- Related papers: π0.5 (底层 VLA model), SayCan, Inner Monologue (LLM for embodied tasks)
+- Related papers: [[Black2025-Pi05|π0.5]] (底层 VLA model), SayCan, Inner Monologue (LLM for embodied tasks)
 - Related ideas:
 - Related projects:
 
