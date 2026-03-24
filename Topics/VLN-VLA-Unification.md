@@ -32,7 +32,42 @@ Vision-Language-Action（VLA）模型是 embodied AI 领域近年来最重要的
 4. **开源生态推动快速迭代**：Octo 和 OpenVLA 的开源使社区能够快速复现和改进，Open X-Embodiment 数据集成为事实标准。
 
 ## 2. VLN 基础模型现状
-<!-- Survey of VLN models leveraging foundation models -->
+
+Vision-and-Language Navigation（VLN）要求 agent 根据自然语言指令在未见环境中导航到目标位置。该领域经历了从 task-specific 架构到 foundation model 驱动的演进，与 VLA 领域的发展轨迹形成有趣的平行关系。
+
+### 演进脉络：task-specific → topological planning → VLM/LLM-based
+
+**Phase 1: Task-specific 架构（2019-2022）**。早期 VLN 模型使用 LSTM/Transformer encoder-decoder 架构，在 discrete nav-graph 上进行 action prediction。代表工作 [[Chen2022-DUET|VLN-DUET]] 提出 dual-scale graph transformer，通过在线构建 topological map 并结合 local fine-grained encoding 和 global coarse-grained reasoning，在 REVERIE、SOON、R2R 等 benchmarks 上取得 SOTA，奠定了 topological map 作为 VLN 核心 spatial representation 的范式。
+
+**Phase 2: Continuous environments 与 hierarchical planning（2022-2024）**。VLN-CE（Vision-Language Navigation in Continuous Environments）将 VLN 从 discrete nav-graph 扩展到更接近真实场景的 continuous action space。[[An2024-ETPNav|ETPNav]] 提出 online topological mapping + hierarchical planning（transformer-based high-level planner + obstacle-avoiding low-level controller），在 R2R-CE 和 RxR-CE 上大幅超越 prior SOTA。这一阶段的关键架构创新——**hierarchical decomposition（high-level planning + low-level control）**——与 VLA 领域中 π0.5 的 hierarchical inference 高度平行。
+
+**Phase 3: LLM/VLM backbone 引入（2023-present）**。[[Zhou2023-NavGPT|NavGPT]] 首次将 GPT-4 作为 zero-shot navigation reasoning engine，通过文本化视觉观测让 LLM 进行显式推理（sub-goal decomposition、landmark identification、progress tracking）。尽管 zero-shot 性能低于 trained models，但揭示了 LLM 在 navigation planning 中的潜力。其 follow-up NavGPT-2（ECCV 2024）通过 visual alignment 消除了与 VLN specialist 的性能差距，验证了 VLM backbone 在 VLN 中的可行性。[[Cheng2024-NaVILA|NaVILA]] 进一步将 VLM（VILA）微调为 navigation VLA，用语言化 mid-level action 作为高层规划和低层控制的桥梁，在 R2R-CE 上达到 54% SR 并实现了 legged robot 真实世界部署。NaVILA 本质上就是一个 navigation-focused VLA，是 VLN-VLA 架构趋同的最直接证据。
+
+### Key VLN Models
+
+| Model | Year | Backbone | Action Space | Environment | Key Innovation |
+|-------|------|----------|-------------|-------------|---------------|
+| [[Chen2022-DUET\|VLN-DUET]] | 2022 | Task-specific Transformer | Discrete（nav-graph nodes, 含远程跳转） | Discrete nav-graph (MP3D) | Dual-scale graph transformer + online topological map |
+| [[An2024-ETPNav\|ETPNav]] | 2024 | Task-specific Transformer | Hybrid（high-level waypoint + low-level continuous） | Continuous (Habitat) | Online topological planning + obstacle-avoiding controller |
+| [[Zhou2023-NavGPT\|NavGPT]] | 2023 | GPT-4 (frozen, zero-shot) | Discrete（nav-graph node selection） | Discrete nav-graph (MP3D) | LLM 作为 navigation reasoning engine，显式推理链 |
+| NavGPT-2 | 2024 | Frozen LLM + visual alignment | Discrete | Discrete nav-graph | 消除 LLM agent 与 VLN specialist 的性能差距 |
+| [[Cheng2024-NaVILA\|NaVILA]] | 2024 | VILA VLM (fine-tuned) | Mid-level language actions → RL locomotion | Continuous (Habitat + Isaac Sim + Real) | VLM → 语言化动作 → locomotion policy，真实 legged robot 部署 |
+
+### VLN vs VLA：关键差异
+
+| 维度 | VLN | VLA |
+|------|-----|-----|
+| **Action space** | Discrete waypoints / nav-graph nodes | Continuous joint torques / end-effector poses |
+| **Primary environment** | Simulation（Habitat, MP3D, Gibson）| Real world + simulation |
+| **Control frequency** | Low（~1-5 Hz, per-step decision） | High（10-50 Hz continuous control）|
+| **Evaluation benchmarks** | R2R, REVERIE, SOON, R2R-CE, RxR-CE | 各种 real-world manipulation tasks |
+| **Spatial representation** | Topological map / nav-graph | 通常无显式空间表示（end-to-end） |
+| **Foundation model 使用方式** | VLM/LLM → high-level planning | VLM → end-to-end action generation |
+| **核心挑战** | Sim-to-real gap, instruction grounding | Dexterous control, generalization |
+
+### Sim-to-Real Gap 现状
+
+VLN 领域面临显著的 sim-to-real gap：绝大多数工作在 Habitat/MP3D simulator 中评估，真实世界部署案例极少。NaVILA 是为数不多实现真实部署的工作（Unitree Go2 上 88% 成功率），其成功依赖两个关键设计：（1）用 YouTube 视频作为 real-world visual data source；（2）用语言化 mid-level action 解耦感知与控制，使 sim-to-real transfer 只需要在 low-level locomotion policy 层面进行。这一策略与 VLA 领域 [[Li2026-RoboClaw|RoboClaw]] 的自主数据收集 + VLM agent loop 形成有趣对比——两者都在寻找 scalable 的 real-world data 获取方案。
 
 ## 3. 语义 SLAM 与空间表示
 <!-- Semantic SLAM and spatial representations for VLMs -->
