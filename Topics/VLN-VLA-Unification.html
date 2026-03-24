@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en"><head><title>VLN-VLA Unification: Foundation Models for Indoor Robot Navigation and Manipulation</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="VLN-VLA Unification: Foundation Models for Indoor Robot Navigation and Manipulation"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="VLN-VLA Unification: Foundation Models for Indoor Robot Navigation and Manipulation"/><meta name="twitter:description" content="Overview 本 survey 从 foundation model 视角，系统梳理了 VLN（Vision-and-Language Navigation）和 VLA（Vision-Language-Action）两个领域的技术演进与架构趋同。通过分析 17 篇核心论文，我们发现：VLN 和 VLA 在四个维度上正在趋同——VLM ..."/><meta property="og:description" content="Overview 本 survey 从 foundation model 视角，系统梳理了 VLN（Vision-and-Language Navigation）和 VLA（Vision-Language-Action）两个领域的技术演进与架构趋同。通过分析 17 篇核心论文，我们发现：VLN 和 VLA 在四个维度上正在趋同——VLM ..."/><meta property="og:image:alt" content="Overview 本 survey 从 foundation model 视角，系统梳理了 VLN（Vision-and-Language Navigation）和 VLA（Vision-Language-Action）两个领域的技术演进与架构趋同。通过分析 17 篇核心论文，我们发现：VLN 和 VLA 在四个维度上正在趋同——VLM ..."/><meta property="og:image" content="https://liqing-ustc.github.io/MindFlow/static/og-image.png"/><meta property="og:image:url" content="https://liqing-ustc.github.io/MindFlow/static/og-image.png"/><meta name="twitter:image" content="https://liqing-ustc.github.io/MindFlow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing-ustc.github.io/MindFlow"/><meta property="og:url" content="https://liqing-ustc.github.io/MindFlow/Topics/VLN-VLA-Unification"/><meta property="twitter:url" content="https://liqing-ustc.github.io/MindFlow/Topics/VLN-VLA-Unification"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Overview 本 survey 从 foundation model 视角，系统梳理了 VLN（Vision-and-Language Navigation）和 VLA（Vision-Language-Action）两个领域的技术演进与架构趋同。通过分析 17 篇核心论文，我们发现：VLN 和 VLA 在四个维度上正在趋同——VLM ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  padding: 2rem;
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing-ustc.github.io/MindFlow/index.xml"/></head><body data-slug="Topics/VLN-VLA-Unification"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="true" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>!a.isFolder&amp;&amp;!b.isFolder||a.isFolder&amp;&amp;b.isFolder?a.displayName.localeCompare(b.displayName,void 0,{numeric:!0,sensitivity:\&quot;base\&quot;}):!a.isFolder&amp;&amp;b.isFolder?1:-1&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>node&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="0pfzgh"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="i7qrhi" class="overflow"><li class="depth-0"><a href="#overview" data-for="overview">Overview</a></li><li class="depth-0"><a href="#1-vla-基础模型现状" data-for="1-vla-基础模型现状">1. VLA 基础模型现状</a></li><li class="depth-1"><a href="#key-vla-models" data-for="key-vla-models">Key VLA Models</a></li><li class="depth-1"><a href="#架构趋势-takeaway" data-for="架构趋势-takeaway">架构趋势 Takeaway</a></li><li class="depth-0"><a href="#2-vln-基础模型现状" data-for="2-vln-基础模型现状">2. VLN 基础模型现状</a></li><li class="depth-1"><a href="#演进脉络task-specific--topological-planning--vlmllm-based" data-for="演进脉络task-specific--topological-planning--vlmllm-based">演进脉络：task-specific → topological planning → VLM/LLM-based</a></li><li class="depth-1"><a href="#key-vln-models" data-for="key-vln-models">Key VLN Models</a></li><li class="depth-1"><a href="#vln-vs-vla关键差异" data-for="vln-vs-vla关键差异">VLN vs VLA：关键差异</a></li><li class="depth-1"><a href="#sim-to-real-gap-现状" data-for="sim-to-real-gap-现状">Sim-to-Real Gap 现状</a></li><li class="depth-0"><a href="#3-语义-slam-与空间表示" data-for="3-语义-slam-与空间表示">3. 语义 SLAM 与空间表示</a></li><li class="depth-1"><a href="#为什么空间表示是-vln-vla-统一的关键" data-for="为什么空间表示是-vln-vla-统一的关键">为什么空间表示是 VLN-VLA 统一的关键？</a></li><li class="depth-1"><a href="#方法总览" data-for="方法总览">方法总览</a></li><li class="depth-1"><a href="#三类表示的对比分析" data-for="三类表示的对比分析">三类表示的对比分析</a></li><li class="depth-1"><a href="#哪种表示能同时服务-vln-和-vla" data-for="哪种表示能同时服务-vln-和-vla">哪种表示能同时服务 VLN 和 VLA？</a></li><li class="depth-1"><a href="#slam-作为-spatial-memory长时任务的关键" data-for="slam-作为-spatial-memory长时任务的关键">SLAM 作为 “Spatial Memory”：长时任务的关键</a></li><li class="depth-1"><a href="#section-3-takeaway" data-for="section-3-takeaway">Section 3 Takeaway</a></li><li class="depth-0"><a href="#4-架构趋同分析" data-for="4-架构趋同分析">4. 架构趋同分析</a></li><li class="depth-1"><a href="#41-vla-vln-模型全景对比" data-for="41-vla-vln-模型全景对比">4.1 VLA-VLN 模型全景对比</a></li><li class="depth-1"><a href="#42-共性分析commonalities" data-for="42-共性分析commonalities">4.2 共性分析（Commonalities）</a></li><li class="depth-1"><a href="#43-差异分析differences" data-for="43-差异分析differences">4.3 差异分析（Differences）</a></li><li class="depth-1"><a href="#44-趋同点统一的自然连接处where-unification-is-natural" data-for="44-趋同点统一的自然连接处where-unification-is-natural">4.4 趋同点：统一的自然连接处（Where Unification is Natural）</a></li><li class="depth-1"><a href="#45-分歧点统一的核心挑战where-unification-is-challenging" data-for="45-分歧点统一的核心挑战where-unification-is-challenging">4.5 分歧点：统一的核心挑战（Where Unification is Challenging）</a></li><li class="depth-1"><a href="#46-slam-的角色弥合-navigation-manipulation-gap-的空间基础设施" data-for="46-slam-的角色弥合-navigation-manipulation-gap-的空间基础设施">4.6 SLAM 的角色：弥合 Navigation-Manipulation Gap 的空间基础设施</a></li><li class="depth-1"><a href="#47-simulation-与-sim-to-real两个领域的不同策略" data-for="47-simulation-与-sim-to-real两个领域的不同策略">4.7 Simulation 与 Sim-to-Real：两个领域的不同策略</a></li><li class="depth-1"><a href="#48-section-4-takeaway" data-for="48-section-4-takeaway">4.8 Section 4 Takeaway</a></li><li class="depth-0"><a href="#5-现有-navmanip-系统" data-for="5-现有-navmanip-系统">5. 现有 Nav+Manip 系统</a></li><li class="depth-1"><a href="#为什么-navmanip-是-vln-vla-统一的试金石" data-for="为什么-navmanip-是-vln-vla-统一的试金石">为什么 Nav+Manip 是 VLN-VLA 统一的试金石？</a></li><li class="depth-1"><a href="#代表系统总览" data-for="代表系统总览">代表系统总览</a></li><li class="depth-1"><a href="#两大架构范式" data-for="两大架构范式">两大架构范式</a></li><li class="depth-1"><a href="#共同瓶颈分析" data-for="共同瓶颈分析">共同瓶颈分析</a></li><li class="depth-1"><a href="#理想的统一-navmanip-系统应该是什么样的" data-for="理想的统一-navmanip-系统应该是什么样的">理想的统一 Nav+Manip 系统应该是什么样的？</a></li><li class="depth-1"><a href="#section-5-takeaway" data-for="section-5-takeaway">Section 5 Takeaway</a></li><li class="depth-0"><a href="#6-gap-分析与潜在方向" data-for="6-gap-分析与潜在方向">6. Gap 分析与潜在方向</a></li><li class="depth-1"><a href="#61-research-gaps" data-for="61-research-gaps">6.1 Research Gaps</a></li><li class="depth-1"><a href="#62-相关-benchmarks" data-for="62-相关-benchmarks">6.2 相关 Benchmarks</a></li><li class="depth-1"><a href="#63-潜在方向" data-for="63-潜在方向">6.3 潜在方向</a></li><li class="depth-1"><a href="#64-open-questions" data-for="64-open-questions">6.4 Open Questions</a></li><li class="depth-1"><a href="#65-idea-seeds" data-for="65-idea-seeds">6.5 Idea Seeds</a></li><li class="overflow-end"></li></ul></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Topics/">Topics</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>VLN-VLA Unification: Foundation Models for Indoor Robot Navigation and Manipulation</a></div></nav><h1 class="article-title">VLN-VLA Unification: Foundation Models for Indoor Robot Navigation and Manipulation</h1><p show-comma="true" class="content-meta"><time datetime="2026-03-24T15:56:50.923Z">Mar 24, 2026</time><span>50 min read</span></p><ul class="tags"><li><a href="../tags/VLN" class="internal tag-link">VLN</a></li><li><a href="../tags/VLA" class="internal tag-link">VLA</a></li><li><a href="../tags/SLAM" class="internal tag-link">SLAM</a></li><li><a href="../tags/embodied-AI" class="internal tag-link">embodied-AI</a></li><li><a href="../tags/foundation-model" class="internal tag-link">foundation-model</a></li><li><a href="../tags/indoor-scene" class="internal tag-link">indoor-scene</a></li><li><a href="../tags/navigation" class="internal tag-link">navigation</a></li><li><a href="../tags/manipulation" class="internal tag-link">manipulation</a></li></ul></div></div><article class="popover-hint"><h2 id="overview">Overview<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#overview" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>本 survey 从 foundation model 视角，系统梳理了 VLN（Vision-and-Language Navigation）和 VLA（Vision-Language-Action）两个领域的技术演进与架构趋同。通过分析 17 篇核心论文，我们发现：<strong>VLN 和 VLA 在四个维度上正在趋同</strong>——VLM backbone、language-conditioned action prediction、web-scale pre-training、hierarchical 架构——NaVILA 已经证明 VLN 可以重构为 navigation-focused VLA。然而，统一面临三大核心障碍：（1）action space mismatch（50 Hz continuous joint control vs. 1-5 Hz discrete waypoint selection）；（2）navigation 和 manipulation 缺乏 shared spatial representation；（3）simulation 生态无法同时满足 building-scale navigation 和 high-fidelity manipulation。Semantic SLAM（尤其 ConceptGraphs 式 3D scene graph）是弥合这一 gap 的关键基础设施，可以同时服务 navigation waypoints 和 manipulation targets。现有 Nav+Manip 系统（OK-Robot、SayCan、Mobile ALOHA）验证了联合任务的可行性，但都未实现 shared spatial representation。综合 gap 分析和 benchmark 评估（ALFRED、TEACh、HomeRobot OVMM），我们提出最具潜力的研究方向是 <strong>Hierarchical VLA with Shared Semantic Scene Graph</strong>——共享 VLM backbone + 分离 domain-specific action heads + ConceptGraphs 式 scene graph 作为统一空间记忆，在 HomeRobot OVMM 上验证。</p>
+<h2 id="1-vla-基础模型现状">1. VLA 基础模型现状<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-vla-基础模型现状" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Vision-Language-Action（VLA）模型是 embodied AI 领域近年来最重要的进展之一。其核心思路是将预训练 VLM 的视觉-语言理解能力迁移到 robot action 生成，形成”看懂场景 → 理解指令 → 输出动作”的端到端 pipeline。自 2023 年 <a href="../Papers/Brohan2023-RT2" class="internal alias" data-slug="Papers/Brohan2023-RT2">RT-2</a> 开创 VLA 范式以来，该领域经历了三个关键演进：（1）<strong>action representation 从 discrete token 到 continuous flow matching</strong>——RT-2 和 <a href="../Papers/Kim2024-OpenVLA" class="internal alias" data-slug="Papers/Kim2024-OpenVLA">OpenVLA</a> 将 action 离散化为 text token，控制频率受限于 autoregressive decoding（~3 Hz）；<a href="../Papers/Black2024-Pi0" class="internal alias" data-slug="Papers/Black2024-Pi0">π₀</a> 引入 flow matching + action expert 实现 50 Hz 连续控制；（2）<strong>从单任务到 cross-embodiment generalist</strong>——<a href="../Papers/Ghosh2024-Octo" class="internal alias" data-slug="Papers/Ghosh2024-Octo">Octo</a> 和 OpenVLA 在 Open X-Embodiment 数据集上训练，覆盖多种 robot 平台；π₀ 进一步扩展到 7 个平台 68 个任务；（3）<strong>从短时操作到 long-horizon 自主系统</strong>——<a href="../Papers/Black2025-Pi05" class="internal alias" data-slug="Papers/Black2025-Pi05">π0.5</a> 加入 hierarchical inference 实现 15 分钟级家务任务，<a href="../Papers/Torne2026-MEM" class="internal alias" data-slug="Papers/Torne2026-MEM">MEM</a> 引入多尺度记忆机制，<a href="../Papers/Li2026-RoboClaw" class="internal alias" data-slug="Papers/Li2026-RoboClaw">RoboClaw</a> 用 VLM agent loop 统一数据收集和执行。</p>
+<h3 id="key-vla-models">Key VLA Models<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-vla-models" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Model</th><th>Year</th><th>VLM Backbone</th><th>Action Space</th><th>Training</th><th>Key Innovation</th></tr></thead><tbody><tr><td><a href="../Papers/Brohan2023-RT2" class="internal alias" data-slug="Papers/Brohan2023-RT2">RT-2</a></td><td>2023</td><td>PaLM-E 12B / PaLI-X 55B</td><td>Discrete tokens (7-DoF, 256 bins)</td><td>Co-fine-tuning (web + robot)</td><td>VLM → action tokens 范式开创</td></tr><tr><td><a href="../Papers/Ghosh2024-Octo" class="internal alias" data-slug="Papers/Ghosh2024-Octo">Octo</a></td><td>2024</td><td>Transformer (27M/93M, 无 VLM)</td><td>Continuous (diffusion, action chunk)</td><td>800k trajectories, OXE</td><td>轻量开源 generalist + diffusion head</td></tr><tr><td><a href="../Papers/Kim2024-OpenVLA" class="internal alias" data-slug="Papers/Kim2024-OpenVLA">OpenVLA</a></td><td>2024</td><td>Llama 2 7B + DINOv2/SigLIP</td><td>Discrete tokens (7-DoF)</td><td>970k demonstrations, OXE</td><td>开源 VLA baseline，超越 RT-2-X</td></tr><tr><td><a href="../Papers/Black2024-Pi0" class="internal alias" data-slug="Papers/Black2024-Pi0">π₀</a></td><td>2024</td><td>PaliGemma 3B + Action Expert 300M</td><td>Continuous (flow matching, 50 Hz)</td><td>10K+ hrs, 7 platforms, 68 tasks</td><td>Flow matching + MoE-style action expert</td></tr><tr><td><a href="../Papers/Black2025-Pi05" class="internal alias" data-slug="Papers/Black2025-Pi05">π0.5</a></td><td>2025</td><td>PaliGemma 3B (extended)</td><td>Hybrid (discrete pre-train → continuous post-train)</td><td>Co-training 5 类异构数据</td><td>Hierarchical inference + open-world generalization</td></tr><tr><td><a href="../Papers/Torne2026-MEM" class="internal alias" data-slug="Papers/Torne2026-MEM">MEM</a></td><td>2026</td><td>Gemma3-4B (π0.6 base)</td><td>Continuous (flow matching)</td><td>Robot demos + video + web</td><td>多尺度记忆（视频短期 + 语言长期）</td></tr><tr><td><a href="../Papers/Li2026-RoboClaw" class="internal alias" data-slug="Papers/Li2026-RoboClaw">RoboClaw</a></td><td>2026</td><td>Off-the-shelf VLM + π0.5</td><td>Continuous (flow matching)</td><td>自主采集 + 迭代学习</td><td>EAP 自主数据收集 + VLM agent loop</td></tr></tbody></table></div>
+<h3 id="架构趋势-takeaway">架构趋势 Takeaway<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#架构趋势-takeaway" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>Action representation 是核心分野</strong>：discrete token（RT-2, OpenVLA）→ diffusion（Octo）→ flow matching（π₀ 系列）。连续 action 生成显著提升了控制频率和灵巧操作能力。</li>
+<li><strong>VLM backbone 不是越大越好</strong>：RT-2 用 55B 参数，但 π₀ 用 3B + 300M action expert 就实现了更强的操作能力。关键在于 action head 的设计和训练数据的多样性。</li>
+<li><strong>Hierarchical 架构成为主流</strong>：π0.5 和 MEM 都采用高层语义推理 + 低层 action 生成的分层设计，这与 VLN 领域的 high-level planning + low-level control 高度相似，暗示了 VLN-VLA 统一的可能性。</li>
+<li><strong>开源生态推动快速迭代</strong>：Octo 和 OpenVLA 的开源使社区能够快速复现和改进，Open X-Embodiment 数据集成为事实标准。</li>
+</ol>
+<h2 id="2-vln-基础模型现状">2. VLN 基础模型现状<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-vln-基础模型现状" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Vision-and-Language Navigation（VLN）要求 agent 根据自然语言指令在未见环境中导航到目标位置。该领域经历了从 task-specific 架构到 foundation model 驱动的演进，与 VLA 领域的发展轨迹形成有趣的平行关系。</p>
+<h3 id="演进脉络task-specific--topological-planning--vlmllm-based">演进脉络：task-specific → topological planning → VLM/LLM-based<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#演进脉络task-specific--topological-planning--vlmllm-based" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Phase 1: Task-specific 架构（2019-2022）</strong>。早期 VLN 模型使用 LSTM/Transformer encoder-decoder 架构，在 discrete nav-graph 上进行 action prediction。代表工作 <a href="../Papers/Chen2022-DUET" class="internal alias" data-slug="Papers/Chen2022-DUET">VLN-DUET</a> 提出 dual-scale graph transformer，通过在线构建 topological map 并结合 local fine-grained encoding 和 global coarse-grained reasoning，在 REVERIE、SOON、R2R 等 benchmarks 上取得 SOTA，奠定了 topological map 作为 VLN 核心 spatial representation 的范式。</p>
+<p><strong>Phase 2: Continuous environments 与 hierarchical planning（2022-2024）</strong>。VLN-CE（Vision-Language Navigation in Continuous Environments）将 VLN 从 discrete nav-graph 扩展到更接近真实场景的 continuous action space。<a href="../Papers/An2024-ETPNav" class="internal alias" data-slug="Papers/An2024-ETPNav">ETPNav</a> 提出 online topological mapping + hierarchical planning（transformer-based high-level planner + obstacle-avoiding low-level controller），在 R2R-CE 和 RxR-CE 上大幅超越 prior SOTA。这一阶段的关键架构创新——<strong>hierarchical decomposition（high-level planning + low-level control）</strong>——与 VLA 领域中 π0.5 的 hierarchical inference 高度平行。</p>
+<p><strong>Phase 3: LLM/VLM backbone 引入（2023-present）</strong>。<a href="../Papers/Zhou2023-NavGPT" class="internal alias" data-slug="Papers/Zhou2023-NavGPT">NavGPT</a> 首次将 GPT-4 作为 zero-shot navigation reasoning engine，通过文本化视觉观测让 LLM 进行显式推理（sub-goal decomposition、landmark identification、progress tracking）。尽管 zero-shot 性能低于 trained models，但揭示了 LLM 在 navigation planning 中的潜力。其 follow-up NavGPT-2（ECCV 2024）通过 visual alignment 消除了与 VLN specialist 的性能差距，验证了 VLM backbone 在 VLN 中的可行性。<a href="../Papers/Cheng2024-NaVILA" class="internal alias" data-slug="Papers/Cheng2024-NaVILA">NaVILA</a> 进一步将 VLM（VILA）微调为 navigation VLA，用语言化 mid-level action 作为高层规划和低层控制的桥梁，在 R2R-CE 上达到 54% SR 并实现了 legged robot 真实世界部署。NaVILA 本质上就是一个 navigation-focused VLA，是 VLN-VLA 架构趋同的最直接证据。</p>
+<h3 id="key-vln-models">Key VLN Models<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-vln-models" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Model</th><th>Year</th><th>Backbone</th><th>Action Space</th><th>Environment</th><th>Key Innovation</th></tr></thead><tbody><tr><td><a href="../Papers/Chen2022-DUET" class="internal alias" data-slug="Papers/Chen2022-DUET">VLN-DUET</a></td><td>2022</td><td>Task-specific Transformer</td><td>Discrete（nav-graph nodes, 含远程跳转）</td><td>Discrete nav-graph (MP3D)</td><td>Dual-scale graph transformer + online topological map</td></tr><tr><td><a href="../Papers/An2024-ETPNav" class="internal alias" data-slug="Papers/An2024-ETPNav">ETPNav</a></td><td>2024</td><td>Task-specific Transformer</td><td>Hybrid（high-level waypoint + low-level continuous）</td><td>Continuous (Habitat)</td><td>Online topological planning + obstacle-avoiding controller</td></tr><tr><td><a href="../Papers/Zhou2023-NavGPT" class="internal alias" data-slug="Papers/Zhou2023-NavGPT">NavGPT</a></td><td>2023</td><td>GPT-4 (frozen, zero-shot)</td><td>Discrete（nav-graph node selection）</td><td>Discrete nav-graph (MP3D)</td><td>LLM 作为 navigation reasoning engine，显式推理链</td></tr><tr><td>NavGPT-2</td><td>2024</td><td>Frozen LLM + visual alignment</td><td>Discrete</td><td>Discrete nav-graph</td><td>消除 LLM agent 与 VLN specialist 的性能差距</td></tr><tr><td><a href="../Papers/Cheng2024-NaVILA" class="internal alias" data-slug="Papers/Cheng2024-NaVILA">NaVILA</a></td><td>2024</td><td>VILA VLM (fine-tuned)</td><td>Mid-level language actions → RL locomotion</td><td>Continuous (Habitat + Isaac Sim + Real)</td><td>VLM → 语言化动作 → locomotion policy，真实 legged robot 部署</td></tr></tbody></table></div>
+<h3 id="vln-vs-vla关键差异">VLN vs VLA：关键差异<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#vln-vs-vla关键差异" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>维度</th><th>VLN</th><th>VLA</th></tr></thead><tbody><tr><td><strong>Action space</strong></td><td>Discrete waypoints / nav-graph nodes</td><td>Continuous joint torques / end-effector poses</td></tr><tr><td><strong>Primary environment</strong></td><td>Simulation（Habitat, MP3D, Gibson）</td><td>Real world + simulation</td></tr><tr><td><strong>Control frequency</strong></td><td>Low（~1-5 Hz, per-step decision）</td><td>High（10-50 Hz continuous control）</td></tr><tr><td><strong>Evaluation benchmarks</strong></td><td>R2R, REVERIE, SOON, R2R-CE, RxR-CE</td><td>各种 real-world manipulation tasks</td></tr><tr><td><strong>Spatial representation</strong></td><td>Topological map / nav-graph</td><td>通常无显式空间表示（end-to-end）</td></tr><tr><td><strong>Foundation model 使用方式</strong></td><td>VLM/LLM → high-level planning</td><td>VLM → end-to-end action generation</td></tr><tr><td><strong>核心挑战</strong></td><td>Sim-to-real gap, instruction grounding</td><td>Dexterous control, generalization</td></tr></tbody></table></div>
+<h3 id="sim-to-real-gap-现状">Sim-to-Real Gap 现状<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#sim-to-real-gap-现状" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>VLN 领域面临显著的 sim-to-real gap：绝大多数工作在 Habitat/MP3D simulator 中评估，真实世界部署案例极少。NaVILA 是为数不多实现真实部署的工作（Unitree Go2 上 88% 成功率），其成功依赖两个关键设计：（1）用 YouTube 视频作为 real-world visual data source；（2）用语言化 mid-level action 解耦感知与控制，使 sim-to-real transfer 只需要在 low-level locomotion policy 层面进行。这一策略与 VLA 领域 <a href="../Papers/Li2026-RoboClaw" class="internal alias" data-slug="Papers/Li2026-RoboClaw">RoboClaw</a> 的自主数据收集 + VLM agent loop 形成有趣对比——两者都在寻找 scalable 的 real-world data 获取方案。</p>
+<h2 id="3-语义-slam-与空间表示">3. 语义 SLAM 与空间表示<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-语义-slam-与空间表示" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="为什么空间表示是-vln-vla-统一的关键">为什么空间表示是 VLN-VLA 统一的关键？<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#为什么空间表示是-vln-vla-统一的关键" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Section 1 和 Section 2 揭示了一个核心矛盾：VLN 系统依赖显式空间表示（topological map、nav-graph）进行 high-level planning，而 VLA 系统通常采用 end-to-end 架构、缺乏显式空间表示。要统一两者，需要一种<strong>既能支持 navigation planning 又能支持 manipulation grounding 的空间表示</strong>——这正是 semantic SLAM 和 language-grounded spatial representations 的研究目标。</p>
+<p>近年来，foundation models（CLIP、SAM、GPT-4）的突破催生了一类新的空间表示方法：它们在传统 SLAM 的 geometric map 基础上融合了 open-vocabulary 语义信息，使地图可以直接通过自然语言查询。这些方法按表示形式可分为三类：（1）<strong>dense feature maps</strong>（per-pixel/per-voxel 存储 VLM features）；（2）<strong>3D scene graphs</strong>（object-level nodes + semantic relations）；（3）<strong>neural/Gaussian fields</strong>（implicit 或 explicit 连续表示 + 可附加语义）。</p>
+<h3 id="方法总览">方法总览<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#方法总览" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Method</th><th>Year</th><th>Venue</th><th>表示形式</th><th>语义 Grounding</th><th>支持的下游任务</th></tr></thead><tbody><tr><td><a href="../Papers/Huang2023-VLMaps" class="internal alias" data-slug="Papers/Huang2023-VLMaps">VLMaps</a></td><td>2023</td><td>ICRA</td><td>Top-down 2D grid map（per-cell LSeg/CLIP features）</td><td>LSeg dense features + CLIP text encoder cosine similarity</td><td>Open-vocabulary navigation, spatial goal localization, multi-embodiment sharing</td></tr><tr><td><a href="../Papers/Gu2024-ConceptGraphs" class="internal alias" data-slug="Papers/Gu2024-ConceptGraphs">ConceptGraphs</a></td><td>2024</td><td>ICRA</td><td>3D scene graph（nodes = objects, edges = semantic relations）</td><td>SAM segmentation + CLIP embeddings + GPT-4 captioning/reasoning</td><td>Text query, re-localization, navigation planning, manipulation planning</td></tr><tr><td><a href="../Papers/Keetha2024-SplaTAM" class="internal alias" data-slug="Papers/Keetha2024-SplaTAM">SplaTAM</a></td><td>2024</td><td>CVPR</td><td>3D Gaussian field（explicit volumetric）</td><td>无内置语义（纯 geometric），但可扩展附加 CLIP features</td><td>Dense mapping, camera tracking, novel-view synthesis</td></tr><tr><td>CLIP-Fields</td><td>2023</td><td>RSS</td><td>Neural field（MLP mapping 3D coords → semantic embeddings）</td><td>CLIP + Detic + Sentence-BERT 弱监督</td><td>Semantic navigation, object search</td></tr><tr><td>OpenScene</td><td>2023</td><td>CVPR</td><td>Per-point features on 3D point cloud</td><td>CLIP/OpenSeg features 蒸馏到 3D points</td><td>Open-vocabulary 3D scene understanding, 3D object retrieval</td></tr></tbody></table></div>
+<h3 id="三类表示的对比分析">三类表示的对比分析<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#三类表示的对比分析" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Dense feature maps（VLMaps 为代表）</strong></p>
+<ul>
+<li>优势：spatial coverage 好，适合 navigation（可以直接在 map 上做 path planning）；构建简单；支持 open-vocabulary landmark query</li>
+<li>局限：2D top-down 表示丢失高度信息；per-cell feature 缺乏 object-level abstraction；难以直接支持 manipulation（缺少 3D object geometry）</li>
+<li><strong>VLN 适配性：高</strong>——可直接替代 topological map 用于 navigation planning</li>
+<li><strong>VLA 适配性：低</strong>——缺少 manipulation 所需的 3D object 信息</li>
+</ul>
+<p><strong>3D scene graphs（ConceptGraphs 为代表）</strong></p>
+<ul>
+<li>优势：object-level abstraction 天然适合 LLM-based planning；graph 结构支持 relational reasoning；同时包含 geometric（point cloud）和 semantic（CLIP + caption）信息</li>
+<li>局限：依赖高质量 instance segmentation；graph 构建计算开销大；对 cluttered scene 的 over-/under-segmentation 敏感</li>
+<li><strong>VLN 适配性：高</strong>——graph nodes 可作为 navigation waypoints，类似 <a href="../Papers/Chen2022-DUET" class="internal alias" data-slug="Papers/Chen2022-DUET">VLN-DUET</a> 的 topological map 但语义更丰富</li>
+<li><strong>VLA 适配性：高</strong>——object nodes 提供 manipulation targets + 空间关系，可直接传给 VLA 的 high-level planner</li>
+</ul>
+<p><strong>Neural/Gaussian fields（SplaTAM、CLIP-Fields 为代表）</strong></p>
+<ul>
+<li>优势：dense continuous representation，reconstruction 质量最高；SplaTAM 等 3DGS-based 方法高效且支持 incremental update；可通过附加 feature channels 扩展语义</li>
+<li>局限：纯 geometric field 需额外步骤注入语义；implicit fields（NeRF-based）难以实时更新；缺少 object-level 结构</li>
+<li><strong>VLN 适配性：中</strong>——需要从 field 中提取 navigable space，不如 grid map 直接</li>
+<li><strong>VLA 适配性：中高</strong>——dense geometry 有利于 grasp planning，但缺少 semantic object segmentation</li>
+</ul>
+<h3 id="哪种表示能同时服务-vln-和-vla">哪种表示能同时服务 VLN 和 VLA？<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#哪种表示能同时服务-vln-和-vla" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>从上述分析可以看出，<strong>3D scene graph（ConceptGraphs）是最有潜力同时服务 VLN 和 VLA 的表示形式</strong>：</p>
+<ul>
+<li>对 VLN：graph nodes 作为 navigation waypoints，graph edges 编码空间关系辅助 path planning，CLIP embeddings 支持 language-guided goal localization</li>
+<li>对 VLA：object nodes 提供 manipulation targets 和 3D geometry，semantic relations 支持 task planning（如”把 A 放到 B 旁边”）</li>
+<li>对 LLM/VLM planning：graph 可以文本化（序列化为节点和边的描述）后直接输入 LLM 进行推理</li>
+</ul>
+<p>然而，scene graph 的局限在于缺少 dense spatial coverage——navigation 需要知道 free space 和 obstacles 的连续分布，而 scene graph 只包含 object-level 信息。因此，最理想的方案可能是<strong>层次化组合</strong>：</p>
+<blockquote>
+<p><strong>Dense geometric map（SplaTAM）</strong> + <strong>Semantic scene graph（ConceptGraphs）</strong> + <strong>Language interface（VLMaps-style query）</strong></p>
+</blockquote>
+<p>这种层次化架构与 VLN-VLA 系统的需求天然契合：dense map 服务低层 obstacle avoidance 和 locomotion，scene graph 服务高层 task planning 和 manipulation grounding，language interface 统一两者的指令接口。</p>
+<h3 id="slam-作为-spatial-memory长时任务的关键">SLAM 作为 “Spatial Memory”：长时任务的关键<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#slam-作为-spatial-memory长时任务的关键" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Section 1 中讨论的 long-horizon VLA（<a href="../Papers/Black2025-Pi05" class="internal alias" data-slug="Papers/Black2025-Pi05">π0.5</a>、<a href="../Papers/Torne2026-MEM" class="internal alias" data-slug="Papers/Torne2026-MEM">MEM</a>）面临一个共同挑战：如何在长时间任务执行中维护 consistent 的空间理解。MEM 用 video memory 和 language memory 部分解决了这个问题，但缺乏 explicit spatial memory。</p>
+<p>Semantic SLAM 天然提供了这种 “spatial memory”：</p>
+<ol>
+<li><strong>Persistent map</strong>：SLAM 维护一个随时间增量更新的环境地图，机器人可以随时回溯到之前探索过的区域</li>
+<li><strong>Re-localization</strong>：ConceptGraphs 展示了基于 scene graph 的 landmark-based re-localization，使机器人在长时间任务中不会”迷路”</li>
+<li><strong>Incremental update</strong>：SplaTAM 的 3DGS 表示支持高效增量更新，可以随着探索实时扩展地图</li>
+<li><strong>Multi-session memory</strong>：map 可以跨 session 保存和加载，使机器人在不同时间段积累环境知识</li>
+</ol>
+<p>这种 spatial memory 对统一 VLN 和 VLA 至关重要：一个真正的 embodied agent 需要在导航到目标位置（VLN）后执行操作（VLA），再导航到下一个位置——整个过程需要一个 persistent、incrementally updated 的空间表示来维护 context。</p>
+<h3 id="section-3-takeaway">Section 3 Takeaway<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#section-3-takeaway" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>语义空间表示是 VLN-VLA 统一的 “missing piece”</strong>：VLN 需要 spatial map 进行 path planning，VLA 需要 object-level semantics 进行 manipulation grounding，语义 SLAM 可以同时满足两者。</li>
+<li><strong>3D scene graph 最适合作为统一 interface</strong>：ConceptGraphs 式的 scene graph 同时支持 navigation waypoints 和 manipulation targets，且天然适配 LLM-based planning。</li>
+<li><strong>层次化组合是实用方案</strong>：dense geometry（SplaTAM）+ semantic graph（ConceptGraphs）+ language query（VLMaps）的层次化架构可以满足 VLN-VLA 系统的多层次需求。</li>
+<li><strong>SLAM 提供 long-horizon 任务所需的 spatial memory</strong>：persistent, incrementally updated map 是统一 navigation 和 manipulation 的基础设施。</li>
+</ol>
+<h2 id="4-架构趋同分析">4. 架构趋同分析<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-架构趋同分析" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>本节综合 Section 1-3 和 Section 5 的分析，从架构维度系统比较 VLA 和 VLN 模型，识别趋同点和分歧点，并探讨统一的可能路径。</p>
+<h3 id="41-vla-vln-模型全景对比">4.1 VLA-VLN 模型全景对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#41-vla-vln-模型全景对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>下表涵盖 Section 1（VLA）和 Section 2（VLN）中的所有主要模型，按统一维度进行比较：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Model</th><th>领域</th><th>VLM Backbone</th><th>Action Space</th><th>空间/记忆表示</th><th>Training Data</th><th>架构范式</th><th>Task Horizon</th><th>Sim/Real</th></tr></thead><tbody><tr><td><a href="../Papers/Brohan2023-RT2" class="internal alias" data-slug="Papers/Brohan2023-RT2">RT-2</a></td><td>VLA</td><td>PaLM-E 12B / PaLI-X 55B</td><td>Discrete tokens（7-DoF, 256 bins, ~3 Hz）</td><td>无显式空间表示</td><td>RT-1 ~130k episodes + web VL data co-fine-tuning</td><td>End-to-end VLM→action tokens</td><td>短（单步操作）</td><td>Real</td></tr><tr><td><a href="../Papers/Ghosh2024-Octo" class="internal alias" data-slug="Papers/Ghosh2024-Octo">Octo</a></td><td>VLA</td><td>无 VLM（Transformer 27M/93M）</td><td>Continuous（diffusion, action chunk 4步）</td><td>无显式空间表示</td><td>OXE 800k trajectories</td><td>End-to-end diffusion policy</td><td>短</td><td>Real</td></tr><tr><td><a href="../Papers/Kim2024-OpenVLA" class="internal alias" data-slug="Papers/Kim2024-OpenVLA">OpenVLA</a></td><td>VLA</td><td>Llama 2 7B + DINOv2/SigLIP</td><td>Discrete tokens（7-DoF）</td><td>无显式空间表示</td><td>OXE 970k demonstrations</td><td>End-to-end VLM→action tokens</td><td>短</td><td>Real</td></tr><tr><td><a href="../Papers/Black2024-Pi0" class="internal alias" data-slug="Papers/Black2024-Pi0">π₀</a></td><td>VLA</td><td>PaliGemma 3B + Action Expert 300M</td><td>Continuous（flow matching, 50 Hz, chunk H=50）</td><td>无显式空间表示</td><td>10K+ hrs, 7 platforms, 68 tasks</td><td>VLM + MoE-style action expert</td><td>中（多阶段操作）</td><td>Real</td></tr><tr><td><a href="../Papers/Black2025-Pi05" class="internal alias" data-slug="Papers/Black2025-Pi05">π0.5</a></td><td>VLA</td><td>PaliGemma 3B（extended）</td><td>Hybrid（discrete pre-train → continuous post-train, 50 Hz）</td><td>无显式空间表示（implicit in VLM）</td><td>5 类异构数据 co-training（MM/ME/CE/HL/WD）</td><td>Hierarchical（语义子任务 → flow matching action）</td><td>长（10-15 min 家务）</td><td>Real</td></tr><tr><td><a href="../Papers/Torne2026-MEM" class="internal alias" data-slug="Papers/Torne2026-MEM">MEM</a></td><td>VLA</td><td>Gemma3-4B（π0.6 base）</td><td>Continuous（flow matching）</td><td>视频短期记忆 + 语言长期记忆（无 spatial map）</td><td>Robot demos + video + web</td><td>Hierarchical + 多尺度记忆</td><td>长（15 min）</td><td>Real</td></tr><tr><td><a href="../Papers/Li2026-RoboClaw" class="internal alias" data-slug="Papers/Li2026-RoboClaw">RoboClaw</a></td><td>VLA</td><td>Off-the-shelf VLM + π0.5</td><td>Continuous（flow matching）</td><td>VLM agent structured memory（非空间）</td><td>自主采集（EAP）+ 迭代学习</td><td>VLM agent loop + VLA primitives</td><td>长（multi-step）</td><td>Real</td></tr><tr><td><a href="../Papers/Chen2022-DUET" class="internal alias" data-slug="Papers/Chen2022-DUET">VLN-DUET</a></td><td>VLN</td><td>无 VLM（task-specific Transformer）</td><td>Discrete（nav-graph node selection, 含远程跳转）</td><td>Online topological map</td><td>R2R/REVERIE/SOON supervised</td><td>Dual-scale graph transformer</td><td>中（导航序列）</td><td>Sim（MP3D）</td></tr><tr><td><a href="../Papers/An2024-ETPNav" class="internal alias" data-slug="Papers/An2024-ETPNav">ETPNav</a></td><td>VLN</td><td>无 VLM（task-specific Transformer）</td><td>Hybrid（high-level waypoint + low-level continuous）</td><td>Online topological map + waypoint prediction</td><td>R2R-CE/RxR-CE supervised</td><td>Hierarchical（transformer planner + heuristic controller）</td><td>中</td><td>Sim（Habitat）</td></tr><tr><td><a href="../Papers/Zhou2023-NavGPT" class="internal alias" data-slug="Papers/Zhou2023-NavGPT">NavGPT</a></td><td>VLN</td><td>GPT-4（frozen, zero-shot）</td><td>Discrete（nav-graph node selection）</td><td>无（文本化 history）</td><td>Zero-shot（无训练）</td><td>LLM reasoning engine</td><td>中</td><td>Sim（MP3D）</td></tr><tr><td><a href="../Papers/Cheng2024-NaVILA" class="internal alias" data-slug="Papers/Cheng2024-NaVILA">NaVILA</a></td><td>VLN/VLA</td><td>VILA VLM（fine-tuned）</td><td>Mid-level 语言化动作 → RL locomotion policy</td><td>无显式 map（VLM implicit）</td><td>YouTube 视频 + Habitat sim + auxiliary VQA</td><td>Hierarchical（VLM → 语言动作 → RL policy）</td><td>中</td><td>Sim→Real</td></tr></tbody></table></div>
+<h3 id="42-共性分析commonalities">4.2 共性分析（Commonalities）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#42-共性分析commonalities" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>尽管 VLA 和 VLN 起源于不同的研究社区（robotics manipulation vs. embodied navigation），两者在架构上呈现出显著的趋同趋势：</p>
+<p><strong>1. VLM Backbone 正在成为通用基座</strong></p>
+<p>从 RT-2（2023）首次将 VLM 用于 robot action 生成，到 NaVILA（2024）将 VLM 用于 navigation action 生成，<strong>VLM 作为 embodied AI 的统一 backbone</strong> 已成为两个领域的共识。对比早期：VLN 领域的 VLN-DUET 和 ETPNav 使用 task-specific transformer，VLA 领域的 Octo 使用轻量 transformer 而无 VLM 预训练——这些架构正在被 VLM-based 方案取代。VLM backbone 带来的核心优势是：（1）web-scale 预训练提供丰富的视觉-语言-常识知识；（2）instruction following 能力天然适配 language-conditioned 任务；（3）跨 domain 知识迁移（如 RT-2 的 emergent reasoning）。</p>
+<p><strong>2. Instruction-conditioned action prediction 成为统一范式</strong></p>
+<p>VLA 和 VLN 的核心 pipeline 可以抽象为同一个公式：<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span><span class="mopen">(</span><span class="mord mathnormal">a</span><span class="mord">∣</span><span class="mord mathnormal">o</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">ℓ</span><span class="mclose">)</span></span></span></span>——给定观测 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">o</span></span></span></span> 和语言指令 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord">ℓ</span></span></span></span>，预测动作 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span></span></span></span>。两者的差异仅在于 action space 的具体形式和 observation 的模态。这一统一视角正是 NaVILA 能够将 VLN 重构为 navigation VLA 的根本原因。</p>
+<p><strong>3. Pre-training on web data 的共同策略</strong></p>
+<p>RT-2 的 co-fine-tuning（web VL + robot data）、π0.5 的 web data co-training、NaVILA 的 YouTube egocentric video 利用——两个领域都在探索如何利用海量互联网数据增强 embodied 模型的泛化能力。这反映了一个共同挑战：robot/navigation-specific 数据稀缺，而 web data 可以提供 visual grounding、commonsense reasoning 和 diverse scene understanding。</p>
+<p><strong>4. Hierarchical 架构成为主流</strong></p>
+<p>π0.5 的 hierarchical inference（语义子任务 → flow matching action）、MEM 的分层策略（高层子任务 + 记忆更新 → 低层动作生成）、ETPNav 的 hierarchical planning（transformer planner → obstacle-avoiding controller）、NaVILA 的 two-level hierarchy（VLM → 语言动作 → RL policy）——两个领域不约而同地采用了<strong>高层语义规划 + 低层动作执行</strong>的分层设计。这不是巧合，而是 long-horizon embodied tasks 的内在需求：高层需要抽象推理（“下一步应该去厨房拿杯子”），低层需要精细控制（具体的关节角度或 waypoint），单一层级无法同时满足两者。</p>
+<h3 id="43-差异分析differences">4.3 差异分析（Differences）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#43-差异分析differences" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>1. Action Space 粒度的根本差异</strong></p>
+<p>这是 VLA-VLN 统一最核心的障碍。VLA 的 action space 是 continuous joint-level control（π₀: 18 维，含双臂 6-DoF + grippers + base + torso，50 Hz），而 VLN 的 action space 是 discrete waypoint selection（VLN-DUET: nav-graph node，~1-5 Hz）或 mid-level language commands（NaVILA: “move forward 75cm”）。两者的控制频率相差一个数量级（50 Hz vs. 1-5 Hz），反映了任务本质的差异：manipulation 需要精细力控制，navigation 需要全局路径规划。</p>
+<p><strong>2. 环境表示的分野</strong></p>
+<p>VLN 系统普遍依赖显式空间表示——VLN-DUET 的 topological map、ETPNav 的 online waypoint graph——作为 high-level planning 的基础。VLA 系统则通常不构建显式环境模型，而是通过 end-to-end learning 隐式编码空间信息。这一差异源于任务需求：navigation 必须知道”哪里可以去”（free space、obstacles、landmarks），而 table-top manipulation 的工作空间相对受限，不需要全局空间理解。</p>
+<p><strong>3. Sim vs. Real 的训练范式差异</strong></p>
+<p>VLN 研究绝大多数在 simulation 中进行（Habitat、Matterport3D、Gibson），仅 NaVILA 实现了真实部署。VLA 研究（尤其 π₀ 系列）主要在真实 robot 上训练和评估。这一差异有深层原因：（1）navigation 涉及整个建筑级别的场景，真实数据采集成本极高，而 3D 场景扫描（MP3D 提供 90 栋建筑）可以大规模生成导航数据；（2）manipulation 涉及物理接触和力控制，simulation 的 physics fidelity 不足以 transfer（sim-to-real gap 更大）。</p>
+<p><strong>4. 评估体系的不可比性</strong></p>
+<p>VLN 使用 R2R、REVERIE、SOON 等 benchmark 的 Success Rate / SPL 评估，VLA 使用 task-specific 成功率评估。两者的 evaluation protocol 完全不同，缺乏统一的 benchmark 来比较跨领域模型。</p>
+<h3 id="44-趋同点统一的自然连接处where-unification-is-natural">4.4 趋同点：统一的自然连接处（Where Unification is Natural）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#44-趋同点统一的自然连接处where-unification-is-natural" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>1. 共享 VLM Backbone</strong></p>
+<p>最直接的统一点。一个预训练 VLM（如 PaliGemma、VILA）可以同时作为 navigation planner 和 manipulation controller 的 backbone。NaVILA 已经证明了 VLM 可以驱动 navigation，π₀ 证明了 VLM 可以驱动 manipulation——理论上，同一个 VLM 可以根据任务需求切换到不同的 action head。</p>
+<p><strong>2. Language-conditioned hierarchical planning</strong></p>
+<p>π0.5 的语义子任务预测和 NaVILA 的语言化 mid-level action 本质上是同一种思路：<strong>用自然语言作为高层规划和低层执行之间的 interface</strong>。这为统一提供了一个优雅的 abstraction layer——high-level planner 用语言描述下一步目标（“navigate to the kitchen sink” 或 “pick up the red mug”），low-level policy 根据具体 domain（navigation 或 manipulation）选择对应的 action generation module。</p>
+<p><strong>3. Web-scale pre-training 的共享</strong></p>
+<p>Navigation 和 manipulation 可以共享同一个 VLM 的 web pre-training，因为 visual scene understanding、object recognition、spatial reasoning 等能力是两者共有的。π0.5 的 co-training 实验已经证明，来自不同 embodiment 和任务的数据可以互相增强——将 navigation data 加入 co-training mixture 是自然的扩展。</p>
+<h3 id="45-分歧点统一的核心挑战where-unification-is-challenging">4.5 分歧点：统一的核心挑战（Where Unification is Challenging）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#45-分歧点统一的核心挑战where-unification-is-challenging" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>1. Action Space Mismatch</strong></p>
+<p>Manipulation 需要 50 Hz 的 continuous joint-level control（π₀ 的 18 维 action space），navigation 需要 1-5 Hz 的 discrete/mid-level waypoint decisions。一个 unified action head 如何同时处理两种截然不同的 action space？可能的方案：（a）hierarchical decomposition，高层 planner 统一，低层 action head 分离（类似 NaVILA 的 VLM + RL locomotion policy）；（b）统一的 continuous action space，将 navigation 也建模为 continuous base velocity control（但会丧失 topological planning 的全局优势）；（c）multi-head design，类似 π₀ 的 action expert，为不同 action domain 设计专用 head。</p>
+<p><strong>2. 控制频率的不兼容</strong></p>
+<p>50 Hz 的 manipulation control 和 1-5 Hz 的 navigation decision 不仅是数值上的差异，更反映了不同的计算需求。Manipulation 需要在每个 control cycle（20ms）内完成 inference，而 navigation 可以容忍更长的 planning latency。一个统一系统可能需要<strong>异步双 loop 设计</strong>：高频 manipulation loop 持续运行，低频 navigation loop 在需要时触发。</p>
+<p><strong>3. 环境表示的不一致</strong></p>
+<p>VLA 系统的 end-to-end 架构不构建显式环境模型，而 VLN 系统依赖 topological map 或 semantic map 进行全局规划。统一系统需要同时支持：（a）全局空间理解（“厨房在卧室左边”）和（b）局部精细感知（“杯子在桌面边缘，需要从侧面抓取”）。Section 3 的分析表明，ConceptGraphs 式 3D scene graph 最有潜力同时满足两者，但目前还没有 VLA 系统真正集成这种 spatial representation。</p>
+<p><strong>4. 训练数据的异构性</strong></p>
+<p>Navigation 数据主要来自 simulation（Habitat trajectories），manipulation 数据主要来自真实 robot demonstrations。两者的 visual appearance、physics dynamics、action distribution 都有显著差异。π0.5 的异构 co-training 已经展示了混合不同来源数据的可行性，但 sim navigation data 和 real manipulation data 的混合是否有效仍是 open question。</p>
+<h3 id="46-slam-的角色弥合-navigation-manipulation-gap-的空间基础设施">4.6 SLAM 的角色：弥合 Navigation-Manipulation Gap 的空间基础设施<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#46-slam-的角色弥合-navigation-manipulation-gap-的空间基础设施" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Section 3 的分析表明，semantic SLAM 可以作为 VLN-VLA 统一的 “missing piece”：</p>
+<p><strong>Navigation 侧</strong>：SLAM 提供的 persistent spatial map 可以替代 VLN 中 hand-crafted 的 topological map。VLMaps 的 language-queryable grid map 已经展示了 open-vocabulary navigation planning 的可能。ConceptGraphs 的 scene graph 提供了更丰富的 object-level abstraction，可以直接作为 navigation waypoints（类似 VLN-DUET 的 topological map nodes，但语义更丰富）。</p>
+<p><strong>Manipulation 侧</strong>：ConceptGraphs 的 3D object nodes 提供了 manipulation targets 和空间关系信息。SplaTAM 的 dense Gaussian field 提供了高质量的 3D geometry，有利于 grasp planning。这些 spatial representations 可以增强 VLA 系统目前缺失的环境理解能力。</p>
+<p><strong>统一侧</strong>：一个 incrementally updated 的 semantic spatial representation 可以同时服务 navigation planning（“导航到厨房水槽”→ 在 scene graph 中查找 “kitchen sink” node → path planning）和 manipulation grounding（“抓起桌上的杯子”→ 定位 “mug” node → 获取 3D pose → grasp planning）。更重要的是，这种 spatial memory 为 long-horizon Nav+Manip 任务提供了 persistent context——robot 可以记住之前探索过的区域和物体位置，在 navigation 和 manipulation 之间无缝切换。</p>
+<p><strong>当前 gap</strong>：尽管 Section 5 的 OK-Robot 使用了 VoxelMap（类似 VLMaps），但其 navigation 和 manipulation 模块并不共享这一空间表示。目前没有任何系统真正实现了 “shared semantic SLAM serving both navigation and manipulation”。这是一个重要的研究方向。</p>
+<h3 id="47-simulation-与-sim-to-real两个领域的不同策略">4.7 Simulation 与 Sim-to-Real：两个领域的不同策略<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#47-simulation-与-sim-to-real两个领域的不同策略" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>VLN 的 simulation 生态</strong></p>
+<p>VLN 深度依赖 simulation 环境：Habitat Simulator 配合 Matterport3D（90 栋建筑扫描）、Gibson（572 个场景）提供了大规模导航训练和评估的基础。这使得 VLN 研究可以低成本地大规模实验，但也导致了严重的 sim-to-real gap：大多数 VLN 模型从未在真实世界中测试。NaVILA 的突破在于通过两个策略缓解这一 gap：（1）引入 YouTube egocentric 视频作为 real-world visual data；（2）用 mid-level 语言动作解耦 high-level perception（可在 sim 中训练并 transfer）和 low-level locomotion（用真实 RL policy）。</p>
+<p><strong>VLA 的 real-world 优先策略</strong></p>
+<p>VLA 领域（尤其 π₀ 系列）选择了不同路线：直接在真实 robot 上收集数据和评估。这是因为 manipulation 涉及复杂的物理接触（摩擦、变形、柔软物体），当前 simulation 的 physics fidelity 不足以 reliable transfer。π₀ 使用 10K+ 小时真实数据，RoboClaw 通过 EAP 实现自主数据收集——两者都在寻找 scalable 的 real-world data 方案，而非依赖 simulation。</p>
+<p><strong>统一系统的 simulation 需求</strong></p>
+<p>一个统一的 Nav+Manip 系统需要在建筑级别的 navigation 和 object-level 的 manipulation 之间切换，这对 simulation 提出了极高要求。现有 sim 平台的局限：（1）Habitat/MP3D 适合 navigation 但缺乏精细物理交互（无法模拟抓取、推拉）；（2）Isaac Sim/MuJoCo 适合 manipulation 但缺乏大规模建筑级场景；（3）AI2-THOR 兼顾导航和交互但场景多样性有限。NaVILA 引入的 VLN-CE-Isaac benchmark（Isaac Sim 高保真环境）是一个有意义的尝试，将 VLN 评估扩展到更接近 real-world physics 的 simulation 环境。理想的统一 sim 平台需要同时具备：large-scale 建筑场景 + high-fidelity 物理交互 + diverse object assets。</p>
+<h3 id="48-section-4-takeaway">4.8 Section 4 Takeaway<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#48-section-4-takeaway" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>VLA 和 VLN 在四个维度上趋同</strong>：VLM backbone、language-conditioned action prediction、web-scale pre-training、hierarchical 架构。NaVILA 是两者趋同的最直接证据——它本质上就是一个 navigation-focused VLA。</li>
+<li><strong>Action space mismatch 是统一的最大障碍</strong>：50 Hz continuous joint control vs. 1-5 Hz discrete waypoint selection，控制频率相差一个数量级。Hierarchical decomposition（共享 VLM backbone + 分离 action heads）是最可行的统一路径。</li>
+<li><strong>Semantic SLAM 是统一的空间基础设施</strong>：ConceptGraphs 式 scene graph 可以同时服务 navigation waypoints 和 manipulation targets，但目前没有系统真正实现 shared spatial representation。</li>
+<li><strong>Simulation 生态需要升级</strong>：现有 sim 平台无法同时满足 building-scale navigation 和 high-fidelity manipulation 的需求，制约了 unified Nav+Manip 系统的开发和评估。</li>
+<li><strong>统一架构的可能形态</strong>：VLM backbone（shared）→ language-mediated hierarchical planner（shared）→ domain-specific action heads（navigation: waypoint selection / VLM mid-level commands; manipulation: flow matching continuous control）→ shared semantic spatial memory（ConceptGraphs + SplaTAM + VLMaps）。</li>
+</ol>
+<h2 id="5-现有-navmanip-系统">5. 现有 Nav+Manip 系统<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#5-现有-navmanip-系统" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="为什么-navmanip-是-vln-vla-统一的试金石">为什么 Nav+Manip 是 VLN-VLA 统一的试金石？<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#为什么-navmanip-是-vln-vla-统一的试金石" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>前面四个 Section 分别从 VLA（manipulation）、VLN（navigation）、语义 SLAM（spatial representation）角度梳理了各领域的进展。但一个真正有用的 embodied agent 必须<strong>同时具备 navigation 和 manipulation 能力</strong>——在家庭环境中，“把桌上的杯子放到厨房水槽里”这样的简单指令就需要：定位杯子（perception）→ 导航到桌子（navigation）→ 抓取杯子（manipulation）→ 导航到厨房（navigation）→ 放下杯子（manipulation）。现有的 Nav+Manip 系统是检验 VLN-VLA 能否统一的最直接试验场。</p>
+<h3 id="代表系统总览">代表系统总览<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#代表系统总览" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>System</th><th>Year</th><th>架构类型</th><th>Navigation</th><th>Manipulation</th><th>Task Planning</th><th>成功率</th></tr></thead><tbody><tr><td><a href="../Papers/Ahn2022-SayCan" class="internal alias" data-slug="Papers/Ahn2022-SayCan">SayCan</a></td><td>2022</td><td>Modular（LLM planner + skill library）</td><td>Pretrained nav skill</td><td>Pretrained pick/place skills</td><td>LLM × affordance scoring</td><td>74%（执行）/ 84%（规划）</td></tr><tr><td>HomeRobot OVMM</td><td>2023</td><td>Modular（heuristic/RL baselines）</td><td>Learned / heuristic nav</td><td>Learned / heuristic grasp</td><td>Heuristic pipeline</td><td>20%（真实）/ 10.8%（竞赛最佳）</td></tr><tr><td><a href="../Papers/Liu2024-OKRobot" class="internal alias" data-slug="Papers/Liu2024-OKRobot">OK-Robot</a></td><td>2024</td><td>Modular（VLM perception + nav + grasp）</td><td>A* on occupancy grid</td><td>AnyGrasp + LangSam</td><td>Linear state machine</td><td>58.5%（真实家庭）</td></tr><tr><td><a href="../Papers/Fu2024-MobileALOHA" class="internal alias" data-slug="Papers/Fu2024-MobileALOHA">Mobile ALOHA</a></td><td>2024</td><td>End-to-end（imitation learning）</td><td>Whole-body policy（含底盘）</td><td>Whole-body policy（含双臂）</td><td>无显式 planning</td><td>~90%（co-training 后，per-task）</td></tr><tr><td>TidyBot</td><td>2023</td><td>Modular（LLM preference + mobile manip）</td><td>Heuristic nav</td><td>Learned grasp</td><td>LLM 个性化偏好推理</td><td>85%（物品放置）</td></tr></tbody></table></div>
+<h3 id="两大架构范式">两大架构范式<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#两大架构范式" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>现有 Nav+Manip 系统可以清晰地分为两大架构范式：</p>
+<h4 id="范式一modular-pipelinesaycanok-robottidybothomerobot">范式一：Modular Pipeline（SayCan、OK-Robot、TidyBot、HomeRobot）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#范式一modular-pipelinesaycanok-robottidybothomerobot" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p><strong>架构特征</strong>：将 Nav+Manip 任务分解为独立模块——perception、navigation、manipulation、task planning——各模块独立开发和训练，通过 pipeline 或 state machine 串联。</p>
+<p><strong>SayCan</strong>（<a href="../Papers/Ahn2022-SayCan" class="internal alias" data-slug="Papers/Ahn2022-SayCan">详细笔记</a>）是这一范式的奠基性工作。其核心创新是 “Say × Can” scoring：LLM 评估每个 skill 的语义合理性（Say），value function 评估 skill 在当前状态下的可执行性（Can），两者相乘得到 grounded plan。Skill library 包含 551 个独立训练的 skills（navigation、pick、place 等），在 Google Everyday Robot 上实现 74% 的端到端成功率。<strong>局限</strong>：skill library 是 closed-set 的，无法处理 unseen 动作；navigation 和 manipulation skills 完全独立训练。</p>
+<p><strong>OK-Robot</strong>（<a href="../Papers/Liu2024-OKRobot" class="internal alias" data-slug="Papers/Liu2024-OKRobot">详细笔记</a>）代表了 modular 范式的最新进展。其创新在于用 open-knowledge models（CLIP、OWL-ViT、AnyGrasp、LangSam）替代 task-specific 训练，实现 <strong>zero-shot</strong> Nav+Manip。Pipeline 为：iPhone 扫描建 VoxelMap → CLIP query 定位目标 → A* 导航 → AnyGrasp 抓取。在 10 个真实家庭中达到 58.5% 成功率。<strong>局限</strong>：linear state machine 无错误恢复；nav 和 manip 无 shared representation；需要预先扫描建图。</p>
+<p><strong>TidyBot</strong> 聚焦个性化：用 LLM 从少量用户示例中推断物品放置偏好（“这类物品应该放到哪里”），然后驱动 mobile manipulator 执行。在 unseen 物品上达到 91.2% 的偏好预测准确率和 85% 的真实放置成功率。</p>
+<p><strong>Modular Pipeline 的共同模式</strong>：</p>
+<ol>
+<li><strong>Perception 和 Planning 分离</strong>：用 VLM/LLM 做 high-level 理解和规划，用 task-specific 模块执行</li>
+<li><strong>Sequential handoff</strong>：nav → manip 是硬切换，导航结束后才开始操作</li>
+<li><strong>No shared spatial representation</strong>：navigation 用 occupancy grid / nav skill，manipulation 用 point cloud / grasp model，两者不共享空间信息</li>
+<li><strong>Error propagation without recovery</strong>：一旦某个模块失败，整个任务失败</li>
+</ol>
+<h4 id="范式二end-to-end-learningmobile-aloha">范式二：End-to-End Learning（Mobile ALOHA）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#范式二end-to-end-learningmobile-aloha" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p><strong>架构特征</strong>：不显式区分 navigation 和 manipulation，用 unified policy 直接从 observation 映射到 whole-body action（包含底盘速度 + 关节角度）。</p>
+<p><strong>Mobile ALOHA</strong>（<a href="../Papers/Fu2024-MobileALOHA" class="internal alias" data-slug="Papers/Fu2024-MobileALOHA">详细笔记</a>）是这一范式的代表。通过低成本 whole-body teleoperation 系统收集 bimanual mobile manipulation 数据，用 ACT（Action Chunking with Transformers）做 supervised behavior cloning。核心创新是 <strong>co-training</strong>：仅需 50 条 mobile demonstrations，加上大量已有的 static ALOHA 数据联合训练，成功率提升高达 90%。成功完成煎虾、开柜门存锅、叫电梯等复杂任务。</p>
+<p><strong>End-to-End 的优势</strong>：</p>
+<ol>
+<li><strong>Nav-Manip 自然融合</strong>：policy 同时控制底盘和双臂，无 handoff 问题</li>
+<li><strong>Implicit coordination</strong>：model 学会在移动中调整姿态，如走近物体的同时伸出手臂</li>
+<li><strong>Simple pipeline</strong>：无需模块化设计和复杂 interface</li>
+</ol>
+<p><strong>End-to-End 的局限</strong>：</p>
+<ol>
+<li><strong>Navigation 范围有限</strong>：teleoperation 数据只覆盖短距离移动，无法 navigate 到远处房间</li>
+<li><strong>No spatial understanding</strong>：无地图、无 SLAM、无空间记忆</li>
+<li><strong>No language conditioning</strong>：每个任务需单独训练，不能通过语言指定新目标</li>
+<li><strong>Per-task data collection</strong>：不同于 OK-Robot 的 zero-shot，每个新任务需要约 50 条 demonstrations</li>
+</ol>
+<h3 id="共同瓶颈分析">共同瓶颈分析<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#共同瓶颈分析" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>无论 modular 还是 end-to-end，现有 Nav+Manip 系统面临以下共同瓶颈：</p>
+<p><strong>1. Nav → Manip Handoff 问题</strong>
+Modular 系统中，navigation 结束后 robot 停在某个位置开始 manipulation——但这个位置可能不是 manipulation 的最优位置。OK-Robot 用 scoring function 尝试平衡”靠近目标”和”保持 gripper 空间”，但仍然是 heuristic 的。理想情况下，navigation 应该<strong>根据 manipulation 的需求动态调整</strong>终点位姿。</p>
+<p><strong>2. 缺乏 Shared Spatial Representation</strong>
+OK-Robot 的 navigation 用 2D occupancy grid，manipulation 用 3D point cloud——两者是完全不同的空间表示。SayCan 更极端，navigation 和 manipulation 甚至没有共享的 scene understanding。这导致两个问题：（1）navigation 无法利用 manipulation 的场景理解（如”桌面太拥挤，需要从另一侧靠近”）；（2）manipulation 无法利用 navigation 的空间记忆（如”杯子在上次经过的桌子上”）。Section 3 讨论的 ConceptGraphs 式 scene graph 可以作为这种 shared representation。</p>
+<p><strong>3. 独立训练导致的 Capability Gap</strong>
+SayCan 的 551 个 skills 各自独立训练，不存在”一边走一边抓”的 skill。Mobile ALOHA 的 end-to-end policy 虽然解决了这个问题，但缺乏 generalization。这反映了一个根本矛盾：modular 系统有 generalization 但缺 coordination，end-to-end 系统有 coordination 但缺 generalization。</p>
+<p><strong>4. Open-Vocabulary vs Task-Specific 的 Tradeoff</strong>
+OK-Robot 和 SayCan 支持 open-vocabulary 指令但成功率较低（58-74%），Mobile ALOHA 在特定任务上成功率很高（~90%）但不支持语言指令。如何同时实现 open-vocabulary generalization 和 high task success rate 仍是 open problem。</p>
+<h3 id="理想的统一-navmanip-系统应该是什么样的">理想的统一 Nav+Manip 系统应该是什么样的？<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#理想的统一-navmanip-系统应该是什么样的" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>综合以上分析，结合 Section 1-3 的技术进展，一个理想的 Nav+Manip 统一系统应具备：</p>
+<ol>
+<li>
+<p><strong>Hierarchical VLA architecture</strong>（来自 Section 1：<a href="../Papers/Black2025-Pi05" class="internal alias" data-slug="Papers/Black2025-Pi05">π0.5</a>、<a href="../Papers/Torne2026-MEM" class="internal alias" data-slug="Papers/Torne2026-MEM">MEM</a>）：</p>
+<ul>
+<li>High-level：VLM 做 task decomposition 和 sub-goal generation（类似 SayCan 的 LLM planning，但用 VLM 替代纯文本 LLM 以获得 visual grounding）</li>
+<li>Low-level：flow matching action generation 同时输出 navigation 和 manipulation actions（类似 Mobile ALOHA 的 whole-body control，但由 foundation model 驱动）</li>
+</ul>
+</li>
+<li>
+<p><strong>Shared semantic spatial representation</strong>（来自 Section 3：<a href="../Papers/Gu2024-ConceptGraphs" class="internal alias" data-slug="Papers/Gu2024-ConceptGraphs">ConceptGraphs</a>）：</p>
+<ul>
+<li>Navigation 和 manipulation 共享同一个 incrementally updated scene graph</li>
+<li>Graph nodes 同时作为 navigation waypoints 和 manipulation targets</li>
+<li>Language-queryable spatial memory 支持 long-horizon 任务</li>
+</ul>
+</li>
+<li>
+<p><strong>Unified training with diverse data</strong>（来自 Section 1：<a href="../Papers/Black2024-Pi0" class="internal alias" data-slug="Papers/Black2024-Pi0">π₀</a> 的 cross-embodiment training）：</p>
+<ul>
+<li>Navigation data（VLN datasets）、manipulation data（robot demonstrations）、internet video 联合训练</li>
+<li>类似 π₀ 的异构数据 co-training 策略</li>
+</ul>
+</li>
+<li>
+<p><strong>Closed-loop execution with error recovery</strong>（现有系统的共同缺陷）：</p>
+<ul>
+<li>Navigation 和 manipulation 不是 sequential handoff，而是 interleaved execution</li>
+<li>Failure detection + re-planning：grasp 失败 → 重新调整位姿 → 再次尝试</li>
+</ul>
+</li>
+</ol>
+<p>这一方向与 VLN-VLA 统一的核心目标完全一致：<strong>一个 foundation model 同时具备 navigate 和 manipulate 的能力，通过 shared spatial representation 在两种模式间无缝切换</strong>。</p>
+<h3 id="section-5-takeaway">Section 5 Takeaway<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#section-5-takeaway" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>两大范式各有所长</strong>：modular pipeline（SayCan、OK-Robot）擅长 open-vocabulary generalization 和 task planning，end-to-end（Mobile ALOHA）擅长 whole-body coordination 和 high success rate。</li>
+<li><strong>Nav→Manip handoff 是核心瓶颈</strong>：所有 modular 系统都在 nav 结束后硬切换到 manip，缺乏 nav-manip co-optimization。</li>
+<li><strong>Shared spatial representation 缺失</strong>：navigation 和 manipulation 使用不同的空间表示，无法互相利用对方的 scene understanding。Section 3 的 semantic SLAM（ConceptGraphs）可以填补这一空白。</li>
+<li><strong>理想方案是 hierarchical VLA + shared scene graph</strong>：结合 VLA 的 unified action generation、VLN 的 spatial planning、和 semantic SLAM 的 persistent spatial memory，实现 nav-manip-unified foundation model。</li>
+</ol>
+<h2 id="6-gap-分析与潜在方向">6. Gap 分析与潜在方向<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#6-gap-分析与潜在方向" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>综合 Section 1-5 的分析，本节识别当前 VLN-VLA 统一研究中的关键 gap，梳理相关 benchmarks，并提出潜在研究方向。</p>
+<h3 id="61-research-gaps">6.1 Research Gaps<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#61-research-gaps" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li>
+<p><strong>No end-to-end model handles both continuous navigation and dexterous manipulation。</strong> 现有系统要么是 modular pipeline（OK-Robot、SayCan：nav 和 manip 完全独立），要么是 short-range end-to-end policy（Mobile ALOHA：只覆盖局部移动）。没有一个 foundation model 能在 building-scale navigation 和 dexterous manipulation 之间端到端切换。π0.5 实现了 long-horizon 家务任务，但其 navigation 能力有限（不涉及跨房间导航）；NaVILA 实现了 VLM-driven navigation，但不涉及 manipulation。</p>
+</li>
+<li>
+<p><strong>SLAM representations 未针对 VLM consumption 优化。</strong> Section 3 分析了三类语义空间表示（dense feature maps、3D scene graphs、neural/Gaussian fields），但它们都是独立构建的，未与 VLM backbone 端到端优化。ConceptGraphs 的 scene graph 需要离线构建，VLMaps 的 feature map 需要预先扫描——没有 “online, VLM-native spatial representation” 能实时更新并直接嵌入 VLM 的 reasoning loop。</p>
+</li>
+<li>
+<p><strong>Navigation 和 manipulation 不共享 spatial representation。</strong> Section 5 明确指出，即使是最先进的 OK-Robot，其 navigation（2D occupancy grid）和 manipulation（3D point cloud）使用完全不同的空间表示。没有系统实现了 “shared semantic SLAM serving both navigation and manipulation”。</p>
+</li>
+<li>
+<p><strong>Action space mismatch 缺乏优雅的统一方案。</strong> Section 4 识别了 50 Hz continuous joint control（VLA）vs. 1-5 Hz discrete waypoint selection（VLN）的根本差异。现有方案要么是 hierarchical decomposition（NaVILA 的 VLM → language action → RL policy），要么是 whole-body policy（Mobile ALOHA 的 ACT），但没有方案能同时实现 building-scale planning 和 fine-grained manipulation control。</p>
+</li>
+<li>
+<p><strong>Sim-to-real gap 在 Nav+Manip 联合任务中更加严重。</strong> VLN 主要在 simulation 中评估（Habitat/MP3D），VLA 主要在 real world 中训练。统一系统需要同时处理 building-scale navigation（sim 数据丰富）和 object-level manipulation（需要 real data），但没有 simulation 平台能同时提供 large-scale 建筑场景和 high-fidelity 物理交互。</p>
+</li>
+<li>
+<p><strong>缺乏 closed-loop error recovery 机制。</strong> Modular 系统（SayCan、OK-Robot）一旦某个模块失败，整个任务失败；end-to-end 系统（Mobile ALOHA）缺乏显式 failure detection。理想系统需要在 navigation 和 manipulation 之间实现 interleaved execution with re-planning。</p>
+</li>
+<li>
+<p><strong>Long-horizon spatial memory 机制不成熟。</strong> MEM 引入了视频短期记忆和语言长期记忆，但缺乏 explicit spatial memory。π0.5 依赖 VLM implicit memory，无法回溯到之前探索过的区域。SLAM 可以提供 persistent spatial memory，但如何将 SLAM map 高效注入 VLM 的 context window 仍是 open problem。</p>
+</li>
+</ol>
+<h3 id="62-相关-benchmarks">6.2 相关 Benchmarks<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#62-相关-benchmarks" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="alfredaction-learning-from-realistic-environments-and-directives">ALFRED（Action Learning From Realistic Environments and Directives）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#alfredaction-learning-from-realistic-environments-and-directives" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><strong>平台</strong>：AI2-THOR 2.0 simulator，120 个室内场景</li>
+<li><strong>数据规模</strong>：25,743 条自然语言指令，8,055 个 expert demonstrations，平均每条 50 步，共 428,322 image-action pairs</li>
+<li><strong>任务类型</strong>：家庭日常任务（用刀切苹果、在水槽清洗杯子、用微波炉加热等），同时涉及 navigation（MoveAhead, Rotate, Look）和 interaction（Pickup, Put, Open, Close, ToggleOn/Off, Slice）</li>
+<li><strong>评估能力</strong>：language grounding + navigation + object interaction，是最早要求 nav+manip 联合的 benchmark 之一</li>
+<li><strong>SOTA 现状</strong>：近期 EmbodiedBench 基于 ALFRED 构建了 EB-ALFRED 子集，GPT-4o 仅达 28.9%，ERA（Embodied Reasoning Agent）在此基础上提升约 8.4%，说明即使最强 VLM 也远未解决该任务</li>
+<li><strong>局限</strong>：discrete action space，物理交互较为简化，与 real-world manipulation 差距较大</li>
+</ul>
+<h4 id="teachtask-driven-embodied-agents-that-chat">TEACh（Task-driven Embodied Agents that Chat）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#teachtask-driven-embodied-agents-that-chat" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><strong>平台</strong>：基于 AI2-THOR，扩展自 ALFRED</li>
+<li><strong>数据规模</strong>：3,000+ 条人-人交互对话</li>
+<li><strong>任务类型</strong>：Commander（有 oracle 信息）通过自然语言对话指导 Follower 完成家务任务（从 “Make Coffee” 到 “Prepare Breakfast”），navigation + object manipulation + dialogue understanding</li>
+<li><strong>评估能力</strong>：在 ALFRED 基础上增加了 interactive dialogue grounding——agent 需要理解多轮对话（含无关话语、指代消解、对话省略）并执行对应动作</li>
+<li><strong>SOTA 现状</strong>：Episodic Transformer 在 test-unseen 上仅 5.02% SR（对比 ALFRED 的 8.57%），说明 dialogue-conditioned embodied task 难度远超单指令场景</li>
+<li><strong>局限</strong>：与 ALFRED 共享 discrete action space 和简化物理的局限</li>
+</ul>
+<h4 id="homerobot-ovmmopen-vocabulary-mobile-manipulation">HomeRobot OVMM（Open-Vocabulary Mobile Manipulation）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#homerobot-ovmmopen-vocabulary-mobile-manipulation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><strong>平台</strong>：Habitat 2.0 simulator + real-world Hello Robot Stretch</li>
+<li><strong>任务类型</strong>：open-vocabulary mobile manipulation——给定语言描述的目标物体和放置位置，agent 需要在多房间环境中导航、找到物体、抓取并放置到目标位置</li>
+<li><strong>评估能力</strong>：真正的 Nav+Manip 联合评估，且要求 open-vocabulary 泛化（unseen objects/receptacles）</li>
+<li><strong>竞赛情况</strong>：NeurIPS 2023 Challenge 有 61 支队伍参赛、368 次提交，仅 7 支队伍超过 baseline；CVPR 2024 继续举办</li>
+<li><strong>SOTA 现状</strong>：simulation 最佳约 10.8%，real-world 约 20%——极低的成功率反映了 open-vocabulary Nav+Manip 的巨大挑战</li>
+<li><strong>意义</strong>：<strong>最接近 VLN-VLA 统一评估的现有 benchmark</strong>，同时要求 building-scale navigation、open-vocabulary perception 和 object manipulation</li>
+</ul>
+<h4 id="benchmark-gap-分析">Benchmark Gap 分析<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#benchmark-gap-分析" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Benchmark</th><th>Navigation</th><th>Manipulation</th><th>Dialogue</th><th>Open-Vocab</th><th>Real-World</th><th>Continuous Actions</th></tr></thead><tbody><tr><td>ALFRED</td><td>✓</td><td>✓（简化）</td><td>✗</td><td>✗</td><td>✗</td><td>✗</td></tr><tr><td>TEACh</td><td>✓</td><td>✓（简化）</td><td>✓</td><td>✗</td><td>✗</td><td>✗</td></tr><tr><td>HomeRobot OVMM</td><td>✓</td><td>✓</td><td>✗</td><td>✓</td><td>✓</td><td>✓（部分）</td></tr><tr><td>R2R / R2R-CE</td><td>✓</td><td>✗</td><td>✗</td><td>✗</td><td>✗</td><td>✓（CE）</td></tr><tr><td>OXE Benchmarks</td><td>✗</td><td>✓</td><td>✗</td><td>部分</td><td>✓</td><td>✓</td></tr></tbody></table></div>
+<p>可以看到，<strong>没有现有 benchmark 同时覆盖 building-scale continuous navigation + dexterous manipulation + open-vocabulary language grounding + real-world evaluation</strong>。这本身就是一个重要 gap。</p>
+<h3 id="63-潜在方向">6.3 潜在方向<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#63-潜在方向" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="方向一hierarchical-vla-with-shared-semantic-scene-graph">方向一：Hierarchical VLA with Shared Semantic Scene Graph<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#方向一hierarchical-vla-with-shared-semantic-scene-graph" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p><strong>核心思路</strong>：构建一个统一的 hierarchical VLA 架构，其中 VLM backbone 共享，action heads 按 domain 分离，semantic scene graph 作为 navigation 和 manipulation 的 shared spatial representation。</p>
+<p>具体而言，系统包含三层：（1）<strong>High-level VLM planner</strong>：接受语言指令和 scene graph 的文本化描述，输出 sub-goal 序列（如 “navigate to kitchen → locate mug on counter → pick up mug → navigate to sink → place mug in sink”）；（2）<strong>Mid-level scene graph manager</strong>：实时维护 ConceptGraphs 式 3D scene graph，graph nodes 同时作为 navigation waypoints 和 manipulation targets，支持 language query 和 incremental update；（3）<strong>Low-level domain-specific action heads</strong>：navigation head 基于 scene graph 做 path planning + waypoint following，manipulation head 基于 flow matching 生成 continuous joint-level control。这一架构直接回应了 Section 4 识别的 “shared VLM backbone + separated action heads” 统一路径，以及 Section 3 提出的 “dense geometry + semantic graph + language interface” 层次化空间表示方案。关键技术挑战在于：scene graph 的 online 构建效率、graph-to-text serialization 对 VLM context window 的压力、以及 navigation 和 manipulation action heads 的 co-training 策略。</p>
+<h4 id="方向二vlm-native-spatial-memory-for-long-horizon-embodied-tasks">方向二：VLM-Native Spatial Memory for Long-Horizon Embodied Tasks<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#方向二vlm-native-spatial-memory-for-long-horizon-embodied-tasks" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p><strong>核心思路</strong>：将 SLAM-based spatial representation 直接嵌入 VLM 的 token space，使 VLM 能够 “原生” 理解和操作空间信息，而非将 map 作为外部模块。</p>
+<p>目前 VLM-based embodied systems（π0.5、NaVILA、NavGPT）要么不使用显式空间表示（依赖 VLM implicit memory），要么将空间信息文本化后作为 prompt 输入（NavGPT 的文本化视觉观测）。前者在 long-horizon 任务中丧失空间 context，后者效率低下（冗长的文本描述占据 context window）。潜在方案是将 scene graph 或 spatial features 编码为 special tokens，使 VLM 可以通过 attention 直接访问空间信息——类似 π₀ 的 action expert tokens，但用于 spatial representation。这需要探索：spatial token 的编码方式（graph embedding? voxel features? Gaussian splat features?）、与 VLM pre-trained weights 的兼容性、以及 incremental update 机制（如何在不重新编码整个 map 的情况下更新 spatial tokens）。MEM 的多尺度记忆机制（视频短期 + 语言长期）可以作为起点，扩展加入 spatial 维度。</p>
+<h4 id="方向三unified-navmanip-benchmark-with-continuous-actions-and-real-world-transfer">方向三：Unified Nav+Manip Benchmark with Continuous Actions and Real-World Transfer<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#方向三unified-navmanip-benchmark-with-continuous-actions-and-real-world-transfer" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p><strong>核心思路</strong>：设计一个新的 benchmark，弥合现有 benchmarks 的 gap——同时要求 building-scale continuous navigation、dexterous manipulation、open-vocabulary language grounding，并提供 sim-to-real transfer protocol。</p>
+<p>HomeRobot OVMM 是最接近的现有 benchmark，但其 manipulation 仍较为简化（pick-and-place），且 sim-to-real protocol 不够系统。新 benchmark 应包含：（1）<strong>多房间连续导航</strong>——不是 discrete nav-graph，而是 continuous locomotion in building-scale environments；（2）<strong>多样化操作任务</strong>——超越 pick-and-place，包含 articulated object interaction（开抽屉、旋转阀门）、tool use、bimanual tasks；（3）<strong>open-vocabulary 指令</strong>——支持自然语言描述 unseen objects 和 novel tasks；（4）<strong>统一 sim 平台</strong>——结合 Habitat 的 building-scale 场景和 Isaac Sim 的高保真物理（NaVILA 的 VLN-CE-Isaac 是有意义的起步）；（5）<strong>标准化 sim-to-real protocol</strong>——定义 transfer 评估方法，使不同方法可以公平比较。</p>
+<h3 id="64-open-questions">6.4 Open Questions<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#64-open-questions" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>Hierarchical decomposition 是否是唯一路径？</strong> 目前所有成功的 long-horizon embodied 系统（π0.5、MEM、NaVILA、ETPNav）都采用 hierarchical 架构。是否存在一种 truly unified action space 能同时表示 navigation 和 manipulation，使 single-level model 成为可能？</li>
+<li><strong>Scene graph 的 scalability 问题</strong>：ConceptGraphs 在小型场景中表现良好，但 building-scale 环境可能产生数千个 nodes——如何高效 serialize 并输入 VLM 的有限 context window？需要 graph summarization / attention-based selection 机制。</li>
+<li><strong>Sim navigation data + real manipulation data 的 co-training 是否有效？</strong> π0.5 证明了异构 real data 的 co-training 可行性，但 sim 和 real 数据的 domain gap 更大。是否需要 domain adaptation 层？还是足够 diverse 的 web data 可以作为 bridge？</li>
+<li><strong>VLM 的 spatial reasoning 能力是否足够？</strong> 现有 VLM（PaliGemma、VILA、GPT-4V）在 2D 图像理解上表现出色，但 3D spatial reasoning 能力仍然有限。是否需要专门的 spatial pre-training（如 3D scene understanding 数据），还是 scene graph 可以弥补这一不足？</li>
+<li><strong>Multi-robot / multi-session 场景中的 shared spatial memory</strong>：如果多个 robot 共享同一 scene graph，如何处理 concurrent updates、conflicting observations、和 map merging？这对 real-world deployment 至关重要但几乎未被探索。</li>
+</ol>
+<h3 id="65-idea-seeds">6.5 Idea Seeds<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#65-idea-seeds" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote class="callout tip" data-callout="tip">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p> <strong>最具潜力方向：Hierarchical VLA with Shared Semantic Scene Graph</strong>（方向一）</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p><strong>为什么最有潜力</strong>：</p>
+<ul>
+<li>直接回应 Section 4 和 Section 5 共同识别的核心 gap（action space mismatch + 缺乏 shared spatial representation）</li>
+<li>每个组件都有成熟的技术基础：VLM backbone（π₀/NaVILA）、scene graph（ConceptGraphs）、flow matching action generation（π₀ 系列）、hierarchical planning（π0.5/ETPNav）</li>
+<li>HomeRobot OVMM 提供了直接可用的评估平台</li>
+<li>渐进式研究路径：可以先在 simulation 中验证架构（Habitat + AI2-THOR），再 transfer 到 real robot（Hello Robot Stretch）</li>
+</ul>
+<p><strong>具体 Idea</strong>：在 HomeRobot OVMM 平台上，实现一个 三层架构系统：</p>
+<ol>
+<li><strong>VLM Planner</strong>（基于 fine-tuned PaliGemma 或 VILA）：接收指令 + scene graph summary → 输出 sub-goal sequence</li>
+<li><strong>Scene Graph Memory</strong>（基于 ConceptGraphs 简化版）：online incremental 构建，nodes 包含 CLIP embedding + 3D position + navigability flag + graspability flag</li>
+<li><strong>Dual Action Heads</strong>：navigation head（waypoint selection on scene graph → local planner）+ manipulation head（flow matching à la π₀）</li>
+</ol>
+<p>关键实验：对比 shared scene graph vs. separate representations（OK-Robot 式）的 Nav+Manip 成功率差异。</p>
+<p><strong>预期贡献</strong>：首次在 unified benchmark 上验证 “shared semantic spatial representation improves Nav+Manip coordination” 的假设。</p>
+</div>
+</blockquote>
+<blockquote class="callout note" data-callout="note">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p> <strong>次要方向：VLM-Native Spatial Memory</strong>（方向二）</p></div>
+                  
+                </div>
+<div class="callout-content">
+<p>更长期的研究方向，技术难度更高但潜在 impact 更大。可作为方向一的后续工作——先用 外部 scene graph 验证 shared representation 的价值，再探索将 spatial information 内化到 VLM token space。</p>
+</div>
+</blockquote>
+<p><strong>Extracted Idea Note</strong>：<a href="../Ideas/Hierarchical-VLA-SceneGraph" class="internal" data-slug="Ideas/Hierarchical-VLA-SceneGraph">Hierarchical-VLA-SceneGraph</a> — 基于方向一的详细 idea note，包含三层架构设计、实验计划和 open questions。</p></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing-ustc.github.io/MindFlow/static/giscus"></div></div></div><div class="right sidebar"><div class="graph"><h3>Graph View</h3><div class="graph-outer"><div class="graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:1,&quot;scale&quot;:1.1,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.3,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:false,&quot;enableRadial&quot;:false}"></div><button class="global-graph-icon" aria-label="Global Graph"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55 55" fill="currentColor" xml:space="preserve"><path d="M49,0c-3.309,0-6,2.691-6,6c0,1.035,0.263,2.009,0.726,2.86l-9.829,9.829C32.542,17.634,30.846,17,29,17
+                s-3.542,0.634-4.898,1.688l-7.669-7.669C16.785,10.424,17,9.74,17,9c0-2.206-1.794-4-4-4S9,6.794,9,9s1.794,4,4,4
+                c0.74,0,1.424-0.215,2.019-0.567l7.669,7.669C21.634,21.458,21,23.154,21,25s0.634,3.542,1.688,4.897L10.024,42.562
+                C8.958,41.595,7.549,41,6,41c-3.309,0-6,2.691-6,6s2.691,6,6,6s6-2.691,6-6c0-1.035-0.263-2.009-0.726-2.86l12.829-12.829
+                c1.106,0.86,2.44,1.436,3.898,1.619v10.16c-2.833,0.478-5,2.942-5,5.91c0,3.309,2.691,6,6,6s6-2.691,6-6c0-2.967-2.167-5.431-5-5.91
+                v-10.16c1.458-0.183,2.792-0.759,3.898-1.619l7.669,7.669C41.215,39.576,41,40.26,41,41c0,2.206,1.794,4,4,4s4-1.794,4-4
+                s-1.794-4-4-4c-0.74,0-1.424,0.215-2.019,0.567l-7.669-7.669C36.366,28.542,37,26.846,37,25s-0.634-3.542-1.688-4.897l9.665-9.665
+                C46.042,11.405,47.451,12,49,12c3.309,0,6-2.691,6-6S52.309,0,49,0z M11,9c0-1.103,0.897-2,2-2s2,0.897,2,2s-0.897,2-2,2
+                S11,10.103,11,9z M6,51c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S8.206,51,6,51z M33,49c0,2.206-1.794,4-4,4s-4-1.794-4-4
+                s1.794-4,4-4S33,46.794,33,49z M29,31c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S32.309,31,29,31z M47,41c0,1.103-0.897,2-2,2
+                s-2-0.897-2-2s0.897-2,2-2S47,39.897,47,41z M49,10c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S51.206,10,49,10z"></path></svg></button></div><div class="global-graph-outer"><div class="global-graph-container" data-cfg="{&quot;drag&quot;:true,&quot;zoom&quot;:true,&quot;depth&quot;:-1,&quot;scale&quot;:0.9,&quot;repelForce&quot;:0.5,&quot;centerForce&quot;:0.2,&quot;linkDistance&quot;:30,&quot;fontSize&quot;:0.6,&quot;opacityScale&quot;:1,&quot;showTags&quot;:true,&quot;removeTags&quot;:[],&quot;focusOnHover&quot;:true,&quot;enableRadial&quot;:true}"></div></div></div><div class="backlinks"><h3>Backlinks</h3><ul id="ulsc6p" class="overflow"><li><a href="../Ideas/Hierarchical-VLA-SceneGraph" class="internal">Hierarchical VLA with Shared Semantic Scene Graph for Unified Navigation-Manipulation</a></li><li><a href="../Papers/Ahn2022-SayCan" class="internal">Do As I Can, Not As I Say: Grounding Language in Robotic Affordances</a></li><li><a href="../Papers/An2024-ETPNav" class="internal">ETPNav: Evolving Topological Planning for Vision-Language Navigation in Continuous Environments</a></li><li><a href="../Papers/Black2024-Pi0" class="internal">π₀: A Vision-Language-Action Flow Model for General Robot Control</a></li><li><a href="../Papers/Black2025-Pi05" class="internal">π0.5: a Vision-Language-Action Model with Open-World Generalization</a></li><li><a href="../Papers/Brohan2023-RT2" class="internal">RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Control</a></li><li><a href="../Papers/Chen2022-DUET" class="internal">Think Global, Act Local: Dual-scale Graph Transformer for Vision-and-Language Navigation</a></li><li><a href="../Papers/Cheng2024-NaVILA" class="internal">NaVILA: Legged Robot Vision-Language-Action Model for Navigation</a></li><li><a href="../Papers/Fu2024-MobileALOHA" class="internal">Mobile ALOHA: Learning Bimanual Mobile Manipulation with Low-Cost Whole-Body Teleoperation</a></li><li><a href="../Papers/Ghosh2024-Octo" class="internal">Octo: An Open-Source Generalist Robot Policy</a></li><li><a href="../Papers/Gu2024-ConceptGraphs" class="internal">ConceptGraphs: Open-Vocabulary 3D Scene Graphs for Perception and Planning</a></li><li><a href="../Papers/Huang2023-VLMaps" class="internal">Visual Language Maps for Robot Navigation</a></li><li><a href="../Papers/Keetha2024-SplaTAM" class="internal">SplaTAM: Splat, Track &amp; Map 3D Gaussians for Dense RGB-D SLAM</a></li><li><a href="../Papers/Kim2024-OpenVLA" class="internal">OpenVLA: An Open-Source Vision-Language-Action Model</a></li><li><a href="../Papers/Li2026-RoboClaw" class="internal">RoboClaw: An Agentic Framework for Scalable Long-Horizon Robotic Tasks</a></li><li><a href="../Papers/Liu2024-OKRobot" class="internal">OK-Robot: What Really Matters in Integrating Open-Knowledge Models for Robotics</a></li><li><a href="../Papers/Torne2026-MEM" class="internal">MEM: Multi-Scale Embodied Memory for Vision Language Action Models</a></li><li><a href="../Papers/Zhou2023-NavGPT" class="internal">NavGPT: Explicit Reasoning in Vision-and-Language Navigation with Large Language Models</a></li><li class="overflow-end"></li></ul></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/jackyzha0/quartz">GitHub</a></li><li><a href="https://discord.gg/cRFFHYye7t">Discord Community</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+</script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>
