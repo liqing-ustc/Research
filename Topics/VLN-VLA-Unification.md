@@ -140,7 +140,130 @@ Semantic SLAM 天然提供了这种 "spatial memory"：
 4. **SLAM 提供 long-horizon 任务所需的 spatial memory**：persistent, incrementally updated map 是统一 navigation 和 manipulation 的基础设施。
 
 ## 4. 架构趋同分析
-<!-- Cross-cutting comparison of VLN and VLA architectures -->
+
+本节综合 Section 1-3 和 Section 5 的分析，从架构维度系统比较 VLA 和 VLN 模型，识别趋同点和分歧点，并探讨统一的可能路径。
+
+### 4.1 VLA-VLN 模型全景对比
+
+下表涵盖 Section 1（VLA）和 Section 2（VLN）中的所有主要模型，按统一维度进行比较：
+
+| Model | 领域 | VLM Backbone | Action Space | 空间/记忆表示 | Training Data | 架构范式 | Task Horizon | Sim/Real |
+|-------|------|-------------|-------------|-------------|--------------|---------|-------------|----------|
+| [[Brohan2023-RT2\|RT-2]] | VLA | PaLM-E 12B / PaLI-X 55B | Discrete tokens（7-DoF, 256 bins, ~3 Hz） | 无显式空间表示 | RT-1 ~130k episodes + web VL data co-fine-tuning | End-to-end VLM→action tokens | 短（单步操作） | Real |
+| [[Ghosh2024-Octo\|Octo]] | VLA | 无 VLM（Transformer 27M/93M） | Continuous（diffusion, action chunk 4步） | 无显式空间表示 | OXE 800k trajectories | End-to-end diffusion policy | 短 | Real |
+| [[Kim2024-OpenVLA\|OpenVLA]] | VLA | Llama 2 7B + DINOv2/SigLIP | Discrete tokens（7-DoF） | 无显式空间表示 | OXE 970k demonstrations | End-to-end VLM→action tokens | 短 | Real |
+| [[Black2024-Pi0\|π₀]] | VLA | PaliGemma 3B + Action Expert 300M | Continuous（flow matching, 50 Hz, chunk H=50） | 无显式空间表示 | 10K+ hrs, 7 platforms, 68 tasks | VLM + MoE-style action expert | 中（多阶段操作） | Real |
+| [[Black2025-Pi05\|π0.5]] | VLA | PaliGemma 3B（extended） | Hybrid（discrete pre-train → continuous post-train, 50 Hz） | 无显式空间表示（implicit in VLM） | 5 类异构数据 co-training（MM/ME/CE/HL/WD） | Hierarchical（语义子任务 → flow matching action） | 长（10-15 min 家务） | Real |
+| [[Torne2026-MEM\|MEM]] | VLA | Gemma3-4B（π0.6 base） | Continuous（flow matching） | 视频短期记忆 + 语言长期记忆（无 spatial map） | Robot demos + video + web | Hierarchical + 多尺度记忆 | 长（15 min） | Real |
+| [[Li2026-RoboClaw\|RoboClaw]] | VLA | Off-the-shelf VLM + π0.5 | Continuous（flow matching） | VLM agent structured memory（非空间） | 自主采集（EAP）+ 迭代学习 | VLM agent loop + VLA primitives | 长（multi-step） | Real |
+| [[Chen2022-DUET\|VLN-DUET]] | VLN | 无 VLM（task-specific Transformer） | Discrete（nav-graph node selection, 含远程跳转） | Online topological map | R2R/REVERIE/SOON supervised | Dual-scale graph transformer | 中（导航序列） | Sim（MP3D） |
+| [[An2024-ETPNav\|ETPNav]] | VLN | 无 VLM（task-specific Transformer） | Hybrid（high-level waypoint + low-level continuous） | Online topological map + waypoint prediction | R2R-CE/RxR-CE supervised | Hierarchical（transformer planner + heuristic controller） | 中 | Sim（Habitat） |
+| [[Zhou2023-NavGPT\|NavGPT]] | VLN | GPT-4（frozen, zero-shot） | Discrete（nav-graph node selection） | 无（文本化 history） | Zero-shot（无训练） | LLM reasoning engine | 中 | Sim（MP3D） |
+| [[Cheng2024-NaVILA\|NaVILA]] | VLN/VLA | VILA VLM（fine-tuned） | Mid-level 语言化动作 → RL locomotion policy | 无显式 map（VLM implicit） | YouTube 视频 + Habitat sim + auxiliary VQA | Hierarchical（VLM → 语言动作 → RL policy） | 中 | Sim→Real |
+
+### 4.2 共性分析（Commonalities）
+
+尽管 VLA 和 VLN 起源于不同的研究社区（robotics manipulation vs. embodied navigation），两者在架构上呈现出显著的趋同趋势：
+
+**1. VLM Backbone 正在成为通用基座**
+
+从 RT-2（2023）首次将 VLM 用于 robot action 生成，到 NaVILA（2024）将 VLM 用于 navigation action 生成，**VLM 作为 embodied AI 的统一 backbone** 已成为两个领域的共识。对比早期：VLN 领域的 VLN-DUET 和 ETPNav 使用 task-specific transformer，VLA 领域的 Octo 使用轻量 transformer 而无 VLM 预训练——这些架构正在被 VLM-based 方案取代。VLM backbone 带来的核心优势是：（1）web-scale 预训练提供丰富的视觉-语言-常识知识；（2）instruction following 能力天然适配 language-conditioned 任务；（3）跨 domain 知识迁移（如 RT-2 的 emergent reasoning）。
+
+**2. Instruction-conditioned action prediction 成为统一范式**
+
+VLA 和 VLN 的核心 pipeline 可以抽象为同一个公式：$\pi(a | o, \ell)$——给定观测 $o$ 和语言指令 $\ell$，预测动作 $a$。两者的差异仅在于 action space 的具体形式和 observation 的模态。这一统一视角正是 NaVILA 能够将 VLN 重构为 navigation VLA 的根本原因。
+
+**3. Pre-training on web data 的共同策略**
+
+RT-2 的 co-fine-tuning（web VL + robot data）、π0.5 的 web data co-training、NaVILA 的 YouTube egocentric video 利用——两个领域都在探索如何利用海量互联网数据增强 embodied 模型的泛化能力。这反映了一个共同挑战：robot/navigation-specific 数据稀缺，而 web data 可以提供 visual grounding、commonsense reasoning 和 diverse scene understanding。
+
+**4. Hierarchical 架构成为主流**
+
+π0.5 的 hierarchical inference（语义子任务 → flow matching action）、MEM 的分层策略（高层子任务 + 记忆更新 → 低层动作生成）、ETPNav 的 hierarchical planning（transformer planner → obstacle-avoiding controller）、NaVILA 的 two-level hierarchy（VLM → 语言动作 → RL policy）——两个领域不约而同地采用了**高层语义规划 + 低层动作执行**的分层设计。这不是巧合，而是 long-horizon embodied tasks 的内在需求：高层需要抽象推理（"下一步应该去厨房拿杯子"），低层需要精细控制（具体的关节角度或 waypoint），单一层级无法同时满足两者。
+
+### 4.3 差异分析（Differences）
+
+**1. Action Space 粒度的根本差异**
+
+这是 VLA-VLN 统一最核心的障碍。VLA 的 action space 是 continuous joint-level control（π₀: 18 维，含双臂 6-DoF + grippers + base + torso，50 Hz），而 VLN 的 action space 是 discrete waypoint selection（VLN-DUET: nav-graph node，~1-5 Hz）或 mid-level language commands（NaVILA: "move forward 75cm"）。两者的控制频率相差一个数量级（50 Hz vs. 1-5 Hz），反映了任务本质的差异：manipulation 需要精细力控制，navigation 需要全局路径规划。
+
+**2. 环境表示的分野**
+
+VLN 系统普遍依赖显式空间表示——VLN-DUET 的 topological map、ETPNav 的 online waypoint graph——作为 high-level planning 的基础。VLA 系统则通常不构建显式环境模型，而是通过 end-to-end learning 隐式编码空间信息。这一差异源于任务需求：navigation 必须知道"哪里可以去"（free space、obstacles、landmarks），而 table-top manipulation 的工作空间相对受限，不需要全局空间理解。
+
+**3. Sim vs. Real 的训练范式差异**
+
+VLN 研究绝大多数在 simulation 中进行（Habitat、Matterport3D、Gibson），仅 NaVILA 实现了真实部署。VLA 研究（尤其 π₀ 系列）主要在真实 robot 上训练和评估。这一差异有深层原因：（1）navigation 涉及整个建筑级别的场景，真实数据采集成本极高，而 3D 场景扫描（MP3D 提供 90 栋建筑）可以大规模生成导航数据；（2）manipulation 涉及物理接触和力控制，simulation 的 physics fidelity 不足以 transfer（sim-to-real gap 更大）。
+
+**4. 评估体系的不可比性**
+
+VLN 使用 R2R、REVERIE、SOON 等 benchmark 的 Success Rate / SPL 评估，VLA 使用 task-specific 成功率评估。两者的 evaluation protocol 完全不同，缺乏统一的 benchmark 来比较跨领域模型。
+
+### 4.4 趋同点：统一的自然连接处（Where Unification is Natural）
+
+**1. 共享 VLM Backbone**
+
+最直接的统一点。一个预训练 VLM（如 PaliGemma、VILA）可以同时作为 navigation planner 和 manipulation controller 的 backbone。NaVILA 已经证明了 VLM 可以驱动 navigation，π₀ 证明了 VLM 可以驱动 manipulation——理论上，同一个 VLM 可以根据任务需求切换到不同的 action head。
+
+**2. Language-conditioned hierarchical planning**
+
+π0.5 的语义子任务预测和 NaVILA 的语言化 mid-level action 本质上是同一种思路：**用自然语言作为高层规划和低层执行之间的 interface**。这为统一提供了一个优雅的 abstraction layer——high-level planner 用语言描述下一步目标（"navigate to the kitchen sink" 或 "pick up the red mug"），low-level policy 根据具体 domain（navigation 或 manipulation）选择对应的 action generation module。
+
+**3. Web-scale pre-training 的共享**
+
+Navigation 和 manipulation 可以共享同一个 VLM 的 web pre-training，因为 visual scene understanding、object recognition、spatial reasoning 等能力是两者共有的。π0.5 的 co-training 实验已经证明，来自不同 embodiment 和任务的数据可以互相增强——将 navigation data 加入 co-training mixture 是自然的扩展。
+
+### 4.5 分歧点：统一的核心挑战（Where Unification is Challenging）
+
+**1. Action Space Mismatch**
+
+Manipulation 需要 50 Hz 的 continuous joint-level control（π₀ 的 18 维 action space），navigation 需要 1-5 Hz 的 discrete/mid-level waypoint decisions。一个 unified action head 如何同时处理两种截然不同的 action space？可能的方案：（a）hierarchical decomposition，高层 planner 统一，低层 action head 分离（类似 NaVILA 的 VLM + RL locomotion policy）；（b）统一的 continuous action space，将 navigation 也建模为 continuous base velocity control（但会丧失 topological planning 的全局优势）；（c）multi-head design，类似 π₀ 的 action expert，为不同 action domain 设计专用 head。
+
+**2. 控制频率的不兼容**
+
+50 Hz 的 manipulation control 和 1-5 Hz 的 navigation decision 不仅是数值上的差异，更反映了不同的计算需求。Manipulation 需要在每个 control cycle（20ms）内完成 inference，而 navigation 可以容忍更长的 planning latency。一个统一系统可能需要**异步双 loop 设计**：高频 manipulation loop 持续运行，低频 navigation loop 在需要时触发。
+
+**3. 环境表示的不一致**
+
+VLA 系统的 end-to-end 架构不构建显式环境模型，而 VLN 系统依赖 topological map 或 semantic map 进行全局规划。统一系统需要同时支持：（a）全局空间理解（"厨房在卧室左边"）和（b）局部精细感知（"杯子在桌面边缘，需要从侧面抓取"）。Section 3 的分析表明，ConceptGraphs 式 3D scene graph 最有潜力同时满足两者，但目前还没有 VLA 系统真正集成这种 spatial representation。
+
+**4. 训练数据的异构性**
+
+Navigation 数据主要来自 simulation（Habitat trajectories），manipulation 数据主要来自真实 robot demonstrations。两者的 visual appearance、physics dynamics、action distribution 都有显著差异。π0.5 的异构 co-training 已经展示了混合不同来源数据的可行性，但 sim navigation data 和 real manipulation data 的混合是否有效仍是 open question。
+
+### 4.6 SLAM 的角色：弥合 Navigation-Manipulation Gap 的空间基础设施
+
+Section 3 的分析表明，semantic SLAM 可以作为 VLN-VLA 统一的 "missing piece"：
+
+**Navigation 侧**：SLAM 提供的 persistent spatial map 可以替代 VLN 中 hand-crafted 的 topological map。VLMaps 的 language-queryable grid map 已经展示了 open-vocabulary navigation planning 的可能。ConceptGraphs 的 scene graph 提供了更丰富的 object-level abstraction，可以直接作为 navigation waypoints（类似 VLN-DUET 的 topological map nodes，但语义更丰富）。
+
+**Manipulation 侧**：ConceptGraphs 的 3D object nodes 提供了 manipulation targets 和空间关系信息。SplaTAM 的 dense Gaussian field 提供了高质量的 3D geometry，有利于 grasp planning。这些 spatial representations 可以增强 VLA 系统目前缺失的环境理解能力。
+
+**统一侧**：一个 incrementally updated 的 semantic spatial representation 可以同时服务 navigation planning（"导航到厨房水槽"→ 在 scene graph 中查找 "kitchen sink" node → path planning）和 manipulation grounding（"抓起桌上的杯子"→ 定位 "mug" node → 获取 3D pose → grasp planning）。更重要的是，这种 spatial memory 为 long-horizon Nav+Manip 任务提供了 persistent context——robot 可以记住之前探索过的区域和物体位置，在 navigation 和 manipulation 之间无缝切换。
+
+**当前 gap**：尽管 Section 5 的 OK-Robot 使用了 VoxelMap（类似 VLMaps），但其 navigation 和 manipulation 模块并不共享这一空间表示。目前没有任何系统真正实现了 "shared semantic SLAM serving both navigation and manipulation"。这是一个重要的研究方向。
+
+### 4.7 Simulation 与 Sim-to-Real：两个领域的不同策略
+
+**VLN 的 simulation 生态**
+
+VLN 深度依赖 simulation 环境：Habitat Simulator 配合 Matterport3D（90 栋建筑扫描）、Gibson（572 个场景）提供了大规模导航训练和评估的基础。这使得 VLN 研究可以低成本地大规模实验，但也导致了严重的 sim-to-real gap：大多数 VLN 模型从未在真实世界中测试。NaVILA 的突破在于通过两个策略缓解这一 gap：（1）引入 YouTube egocentric 视频作为 real-world visual data；（2）用 mid-level 语言动作解耦 high-level perception（可在 sim 中训练并 transfer）和 low-level locomotion（用真实 RL policy）。
+
+**VLA 的 real-world 优先策略**
+
+VLA 领域（尤其 π₀ 系列）选择了不同路线：直接在真实 robot 上收集数据和评估。这是因为 manipulation 涉及复杂的物理接触（摩擦、变形、柔软物体），当前 simulation 的 physics fidelity 不足以 reliable transfer。π₀ 使用 10K+ 小时真实数据，RoboClaw 通过 EAP 实现自主数据收集——两者都在寻找 scalable 的 real-world data 方案，而非依赖 simulation。
+
+**统一系统的 simulation 需求**
+
+一个统一的 Nav+Manip 系统需要在建筑级别的 navigation 和 object-level 的 manipulation 之间切换，这对 simulation 提出了极高要求。现有 sim 平台的局限：（1）Habitat/MP3D 适合 navigation 但缺乏精细物理交互（无法模拟抓取、推拉）；（2）Isaac Sim/MuJoCo 适合 manipulation 但缺乏大规模建筑级场景；（3）AI2-THOR 兼顾导航和交互但场景多样性有限。NaVILA 引入的 VLN-CE-Isaac benchmark（Isaac Sim 高保真环境）是一个有意义的尝试，将 VLN 评估扩展到更接近 real-world physics 的 simulation 环境。理想的统一 sim 平台需要同时具备：large-scale 建筑场景 + high-fidelity 物理交互 + diverse object assets。
+
+### 4.8 Section 4 Takeaway
+
+1. **VLA 和 VLN 在四个维度上趋同**：VLM backbone、language-conditioned action prediction、web-scale pre-training、hierarchical 架构。NaVILA 是两者趋同的最直接证据——它本质上就是一个 navigation-focused VLA。
+2. **Action space mismatch 是统一的最大障碍**：50 Hz continuous joint control vs. 1-5 Hz discrete waypoint selection，控制频率相差一个数量级。Hierarchical decomposition（共享 VLM backbone + 分离 action heads）是最可行的统一路径。
+3. **Semantic SLAM 是统一的空间基础设施**：ConceptGraphs 式 scene graph 可以同时服务 navigation waypoints 和 manipulation targets，但目前没有系统真正实现 shared spatial representation。
+4. **Simulation 生态需要升级**：现有 sim 平台无法同时满足 building-scale navigation 和 high-fidelity manipulation 的需求，制约了 unified Nav+Manip 系统的开发和评估。
+5. **统一架构的可能形态**：VLM backbone（shared）→ language-mediated hierarchical planner（shared）→ domain-specific action heads（navigation: waypoint selection / VLM mid-level commands; manipulation: flow matching continuous control）→ shared semantic spatial memory（ConceptGraphs + SplaTAM + VLMaps）。
 
 ## 5. 现有 Nav+Manip 系统
 
