@@ -8,3 +8,7 @@
 
 # Claude Code
 .claude/
+
+# Quartz build output
+website/node_modules/
+dist/
