@@ -33,6 +33,15 @@ export const defaultContentPageLayout: PageLayout = {
     Component.Explorer({
       folderDefaultState: "collapsed",
       useSavedState: false,
+      sortFn: (a, b) => {
+        const order = ["Papers", "Topics", "Ideas", "Meetings", "Resources"]
+        const aIdx = order.indexOf(a.name)
+        const bIdx = order.indexOf(b.name)
+        if (aIdx !== -1 && bIdx !== -1) return aIdx - bIdx
+        if (aIdx !== -1) return -1
+        if (bIdx !== -1) return 1
+        return a.name.localeCompare(b.name)
+      },
     }),
   ],
   right: [
