@@ -10,61 +10,61 @@
     <link>https://liqing.io/mindflow/</link>
     <guid>https://liqing.io/mindflow/</guid>
     <description>An AI research knowledge base — paper notes, research ideas, literature surveys, and project tracking. 基于 Obsidian 的 AI 研究知识管理空间，记录论文笔记、研究 idea、文献综述和项目进展。 Browse by Type Papers — 论文笔记 Ideas — 研究灵感 Topics — 主题综述 Projects — 项目追踪 Meetings — 会议记录 Recent Papers Pi0.5 — Physical Intelligence MEM — Memory-Efficient Models RoboClaw About Built with Quartz v4 · Source on GitHub.</description>
-    <pubDate>Wed, 25 Mar 2026 09:02:23 GMT</pubDate>
+    <pubDate>Wed, 25 Mar 2026 09:29:09 GMT</pubDate>
   </item><item>
     <title>VLN-VLA Unification: Foundation Models for Indoor Robot Navigation and Manipulation</title>
     <link>https://liqing.io/mindflow/Topics/VLN-VLA-Unification</link>
     <guid>https://liqing.io/mindflow/Topics/VLN-VLA-Unification</guid>
     <description>Overview 本 survey 从 foundation model 视角，系统梳理了 VLN（Vision-and-Language Navigation）和 VLA（Vision-Language-Action）两个领域的技术演进与架构趋同。通过分析 20 篇核心论文，我们发现：VLN 和 VLA 在四个维度上正在趋同——VLM ...</description>
-    <pubDate>Wed, 25 Mar 2026 09:02:23 GMT</pubDate>
+    <pubDate>Wed, 25 Mar 2026 09:29:09 GMT</pubDate>
   </item><item>
     <title>WebMCP: 让网站成为 AI Agent 的结构化工具</title>
     <link>https://liqing.io/mindflow/Topics/WebMCP</link>
     <guid>https://liqing.io/mindflow/Topics/WebMCP</guid>
     <description>是什么 Google 提出的 Web 标准提案，让网站主动声明自己能执行哪些操作，AI agent 可以直接调用结构化的 tool，而不需要解析 UI 或模拟人类交互。 核心理念：网站不再是 agent 需要”看”的页面，而是可以直接”调用”的服务。 官方博客：Chrome Developers Blog GitHub：webmachinelearning/webmcp ...</description>
-    <pubDate>Wed, 25 Mar 2026 09:02:23 GMT</pubDate>
+    <pubDate>Wed, 25 Mar 2026 09:29:09 GMT</pubDate>
   </item><item>
     <title>llms.txt: 让网站对 LLM 可读的新标准</title>
     <link>https://liqing.io/mindflow/Topics/llms-txt</link>
     <guid>https://liqing.io/mindflow/Topics/llms-txt</guid>
     <description>是什么 llms.txt 是由 Jeremy Howard（fast.ai 创始人）提出的 Web 标准提案，在网站根目录放置一个 Markdown 格式的文件，为 LLM 和 AI agent 提供网站的结构化概览。 核心理念：LLM 的 context window 无法处理整个网站，而将复杂 HTML 转换为 LLM-friendly 纯文本既困难又有损 ...</description>
-    <pubDate>Wed, 25 Mar 2026 09:02:23 GMT</pubDate>
+    <pubDate>Wed, 25 Mar 2026 09:29:09 GMT</pubDate>
   </item><item>
-    <title>Do As I Can, Not As I Say: Grounding Language in Robotic Affordances</title>
-    <link>https://liqing.io/mindflow/Papers/2204-SayCan</link>
-    <guid>https://liqing.io/mindflow/Papers/2204-SayCan</guid>
-    <description>Summary 提出 SayCan 框架，将 LLM 的语义知识（“Say”）与 robot affordance functions（“Can”）结合，使 mobile manipulator 能根据高层自然语言指令执行 long-horizon 任务。LLM 提议可能的 skill sequences，affordance function ...</description>
-    <pubDate>Wed, 25 Mar 2026 09:02:23 GMT</pubDate>
+    <title>MEM: Multi-Scale Embodied Memory for Vision Language Action Models</title>
+    <link>https://liqing.io/mindflow/Papers/2603-MEM</link>
+    <guid>https://liqing.io/mindflow/Papers/2603-MEM</guid>
+    <description>Summary MEM 提出了一种多尺度记忆架构，将视频短期记忆（通过高效视频编码器压缩）和语言长期记忆（自然语言事件摘要）结合，使 VLA 模型能够完成长达 15 分钟的复杂多阶段机器人任务（如厨房清理、三明治制作），同时满足实时推理延迟约束。 Problem &amp; Motivation 标准 VLA 仅基于当前观测生成动作，无法处理需要长时间记忆的多阶段任务 ...</description>
+    <pubDate>Wed, 25 Mar 2026 09:29:09 GMT</pubDate>
   </item><item>
-    <title>Visual Language Maps for Robot Navigation</title>
-    <link>https://liqing.io/mindflow/Papers/2210-VLMaps</link>
-    <guid>https://liqing.io/mindflow/Papers/2210-VLMaps</guid>
-    <description>Summary 提出 VLMaps，将预训练 visual-language model（LSeg/CLIP）的 dense pixel-level features 融合到 3D 重建的 top-down grid map 中，实现可通过自然语言直接查询的空间表示；结合 LLM 解析复杂指令为可执行导航代码，支持 open-vocabulary ...</description>
-    <pubDate>Wed, 25 Mar 2026 09:02:23 GMT</pubDate>
+    <title>RoboClaw: An Agentic Framework for Scalable Long-Horizon Robotic Tasks</title>
+    <link>https://liqing.io/mindflow/Papers/2603-RoboClaw</link>
+    <guid>https://liqing.io/mindflow/Papers/2603-RoboClaw</guid>
+    <description>Summary RoboClaw 提出了一个统一的 agentic robotics 框架，通过 Entangled Action Pairs (EAP) 实现自主数据收集，并用 VLM 作为 meta-controller 统一数据收集、policy learning 和 task execution，在 long-horizon manipulation ...</description>
+    <pubDate>Wed, 25 Mar 2026 09:29:09 GMT</pubDate>
   </item><item>
-    <title>ETPNav: Evolving Topological Planning for Vision-Language Navigation in Continuous Environments</title>
-    <link>https://liqing.io/mindflow/Papers/2304-ETPNav</link>
-    <guid>https://liqing.io/mindflow/Papers/2304-ETPNav</guid>
-    <description>Summary ETPNav 将 VLN 从 discrete nav-graph 扩展到 continuous environments，通过 online topological mapping + hierarchical planning（transformer-based high-level planner + obstacle-avoiding ...</description>
-    <pubDate>Wed, 25 Mar 2026 09:02:23 GMT</pubDate>
+    <title>AI-Prompts</title>
+    <link>https://liqing.io/mindflow/Resources/AI-Prompts</link>
+    <guid>https://liqing.io/mindflow/Resources/AI-Prompts</guid>
+    <description>AI Prompts for Research 论文总结 Prompt 请按照以下格式总结这篇论文，用中英混用的风格（专有名词用英文）： Summary 一句话概括。 Problem &amp; Motivation 作者要解决什么问题？为什么重要？ Method 核心方法/架构描述。 Key Results 主要实验结果和 takeaway。 ...</description>
+    <pubDate>Wed, 25 Mar 2026 09:29:09 GMT</pubDate>
   </item><item>
-    <title>NavGPT: Explicit Reasoning in Vision-and-Language Navigation with Large Language Models</title>
-    <link>https://liqing.io/mindflow/Papers/2305-NavGPT</link>
-    <guid>https://liqing.io/mindflow/Papers/2305-NavGPT</guid>
-    <description>Summary NavGPT 首次探索将 LLM（GPT-4）作为纯推理引擎用于 VLN 任务，通过将视觉观测转为文本描述输入 LLM，实现 zero-shot sequential action prediction，展示了 LLM 在 navigation reasoning 中的显式推理能力（sub-goal decomposition、commonsense、landmark ...</description>
-    <pubDate>Wed, 25 Mar 2026 09:02:23 GMT</pubDate>
+    <title>Tag-Taxonomy</title>
+    <link>https://liqing.io/mindflow/Resources/Tag-Taxonomy</link>
+    <guid>https://liqing.io/mindflow/Resources/Tag-Taxonomy</guid>
+    <description>Tag 体系 本文件定义 vault 中所有笔记使用的 tag 规范。添加新笔记时，从下表中选取 2-4 个 tag。 如需新增 tag，请先更新本文件。 设计原则 粒度适中：每个 tag 覆盖一个可辨识的研究子方向 正交性：tag 之间尽量不重叠 稳定性：以方法和任务为核心，不随具体模型/公司/数据集变化 Tag 列表 任务 Tag说明manipulation机器人操作（含 ...</description>
+    <pubDate>Wed, 25 Mar 2026 09:29:09 GMT</pubDate>
   </item><item>
-    <title>RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Control</title>
-    <link>https://liqing.io/mindflow/Papers/2307-RT2</link>
-    <guid>https://liqing.io/mindflow/Papers/2307-RT2</guid>
-    <description>Summary RT-2 是 Google DeepMind 提出的开创性 VLA 模型，首次将预训练 VLM（PaLM-E 12B / PaLI-X 55B）直接用于机器人控制，将 robot action 表示为 text token 序列，通过 co-fine-tuning 在 web 数据和 robot 数据上联合训练，使机器人获得了从互联网知识到物理操作的迁移能力。 ...</description>
-    <pubDate>Wed, 25 Mar 2026 09:02:23 GMT</pubDate>
+    <title>Hierarchical VLA with Shared Semantic Scene Graph for Unified Navigation-Manipulation</title>
+    <link>https://liqing.io/mindflow/Ideas/Hierarchical-VLA-SceneGraph</link>
+    <guid>https://liqing.io/mindflow/Ideas/Hierarchical-VLA-SceneGraph</guid>
+    <description>Core Idea 构建一个三层 hierarchical VLA 架构，以 semantic scene graph 作为 navigation 和 manipulation 的 shared spatial representation，实现 building-scale 导航与 dexterous manipulation 的统一。 Motivation ...</description>
+    <pubDate>Wed, 25 Mar 2026 09:29:09 GMT</pubDate>
   </item><item>
-    <title>ConceptGraphs: Open-Vocabulary 3D Scene Graphs for Perception and Planning</title>
-    <link>https://liqing.io/mindflow/Papers/2309-ConceptGraphs</link>
-    <guid>https://liqing.io/mindflow/Papers/2309-ConceptGraphs</guid>
-    <description>Summary 从 posed RGB-D 序列构建 open-vocabulary 3D scene graph，利用 2D foundation models（SAM、CLIP、GPT-4）的输出通过 multi-view association 融合到 3D，无需 3D 训练数据或模型微调，可直接支持 language-conditioned ...</description>
-    <pubDate>Wed, 25 Mar 2026 09:02:23 GMT</pubDate>
+    <title>Think Global, Act Local: Dual-scale Graph Transformer for Vision-and-Language Navigation</title>
+    <link>https://liqing.io/mindflow/Papers/2202-DUET</link>
+    <guid>https://liqing.io/mindflow/Papers/2202-DUET</guid>
+    <description>Summary VLN-DUET 提出 dual-scale graph transformer 架构，通过在线构建 topological map 并结合 local fine-grained encoding 和 global coarse-grained encoding，实现了长程 action planning 和精细 cross-modal ...</description>
+    <pubDate>Wed, 25 Mar 2026 09:29:09 GMT</pubDate>
   </item>
     </channel>
   </rss>
