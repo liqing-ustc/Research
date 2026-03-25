@@ -1,3 +1,23 @@
 @use "./base.scss";
 
-// put your custom CSS here!
+// Sticky header
+#quartz-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--light);
+  padding: 0 2rem;
+}
+
+// Limit article width for comfortable reading (~75 chars)
+.center > article {
+  max-width: 740px;
+}
+
+// Fix word-break: "overflow-wrap: anywhere" in base.scss causes English
+// words to break mid-word. Override to only break when truly necessary.
+p, li, ol, ul {
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: none;
+}
