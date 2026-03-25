@@ -10,61 +10,61 @@
     <link>https://liqing-ustc.github.io/MindFlow/</link>
     <guid>https://liqing-ustc.github.io/MindFlow/</guid>
     <description>MindFlow An AI research knowledge base — paper notes, research ideas, literature surveys, and project tracking. 基于 Obsidian 的 AI 研究知识管理空间，记录论文笔记、研究 idea、文献综述和项目进展。 Browse by Type Papers — 论文笔记 Ideas — 研究灵感 Topics — 主题综述 Projects — 项目追踪 Meetings — 会议记录 Recent Papers Pi0.5 — Physical Intelligence MEM — Memory-Efficient Models RoboClaw About Built with Quartz v4 · Source on GitHub.</description>
-    <pubDate>Wed, 25 Mar 2026 02:44:30 GMT</pubDate>
+    <pubDate>Wed, 25 Mar 2026 02:50:54 GMT</pubDate>
+  </item><item>
+    <title>AI-Prompts</title>
+    <link>https://liqing-ustc.github.io/MindFlow/Resources/AI-Prompts</link>
+    <guid>https://liqing-ustc.github.io/MindFlow/Resources/AI-Prompts</guid>
+    <description>AI Prompts for Research 论文总结 Prompt 请按照以下格式总结这篇论文，用中英混用的风格（专有名词用英文）： Summary 一句话概括。 Problem &amp; Motivation 作者要解决什么问题？为什么重要？ Method 核心方法/架构描述。 Key Results 主要实验结果和 takeaway。 ...</description>
+    <pubDate>Wed, 25 Mar 2026 02:50:54 GMT</pubDate>
   </item><item>
     <title>VLN-VLA Unification: Foundation Models for Indoor Robot Navigation and Manipulation</title>
     <link>https://liqing-ustc.github.io/MindFlow/Topics/VLN-VLA-Unification</link>
     <guid>https://liqing-ustc.github.io/MindFlow/Topics/VLN-VLA-Unification</guid>
     <description>Overview 本 survey 从 foundation model 视角，系统梳理了 VLN（Vision-and-Language Navigation）和 VLA（Vision-Language-Action）两个领域的技术演进与架构趋同。通过分析 20 篇核心论文，我们发现：VLN 和 VLA 在四个维度上正在趋同——VLM ...</description>
-    <pubDate>Wed, 25 Mar 2026 02:44:30 GMT</pubDate>
+    <pubDate>Wed, 25 Mar 2026 02:50:54 GMT</pubDate>
   </item><item>
     <title>Do As I Can, Not As I Say: Grounding Language in Robotic Affordances</title>
     <link>https://liqing-ustc.github.io/MindFlow/Papers/Ahn2022-SayCan</link>
     <guid>https://liqing-ustc.github.io/MindFlow/Papers/Ahn2022-SayCan</guid>
     <description>SayCan: Grounding Language in Robotic Affordances Summary 提出 SayCan 框架，将 LLM 的语义知识（“Say”）与 robot affordance functions（“Can”）结合，使 mobile manipulator 能根据高层自然语言指令执行 long-horizon ...</description>
-    <pubDate>Wed, 25 Mar 2026 02:44:30 GMT</pubDate>
+    <pubDate>Wed, 25 Mar 2026 02:50:54 GMT</pubDate>
   </item><item>
     <title>ETPNav: Evolving Topological Planning for Vision-Language Navigation in Continuous Environments</title>
     <link>https://liqing-ustc.github.io/MindFlow/Papers/An2024-ETPNav</link>
     <guid>https://liqing-ustc.github.io/MindFlow/Papers/An2024-ETPNav</guid>
     <description>ETPNav: Evolving Topological Planning for Vision-Language Navigation in Continuous Environments Summary ETPNav 将 VLN 从 discrete nav-graph 扩展到 continuous environments，通过 online ...</description>
-    <pubDate>Wed, 25 Mar 2026 02:44:30 GMT</pubDate>
+    <pubDate>Wed, 25 Mar 2026 02:50:54 GMT</pubDate>
   </item><item>
     <title>π₀: A Vision-Language-Action Flow Model for General Robot Control</title>
     <link>https://liqing-ustc.github.io/MindFlow/Papers/Black2024-Pi0</link>
     <guid>https://liqing-ustc.github.io/MindFlow/Papers/Black2024-Pi0</guid>
     <description>π₀: A Vision-Language-Action Flow Model for General Robot Control Summary π₀ 是 Physical Intelligence 提出的通用机器人基础模型，基于预训练 VLM（PaliGemma 3B）+ flow matching action head 架构，在 7 个机器人平台、68 ...</description>
-    <pubDate>Wed, 25 Mar 2026 02:44:30 GMT</pubDate>
+    <pubDate>Wed, 25 Mar 2026 02:50:54 GMT</pubDate>
   </item><item>
     <title>π0.5: a Vision-Language-Action Model with Open-World Generalization</title>
     <link>https://liqing-ustc.github.io/MindFlow/Papers/Black2025-Pi05</link>
     <guid>https://liqing-ustc.github.io/MindFlow/Papers/Black2025-Pi05</guid>
     <description>π0.5: a Vision-Language-Action Model with Open-World Generalization Summary Physical Intelligence 提出 π0.5，一个基于 π0 的 vision-language-action 模型，通过在异构数据（多机器人、高层语义预测、web ...</description>
-    <pubDate>Wed, 25 Mar 2026 02:44:30 GMT</pubDate>
+    <pubDate>Wed, 25 Mar 2026 02:50:54 GMT</pubDate>
   </item><item>
     <title>π*₀.₆: A VLA That Learns From Experience</title>
     <link>https://liqing-ustc.github.io/MindFlow/Papers/Black2025-PiStar06</link>
     <guid>https://liqing-ustc.github.io/MindFlow/Papers/Black2025-PiStar06</guid>
     <description>π*₀.₆: A VLA That Learns From Experience Summary π*₀.₆ 提出了 Recap（RL with Experience and Corrections via Advantage-conditioned Policies），首次实现了通用 VLA 模型通过真实世界部署经验进行 RL 自我改进。核心创新是 ...</description>
-    <pubDate>Wed, 25 Mar 2026 02:44:30 GMT</pubDate>
+    <pubDate>Wed, 25 Mar 2026 02:50:54 GMT</pubDate>
   </item><item>
     <title>RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Control</title>
     <link>https://liqing-ustc.github.io/MindFlow/Papers/Brohan2023-RT2</link>
     <guid>https://liqing-ustc.github.io/MindFlow/Papers/Brohan2023-RT2</guid>
     <description>RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Control Summary RT-2 是 Google DeepMind 提出的开创性 VLA 模型，首次将预训练 VLM（PaLM-E 12B / PaLI-X 55B）直接用于机器人控制，将 robot ...</description>
-    <pubDate>Wed, 25 Mar 2026 02:44:30 GMT</pubDate>
+    <pubDate>Wed, 25 Mar 2026 02:50:54 GMT</pubDate>
   </item><item>
     <title>Think Global, Act Local: Dual-scale Graph Transformer for Vision-and-Language Navigation</title>
     <link>https://liqing-ustc.github.io/MindFlow/Papers/Chen2022-DUET</link>
     <guid>https://liqing-ustc.github.io/MindFlow/Papers/Chen2022-DUET</guid>
     <description>Think Global, Act Local: Dual-scale Graph Transformer for Vision-and-Language Navigation Summary VLN-DUET 提出 dual-scale graph transformer 架构，通过在线构建 topological map 并结合 local ...</description>
-    <pubDate>Wed, 25 Mar 2026 02:44:30 GMT</pubDate>
-  </item><item>
-    <title>NaVILA: Legged Robot Vision-Language-Action Model for Navigation</title>
-    <link>https://liqing-ustc.github.io/MindFlow/Papers/Cheng2024-NaVILA</link>
-    <guid>https://liqing-ustc.github.io/MindFlow/Papers/Cheng2024-NaVILA</guid>
-    <description>NaVILA: Legged Robot Vision-Language-Action Model for Navigation Summary NaVILA 将 VLM（VILA）微调为 navigation VLA，通过生成 mid-level 语言化动作指令（如 “move forward 75cm”）而非直接输出 low-level ...</description>
-    <pubDate>Wed, 25 Mar 2026 02:44:30 GMT</pubDate>
+    <pubDate>Wed, 25 Mar 2026 02:50:54 GMT</pubDate>
   </item>
     </channel>
   </rss>
