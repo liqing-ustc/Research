@@ -8,8 +8,7 @@ export const sharedPageComponents: SharedLayout = {
   afterBody: [],
   footer: Component.Footer({
     links: {
-      GitHub: "https://github.com/jackyzha0/quartz",
-      "Discord Community": "https://discord.gg/cRFFHYye7t",
+      GitHub: "https://github.com/liqing-ustc/MindFlow",
     },
   }),
 }
@@ -34,12 +33,19 @@ export const defaultContentPageLayout: PageLayout = {
         { Component: Component.Darkmode() },
       ],
     }),
-    Component.Explorer(),
-    Component.DesktopOnly(Component.TableOfContents()),
+    Component.Explorer({
+      folderDefaultState: "collapsed",
+      useSavedState: false,
+    }),
+    Component.DesktopOnly(Component.Graph({
+      localGraph: {
+        depth: 1,
+        showTags: false,
+      },
+    })),
   ],
   right: [
-    Component.Graph(),
-    Component.Backlinks(),
+    Component.DesktopOnly(Component.TableOfContents()),
   ],
   afterBody: [
     Component.Comments({
