@@ -20,27 +20,47 @@ const TopNav: QuartzComponent = ({ fileData }: QuartzComponentProps) => {
 }
 
 TopNav.css = `
+/* Header bar layout: PageTitle | TopNav (flex:1) | Search | Darkmode */
+#quartz-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--lightgray);
+  margin-bottom: 0;
+}
+
+#quartz-header .page-title {
+  flex-shrink: 0;
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+}
+
 .top-nav {
   display: flex;
-  gap: 1.5rem;
-  padding: 0.4rem 0;
-  border-bottom: 1px solid var(--lightgray);
-  margin-bottom: 0.5rem;
+  gap: 1.25rem;
+  flex: 1;
 }
 
 .top-nav a {
   color: var(--darkgray);
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 0.02em;
-  opacity: 0.8;
+  opacity: 0.75;
   transition: color 0.15s ease, opacity 0.15s ease;
+  white-space: nowrap;
 }
 
 .top-nav a:hover {
   color: var(--secondary);
   opacity: 1;
+}
+
+/* Push search to the right */
+#quartz-header > .search {
+  margin-left: auto;
 }
 `
 
