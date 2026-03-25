@@ -2,69 +2,69 @@
 <rss version="2.0">
     <channel>
       <title>MindFlow</title>
-      <link>https://liqing-ustc.github.io/MindFlow</link>
+      <link>https://liqing.io/mindflow</link>
       <description>Last 10 notes on MindFlow</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
     <title>MindFlow</title>
-    <link>https://liqing-ustc.github.io/MindFlow/</link>
-    <guid>https://liqing-ustc.github.io/MindFlow/</guid>
+    <link>https://liqing.io/mindflow/</link>
+    <guid>https://liqing.io/mindflow/</guid>
     <description>MindFlow An AI research knowledge base — paper notes, research ideas, literature surveys, and project tracking. 基于 Obsidian 的 AI 研究知识管理空间，记录论文笔记、研究 idea、文献综述和项目进展。 Browse by Type Papers — 论文笔记 Ideas — 研究灵感 Topics — 主题综述 Projects — 项目追踪 Meetings — 会议记录 Recent Papers Pi0.5 — Physical Intelligence MEM — Memory-Efficient Models RoboClaw About Built with Quartz v4 · Source on GitHub.</description>
-    <pubDate>Wed, 25 Mar 2026 03:03:53 GMT</pubDate>
+    <pubDate>Wed, 25 Mar 2026 03:12:07 GMT</pubDate>
   </item><item>
     <title>VLN-VLA Unification: Foundation Models for Indoor Robot Navigation and Manipulation</title>
-    <link>https://liqing-ustc.github.io/MindFlow/Topics/VLN-VLA-Unification</link>
-    <guid>https://liqing-ustc.github.io/MindFlow/Topics/VLN-VLA-Unification</guid>
+    <link>https://liqing.io/mindflow/Topics/VLN-VLA-Unification</link>
+    <guid>https://liqing.io/mindflow/Topics/VLN-VLA-Unification</guid>
     <description>Overview 本 survey 从 foundation model 视角，系统梳理了 VLN（Vision-and-Language Navigation）和 VLA（Vision-Language-Action）两个领域的技术演进与架构趋同。通过分析 20 篇核心论文，我们发现：VLN 和 VLA 在四个维度上正在趋同——VLM ...</description>
-    <pubDate>Wed, 25 Mar 2026 03:03:53 GMT</pubDate>
+    <pubDate>Wed, 25 Mar 2026 03:12:07 GMT</pubDate>
+  </item><item>
+    <title>Hi Robot: Open-Ended Instruction Following with Hierarchical Vision-Language-Action Models</title>
+    <link>https://liqing.io/mindflow/Papers/Shi2025-HiRobot</link>
+    <guid>https://liqing.io/mindflow/Papers/Shi2025-HiRobot</guid>
+    <description>Hi Robot: Open-Ended Instruction Following with Hierarchical VLA Summary Hi Robot 提出了一个 hierarchical VLM-VLA 架构，将 open-ended 用户指令的理解（high-level VLM reasoning）和物理执行（low-level ...</description>
+    <pubDate>Wed, 25 Mar 2026 03:12:07 GMT</pubDate>
+  </item><item>
+    <title>MEM: Multi-Scale Embodied Memory for Vision Language Action Models</title>
+    <link>https://liqing.io/mindflow/Papers/Torne2026-MEM</link>
+    <guid>https://liqing.io/mindflow/Papers/Torne2026-MEM</guid>
+    <description>MEM: Multi-Scale Embodied Memory for Vision Language Action Models Summary MEM 提出了一种多尺度记忆架构，将视频短期记忆（通过高效视频编码器压缩）和语言长期记忆（自然语言事件摘要）结合，使 VLA 模型能够完成长达 15 分钟的复杂多阶段机器人任务（如厨房清理、三明治制作），同时满足实时推理延迟约束。 ...</description>
+    <pubDate>Wed, 25 Mar 2026 03:12:07 GMT</pubDate>
   </item><item>
     <title>NavGPT: Explicit Reasoning in Vision-and-Language Navigation with Large Language Models</title>
-    <link>https://liqing-ustc.github.io/MindFlow/Papers/Zhou2023-NavGPT</link>
-    <guid>https://liqing-ustc.github.io/MindFlow/Papers/Zhou2023-NavGPT</guid>
+    <link>https://liqing.io/mindflow/Papers/Zhou2023-NavGPT</link>
+    <guid>https://liqing.io/mindflow/Papers/Zhou2023-NavGPT</guid>
     <description>NavGPT: Explicit Reasoning in Vision-and-Language Navigation with Large Language Models Summary NavGPT 首次探索将 LLM（GPT-4）作为纯推理引擎用于 VLN 任务，通过将视觉观测转为文本描述输入 LLM，实现 zero-shot ...</description>
-    <pubDate>Wed, 25 Mar 2026 03:03:53 GMT</pubDate>
+    <pubDate>Wed, 25 Mar 2026 03:12:07 GMT</pubDate>
   </item><item>
     <title>Move to Understand a 3D Scene: Bridging Visual Grounding and Exploration for Efficient and Versatile Embodied Navigation</title>
-    <link>https://liqing-ustc.github.io/MindFlow/Papers/Zhu2025-MTU3D</link>
-    <guid>https://liqing-ustc.github.io/MindFlow/Papers/Zhu2025-MTU3D</guid>
+    <link>https://liqing.io/mindflow/Papers/Zhu2025-MTU3D</link>
+    <guid>https://liqing.io/mindflow/Papers/Zhu2025-MTU3D</guid>
     <description>Move to Understand a 3D Scene (MTU3D) Summary MTU3D 提出了一个统一的 embodied navigation 框架，通过 online query representation 和 joint grounding-exploration objective 将 3D visual grounding ...</description>
-    <pubDate>Wed, 25 Mar 2026 03:03:53 GMT</pubDate>
+    <pubDate>Wed, 25 Mar 2026 03:12:07 GMT</pubDate>
   </item><item>
     <title>AI-Prompts</title>
-    <link>https://liqing-ustc.github.io/MindFlow/Resources/AI-Prompts</link>
-    <guid>https://liqing-ustc.github.io/MindFlow/Resources/AI-Prompts</guid>
+    <link>https://liqing.io/mindflow/Resources/AI-Prompts</link>
+    <guid>https://liqing.io/mindflow/Resources/AI-Prompts</guid>
     <description>AI Prompts for Research 论文总结 Prompt 请按照以下格式总结这篇论文，用中英混用的风格（专有名词用英文）： Summary 一句话概括。 Problem &amp; Motivation 作者要解决什么问题？为什么重要？ Method 核心方法/架构描述。 Key Results 主要实验结果和 takeaway。 ...</description>
-    <pubDate>Wed, 25 Mar 2026 03:03:53 GMT</pubDate>
+    <pubDate>Wed, 25 Mar 2026 03:12:07 GMT</pubDate>
   </item><item>
     <title>Do As I Can, Not As I Say: Grounding Language in Robotic Affordances</title>
-    <link>https://liqing-ustc.github.io/MindFlow/Papers/Ahn2022-SayCan</link>
-    <guid>https://liqing-ustc.github.io/MindFlow/Papers/Ahn2022-SayCan</guid>
+    <link>https://liqing.io/mindflow/Papers/Ahn2022-SayCan</link>
+    <guid>https://liqing.io/mindflow/Papers/Ahn2022-SayCan</guid>
     <description>SayCan: Grounding Language in Robotic Affordances Summary 提出 SayCan 框架，将 LLM 的语义知识（“Say”）与 robot affordance functions（“Can”）结合，使 mobile manipulator 能根据高层自然语言指令执行 long-horizon ...</description>
-    <pubDate>Wed, 25 Mar 2026 03:03:52 GMT</pubDate>
+    <pubDate>Wed, 25 Mar 2026 03:12:07 GMT</pubDate>
   </item><item>
     <title>ETPNav: Evolving Topological Planning for Vision-Language Navigation in Continuous Environments</title>
-    <link>https://liqing-ustc.github.io/MindFlow/Papers/An2024-ETPNav</link>
-    <guid>https://liqing-ustc.github.io/MindFlow/Papers/An2024-ETPNav</guid>
+    <link>https://liqing.io/mindflow/Papers/An2024-ETPNav</link>
+    <guid>https://liqing.io/mindflow/Papers/An2024-ETPNav</guid>
     <description>ETPNav: Evolving Topological Planning for Vision-Language Navigation in Continuous Environments Summary ETPNav 将 VLN 从 discrete nav-graph 扩展到 continuous environments，通过 online ...</description>
-    <pubDate>Wed, 25 Mar 2026 03:03:52 GMT</pubDate>
+    <pubDate>Wed, 25 Mar 2026 03:12:07 GMT</pubDate>
   </item><item>
     <title>π₀: A Vision-Language-Action Flow Model for General Robot Control</title>
-    <link>https://liqing-ustc.github.io/MindFlow/Papers/Black2024-Pi0</link>
-    <guid>https://liqing-ustc.github.io/MindFlow/Papers/Black2024-Pi0</guid>
+    <link>https://liqing.io/mindflow/Papers/Black2024-Pi0</link>
+    <guid>https://liqing.io/mindflow/Papers/Black2024-Pi0</guid>
     <description>π₀: A Vision-Language-Action Flow Model for General Robot Control Summary π₀ 是 Physical Intelligence 提出的通用机器人基础模型，基于预训练 VLM（PaliGemma 3B）+ flow matching action head 架构，在 7 个机器人平台、68 ...</description>
-    <pubDate>Wed, 25 Mar 2026 03:03:52 GMT</pubDate>
-  </item><item>
-    <title>π0.5: a Vision-Language-Action Model with Open-World Generalization</title>
-    <link>https://liqing-ustc.github.io/MindFlow/Papers/Black2025-Pi05</link>
-    <guid>https://liqing-ustc.github.io/MindFlow/Papers/Black2025-Pi05</guid>
-    <description>π0.5: a Vision-Language-Action Model with Open-World Generalization Summary Physical Intelligence 提出 π0.5，一个基于 π0 的 vision-language-action 模型，通过在异构数据（多机器人、高层语义预测、web ...</description>
-    <pubDate>Wed, 25 Mar 2026 03:03:52 GMT</pubDate>
-  </item><item>
-    <title>π*₀.₆: A VLA That Learns From Experience</title>
-    <link>https://liqing-ustc.github.io/MindFlow/Papers/Black2025-PiStar06</link>
-    <guid>https://liqing-ustc.github.io/MindFlow/Papers/Black2025-PiStar06</guid>
-    <description>π*₀.₆: A VLA That Learns From Experience Summary π*₀.₆ 提出了 Recap（RL with Experience and Corrections via Advantage-conditioned Policies），首次实现了通用 VLA 模型通过真实世界部署经验进行 RL 自我改进。核心创新是 ...</description>
-    <pubDate>Wed, 25 Mar 2026 03:03:52 GMT</pubDate>
+    <pubDate>Wed, 25 Mar 2026 03:12:07 GMT</pubDate>
   </item>
     </channel>
   </rss>
