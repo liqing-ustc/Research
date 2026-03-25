@@ -10,61 +10,61 @@
     <link>https://liqing.io/mindflow/</link>
     <guid>https://liqing.io/mindflow/</guid>
     <description>An AI research knowledge base — paper notes, research ideas, literature surveys, and project tracking. 基于 Obsidian 的 AI 研究知识管理空间，记录论文笔记、研究 idea、文献综述和项目进展。 Browse by Type Papers — 论文笔记 Ideas — 研究灵感 Topics — 主题综述 Projects — 项目追踪 Meetings — 会议记录 Recent Papers Pi0.5 — Physical Intelligence MEM — Memory-Efficient Models RoboClaw About Built with Quartz v4 · Source on GitHub.</description>
-    <pubDate>Wed, 25 Mar 2026 08:10:09 GMT</pubDate>
+    <pubDate>Wed, 25 Mar 2026 08:34:09 GMT</pubDate>
   </item><item>
     <title>VLN-VLA Unification: Foundation Models for Indoor Robot Navigation and Manipulation</title>
     <link>https://liqing.io/mindflow/Topics/VLN-VLA-Unification</link>
     <guid>https://liqing.io/mindflow/Topics/VLN-VLA-Unification</guid>
     <description>Overview 本 survey 从 foundation model 视角，系统梳理了 VLN（Vision-and-Language Navigation）和 VLA（Vision-Language-Action）两个领域的技术演进与架构趋同。通过分析 20 篇核心论文，我们发现：VLN 和 VLA 在四个维度上正在趋同——VLM ...</description>
-    <pubDate>Wed, 25 Mar 2026 08:10:09 GMT</pubDate>
+    <pubDate>Wed, 25 Mar 2026 08:34:09 GMT</pubDate>
   </item><item>
     <title>WebMCP: 让网站成为 AI Agent 的结构化工具</title>
     <link>https://liqing.io/mindflow/Topics/WebMCP</link>
     <guid>https://liqing.io/mindflow/Topics/WebMCP</guid>
     <description>WebMCP 是什么 Google 提出的 Web 标准提案，让网站主动声明自己能执行哪些操作，AI agent 可以直接调用结构化的 tool，而不需要解析 UI 或模拟人类交互。 核心理念：网站不再是 agent 需要”看”的页面，而是可以直接”调用”的服务。 官方博客：Chrome Developers Blog GitHub：webmachinelearning/webmcp ...</description>
-    <pubDate>Wed, 25 Mar 2026 08:10:09 GMT</pubDate>
+    <pubDate>Wed, 25 Mar 2026 08:34:09 GMT</pubDate>
   </item><item>
     <title>llms.txt: 让网站对 LLM 可读的新标准</title>
     <link>https://liqing.io/mindflow/Topics/llms-txt</link>
     <guid>https://liqing.io/mindflow/Topics/llms-txt</guid>
     <description>llms.txt 是什么 llms.txt 是由 Jeremy Howard（fast.ai 创始人）提出的 Web 标准提案，在网站根目录放置一个 Markdown 格式的文件，为 LLM 和 AI agent 提供网站的结构化概览。 核心理念：LLM 的 context window 无法处理整个网站，而将复杂 HTML 转换为 LLM-friendly ...</description>
-    <pubDate>Wed, 25 Mar 2026 08:10:09 GMT</pubDate>
+    <pubDate>Wed, 25 Mar 2026 08:34:09 GMT</pubDate>
+  </item><item>
+    <title>Hierarchical VLA with Shared Semantic Scene Graph for Unified Navigation-Manipulation</title>
+    <link>https://liqing.io/mindflow/Ideas/Hierarchical-VLA-SceneGraph</link>
+    <guid>https://liqing.io/mindflow/Ideas/Hierarchical-VLA-SceneGraph</guid>
+    <description>Core Idea 构建一个三层 hierarchical VLA 架构，以 semantic scene graph 作为 navigation 和 manipulation 的 shared spatial representation，实现 building-scale 导航与 dexterous manipulation 的统一。 Motivation ...</description>
+    <pubDate>Wed, 25 Mar 2026 08:34:09 GMT</pubDate>
+  </item><item>
+    <title>Do As I Can, Not As I Say: Grounding Language in Robotic Affordances</title>
+    <link>https://liqing.io/mindflow/Papers/Ahn2022-SayCan</link>
+    <guid>https://liqing.io/mindflow/Papers/Ahn2022-SayCan</guid>
+    <description>SayCan: Grounding Language in Robotic Affordances Summary 提出 SayCan 框架，将 LLM 的语义知识（“Say”）与 robot affordance functions（“Can”）结合，使 mobile manipulator 能根据高层自然语言指令执行 long-horizon ...</description>
+    <pubDate>Wed, 25 Mar 2026 08:34:09 GMT</pubDate>
   </item><item>
     <title>ETPNav: Evolving Topological Planning for Vision-Language Navigation in Continuous Environments</title>
     <link>https://liqing.io/mindflow/Papers/An2024-ETPNav</link>
     <guid>https://liqing.io/mindflow/Papers/An2024-ETPNav</guid>
     <description>ETPNav: Evolving Topological Planning for Vision-Language Navigation in Continuous Environments Summary ETPNav 将 VLN 从 discrete nav-graph 扩展到 continuous environments，通过 online ...</description>
-    <pubDate>Wed, 25 Mar 2026 08:10:09 GMT</pubDate>
+    <pubDate>Wed, 25 Mar 2026 08:34:09 GMT</pubDate>
   </item><item>
     <title>π₀: A Vision-Language-Action Flow Model for General Robot Control</title>
     <link>https://liqing.io/mindflow/Papers/Black2024-Pi0</link>
     <guid>https://liqing.io/mindflow/Papers/Black2024-Pi0</guid>
     <description>π₀: A Vision-Language-Action Flow Model for General Robot Control Summary π₀ 是 Physical Intelligence 提出的通用机器人基础模型，基于预训练 VLM（PaliGemma 3B）+ flow matching action head 架构，在 7 个机器人平台、68 ...</description>
-    <pubDate>Wed, 25 Mar 2026 08:10:09 GMT</pubDate>
+    <pubDate>Wed, 25 Mar 2026 08:34:09 GMT</pubDate>
   </item><item>
     <title>π0.5: a Vision-Language-Action Model with Open-World Generalization</title>
     <link>https://liqing.io/mindflow/Papers/Black2025-Pi05</link>
     <guid>https://liqing.io/mindflow/Papers/Black2025-Pi05</guid>
     <description>π0.5: a Vision-Language-Action Model with Open-World Generalization Summary Physical Intelligence 提出 π0.5，一个基于 π0 的 vision-language-action 模型，通过在异构数据（多机器人、高层语义预测、web ...</description>
-    <pubDate>Wed, 25 Mar 2026 08:10:09 GMT</pubDate>
+    <pubDate>Wed, 25 Mar 2026 08:34:09 GMT</pubDate>
   </item><item>
     <title>π*₀.₆: A VLA That Learns From Experience</title>
     <link>https://liqing.io/mindflow/Papers/Black2025-PiStar06</link>
     <guid>https://liqing.io/mindflow/Papers/Black2025-PiStar06</guid>
     <description>π*₀.₆: A VLA That Learns From Experience Summary π*₀.₆ 提出了 Recap（RL with Experience and Corrections via Advantage-conditioned Policies），首次实现了通用 VLA 模型通过真实世界部署经验进行 RL 自我改进。核心创新是 ...</description>
-    <pubDate>Wed, 25 Mar 2026 08:10:09 GMT</pubDate>
-  </item><item>
-    <title>RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Control</title>
-    <link>https://liqing.io/mindflow/Papers/Brohan2023-RT2</link>
-    <guid>https://liqing.io/mindflow/Papers/Brohan2023-RT2</guid>
-    <description>RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Control Summary RT-2 是 Google DeepMind 提出的开创性 VLA 模型，首次将预训练 VLM（PaLM-E 12B / PaLI-X 55B）直接用于机器人控制，将 robot ...</description>
-    <pubDate>Wed, 25 Mar 2026 08:10:09 GMT</pubDate>
-  </item><item>
-    <title>Think Global, Act Local: Dual-scale Graph Transformer for Vision-and-Language Navigation</title>
-    <link>https://liqing.io/mindflow/Papers/Chen2022-DUET</link>
-    <guid>https://liqing.io/mindflow/Papers/Chen2022-DUET</guid>
-    <description>Think Global, Act Local: Dual-scale Graph Transformer for Vision-and-Language Navigation Summary VLN-DUET 提出 dual-scale graph transformer 架构，通过在线构建 topological map 并结合 local ...</description>
-    <pubDate>Wed, 25 Mar 2026 08:10:09 GMT</pubDate>
+    <pubDate>Wed, 25 Mar 2026 08:34:09 GMT</pubDate>
   </item>
     </channel>
   </rss>
