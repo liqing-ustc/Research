@@ -15,15 +15,19 @@ An Obsidian-based knowledge management workspace for AI research. Content is wri
 - `Meetings/` — Meeting notes, named `YYYY-MM-DD-Description.md`
 - `Daily/` — Daily research logs, named `YYYY-MM-DD.md`
 - `Templates/` — Obsidian templates for each note type
-- `Resources/` — Reference materials including AI prompts for paper summarization
 - `Attachments/` — File attachments
+- `references/` — Protocol documents and tag taxonomy
+- `skills/` — MindFlow skill definitions
+- `Workbench/` — AI working state (agenda, memory, queue, logs)
+- `Experiments/` — Experiment records
+- `Reports/` — AI-generated reports
 
 ## Creating Notes
 
 All notes must follow their corresponding template in `Templates/`. Key conventions:
 
 - **Paper notes** use YAML frontmatter with: title, authors, date_publish (YYYY-MM-DD/YYYY-MM/YYYY), venue, tags, url, code, status (`unread`/`reading`/`finished`), rating (1-5), date_added
-- **Tags** 参照 `Resources/Tag-Taxonomy.md` 中定义的标准 tag，每篇笔记选取 2-4 个；如需新增 tag 请先更新该文件
+- **Tags** 参照 `references/Tag-Taxonomy.md` 中定义的标准 tag，每篇笔记选取 2-4 个；如需新增 tag 请先更新该文件
 - **Connections** between notes use Obsidian `[[wikilinks]]`
 - Paper notes include a `mermaid mindmap` section summarizing the paper structure
 

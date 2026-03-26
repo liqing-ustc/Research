@@ -21,7 +21,7 @@
 - The vault already has `Papers/`, `Topics/`, `Ideas/`, `Templates/`, `Resources/`, `Daily/`, `Meetings/`, `Projects/`, `Attachments/`.
 - Existing templates (`Templates/Paper.md`, `Templates/Idea.md`) must not be broken.
 - Content is mixed Chinese/English (Chinese prose, English technical terms). New templates follow this convention.
-- Tags follow `Resources/Tag-Taxonomy.md`.
+- Tags follow `references/Tag-Taxonomy.md`.
 
 ---
 
@@ -856,7 +856,7 @@ output:
 ### Step 3: 确定文件名和 tags
 
 - 文件名：`YYMM-ShortTitle.md`，YYMM 取自 date_publish
-- 从 `Resources/Tag-Taxonomy.md` 中选取 2-4 个 tags
+- 从 `references/Tag-Taxonomy.md` 中选取 2-4 个 tags
 - 用 Glob 检查 `Papers/` 下是否已有同名文件，避免覆盖
 
 ### Step 4: 生成笔记
@@ -889,7 +889,7 @@ output:
 
 - 不修改任何已存在的 Papers/ 笔记
 - 不捏造论文内容——如果无法获取全文，在笔记中标注 "[未获取全文，仅基于 abstract]"
-- tags 必须来自 `Resources/Tag-Taxonomy.md`；如果需要新 tag，在 Notes 部分建议而非自行添加
+- tags 必须来自 `references/Tag-Taxonomy.md`；如果需要新 tag，在 Notes 部分建议而非自行添加
 - rating 字段留空，由 Human 填写
 - 笔记语言：中文描述 + 英文术语（遵循 vault 惯例）
 
@@ -904,7 +904,7 @@ output:
 
 Read `skills/1-literature/paper-digest/SKILL.md` and confirm:
 - Frontmatter has all required fields per `references/skill-protocol.md`
-- Steps reference correct paths (`Templates/Paper.md`, `Resources/Tag-Taxonomy.md`, `Workbench/logs/`)
+- Steps reference correct paths (`Templates/Paper.md`, `references/Tag-Taxonomy.md`, `Workbench/logs/`)
 - Guard section is present and meaningful
 
 - [ ] **Step 3: Commit**
