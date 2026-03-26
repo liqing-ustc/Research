@@ -116,6 +116,7 @@ MindFlow Vault
 ├── Experiments/     # Knowledge asset: experiment records (new)
 ├── Projects/        # Knowledge asset: project tracking
 ├── Reports/         # AI → Human structured reports (new)
+├── Meetings/        # Meeting notes (existing, preserved)
 ├── Daily/           # Human's daily logs
 ├── Templates/       # Note templates
 ├── Resources/       # Reference materials
@@ -139,8 +140,13 @@ MindFlow Vault
 │   └── evolution/
 │       └── changelog.md
 │
-└── skills/          # Skill definitions (or symlinked)
+└── skills/          # Skill definitions (installed by npx mindflow,
+                     # or symlinked from repo clone)
 ```
+
+**Note on `skills/` location**: The source repo contains `skills/` at repo root. `npx mindflow install` copies them to the user's vault root `skills/` directory (or symlinks). Some agents (Claude Code) also support `~/.claude/skills/` — the installer handles this automatically. The vault `skills/` is the canonical runtime location.
+
+**Migration note**: This design supersedes the ad-hoc AI workflow described in the current `CLAUDE.md`. The existing paper note generation workflow will be formalized as the `paper-digest` skill. `CLAUDE.md` will be updated during implementation to reference the skill system.
 
 ### Knowledge Assets vs AI Working State
 
@@ -202,7 +208,8 @@ MindFlow Vault
 #### Ideas/ — Shared idea pool
 
 - Both Human and AI write Ideas/; no distinction by origin
-- Key dimensions: maturity (`spark` → `developing` → `validated` → `archived`), linked project/experiment, feasibility verification status
+- Key dimensions: maturity (`raw` → `developing` → `validated` → `archived`), linked project/experiment, feasibility verification status
+- Note: status values align with existing `Templates/Idea.md` convention
 - Ideas with `status: validated` may be promoted to active direction in `.research/agenda.md`
 
 #### Experiments/ (new) — Experiment records
@@ -262,8 +269,8 @@ updated_by: ai / human / both
 ## Autopilot Rules
 - CAN: read papers, run designed experiments, update memory, generate reports
 - CAN: discover new papers, explore new directions based on agenda
-- CAN: auto-promote validated insight to Domain-Map (confidence > 0.8)
-- NEED APPROVAL: start experiments >2h, abandon a research direction
+- CAN: auto-promote validated insight to Domain-Map (per Domain-Map update rules in Section 3)
+- NEED APPROVAL: start experiments >2h, abandon a research direction, exceed daily API budget
 - CANNOT: delete existing notes, modify Human-written content, publish externally
 - MUST: log all operations, trigger Reporter mode for major discoveries
 ```
@@ -588,6 +595,92 @@ If triggered → generate `Reports/YYYY-MM-DD-{type}.md` → notify (Layer 2) or
 | Notification | Output in vault, Human checks manually | Push to Telegram / Email / etc. |
 | Memory retrieval | Grep full-text search | Vector index accelerated |
 | Core skill logic | Identical | Identical |
+
+### Error Handling & Crash Recovery
+
+Since the insight-loop may run unattended (Autopilot), robust failure handling is critical:
+
+```
+Phase 2 (Act) failure scenarios:
+
+1. Skill syntax/parse error
+   → Log error to .research/logs/ → skip this cycle → continue next cycle
+   → Do NOT retry the same skill with same input (avoid infinite loop)
+
+2. API call failure (LLM timeout, rate limit)
+   → Retry once after 60s → if still fails, log and skip cycle
+   → Write "API unavailable" to .research/queue/review.md
+
+3. Partial state (skill wrote some files but crashed mid-way)
+   → Each skill should write to temp location first, then atomic move
+   → If crash detected (no completion marker in log), revert partial writes
+   → Use git: commit before Act, revert to that commit on failure
+
+4. Resource exhaustion (context window, disk)
+   → Activate COMPACT mode (read summaries instead of full files)
+   → If still fails, pause Autopilot and trigger Reporter
+
+Recovery on next cycle start:
+  1. Read last log entry
+  2. If status != "completed", check for partial state
+  3. Clean up if needed
+  4. Proceed to Orient phase normally
+```
+
+### Concurrency Model
+
+Both Human and AI may write to shared files (`agenda.md`, `queue/*.md`, `Domain-Map.md`). Conflict strategy:
+
+**Layer 1**: No issue — Human manually triggers skills, so Human knows not to edit simultaneously.
+
+**Layer 2**: Daemon runs autonomously while Human may edit in Obsidian.
+
+```
+Strategy: Read-before-write with git conflict detection
+
+1. Before writing any shared file, the skill reads the current version
+2. After writing, check git diff — if the file was modified by someone else
+   between read and write, flag as conflict
+3. Conflict resolution: AI's write goes to a .conflict file,
+   Human is notified via queue/review.md
+4. For append-only files (logs, queue), conflicts are rare — just append
+
+Low-risk files (append-only): logs/, queue/, memory/insights.md
+Medium-risk files: agenda.md (AI reads to decide, Human edits to steer)
+High-risk files: Topics/Domain-Map.md (both parties actively edit)
+
+For Domain-Map.md specifically:
+  - AI only appends new entries (never modifies existing)
+  - Human may modify/reorder freely
+  - This makes structural conflicts extremely unlikely
+```
+
+### API Cost Budget
+
+Autopilot must respect cost boundaries defined in `identity.md`:
+
+```markdown
+## Budget (in identity.md)
+- **daily_token_limit**: 500000    # ~$5-10/day depending on model
+- **per_cycle_limit**: 50000       # Prevents single runaway cycle
+- **expensive_action_threshold**: 100000  # Actions above this need approval
+```
+
+The insight-loop tracks cumulative usage per day. When approaching `daily_token_limit`, the loop enters "conservation mode" (only process Human-queued tasks, skip autonomous exploration) and triggers a Reporter notification.
+
+### Agent Capability Requirements
+
+Layer 1 skills are Markdown-portable but assume the executing agent has:
+
+| Capability | Required | Notes |
+|------------|----------|-------|
+| File read/write | Yes | Core requirement for vault interaction |
+| Web access | For paper-discovery only | Other skills work offline |
+| Context window >= 100k tokens | Recommended | Shorter windows work but reduce cross-paper-analysis quality |
+| Tool/function calling | Recommended | Skills degrade gracefully to plain instruction following |
+| MCP support | Optional | Only needed for cross-model review skills |
+
+Agents confirmed compatible: Claude Code, Codex CLI, Gemini CLI, Cursor, OpenClaw. Other agents supporting file I/O and Markdown skill loading should work with minimal adaptation.
 
 ---
 
