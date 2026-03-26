@@ -51,13 +51,13 @@ Markdown — Everything is a file. Everything is readable.
 │  Agent Bridge                                │
 ├─────────────────────────────────────────────┤
 │  Layer 1: Skill Protocol (core)              │
-│  Skills/*.md / .research/ / vault templates  │
+│  Skills/*.md / Workbench/ / vault templates  │
 │  Zero dependency, any agent can execute      │
 ├─────────────────────────────────────────────┤
 │  Obsidian Vault (Markdown)                   │
 │  Papers/ Topics/ Ideas/ Experiments/         │
 │  Reports/ Projects/ Daily/                   │
-│  .research/ (AI working state)               │
+│  Workbench/ (AI working state)               │
 └─────────────────────────────────────────────┘
 ```
 
@@ -67,7 +67,7 @@ Markdown — Everything is a file. Everything is readable.
 
 Layer 1 includes:
 - `skills/` — Skill definitions (pure Markdown), organized by research stage
-- `templates/` — Vault templates including `.research/` directory structure
+- `templates/` — Vault templates including `Workbench/` directory structure
 - `references/` — Protocol documents (skill format, memory rules, agenda rules, etc.)
 - `packages/mindflow-cli/` — NPX installer for one-command setup
 
@@ -77,7 +77,7 @@ Layer 1 includes:
 
 Layer 2 includes:
 - `scheduler/` — Cron and event-driven task scheduling
-- `memory_index/` — Vector index built from `.research/memory/*.md` (rebuildable from Markdown)
+- `memory_index/` — Vector index built from `Workbench/memory/*.md` (rebuildable from Markdown)
 - `notifier/` — Push notifications (Telegram, Email, Feishu, etc.)
 - `agent_bridge/` — Unified abstraction over Claude Code / Codex / Gemini CLI
 - `daemon.py` — Main process: schedule + listen + dispatch
@@ -88,14 +88,14 @@ Layer 2 includes:
 
 ```
 Layer 2 writes:
-  .research/queue/reading.md      ← scheduler discovers new papers
-  .research/logs/YYYY-MM-DD.md    ← execution logs
+  Workbench/queue/reading.md      ← scheduler discovers new papers
+  Workbench/logs/YYYY-MM-DD.md    ← execution logs
   Reports/YYYY-MM-DD-*.md         ← periodic reports
 
 Layer 2 reads:
-  .research/agenda.md             ← decides what to do next
-  .research/memory/*.md           ← retrieves relevant experience
-  .research/queue/*.md            ← gets pending tasks
+  Workbench/agenda.md             ← decides what to do next
+  Workbench/memory/*.md           ← retrieves relevant experience
+  Workbench/queue/*.md            ← gets pending tasks
 
 The same skill works identically whether triggered by
 Human manually or by Layer 2's scheduler.
@@ -122,7 +122,7 @@ MindFlow Vault
 ├── Resources/       # Reference materials
 ├── Attachments/     # File attachments
 │
-├── .research/       # AI working state
+├── Workbench/       # AI working state (visible in Obsidian, no dot prefix)
 │   ├── agenda.md
 │   ├── identity.md
 │   ├── memory/
@@ -151,9 +151,18 @@ MindFlow Vault
 ### Knowledge Assets vs AI Working State
 
 - **Knowledge assets** (`Papers/`, `Topics/`, `Ideas/`, `Experiments/`, `Reports/`): Finished artifacts, Human-AI shared, the vault's permanent value
-- **AI working state** (`.research/`): AI's scratchpad — agenda, memory, queues, logs. Human can read/edit at any time, but these are process artifacts, not polished knowledge
+- **AI working state** (`Workbench/`): AI's scratchpad — agenda, memory, queues, logs. Human can read/edit at any time, but these are process artifacts, not polished knowledge
 
-**Rule**: AI's finished outputs go to knowledge asset directories. AI's intermediate work goes to `.research/`.
+**Rule**: AI's finished outputs go to knowledge asset directories. AI's intermediate work goes to `Workbench/`.
+
+### Obsidian Integration Notes
+
+`Workbench/` uses a plain name (no `.` prefix) so it is **visible by default** in Obsidian's file explorer. This is intentional — transparency is a core principle.
+
+To reduce noise in Obsidian search and Graph View, the installer configures:
+- **Excluded from search**: `Workbench/logs/` (high-volume raw logs)
+- **Not excluded**: `Workbench/agenda.md`, `Workbench/memory/`, `Workbench/queue/` (Human needs to see these)
+- **Bookmarked**: `Workbench/agenda.md` and `Topics/Domain-Map.md` (suggested starred files for quick access)
 
 ### Information Flow
 
@@ -172,7 +181,7 @@ MindFlow Vault
           knowledge ←→ AI state bidirectional flow
                      │
 ┌────────────────────┴─────────────────────────────────┐
-│              .research/ (AI working state)             │
+│              Workbench/ (AI working state)             │
 │  agenda.md → drives what AI does next                 │
 │  memory/   → accumulated experience                   │
 │  queue/    → task queue (both Human and AI can write)  │
@@ -187,7 +196,7 @@ MindFlow Vault
 
 - AI reads Papers/ for cross-paper analysis, pattern extraction
 - AI writes Papers/ when digesting new papers (following existing Templates/Paper.md)
-- `.research/queue/reading.md` lists pending papers → processed into `Papers/YYMM-Title.md`
+- `Workbench/queue/reading.md` lists pending papers → processed into `Papers/YYMM-Title.md`
 
 #### Topics/Domain-Map.md — Core shared cognition
 
@@ -210,7 +219,7 @@ MindFlow Vault
 - Both Human and AI write Ideas/; no distinction by origin
 - Key dimensions: maturity (`raw` → `developing` → `validated` → `archived`), linked project/experiment, feasibility verification status
 - Note: status values align with existing `Templates/Idea.md` convention
-- Ideas with `status: validated` may be promoted to active direction in `.research/agenda.md`
+- Ideas with `status: validated` may be promoted to active direction in `Workbench/agenda.md`
 
 #### Experiments/ (new) — Experiment records
 
@@ -220,7 +229,7 @@ MindFlow Vault
 
 ---
 
-## 4. AI State Model (`.research/`)
+## 4. AI State Model (`Workbench/`)
 
 ### `agenda.md` — Research Agenda
 
@@ -511,15 +520,15 @@ python daemon.py start
 ### Insight Promotion Hierarchy
 
 ```
-Level 0: Raw Log (.research/logs/)
+Level 0: Raw Log (Workbench/logs/)
     ↓  memory-distill skill
-Level 1: Pattern (.research/memory/patterns.md)
+Level 1: Pattern (Workbench/memory/patterns.md)
     "I noticed X and Y seem related" — confidence: low
     ↓  multiple independent observations
-Level 2: Insight (.research/memory/insights.md, status: provisional)
+Level 2: Insight (Workbench/memory/insights.md, status: provisional)
     "I believe X causes Y because..." — confidence: medium
     ↓  experimental or literary cross-validation
-Level 3: Validated Insight (.research/memory/insights.md, status: validated)
+Level 3: Validated Insight (Workbench/memory/insights.md, status: validated)
     "X indeed causes Y, evidence chain: [...]" — confidence: high
     ↓  ≥2 independent evidence sources + confidence > 0.8
 Level 4: Domain Map (Topics/Domain-Map.md)
@@ -561,7 +570,7 @@ Decision priority (highest first):
 5. Domain-Map has unclaimed Open Questions → self-directed exploration
 6. Nothing → run paper-discovery to scan for field updates
 
-Output: `action_type` + `target` → logged to `.research/logs/`
+Output: `action_type` + `target` → logged to `Workbench/logs/`
 
 ### Phase 2: Act
 
@@ -570,7 +579,7 @@ Query `stage-skill-map.json` based on `action_type`, invoke the corresponding sk
 ### Phase 3: Learn
 
 After every action (success or failure):
-1. Log to `.research/logs/YYYY-MM-DD.md`
+1. Log to `Workbench/logs/YYYY-MM-DD.md`
 2. Conditional evolution: cross-paper-analysis → IDE; direction abandoned → IVE; experiment analyzed → ESE
 3. Check insight promotion conditions
 
@@ -604,12 +613,12 @@ Since the insight-loop may run unattended (Autopilot), robust failure handling i
 Phase 2 (Act) failure scenarios:
 
 1. Skill syntax/parse error
-   → Log error to .research/logs/ → skip this cycle → continue next cycle
+   → Log error to Workbench/logs/ → skip this cycle → continue next cycle
    → Do NOT retry the same skill with same input (avoid infinite loop)
 
 2. API call failure (LLM timeout, rate limit)
    → Retry once after 60s → if still fails, log and skip cycle
-   → Write "API unavailable" to .research/queue/review.md
+   → Write "API unavailable" to Workbench/queue/review.md
 
 3. Partial state (skill wrote some files but crashed mid-way)
    → Each skill should write to temp location first, then atomic move
@@ -743,7 +752,7 @@ github.com/xxx/mindflow
 │   ├── experiment.md
 │   ├── report.md
 │   ├── domain-map.md
-│   └── .research/ (init template)
+│   └── Workbench/ (init template)
 │
 ├── references/
 │   ├── skill-protocol.md
@@ -785,7 +794,7 @@ github.com/xxx/mindflow
 
 - Repository structure + protocol documents
 - 3 core skills: paper-digest, cross-paper-analysis, memory-distill
-- Templates and `.research/` initialization
+- Templates and `Workbench/` initialization
 - `npx mindflow install` basic flow
 - `examples/demo-vault/`
 
