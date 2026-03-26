@@ -49,6 +49,18 @@ MindFlow 使用标准化的 Markdown skill 来自动化科研工作流。Skills 
 - **Workbench/**: AI 的工作状态（agenda、memory、queue、logs），Human 可随时查看和编辑
 - **Topics/Domain-Map.md**: Human-AI 共同维护的核心认知地图
 
+### 自然语言触发
+
+用户不需要记住 skill 名称，用自然语言即可触发：
+
+| 用户说 | 触发 Skill | 执行 |
+|--------|-----------|------|
+| "阅读论文 xxx" / "读一下这篇 xxx" / "digest this paper" | paper-digest | 读取 `.claude/skills/1-literature/paper-digest/SKILL.md` 并严格按其 Steps 执行 |
+| "对比这几篇论文" / "分析一下 VLA 相关论文" | cross-paper-analysis | 读取 `.claude/skills/1-literature/cross-paper-analysis/SKILL.md` 并执行 |
+| "整理一下最近的记忆" / "蒸馏记忆" | memory-distill | 读取 `.claude/skills/5-evolution/memory-distill/SKILL.md` 并执行 |
+
+**重要**：触发 skill 时，必须先 Read 对应的 SKILL.md 文件，然后严格按照其中定义的 Steps 和 Guard 执行。不要凭记忆执行——每次都重新读取 SKILL.md。
+
 ### 已有 Skills
 - `paper-digest`: 消化论文生成笔记（替代上述 AI Workflow 中 Claude Code 方式）
 - `cross-paper-analysis`: 跨论文对比分析
