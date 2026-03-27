@@ -11,10 +11,28 @@
 
 MindFlow 是一个基于 Obsidian 的 **Human-AI 协作科研知识管理系统**。它将论文阅读、idea 孵化、实验追踪、记忆蒸馏等科研工作流编码为可执行的 Markdown skill，通过 Claude Code 在 vault 内直接执行，实现 Human 和 AI 在同一知识库上的无缝协作。
 
-**设计哲学**：
-- **Markdown-native**：所有数据以纯 Markdown 存储，Human 和 AI 共用同一格式
-- **Skill-driven**：科研工作流标准化为 skill，自然语言触发，可组合、可复现
-- **Memory as first-class**：AI 的经验不是一次性的，通过分层记忆系统（L0→L4）逐步蒸馏为持久知识
+### 设计哲学
+
+```
+Insight  — 目标不是论文数量或 metric 提升，而是 "我们理解了什么新东西？"
+Trust    — 透明 → 可审计 → 信任 → 更大自主权。AI 通过持续产出高质量 insight 赢得信任。
+Markdown — 一切皆文件，一切可读，一切有版本控制。
+```
+
+### 核心差异化
+
+| 现有 AutoResearch 的假设 | MindFlow 的假设 |
+|:-------------------------|:----------------|
+| 目标是**论文产出** | 目标是 **insight 发现与认知成长**（论文是副产物） |
+| AI 是**执行者**，Human 下命令 | AI 有**自己的研究议程**，自主探索 |
+| 单次运行，无跨项目学习 | **持久记忆 + 进化**，经验跨项目传递 |
+| 固定角色（AI 做 X，Human 做 Y） | **角色流动** — AI 在不同阶段扮演不同角色 |
+| 状态存储在数据库 / 向量库 | **一切在 Markdown**，Human 随时可审计 AI 的任何状态 |
+
+### 范围边界
+
+- **In scope**：文献发现/消化、idea 孵化、实验设计/执行、写作（作为副产物）、记忆/进化、自主研究议程
+- **Out of scope**：训练自定义 LLM（仅 API 调用）、GPU 集群管理（实验在用户自己的环境运行）、实时多人协作（Google Docs 模式）
 
 ## 2. Architecture
 
@@ -46,6 +64,18 @@ MindFlow 是一个基于 Obsidian 的 **Human-AI 协作科研知识管理系统*
 
 **接口契约**：Layer 2 只读写 vault Markdown 文件，不引入 Layer 1 不知道的状态。同一个 skill 无论由 Human 手动触发还是 Layer 2 调度，行为完全一致。
 
+```
+Layer 2 写入：
+  Workbench/queue/reading.md      ← scheduler 发现新论文
+  Workbench/logs/YYYY-MM-DD.md    ← 执行日志
+  Reports/YYYY-MM-DD-*.md         ← 定期报告
+
+Layer 2 读取：
+  Workbench/agenda.md             ← 决定下一步做什么
+  Workbench/memory/*.md           ← 检索相关经验
+  Workbench/queue/*.md            ← 获取待办任务
+```
+
 ### 四种角色模式
 
 | 模式 | AI 角色 | Human 角色 | 触发条件 | 状态 |
@@ -55,7 +85,14 @@ MindFlow 是一个基于 Obsidian 的 **Human-AI 协作科研知识管理系统*
 | **Sparring** | 辩论伙伴 | 在线，讨论 idea | Human 发起 + 开放性问题 | 🔮 |
 | **Reporter** | 结构化汇报 | 离线，异步审阅 | 定期 / 重大发现 / 需要决策 | 🔮 |
 
-模式切换是**隐式**的——由交互上下文决定，不需要显式配置。例外：Autopilot 的权限边界在 `identity.md` 中显式定义（涉及信任边界）。
+**模式切换逻辑**：模式是**隐式**的——由交互上下文决定，不需要显式配置。
+
+- Human 在线 + 明确命令 → **Copilot**
+- Human 在线 + 开放性问题/讨论 → **Sparring**
+- Human 离线 + agenda 有活跃方向 → **Autopilot**
+- Autopilot 过程中发现重要结果 → 切换到 **Reporter**，生成报告
+
+例外：Autopilot 的权限边界在 `identity.md` 中显式定义（涉及信任边界）。
 
 **Report 格式** 🔮：
 
@@ -85,6 +122,17 @@ period: YYYY-MM-DD ~ YYYY-MM-DD
 ```
 
 ## 3. Directory Structure
+
+### Knowledge Assets vs AI Working State
+
+Vault 中的内容分为两类：
+
+- **Knowledge Assets**（`Papers/`、`Topics/`、`Ideas/`、`Experiments/`、`Reports/`）：完成的产出物，Human-AI 共享，vault 的持久价值
+- **AI Working State**（`Workbench/`）：AI 的过程产物——议程、记忆、队列、日志。Human 可随时查看/编辑，但这些是过程性的，不是精炼的知识
+
+**规则**：AI 的完成产出放入 Knowledge Asset 目录，中间工作放入 Workbench。
+
+### 目录布局
 
 ```
 MindFlow/
@@ -130,6 +178,32 @@ MindFlow/
 └── .obsidian/           # Obsidian 配置
 ```
 
+### 信息流
+
+```
+                    Human input
+                    (read papers, write ideas, edit Domain-Map, ask questions)
+                        │
+                        ▼
+┌──────────────────────────────────────────────────────┐
+│              Knowledge Assets (Human-AI shared)       │
+│                                                       │
+│  ★ Domain-Map/  ← 核心共享认知                        │
+│  Papers/ Topics/ Ideas/ Experiments/ Reports/         │
+└────────────────────┬─────────────────────────────────┘
+                     │
+          knowledge ←→ AI state 双向流动
+                     │
+┌────────────────────┴─────────────────────────────────┐
+│              Workbench/ (AI working state)             │
+│  agenda.md → 驱动 AI 下一步行动                        │
+│  memory/   → 积累的经验                               │
+│  queue/    → 任务队列（Human 和 AI 均可写入）           │
+│  logs/     → 原始操作日志                              │
+│  evolution/→ 变更追踪                                  │
+└──────────────────────────────────────────────────────┘
+```
+
 ## 4. Key Concepts
 
 ### 4.1 Notes
@@ -162,10 +236,12 @@ Domain Map 是 vault 中**层级最高的知识**——从所有 Papers/Topics/I
 | **Open Questions** | 尚未回答的问题 |
 | **Known Dead Ends** | 已证伪或不推荐的方向 |
 
-**治理规则**：
-- AI skill（literature-survey, cross-paper-analysis）不直接修改 Domain Map，只在产出文件中标注"建议加入 Domain-Map"
-- memory-distill 可通过 `Workbench/queue/review.md` 提出晋升建议
-- Human 有最终审批权
+**治理原则**：Domain-Map 是 AI 的认知地图。AI 自由维护，Human 随时可编辑。Git 是安全网。
+
+- AI 可自由添加、修改、晋升条目（任何象限）
+- AI 可标记条目为 deprecated（~~删除线~~ + 原因），但不可删除
+- 每次更新记录到 `Workbench/evolution/changelog.md`（由执行 skill 负责）
+- Human 可随时编辑、重排、覆盖任何 AI 的修改
 
 **新增 domain**：创建 `Domain-Map/{Name}.md`，复制四象限结构，在 `_index.md` 表格中添加一行。
 
@@ -174,6 +250,16 @@ Domain Map 是 vault 中**层级最高的知识**——从所有 Papers/Topics/I
 Skill 是 MindFlow 的自动化核心——定义在 `skills/<category>/<name>/SKILL.md` 中的可执行能力单元。
 
 **格式**：YAML frontmatter（元数据）+ Purpose + Steps + Guard + Examples。详见 → `references/skill-protocol.md`
+
+**三级层次**：
+
+| Level | 名称 | 说明 | 示例 |
+|:------|:-----|:-----|:-----|
+| Level 0 | Atomic | 单一任务，直接调用工具，不调用其他 skill | `paper-digest`, `memory-distill` |
+| Level 1 | Orchestration | 组合多个 Level 0 skill 完成复合目标 | `cross-paper-analysis`, `literature-survey` |
+| Level 2 | Global | 跨 vault 级别操作，可调用 Level 1 skill，管理 agenda/memory | `insight-loop` 🔮 |
+
+**Stage-Skill 路由**：`skills/stage-skill-map.json` 定义了研究阶段 × 任务类型 → skill 的映射关系。
 
 **当前 skills**：
 
@@ -198,7 +284,7 @@ L1: Pattern         Workbench/memory/patterns.md     跨日期重复出现的观
 L2: Provisional     Workbench/memory/insights.md     初步洞察（待验证）
      ↓ 实验/文献验证
 L3: Validated       Workbench/memory/insights.md     已验证洞察
-     ↓ Human 审批 或 auto-promote
+     ↓ AI 判断证据充分时自主晋升
 L4: Domain Map      Domain-Map/{Name}.md             持久领域知识
 ```
 
@@ -206,6 +292,10 @@ L4: Domain Map      Domain-Map/{Name}.md             持久领域知识
 - **Append-only**：记忆文件只追加不修改
 - **来源引用必须明确**：每条 pattern/insight 必须包含指向具体日志的 wikilink
 - **Domain-Map logging**：每次更新 Domain Map 必须在 `Workbench/evolution/changelog.md` 中记录
+
+**记忆检索** 🔮：
+- Layer 1（文件检索）：Grep + Glob + LLM 判断。记忆条目 < 100 条时足够。
+- Layer 2（向量加速）：mxbai-embed-large（Ollama 本地）→ ChromaDB → cosine similarity top-k。索引可从 Markdown 完全重建。索引不可用时回退到 Layer 1。
 
 详见 → `references/memory-protocol.md`
 
@@ -263,7 +353,7 @@ insight-loop (one cycle)
 - AI 写共享文件前先读取当前版本，写后检查 git diff
 - 若文件在读写间被他人修改，AI 的版本写入 `.conflict` 文件并通知 Human
 - Append-only 文件（logs、queue、memory）冲突极少
-- Domain Map：AI 只追加新条目，Human 可自由修改/重排，结构冲突概率极低
+- Domain Map：AI 自由维护，Human 亦可自由编辑；冲突时以 git diff 检测，AI 版本写入 `.conflict` 文件
 
 ### 4.7 Workbench
 
@@ -318,9 +408,8 @@ insight-loop (one cycle)
 AI（Claude Code）通过 `CLAUDE.md` 接收操作指令。关键约束：
 
 **权限边界**：
-- **CAN**：读论文、更新记忆、生成报告、发现新论文、按 agenda 探索新方向
-- **CAN**（有条件）：auto-promote validated insight 到 Domain Map（需符合 memory-protocol 规则）
-- **NEED APPROVAL**：启动 >2h 实验、放弃研究方向、修改 Domain Map Established Knowledge
+- **CAN**：读论文、更新记忆、生成报告、发现新论文、按 agenda 探索新方向、自由维护 Domain Map
+- **NEED APPROVAL**：启动 >2h 实验、放弃研究方向
 - **CANNOT**：删除已有笔记、修改 Human 撰写的内容、对外发布
 
 **Skill 执行规则**：
@@ -328,10 +417,170 @@ AI（Claude Code）通过 `CLAUDE.md` 接收操作指令。关键约束：
 - 严格遵守 SKILL.md 中的 Steps 和 Guard
 - 所有操作记录到 `Workbench/logs/`
 
-## 8. Changelog
+## 8. Technology Choices 🔮
+
+Layer 2 Orchestrator 的技术选型：
+
+| 组件 | 选择 | 理由 |
+|:-----|:-----|:-----|
+| Layer 1 skills | Pure Markdown | 零依赖，跨 agent 可移植 |
+| Install CLI | Node.js (npx) | 最广泛的前端生态 |
+| Layer 2 daemon | Python | 最成熟的 AI/ML 生态 |
+| Vector embedding | mxbai-embed-large via Ollama | 本地运行，无 API 依赖 |
+| Vector storage | ChromaDB | 轻量本地存储，可从 Markdown 完全重建 |
+| Notifications | Apprise (Python) | 一个库覆盖 Telegram/Email/Feishu/DingTalk/Slack |
+| Scheduling | APScheduler | Python 原生，支持 cron 和 interval |
+| Agent invocation | Agent CLIs | Claude Code / Codex / Gemini CLI + 统一 wrapper |
+| Config | YAML (orchestrator) + Markdown (vault) | YAML 给 daemon，Markdown 给 AI 和 Human |
+| License | MIT | 最大化开源研究工具的采用 |
+
+## 9. Repository Structure 🔮
+
+开源发布时的仓库结构：
+
+```
+github.com/xxx/mindflow
+├── README.md
+├── LICENSE (MIT)
+├── CONTRIBUTING.md
+│
+├── skills/                        # Layer 1
+│   ├── taxonomy.schema.json
+│   ├── stage-skill-map.json
+│   ├── 0-orchestration/
+│   │   └── insight-loop/
+│   ├── 1-literature/
+│   │   ├── paper-digest/
+│   │   ├── cross-paper-analysis/
+│   │   ├── literature-survey/
+│   │   └── knowledge-synthesis/
+│   ├── 2-ideation/
+│   │   ├── idea-generation/
+│   │   ├── idea-tournament/
+│   │   └── literature-grounding/
+│   ├── 3-experiment/
+│   │   ├── experiment-design/
+│   │   ├── experiment-iterate/
+│   │   └── result-analysis/
+│   ├── 4-writing/
+│   │   ├── paper-outline/
+│   │   ├── paper-draft/
+│   │   └── paper-review/
+│   └── 5-evolution/
+│       ├── memory-distill/
+│       ├── memory-retrieve/
+│       └── agenda-evolve/
+│
+├── templates/
+│   ├── paper.md
+│   ├── idea.md
+│   ├── experiment.md
+│   ├── report.md
+│   ├── domain-map.md
+│   └── Workbench/ (init template)
+│
+├── references/
+│   ├── skill-protocol.md
+│   ├── memory-protocol.md
+│   ├── agenda-protocol.md
+│   ├── role-protocol.md
+│   └── report-protocol.md
+│
+├── packages/
+│   └── mindflow-cli/
+│       ├── package.json
+│       ├── bin/install.js
+│       └── lib/
+│
+├── orchestrator/              # Layer 2
+│   ├── requirements.txt
+│   ├── daemon.py
+│   ├── scheduler/
+│   ├── memory_index/
+│   ├── notifier/
+│   ├── agent_bridge/
+│   └── config.example.yaml
+│
+├── docs/
+│   ├── getting-started.md
+│   ├── skill-authoring.md
+│   ├── orchestrator-setup.md
+│   └── architecture.md
+│
+└── examples/
+    └── demo-vault/
+```
+
+## 10. Roadmap
+
+### Phase 1 — Skeleton ✅ Done
+
+- 仓库结构 + 协议文档
+- 3 核心 skills：paper-digest, cross-paper-analysis, memory-distill
+- Templates 和 `Workbench/` 初始化
+- `literature-survey` skill（额外完成）
+
+### Phase 2 — Core Loop 🔮
+
+- insight-loop orchestration skill
+- agenda-evolve + memory-retrieve
+- idea-generation + idea-tournament
+- 完整 IDE/IVE/ESE evolution skills
+- Domain-Map 更新协议实现
+
+### Phase 3 — Experiment 🔮
+
+- experiment-design + experiment-iterate
+- result-analysis
+- Guard mechanism
+- Cross-model review（ARIS MCP 方式）
+
+### Phase 4 — Orchestrator 🔮
+
+- daemon + scheduler
+- memory-index（向量检索）
+- notifier（Telegram + Email）
+- agent-bridge（Claude + Codex）
+- Reporter mode 自动报告
+
+### Phase 5 — Polish 🔮
+
+- Writing skills（paper-outline / draft / review）
+- 完整文档
+- 社区贡献指南
+- Release v0.1.0
+
+## 11. Design Provenance
+
+MindFlow 的设计吸收了多个开源框架的优秀实践：
+
+| 组件 | 来源 | 如何采纳 |
+|:-----|:-----|:---------|
+| SKILL.md 格式 | ARIS | 采纳 frontmatter + allowed-tools 标准 |
+| Skill + references/ 分离 | uditgoenka/autoresearch | 采纳用于复杂 skill |
+| Atomic → Orchestration → Global 分层 | ARIS | 采纳三级层次 |
+| NPX 一键安装 | Orchestra AI-Research-SKILLs | 采纳分发机制 |
+| Taxonomy schema | Dr. Claw | 采纳 + 扩展 roles/autonomy 字段 |
+| Stage × Task → Skill 路由 | Dr. Claw | 采纳 stage-skill-map.json 模式 |
+| IDE/IVE/ESE 进化机制 | EvoScientist | 采纳，但使用 Markdown 存储而非向量库 |
+| Idea Elo tournament | EvoScientist | 采纳用于 idea 排名 |
+| 8 迭代原则 + Guard | uditgoenka/autoresearch | 采纳用于 experiment-iterate skill |
+| Cross-model adversarial review | ARIS | 采纳 executor + reviewer 模式（via MCP） |
+| Multi-agent backend 抽象 | Dr. Claw | 采纳 claude-sdk/gemini-cli/codex 模式 |
+
+**MindFlow 原创贡献**（未在任何现有框架中发现）：
+- AI 自管理研究议程（Research Agenda）
+- Human-AI 角色流动（Autopilot / Copilot / Sparring / Reporter）
+- 四级 Insight 晋升层级（log → pattern → insight → Domain-Map）
+- 共享 Domain-Map 作为核心 Human-AI 认知
+- Orient → Act → Learn → Report 自主循环
+- 完全透明：所有 AI 状态存储在可审计的 Markdown 中
+
+## 12. Changelog
 
 | 日期 | 变更 | 影响范围 |
 |:-----|:-----|:---------|
+| 2026-03-27 | SPEC.md 合并 design spec 内容：新增设计哲学/差异化/范围边界（§1）、接口契约示例/模式切换逻辑（§2）、Knowledge Assets vs Working State/信息流（§3）、Domain-Map 治理简化为"AI 自由维护"（§4.2）、skill 三级层次（§4.3）、记忆检索策略（§4.4）、Technology Choices（§8）、Repository Structure（§9）、Roadmap（§10）、Design Provenance（§11） | 全局 |
 | 2026-03-27 | Domain Map 从 `Topics/` 迁移到 vault 根目录 `Domain-Map/`，按 domain 拆分为独立文件 | CLAUDE.md, skills, references |
 | 2026-03-27 | `Templates/Paper.md` 扩充为 single source of truth（含 `%%` 注释指导），`paper-digest` SKILL.md Step 4 精简为引用模板 | Templates/, skills/ |
 | 2026-03-27 | 新增 SPEC.md 作为系统设计的 single source of truth；补充 Layer 2、Role Fluidity、insight-loop、Evolution Mechanisms 等未实现设计 | vault root |

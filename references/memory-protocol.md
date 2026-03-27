@@ -116,8 +116,7 @@ Level 4  ┌──────────────────────�
          │  Domain Map                     │  Domain-Map/_index.md + Domain-Map/{Name}.md
          │  Stable, integrated knowledge   │
          └────────────────┬────────────────┘
-                          │ AI auto-promote (confidence > 0.8, ≥2 sources)
-                          │ OR human review via Workbench/queue/review.md
+                          │ AI promotes when it judges evidence sufficient
 Level 3  ┌────────────────▼────────────────┐
          │  Validated Insight              │  insights.md, status: validated
          │  ≥2 independent sources         │
@@ -146,7 +145,7 @@ Level 0  ┌────────────────▼─────�
 | L0 → L1 | `memory-distill` skill processes session logs and extracts recurring observations | AI (via skill) |
 | L1 → L2 | Pattern appears in ≥3 independent sources (different papers, experiments, or sessions) | AI (via skill) |
 | L2 → L3 | Provisional insight is supported by ≥2 independent evidence sources | AI (via skill) |
-| L3 → L4 | `confidence > 0.8` AND ≥2 independent evidence sources → AI auto-promotes to Domain Map; otherwise writes to `Workbench/queue/review.md` | AI with human fallback |
+| L3 → L4 | AI judges evidence sufficient for Domain Map integration → promotes directly. No numeric threshold — AI uses judgment. Logged to `Workbench/evolution/changelog.md` | AI |
 
 ---
 

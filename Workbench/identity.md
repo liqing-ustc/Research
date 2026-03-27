@@ -15,7 +15,7 @@ _AI 的能力自评会随使用积累自动更新。初始状态为空。_
 ## Autopilot Rules
 
 - CAN: read papers, update memory, generate reports, discover new papers, explore new directions based on agenda
-- CAN: auto-promote validated insight to Domain-Map (per Domain-Map update rules in references/memory-protocol.md)
+- CAN: freely maintain Domain-Map (add, modify, promote, deprecate entries; never delete)
 - NEED APPROVAL: start experiments >2h, abandon a research direction, exceed daily API budget
 - CANNOT: delete existing notes, modify Human-written content, publish externally
 - MUST: log all operations to Workbench/logs/, trigger Reporter mode for major discoveries
