@@ -1,6 +1,7 @@
 ---
 name: paper-digest
-description: 消化一篇论文，生成结构化笔记到 Papers/
+description: >
+  当 Supervisor 给出论文 URL/标题/PDF/DOI，或阅读队列中有待处理论文时，消化论文并生成结构化笔记到 Papers/
 version: 1.0.0
 intent: literature
 capabilities: [search-retrieval, research-planning]
@@ -21,6 +22,8 @@ input:
 output:
   - file: "Papers/YYMM-ShortTitle.md"
   - memory: "Workbench/logs/YYYY-MM-DD.md (append log entry)"
+budget:
+  max_web_calls: 5
 ---
 
 ## Purpose
@@ -108,6 +111,13 @@ paper-digest 是 MindFlow 最基础的文献技能。给定一篇论文的来源
 - **不捏造信息**：所有字段必须来自论文原文。无法获取全文时，在受影响的章节开头标注 `> [未获取全文，仅基于 abstract]`，不得推测正文内容填充 Method / Key Results 等节。
 - **语言规范**：正文用中文撰写，英文技术术语（模型名、方法名、benchmark 名）保持英文，不做翻译。
 - **autonomy: copilot 模式**：若用户以 copilot 模式调用，生成笔记草稿后先输出给 Human 预览，确认后再执行 Write；日志同样在确认后追加。
+
+## Verify
+
+- [ ] `Papers/YYMM-ShortTitle.md` 已创建且正文 >200 字
+- [ ] frontmatter 的 title、authors、date_publish 字段非空
+- [ ] Summary 节非空且不超过 3 句话
+- [ ] 日志已追加到 `Workbench/logs/YYYY-MM-DD.md`
 
 ## Examples
 
