@@ -118,16 +118,16 @@ papers_analyzed: 18
 
 ## Datasets & Benchmarks
 
-| Dataset/Benchmark | 规模 | 评估维度 | 特点 |
-|:------------------|:-----|:---------|:-----|
-| **ERQA** (Gemini Robotics) | 400 questions, 7 categories | Spatial, trajectory, action, state, multi-view, task reasoning | 首个 embodied reasoning 专用 benchmark |
-| **EmbodiedBench** | 1,128 tasks, 4 environments | High-level planning → low-level manipulation, 6 capability subsets | 最全面的 MLLM embodied agent 评测 |
-| **FoMER** | 1,112 samples, 10 task categories | 10-dim reasoning quality (不仅看结果对错) | 首次分离 perceptual grounding 与 action reasoning 评估 |
-| **Robot-R1 Bench** | MCQ format, RLBench 基础 | Spatial understanding, state prediction, movement prediction | 为 RL-based reasoning 设计的评测 |
-| **SpatialVLM Data** | 2B VQA from 10M images | Metric-space 3D spatial reasoning | Internet-scale 自动生成，可做 RL dense reward |
-| **VLASER-6M** | 6M samples, 4 reasoning types | Grounding, spatial, planning, in-domain QA | 系统性验证不同 reasoning data 对 VLA 的迁移效果 |
-| **Thinker Dataset** | 4.8M instances | Ego-view reasoning, grounding, spatial, CoT planning | Robotics-specific, 但未开源 |
-| **SIMPLEREnv** | WidowX/Google Robot 仿真 | Manipulation success rate | ECoT、Embodied-R1 等论文的标准评测平台 |
+| Dataset/Benchmark | 来源 | 规模 | 评估维度 | 特点 |
+|:------------------|:-----|:-----|:---------|:-----|
+| **ERQA** (Gemini Robotics) | Real | 400 questions, 7 categories | Spatial, trajectory, action, state, multi-view, task reasoning | 首个 embodied reasoning 专用 benchmark，基于真实机器人场景 |
+| **EmbodiedBench** | Sim | 1,128 tasks, 4 environments | High-level planning → low-level manipulation, 6 capability subsets | 最全面的 MLLM embodied agent 评测；ALFRED + Habitat 等仿真环境 |
+| **FoMER** | Real + Sim | 1,112 samples, 10 task categories, 8 embodiments | 10-dim reasoning quality (不仅看结果对错) | 首次分离 perceptual grounding 与 action reasoning；覆盖真实视频和仿真 |
+| **Robot-R1 Bench** | Sim | MCQ format, RLBench 基础 | Spatial understanding, state prediction, movement prediction | 为 RL-based reasoning 设计；基于 RLBench 仿真渲染 |
+| **SpatialVLM Data** | Real | 2B VQA from 10M images | Metric-space 3D spatial reasoning | Internet-scale 真实图像自动标注，可做 RL dense reward |
+| **VLASER-6M** | Sim | 6M samples, 4 reasoning types | Grounding, spatial, planning, in-domain QA | 仿真环境自动生成；验证不同 reasoning data 对 VLA 的迁移效果 |
+| **Thinker Dataset** | Real + Sim | 4.8M instances | Ego-view reasoning, grounding, spatial, CoT planning | 混合 ego4d 真实视频 + 仿真数据；未开源 |
+| **SIMPLEREnv** | Sim | WidowX/Google Robot 仿真 | Manipulation success rate | ECoT、Embodied-R1 等论文的标准评测平台；Google RT 系列数据仿真化 |
 
 ## Key Takeaways
 
