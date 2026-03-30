@@ -4,21 +4,8 @@ description: >
   当 Supervisor 说"记录一下实验结果""实验跑完了"，
   或 Researcher 完成一轮实验需要记录时，
   在 Experiment 笔记中追加 Run Entry 并更新状态
-version: 1.0.0
-intent: experiment
-capabilities: [data-processing]
-domain: general
-roles: [autopilot]
-autonomy: high
-allowed-tools: [Read, Edit, Glob]
-input:
-  - name: experiment
-    description: "[[Experiments/xxx.md]] 引用"
-  - name: result
-    description: "实验结果（自由文本、数字、或指向结果文件的路径）"
-output:
-  - memory: "Workbench/logs/YYYY-MM-DD.md"
-related-skills: [experiment-design, result-analysis]
+argument-hint: "<experiment> <result>"
+allowed-tools: Read, Edit, Glob
 ---
 
 ## Purpose

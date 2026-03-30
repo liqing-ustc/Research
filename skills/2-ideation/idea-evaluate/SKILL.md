@@ -4,21 +4,8 @@ description: >
   当 Supervisor 说"评估一下这个 idea""这个可行吗"，
   或 autoresearch 需要筛选 idea 优先级时，
   从 novelty/feasibility/impact/risk/evidence 五维评估研究 idea
-version: 1.0.0
-intent: ideation
-capabilities: [research-planning, cross-validation]
-domain: general
-roles: [autopilot, copilot, sparring]
-autonomy: medium
-allowed-tools: [Read, Edit, Glob, Grep]
-input:
-  - name: idea
-    description: "[[Ideas/xxx.md]] 引用"
-  - name: criteria
-    description: "（可选）额外评估标准"
-output:
-  - memory: "Workbench/logs/YYYY-MM-DD.md"
-related-skills: [idea-generate, experiment-design, memory-retrieve]
+argument-hint: "<idea> [criteria]"
+allowed-tools: Read, Edit, Glob, Grep
 ---
 
 ## Purpose

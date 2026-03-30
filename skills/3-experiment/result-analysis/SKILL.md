@@ -4,20 +4,8 @@ description: >
   当 Supervisor 说"分析一下实验结果"，
   或实验 status 变为 completed 后 autoresearch 自动调用，
   分析实验数据并判断假设是否成立
-version: 1.0.0
-intent: analysis
-capabilities: [cross-validation, research-planning]
-domain: general
-roles: [autopilot, copilot]
-autonomy: medium
-allowed-tools: [Read, Edit, Glob, Grep]
-input:
-  - name: experiment
-    description: "[[Experiments/xxx.md]] 引用（status 为 running 或 completed）"
-output:
-  - memory: "Workbench/memory/patterns.md"
-  - memory: "Workbench/logs/YYYY-MM-DD.md"
-related-skills: [experiment-track, memory-retrieve, agenda-evolve]
+argument-hint: "<experiment>"
+allowed-tools: Read, Edit, Glob, Grep
 ---
 
 ## Purpose

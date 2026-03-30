@@ -2,25 +2,8 @@
 name: memory-distill
 description: >
   当积累了多天工作日志、或 Supervisor 说"整理记忆""蒸馏"时，从日志中提取 pattern 和 insight 到记忆库。也可被 autoresearch 在合适时机自动调用
-version: 1.0.0
-intent: evolution
-capabilities: [research-planning, cross-validation]
-domain: general
-roles: [autopilot]
-autonomy: high
-allowed-tools:
-  - Read
-  - Write
-  - Edit
-  - Glob
-  - Grep
-input:
-  - name: period
-    description: "（可选）要蒸馏的时间范围，默认最近 7 天"
-output:
-  - memory: "Workbench/memory/patterns.md (append new patterns)"
-  - memory: "Workbench/memory/insights.md (promote patterns to insights if qualified)"
-  - memory: "Workbench/evolution/changelog.md (log changes)"
+argument-hint: "[period]"
+allowed-tools: Read, Write, Edit, Glob, Grep
 ---
 
 ## Purpose

@@ -4,20 +4,9 @@ description: >
   被其他 skill 内部调用，从 Workbench/memory/ 中检索与当前任务相关的历史经验。
   当 idea-generate 需要查失败方向、experiment-design 需要查有效方法、
   或任何 skill 需要历史上下文时调用
-version: 1.0.0
-intent: utility
-capabilities: [search-retrieval]
-domain: general
-roles: [autopilot]
-autonomy: high
-allowed-tools: [Read, Glob, Grep]
-input:
-  - name: query
-    description: "自然语言检索问题"
-  - name: scope
-    description: "检索范围——patterns / insights / effective-methods / failed-directions / all"
-output: []
-related-skills: [memory-distill]
+argument-hint: "<query> [scope]"
+user-invocable: false
+allowed-tools: Read, Glob, Grep
 ---
 
 ## Purpose

@@ -4,23 +4,8 @@ description: >
   当 Supervisor 说"写一下 introduction""起草 related work"，
   或 autoresearch 判断某 direction 已积累足够素材需要成文时，
   起草论文或报告的指定章节
-version: 1.0.0
-intent: writing
-capabilities: [prompt-structured-output]
-domain: general
-roles: [autopilot, copilot]
-autonomy: medium
-allowed-tools: [Read, Write, Edit, Glob, Grep]
-input:
-  - name: target
-    description: "目标文件路径（Reports/xxx.md 或已有草稿文件）"
-  - name: section
-    description: "要起草的章节名（如 Introduction、Related Work、Method）"
-  - name: sources
-    description: "素材引用列表——[[Papers/...]]、[[Experiments/...]]、[[Ideas/...]]、[[Topics/...]]"
-output:
-  - memory: "Workbench/logs/YYYY-MM-DD.md"
-related-skills: [writing-refine, cross-paper-analysis]
+argument-hint: "<target> <section> <sources>"
+allowed-tools: Read, Write, Edit, Glob, Grep
 ---
 
 ## Purpose

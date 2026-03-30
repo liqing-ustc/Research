@@ -4,22 +4,8 @@ description: >
   当 cross-paper-analysis 发现知识空白、memory 中有 validated insight 待探索、
   或 Supervisor 说"想个 idea""有什么研究机会"时，
   从知识空白和已有洞察中生成可证伪的研究 idea
-version: 1.0.0
-intent: ideation
-capabilities: [research-planning, cross-validation]
-domain: general
-roles: [autopilot, copilot]
-autonomy: medium
-allowed-tools: [Read, Write, Edit, Glob, Grep]
-input:
-  - name: source
-    description: "触发来源：Topics/*-Analysis.md 中的知识空白、insights.md 中的 validated insight、Supervisor 直接给的方向、或 agenda direction 的 next_action"
-  - name: constraints
-    description: "（可选）约束条件，如 '不需要 GPU'、'偏理论'"
-output:
-  - file: "Ideas/*.md"
-  - memory: "Workbench/logs/YYYY-MM-DD.md"
-related-skills: [cross-paper-analysis, idea-evaluate, memory-retrieve]
+argument-hint: "<source> [constraints]"
+allowed-tools: Read, Write, Edit, Glob, Grep
 ---
 
 ## Purpose

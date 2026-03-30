@@ -4,20 +4,8 @@ description: >
   当积累了新的 validated insight、实验结果改变了方向判断、
   或 Supervisor 说"更新研究方向""复盘 agenda"时，
   根据记忆和发现演化研究议程
-version: 1.0.0
-intent: evolution
-capabilities: [research-planning, cross-validation]
-domain: general
-roles: [autopilot, copilot]
-autonomy: high
-allowed-tools: [Read, Edit, Glob, Grep]
-input:
-  - name: trigger
-    description: "（可选）触发原因——new insights / experiment results / supervisor redirect"
-output:
-  - memory: "Workbench/evolution/changelog.md"
-  - memory: "Workbench/logs/YYYY-MM-DD.md"
-related-skills: [memory-distill, autoresearch, result-analysis]
+argument-hint: "[trigger]"
+allowed-tools: Read, Edit, Glob, Grep
 ---
 
 ## Purpose

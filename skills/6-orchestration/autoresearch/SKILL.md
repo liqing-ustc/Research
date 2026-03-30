@@ -4,19 +4,8 @@ description: >
   MindFlow 的核心研究循环。当 Supervisor 说"自己干活吧""开始研究"，
   或系统需要自主推进研究时启动。
   持续运行：读取当前状态 → 判断最高价值行动 → 调用卫星 skill → 记录 → 循环
-version: 1.0.0
-intent: orchestration
-capabilities: [agent-workflow, research-planning]
-domain: general
-roles: [autopilot]
-autonomy: high
-allowed-tools: [Read, Write, Edit, Glob, Grep, WebSearch, WebFetch]
-input:
-  - name: focus
-    description: "（可选）聚焦某个 agenda direction"
-output:
-  - memory: "Workbench/logs/YYYY-MM-DD.md"
-related-skills: [paper-digest, cross-paper-analysis, literature-survey, idea-generate, idea-evaluate, experiment-design, experiment-track, result-analysis, draft-section, writing-refine, memory-distill, agenda-evolve, memory-retrieve]
+argument-hint: "[focus]"
+allowed-tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch
 ---
 
 ## Purpose

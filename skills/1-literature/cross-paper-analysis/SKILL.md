@@ -2,28 +2,8 @@
 name: cross-paper-analysis
 description: >
   当需要对比多篇论文的方法/结论/实验设置，或 Supervisor 说"对比""分析这几篇"时，执行跨论文对比并识别共识、矛盾和知识空白
-version: 1.0.0
-intent: literature
-capabilities: [research-planning, cross-validation]
-domain: general
-roles: [autopilot, sparring, copilot]
-autonomy: medium
-related-skills: [paper-digest, memory-distill]
-allowed-tools:
-  - Read
-  - Write
-  - Edit
-  - Glob
-  - Grep
-input:
-  - name: papers
-    description: "要对比的论文列表：[[wikilinks]] 或 tag 筛选条件（如 'tags: VLA'）"
-  - name: focus
-    description: "（可选）对比维度，如 'method comparison'、'scaling behavior'"
-output:
-  - file: "Topics/{topic}-Analysis.md"
-  - memory: "Workbench/memory/patterns.md (append if patterns found)"
-  - memory: "Workbench/logs/YYYY-MM-DD.md (append log entry)"
+argument-hint: "<papers> [focus]"
+allowed-tools: Read, Write, Edit, Glob, Grep
 ---
 
 ## Purpose

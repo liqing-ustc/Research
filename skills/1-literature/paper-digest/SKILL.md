@@ -2,28 +2,8 @@
 name: paper-digest
 description: >
   当 Supervisor 给出论文 URL/标题/PDF/DOI，或阅读队列中有待处理论文时，消化论文并生成结构化笔记到 Papers/
-version: 1.0.0
-intent: literature
-capabilities: [search-retrieval, research-planning]
-domain: general
-roles: [autopilot, copilot]
-autonomy: high
-allowed-tools:
-  - Read
-  - Write
-  - Edit
-  - Glob
-  - Grep
-  - WebSearch
-  - WebFetch
-input:
-  - name: source
-    description: "论文来源：arXiv URL、PDF 路径、论文标题、或 DOI"
-output:
-  - file: "Papers/YYMM-ShortTitle.md"
-  - memory: "Workbench/logs/YYYY-MM-DD.md (append log entry)"
-budget:
-  max_web_calls: 5
+argument-hint: "[arXiv URL / PDF path / title / DOI]"
+allowed-tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch
 ---
 
 ## Purpose

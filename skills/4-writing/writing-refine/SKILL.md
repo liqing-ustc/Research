@@ -4,23 +4,8 @@ description: >
   当 Supervisor 说"打磨一下""改改这段""逻辑不通顺"，
   或 autoresearch 在写作阶段自检时，
   从结构/清晰度/论据三个维度打磨已有文稿
-version: 1.0.0
-intent: writing
-capabilities: [prompt-structured-output]
-domain: general
-roles: [copilot]
-autonomy: low
-allowed-tools: [Read, Edit, Glob, Grep]
-input:
-  - name: target
-    description: "目标文件路径"
-  - name: section
-    description: "（可选）指定章节，不指定则全文"
-  - name: focus
-    description: "（可选）打磨重点——structure / clarity / evidence / all"
-output:
-  - memory: "Workbench/logs/YYYY-MM-DD.md"
-related-skills: [draft-section]
+argument-hint: "<target> [section] [focus]"
+allowed-tools: Read, Edit, Glob, Grep
 ---
 
 ## Purpose

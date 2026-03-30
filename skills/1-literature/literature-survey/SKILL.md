@@ -2,31 +2,8 @@
 name: literature-survey
 description: >
   当 Supervisor 说"调研""survey""了解研究现状"，或需要系统了解某主题的文献全貌时，搜索外部文献、批量 digest、综合生成调研报告
-version: 1.0.0
-intent: orchestration
-capabilities: [search-retrieval, research-planning, agent-workflow]
-domain: general
-roles: [autopilot, copilot]
-autonomy: medium
-related-skills: [paper-digest, cross-paper-analysis]
-allowed-tools:
-  - Read
-  - Write
-  - Edit
-  - Glob
-  - Grep
-  - WebSearch
-  - WebFetch
-input:
-  - name: topic
-    description: "研究主题或问题，如 'VLA for manipulation'、'diffusion policy in robotics'"
-  - name: scope
-    description: "（可选）约束条件：时间范围（如 '2023-2026'）、venue 偏好（如 'top-tier only'）、论文数量上限（默认 8）"
-output:
-  - file: "Topics/{Topic}-Survey.md"
-  - memory: "Workbench/logs/YYYY-MM-DD.md (append log entry)"
-budget:
-  max_web_calls: 10
+argument-hint: "<topic> [scope]"
+allowed-tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch
 ---
 
 ## Purpose

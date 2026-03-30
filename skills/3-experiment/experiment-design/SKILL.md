@@ -4,22 +4,8 @@ description: >
   当 Supervisor 说"设计个实验""怎么验证这个 idea"，
   或 autoresearch 判断某个 developing/validated idea 需要实验验证时，
   为 idea 设计完整实验方案
-version: 1.0.0
-intent: experiment
-capabilities: [research-planning]
-domain: general
-roles: [autopilot, copilot]
-autonomy: medium
-allowed-tools: [Read, Write, Edit, Glob, Grep]
-input:
-  - name: idea
-    description: "[[Ideas/xxx.md]] 引用（status 为 developing 或 validated）"
-  - name: constraints
-    description: "（可选）资源约束，如 '单卡 A100'、'纯理论推导'"
-output:
-  - file: "Experiments/*.md"
-  - memory: "Workbench/logs/YYYY-MM-DD.md"
-related-skills: [idea-evaluate, experiment-track, memory-retrieve]
+argument-hint: "<idea> [constraints]"
+allowed-tools: Read, Write, Edit, Glob, Grep
 ---
 
 ## Purpose
