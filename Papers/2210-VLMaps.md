@@ -7,7 +7,6 @@ venue: ICRA 2023
 tags: [VLM, navigation, scene-understanding, semantic-map]
 url: https://arxiv.org/abs/2210.05714
 code: https://github.com/vlmaps/vlmaps
-status: reading
 rating: 4
 date_added: "2026-03-24"
 ---

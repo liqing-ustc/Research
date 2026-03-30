@@ -4,11 +4,10 @@ authors: [Chenhao Li, Andreas Krause, Marco Hutter]
 institute: [ETH Zurich]
 date_publish: "2025-01"
 venue: "arXiv"
-tags: [world-model, model-based-RL, legged-locomotion, sim-to-real, policy-optimization]
+tags: [world-model, RL, legged]
 url: "https://arxiv.org/abs/2501.10100"
 code: ""
-status: unread
-rating:
+rating: 3
 date_added: "2026-03-30"
 ---
 ## Summary

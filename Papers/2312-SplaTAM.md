@@ -7,7 +7,6 @@ venue: CVPR 2024
 tags: [SLAM, 3D-representation]
 url: https://arxiv.org/abs/2312.02126
 code: https://github.com/spla-tam/SplaTAM
-status: reading
 rating: 4
 date_added: "2026-03-24"
 ---

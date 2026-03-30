@@ -4,11 +4,10 @@ authors: [Seonghyeon Ye, Yunhao Ge, Kaiyuan Zheng, Shenyuan Gao, Sihyun Yu, Geor
 institute: [NVIDIA]
 date_publish: "2026-02"
 venue: "arXiv"
-tags: [world-model, VLA, imitation-learning, cross-embodiment, video-diffusion, robot-manipulation]
+tags: [world-model, VLA, imitation-learning, cross-embodiment, manipulation]
 url: "https://arxiv.org/abs/2602.15922"
 code: "https://github.com/dreamzero0/dreamzero"
-status: unread
-rating:
+rating: 5
 date_added: "2026-03-30"
 ---
 ## Summary

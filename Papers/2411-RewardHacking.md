@@ -7,8 +7,7 @@ venue: "Lilian Weng Blog"
 tags: [RL]
 url: "https://lilianweng.github.io/posts/2024-11-28-reward-hacking/"
 code:
-status: unread
-rating:
+rating: 2
 date_added: "2026-03-30"
 ---
 ## Summary

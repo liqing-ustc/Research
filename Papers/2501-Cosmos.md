@@ -4,11 +4,10 @@ authors: [Niket Agarwal, Arslan Ali, Maciej Bala, Yogesh Balaji, Erik Barker, Ti
 institute: [NVIDIA]
 date_publish: "2025-01"
 venue: "arXiv"
-tags: [world-model, video-generation, physical-AI, tokenizer, diffusion, autoregressive, robotics, autonomous-driving]
+tags: [world-model]
 url: "https://arxiv.org/abs/2501.03575"
 code: "https://github.com/nvidia-cosmos/cosmos-predict1"
-status: unread
-rating:
+rating: 4
 date_added: "2026-03-30"
 ---
 ## Summary

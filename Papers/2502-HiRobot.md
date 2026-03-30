@@ -7,7 +7,6 @@ venue: arXiv
 tags: [VLA, VLM, manipulation, instruction-following, task-planning]
 url: https://arxiv.org/abs/2502.19417
 code: ""
-status: reading
 rating: 5
 date_added: "2026-03-24"
 ---

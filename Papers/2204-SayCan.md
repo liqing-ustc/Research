@@ -55,7 +55,6 @@ tags:
   - mobile-manipulation
 url: https://arxiv.org/abs/2204.01691
 code:
-status: reading
 rating: 5
 date_added: 2026-03-24
 ---

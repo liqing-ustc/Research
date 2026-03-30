@@ -4,11 +4,10 @@ authors: [Hongzhe Bi, Hengkai Tan, Shenghao Xie, Zeyuan Wang, Shuhe Huang, Haiti
 institute: [Tsinghua University, Motus Robotics]
 date_publish: "2025-12"
 venue: "arXiv"
-tags: [world-model, VLA, cross-embodiment, latent-action, optical-flow, mixture-of-transformers]
+tags: [world-model, VLA, cross-embodiment]
 url: "https://arxiv.org/abs/2512.13030"
 code: ""
-status: unread
-rating:
+rating: 5
 date_added: "2026-03-30"
 ---
 ## Summary

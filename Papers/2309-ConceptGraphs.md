@@ -7,7 +7,6 @@ venue: ICRA 2024
 tags: [SLAM, scene-understanding, task-planning]
 url: https://arxiv.org/abs/2309.16650
 code: https://github.com/concept-graphs/concept-graphs
-status: reading
 rating: 5
 date_added: "2026-03-24"
 ---

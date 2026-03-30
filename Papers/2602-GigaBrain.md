@@ -7,8 +7,7 @@ venue: "arXiv"
 tags: [VLA, world-model, RL, manipulation]
 url: "https://arxiv.org/abs/2602.12099"
 code: ""
-status: unread
-rating:
+rating: 4
 date_added: "2026-03-30"
 ---
 ## Summary

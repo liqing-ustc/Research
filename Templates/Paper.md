@@ -7,8 +7,7 @@ venue:
 tags: []
 url:
 code:
-status: unread
-rating:
+rating: "%% 1=不相关, 2=了解即可, 3=有参考价值, 4=重要, 5=必读 %%"
 date_added: "{{date}}"
 ---
 ## Summary

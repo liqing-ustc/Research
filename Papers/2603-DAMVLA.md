@@ -7,8 +7,7 @@ venue: "arXiv"
 tags: [VLA, manipulation]
 url: https://arxiv.org/abs/2603.00926
 code: ""
-status: unread
-rating:
+rating: 3
 date_added: "2026-03-30"
 ---
 ## Summary

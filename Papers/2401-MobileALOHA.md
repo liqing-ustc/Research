@@ -7,7 +7,6 @@ venue: CoRL 2024
 tags: [mobile-manipulation, imitation-learning, manipulation]
 url: https://arxiv.org/abs/2401.02117
 code: https://github.com/MarkFzp/mobile-aloha
-status: reading
 rating: 4
 date_added: "2026-03-24"
 ---

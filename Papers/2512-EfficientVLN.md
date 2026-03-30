@@ -7,8 +7,7 @@ venue: NAACL 2025
 tags: [VLN, navigation]
 url: https://arxiv.org/abs/2512.10310
 code:
-status: reading
-rating:
+rating: 4
 date_added: "2026-03-27"
 ---
 ## Summary

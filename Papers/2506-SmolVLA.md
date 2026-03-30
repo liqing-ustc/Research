@@ -7,8 +7,7 @@ venue: arXiv
 tags: [VLA, flow-matching, imitation-learning, manipulation]
 url: https://arxiv.org/abs/2506.01844
 code: https://github.com/huggingface/lerobot
-status: unread
-rating:
+rating: 4
 date_added: "2026-03-27"
 ---
 ## Summary

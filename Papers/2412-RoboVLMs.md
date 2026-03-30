@@ -7,8 +7,7 @@ venue: arXiv
 tags: [VLA, manipulation, imitation-learning, cross-embodiment]
 url: https://arxiv.org/abs/2412.14058
 code: https://robovlms.github.io
-status: unread
-rating:
+rating: 5
 date_added: "2026-03-27"
 ---
 ## Summary

@@ -7,7 +7,6 @@ venue: AAAI 2024
 tags: [VLN, navigation, task-planning]
 url: https://arxiv.org/abs/2305.16986
 code: https://github.com/GengzeZhou/NavGPT
-status: reading
 rating: 4
 date_added: "2026-03-24"
 ---

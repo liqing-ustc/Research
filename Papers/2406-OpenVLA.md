@@ -7,7 +7,6 @@ venue: ICML 2025
 tags: [VLA, manipulation, cross-embodiment]
 url: https://arxiv.org/abs/2406.09246
 code: https://github.com/openvla/openvla
-status: reading
 rating: 4
 date_added: "2026-03-24"
 ---

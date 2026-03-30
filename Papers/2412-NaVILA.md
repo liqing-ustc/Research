@@ -7,7 +7,6 @@ venue: RSS 2025
 tags: [VLA, VLN, VLM, navigation, legged]
 url: https://arxiv.org/abs/2412.04453
 code: https://github.com/AnjieCheng/NaVILA
-status: reading
 rating: 5
 date_added: "2026-03-24"
 ---
