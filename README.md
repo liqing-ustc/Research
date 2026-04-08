@@ -40,6 +40,7 @@ An Obsidian-based research workspace for building a **human-AI collaborative res
 
 - [Obsidian](https://obsidian.md/) (free)
 - [Claude Code](https://claude.ai/code) (for AI-assisted research workflow)
+- If you do not have Claude, you can also use [Cursor](docs/CURSOR_SETUP.md)
 
 ## Directory Structure
 
