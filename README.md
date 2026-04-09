@@ -32,14 +32,10 @@ An Obsidian-based research workspace for building a **human-AI collaborative res
 
 ## Getting Started
 
-1. Clone this repo and open it as an Obsidian vault
-2. Obsidian settings are pre-configured (templates, attachments, link format)
-3. Start creating notes using templates: `Ctrl/Cmd + P` → "Templates: Insert template"
-
-### Prerequisites
-
-- [Obsidian](https://obsidian.md/) (free)
-- [Claude Code](https://claude.ai/code) (for AI-assisted research workflow)
+See [INSTALL.md](docs/INSTALL.md) for detailed installation instructions. You can follow the steps manually, or simply copy the following instruction into your CLI agent:
+```
+Install MindFlow from: https://github.com/liqing-ustc/mindflow/blob/main/docs/INSTALL.md
+```
 
 ## Directory Structure
 

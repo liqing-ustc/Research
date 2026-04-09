@@ -7,6 +7,7 @@
 
 # Claude Code
 .claude/
+.claudian/
 
 # Daily papers transient data
 Workbench/daily/.candidates.json
