@@ -1,6 +1,6 @@
 ---
 title: "NavPreGrasp: Navigation-Aware Manipulation Pre-Positioning"
-tags: [VLA, VLN, manipulation, navigation, mobile-manipulation]
+tags: [mobile-manipulation, VLA, VLN, manipulation, navigation]
 status: raw
 linked_project:
 date_updated: "2026-03-31"

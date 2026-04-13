@@ -4,7 +4,7 @@ authors: [Boyuan Chen, Zhuo Xu, Sean Kirmani, Brian Ichter, Danny Driess, Pete F
 institute: [Google DeepMind, MIT, Stanford University]
 date_publish: 2024-01
 venue: CVPR 2024
-tags: [VLM, scene-understanding, 3D-representation, spatial-memory]
+tags: [VLM, spatial-reasoning, 3D-representation]
 url: https://arxiv.org/abs/2401.12168
 code: https://github.com/remyxai/VQASynth
 rating: 3

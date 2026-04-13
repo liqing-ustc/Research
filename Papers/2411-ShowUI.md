@@ -4,7 +4,7 @@ authors: [Kevin Qinghong Lin, Linjie Li, Difei Gao, Zhengyuan Yang, Shiwei Wu, Z
 institute: [National University of Singapore, Microsoft]
 date_publish: 2024-11-26
 venue: "arXiv"
-tags: [VLM, web-agent, instruction-following]
+tags: [web-agent, VLM, instruction-following]
 url: https://arxiv.org/abs/2411.17465
 code: https://github.com/showlab/ShowUI
 rating: "4"

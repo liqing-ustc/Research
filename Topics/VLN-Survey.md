@@ -4,8 +4,6 @@ tags:
   - VLN
   - navigation
   - spatial-memory
-  - task-planning
-  - survey
 date_updated: 2026-04-01
 year_range: 2022-2026
 papers_analyzed: 18

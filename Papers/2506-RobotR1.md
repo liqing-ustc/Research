@@ -4,7 +4,7 @@ authors: [Dongyoung Kim, Sumin Park, Huiwon Jang, Jinwoo Shin, Jaehyung Kim, You
 institute: [KAIST]
 date_publish: "2025-06"
 venue: "NeurIPS 2025"
-tags: [VLA, VLM, RL, manipulation, spatial-reasoning]
+tags: [VLM, RL, spatial-reasoning, manipulation, VLA]
 url: "https://arxiv.org/abs/2506.00070"
 code: ""
 rating: 4

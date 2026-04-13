@@ -6,8 +6,8 @@ attendees:
   - Qing
 tags:
   - navigation
-  - spatial-intelligence
   - VLA
+  - VLN
 ---
 
 ## 核心议题

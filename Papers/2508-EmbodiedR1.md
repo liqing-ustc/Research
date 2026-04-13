@@ -4,7 +4,7 @@ authors: [Yifu Yuan, Haiqin Cui, Yaoting Huang, Yibin Chen, Fei Ni, Zibin Dong, 
 institute: [Tianjin University]
 date_publish: "2025-08"
 venue: arXiv
-tags: [VLA, VLM, RL, manipulation, cross-embodiment, scene-understanding]
+tags: [VLM, RL, manipulation, cross-embodiment, scene-understanding, VLA]
 url: "https://arxiv.org/abs/2508.13998"
 code: "https://github.com/pickxiguapi/Embodied-R1"
 rating: 4

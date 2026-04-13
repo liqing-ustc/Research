@@ -4,7 +4,7 @@ authors: [Ruisen Tu, Arth Shukla, Sohyun Yoo, Xuanlin Li, Junxi Li, Jianwen Xie,
 institute: [UC San Diego]
 date_publish: 2026-03-24
 venue: arXiv
-tags: [VLA, mobile-manipulation, spatial-memory, scene-understanding, imitation-learning, flow-matching, manipulation]
+tags: [VLA, mobile-manipulation, scene-understanding, imitation-learning, flow-matching, spatial-memory, manipulation]
 url: https://arxiv.org/abs/2603.22760
 code:
 rating: 4

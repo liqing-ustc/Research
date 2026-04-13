@@ -4,7 +4,7 @@ authors: [Qiao Gu, Alihusein Kuwajerwala, Sacha Morin, Krishna Murthy Jatavallab
 institute: [MIT, Université de Montréal]
 date_publish: 2023-09
 venue: ICRA 2024
-tags: [SLAM, scene-understanding, task-planning]
+tags: [scene-understanding, task-planning, SLAM]
 url: https://arxiv.org/abs/2309.16650
 code: https://github.com/concept-graphs/concept-graphs
 rating: 5

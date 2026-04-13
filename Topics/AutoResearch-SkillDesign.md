@@ -2,8 +2,6 @@
 title: AutoResearch 生态 Skill 设计深度分析
 tags:
   - auto-research
-  - skill-design
-  - architecture
 status: active
 date_updated: 2026-03-28
 ---

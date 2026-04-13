@@ -4,7 +4,7 @@ authors: [Xinyuan Wang, Bowen Wang, Dunjie Lu, Junlin Yang, Tianbao Xie, Junli W
 institute: [XLANG Lab - The University of Hong Kong, Moonshot AI, Stanford University, University of Waterloo, Carnegie Mellon University]
 date_publish: 2025-08-12
 venue: "NeurIPS 2025 Spotlight"
-tags: [web-agent, VLM, imitation-learning, cross-embodiment]
+tags: [computer-use, gui-agent, VLM, imitation-learning]
 url: https://arxiv.org/abs/2508.09123
 code: https://opencua.xlang.ai
 rating: "5"

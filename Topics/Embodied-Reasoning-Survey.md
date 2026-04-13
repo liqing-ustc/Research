@@ -1,6 +1,6 @@
 ---
 title: "Embodied Reasoning Survey"
-tags: [survey, embodied-reasoning, VLA, VLM, spatial-reasoning, RL]
+tags: [embodied-reasoning, VLA, VLM]
 date_updated: "2026-03-30"
 year_range: 2023-2026
 papers_analyzed: 18

@@ -4,7 +4,7 @@ authors: [Baining Zhao, Ziyou Wang, Jianjie Fang, Chen Gao, Fanhang Man, Jinqian
 institute: [Tsinghua University]
 date_publish: "2025-04"
 venue: arXiv
-tags: [VLM, RL, scene-understanding, spatial-memory, navigation]
+tags: [spatial-reasoning, VLM, RL]
 url: "https://arxiv.org/abs/2504.12680"
 code: "https://github.com/EmbodiedCity/Embodied-R.code"
 rating: 4

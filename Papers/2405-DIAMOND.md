@@ -4,7 +4,7 @@ authors: [Eloi Alonso, Adam Jelley, Vincent Micheli, Anssi Kanervisto, Amos Stor
 institute: [University of Geneva, University of Edinburgh, Microsoft Research]
 date_publish: 2024-05
 venue: "NeurIPS 2024 Spotlight"
-tags: [world-model, RL, diffusion, Atari]
+tags: [world-model, RL]
 url: "https://arxiv.org/abs/2405.12399"
 code: "https://diamond-wm.github.io/"
 rating: 4

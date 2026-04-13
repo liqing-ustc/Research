@@ -4,7 +4,7 @@ authors: [Rutav Shah, Albert Yu, Yifeng Zhu, Yuke Zhu, Roberto Martín-Martín]
 institute: [UT Austin]
 date_publish: 2024-10
 venue: arXiv
-tags: [VLM, mobile-manipulation, task-planning, navigation, spatial-memory, instruction-following]
+tags: [mobile-manipulation, VLM, task-planning, navigation, spatial-memory, instruction-following]
 url: https://arxiv.org/abs/2410.06237
 code: https://robin-lab.cs.utexas.edu/BUMBLE/
 rating: 3

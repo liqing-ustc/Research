@@ -4,7 +4,7 @@ authors: [Zhiyong Wu, Zhenyu Wu, Fangzhi Xu, Yian Wang, Qiushi Sun, Chengyou Jia
 institute: [Shanghai AI Laboratory, Shanghai Jiaotong University, The University of Hong Kong, MIT]
 date_publish: 2024-10-30
 venue: "arXiv"
-tags: [VLM, web-agent, cross-embodiment, instruction-following]
+tags: [web-agent, VLM, cross-embodiment, instruction-following]
 url: https://arxiv.org/abs/2410.23218
 code: https://osatlas.github.io/
 rating: "4"

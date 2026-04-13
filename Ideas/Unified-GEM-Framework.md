@@ -1,6 +1,6 @@
 ---
 title: "Unified GEM: Grounding-Exploration-Manipulation 三元决策框架"
-tags: [VLA, VLN, navigation, manipulation, spatial-representation]
+tags: [mobile-manipulation, VLA, VLN]
 status: raw
 linked_project:
 date_updated: "2026-03-31"
@@ -11,7 +11,7 @@ date_updated: "2026-03-31"
 
 ## Motivation
 
-1. **解决的知识空白**：DomainMaps/VLA.md Open Question #1（Nav+Manip 统一架构）和 DomainMaps/SpatialRep.md Open Question #1（Shared spatial representation for Nav+Manip）。现有系统（OK-Robot、SayCan）采用 sequential handoff，navigation 和 manipulation 完全独立，信息不共享。
+1. **解决的知识空白**：DomainMaps/VLA.md Open Question #1 （Nav+Manip 统一架构）和 DomainMaps/SpatialRep.md Open Question #1 （Shared spatial representation for Nav+Manip）。现有系统（OK-Robot、SayCan）采用 sequential handoff，navigation 和 manipulation 完全独立，信息不共享。
 2. **成功的影响**：首次在 unified benchmark 上验证"统一决策空间优于 sequential pipeline"的假设。HomeRobot OVMM 当前 SOTA 仅约 10%，有巨大提升空间。
 3. **时机成熟**：MTU3D（ICCV 2025）已在 navigation 中验证了 grounding-exploration 统一的有效性（GOAT-Bench +23% SR），Habitat 2.0 支持物理交互，AnyGrasp 等现成工具可提供 graspability prior。
 

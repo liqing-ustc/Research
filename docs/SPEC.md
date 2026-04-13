@@ -89,7 +89,7 @@ MindFlow/
 │   ├── skill-protocol.md
 │   ├── memory-protocol.md
 │   ├── agenda-protocol.md
-│   └── tag-taxonomy.md
+│   └── tags.md
 │
 ├── Workbench/           # Researcher 工作状态（Supervisor 可随时查看和编辑）
 │   ├── agenda.md        #   研究议程
@@ -233,7 +233,7 @@ L4: Domain Map      DomainMaps/{Name}.md             持久领域知识
 - 在 Markdown `*` 可能被误解析时转义：`π\*₀.₆`
 
 ### Tags
-- 详见 → `references/tag-taxonomy.md` 
+- 详见 → `references/tags.md` 
 
 ## 6. Protocols
 
@@ -242,7 +242,7 @@ L4: Domain Map      DomainMaps/{Name}.md             持久领域知识
 | Skill Protocol | `references/skill-protocol.md` | SKILL.md 格式、frontmatter 字段、skill levels |
 | Memory Protocol | `references/memory-protocol.md` | 记忆文件格式、L0-L4 晋升规则、更新规则 |
 | Agenda Protocol | `references/agenda-protocol.md` | agenda.md 格式、Researcher 权限、Supervisor override |
-| Tag Taxonomy | `references/tag-taxonomy.md` | Tag 列表、选择原则、更新记录 |
+| Tag Taxonomy | `references/tags.md` | Tag 列表、选择原则、更新记录 |
 
 ## 7. Roadmap
 

@@ -4,7 +4,7 @@ authors: [Kanzhi Cheng, Qiushi Sun, Yougang Chu, Fangzhi Xu, Yantao Li, Jianbing
 institute: [Nanjing University, Shanghai AI Laboratory, National University of Singapore]
 date_publish: 2024-01-17
 venue: ACL 2024
-tags: [VLM, web-agent, instruction-following]
+tags: [web-agent, VLM, instruction-following]
 url: https://arxiv.org/abs/2401.10935
 code: https://github.com/njucckevin/SeeClick
 rating: "4"

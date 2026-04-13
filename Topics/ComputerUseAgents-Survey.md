@@ -1,6 +1,6 @@
 ---
 title: "Computer-Use Agents 领域调研"
-tags: [web-agent, VLM, RL, task-planning]
+tags: [computer-use, gui-agent, VLM, RL]
 date_updated: "2026-04-02"
 year_range: 2024-2026
 papers_analyzed: 23

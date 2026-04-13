@@ -4,7 +4,7 @@ authors: [Wenyi Hong, Weihan Wang, Qingsong Lv, Jiazheng Xu, Wenmeng Yu, Junhui 
 institute: [Tsinghua University, Zhipu AI]
 date_publish: 2023-12-14
 venue: "CVPR 2024 (Highlight)"
-tags: [VLM, web-agent, instruction-following]
+tags: [web-agent, VLM, instruction-following]
 url: https://arxiv.org/abs/2312.08914
 code: https://github.com/THUDM/CogAgent
 rating: "4"

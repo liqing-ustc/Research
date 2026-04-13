@@ -50,9 +50,9 @@ institute: [Google, Everyday Robots]
 date_publish: 2022-04
 venue: CoRL 2022
 tags:
-  - scene-understanding
   - task-planning
   - mobile-manipulation
+  - scene-understanding
 url: https://arxiv.org/abs/2204.01691
 code:
 rating: 5

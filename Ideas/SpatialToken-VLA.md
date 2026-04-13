@@ -1,6 +1,6 @@
 ---
 title: "SpatialToken VLA: Scene Graph as Native VLM Spatial Tokens"
-tags: [VLA, VLN, spatial-representation, scene-graph, VLM-architecture]
+tags: [VLA, VLM, scene-understanding]
 status: raw
 linked_project:
 date_updated: "2026-03-31"
@@ -11,7 +11,7 @@ date_updated: "2026-03-31"
 
 ## Motivation
 
-1. **解决的知识空白**：DomainMaps/SpatialRep.md Open Question #3（Language-grounded spatial querying）和 Active Debate #1（Explicit spatial representation vs end-to-end）。现有方案要么将 scene graph 文本化输入 VLM（OmniVLN: 减少 61.7% tokens 但仍是 text），要么不使用显式空间表示（π0.5: implicit in VLM）。VLM-native spatial tokens 是第三条路。
+1. **解决的知识空白**：DomainMaps/SpatialRep.md Open Question #3 （Language-grounded spatial querying）和 Active Debate #1 （Explicit spatial representation vs end-to-end）。现有方案要么将 scene graph 文本化输入 VLM（OmniVLN: 减少 61.7% tokens 但仍是 text），要么不使用显式空间表示（π0.5: implicit in VLM）。VLM-native spatial tokens 是第三条路。
 2. **成功的影响**：范式级贡献——一种让 VLM "原生理解" 3D 空间的方法。如果 spatial tokens 有效，所有 VLM-based embodied systems 都可以受益（VLA、VLN、embodied QA 等）。
 3. **时机成熟**：OmniVLN（March 2026）已证明 hierarchical scene graph 可以大幅提升 VLM navigation reasoning；VLM-MSGraph（2025）证明 scene graph 可服务 robotic assembly；π₀ 的 action expert tokens 证明 VLM 可以处理非 text 的 domain-specific tokens。
 

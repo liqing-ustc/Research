@@ -55,7 +55,7 @@ allowed-tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch
 
 **去重检查**：用 Glob 扫描 `Papers/` 目录，检查是否已存在同名或同主题笔记（搜索标题关键词）。若发现重复，停止并告知 Human，不创建新文件。
 
-**Tag 选择**：阅读 vault 根目录下的 `references/tag-taxonomy.md`（即 `{vault_root}/references/tag-taxonomy.md`，**不是**本 skill 内的 `references/`），按照规范选择 tag。
+**Tag 选择**：阅读 vault 根目录下的 `references/tags.md`（即 `{vault_root}/references/tags.md`，**不是**本 skill 内的 `references/`），按照规范选择 tag。
 
 **写入文件**：用 Write 将笔记保存到 `Papers/{笔记文件名}.md`。
 

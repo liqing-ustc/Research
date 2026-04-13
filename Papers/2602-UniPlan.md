@@ -4,7 +4,7 @@ authors: [Haoming Ye, Yunxiao Xiao, Cewu Lu, Panpan Cai]
 institute: [Shanghai Jiao Tong University]
 date_publish: "2026-02"
 venue: "arXiv"
-tags: [VLM, mobile-manipulation, task-planning, semantic-map]
+tags: [task-planning, mobile-manipulation, VLM, semantic-map]
 url: "https://arxiv.org/abs/2602.08537"
 code:
 rating: 3

@@ -4,7 +4,7 @@ authors: [Dani Valevski, Yaniv Leviathan, Moab Arar, Shlomi Fruchter]
 institute: [Google Research, Google DeepMind, Tel Aviv University]
 date_publish: 2024-08
 venue: "ICLR 2025"
-tags: [world-model, RL, diffusion, game-engine]
+tags: [world-model, RL]
 url: "https://arxiv.org/abs/2408.14837"
 code: "https://gamengen.github.io/"
 rating: 4

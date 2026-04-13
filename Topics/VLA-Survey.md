@@ -4,7 +4,6 @@ tags:
   - VLA
   - manipulation
   - flow-matching
-  - survey
 date_updated: 2026-04-01
 year_range: 2023-2026
 papers_analyzed: 26
