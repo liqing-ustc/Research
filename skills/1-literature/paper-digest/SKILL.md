@@ -1,17 +1,16 @@
 ---
 name: paper-digest
-description: >
-  当 Supervisor 给出论文或 blog 的 URL/标题/PDF/DOI，或阅读队列中有待处理条目时，消化内容并生成结构化笔记到 Papers/
-argument-hint: "[arXiv URL / blog URL / PDF path / title / DOI]"
+description: Use when user asks to "read paper", "analyze paper", "summarize paper", "读论文", "分析文献", "帮我看一下这篇paper", "论文笔记", or provides a PDF file that appears to be an academic paper.
+argument-hint: "[arXiv URL / blog URL / PDF path / title]"
 allowed-tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch
 ---
 
 ## Purpose
 
-给定一篇论文或技术 blog 的来源（URL、PDF 路径、标题或 DOI），它自动获取内容、提炼核心信息，并按照 `Templates/Paper.md` 格式生成结构化笔记保存至 `Papers/`。
+给定一篇论文或技术 blog 的来源（URL、PDF 路径、论文标题或者关键词），它自动获取内容、提炼核心信息，生成结构化笔记。
 
 支持两种内容类型：
-- **论文**：arXiv、PDF、DOI 等学术论文
+- **论文**：arXiv、PDF 等学术论文
 - **Blog**：技术博客文章（如 Google Research Blog、Lilian Weng、公司技术博客等）
 
 ## Steps
@@ -20,38 +19,33 @@ allowed-tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch
 
 根据 `source` 的类型选择获取方式：
 
-- **arXiv URL**（如 `https://arxiv.org/abs/2603.08127`）：用 WebFetch 抓取该页面。若需要正文，同时抓取对应的 HTML 全文页（如 `https://arxiv.org/html/2603.08127`）。
-- **PDF 路径**（如 `/path/to/paper.pdf`）：用 Read 读取文件内容。
-- **论文标题或关键词**：用 WebSearch 搜索（建议加上 `site:arxiv.org` 或 `filetype:pdf`），从结果中定位最可能的论文页面，再用 WebFetch 获取内容。
-- **DOI**（如 `10.1145/...`）：用 WebFetch 抓取 `https://doi.org/<DOI>`，跟随重定向到出版商页面。
-- **Blog URL**（非 arXiv/DOI 的普通网页链接）：用 WebFetch 抓取页面内容。从页面中提取作者、发布日期等元数据。
+| 类型        | 示例                                 | 获取方式                                                                |
+| :-------- | :--------------------------------- | :------------------------------------------------------------------ |
+| arXiv URL | `https://arxiv.org/abs/{arxiv_id}` | WebFetch 抓取arxiv HTML: `https://arxiv.org/html/{arxiv_id}`          |
+| PDF 路径    | `/path/to/paper.pdf`               | Read 直接读取                                                           |
+| 论文标题/关键词  | `"Diffusion Policy"`               | WebSearch（建议加 `site:arxiv.org`），定位论文arxiv id后，WebFetch 抓取arxiv HTML |
+| Blog URL  | `https://lilianweng.github.io/...` | WebFetch 抓取页面                                                       |
 
-从获取到的内容中提取以下元数据（如果全文无法获取，至少要获取 abstract）：
+### Step 2：笔记生成
 
-| 字段             | 说明                                      |
-| :------------- | :-------------------------------------- |
-| `title`        | 完整论文标题                                  |
-| `authors`      | 作者列表（字符串数组）                             |
-| `institute`    | 作者所属机构（字符串数组，从 affiliation 提取）          |
-| `date_publish` | 发表日期，格式 `YYYY-MM-DD`、`YYYY-MM` 或 `YYYY` |
-| `venue`        | 发表场所，如 `NeurIPS 2025`、`arXiv`；blog 填来源名如 `Google DeepMind Blog`、`Lilian Weng Blog` |
-| `url`          | 论文链接（优先用论文主页，无则用 arXiv abstract 页）     |
-| `code`         | GitHub 代码链接（若论文中提及）                     |
+**模板**: 遵循 `references/paper-note-template.md`，不可自行简化。
 
-### Step 2：阅读并理解
+#### 核心质量规则
+1. **主要图表和公式数量下限（硬性）**：
+   - Figures：**架构/方法图**（嵌入 Method，必须）+ **主结果图**（嵌入 Experiments → Results 子节，必须）+ **teaser 图**（嵌入 Summary 之后，若论文有则必须，没有则跳过）。判断 teaser：看 Figure 1 是否为 "overview / concept / 动机示意"类整体图示；若 Figure 1 本身就是架构图，则不存在独立 teaser，只需嵌入到 Method 即可，不要重复嵌入
+   - Tables ≥ 1：主 benchmark 对比表，包含主要 baseline 和论文方法的结果，复制为 Markdown 表格嵌入 Experiments → Results
+   - Equations ≥ 1：核心 loss / 更新规则 / 目标函数，嵌入 Method 段
+   - 图表公式必须**内嵌在对应论证段落**（Method / Experiments）中，不单独开章节
+2. **模板填写提示的处理**: 模板中形如 `%% ... %%` 的块是 Obsidian 隐藏注释，用于提示如何填写。生成笔记时必须**替换为实际内容**，或在无内容时保留为空。**禁止**把提示文本当正文写出来。
+3. **内联概念链接**: 笔记中首次出现的技术术语必须用 `[[Concept]]` wikilink 标注，例如 `[[Flow Matching]]`、`[[LoRA]]`、`[[Action Chunking]]`
+4. **严禁 ASCII 流程图**: 用结构化 Markdown 列表 + `$数学符号$` 描述架构
+5. **公式格式**: 遵循模板的 `**Equation #. {公式名}**` + `$$` 块 + `**符号说明**` + `**含义**` 扁平结构。`$$` 块前后**必须有空行**否则 Obsidian 不渲染。超长公式用 `aligned` 拆分。公式名无需 wikilink；若该公式对应某个已有概念笔记，可在正文首次提及该概念时用 `[[Concept]]` 标注。
+6. **图片外链优先**: arXiv HTML / 项目主页 / GitHub，找不到再本地下载
+7. **Blog 适配**: 若 source 为 blog 而非论文，删除或简化 `Experiments` 段（`Datasets` / `Implementation Details` 通常不适用；`Results` 改为 "Key Points"），`可复现性评估` 整段删除。`关联笔记` 里无内容的子类也直接删除。
 
-**Read Critically**——论文不是圣经。找出隐含假设和适用边界，ablation、failure case、baseline 选择往往比 main result 更有信息量。对高引论文同样保持批判。
+> 公式/图片/表格的详细质量规范见 `references/quality-standards.md`
 
-通读获取到的内容，重点提炼以下四个维度：
-
-1. **Problem & Motivation**：作者要解决什么问题？现有方法有什么局限？为什么这个问题重要？
-2. **Method**：核心方法/架构是什么？关键设计选择有哪些？用简洁的中文描述，保留必要的英文术语。对于 blog，此处提炼文章的核心论点或技术方案。
-3. **Key Results**：主要实验结果是什么？在哪些 benchmark 上取得了什么指标？核心 takeaway 是什么？对于 blog，提炼关键结论、数据或 demo 效果。
-4. **Strengths & Weaknesses**：方法的亮点与局限，以及对该领域的潜在影响。严格区分已知、推测、不知道——不 overclaim，不掩盖方法的局限。
-
-如果只能获取 abstract 而非全文，在所有内容区块开头加注：`> [未获取全文，仅基于 abstract]`
-
-### Step 3：确定文件名和 tags
+### Step 3：笔记文件保存
 
 **文件名格式**：`YYMM-ShortTitle.md`
 
@@ -63,107 +57,32 @@ allowed-tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch
 
 **Tag 选择**：阅读 `references/tag-taxonomy.md`，按照规范选择 tag。
 
-### Step 4：生成笔记
+**写入文件**：用 Write 将笔记保存到 `Papers/{笔记文件名}.md`。
 
-读取 `Templates/Paper.md`，按模板中的字段和 `%%` 注释指导填写所有内容。
+### Step 4：日志记录
 
-补充规则（模板未涵盖的）：
-- **rating**：必填，按模板中的 1-5 分制评分，基于内容质量和与当前研究方向的相关性综合判断
-- **未获取全文**：在受影响的章节开头加注 `> [未获取全文，仅基于 abstract]`，不得推测正文内容
-- **date_added**：填写今天日期，格式 `YYYY-MM-DD`
-
-### Step 5：保存并记录
-
-1. **写入文件**：用 Write 将笔记保存到 `Papers/YYMM-ShortTitle.md`。
-
-2. **追加日志**：用 Edit（或 Write 若文件不存在）将以下格式的 log entry 追加到 `Workbench/logs/YYYY-MM-DD.md`（日期为今天）：
+用 Edit（或 Write 若文件不存在）将以下格式的 log entry 追加到 `Workbench/logs/YYYY-MM-DD.md`（日期为今天）：
 
    ```markdown
    ### [HH:MM] paper-digest
    - **input**: <source 的原始内容>
-   - **output**: [[Papers/YYMM-ShortTitle]]
+   - **output**: [[Papers/{笔记文件名}]]
    - **observation**: <一句话描述论文核心贡献>
    - **status**: success
    ```
 
-   若日志文件不存在，先创建文件（包含一级标题 `# YYYY-MM-DD`），再追加 entry。
-
-3. **阅读队列**：若 source 来自阅读队列（`Workbench/queue.md` 的 Reading 部分），用 Edit 将对应条目标记为已完成（如在行首添加 `✓` 或删除该条目）。
-
-## Guard
-
-- **不覆盖已有笔记**：若 `Papers/YYMM-ShortTitle.md` 已存在，停止执行并告知 Human，不得覆盖或修改已有文件。
-- **不捏造信息**：所有字段必须来自论文原文。无法获取全文时，在受影响的章节开头标注 `> [未获取全文，仅基于 abstract]`，不得推测正文内容填充 Method / Key Results 等节。
-- **语言规范**：正文用中文撰写，英文技术术语（模型名、方法名、benchmark 名）保持英文，不做翻译。
+若日志文件不存在，先创建文件（包含一级标题 `# YYYY-MM-DD`），再追加 entry。
 
 ## Verify
 
-- [ ] `Papers/YYMM-ShortTitle.md` 已创建且正文 >200 字
-- [ ] frontmatter 的 title、authors、date_publish 字段非空
-- [ ] Summary 节非空且不超过 3 句话
+- [ ] `Papers/{笔记文件名}.md` 已创建
+- [ ] 关键 concept 已用 `[[concept]]` wikilink 标注
+- [ ] 架构/方法图已嵌入 Method 段（必须）
+- [ ] 主结果图已嵌入 Experiments → Results 子节（必须）
+- [ ] teaser 图已嵌入 Summary 之后（若论文有独立 teaser；若 Figure 1 即架构图则跳过此项）
+- [ ] Tables ≥ 1（主 benchmark 表已复制为 Markdown，包含主要 baseline 和论文方法的结果）
+- [ ] Equations ≥ 1（核心公式用 `$$` 块，前后空行，含 `符号说明` 与 `含义`）
+- [ ] 模板中的 `%% ... %%` 提示已全部替换为实际内容或留空，无提示文本外泄到正文
+- [ ] `可复现性评估` checkbox 已根据论文与 GitHub repo 实际情况勾选（论文适用时）
+- [ ] `关联笔记` 中无内容的子类已删除
 - [ ] 日志已追加到 `Workbench/logs/YYYY-MM-DD.md`
-
-## Examples
-
-**示例 1：从 arXiv URL 消化论文**
-
-```
-/paper-digest "https://arxiv.org/abs/2603.08127"
-```
-
-执行过程：
-1. WebFetch `https://arxiv.org/abs/2603.08127` 获取 abstract、作者、日期等元数据
-2. WebFetch `https://arxiv.org/html/2603.08127` 获取 HTML 全文
-3. 提炼 Problem / Method / Results / Strengths & Weaknesses
-4. Glob `Papers/2603-*.md` 检查是否重复
-5. 读取 `references/tag-taxonomy.md` 选取合适 tags
-6. Grep `Papers/` 和 `Ideas/` 搜索相关笔记
-7. 写入 `Papers/2603-EvoScientist.md`
-8. 追加日志到 `Workbench/logs/2026-03-26.md`
-
-输出文件：`Papers/2603-EvoScientist.md`
-
----
-
-**示例 2：从论文标题搜索**
-
-```
-/paper-digest "Diffusion Policy: Visuomotor Policy Learning via Action Diffusion"
-```
-
-执行过程：
-1. WebSearch `"Diffusion Policy: Visuomotor Policy Learning via Action Diffusion" site:arxiv.org`
-2. 获取 arXiv 链接，WebFetch 抓取内容
-3. 后续步骤同示例 1
-
-输出文件：`Papers/2303-DiffusionPolicy.md`
-
----
-
-**示例 3：从本地 PDF 消化**
-
-```
-/paper-digest "/Users/qingli/Downloads/roboclaw_2025.pdf"
-```
-
-执行过程：
-1. Read `/Users/qingli/Downloads/roboclaw_2025.pdf` 读取 PDF 内容
-2. 从内容中提取元数据（title、authors、date、venue）
-3. 后续步骤同示例 1
-
----
-
-**示例 4：从 blog URL 消化**
-
-```
-/paper-digest "https://lilianweng.github.io/posts/2024-11-28-reward-hacking/"
-```
-
-执行过程：
-1. WebFetch 抓取 blog 页面内容
-2. 提取元数据：title、author（Lilian Weng）、date_publish、venue 填 `Lilian Weng Blog`
-3. institute、code 无法确定则留空
-4. 提炼 Problem / Method（核心论点）/ Key Results（关键结论）/ Strengths & Weaknesses
-5. 后续去重、tag 选择、Connections 搜索、保存、日志同论文流程
-
-输出文件：`Papers/2411-RewardHacking.md`
