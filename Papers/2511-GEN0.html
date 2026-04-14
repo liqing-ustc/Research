@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en"><head><title>GEN-0: Embodied Foundation Models That Scale with Physical Interaction</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="GEN-0: Embodied Foundation Models That Scale with Physical Interaction"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="GEN-0: Embodied Foundation Models That Scale with Physical Interaction"/><meta name="twitter:description" content="Summary Generalist AI 发布 GEN-0——在 270,000 小时真实操作数据上预训练的 embodied 基础模型，报告在 7B+ 规模上观察到 ossification 的相变，并给出下游任务预测误差随预训练数据量的幂律 scaling law。 Key Takeaways: Ossification 相变出现在 ..."/><meta property="og:description" content="Summary Generalist AI 发布 GEN-0——在 270,000 小时真实操作数据上预训练的 embodied 基础模型，报告在 7B+ 规模上观察到 ossification 的相变，并给出下游任务预测误差随预训练数据量的幂律 scaling law。 Key Takeaways: Ossification 相变出现在 ..."/><meta property="og:image:alt" content="Summary Generalist AI 发布 GEN-0——在 270,000 小时真实操作数据上预训练的 embodied 基础模型，报告在 7B+ 规模上观察到 ossification 的相变，并给出下游任务预测误差随预训练数据量的幂律 scaling law。 Key Takeaways: Ossification 相变出现在 ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2511-GEN0"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2511-GEN0"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary Generalist AI 发布 GEN-0——在 270,000 小时真实操作数据上预训练的 embodied 基础模型，报告在 7B+ 规模上观察到 ossification 的相变，并给出下游任务预测误差随预训练数据量的幂律 scaling law。 Key Takeaways: Ossification 相变出现在 ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  padding: 2rem;
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2511-GEN0"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Meetings\&quot;,\&quot;Resources\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="c6hw3h"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/RL" class="sidebar-tag-pill">#RL</a><a href="/mindflow/tags/web-agent" class="sidebar-tag-pill">#web-agent</a><a href="/mindflow/tags/instruction-following" class="sidebar-tag-pill">#instruction-following</a><a href="/mindflow/tags/scene-understanding" class="sidebar-tag-pill">#scene-understanding</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/cross-embodiment" class="sidebar-tag-pill">#cross-embodiment</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2511-GEN0</a></div></nav><h1 class="article-title">GEN-0: Embodied Foundation Models That Scale with Physical Interaction</h1><div class="paper-meta"><span class="paper-venue">Generalist AI Blog</span><span class="paper-authors"><span class="meta-sep">·</span>Generalist AI Team</span></div><p show-comma="true" class="content-meta"><time datetime="2025-11-04T00:00:00.000Z">Nov 04, 2025</time><span>21 min read</span></p><ul class="tags"><li><a href="../tags/VLA" class="internal tag-link">VLA</a></li><li><a href="../tags/manipulation" class="internal tag-link">manipulation</a></li><li><a href="../tags/cross-embodiment" class="internal tag-link">cross-embodiment</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Generalist AI 发布 GEN-0——在 270,000 小时真实操作数据上预训练的 embodied 基础模型，报告在 7B+ 规模上观察到 ossification 的相变，并给出下游任务预测误差随预训练数据量的幂律 scaling law。</p>
+<p><strong>Key Takeaways:</strong></p>
+<ol>
+<li><strong>Ossification 相变出现在 7B 规模</strong>：1B 模型在高数据量下出现 ossification（权重无法吸收新信息），6B 开始受益于预训练，7B+ 能内化大规模机器人预训练数据并以几千步 post-training 迁移到下游任务。这个相变比 LLM 领域观察到的 O(10M) 参数临界点大 ~100 倍，作者把它解释为 Moravec’s Paradox 的实证回声。</li>
+<li><strong>预训练数据 → 后训练性能的幂律</strong>：对于固定 finetuning 预算，下游验证误差 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3567em;margin-left:-0.0037em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">D</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1433em;"><span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span> 随预训练数据规模 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span></span></span> 呈幂律下降，在 16 个多任务验证集上一致成立；真机 A/B 评估显示仅用 5.6 小时 task-specific 数据 post-train 时，预训练数据量直接推升成功率，峰值接近 99%。</li>
+<li><strong>Cross-embodiment by design</strong>：同一个模型已经跑在 6DoF、7DoF 和 16+DoF semi-humanoid（Dexmate VEGA）上，声称无需架构改动。</li>
+<li><strong>Harmonic Reasoning 作为 System1/System2 的替代</strong>：blog 提出”同步思考和行动”的训练范式，通过异步连续时间的感知/动作 token 交织，避免依赖 System1-System2 架构或 inference-time guidance；但正文没有给出 Harmonic Reasoning 的具体技术细节或消融实验。</li>
+<li><strong>数据规模和基础设施是核心壁垒</strong>：270K 小时自有数据集、每周新增 10K 小时、每训练日消化 6.85 年真实经验——blog 大部分技术 claim 都锚定在”数据量级”这个外部不可复核的变量上。</li>
+</ol>
+<p><strong>Teaser 视频</strong>：GEN-0 在多任务多机器人上的 cutdown 剪辑。</p>
+<p><video src="https://generalistai.com/blog/nov-04-2025-GEN-0/assets/gen0_teaser.mp4" controls muted playsinline width="720"></video></p>
+<hr/>
+<h2 id="sources">Sources<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#sources" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>URL</strong>: <a href="https://generalistai.com/blog/nov-04-2025-GEN-0" class="external">https://generalistai.com/blog/nov-04-2025-GEN-0<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+</ul>
+<hr/>
+<h2 id="surpassing-the-intelligence-threshold">Surpassing the Intelligence Threshold<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#surpassing-the-intelligence-threshold" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>GEN-0 的 scaling 实验核心结论是 embodied 模型存在一个”smart-enough”门槛：小于某个规模的模型在高数据量下会出现 ossification，即权重随训练进行逐渐失去吸收新信息的能力。Blog 按规模给出三段式的分化：</p>
+<ul>
+<li><strong>1B</strong> 模型在预训练中早期就饱和，无法吸收复杂多样的 sensorimotor 数据；</li>
+<li><strong>6B</strong> 模型开始受益于预训练并展现多任务能力；</li>
+<li><strong>7B+</strong> 模型能内化大规模机器人预训练，下游只需几千步 post-training 就能迁移。</li>
+</ul>
+<p><strong>Figure 1. Scaling GEN-0 model size (different colors) improves performance in terms of next-action validation prediction error (y-axis, lower is better) on a completely-withheld (zero-shot) long-horizon downstream task. 1B 模型清晰呈现早期 ossification，6B 和 7B 则持续改进。x 轴是预训练 compute，归一化到 GEN-0 7B = 1.0。</strong></p>
+<p><img src="https://generalistai.com/blog/nov-04-2025-GEN-0/assets/ossification.png" alt/></p>
+<p>Blog 声称这是首次在机器人领域观察到 ossification；此前 LLM 文献里这一现象出现在 O(10M) 参数规模，而 GEN-0 的相变点在 O(1B) 以上——作者将此解读为 Moravec’s Paradox 的实证回声：感知和灵巧操作的表达复杂度比抽象推理更高，因此物理智能的激活阈值在 compute 上也更高。</p>
+<h2 id="scaling-laws-for-robotics">Scaling Laws for Robotics<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#scaling-laws-for-robotics" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Figure 1 展示的是预训练期间 model size × compute 对下游 zero-shot 任务的影响。作者进一步问的是另一类 scaling law：<strong>预训练收益如何 persist 到 finetuning 阶段</strong>。实验设计是取一组在不同预训练数据子集上训练好的 checkpoint，对它们在 16 个 task set 上做语言条件化的多任务 supervised fine-tuning。</p>
+<p><strong>Figure 2. 随着预训练数据增加（不同颜色），post-training 期间多任务性能在 validation loss（上图）和 next-action prediction error（下图 4×4 网格，16 个 task set）上一致提升。这些任务包括 dexterity（Lego 搭建）、行业应用（快餐打包）和 generalization（各种 ”_ anything” 任务）。</strong></p>
+<p><img src="https://generalistai.com/blog/nov-04-2025-GEN-0/assets/validation_loss_scaling.png" alt/></p>
+<p><img src="https://generalistai.com/blog/nov-04-2025-GEN-0/assets/validation_pred_error_4x4.png" alt/></p>
+<p>趋势也迁移到真机：blind A/B 评估显示在仅用 5.6 小时 task-specific 数据 post-train 的低数据域，预训练数据量直接推升成功率；最高峰值出现在”大规模预训练 + 充分 task-specific post-training”同时满足时，某些任务上能到 99%。作者强调为了让对比有效，他们确保预训练和 post-training 数据集<strong>人员和环境完全不重叠</strong>。</p>
+<p><strong>Figure 3. 真机评估下，更多预训练数据（不同颜色代表不同预训练 base）带来更高的下游平均任务成功率（closed-loop policy rollouts，画带 standard error）。左侧是仅用 5.6 小时（1%）task-specific 数据 post-train 的结果，右侧是用完整预训练数据集和全部 550+ 小时 task-specific post-training 数据的最佳模型。</strong></p>
+<p><img src="https://generalistai.com/blog/nov-04-2025-GEN-0/assets/real_robot_success_rate_scaling.png" alt/></p>
+<p>上述趋势可以用幂律拟合。给定固定的 finetuning budget 和下游任务，当预训练数据规模为 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span></span></span> 时，下游验证误差 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mopen">(</span><span class="mord">⋅</span><span class="mclose">)</span></span></span></span> 可以用形如下式的幂律预测：</p>
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7144em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3567em;margin-left:-0.0037em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">D</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1433em;"><span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>
+<p><strong>符号说明</strong>：<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span></span></span> 是预训练数据规模（以动作轨迹数计）；<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 是 scale 参数；<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0037em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">D</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 是幂律指数。</p>
+<p><strong>含义</strong>：给定某个下游任务，可以反推”想达到某个预测误差，需要多少预训练数据”或者”多一倍预训练数据能换回多少 task-specific post-training 数据”——作者把它用于和 partner 做预算对齐的决策工具。Blog 举了 Clothes Handling（分拣、整理、扣扣子、挂衣服）这一真实 workplace 任务作为外推示例，声称可以预测 1 billion 动作轨迹下的性能。</p>
+<p><strong>Figure 4. Scaling laws 对 post-trained 模型的 next-action prediction error 作为预训练数据规模（以动作轨迹数计）的函数提供良好描述。结合 model size scaling laws，可以用于预测任何下游 post-training 任务的最优预训练 compute/data 分配。</strong></p>
+<p><img src="https://generalistai.com/blog/nov-04-2025-GEN-0/assets/scaling_law_clothes.png" alt/></p>
+<h2 id="robotics-is-no-longer-limited-by-data">Robotics is No Longer Limited By Data<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#robotics-is-no-longer-limited-by-data" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>GEN-0 的预训练语料是 270,000 小时真实操作轨迹，覆盖 1,000+ 家庭、仓库、workplace，由全球遍布的硬件和 1,000+ 数据采集设备/机器人供给，每周新增 10,000 小时且在加速。</p>
+<p><strong>Figure 5. GEN-0 训练用的真实世界操作数据比目前已知最大的机器人数据集多若干数量级（as of Nov 2025）。</strong></p>
+<p><img src="https://generalistai.com/blog/nov-04-2025-GEN-0/assets/data_size.png" alt/></p>
+<h3 id="mapping-the-universe-of-manipulation">Mapping the Universe of Manipulation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mapping-the-universe-of-manipulation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>为了让 GEN-0 能力扩展到”人类能想到的所有操作”，Generalist 在构造他们声称”史上最大最 diverse”的真实操作数据集，横跨家庭、面包房、洗衣房、仓库、工厂等。Blog 展示了一个内部 t-SNE 可视化工具，允许按语言描述在数据集中做近邻检索。</p>
+<p><strong>Figure 6. 对 &lt;1% 预训练数据的内部搜索示例。可视化通过 t-SNE 映射语言标签 embedding，给定文本描述后定位近邻区域并随机采样相关视频。</strong></p>
+<p><video src="https://generalistai.com/blog/nov-04-2025-GEN-0/assets/data_search.mp4" controls muted playsinline width="720"></video></p>
+<h3 id="infrastructure-for-internet-scale-robot-data">Infrastructure for Internet-Scale Robot Data<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#infrastructure-for-internet-scale-robot-data" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>为了支撑这一规模，Generalist 自建了硬件、dataloader 和网络基础设施——包括为各数据采集点铺设专用 Internet 线路、多云合同、自研上传机、O(10K) 核规模的多模态数据处理、压缩数十 PB 数据，采用前沿 video foundation model 的 dataloading 技术，使得训练日吞吐达到 6.85 年真实世界操作经验。</p>
+<h3 id="science-of-pretraining">Science of Pretraining<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#science-of-pretraining" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>从大规模 ablation 中，作者得出两个经验判断：<strong>数据质量和 diversity 比纯体量更重要</strong>；<strong>不同构造的 data mixture 会得到性质差异显著的 checkpoint</strong>。Table 1 对比了 8 个 pretraining 数据集（由多个数据外包伙伴采集、按不同 class 组织），在 10 个长时序任务集上做 finetune 后评估 dexterity / applications / generalization 三维表现。</p>
+<p>性能通过两个指标度量：动作预测的 validation MSE</p>
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord text"><span class="mord">MSE</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">val</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∥</span><span class="mord"><span class="mord mathbf">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7387em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">⋆</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.1141em;vertical-align:-0.25em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7079em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathbf">a</span></span><span style="top:-3.0134em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">^</span></span></span></span></span></span></span><span class="mord"><span class="mord">∥</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-2.453em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span></span></span></span></span>
+<p>和 reverse KL divergence（更好地衡量 mode-seeking 行为）。Reverse KL 用 Monte-Carlo 估计：policy 采样 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0913em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7079em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathbf">a</span></span><span style="top:-3.0134em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">^</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">m</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose"><span class="mclose">}</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-2.4519em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">m</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">M</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2481em;"><span></span></span></span></span></span></span></span></span></span> 构成单位方差 Gaussian 混合 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span></span></span></span>，ground-truth 诱导 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord mathbf">a</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathcal" style="margin-right:0.14736em;">N</span><span class="mopen">(</span><span class="mord mathbf">a</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathbf">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6887em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">⋆</span></span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathbf">I</span><span class="mclose">)</span></span></span></span>，</p>
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1733em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9233em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span><span class="svg-align" style="width:calc(100% - 0.1111em);margin-left:0.1111em;top:-3.6833em;"><span class="pstrut" style="height:3em;"></span><span style="height:0.24em;"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="0.24em" viewBox="0 0 1062 239" preserveAspectRatio="none"><path d="M529 0h5l519 115c5 1 9 5 9 10 0 1-1 2-1 3l-4 22
+c-1 5-5 9-11 9h-2L532 67 19 159h-2c-5 0-9-4-11-9l-5-22c-1-6 2-12 8-13z"></path></svg></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">KL</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="mord">∥</span><span class="mord mathnormal">p</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:3.0954em;vertical-align:-1.2671em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.8283em;"><span style="top:-1.8829em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">m</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">M</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2671em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="delimsizing size2">[</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="mopen">(</span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7079em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathbf">a</span></span><span style="top:-3.0134em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">^</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">m</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.8em;vertical-align:-0.65em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7079em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathbf">a</span></span><span style="top:-3.0134em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">^</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">m</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mord"><span class="delimsizing size2">]</span></span></span></span></span></span>
+<p><strong>符号说明</strong>：<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6887em;"></span><span class="mord"><span class="mord mathbf">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6887em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">⋆</span></span></span></span></span></span></span></span></span></span></span></span> 为 ground-truth 动作；<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8579em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7079em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathbf">a</span></span><span style="top:-3.0134em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">^</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">m</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 为 policy 第 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span> 个采样；<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span> 为采样数；<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span></span></span></span> 为 policy 诱导的经验分布，<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span></span></span></span> 为 ground-truth 诱导的分布。</p>
+<p><strong>含义</strong>：prediction error 衡量点估计的准确度，reverse KL 衡量分布覆盖与 mode-seeking。作者的经验是：<strong>低 MSE + 低 reverse KL 的模型更适合 SFT post-training；高 MSE + 低 reverse KL 的模型分布更多模态，对 post-training RL 更友好</strong>。</p>
+<p><strong>Table 1a. 不同 partner / class 预训练数据上的 validation prediction error (MSE)，分 dexterity / applications / generalization 三组评估。</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Partner &amp; Class (Pred Err)</th><th>Dexterity</th><th>Applications</th><th>Generalization</th></tr></thead><tbody><tr><td>Partner A Class 1</td><td>0.00307682</td><td>0.00334155</td><td>0.00308992</td></tr><tr><td>Partner A Class 2</td><td>0.00306196</td><td>0.00333253</td><td>0.00306503</td></tr><tr><td>Partner A Class 3</td><td>0.00305728</td><td>0.00331309</td><td>0.00305888</td></tr><tr><td>Partner A Class 2 + 3</td><td>0.00315980</td><td>0.00341899</td><td>0.00315661</td></tr><tr><td>Partner B Class 1</td><td>0.00302728</td><td>0.00330365</td><td>0.00304627</td></tr><tr><td>Partner B Class 2 Objs</td><td>0.00314415</td><td>0.00341147</td><td>0.00315975</td></tr><tr><td>Partner B Class 2 Skills</td><td>0.00301995</td><td>0.00329235</td><td>0.00305292</td></tr><tr><td>Partner C Class 3</td><td>0.00306247</td><td>0.00332128</td><td>0.00307944</td></tr></tbody></table></div>
+<p><strong>Table 1b. 同样 ablation，指标换成 reverse KL divergence。</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Partner &amp; Class (Rev KL)</th><th>Dexterity</th><th>Applications</th><th>Generalization</th></tr></thead><tbody><tr><td>Partner A Class 1</td><td>0.00200585</td><td>0.00258898</td><td>0.00198088</td></tr><tr><td>Partner A Class 2</td><td>0.00188744</td><td>0.00244642</td><td>0.00193866</td></tr><tr><td>Partner A Class 3</td><td>0.00198332</td><td>0.00246089</td><td>0.00190205</td></tr><tr><td>Partner A Class 2 + 3</td><td>0.00184110</td><td>0.00228588</td><td>0.00185473</td></tr><tr><td>Partner B Class 1</td><td>0.00189286</td><td>0.00246051</td><td>0.00192307</td></tr><tr><td>Partner B Class 2 Objs</td><td>0.00184719</td><td>0.00233209</td><td>0.00186721</td></tr><tr><td>Partner B Class 2 Skills</td><td>0.00182561</td><td>0.00242293</td><td>0.00190308</td></tr><tr><td>Partner C Class 3</td><td>0.00192134</td><td>0.00236901</td><td>0.00190956</td></tr></tbody></table></div>
+<p><strong>Insights</strong>: 两张表的绝对数值都挤在非常窄的区间（MSE 0.00302–0.00316，Rev KL 0.00182–0.00200），差异约在 5% 量级。Class 1（特定任务数据）和 Class 2 Skills（技能分区）在 MSE 上最低，Class 2+3 组合在 Rev KL 上最低——作者据此论证”可以按下游目标选择数据 mixture”，但 blog 没有给出方差、显著性检验或 seed 数量，差异是否超过噪声不能判断。表里 partner 身份匿名化，外部无法复核。</p>
+<hr/>
+<h2 id="论文点评">论文点评<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#论文点评" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="strengths">Strengths<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>Ossification phase transition 是一个真正有信息量的实证 claim</strong>：如果 Figure 1 的曲线可信，它给出了”embodied model 需要先过 7B 门槛才能真正受益于预训练”的 mental model，这比常见的 “bigger is better” 更可 actionable，也直接影响后续研究社区的资源分配决策。</li>
+<li><strong>把 LLM 领域成熟的 scaling law 范式（预训练数据 → finetuning 收益的幂律）迁移到机器人</strong>：Figure 2-4 的实验设计对齐了 LLM 社区的 convention，让结论可比较可延伸。Clothes Handling 幂律外推到 1B 轨迹的预测尝试是一个健康的”risky prediction”动作。</li>
+<li><strong>数据量级是 dominant moat</strong>：270K 小时 + 每周 10K 小时的采集速率 + 自建网络/dataloader/多云基础设施——这套 data engine 本身就是独立于模型架构的资产，即便 GEN-0 的模型细节没开源，这个 operation 规模的披露对行业也是有价值的基准线。</li>
+<li><strong>Cross-embodiment 作为设计原则而非 afterthought</strong>：同一个模型跑 6DoF/7DoF/16+DoF（含 semi-humanoid Dexmate VEGA）的声明，符合 embodied FM 领域的合理期待。</li>
+</ol>
+<h3 id="weaknesses">Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>Harmonic Reasoning 几乎没有技术细节</strong>：这是 blog 开篇强调的 “core feature” 之一，正文却没有专门章节、没有架构图、没有 ablation。读者只知道它”涉及 asynchronous continuous-time sensing/acting token 的 harmonic 交互”——不足以判断它是否真能替代 System1-System2 或 inference-time guidance。这是典型的 announcement-level claim，在可复现性上是空白。</li>
+<li><strong>所有关键数字都在 blog 外部不可复核</strong>：模型权重、代码、数据集都未公开；partner 被匿名化（A/B/C）；Figure 2-4 的 x 轴都归一化了，没有绝对量纲；Table 1 没有方差/显著性。这意味着”7B 是相变点&quot;&quot;MSE 差距对应可预测性能差”这些 claim 都只能 take-as-stated。</li>
+<li><strong>Ossification 归因的反事实空白</strong>：1B 模型饱和究竟是 capacity 不够、还是优化器超参/学习率 schedule 没为该规模调优？Blog 没有报告是否在 1B 上尝试更长 warmup、更小 learning rate、或 MoE 等替代方案。一个规模的失败可能有多个解释，作者直接选了 capacity 解释。</li>
+<li><strong>Moravec’s Paradox 的类比是叙事而非证据</strong>：把 “robotics 的相变点比 LLM 大 ~100 倍” 归因于感知和灵巧操作的计算复杂度更高——这是吸引人的故事，但 blog 没给出独立的 complexity-theoretic 或信息论 argument，也没有控制其他可能的混淆变量（如输入 token 密度、data diversity 维度）。</li>
+<li><strong>99% 成功率的 headline 数字披露不完整</strong>：blog 说”certain cases”能达到 99%，没说哪类任务、评估 episode 数、是否允许 retry、怎么定义成功。这是典型需要更多细节才能评估的 marketing-flavored statement。</li>
+</ol>
+<h3 id="可信评估">可信评估<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#可信评估" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="artifact-可获取性">Artifact 可获取性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#artifact-可获取性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><strong>代码</strong>：未发布。Blog 没有提及任何 GitHub repo 或 inference demo；Generalist AI 作为商业公司也没有开源公告。</li>
+<li><strong>模型权重</strong>：未发布。任何规模（1B/6B/7B/10B+）的 checkpoint 均未公开。</li>
+<li><strong>训练细节</strong>：仅高层描述。正文只说”16 个 task set 做多任务 SFT&quot;&quot;5.6 小时 task-specific 数据”等数据量信息，完整超参、学习率、batch size、训练步数、优化器配置、具体架构参数都未披露。</li>
+<li><strong>数据集</strong>：私有。270K 小时数据为 Generalist 自有；pretraining 数据采集 partner 用 Partner A/B/C 匿名化，外部无法访问或复核。</li>
+</ul>
+<h4 id="claim-可验证性">Claim 可验证性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#claim-可验证性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>⚠️ <strong>7B 是 ossification 相变点</strong>：基于单张 Figure 1，x 轴 compute 归一化，y 轴是”完全 withheld 的 long-horizon downstream task”的 prediction error——任务身份、评估样本量、是否多 seed 都未说明。归因 ossification 而非 under-tuning 也没有反事实 ablation。</li>
+<li>⚠️ <strong>预训练数据 → 下游性能的幂律关系</strong>：Figure 2-4 的趋势看起来确实单调，但数据集/模型身份都匿名/归一化，外部无法独立检验幂律指数的稳健性。</li>
+<li>⚠️ <strong>某些任务达到 99% 成功率</strong>：没有任务身份、评估规模、成功定义；典型的半可信 headline。</li>
+<li>⚠️ <strong>Harmonic Reasoning 可替代 System1-System2 架构</strong>：blog 完全没有给出对比实验或技术细节，这是尚无 grounding 的方法论 claim。</li>
+<li>❌ <strong>“270K 小时是史上最大机器人操作数据集” / “10K 小时 / 周” / “6.85 年经验 / 训练日”</strong>：这些是数据运营声明，外部完全不可独立验证；作为商业基础设施披露可以信，作为技术 claim 需打折扣。</li>
+<li>✅ <strong>Cross-embodiment 支持 6DoF/7DoF/16+DoF</strong>：虽然规模与效果不可核，但 blog 视频 gallery 里有 Dexmate VEGA 的实机视频，作为 demo 级 grounding 成立。</li>
+</ul>
+<hr/>
+<h2 id="关联工作">关联工作<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#关联工作" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="基于">基于<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#基于" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Scaling Laws for Neural Language Models</strong> (Kaplan &amp; McCandlish et al., 2021)：方法论祖本，GEN-0 的幂律拟合直接照搬 LLM scaling law 的形式。</li>
+<li><strong>Scaling Laws for Transfer</strong> (Hernandez et al., 2021)：提供”预训练收益 persist 到 finetuning”的概念框架，也是 GEN-0 幂律声明的参照。</li>
+<li><strong>Overtrained Language Models Are Harder to Fine-Tune</strong> (Springer et al., 2025)：LLM 文献中 ossification 的先例，作者引用它来建立类比但强调自己在 pure pretraining 阶段观察到此现象，而非 pretrain-to-finetune setting。</li>
+<li><strong>PaLM-E</strong> (Driess et al., 2023)：embodied multimodal 的前置范式，Generalist 把 PaLM-E 类 vision-language 预训练定位为 GEN-0 之前机器人 FM 的主流做法。</li>
+</ul>
+<h3 id="对比">对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Helix</strong> (Figure AI, 2025)：Harmonic Reasoning 明确对比的 System1-System2 架构代表，GEN-0 声称不需要这种双系统拆分。</li>
+<li><strong>Real-Time Chunking / π0-FAST 类 inference-time guidance</strong> (Black et al., 2025)：另一种处理”physics doesn’t stop”的思路，GEN-0 也声称不依赖这类 inference-time 技巧。</li>
+</ul>
+<h3 id="方法相关">方法相关<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#方法相关" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Moravec’s Paradox</strong> (Moravec, 1988)：叙事框架，用来解释为什么 embodied 的相变点比 LLM 大几个数量级。</li>
+<li><strong>Imitation Learning as f-Divergence Minimization</strong> (Ke et al., 2020) / <strong>Divergence Minimization Perspective on IL</strong> (Seyed Ghasemipour et al., 2019)：reverse KL 作为 mode-seeking 度量的理论依据。</li>
+</ul>
+<hr/>
+<h2 id="速查卡片">速查卡片<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#速查卡片" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>GEN-0: Embodied Foundation Models That Scale with Physical Interaction </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><strong>核心</strong>：在 270K 小时真实操作数据上预训练的 embodied FM，报告 7B 规模的 ossification 相变和预训练数据 → 下游性能的幂律。</li>
+<li><strong>方法</strong>：大规模机器人数据预训练 + 多任务 SFT；Harmonic Reasoning（异步感知/动作 token 交织）；幂律 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3567em;margin-left:-0.0037em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">D</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1433em;"><span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span> 拟合下游误差。</li>
+<li><strong>结果</strong>：1B 早期 ossification，6B/7B+ 持续吸收预训练；真机 A/B 显示更多预训练 → 更高下游成功率（峰值 ~99%）；cross-embodiment 在 6DoF/7DoF/16+DoF 机器人上运行。</li>
+<li><strong>代码</strong>：未发布。</li>
+</ul>
+</div>
+</blockquote>
+<hr/>
+<h2 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>Blog 开篇 bullet 列表里把 Harmonic Reasoning 列为 core feature，正文却没有对应章节——这是 announcement blog 常见的 “promise more than body delivers” 问题。如果想真正理解 Harmonic Reasoning，只能等后续论文或技术报告。</li>
+<li>Partner A/B/C 的匿名化让 Science of Pretraining 段退化成”我们试过 8 个数据集，最后这两个 mixture 表现最好”级别的定性结论。更大价值的问题其实是：“什么类型的数据分布改变了什么类型的下游行为”——blog 暗示了答案（Class 1 vs Class 3 的 specific vs diverse 区分）但没量化。</li>
+<li>Ossification 现象值得和 LLM 领域的 Overtrained LLM (Springer 2025) 做深度对比：规模差异（O(10M) vs O(1B)）到底是”embodied 本质更难” 还是”robotics 的 token 级信息密度不同”？如果后者，Moravec’s Paradox 解释就有点 overclaim。</li>
+<li>想追问的问题：GEN-0 的模型架构到底是 unified transformer + action head？还是 VLA 风格的 PaliGemma 类 backbone + flow matching head？Blog 完全没说。这影响对 “10B+ embodied FM” 这个数字的解读。</li>
+</ul></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="9pl5yp" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#sources" data-for="sources">Sources</a></li><li class="depth-0"><a href="#surpassing-the-intelligence-threshold" data-for="surpassing-the-intelligence-threshold">Surpassing the Intelligence Threshold</a></li><li class="depth-0"><a href="#scaling-laws-for-robotics" data-for="scaling-laws-for-robotics">Scaling Laws for Robotics</a></li><li class="depth-0"><a href="#robotics-is-no-longer-limited-by-data" data-for="robotics-is-no-longer-limited-by-data">Robotics is No Longer Limited By Data</a></li><li class="depth-1"><a href="#mapping-the-universe-of-manipulation" data-for="mapping-the-universe-of-manipulation">Mapping the Universe of Manipulation</a></li><li class="depth-1"><a href="#infrastructure-for-internet-scale-robot-data" data-for="infrastructure-for-internet-scale-robot-data">Infrastructure for Internet-Scale Robot Data</a></li><li class="depth-1"><a href="#science-of-pretraining" data-for="science-of-pretraining">Science of Pretraining</a></li><li class="depth-0"><a href="#论文点评" data-for="论文点评">论文点评</a></li><li class="depth-1"><a href="#strengths" data-for="strengths">Strengths</a></li><li class="depth-1"><a href="#weaknesses" data-for="weaknesses">Weaknesses</a></li><li class="depth-1"><a href="#可信评估" data-for="可信评估">可信评估</a></li><li class="depth-0"><a href="#关联工作" data-for="关联工作">关联工作</a></li><li class="depth-1"><a href="#基于" data-for="基于">基于</a></li><li class="depth-1"><a href="#对比" data-for="对比">对比</a></li><li class="depth-1"><a href="#方法相关" data-for="方法相关">方法相关</a></li><li class="depth-0"><a href="#速查卡片" data-for="速查卡片">速查卡片</a></li><li class="depth-0"><a href="#notes" data-for="notes">Notes</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+</script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>

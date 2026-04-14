@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><title>Xiaomi-Robotics-0: An Open-Sourced Vision-Language-Action Model with Real-Time Execution</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="Xiaomi-Robotics-0: An Open-Sourced Vision-Language-Action Model with Real-Time Execution"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Xiaomi-Robotics-0: An Open-Sourced Vision-Language-Action Model with Real-Time Execution"/><meta name="twitter:description" content="Summary 提出 Xiaomi-Robotics-0，一个 4.7B 参数的 VLA 模型，通过 VLM + Diffusion Transformer 混合架构和异步推理优化，在 LIBERO / CALVIN / SimplerEnv 仿真 benchmark 上达到 SOTA，并在消费级 GPU（RTX 4090）上实现 80ms 延迟的实时平滑执行。 ..."/><meta property="og:description" content="Summary 提出 Xiaomi-Robotics-0，一个 4.7B 参数的 VLA 模型，通过 VLM + Diffusion Transformer 混合架构和异步推理优化，在 LIBERO / CALVIN / SimplerEnv 仿真 benchmark 上达到 SOTA，并在消费级 GPU（RTX 4090）上实现 80ms 延迟的实时平滑执行。 ..."/><meta property="og:image:alt" content="Summary 提出 Xiaomi-Robotics-0，一个 4.7B 参数的 VLA 模型，通过 VLM + Diffusion Transformer 混合架构和异步推理优化，在 LIBERO / CALVIN / SimplerEnv 仿真 benchmark 上达到 SOTA，并在消费级 GPU（RTX 4090）上实现 80ms 延迟的实时平滑执行。 ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2602-XiaomiRobotics0"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2602-XiaomiRobotics0"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary 提出 Xiaomi-Robotics-0，一个 4.7B 参数的 VLA 模型，通过 VLM + Diffusion Transformer 混合架构和异步推理优化，在 LIBERO / CALVIN / SimplerEnv 仿真 benchmark 上达到 SOTA，并在消费级 GPU（RTX 4090）上实现 80ms 延迟的实时平滑执行。 ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+<html lang="en"><head><title>Xiaomi-Robotics-0: An Open-Sourced Vision-Language-Action Model with Real-Time Execution</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="Xiaomi-Robotics-0: An Open-Sourced Vision-Language-Action Model with Real-Time Execution"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Xiaomi-Robotics-0: An Open-Sourced Vision-Language-Action Model with Real-Time Execution"/><meta name="twitter:description" content="Summary 一个 4.7B MoT（VLM + DiT）VLA 模型，通过 Λ-shape 注意力 mask + 动态 loss reweighting + timestep 对齐，在消费级 GPU 上实现平滑的异步实时控制。 Key Takeaways: Λ-shape attention mask 防止 action-prefix shortcut：training-time ..."/><meta property="og:description" content="Summary 一个 4.7B MoT（VLM + DiT）VLA 模型，通过 Λ-shape 注意力 mask + 动态 loss reweighting + timestep 对齐，在消费级 GPU 上实现平滑的异步实时控制。 Key Takeaways: Λ-shape attention mask 防止 action-prefix shortcut：training-time ..."/><meta property="og:image:alt" content="Summary 一个 4.7B MoT（VLM + DiT）VLA 模型，通过 Λ-shape 注意力 mask + 动态 loss reweighting + timestep 对齐，在消费级 GPU 上实现平滑的异步实时控制。 Key Takeaways: Λ-shape attention mask 防止 action-prefix shortcut：training-time ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2602-XiaomiRobotics0"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2602-XiaomiRobotics0"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary 一个 4.7B MoT（VLM + DiT）VLA 模型，通过 Λ-shape 注意力 mask + 动态 loss reweighting + timestep 对齐，在消费级 GPU 上实现平滑的异步实时控制。 Key Takeaways: Λ-shape attention mask 防止 action-prefix shortcut：training-time ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
   position: absolute;
   display: flex;
   float: right;
@@ -116,175 +116,667 @@ pre:hover > .expand-button {
   padding: 0 12px;
   font-size: 14px;
 }
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2602-XiaomiRobotics0"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Meetings\&quot;,\&quot;Resources\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="g6i2nk"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/RL" class="sidebar-tag-pill">#RL</a><a href="/mindflow/tags/web-agent" class="sidebar-tag-pill">#web-agent</a><a href="/mindflow/tags/instruction-following" class="sidebar-tag-pill">#instruction-following</a><a href="/mindflow/tags/scene-understanding" class="sidebar-tag-pill">#scene-understanding</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/VLN" class="sidebar-tag-pill">#VLN</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2602-XiaomiRobotics0</a></div></nav><h1 class="article-title">Xiaomi-Robotics-0: An Open-Sourced Vision-Language-Action Model with Real-Time Execution</h1><div class="paper-meta"><span class="paper-venue">arXiv</span><span class="paper-institute"><span class="meta-sep">·</span>Xiaomi Robotics</span><span class="paper-authors"><span class="meta-sep">·</span>Rui Cai <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, Jun Guo</span><span>, Xinze He</span><span>, Piaopiao Jin</span><span>, Jie Li</span><span>, Bingxuan Lin</span><span>, Futeng Liu</span><span>, Wei Liu</span><span>, Fei Ma</span><span>, Kun Ma</span><span>, Feng Qiu</span><span>, Heng Qu</span><span>, Yifei Su</span><span>, Qiao Sun</span><span>, Dong Wang</span><span>, Donghao Wang</span><span>, Yunhong Wang</span><span>, Rujie Wu</span><span>, Diyun Xiang</span><span>, Yu Yang</span><span>, Hangjun Ye</span><span>, Yuan Zhang</span><span>, Quanyun Zhou</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2026-02-01T00:00:00.000Z">Feb 01, 2026</time><span>7 min read</span></p><ul class="tags"><li><a href="../tags/VLA" class="internal tag-link">VLA</a></li><li><a href="../tags/flow-matching" class="internal tag-link">flow-matching</a></li><li><a href="../tags/manipulation" class="internal tag-link">manipulation</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>提出 Xiaomi-Robotics-0，一个 4.7B 参数的 VLA 模型，通过 VLM + Diffusion Transformer 混合架构和异步推理优化，在 LIBERO / CALVIN / SimplerEnv 仿真 benchmark 上达到 SOTA，并在消费级 GPU（RTX 4090）上实现 80ms 延迟的实时平滑执行。</p>
-<h2 id="problem--motivation">Problem &amp; Motivation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#problem--motivation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>VLA 模型展示了强大的跨任务泛化能力，但数十亿参数带来的推理延迟是部署的核心瓶颈：同步执行模式下机器人在等待推理时停顿，导致动作不连贯、陷入 OOD 状态。现有方法要么牺牲模型容量换速度，要么在异步执行时因 action prefix 的 shortcut learning 降低性能。本文的目标是在不降低性能的前提下，让大规模 VLA 模型在消费级硬件上实时流畅执行。</p>
-<h2 id="method">Method<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#method" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<h3 id="整体架构">整体架构<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#整体架构" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p>Mixture-of-Transformers 设计，总参数 4.7B：</p>
-<ul>
-<li><strong>VLM backbone</strong>: Qwen3-VL-4B-Instruct，处理视觉观测和语言指令</li>
-<li><strong>Diffusion Transformer (DiT)</strong>: 16 层，通过 flow-matching 生成 action chunks</li>
-</ul>
-<h3 id="预训练两阶段">预训练（两阶段）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#预训练两阶段" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p><strong>Stage 1 — VLM 增强</strong>：</p>
-<ul>
-<li>机器人轨迹数据与 vision-language 数据联合训练（1:6 采样比）</li>
-<li>采用 Choice Policies 范式：预测 N 个 action chunk 候选并打分，winner-takes-all 监督（仅 L1 距离最小的候选接收梯度）</li>
-<li>关键发现：不加 VL 数据的训练会导致 VLM 能力完全丧失（catastrophic forgetting）</li>
-</ul>
-<p><strong>Stage 2 — DiT 训练</strong>：</p>
-<ul>
-<li>冻结 VLM，从头训练 DiT（200M timesteps）</li>
-<li>Flow-matching loss，β 分布采样偏好高噪声 timestep</li>
-<li>使用 attention sink tokens 稳定注意力分布</li>
-</ul>
-<h3 id="训练数据">训练数据<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#训练数据" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<ul>
-<li>机器人轨迹：~200M timesteps，来自 DROID、MolmoAct 及自有数据（338h Lego 拆解 + 400h 毛巾折叠）</li>
-<li>Vision-language：80M+ 样本，覆盖 visual grounding、VQA、captioning、embodied reasoning</li>
-</ul>
-<h3 id="异步执行后训练核心创新">异步执行后训练（核心创新）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#异步执行后训练核心创新" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p>解决异步推理中 action prefix 带来的 shortcut learning 问题，三项技术：</p>
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2602-XiaomiRobotics0"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Meetings\&quot;,\&quot;Resources\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="c6hw3h"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/RL" class="sidebar-tag-pill">#RL</a><a href="/mindflow/tags/web-agent" class="sidebar-tag-pill">#web-agent</a><a href="/mindflow/tags/instruction-following" class="sidebar-tag-pill">#instruction-following</a><a href="/mindflow/tags/scene-understanding" class="sidebar-tag-pill">#scene-understanding</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/cross-embodiment" class="sidebar-tag-pill">#cross-embodiment</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2602-XiaomiRobotics0</a></div></nav><h1 class="article-title">Xiaomi-Robotics-0: An Open-Sourced Vision-Language-Action Model with Real-Time Execution</h1><div class="paper-meta"><span class="paper-venue">arXiv preprint</span><span class="paper-authors"><span class="meta-sep">·</span>Rui Cai <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, Jun Guo</span><span>, Xinze He</span><span>, Piaopiao Jin</span><span>, Jie Li</span><span>, Bingxuan Lin</span><span>, Futeng Liu</span><span>, Wei Liu</span><span>, Fei Ma</span><span>, Kun Ma</span><span>, Feng Qiu</span><span>, Heng Qu</span><span>, Yifei Su</span><span>, Qiao Sun</span><span>, Dong Wang</span><span>, Donghao Wang</span><span>, Yunhong Wang</span><span>, Rujie Wu</span><span>, Diyun Xiang</span><span>, Yu Yang</span><span>, Hangjun Ye</span><span>, Yuan Zhang</span><span>, Quanyun Zhou</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2026-02-01T00:00:00.000Z">Feb 01, 2026</time><span>20 min read</span></p><ul class="tags"><li><a href="../tags/VLA" class="internal tag-link">VLA</a></li><li><a href="../tags/manipulation" class="internal tag-link">manipulation</a></li><li><a href="../tags/flow-matching" class="internal tag-link">flow-matching</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>一个 4.7B MoT（VLM + DiT）VLA 模型，通过 Λ-shape 注意力 mask + 动态 loss reweighting + timestep 对齐，在消费级 GPU 上实现平滑的异步实时控制。</p>
+<p><strong>Key Takeaways:</strong></p>
 <ol>
-<li><strong>RoPE Positional Index Offsetting</strong>：区分 noisy action tokens 与 clean action prefix 的位置编码</li>
-<li><strong>Λ-Shape Attention Mask</strong>：限制后续 timestep 的 action tokens attend to action prefix，强制其关注视觉/语言信号，同时允许通过早期 tokens 实现平滑过渡</li>
-<li><strong>Dynamic Loss Re-weighting</strong>：对 online-predicted 与 ground-truth 动作之间 L1 误差较大的样本加权，提升鲁棒性</li>
+<li><strong>Λ-shape attention mask 防止 action-prefix shortcut</strong>：training-time RTC 的副作用是 later-timestep 动作直接 copy prefix 而不看视觉/语言；用 Λ-mask 让后段 token 无法 attend prefix，强制转向 visual/language 条件。</li>
+<li><strong>VLM + DiT 的 MoT 架构 + KV cache 桥接</strong>：VLM（Qwen3-VL-4B-Instruct）冻结后作为多模态 conditioner，16 层 DiT 从 scratch 训练，只 attend 最后 16 层的 KV cache，控制推理延迟到 80 ms。</li>
+<li><strong>预训练阶段 VL 数据 co-train 是关键</strong>：去掉 VL 数据后 VLM 能力在所有 benchmark 归零（catastrophic forgetting），而保留 VL co-train 后 ERQA 甚至略高于基座 Qwen3-VL-4B（40.8 vs 40.0），说明 robot-centric VL 数据反而增强了具身感知。</li>
+<li><strong>三个 sim benchmark SOTA</strong>：LIBERO 98.7% avg（14 对比），CALVIN ABC→D 4.75 / ABCD→D 4.80，SimplerEnv Google Robot VM 85.5% / VA 74.7% / WidowX 79.2%。</li>
+<li><strong>开源但 inference-only</strong>：放出 base + 5 个 fine-tuned checkpoint 上 HuggingFace，推理和评测代码通过 transformers ecosystem，<strong>未开放训练代码</strong>。</li>
 </ol>
-<h3 id="部署">部署<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#部署" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Video 1.</strong> Overview teaser — Xiaomi-Robotics-0 real-robot rollouts highlight reel
+<video src="https://robotics.xiaomi.com/robot-model/xiaomi-robotics-0.mp4" controls muted playsinline width="720"></video></p>
+<hr/>
+<h2 id="sources">Sources<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#sources" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
 <ul>
-<li>异步执行：机器人在推理时继续执行剩余 chunk actions</li>
-<li>RTX 4090 上 80ms 推理延迟，30Hz 传感器同步</li>
+<li><strong>URL</strong>: <a href="https://arxiv.org/abs/2602.12684" class="external">https://arxiv.org/abs/2602.12684<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><strong>Project page</strong>: <a href="https://xiaomi-robotics-0.github.io" class="external">https://xiaomi-robotics-0.github.io<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><strong>Code</strong>: <a href="https://github.com/XiaomiRobotics/Xiaomi-Robotics-0" class="external">https://github.com/XiaomiRobotics/Xiaomi-Robotics-0<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
 </ul>
-<h2 id="key-results">Key Results<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-results" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<h3 id="仿真-benchmark全部-sota">仿真 Benchmark（全部 SOTA）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#仿真-benchmark全部-sota" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="table-container"><table><thead><tr><th style="text-align:left;">Benchmark</th><th style="text-align:left;">指标</th><th style="text-align:left;">成绩</th></tr></thead><tbody><tr><td style="text-align:left;">LIBERO（4 splits 平均）</td><td style="text-align:left;">Success Rate</td><td style="text-align:left;"><strong>98.7%</strong></td></tr><tr><td style="text-align:left;">CALVIN ABCD→D</td><td style="text-align:left;">Avg Tasks</td><td style="text-align:left;"><strong>4.80</strong></td></tr><tr><td style="text-align:left;">CALVIN ABC→D</td><td style="text-align:left;">Avg Tasks</td><td style="text-align:left;"><strong>4.75</strong></td></tr><tr><td style="text-align:left;">SimplerEnv Google Robot VM</td><td style="text-align:left;">Success Rate</td><td style="text-align:left;"><strong>85.5%</strong></td></tr><tr><td style="text-align:left;">SimplerEnv Google Robot VA</td><td style="text-align:left;">Success Rate</td><td style="text-align:left;"><strong>74.7%</strong></td></tr><tr><td style="text-align:left;">SimplerEnv WidowX</td><td style="text-align:left;">Success Rate</td><td style="text-align:left;"><strong>79.2%</strong></td></tr></tbody></table></div>
-<h3 id="真实机器人">真实机器人<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#真实机器人" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<hr/>
+<h2 id="introduction">Introduction<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#introduction" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>VLA 模型建立在预训练 VLM 之上，把 observation + instruction 映射到 action。痛点：参数量大 → 推理延迟高 → consecutive chunks 不平滑会引入 OOD jerky 动作。</p>
+<p>本文的切入点是 training recipe + deployment strategy 两手兼修：</p>
 <ul>
-<li><strong>Lego 拆解</strong>：吞吐量最高，异步执行相比 Training RTC 有明显优势</li>
-<li><strong>毛巾折叠</strong>：1.2 pieces/min（vs 竞品 1.0），30 分钟连续测试中避免了 Training RTC 的重复失败循环</li>
+<li>预训练阶段用 cross-embodiment robot trajectory + VL data co-train，避免 catastrophic forgetting 基座 VLM 的 vision-language 能力。</li>
+<li>后训练阶段为异步执行定制技术：把 previous inference 的 action 作为 prefix condition 生成新 chunk，但用 Λ-shape attention mask 防止 later-timestep 动作走捷径直接 copy prefix。</li>
+<li>部署阶段严格对齐 consecutive chunks 的 timestep 以保证平滑过渡。</li>
 </ul>
-<h3 id="vlm-能力保持">VLM 能力保持<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#vlm-能力保持" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p>在 10 个 VL benchmark 上（MMBench、SEED-Bench、POPE 等）保持接近原始 Qwen3-VL 的水平（78.6-84.4%），POPE 上甚至超越 baseline（88.5%）。</p>
-<h2 id="strengths--weaknesses">Strengths &amp; Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths--weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p><strong>亮点</strong>：</p>
+<p><strong>Figure 1. Overview.</strong> Xiaomi-Robotics-0 在三个 sim benchmark 上 SOTA，在两个真实双手操作任务上吞吐最高，并在多个 VLM benchmark 上匹配基座 VLM。</p>
+<p><img src="https://arxiv.org/html/2602.12684v2/x1.png" alt/></p>
+<p>Headline results（原文正文声明）：LIBERO 98.7%；CALVIN ABCD→D 从 4.67 → 4.80，ABC→D 从 4.54 → 4.75；SimplerEnv VM 85.5%、VA 74.7%、WidowX 79.2%；real-robot 在 Lego Disassembly 和 Towel Folding 上 success rate 和 throughput 都高于 state-of-the-art。发布了 pre-trained + post-trained checkpoints 和 inference code。</p>
+<hr/>
+<h2 id="xiaomi-robotics-0">Xiaomi-Robotics-0<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#xiaomi-robotics-0" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>End-to-end VLA：输入观测图像 + 语言指令 + 本体状态，输出 action chunk 控制双手 bimanual 机器人。</p>
+<h3 id="data">Data<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#data" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Figure 2. Data.</strong> Xiaomi-Robotics-0 在预训练阶段同时使用 robot trajectory 数据和 vision-language (VL) 数据。</p>
+<p><img src="https://arxiv.org/html/2602.12684v2/x2.png" alt/></p>
 <ul>
-<li>异步执行的工程方案非常实用：Λ-Shape Attention Mask 和 RoPE Offsetting 优雅地解决了 shortcut learning 问题，这是 VLA 部署中的真实痛点</li>
-<li>全面的 benchmark 覆盖（仿真+真机+VL 保持），实验说服力强</li>
-<li>开源模型和代码，对社区贡献大</li>
-<li>VLM 能力保持的联合训练方案（1:6 采样比）是重要的实践经验</li>
+<li><strong>Robot trajectory</strong>：开源数据集 DROID、MolmoAct 等 + 自采。自采集中在两个长任务：Lego Disassembly（338 小时）和 Towel Folding（400 小时）。总计约 200M timesteps。</li>
+<li><strong>Vision-language 数据</strong>：~80M samples。两条主干：
+<ol>
+<li>通用 VL 数据集（captioning / VQA / grounding）；</li>
+<li>从 robot trajectory 数据衍生出的 VL 数据，强化 robot-centric 视觉感知（egocentric、wrist camera 视角）。</li>
+</ol>
+</li>
+<li>覆盖的四类 VL 任务：visual grounding、VQA、captioning、embodied reasoning &amp; planning。</li>
+<li>Grounding 标注管道：Grounded SAM + Grounding DINO 1.5 + LLMDet 交叉验证保证 pixel 级精度；VQA/captioning 用 SOTA VLM re-label；EQA / high-level planning / point trajectory 用预训练 VLM 从 trajectory 自动生成。</li>
 </ul>
-<p><strong>局限</strong>：</p>
+<h3 id="model--training">Model &amp; Training<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#model--training" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Figure 3. Model &amp; Training.</strong> (a) 预训练第一步：在 VL 数据（左，next-token prediction）和 robot trajectory 数据（右，Choice Policies 多 candidate + WTA）上联合训练 VLM。(b) 预训练第二步：冻结 VLM，从 scratch 训练 DiT 通过 flow-matching 生成 action。(c) 后训练 for 异步执行：把 clean action prefix 拼接在 noisy action token 前。</p>
+<p><img src="https://arxiv.org/html/2602.12684v2/x3.png" alt/></p>
+<p>架构：<strong>Mixture-of-Transformers (MoT)</strong>——Qwen3-VL-4B-Instruct 作为 VLM + 一个 16-layer DiT。VLM 处理 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5944em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathbf">o</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 和语言 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span></span></span></span>，DiT 通过 flow-matching 生成 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span></span></span>-step action chunk <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6528em;vertical-align:-0.2083em;"></span><span class="mord"><span class="mord mathbf">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mrel mtight">:</span><span class="mord mathnormal mtight">t</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span></span></span></span>，conditioned on VLM KV cache 和 proprioceptive state。总参数 4.7B。</p>
+<h4 id="pre-training">Pre-training<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#pre-training" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>两步走。</p>
+<p><strong>Step 1</strong>：让 VLM 本身学会动作预测。采用 Choice Policies 的范式处理多模态轨迹——同时预测 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 个 action chunk 候选 + 每个候选的 score。Loss 设计：</p>
 <ul>
-<li>真机实验仅限两个任务（Lego 拆解、毛巾折叠），泛化到更多任务类型尚未验证</li>
-<li>4.7B 参数 + RTX 4090 的硬件要求仍然较高，离嵌入式部署有距离</li>
-<li>异步执行方案与 action chunk 长度和推理延迟的关系（Δtc ≥ Δtinf）限制了灵活性</li>
-<li>未探索 action representation 的优化空间（如 spatial/geometric tokenization）</li>
+<li>Action prediction 用 <strong>winner-takes-all</strong>，只对 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 距离最小的候选做 BP；</li>
+<li>Score prediction 的 target 是每个候选到 ground truth 的 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 距离。</li>
 </ul>
-<h2 id="action-space">Action Space<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#action-space" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p><strong>7-DoF 连续动作空间</strong>，每步 action vector 为 7 维：</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="table-container"><table><thead><tr><th style="text-align:left;">维度</th><th style="text-align:left;">含义</th><th style="text-align:left;">备注</th></tr></thead><tbody><tr><td style="text-align:left;">0-2</td><td style="text-align:left;">End-effector delta position (x, y, z)</td><td style="text-align:left;">3D 平移</td></tr><tr><td style="text-align:left;">3-5</td><td style="text-align:left;">End-effector delta rotation</td><td style="text-align:left;">LIBERO: axis-angle；SimplerEnv: euler (roll, pitch, yaw)，执行时转 axis-angle</td></tr><tr><td style="text-align:left;">6</td><td style="text-align:left;">Gripper command</td><td style="text-align:left;">CALVIN 中二值化为 {-1, 1}</td></tr></tbody></table></div>
-<p><strong>Action chunk size</strong>（每次推理生成的未来步数）：</p>
+<p>Token 序列 <code>[𝐨_t, l, 𝐬_t, [A_1], ..., [A_T], [S]]</code>，proprioceptive state 由 MLP 编码，action/score 用额外 learnable token <code>[A_i]</code>、<code>[S]</code> 预测。VL 数据与 robot 数据按 1:6 比例 co-train（next-token-prediction 目标），这是防 catastrophic forgetting 的关键。</p>
+<p><strong>Step 2</strong>：冻结 VLM，从 scratch 训练 DiT 用 flow-matching 生成 action。Loss：</p>
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2em;vertical-align:-0.35em;"></span><span class="mord"><span class="delimsizing mult"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.85em;"><span style="top:-2.85em;"><span class="pstrut" style="height:3.2em;"></span><span style="width:0.556em;height:1.200em;"><svg xmlns="http://www.w3.org/2000/svg" width="0.556em" height="1.200em" viewBox="0 0 556 1200"><path d="M145 15 v585 v0 v585 c2.667,10,9.667,15,21,15
+c10,0,16.667,-5,20,-15 v-585 v0 v-585 c-2.667,-10,-9.667,-15,-21,-15
+c-10,0,-16.667,5,-20,15z M188 15 H145 v585 v0 v585 h43z
+M367 15 v585 v0 v585 c2.667,10,9.667,15,21,15
+c10,0,16.667,-5,20,-15 v-585 v0 v-585 c-2.667,-10,-9.667,-15,-21,-15
+c-10,0,-16.667,5,-20,15z M410 15 H367 v585 v0 v585 h43z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.35em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathbf" style="margin-right:0.01597em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.016em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathbf">o</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathbf">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6813em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathbf">a</span></span><span style="top:-3.3634em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">~</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7144em;"><span style="top:-2.453em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mrel mtight">:</span><span class="mord mathnormal mtight">t</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1132em;">τ</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3053em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.1132em;">τ</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.4537em;vertical-align:-0.3997em;"></span><span class="mord mathbf">u</span><span class="mopen">(</span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6813em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathbf">a</span></span><span style="top:-3.3634em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">~</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7144em;"><span style="top:-2.453em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mrel mtight">:</span><span class="mord mathnormal mtight">t</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1132em;">τ</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3053em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathbf">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mrel mtight">:</span><span class="mord mathnormal mtight">t</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.1132em;">τ</span><span class="mclose">)</span><span class="mord"><span class="mord"><span class="delimsizing mult"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.85em;"><span style="top:-2.85em;"><span class="pstrut" style="height:3.2em;"></span><span style="width:0.556em;height:1.200em;"><svg xmlns="http://www.w3.org/2000/svg" width="0.556em" height="1.200em" viewBox="0 0 556 1200"><path d="M145 15 v585 v0 v585 c2.667,10,9.667,15,21,15
+c10,0,16.667,-5,20,-15 v-585 v0 v-585 c-2.667,-10,-9.667,-15,-21,-15
+c-10,0,-16.667,5,-20,15z M188 15 H145 v585 v0 v585 h43z
+M367 15 v585 v0 v585 c2.667,10,9.667,15,21,15
+c10,0,16.667,-5,20,-15 v-585 v0 v-585 c-2.667,-10,-9.667,-15,-21,-15
+c-10,0,-16.667,5,-20,15z M410 15 H367 v585 v0 v585 h43z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.35em;"><span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.054em;"><span style="top:-2.3003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.3029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3997em;"><span></span></span></span></span></span></span></span></span></span></span>
+<p><strong>符号说明</strong>：</p>
 <ul>
-<li>LIBERO / CALVIN: T = 10</li>
-<li>SimplerEnv: T = 4</li>
-<li>真机实验: T = 30（30Hz 控制，对应 1 秒）</li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal" style="margin-right:0.1132em;">τ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">0.999</span><span class="mclose">]</span></span></span></span> 是 flow-matching 的 timestep，从 Beta 分布采样（偏向 noisier timesteps）。</li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.015em;vertical-align:-0.3337em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6813em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathbf">a</span></span><span style="top:-3.3634em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">~</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-2.4247em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mrel mtight">:</span><span class="mord mathnormal mtight">t</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1132em;">τ</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3337em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7917em;vertical-align:-0.2083em;"></span><span class="mord mathnormal" style="margin-right:0.1132em;">τ</span><span class="mord"><span class="mord mathbf">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mrel mtight">:</span><span class="mord mathnormal mtight">t</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.1132em;">τ</span><span class="mclose">)</span><span class="mord"><span class="mord"><span class="mord boldsymbol">ϵ</span></span></span></span></span></span>，其中 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4444em;"></span><span class="mord"><span class="mord"><span class="mord boldsymbol">ϵ</span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathcal" style="margin-right:0.14736em;">N</span><span class="mopen">(</span><span class="mord mathbf">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathbf">I</span><span class="mclose">)</span></span></span></span>。</li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5944em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathbf" style="margin-right:0.01597em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.016em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 是 DiT 预测的速度场，<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4444em;"></span><span class="mord mathbf">u</span></span></span></span> 是 ground-truth 的条件 flow field。</li>
 </ul>
-<p><strong>State representation</strong>: 7 维 proprioceptive state（EEF pos 3 + rotation 3 + gripper 1），padding 至 32 维输入 DiT。</p>
-<p><strong>生成方式</strong>：DiT 通过 flow-matching 生成连续 action chunk，输出 shape 为 <code>(B, T, D+1)</code>，其中额外一维为概率/置信度，取前 7 维作为动作。</p>
-<h2 id="mind-map">Mind Map<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mind-map" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;mindmap\n  root((Xiaomi-Robotics-0))\n    Problem\n      VLA 推理延迟导致动作不连贯\n      同步执行浪费时间\n      异步执行有 shortcut learning\n    Method\n      Qwen3-VL-4B + 16L DiT\n      两阶段预训练\n        VLM 增强 + VL 联合训练\n        DiT flow-matching\n      异步执行后训练\n        RoPE Offset\n        Λ-Shape Attention\n        Dynamic Loss Reweight\n    Results\n      LIBERO 98.7%\n      CALVIN 4.80 tasks\n      RTX 4090 80ms 延迟\n      VLM 能力无损保持&quot;">mindmap
-  root((Xiaomi-Robotics-0))
-    Problem
-      VLA 推理延迟导致动作不连贯
-      同步执行浪费时间
-      异步执行有 shortcut learning
-    Method
-      Qwen3-VL-4B + 16L DiT
-      两阶段预训练
-        VLM 增强 + VL 联合训练
-        DiT flow-matching
-      异步执行后训练
-        RoPE Offset
-        Λ-Shape Attention
-        Dynamic Loss Reweight
-    Results
-      LIBERO 98.7%
-      CALVIN 4.80 tasks
-      RTX 4090 80ms 延迟
-      VLM 能力无损保持
-</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+<p><strong>架构细节</strong>：adaLN 注入 timestep 条件；proprioceptive state 和 noisy action 用 MLP 编码；前置一个 learnable <strong>attention sink token</strong> 稳定训练；DiT 内部 causal attention；DiT 只 condition 在 VLM 最后 16 层的 KV cache 上（减小延迟）；VLM 在 Step 2 只接收 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5944em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathbf">o</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 和 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span></span></span></span>，不含 Step 1 引入的 action token。</p>
+<h4 id="post-training">Post-training<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#post-training" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>针对特定机器人，只用该机器人的 trajectory 数据继续训练。分 synchronous 和 asynchronous 两种模式。</p>
+<ul>
+<li><strong>Sync</strong>：简单 unfreeze 整个模型（VLM + DiT），继续 flow-matching 训练。</li>
+<li><strong>Async</strong>：遵循 training RTC 的做法，把 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord">Δ</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 个 previously committed actions 作为 clean prefix 拼接到 noisy action tokens 前。DiT 序列变成：<code>[SINK], 𝐬_t, 𝐚_t, ..., 𝐚_{t+Δt_c-1}, 𝐚̃^τ_{t+Δt_c}, ..., 𝐚̃^τ_{t+T-1}</code>。</li>
+</ul>
+<p><strong>Problem</strong>：这种 prefix conditioning 让 later-timestep 的 noisy action 直接 copy prefix（shortcut），不看 visual/language，reactive 性下降。</p>
+<p><strong>Fix</strong>：</p>
+<p><strong>Figure 4. Λ-Shape Attention Mask for Post-Training.</strong> Noisy action token 只能 attend VLM KV cache、sink token、state token、以及前 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span></span></span></span> 个 timestep 的 action tokens。Token 上的数字是 RoPE positional index；noisy action token 的 RoPE 被加了 offset 10，用来和 clean prefix token 区分。</p>
+<p><img src="https://arxiv.org/html/2602.12684v2/x4.png" alt/></p>
+<p>两个 trick：</p>
+<ol>
+<li><strong>RoPE offset</strong>：给 noisy action token 的 positional index 加 10，让模型能区分它和 clean prefix。</li>
+<li><strong>Λ-shape attention mask</strong>：noisy action token 只能 attend 到紧邻 prefix 结尾的窗口 + VLM KV cache + sink + state；更后面的 noisy action 无法再看到 prefix，被迫去 attend 视觉/语言。</li>
+</ol>
+<p><strong>训练采样</strong>：<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord">Δ</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 从 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">6</span><span class="mclose">}</span></span></span></span> 均匀采样。当 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord">Δ</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span> 时，根据 <strong>online-predicted actions</strong> 相对 ground truth 的 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> error 动态 reweight flow-matching loss，重点学习偏差大的样本。</p>
+<h3 id="deployment">Deployment<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#deployment" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Figure 5. Asynchronous Execution.</strong> 可视化两个连续 chunk 如何在机器人 rollout 中被拼接。</p>
+<p><img src="https://arxiv.org/html/2602.12684v2/x5.png" alt/></p>
+<p><strong>Synchronous Execution</strong>：每次执行 chunk 的前 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 步 → idle → 用最新观测推新 chunk。</p>
+<p><strong>Asynchronous Execution</strong>：</p>
+<ul>
+<li>执行 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 步后立即触发下一轮推理；</li>
+<li>推理期间机器人继续执行当前 chunk 的剩余动作；</li>
+<li>用步 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 到 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord">Δ</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span> 的动作作为 prefix condition 新 chunk；</li>
+<li>新 chunk 从步 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord">Δ</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight" style="margin-right:0.07778em;">inf</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 开始执行，其中 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord">Δ</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight" style="margin-right:0.07778em;">inf</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 是推理延迟；</li>
+<li>要求 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord">Δ</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord">Δ</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight" style="margin-right:0.07778em;">inf</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 保证 prefix 覆盖整个推理窗口，实现无缝衔接。</li>
+</ul>
+<p>推理细节：action chunk 从 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathcal" style="margin-right:0.14736em;">N</span><span class="mopen">(</span><span class="mord mathbf">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathbf">I</span><span class="mclose">)</span></span></span></span> 采样后执行 5 步 flow-matching 积分（<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.1132em;">τ</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>）。<strong>NVIDIA RTX 4090</strong> 上延迟 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7651em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight" style="margin-right:0.07778em;">inf</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">80</span></span></span></span> ms。所有模态在 30Hz timeline 上 resample 对齐，每个 tick 取时间最近的测量聚合成输入。</p>
+<hr/>
+<h2 id="experiments">Experiments<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#experiments" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="simulation-benchmarks">Simulation Benchmarks<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#simulation-benchmarks" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>三个 sim benchmark：LIBERO、CALVIN、SimplerEnv。</p>
+<p><strong>Table 1. Results on the LIBERO benchmark.</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Method</th><th>Libero-Spatial</th><th>Libero-Object</th><th>Libero-Goal</th><th>Libero-Long</th><th>Average</th></tr></thead><tbody><tr><td><a href="../Papers/2406-OpenVLA" class="internal alias" data-slug="Papers/2406-OpenVLA">OpenVLA</a></td><td>84.7%</td><td>88.4%</td><td>79.2%</td><td>53.7%</td><td>76.5%</td></tr><tr><td><a href="../Papers/2502-OpenVLA-OFT" class="internal alias" data-slug="Papers/2502-OpenVLA-OFT">OpenVLA-OFT</a></td><td>97.6%</td><td>98.4%</td><td>97.9%</td><td>94.5%</td><td>97.1%</td></tr><tr><td><a href="../Papers/2410-Pi0" class="internal alias" data-slug="Papers/2410-Pi0">π0</a></td><td>96.8%</td><td>98.8%</td><td>95.8%</td><td>85.2%</td><td>94.2%</td></tr><tr><td>π0-FAST</td><td>96.4%</td><td>96.8%</td><td>88.6%</td><td>60.2%</td><td>85.5%</td></tr><tr><td><a href="../Papers/2504-Pi05" class="internal alias" data-slug="Papers/2504-Pi05">π0.5</a></td><td>98.8%</td><td>98.2%</td><td>98.0%</td><td>92.4%</td><td>96.9%</td></tr><tr><td><a href="../Papers/2503-GR00TN1" class="internal alias" data-slug="Papers/2503-GR00TN1">GR00T-N1</a></td><td>94.4%</td><td>97.6%</td><td>93.0%</td><td>90.6%</td><td>93.9%</td></tr><tr><td>UniVLA</td><td>95.4%</td><td>98.8%</td><td>93.6%</td><td>94.0%</td><td>95.5%</td></tr><tr><td>Discrete Diffusion VLA</td><td>97.2%</td><td>98.6%</td><td>97.4%</td><td>92.0%</td><td>96.3%</td></tr><tr><td>MemoryVLA</td><td>98.4%</td><td>98.4%</td><td>96.4%</td><td>93.4%</td><td>96.7%</td></tr><tr><td>FLOWER</td><td>97.5%</td><td>99.1%</td><td>96.1%</td><td>94.9%</td><td>96.9%</td></tr><tr><td>EO-1</td><td>99.7%</td><td>99.8%</td><td>99.2%</td><td>94.8%</td><td>98.2%</td></tr><tr><td><strong>Xiaomi-Robotics-0 (Ours)</strong></td><td><strong>98.8%</strong></td><td><strong>100.0%</strong></td><td><strong>98.8%</strong></td><td><strong>97.2%</strong></td><td><strong>98.7%</strong></td></tr></tbody></table></div>
+<p><strong>Insights</strong>：在 Libero-Long（最考验 long-horizon）上把次优的 FLOWER 94.9% 提升到 97.2%，是本表最大 gap。</p>
+<p><strong>Table 2. Results on the CALVIN benchmark.</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Method</th><th>Setting</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>Avg. Len. ↑</th></tr></thead><tbody><tr><td>RoboFlamingo</td><td>ABCD→D</td><td>96.4%</td><td>89.6%</td><td>82.4%</td><td>74.0%</td><td>66.0%</td><td>4.09</td></tr><tr><td>GR-1</td><td>ABCD→D</td><td>94.9%</td><td>89.6%</td><td>84.4%</td><td>78.9%</td><td>73.1%</td><td>4.21</td></tr><tr><td>MoDE</td><td>ABCD→D</td><td>97.1%</td><td>92.5%</td><td>87.9%</td><td>83.5%</td><td>77.9%</td><td>4.39</td></tr><tr><td><a href="../Papers/2412-RoboVLMs" class="internal alias" data-slug="Papers/2412-RoboVLMs">RoboVLMs</a></td><td>ABCD→D</td><td>96.7%</td><td>93.0%</td><td>89.9%</td><td>86.5%</td><td>82.6%</td><td>4.49</td></tr><tr><td>MDT</td><td>ABCD→D</td><td>98.6%</td><td>95.8%</td><td>91.6%</td><td>86.2%</td><td>80.1%</td><td>4.52</td></tr><tr><td>UniVLA</td><td>ABCD→D</td><td>98.5%</td><td>96.1%</td><td>93.1%</td><td>89.9%</td><td>85.1%</td><td>4.63</td></tr><tr><td>FLOWER</td><td>ABCD→D</td><td>99.2%</td><td>96.9%</td><td>96.9%</td><td>92.3%</td><td>88.3%</td><td>4.67</td></tr><tr><td><strong>Xiaomi-Robotics-0 (Ours)</strong></td><td>ABCD→D</td><td><strong>99.7%</strong></td><td><strong>98.0%</strong></td><td><strong>96.7%</strong></td><td><strong>94.2%</strong></td><td><strong>91.8%</strong></td><td><strong>4.80</strong></td></tr><tr><td>RoboFlamingo</td><td>ABC→D</td><td>82.4%</td><td>61.9%</td><td>46.6%</td><td>33.1%</td><td>23.5%</td><td>2.48</td></tr><tr><td>SuSIE</td><td>ABC→D</td><td>87.0%</td><td>69.0%</td><td>49.0%</td><td>38.0%</td><td>26.0%</td><td>2.69</td></tr><tr><td>GR-1</td><td>ABC→D</td><td>85.4%</td><td>71.2%</td><td>59.6%</td><td>49.7%</td><td>40.1%</td><td>3.06</td></tr><tr><td>3DDA</td><td>ABC→D</td><td>93.8%</td><td>80.3%</td><td>66.2%</td><td>53.3%</td><td>41.2%</td><td>3.35</td></tr><tr><td>MoDE</td><td>ABC→D</td><td>96.2%</td><td>88.9%</td><td>81.1%</td><td>71.8%</td><td>63.5%</td><td>4.01</td></tr><tr><td>GR-MG</td><td>ABC→D</td><td>96.8%</td><td>89.3%</td><td>81.5%</td><td>72.7%</td><td>64.4%</td><td>4.04</td></tr><tr><td><a href="../Papers/2412-RoboVLMs" class="internal alias" data-slug="Papers/2412-RoboVLMs">RoboVLMs</a></td><td>ABC→D</td><td>98.0%</td><td>93.6%</td><td>85.4%</td><td>77.8%</td><td>70.4%</td><td>4.25</td></tr><tr><td>Seer-Large</td><td>ABC→D</td><td>96.3%</td><td>91.6%</td><td>86.1%</td><td>80.3%</td><td>74.0%</td><td>4.28</td></tr><tr><td>VPP</td><td>ABC→D</td><td>95.7%</td><td>91.2%</td><td>86.3%</td><td>81.0%</td><td>75.0%</td><td>4.29</td></tr><tr><td>UniVLA</td><td>ABC→D</td><td>98.9%</td><td>94.8%</td><td>89.0%</td><td>82.8%</td><td>75.1%</td><td>4.41</td></tr><tr><td>FLOWER</td><td>ABC→D</td><td>99.4%</td><td>95.8%</td><td>90.7%</td><td>84.9%</td><td>77.8%</td><td>4.53</td></tr><tr><td><strong>Xiaomi-Robotics-0 (Ours)</strong></td><td>ABC→D</td><td><strong>100.0%</strong></td><td><strong>98.3%</strong></td><td><strong>96.0%</strong></td><td><strong>92.6%</strong></td><td><strong>88.1%</strong></td><td><strong>4.75</strong></td></tr></tbody></table></div>
+<p><strong>Insights</strong>：ABC→D 是 OOD 泛化 split（训练时没见过 D），本方法把 Task-5 成功率从 FLOWER 的 77.8% 拉到 88.1%——10 个点的 gap 比 ABCD→D 的 in-distribution split 更大，说明 VL co-train 带来的表示质量对 OOD 有实质增益。</p>
+<p><strong>Benchmark action chunk 长度</strong>：LIBERO <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">10</span></span></span></span>、CALVIN <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">10</span></span></span></span>、SimplerEnv <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span></span></span></span>。SimplerEnv 详细数字在 Appendix B，笔记不展开。</p>
+<h3 id="real-robot-experiments">Real-Robot Experiments<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#real-robot-experiments" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Figure 6. Real-Robot Experiments.</strong> (a) Lego Disassembly 评测设置。(b) Towel Folding 评测设置和使用的 6 种毛巾。(c) 两个任务上的定量结果。</p>
+<p><img src="https://arxiv.org/html/2602.12684v2/x6.png" alt/></p>
+<p><strong>平台</strong>：bimanual robot，两个 6-DoF arm，三个相机（2 个 wrist-mounted + 1 个 global external）。</p>
+<p><strong>Tasks</strong>：</p>
+<ul>
+<li><strong>Lego Disassembly</strong>：拆解 Lego 结构为单独砖块，按颜色分拣到对应 bin。要求 bimanual 协同抓取 + 精确放置。两个 setting：LA（large-assembly，LA-5 / LA-10 / LA-20 三个尺寸）和 MA（multi-assembly，共 34 块含单块和 2-3 块组合）。Metric：正确分拣砖块数 / 总砖块数（success rate）和 throughput（单位时间分拣数）。</li>
+<li><strong>Towel Folding</strong>：从托盘取毛巾 → 展平 → 对折两次 → 放到 staging area。毛巾 deformable，动力学复杂。用 6 条不同毛巾，每个方法跑两次 30 分钟 rollout；单次折叠超过 2 分钟算失败；metric 是 throughput（成功折叠数 / rollout 时间）。</li>
+</ul>
+<p><strong>Implementation</strong>：</p>
+<ul>
+<li><strong>Baselines</strong>：<a href="../Papers/2504-Pi05" class="internal alias" data-slug="Papers/2504-Pi05">π0.5</a>（SOTA VLA）、Xiaomi-Robotics-0（主方法，异步）、Xiaomi-Robotics-0 (Sync)、Xiaomi-Robotics-0 (Training RTC)。<a href="../Papers/2504-Pi05" class="internal alias" data-slug="Papers/2504-Pi05">π0.5</a> 按官方 OpenPi 的 fine-tune 协议从 release 的 base 启动。</li>
+<li><strong>Training</strong>：pre-train 40k steps, batch 32,768；post-train Lego 40k steps、Towel 80k steps, batch 2,048；AdamW + DeepSpeed ZeRO-2；<strong>action chunk <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">30</span></span></span></span> 对应 1 秒动作</strong>。</li>
+</ul>
+<p><strong>Results</strong>（文中叙述，定量在 Fig.6c 不抽数字）：</p>
+<ul>
+<li>Lego Disassembly：所有方法 avg success rate 相当，sync 方法（<a href="../Papers/2504-Pi05" class="internal alias" data-slug="Papers/2504-Pi05">π0.5</a> 和 Xiaomi-Robotics-0 Sync）精度略高因为反应性更好（异步 inference 的动作生成稍晚，导致砖块 tension 爆开）。但 throughput 上 Xiaomi-Robotics-0 (Sync) 就超过 <a href="../Papers/2504-Pi05" class="internal alias" data-slug="Papers/2504-Pi05">π0.5</a>；Xiaomi-Robotics-0（异步）throughput 最高。</li>
+<li>Towel Folding：<a href="../Papers/2504-Pi05" class="internal alias" data-slug="Papers/2504-Pi05">π0.5</a>、Xiaomi-Robotics-0 (Sync)、Xiaomi-Robotics-0 (Training RTC) 都是 1 pcs/min；<strong>Xiaomi-Robotics-0 达到 1.2 pcs/min</strong>。Training RTC 变体有一个典型 failure：flinging 时不小心抓到两层毛巾会陷入重复 fling loop 无法自救——印证了 prefix shortcut 假设（模型只 copy prefix 而不 attend 当前观测）。</li>
+</ul>
+<p><strong>Video 2. Lego Disassembly — complex task manipulation.</strong>
+<video src="https://robotics.xiaomi.com/robot-model/xiaomi-robotics-0-Lego-disassembly-complex-task-manipulation.mp4" controls muted playsinline width="720"></video></p>
+<p><strong>Video 3. Lego Disassembly — flexible motion switch.</strong>
+<video src="https://robotics.xiaomi.com/robot-model/xiaomi-robotics-0-Lego-disassembly-flexible-%20motion-switch.mp4" controls muted playsinline width="720"></video></p>
+<p><strong>Video 4. Towel Folding — fling motion.</strong>
+<video src="https://robotics.xiaomi.com/robot-model/xiaomi-robotics-0-towel-folding-fling.mp4" controls muted playsinline width="720"></video></p>
+<p><strong>Video 5. Towel Folding — put back.</strong>
+<video src="https://robotics.xiaomi.com/robot-model/xiaomi-robotics-0-towel-folding-put-back.mp4" controls muted playsinline width="720"></video></p>
+<h3 id="preservation-of-vision-language-capabilities">Preservation of Vision-Language Capabilities<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#preservation-of-vision-language-capabilities" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table 3. Quantitative results on general vision-language and embodied reasoning benchmarks.</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Model</th><th>ERQA</th><th>SEED</th><th>POPE</th><th>AI2D</th><th>MMBench</th><th>MME</th><th>MMMU</th><th>TextVQA</th><th>SciQA</th><th>ChartQA</th></tr></thead><tbody><tr><td><a href="../Papers/2410-Pi0" class="internal alias" data-slug="Papers/2410-Pi0">π0</a></td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.1</td><td>0.1</td><td>1.4</td><td>0.0</td><td>0.0</td></tr><tr><td><a href="../Papers/2504-Pi05" class="internal alias" data-slug="Papers/2504-Pi05">π0.5</a></td><td>0.0</td><td>21.5</td><td>0.0</td><td>14.4</td><td>22.1</td><td>0.0</td><td>19.9</td><td>0.0</td><td>28.0</td><td>0.5</td></tr><tr><td>MolmoAct</td><td>33.5</td><td>72.7</td><td>86.6</td><td>72.0</td><td>80.1</td><td>69.5</td><td>38.0</td><td>67.3</td><td><strong>91.1</strong></td><td>57.1</td></tr><tr><td>Xiaomi-Robotics-0 (w/o VL data)</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td></tr><tr><td><strong>Xiaomi-Robotics-0 (Ours)</strong></td><td><strong>40.8</strong></td><td><strong>78.6</strong></td><td><strong>88.5</strong></td><td><strong>78.7</strong></td><td><strong>84.4</strong></td><td><strong>81.8</strong></td><td><strong>46.2</strong></td><td><strong>72.0</strong></td><td>79.4</td><td><strong>59.2</strong></td></tr><tr><td>Qwen3-VL-4B-Instruct (base)</td><td>40.0</td><td>78.8</td><td>89.7</td><td>81.6</td><td>88.7</td><td>87.1</td><td>51.7</td><td>78.0</td><td>92.7</td><td>76.8</td></tr></tbody></table></div>
+<p><strong>Insights</strong>：</p>
+<ul>
+<li><strong><a href="../Papers/2410-Pi0" class="internal alias" data-slug="Papers/2410-Pi0">π0</a> / <a href="../Papers/2504-Pi05" class="internal alias" data-slug="Papers/2504-Pi05">π0.5</a> 几乎全归零</strong>：说明单纯在 robot trajectory 上训练会彻底摧毁基座 VLM 的 VL 能力。<a href="../Papers/2504-Pi05" class="internal alias" data-slug="Papers/2504-Pi05">π0.5</a> 在个别 benchmark 上有极小值可能是训练配方不同。</li>
+<li><strong>Xiaomi-Robotics-0 (w/o VL data) = 全 0</strong>：本方法自己做 ablation，证明不 co-train VL 数据也会 catastrophic forgetting。</li>
+<li><strong>Ours 在 9/10 benchmark 上领先所有 VLA 基线，并在 ERQA 上略超基座</strong>（40.8 vs 40.0）——作者假设是因为 robot-trajectory-derived VL 数据加强了 robot-centric 场景下的 embodied perception。其他 benchmark 略落后基座但幅度小（如 AI2D 78.7 vs 81.6）。</li>
+<li><strong>Vs MolmoAct</strong>：唯一在 SciQA 上输给 MolmoAct（79.4 vs 91.1），其他 9 个 benchmark 全部领先。</li>
+</ul>
+<hr/>
+<h2 id="论文点评">论文点评<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#论文点评" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="strengths">Strengths<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>Λ-shape attention mask 是一个简洁、first-principles 的 fix</strong>：精准定位到 training-time RTC 的根本问题（prefix shortcut），并用最小侵入的 attention mask 改动解决。比单纯加 regularization 或扩大数据更可证伪、更可解释。</li>
+<li><strong>VL co-train ablation 做得漂亮</strong>：Table 3 里 “Xiaomi-Robotics-0 (w/o VL data) 全 0” 这一行是整篇 report 最有信息量的数字——直接证明 VL co-train 不是 nice-to-have 而是必需品，同时排除了”仅仅是更大 VLM base model 导致 VL 能力”的混淆解释。</li>
+<li><strong>Real-time 工程约束的 end-to-end 闭环</strong>：80 ms 延迟 @ RTX 4090 + 30Hz resample + <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord">Δ</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord">Δ</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight" style="margin-right:0.07778em;">inf</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 的 deployment 约束，这组数字是能被 industry practitioner 直接复用的 deployment recipe。</li>
+<li><strong>硬证据支撑 Training RTC failure mode</strong>：Towel Folding 的 repetitive fling loop 是一个直观、不可辩驳的 negative example，直接 visualize 了 shortcut 假设。这种 failure case 比 +0.3% SOTA 更有说服力。</li>
+</ol>
+<h3 id="weaknesses">Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>“Training RTC 有 shortcut” 和 “Λ-mask 能 fix” 是强关联但非严格因果</strong>：虽然结论符合直觉，但缺少对 mask 后 attention 分布的定量分析（比如 attention 权重 entropy、visual token 的 attention mass 占比），只有 throughput 结果。如果能给出 mask 前后 noisy action token 对 visual token 的 attention 比例变化，会更有说服力。</li>
+<li><strong>Real-robot 结果在 Figure 6c 中只有图，没有给出 throughput 的绝对数字表</strong>：正文只提到 “Towel Folding 1.0 vs 1.2 pcs/min”，Lego 的具体数字要读图。一个正式 throughput/success table 会更可验证。</li>
+<li><strong>LIBERO 98.7% vs EO-1 98.2% 的 gap 已经接近 benchmark 饱和噪声</strong>，不能作为核心卖点；论文主要 novelty 应更清晰集中在 real-time + VL preservation 两条线。</li>
+<li><strong>只开源 inference + fine-tuned checkpoint，不开源训练代码和 VL 数据 curation pipeline</strong>。考虑到 VL co-train 是本方法的关键，这个 pipeline 的缺失会显著阻碍复现——例如 Grounded SAM + DINO 1.5 + LLMDet 三者的 cross-validation 机制具体如何实现、阈值设多少，都不是简单从 inference code 能反推的。</li>
+<li><strong>Post-training 的 Beta 分布和 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord">Δ</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> loss reweight 细节（具体 Beta 参数、reweight 公式）在正文没给全</strong>，需要看 appendix 或者代码才能复现。</li>
+<li><strong>Λ-mask 的具体形状参数 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span></span></span></span> 没有 ablation</strong>：窗口大小如何选、对 reactive-vs-smooth 的 trade-off 在哪里，文章只给了一个”用”而没给”为什么这么用”。</li>
+</ol>
+<h3 id="可信评估">可信评估<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#可信评估" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="artifact-可获取性">Artifact 可获取性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#artifact-可获取性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><strong>代码</strong>: inference-only（README 明确只包含 inference code 和 evaluation scripts，无 training 代码）</li>
+<li><strong>模型权重</strong>: 6 个 checkpoint 全部发布在 HuggingFace 的 XiaomiRobotics collection —— base pre-trained <code>Xiaomi-Robotics-0</code> (4.7B)、<code>Xiaomi-Robotics-0-LIBERO</code>（4 个 LIBERO suite 微调）、<code>Xiaomi-Robotics-0-Calvin-ABCD_D</code>、<code>Xiaomi-Robotics-0-Calvin-ABC_D</code>、<code>Xiaomi-Robotics-0-SimplerEnv-Google-Robot</code>（Fractal 微调）、<code>Xiaomi-Robotics-0-SimplerEnv-WidowX</code>（Bridge 微调）</li>
+<li><strong>训练细节</strong>: 高层描述 + 部分超参（pre-train 40k steps batch 32,768；post-train 40k/80k steps batch 2,048；AdamW + DeepSpeed ZeRO-2；<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">30</span></span></span></span>）。Beta 分布参数、Λ-mask 窗口 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span></span></span></span>、dynamic loss reweight 公式等细节不全；VL 数据比例 1:6 给出。完整复现困难。</li>
+<li><strong>数据集</strong>: 部分公开。开源部分：DROID、MolmoAct、VL 通用数据集（引用）。私有部分：Lego Disassembly 338 小时 + Towel Folding 400 小时 in-house teleoperation 数据；VL 数据的 curation pipeline（Grounded SAM + DINO 1.5 + LLMDet 共识机制 + VLM re-label）只有高层描述。</li>
+</ul>
+<h4 id="claim-可验证性">Claim 可验证性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#claim-可验证性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>✅ <strong>三个 sim benchmark SOTA（LIBERO 98.7%、CALVIN 4.80/4.75、SimplerEnv 85.5/74.7/79.2）</strong>：数字来自论文 Table 1、Table 2、Appendix，可通过发布的 fine-tuned checkpoint 直接复现评测（README 里给了每个 benchmark 的 eval 指引）。</li>
+<li>✅ <strong>VL 能力保留（Table 3 ERQA 40.8 略超基座 40.0）</strong>：数字和方法清晰；ablation 的 w/o VL data 全 0 强支持了 catastrophic forgetting 假设。可通过发布的 base checkpoint 在任意标准 VLM evaluator 上独立验证。</li>
+<li>✅ <strong>80 ms inference latency on RTX 4090</strong>：消费级 GPU 的明确硬件 + 数字 + 推理步数（5 flow-matching steps）组合，可用发布的 inference code 直接测。</li>
+<li>⚠️ <strong>“Λ-shape mask 解决 prefix shortcut”</strong>：论文给出的证据是 Towel Folding 的 repetitive fling loop 失败模式 + throughput gap，但没有 attention 可视化或 counter-example 证明 fix 的 mechanism 确实是通过改变 attention 分布实现的。相关性强，但因果链条没有闭合。</li>
+<li>⚠️ <strong>“pre-training recipe 泛化到新机器人 / 新任务”</strong>：只在两个 in-house 任务（Lego、Towel）上验证 post-training。是否能泛化到移动操作、接触丰富的 manipulation、或 bimanual 之外的 embodiment 未知。</li>
+<li>⚠️ <strong>Real-robot throughput 数字（Towel 1.2 pcs/min）</strong>：依赖 evaluation protocol 的实现细节（2 分钟超时判定、30 分钟 rollout 等），无独立复现时不易 cross-check。</li>
+</ul>
+<hr/>
+<h2 id="关联工作">关联工作<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#关联工作" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="基于">基于<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#基于" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><a href="../Papers/2410-Pi0" class="internal alias" data-slug="Papers/2410-Pi0">π0</a>: Flow-matching VLA，MoT 架构的直接先驱。本文的 DiT + 冻结 VLM 架构思路来自 <a href="../Papers/2410-Pi0" class="internal alias" data-slug="Papers/2410-Pi0">π0</a>，但用 Qwen3-VL-4B 替代 PaliGemma，并加入 Λ-mask 创新。</li>
+<li><a href="../Papers/2504-Pi05" class="internal alias" data-slug="Papers/2504-Pi05">π0.5</a>：training-time RTC（action prefix conditioning）的出处，本文的 async 训练范式直接基于它。</li>
+<li>Choice Policies：pre-training Step 1 用的 multi-candidate + winner-takes-all 范式来自这里。</li>
+<li><strong>DiT / adaLN</strong>：Diffusion Transformer 架构（Peebles &amp; Xie）。</li>
+<li><strong>Flow matching</strong>：Lipman et al. / Liu et al. 的条件 flow matching 作为 action 生成的目标。</li>
+</ul>
+<h3 id="对比">对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><a href="../Papers/2406-OpenVLA" class="internal alias" data-slug="Papers/2406-OpenVLA">OpenVLA</a> / <a href="../Papers/2502-OpenVLA-OFT" class="internal alias" data-slug="Papers/2502-OpenVLA-OFT">OpenVLA-OFT</a>: LIBERO 上的开源 VLA baseline。</li>
+<li><a href="../Papers/2503-GR00TN1" class="internal alias" data-slug="Papers/2503-GR00TN1">GR00T-N1</a>: NVIDIA 的 foundation 模型，LIBERO 上对比。</li>
+<li><a href="../Papers/2410-Pi0" class="internal alias" data-slug="Papers/2410-Pi0">π0</a> / <a href="../Papers/2504-Pi05" class="internal alias" data-slug="Papers/2504-Pi05">π0.5</a> / π0-FAST：Physical Intelligence 的 VLA 系列，三个 sim benchmark 全部对比 + Table 3 里 VL 能力对比。</li>
+<li>FLOWER, EO-1, MemoryVLA, UniVLA, Discrete Diffusion VLA：LIBERO + CALVIN 次优 baseline。</li>
+<li>MolmoAct：Table 3 的 VL 能力对比，作为另一条 “VLA 模型保留 VLM 能力” 的路线。</li>
+</ul>
+<h3 id="方法相关">方法相关<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#方法相关" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Training RTC / Real-Time Chunking</strong>：action chunk prefix conditioning + async execution 的基础 protocol。</li>
+<li><strong>Λ-shape attention mask</strong>：之前用于 multimodal / streaming generation 的 mask pattern（cited refs 20, 71, 16），本文首次应用到 VLA action generation。</li>
+<li><strong>Action Chunking</strong>（Zhao et al.）：action chunk 预测范式的基础。</li>
+<li><strong>Qwen3-VL-4B-Instruct</strong>：VLM 基座。</li>
+<li><strong>Grounded SAM / Grounding DINO 1.5 / LLMDet</strong>：VL 数据 grounding 标注的三方共识机制。</li>
+</ul>
+<hr/>
+<h2 id="速查卡片">速查卡片<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#速查卡片" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Xiaomi-Robotics-0 </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><strong>核心</strong>: 4.7B VLM+DiT VLA，用 Λ-shape attention mask 防止 async prefix shortcut，在消费级 4090 上 80ms 延迟平滑实时执行</li>
+<li><strong>方法</strong>: Qwen3-VL-4B 冻结 + 16-layer DiT flow-matching + VL data co-train (1:6) + Λ-mask + RoPE offset + dynamic loss reweight</li>
+<li><strong>结果</strong>: LIBERO 98.7% / CALVIN 4.80/4.75 / SimplerEnv 85.5-79.2%，real-robot Towel Folding 吞吐 1.2 vs <a href="../Papers/2504-Pi05" class="internal alias" data-slug="Papers/2504-Pi05">π0.5</a> 的 1.0 pcs/min，ERQA 40.8 略超基座 Qwen3-VL</li>
+<li><strong>代码</strong>: <a href="https://github.com/XiaomiRobotics/Xiaomi-Robotics-0%EF%BC%88inference-only" class="external">https://github.com/XiaomiRobotics/Xiaomi-Robotics-0（inference-only<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> + 6 个 HF checkpoint）</li>
+</ul>
+</div>
+</blockquote>
+<hr/>
 <h2 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
 <ul>
-<li>Λ-Shape Attention Mask 的设计思路值得借鉴：通过控制 attention pattern 来防止 policy 走捷径。这种 attention engineering 的方法可能对其他异步/流式 VLA 场景也有启发。</li>
-<li>1:6 的 robot:VL 采样比是防止 catastrophic forgetting 的关键数据配方，如果未来做 VLA 训练可以作为 baseline 参考。</li>
-<li>与 <a href="../Ideas/SpatialToken-VLA" class="internal" data-slug="Ideas/SpatialToken-VLA">SpatialToken-VLA</a> 的关联：本文的 action expert tokens 设计（DiT 部分）可以视为一种 modality-specific token 的实践，和 SpatialToken 将 scene graph 编码为 spatial tokens 的思路在架构层面有共通之处——都是给 VLM 加入非文本 modality 的 learnable tokens。</li>
-</ul></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="80gtpu" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#problem--motivation" data-for="problem--motivation">Problem &amp; Motivation</a></li><li class="depth-0"><a href="#method" data-for="method">Method</a></li><li class="depth-1"><a href="#整体架构" data-for="整体架构">整体架构</a></li><li class="depth-1"><a href="#预训练两阶段" data-for="预训练两阶段">预训练（两阶段）</a></li><li class="depth-1"><a href="#训练数据" data-for="训练数据">训练数据</a></li><li class="depth-1"><a href="#异步执行后训练核心创新" data-for="异步执行后训练核心创新">异步执行后训练（核心创新）</a></li><li class="depth-1"><a href="#部署" data-for="部署">部署</a></li><li class="depth-0"><a href="#key-results" data-for="key-results">Key Results</a></li><li class="depth-1"><a href="#仿真-benchmark全部-sota" data-for="仿真-benchmark全部-sota">仿真 Benchmark（全部 SOTA）</a></li><li class="depth-1"><a href="#真实机器人" data-for="真实机器人">真实机器人</a></li><li class="depth-1"><a href="#vlm-能力保持" data-for="vlm-能力保持">VLM 能力保持</a></li><li class="depth-0"><a href="#strengths--weaknesses" data-for="strengths--weaknesses">Strengths &amp; Weaknesses</a></li><li class="depth-0"><a href="#action-space" data-for="action-space">Action Space</a></li><li class="depth-0"><a href="#mind-map" data-for="mind-map">Mind Map</a></li><li class="depth-0"><a href="#notes" data-for="notes">Notes</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+<li>真正让我关心的一个问题：VL co-train 的 1:6 比例是拍脑袋还是 sweep 出来的？如果是拍的，那可能意味着”只要 VL 数据比例非零就不会 forget”是更强的结论——需要一个 ratio sweep 来确认。</li>
+<li>Λ-mask 的窗口大小 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span></span></span></span> 没 ablation。直觉上 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span></span></span></span> 太小会让 transition 不平滑（还是有 jerky），<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span></span></span></span> 太大会退化回 training-time RTC。这是一个小而有意思的 follow-up 实验。</li>
+<li>注意 Table 3 里 <a href="../Papers/2504-Pi05" class="internal alias" data-slug="Papers/2504-Pi05">π0.5</a> 的 VL benchmark 数字非常奇怪（SEED 21.5 / AI2D 14.4 / MMBench 22.1 / MMMU 19.9 / SciQA 28.0）——这些不是 0 但也不是正常水平，像是某种 partial preservation。为什么 <a href="../Papers/2410-Pi0" class="internal alias" data-slug="Papers/2410-Pi0">π0</a> 完全归零而 <a href="../Papers/2504-Pi05" class="internal alias" data-slug="Papers/2504-Pi05">π0.5</a> 有零星残留？可能和 <a href="../Papers/2504-Pi05" class="internal alias" data-slug="Papers/2504-Pi05">π0.5</a> 的训练配方（更多 VL 数据 / post-training 策略）有关，值得比对 <a href="../Papers/2504-Pi05" class="internal alias" data-slug="Papers/2504-Pi05">π0.5</a> 原论文。</li>
+<li>Paper name 是 “Xiaomi-Robotics-0”，暗示后面会有 1、2，类似 <a href="../Papers/2410-Pi0" class="internal alias" data-slug="Papers/2410-Pi0">π0</a> → <a href="../Papers/2504-Pi05" class="internal alias" data-slug="Papers/2504-Pi05">π0.5</a>。本 report 是 v1.0 的内部代号。</li>
+</ul></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="9pl5yp" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#sources" data-for="sources">Sources</a></li><li class="depth-0"><a href="#introduction" data-for="introduction">Introduction</a></li><li class="depth-0"><a href="#xiaomi-robotics-0" data-for="xiaomi-robotics-0">Xiaomi-Robotics-0</a></li><li class="depth-1"><a href="#data" data-for="data">Data</a></li><li class="depth-1"><a href="#model--training" data-for="model--training">Model &amp; Training</a></li><li class="depth-1"><a href="#deployment" data-for="deployment">Deployment</a></li><li class="depth-0"><a href="#experiments" data-for="experiments">Experiments</a></li><li class="depth-1"><a href="#simulation-benchmarks" data-for="simulation-benchmarks">Simulation Benchmarks</a></li><li class="depth-1"><a href="#real-robot-experiments" data-for="real-robot-experiments">Real-Robot Experiments</a></li><li class="depth-1"><a href="#preservation-of-vision-language-capabilities" data-for="preservation-of-vision-language-capabilities">Preservation of Vision-Language Capabilities</a></li><li class="depth-0"><a href="#论文点评" data-for="论文点评">论文点评</a></li><li class="depth-1"><a href="#strengths" data-for="strengths">Strengths</a></li><li class="depth-1"><a href="#weaknesses" data-for="weaknesses">Weaknesses</a></li><li class="depth-1"><a href="#可信评估" data-for="可信评估">可信评估</a></li><li class="depth-0"><a href="#关联工作" data-for="关联工作">关联工作</a></li><li class="depth-1"><a href="#基于" data-for="基于">基于</a></li><li class="depth-1"><a href="#对比" data-for="对比">对比</a></li><li class="depth-1"><a href="#方法相关" data-for="方法相关">方法相关</a></li><li class="depth-0"><a href="#速查卡片" data-for="速查卡片">速查卡片</a></li><li class="depth-0"><a href="#notes" data-for="notes">Notes</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
 </script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
 </script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>
