@@ -2,7 +2,7 @@
 name: paper-digest
 description: Use when user asks to "read paper", "analyze paper", "summarize paper", "读论文", "分析文献", "帮我看一下这篇paper", "论文笔记", or provides a PDF file that appears to be an academic paper.
 argument-hint: "[arXiv URL / blog URL / PDF path / title]"
-allowed-tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 ---
 
 ## Purpose
@@ -41,7 +41,7 @@ allowed-tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch
 
 #### Step 2.1：fetch 源材料并落盘到本地
 
-必须有一个**本地可读的 raw 副本**——所有 fetch 直接 curl 到 `/tmp/`，不用 WebFetch（WebFetch 的 LLM summarizer 会丢图/视频/数字 URL）。
+必须有一个**本地可读的副本**——使用 [defuddle](https://github.com/kepano/defuddle) CLI 抓取网页并转换为干净的 Markdown 和 meta data，不用 WebFetch（WebFetch 的 LLM summarizer 会丢图/视频/数字 URL）。
 
 > **若 source 是论文标题或关键词**：先 WebSearch（建议加 `site:arxiv.org`）定位 arxiv id，再按 arXiv URL 处理。
 
@@ -51,8 +51,8 @@ allowed-tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch
 
 | 来源                                     | 落盘方式                                                                                              |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| arXiv URL `https://arxiv.org/abs/{id}` | Bash `curl -sL https://arxiv.org/html/{id} -o /tmp/arxiv_{id}.html`（如 `/tmp/arxiv_2512.04601.html`） |
-| Blog URL                               | Bash `curl -sL <url> -o /tmp/blog_{last-path-segment}.html`（如 `/tmp/blog_apr-02-2026-GEN-1.html`） |
+| arXiv URL `https://arxiv.org/abs/{id}` | Bash `npx defuddle parse "https://arxiv.org/html/{id}" --json --markdown -o /tmp/arxiv_{id}.json`（如 `/tmp/arxiv_2512.04601.json`） |
+| Blog URL                               | Bash `npx defuddle parse "<url>" --json --markdown -o /tmp/blog_{last-path-segment}.json`（如 `/tmp/blog_apr-02-2026-GEN-1.json`） |
 | PDF 路径                                 | 已经是本地文件，直接用路径                                                                                     |
 
 **记住这个路径**，Step 2.2 抽取时会读取。
@@ -63,7 +63,7 @@ allowed-tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch
 
 **发现流程**：
 
-1. **主通道（arxiv HTML 抽取）**：Grep 主源 HTML 的 abstract + 第一页 footnote / author block 区域，找：
+1. **主通道（主源抽取）**：Grep 主源文件的 abstract + 开头区域，找：
    - `github.com/<org>/<repo>` 形式的链接
    - 紧邻 "project page" / "website" / "code" / "demo" 等 label 的 URL
 2. **Fallback（WebSearch）**：主通道找不到时，用 WebSearch 兜底：
@@ -78,8 +78,9 @@ allowed-tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch
 
 | 次源            | 落盘方式                                                                                                                                |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| Website       | Bash `curl -sL <website_url> -o /tmp/website_{slug}.html`（slug 取 URL 最后一段）                                                          |
+| Website       | Bash `npx defuddle parse "<website_url>" --json --markdown -o /tmp/website_{slug}.json`（slug 取 URL 最后一段）                              |
 | GitHub README | Bash `curl -sL https://raw.githubusercontent.com/<org>/<repo>/main/README.md -o /tmp/readme_<org>_<repo>.md`（若 main 分支不存在，试 master） |
+
 
 记下 `secondary_sources.website.local_path` 和 `secondary_sources.github.local_path`，Step 2.2 抽取次源内容时会读取。
 
@@ -146,14 +147,14 @@ videos:
 
 **抽取原则**：
 - 只抽取**源材料中实际存在**的元素。若某一项不存在，跳过，**禁止捏造**。
-- **URL 重建**：HTML 源里图片 / 视频 / asset 很多时候是**相对路径**（arxiv HTML 里 `<img src="x1.png">` 配 `<base href="/html/{id}v1/">`；项目页里 `src="assets/images/clip.mp4">`）。抽取时写入 `figures[].url` / `videos[].url` 的必须是 **Obsidian 能直接打开的绝对 URL**（如 `https://arxiv.org/html/2504.16054v1/x1.png`、`https://xiaomi-robotics-0.github.io/assets/images/clip.mp4`），即把 origin + base path 拼回去。原相对路径不能直接写进笔记——Obsidian 解析不了。
+- **图片 / 视频 URL**：defuddle 已自动将相对路径转为绝对 URL（如 `https://arxiv.org/html/2504.16054v1/x1.png`），直接从 Markdown 中提取即可。若遇到仍为相对路径的 URL，手动拼接 origin + base path。
 - 对 PDF：图通常无外链 URL，先标记 `url: null` + caption；后续 compose 阶段决定要不要本地下载。
 - **`source_sections`** 按源文档的章节顺序记录大纲（paper 用 `\section{}` / `\subsection{}` 或 `<h2>` / `<h3>`；blog 用 `<h2>` / `<h3>` / 明显的段落标题）。层级和粒度根据源结构判断。**排除非核心章节**：Related Work、Conclusions、Acknowledgments、Contributions / Author List、References / Bibliography、Appendix——这些章节不进 `source_sections[]`，也不承载 figures / equations / tables / videos。每个 `figure` / `equation` / `table` / `video` 必须挂 `section_id` 指向它在源里所属的章节——这决定了 Step 3 compose 时它出现在笔记的哪一段。
   - **Website**（若可用）：抽取 figures + videos。
   - **GitHub README**（若可用）：(1) **scope** ——  有无 training 代码？只有 inference？两者都有？都没有 → `unclear`。(2) **released_models** —— README 里明确的 checkpoint / weight 列表。
 
 **抽取的硬性禁区**（不靠 grep，靠诚实自律）：
-- ❌ 把 WebFetch summarizer 用文字描述的图当成"存在的图"——必须在本地 raw HTML 里看到可用的 `src=` / URL
+- ❌ 把 WebFetch summarizer 用文字描述的图当成"存在的图"——必须在本地源文件里看到可用的图片 URL
 - ❌ 把 bar/line chart 目测的数字写成 Markdown 表——`tables[]` 只能从源里真实存在的数字表格复制
 - ❌ 把"论文领域常见公式"凭印象补进 Method 段——`equations[]` 只收源里真实列出的公式
 - ❌ 捏造次源 URL、checkpoint 名字、benchmark 结果

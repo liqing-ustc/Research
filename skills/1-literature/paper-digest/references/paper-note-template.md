@@ -19,7 +19,8 @@ date_added:          # 填写今天的日期 YYYY-MM-DD
 2. **{Takeaway 2}**: 简要说明
 3. ...
 
-%% 若源有独立 teaser 图/视频（Abstract/Intro 里的 overview / concept / motivation 示意），在这里直接嵌入 caption + media；若论文唯一的 high-level 视觉就是架构图，跳过不写。 %%
+**Teaser. {caption}** 
+%% 若源有独立 teaser 图/视频（ Abstract / Intro 里的 overview / concept / motivation 示意），在这里直接嵌入；若论文唯一的 high-level 视觉就是架构图，跳过不写，不留 placeholder %%
 
 **Sources**: [arxiv](arxiv_url) | [blog](blog_url) | [website](website_url) | [github](github_url)
 %% 保留存在的 slot，缺失的整段删除（含 `|` 分隔符）。label 文本固定不改，只替换括号内 URL。主源是 arxiv/PDF 用 `arxiv` slot，主源是博客/发布页用 `blog` slot——两者互斥，通常只出现一个。 %%
