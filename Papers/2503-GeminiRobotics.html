@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><title>Gemini Robotics: Bringing AI into the Physical World</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="Gemini Robotics: Bringing AI into the Physical World"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Gemini Robotics: Bringing AI into the Physical World"/><meta name="twitter:description" content="Summary Google DeepMind 提出 Gemini Robotics，一个基于 Gemini 2.0 的 Vision-Language-Action 模型，采用 cloud backbone + local action decoder 的双组件架构，在 ALOHA 2 平台上实现了灵巧双臂操作，并展示了在 visual/instruction/action ..."/><meta property="og:description" content="Summary Google DeepMind 提出 Gemini Robotics，一个基于 Gemini 2.0 的 Vision-Language-Action 模型，采用 cloud backbone + local action decoder 的双组件架构，在 ALOHA 2 平台上实现了灵巧双臂操作，并展示了在 visual/instruction/action ..."/><meta property="og:image:alt" content="Summary Google DeepMind 提出 Gemini Robotics，一个基于 Gemini 2.0 的 Vision-Language-Action 模型，采用 cloud backbone + local action decoder 的双组件架构，在 ALOHA 2 平台上实现了灵巧双臂操作，并展示了在 visual/instruction/action ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2503-GeminiRobotics"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2503-GeminiRobotics"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary Google DeepMind 提出 Gemini Robotics，一个基于 Gemini 2.0 的 Vision-Language-Action 模型，采用 cloud backbone + local action decoder 的双组件架构，在 ALOHA 2 平台上实现了灵巧双臂操作，并展示了在 visual/instruction/action ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+<html lang="en"><head><title>Gemini Robotics: Bringing AI into the Physical World</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="Gemini Robotics: Bringing AI into the Physical World"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Gemini Robotics: Bringing AI into the Physical World"/><meta name="twitter:description" content="Summary Google DeepMind 在 Gemini 2.0 上构建了两个互相承接的模型：Gemini Robotics-ER——一个强化了 2D/3D pointing、trajectory、grasp 预测和多视角对应能力的 embodied VLM；以及 Gemini Robotics——一个以 ER 蒸馏版为云端 ..."/><meta property="og:description" content="Summary Google DeepMind 在 Gemini 2.0 上构建了两个互相承接的模型：Gemini Robotics-ER——一个强化了 2D/3D pointing、trajectory、grasp 预测和多视角对应能力的 embodied VLM；以及 Gemini Robotics——一个以 ER 蒸馏版为云端 ..."/><meta property="og:image:alt" content="Summary Google DeepMind 在 Gemini 2.0 上构建了两个互相承接的模型：Gemini Robotics-ER——一个强化了 2D/3D pointing、trajectory、grasp 预测和多视角对应能力的 embodied VLM；以及 Gemini Robotics——一个以 ER 蒸馏版为云端 ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2503-GeminiRobotics"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2503-GeminiRobotics"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary Google DeepMind 在 Gemini 2.0 上构建了两个互相承接的模型：Gemini Robotics-ER——一个强化了 2D/3D pointing、trajectory、grasp 预测和多视角对应能力的 embodied VLM；以及 Gemini Robotics——一个以 ER 蒸馏版为云端 ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
   position: absolute;
   display: flex;
   float: right;
@@ -116,137 +116,478 @@ pre:hover > .expand-button {
   padding: 0 12px;
   font-size: 14px;
 }
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2503-GeminiRobotics"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Meetings\&quot;,\&quot;Resources\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="vlp5j2"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/RL" class="sidebar-tag-pill">#RL</a><a href="/mindflow/tags/web-agent" class="sidebar-tag-pill">#web-agent</a><a href="/mindflow/tags/instruction-following" class="sidebar-tag-pill">#instruction-following</a><a href="/mindflow/tags/scene-understanding" class="sidebar-tag-pill">#scene-understanding</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/cross-embodiment" class="sidebar-tag-pill">#cross-embodiment</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2503-GeminiRobotics</a></div></nav><h1 class="article-title">Gemini Robotics: Bringing AI into the Physical World</h1><div class="paper-meta"><span class="paper-venue">arXiv</span><span class="paper-authors"><span class="meta-sep">·</span>Saminda Abeyruwan <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, Joshua Ainslie</span><span>, Jean-Baptiste Alayrac</span><span>, Montserrat Gonzalez Arenas</span><span>, et al.</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2025-03-25T00:00:00.000Z">Mar 25, 2025</time><span>7 min read</span></p><ul class="tags"><li><a href="../tags/VLA" class="internal tag-link">VLA</a></li><li><a href="../tags/manipulation" class="internal tag-link">manipulation</a></li><li><a href="../tags/instruction-following" class="internal tag-link">instruction-following</a></li><li><a href="../tags/cross-embodiment" class="internal tag-link">cross-embodiment</a></li><li><a href="../tags/scene-understanding" class="internal tag-link">scene-understanding</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>Google DeepMind 提出 Gemini Robotics，一个基于 Gemini 2.0 的 Vision-Language-Action 模型，采用 cloud backbone + local action decoder 的双组件架构，在 ALOHA 2 平台上实现了灵巧双臂操作，并展示了在 visual/instruction/action 三个维度上的强泛化能力，同时引入 Gemini Robotics-ER 增强 embodied reasoning 能力，支持 zero/few-shot cross-embodiment 迁移。</p>
-<h2 id="problem--motivation">Problem &amp; Motivation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#problem--motivation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>当前大规模多模态模型在文本和图像理解上表现优异，但将这些能力迁移到物理世界的机器人控制仍面临重大挑战。机器人需要 robust 的 embodied reasoning（3D 空间理解、物体关系推理、直觉物理）以及精确的 action execution，现有方法难以在一个统一模型中同时具备 perception、reasoning 和 action 能力。作者希望利用 Gemini 2.0 的强大 VLM 基础，构建真正通用的机器人 foundation model，同时解决 generalization、dexterity 和 cross-embodiment adaptation 三大难题。</p>
-<h2 id="method">Method<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#method" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>核心架构：<strong>Gemini 2.0 (Cloud Backbone) + Local Action Decoder</strong>，双层级系统设计。</p>
-<p><strong>1. Gemini Robotics-ER (Embodied Reasoning)</strong></p>
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2503-GeminiRobotics"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Meetings\&quot;,\&quot;Resources\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="jju5rf"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/RL" class="sidebar-tag-pill">#RL</a><a href="/mindflow/tags/web-agent" class="sidebar-tag-pill">#web-agent</a><a href="/mindflow/tags/scene-understanding" class="sidebar-tag-pill">#scene-understanding</a><a href="/mindflow/tags/instruction-following" class="sidebar-tag-pill">#instruction-following</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/VLN" class="sidebar-tag-pill">#VLN</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2503-GeminiRobotics</a></div></nav><h1 class="article-title">Gemini Robotics: Bringing AI into the Physical World</h1><div class="paper-meta"><span class="paper-venue">arXiv</span><span class="paper-authors"><span class="meta-sep">·</span>Gemini Robotics Team</span></div><p show-comma="true" class="content-meta"><time datetime="2025-03-25T00:00:00.000Z">Mar 25, 2025</time><span>28 min read</span></p><ul class="tags"><li><a href="../tags/VLA" class="internal tag-link">VLA</a></li><li><a href="../tags/manipulation" class="internal tag-link">manipulation</a></li><li><a href="../tags/embodied-reasoning" class="internal tag-link">embodied-reasoning</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Google DeepMind 在 Gemini 2.0 上构建了两个互相承接的模型：<strong>Gemini Robotics-ER</strong>——一个强化了 2D/3D pointing、trajectory、grasp 预测和多视角对应能力的 embodied VLM；以及 <strong>Gemini Robotics</strong>——一个以 ER 蒸馏版为云端 backbone、配合机上 local action decoder 的 VLA。云端 backbone 延迟 &lt;160ms、端到端 ~250ms、有效控制频率 50Hz。在 ALOHA 2 平台上，Gemini Robotics 在 20 个开箱即用的灵巧操作任务上显著超越 <a href="../Papers/2410-Pi0" class="internal alias" data-slug="Papers/2410-Pi0">π0</a> re-implement 和多任务 diffusion baseline，并通过专门化 fine-tune 解决了 origami fox、lunch-box packing 等长时序高灵巧度任务，同时能以 ~100 条 demonstration 快速适配新任务，并成功迁移至 bi-arm Franka 和 Apollo humanoid。作者还发布了 ERQA benchmark（400 道 embodied 多选题）用以评估 VLM 的 embodied reasoning。</p>
+<p><strong>Key Takeaways:</strong></p>
+<ol>
+<li><strong>Cloud backbone + local decoder</strong>：把”大模型理解能力”与”实时控制闭环”解耦——backbone 出粗粒度 action chunk，本地 decoder 在 latency budget 内补齐细节，实现 50Hz 的高频响应。这是把云端大模型塞进真实机器人的一条实用路径。</li>
+<li><strong>Embodied reasoning 作为 VLA 的地基</strong>：Gemini Robotics-ER 先在 pointing/trajectory/3D 等任务上 SOTA，再把这个 ER 蒸馏成 VLA backbone——这条”先建 reasoning，再建 action”的 stack 顺序在论文里被反复论证（Table 3/4 + 4.2 的 reasoning-enhanced 变体）。</li>
+<li><strong>三维泛化 + cross-embodiment</strong>：visual / instruction / action 三类分布外变化同时评测，外加 ALOHA 2 → bi-arm Franka → Apollo humanoid 的迁移，验证了 foundation model 范式可以在 embodiment 间转移 robustness。</li>
+<li><strong>ERQA benchmark</strong>：填补了 VLM embodied reasoning 评测的缺口，400 题 multi-choice、7 个能力类别、28% 多图题——首次给出了能让 Gemini / GPT-4o / Claude 横向比较 embodied 理解能力的统一标尺。</li>
+</ol>
+<p><strong>Teaser. Gemini Robotics hero reel（website）：多种机器人形态下的灵巧操作与长时序任务演示。</strong>
+<video src="https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/media/2345_Gemini2-0_Robots_AR_20250311_WEBSITE_Hero_Colored.mp4" controls muted playsinline width="720"></video></p>
+<p><strong>Sources</strong>: <a href="https://arxiv.org/abs/2503.20020" class="external">arxiv<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://deepmind.google/models/gemini-robotics/" class="external">website<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://github.com/google-deepmind/gemini-robotics-sdk" class="external">github<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></p>
+<hr/>
+<h2 id="introduction">Introduction<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#introduction" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Figure 1. Overview of the Gemini Robotics family of embodied AI models. Gemini 2.0 already exhibits capabilities relevant to robotics such as semantic safety understanding and long contexts. The robotics-specific training and the optional specialization processes enable the Gemini Robotics models to exhibit a variety of robotics-specific capabilities.</strong>
+<img src="https://arxiv.org/html/2503.20020v1/x1.png" alt/></p>
+<p>论文的论证主线分三段：(1) 在 Gemini 2.0 基础上训练 Gemini Robotics-ER，强化 embodied reasoning（Section 2）；(2) 在 ER 的基础上训练 Gemini Robotics VLA，直接输出低层 action（Section 3）；(3) 对 Gemini Robotics 进行专门化 / 快速适配 / 跨 embodiment 迁移，验证 generalist + specialist 范式（Section 4）。</p>
+<h2 id="embodied-reasoning-with-gemini-20">Embodied Reasoning with Gemini 2.0<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#embodied-reasoning-with-gemini-20" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Figure 2. Gemini 2.0 excels at embodied reasoning capabilities — detecting objects and points in 2D, leveraging 2D pointing for grasping and trajectories, and corresponding points and detecting objects in 3D.</strong>
+<img src="https://arxiv.org/html/2503.20020v1/x2.png" alt/></p>
+<h3 id="erqa-benchmark">ERQA Benchmark<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#erqa-benchmark" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>ERQA（Embodied Reasoning Question Answering）是本论文新提出的 embodied reasoning 评测集，400 道 multiple-choice VQA，覆盖 spatial reasoning、trajectory reasoning、action reasoning、state estimation、pointing、multi-view reasoning、task reasoning 七个类别。28% 的题目是多图——这些 multi-image correspondence 题是 benchmark 里最困难的部分。所有问题均由作者手工标注以保证质量，图像来源包括 OXE、UMI Data、MECCANO、HoloAssist、EGTEA Gaze+ 等数据集，或作者自行拍摄。Benchmark 代码已开源（见论文正文的 embodiedreasoning/ERQA 仓库引用）。</p>
+<p><strong>Figure 3. Example questions from the Embodied Reasoning Question Answering (ERQA) benchmark, with answers in bold.</strong>
+<img src="https://arxiv.org/html/2503.20020v1/x3.png" alt/></p>
+<p><strong>Figure 4. ERQA question categories.</strong>
+<img src="https://arxiv.org/html/2503.20020v1/x4.png" alt/></p>
+<p><strong>Table 1. Comparing VLMs on benchmarks that assess a wide range of embodied reasoning capabilities, including our new ERQA benchmark. Benchmarks are evaluated by accuracies of multiple-choice answers. Results obtained in Feb 2025.</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Benchmark</th><th>Gemini 1.5 Flash</th><th>Gemini 1.5 Pro</th><th>Gemini 2.0 Flash</th><th>Gemini 2.0 Pro Exp</th><th>GPT-4o-mini</th><th>GPT-4o</th><th>Claude 3.5 Sonnet</th></tr></thead><tbody><tr><td>ERQA</td><td>42.3</td><td>41.8</td><td>46.3</td><td><strong>48.3</strong></td><td>37.3</td><td>47.0</td><td>35.5</td></tr><tr><td>RealworldQA (test)</td><td>69.0</td><td>64.5</td><td>71.6</td><td><strong>74.5</strong></td><td>65.0</td><td>71.9</td><td>61.4</td></tr><tr><td>BLINK (val)</td><td>59.2</td><td>64.4</td><td>65.0</td><td><strong>65.2</strong></td><td>56.9</td><td>62.3</td><td>60.2</td></tr></tbody></table></div>
+<p><strong>Insights</strong>: ERQA 是三个 benchmark 里最难的一档——即便是 Gemini 2.0 Pro Experimental 也只到 48.3%，远低于 RealworldQA 的 74.5%。Gemini 2.0 Flash（46.3%）与 GPT-4o（47.0%）几乎持平，Claude 3.5 Sonnet 只有 35.5%——说明 embodied reasoning 这一维度的 SOTA 差距远比传统 VQA 大。</p>
+<p><strong>Table 2. Performances on the ERQA benchmark with and without Chain-of-Thought (CoT) prompting.</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Prompt Variant</th><th>Gemini 2.0 Flash</th><th>Gemini 2.0 Pro Exp</th><th>GPT-4o-mini</th><th>GPT-4o</th><th>Claude 3.5 Sonnet</th></tr></thead><tbody><tr><td>Without CoT</td><td>46.3</td><td>48.3</td><td>37.3</td><td>47.0</td><td>35.5</td></tr><tr><td>With CoT</td><td>50.3</td><td><strong>54.8</strong></td><td>40.5</td><td>50.5</td><td>45.8</td></tr></tbody></table></div>
+<p><strong>Insights</strong>: CoT 对所有模型都有明显提升——Gemini 2.0 Pro Exp 从 48.3 → 54.8（+6.5），Claude 3.5 Sonnet 收益最大（+10.3）。CoT 下 Gemini 2.0 Flash（50.3）已经超过了 Pro Experimental without CoT（48.3），说明 embodied reasoning 对 test-time compute 高度敏感。</p>
+<h3 id="gemini-20s-embodied-reasoning-capabilities">Gemini 2.0’s Embodied Reasoning Capabilities<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#gemini-20s-embodied-reasoning-capabilities" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Gemini 2.0 / Gemini Robotics-ER 的 embodied reasoning 能力覆盖四个基本原语：</p>
+<ol>
+<li><strong>Object Detection</strong>：open-world 2D bounding box，query 可以是显式（object name）也可以是隐式（category / attribute / affordance）。</li>
+<li><strong>Pointing</strong>：从自然语言描述直接预测 2D point，支持显式实体（物体、部件）和隐式概念（where to grasp、where to place、free space、spatial relation）。</li>
+<li><strong>Trajectory Prediction</strong>：基于 pointing 能力预测 2D motion trajectory，可以 grounded 在 physical motion 描述上。</li>
+<li><strong>Grasp Prediction</strong>：Gemini Robotics-ER 新增能力，将 pointing 扩展到 top-down grasp 预测。</li>
+</ol>
+<p>这些能力均为 open-vocabulary、无需针对特定物体训练。Gemini 2.0 还具备 3D 空间推理能力——跨多视角建立 2D point 对应，以及直接预测 open-vocabulary 3D bounding box。</p>
+<p><strong>Figure 6. 2D Detection examples with Gemini 2.0 Flash. Left: detect by object category. Middle: detect by spatial description. Right: detect by affordance.</strong>
+<img src="https://arxiv.org/html/2503.20020v1/x6.png" alt/></p>
+<p><strong>Figure 7. Gemini 2.0 can predict 2D points from natural language queries.</strong>
+<img src="https://arxiv.org/html/2503.20020v1/x7.png" alt/></p>
+<p><strong>Figure 8. Gemini 2.0 can predict 2D trajectories by first predicting start and end points.</strong>
+<img src="https://arxiv.org/html/2503.20020v1/x8.png" alt/></p>
+<p><strong>Figure 9. Gemini Robotics-ER can predict top-down grasps by leveraging Gemini 2.0’s 2D pointing capability.</strong>
+<img src="https://arxiv.org/html/2503.20020v1/x9.png" alt/></p>
+<p><strong>Figure 10. Gemini 2.0 can understand 3D scenes by correlating 2D points across different views.</strong>
+<img src="https://arxiv.org/html/2503.20020v1/extracted/6309481/src/assets/ER/multiview/mv2.jpeg" alt/></p>
+<p><strong>Figure 11. Gemini 2.0 can directly predict open-vocabulary 3D object bounding boxes.</strong>
+<img src="https://arxiv.org/html/2503.20020v1/x10.png" alt/></p>
+<p><strong>Table 3. 2D Pointing Benchmarks evaluating open-vocabulary pointing capabilities. Scores are accuracies (1 if predicted point is within the ground truth region mask, 0 otherwise).</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Benchmark</th><th>Gemini Robotics-ER</th><th>Gemini 2.0 Flash</th><th>Gemini 2.0 Pro Exp</th><th>GPT-4o-mini</th><th>GPT-4o</th><th>Claude 3.5 Sonnet</th><th>Molmo 7B-D</th><th>Molmo 72B</th></tr></thead><tbody><tr><td>Paco-LVIS</td><td><strong>71.3</strong></td><td>46.1</td><td>45.5</td><td>11.8</td><td>16.2</td><td>12.4</td><td>45.4</td><td>47.1</td></tr><tr><td>Pixmo-Point</td><td><strong>49.5</strong></td><td>25.8</td><td>20.9</td><td>5.9</td><td>5.0</td><td>7.2</td><td>14.7</td><td>12.5</td></tr><tr><td>Where2Place</td><td>45.0</td><td>33.8</td><td>38.8</td><td>13.8</td><td>20.6</td><td>16.2</td><td>45.0</td><td><strong>63.8</strong></td></tr></tbody></table></div>
+<p><strong>Insights</strong>: Gemini Robotics-ER 的 targeted training 在 Paco-LVIS 和 Pixmo-Point 上把 base 模型的 pointing 精度几乎翻倍（46→71，26→50），说明 pointing 是可以被专门 fine-tune 的离散能力。在 Where2Place（affordance-level pointing）上仍被 Molmo 72B 反超（63.8 vs 45.0）——open-vocabulary 的 spatial placement 比物体 pointing 更困难。GPT-4o / Claude 在所有 pointing 任务上都显著落后，这反映出非 Google 系模型在这一维度缺乏针对性训练数据。</p>
+<p><em><em>Table 4. Gemini Robotics-ER achieves a new state-of-the-art performance on the SUN-RGBD 3D object detection benchmark. (</em> ImVoxelNet performance measured on an easier set of 10 categories).</em>*</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Benchmark</th><th>Gemini Robotics-ER</th><th>Gemini 2.0 Flash</th><th>Gemini 2.0 Pro Exp</th><th>ImVoxelNet</th><th>Implicit3D</th><th>Total3DU</th></tr></thead><tbody><tr><td>SUN-RGBD AP@15</td><td><strong>48.3</strong></td><td>30.7</td><td>32.5</td><td>43.7*</td><td>24.1</td><td>14.3</td></tr></tbody></table></div>
+<p><strong>Insights</strong>: Gemini Robotics-ER 在 SUN-RGBD 3D detection 上达到 48.3 AP@15，不仅超过所有通用 VLM，也超过了传统专用 3D detection 模型 ImVoxelNet（43.7，且 ImVoxelNet 的数字还是在更简单的 10 类子集上测的）。这是论文里 reasoning 层面最硬的数字之一——一个 VLM 在专用 3D 任务上打败了专用模型。</p>
+<h3 id="gemini-20-enables-zero-and-few-shot-robot-control">Gemini 2.0 Enables Zero and Few-Shot Robot Control<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#gemini-20-enables-zero-and-few-shot-robot-control" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>作者用 Gemini Robotics-ER 的 embodied reasoning 直接驱动 ALOHA 2 双臂机器人，完全不使用任何 robot action 训练数据。两种模式：</p>
+<p><strong>Zero-shot via Code Generation</strong>：给模型一套 perception / control API（move gripper to pose、open / close gripper 等），让 Gemini 通过 code generation 产出控制逻辑。相比以往”多个模型拼接”的 pipeline，Gemini 用单一模型统合了 perception、state estimation、spatial reasoning、planning、control 所有环节。</p>
+<p><strong>Few-shot via In-Context Learning</strong>：把 observation + language instruction + 若干 trajectory 作为 in-context 示例喂给模型，让它在 prompt 内完成学习。</p>
+<p><strong>Figure 12. Overview of the perception and control APIs, and agentic orchestration during an episode. This system is used for zero-shot control.</strong>
+<img src="https://arxiv.org/html/2503.20020v1/x11.png" alt/></p>
+<p><strong>Figure 13. Overview of few-shot in-context learning pipeline. Gemini can receive observations, language instructions and trajectories in the prompt.</strong>
+<img src="https://arxiv.org/html/2503.20020v1/x12.png" alt/></p>
+<p><strong>Table 5. Success rates on the ALOHA 2 Sim Task suite. Reported numbers are the average success rate over 50 trials with random initial conditions.</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Model</th><th>Context</th><th>Avg.</th><th>Banana Lift</th><th>Banana in Bowl</th><th>Mug on Plate</th><th>Bowl on Rack</th><th>Banana Handover</th><th>Fruit Bowl</th><th>Pack Toy</th></tr></thead><tbody><tr><td>Gemini 2.0 Flash</td><td>Zero-shot</td><td>27</td><td>34</td><td>54</td><td>46</td><td>24</td><td>26</td><td>4</td><td>0</td></tr><tr><td>Gemini Robotics-ER</td><td>Zero-shot</td><td><strong>53</strong></td><td>86</td><td>84</td><td>72</td><td>60</td><td>54</td><td>16</td><td>0</td></tr><tr><td>Gemini 2.0 Flash</td><td>ICL</td><td>51</td><td>94</td><td>90</td><td>36</td><td>16</td><td>94</td><td>0</td><td>26</td></tr><tr><td>Gemini Robotics-ER</td><td>ICL</td><td><strong>65</strong></td><td>96</td><td>96</td><td>74</td><td>36</td><td>96</td><td>4</td><td>54</td></tr></tbody></table></div>
+<p><strong>Insights</strong>: Gemini Robotics-ER 相比 Gemini 2.0 Flash 在 zero-shot 下几乎翻倍（27 → 53）——这是作者强调”better embodied understanding 直接翻译成更好的 control”的核心证据。ICL 在两个模型上都显著提升（Flash 27→51、ER 53→65），但 Pack Toy 这类多步任务即便 ER + ICL 也只有 54%，zero-shot code generation 甚至 0%。Fruit Bowl 更惨——所有配置 ≤16%。说明 zero-shot 能力仍有明显上限，在 multi-step / contact-rich 任务上特别吃紧。</p>
+<p><strong>Table 6. Real world success rates of Gemini Robotics-ER on ALOHA 2 tasks.</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Context</th><th>Avg.</th><th>Banana Handover</th><th>Fold Dress</th><th>Wiping</th></tr></thead><tbody><tr><td>Zero-shot</td><td>25</td><td>30</td><td>0</td><td>44</td></tr><tr><td>ICL</td><td><strong>65</strong></td><td>70</td><td>56</td><td>67</td></tr></tbody></table></div>
+<p><strong>Insights</strong>: 真实 ALOHA 2 上，Fold Dress zero-shot 是 0%——deformable object 对 code generation 的 geometric 描述能力提出了过高要求。ICL 把平均值从 25% 拉到 65%，尤其 Fold Dress 从 0 拉到 56%，说明示例轨迹对 deformable manipulation 的价值远大于对 rigid 任务的价值。注意 Banana Handover 的 sim-to-real gap：Table 5 sim ICL 96% vs Table 6 real ICL 70%——真实物理接触比仿真难很多。</p>
+<h2 id="robot-actions-with-gemini-robotics">Robot Actions with Gemini Robotics<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#robot-actions-with-gemini-robotics" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="gemini-robotics-model-and-data">Gemini Robotics: Model and Data<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#gemini-robotics-model-and-data" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>架构</strong>：Gemini Robotics 由两部分组成：</p>
 <ul>
-<li>基于 Gemini 2.0 Flash 进行 targeted training，增强 embodied reasoning 能力</li>
-<li>统一支持 2D/3D spatial understanding、object detection、pointing、trajectory prediction、grasp pose estimation</li>
-<li>所有能力均支持 open-vocabulary query，无需针对特定物体训练</li>
-<li>可通过 code generation（zero-shot）或 in-context learning（few-shot）直接控制机器人</li>
+<li><strong>Gemini Robotics backbone（云端）</strong>：Gemini Robotics-ER 的蒸馏版本，query-to-response latency 从秒级优化到 <strong>&lt;160ms</strong>。</li>
+<li><strong>Gemini Robotics decoder（本地）</strong>：运行在机器人自身算力上的 action decoder，负责补偿 backbone 的延迟。</li>
 </ul>
-<p><strong>2. Gemini Robotics (VLA)</strong></p>
+<p>端到端 latency 约 <strong>250ms</strong>，配合 action chunk（一次预测多步 action）达到 <strong>50Hz</strong> 的有效控制频率。作者明确指出，backbone + local decoder 的组合既保留了大模型的泛化能力，又产出 smooth / reactive 的运动——这是论文方法层面最核心的工程 trick。</p>
+<p><strong>Figure 14. Overview of the architecture, input and output of the Gemini Robotics model. Gemini Robotics is a derivative of Gemini fine-tuned to predict robot actions.</strong>
+<img src="https://arxiv.org/html/2503.20020v1/x13.png" alt/></p>
+<p><strong>数据</strong>：作者在 ALOHA 2 robot fleet 上采集了 <strong>数千小时</strong> 真实世界 expert 遥操作数据，历时 12 个月，覆盖数千个 diverse task，跨越不同 manipulation skill、object、task 难度、episode 时长和灵巧度。训练 mixture 里还混入了 non-action 数据——web documents、code、multi-modal content（image / audio / video），以及 embodied reasoning 和 VQA 数据——作者认为这种 mixture 对 understanding、reasoning 和跨任务泛化都有帮助。</p>
+<p><strong>Baselines</strong>：两个 SOTA 对照组。</p>
 <ul>
-<li>在 Gemini 2.0 基础上用大规模 robot action 数据 fine-tune</li>
-<li>Cloud-based distilled Gemini backbone（&lt;160ms latency）+ local action decoder（端到端 ~250ms，50 Hz 有效控制频率）</li>
-<li>支持 language-conditioned 操作，对 paraphrasing、typos、多语言指令具有鲁棒性</li>
+<li><strong><a href="../Papers/2410-Pi0" class="internal alias" data-slug="Papers/2410-Pi0">π0</a> re-implement</strong>：作者自行复现的开源 <a href="../Papers/2410-Pi0" class="internal alias" data-slug="Papers/2410-Pi0">π0</a>，在其多样化数据 mixture 上训练；实测比原作发布的 checkpoint 更强，因此作为主要 VLA baseline。</li>
+<li><strong>Multi-task diffusion policy</strong>：受 ALOHA Unleashed 启发但改为 task-conditioned 的多任务扩散策略 baseline。</li>
 </ul>
-<p><strong>3. 训练数据</strong></p>
+<p>两个 baseline 均用<strong>完全相同</strong>的训练数据 mixture 训练至收敛，且都跑在本地 RTX 4090 上，而 Gemini Robotics 主要跑在云端。</p>
+<h3 id="gemini-robotics-can-solve-diverse-dexterous-manipulation-tasks-out-of-the-box">Gemini Robotics can solve diverse dexterous manipulation tasks out of the box<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#gemini-robotics-can-solve-diverse-dexterous-manipulation-tasks-out-of-the-box" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>从 20 个 diverse 任务中采样，覆盖 laundry、kitchen、cluttered desk 等日常场景，所有任务均 out-of-the-box 评测，无 task-specific fine-tune、无额外 prompt。</p>
+<p><strong>Figure 15. A robot’s movement in example tasks: “open the eyeglasses case”, “pour pulses”, “unfasten file folder”, “wrap headphone wire”.</strong>
+<img src="https://arxiv.org/html/2503.20020v1/extracted/6309481/src/assets/actions/Actions-1-rollout.jpeg" alt/></p>
+<p><strong>Figure 16. Gemini Robotics can solve a wide variety of tasks out of the box. Gemini Robotics significantly outperforms the baselines.</strong>
+<img src="https://arxiv.org/html/2503.20020v1/x14.png" alt/></p>
+<h3 id="gemini-robotics-can-closely-follow-language-instructions">Gemini Robotics can closely follow language instructions<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#gemini-robotics-can-closely-follow-language-instructions" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>25 条 fine-grained language instruction × 5 scene（含训练场景 + unseen object / receptacle 场景）。评测聚焦于”必须被精确遵守的命令”（“Place the blue clip to the right of the yellow sticky notes”），而非开放式任务（“clean the table”）。</p>
+<p><strong>Figure 17. Gemini Robotics can precisely follow novel language instructions in cluttered scenes never seen during training.</strong>
+<img src="https://arxiv.org/html/2503.20020v1/x15.png" alt/></p>
+<p>作者得到两个观察：(1) strong steerability 来自 “high-quality diverse data + 强 VL backbone” 的组合——Gemini Robotics 和 <a href="../Papers/2410-Pi0" class="internal alias" data-slug="Papers/2410-Pi0">π0</a> re-implement 都超过了 diffusion baseline，说明强语言编码器是必要的；(2) 在 cluttered novel scene + fine-grained 描述（“Place the toothpaste in the bottom compartment of the caddy”）上，Gemini Robotics 比两个 baseline 都更有效——而 <a href="../Papers/2410-Pi0" class="internal alias" data-slug="Papers/2410-Pi0">π0</a> re-implement 虽然能正确接近训练时见过的物体，但在解释描述性语言属性（“top black container”、“blue clip”）和处理 unseen 物体时会失败。</p>
+<h3 id="gemini-robotics-brings-geminis-generalization-to-the-physical-world">Gemini Robotics brings Gemini’s generalization to the physical world<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#gemini-robotics-brings-geminis-generalization-to-the-physical-world" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>作者在三个 generalization 轴上系统评估：</p>
 <ul>
-<li>数千小时 ALOHA 2 遥操作数据，12 个月持续收集，覆盖上千个 manipulation task</li>
-<li>结合 web-scale 多模态数据（文档、代码、图像、视频）进行联合训练</li>
-<li>Specialization pipeline：generalist → task-specific fine-tune（2,000-5,000 demonstrations per task）</li>
+<li><strong>Visual generalization</strong>：不影响所需 action 的视觉变化——背景、光照、干扰物、纹理。</li>
+<li><strong>Instruction generalization</strong>：自然语言的等价性和不变性——paraphrasing、typos、不同语言、不同细节层级的描述。</li>
+<li><strong>Action generalization</strong>：适配学到的运动或合成新运动——初始条件（物体位置）和物体实例（形状、物理属性）。</li>
 </ul>
-<p><strong>4. ERQA Benchmark</strong></p>
+<p><strong>Figure 18. Example tasks for measuring visual generalization.</strong>
+<img src="https://arxiv.org/html/2503.20020v1/x16.png" alt/></p>
+<p><strong>Figure 19. Example tasks for measuring instruction generalization.</strong>
+<img src="https://arxiv.org/html/2503.20020v1/x17.png" alt/></p>
+<p><strong>Figure 20. Example tasks for measuring action generalization.</strong>
+<img src="https://arxiv.org/html/2503.20020v1/x18.png" alt/></p>
+<p><strong>Figure 21. Breakdown of Gemini Robotics generalization capabilities. Gemini Robotics consistently outperforms the baselines and handles all three types of variations.</strong>
+<img src="https://arxiv.org/html/2503.20020v1/x19.png" alt/></p>
+<h2 id="specializing-and-adapting-gemini-robotics-for-dexterity-reasoning-and-new-embodiments">Specializing and Adapting Gemini Robotics for Dexterity, Reasoning, and New Embodiments<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#specializing-and-adapting-gemini-robotics-for-dexterity-reasoning-and-new-embodiments" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>这一节把 generalist Gemini Robotics 推向四个极限方向：(1) 用 fine-tune 让它解决远超 generalist 能力的长时序高灵巧任务；(2) 通过 embodied reasoning 增强 generalization；(3) 快速适配新任务；(4) 快速适配新 embodiment。前两个是”能力上限”探索，后两个是”部署可行性”验证。</p>
+<h3 id="long-horizon-dexterity">Long-horizon dexterity<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#long-horizon-dexterity" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>用少量高质量数据 fine-tune，让模型专门化解决六个长时序高灵巧任务：</p>
 <ul>
-<li>新提出的 embodied reasoning 评测基准，400 道 multiple-choice 题目</li>
-<li>覆盖 7 个能力类别：spatial reasoning、trajectory reasoning、action reasoning、state estimation、pointing、multi-view reasoning、task reasoning</li>
+<li><strong>Make an origami fox</strong>：四次精确折叠，每次需要对齐、弯折、捏紧、压痕；纸层越叠越厚，任何小误差都会导致不可恢复的失败。</li>
+<li><strong>Pack a lunch-box</strong>：把面包插入塑料袋窄缝、拉链封口、转移葡萄到容器、盖盖、整包放入午餐袋、最后拉链——多处需要双臂精确协同。</li>
+<li><strong>Spelling board game</strong>：人放置/画出字母，机器人识别并拼出单词。</li>
+<li><strong>Play a game of cards</strong>、<strong>origami + salad add-ons</strong> 等。</li>
 </ul>
-<h2 id="key-results">Key Results<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-results" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p><strong>Out-of-the-Box 任务表现：</strong></p>
+<p><strong>Figure 22. Gemini Robotics successfully accomplishes long-horizon dexterous tasks on ALOHA: “make an origami fox”, “pack a lunch-box”, “spelling board game”, “play a game of cards”, “add snap peas to salad with tongs”, “add nuts to salad”.</strong>
+<img src="https://arxiv.org/html/2503.20020v1/extracted/6309481/src/assets/actions/actions-4-rollout.jpeg" alt/></p>
+<p><strong>Figure 23. Performance on new, dexterous and long-horizon tasks after specialization. Gemini Robotics is the only model that can consistently solve the extremely challenging long-horizon tasks.</strong>
+<img src="https://arxiv.org/html/2503.20020v1/x20.png" alt/></p>
+<h3 id="enhanced-reasoning-and-generalization">Enhanced reasoning and generalization<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#enhanced-reasoning-and-generalization" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>这一节尝试回答一个开放问题：VLA 把 action prediction 塞进 VLM 之后，有没有保留住上游 reasoning 能力？作者用一个<strong>重新标注的 action dataset</strong>——把 trajectory 理解/生成（Section 2.2 里的 reasoning intermediate）与 low-level action 桥接——fine-tune 出一个 reasoning-enhanced 变体。本地 action decoder 被扩展成能把这些 reasoning intermediate 转换为连续低层 action。</p>
+<p>评测集特别设计为同时包含 visual + instruction + action 三重分布偏移——也就是作者主张这些是”真正考验 reasoning”的组合。</p>
+<p><strong>Figure 24. Performance on real-world robot tasks that require embodied reasoning. After fine-tuning on a re-labeled action dataset that bridges action prediction with embodied reasoning, the reasoning-enhanced variant substantially outperforms the vanilla Gemini Robotics.</strong>
+<img src="https://arxiv.org/html/2503.20020v1/x21.png" alt/></p>
+<p><strong>Figure 25. Visualizations of predicted trajectories utilized as part of the reasoning-enhanced Gemini Robotics model’s internal chain of thought.</strong>
+<img src="https://arxiv.org/html/2503.20020v1/x22.png" alt/></p>
+<h3 id="fast-adaptation-to-new-tasks">Fast adaptation to new tasks<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#fast-adaptation-to-new-tasks" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>作者从前述 long-horizon 任务里抽出 8 个 short-horizon 子任务，改变 fine-tune 数据量，测试 Gemini Robotics generalist checkpoint 的快速适配能力。</p>
+<p><strong>Figure 26. Fast adaptation to new tasks with a limited number of demonstrations. Fine-tuning Gemini Robotics achieves over 70% success on 7 out of 8 tasks with at most 100 demonstrations, reaching 100% success on two tasks.</strong>
+<img src="https://arxiv.org/html/2503.20020v1/x23.png" alt/></p>
+<p>结果：<strong>仅 100 条 demonstration</strong> 就在 7/8 任务上拿到 >70% 成功率，其中 2 个任务达到 100%。在”困难任务”（origami first fold、lunch-box manipulation）上，即使 baseline 在简单任务上也不差，Gemini Robotics 的优势仍然显著——说明 foundation model 的 pre-training 在复杂任务上的 sample efficiency 收益更大。</p>
+<h3 id="adaptation-to-new-embodiments">Adaptation to new embodiments<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#adaptation-to-new-embodiments" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>作者把只在 ALOHA 2 上训练的 Gemini Robotics 迁移到两个新平台：</p>
 <ul>
-<li>20 个灵巧操作任务中，超过半数达到 >80% 成功率</li>
-<li>在 deformable object manipulation（折叠布料、缠绕线缆）上显著优于 Pi-0 re-implementation 和 multi-task diffusion baseline</li>
-<li>在 baseline 完全失败的任务上仍能取得非零成绩</li>
+<li><strong>Bi-arm Franka</strong>（平行夹爪）：fine-tune 后可解决所有考察任务，平均成功率 <strong>63%</strong>。</li>
+<li><strong>Apollo humanoid</strong>（Apptronik，五指灵巧手）：初步实验成功，示例包括 pack a lunch bag。</li>
 </ul>
-<p><strong>Language Following（25 条指令 x 5 场景）：</strong></p>
+<p><strong>Figure 27. The Gemini Robotics model can be fine-tuned to control different robots. Top: Apollo humanoid packs a lunch bag. Bottom: A bi-arm industrial robot assembles a rubber band around a pulley.</strong>
+<img src="https://arxiv.org/html/2503.20020v1/extracted/6309481/src/assets/actions/post-training-embodiment.jpeg" alt/></p>
+<p><strong>Figure 28. Breakdown of generalization metrics when the Gemini Robotics model is adapted to a new embodiment, the bi-arm Franka robot. It consistently outperforms the single-task diffusion baseline in visual and action generalization tests.</strong>
+<img src="https://arxiv.org/html/2503.20020v1/x24.png" alt/></p>
+<p>关键发现：in-distribution 成功率与 single-task diffusion policy 相当或略好，但在视觉扰动、初始条件扰动、物体形状变化上<strong>显著</strong>超过 baseline。这说明 Gemini Robotics 在跨 embodiment 迁移时把 <strong>robustness 和 generalization 能力也一并带了过去</strong>——这才是 foundation model 相比 per-task 模型的本质优势。</p>
+<h2 id="responsible-development-and-safety">Responsible Development and Safety<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#responsible-development-and-safety" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>作者把 safety 作为独立一节讨论，强调传统 robot safety 是多面向学科（hazard mitigation、human-robot interaction、physical constraints），而 robot foundation model 在”embodied 数字-物理混合”特性下需要额外考量。论文中使用 ASIMOV-Multimodal 场景对模型进行 semantic safety 评估：给一个 “robot chef” context，让模型判断”把沸腾液体倒进垃圾桶”这种指令是否 undesirable——模型正确识别为危险并拒绝执行。safety 工作由 Google DeepMind 的 Responsibility and Safety Council（RSC）和 Responsible Development and Innovation（ReDI）团队指导完成。</p>
+<hr/>
+<h2 id="论文点评">论文点评<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#论文点评" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="strengths">Strengths<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>Cloud backbone + local decoder 的工程分解非常务实</strong>。把”大模型慢但强”和”实时控制快但弱”的矛盾用 action chunk + local decoder 化解，最终拿到 50Hz 有效控制频率——这是目前云端 VLA 方案里 latency 与能力之间最可信的一个平衡点。</li>
+<li><strong>“先建 reasoning，再建 action”的 stack 顺序有证据支撑</strong>。Table 5 里 Gemini Robotics-ER 相比 Gemini 2.0 Flash 在 zero-shot control 上翻倍（27→53），Section 4.2 里 reasoning-enhanced 变体进一步提升 OOD 任务表现——两处数据共同支撑了”embodied reasoning 是 VLA 上限”的叙事。</li>
+<li><strong>Cross-embodiment 迁移不仅看 in-distribution 成功率，还专门测 robustness</strong>。Figure 28 显示 Gemini Robotics 在 visual + action generalization 测试里显著超过 diffusion baseline——这比单看成功率更能证明 foundation model 迁移的是”泛化能力”而不只是任务知识。</li>
+<li><strong>ERQA benchmark 填补真实空白</strong>。400 题、7 类别、28% 多图——embodied reasoning 此前缺乏能横向比较 Gemini / GPT-4o / Claude 的标准评测，ERQA 给社区提供了统一标尺。</li>
+<li><strong>数据规模 + 任务多样性在当前 VLA 文献里处于第一梯队</strong>。数千小时 × 12 个月 × 数千任务，加上 20 任务 out-of-the-box 评测和 85 任务 generalization 评测，实验覆盖面远超绝大多数 VLA 论文。</li>
+</ol>
+<h3 id="weaknesses">Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>极精细操作仍有天花板</strong>。论文正文没有详细展开 shoelace 类任务的结果，但 Figure 23 表明一些精细任务依然接近 0%——dexterous manipulation 的”最后一公里”还没突破。</li>
+<li><strong>Sim-to-real gap 显著</strong>。Banana Handover 从 sim ICL 96%（Table 5）掉到 real ICL 70%（Table 6），Fold Dress sim-to-real 差距更大——部署到物理世界的可靠性仍是挑战。</li>
+<li><strong><a href="../Papers/2410-Pi0" class="internal alias" data-slug="Papers/2410-Pi0">π0</a> baseline 使用作者自己的数据重训，优势归因困难</strong>。作者在 Section C.2 承认 re-implement 版本比原作开源 checkpoint 更强，但这样一来 Gemini Robotics 相对 <a href="../Papers/2410-Pi0" class="internal alias" data-slug="Papers/2410-Pi0">π0</a> 的 gap 同时混入了”架构差异”和”训练 recipe 差异”两个变量，读者无法判断究竟是哪个带来提升。</li>
+<li><strong>Zero-shot code generation 在多步任务上仍有明显瓶颈</strong>。Table 5 的 Pack Toy 任务 zero-shot 为 0%，Fruit Bowl 在所有 configuration 下均 ≤16%——论文叙事强调 zero-shot 能力，但数据显示 zero-shot 仍是选择性可用。</li>
+<li><strong>Cross-embodiment 覆盖仍然初步</strong>。bi-arm Franka 63% 和 Apollo 的”初步实验成功”之间有巨大的颗粒度差异，Apollo 上没有与 Franka 对等的成功率数字——humanoid 部分更像是 demo，不是严格评测。</li>
+<li><strong>权重和数据未公开，Trusted Tester 门槛高</strong>。官方 Safari SDK（<code>google-deepmind/gemini-robotics-sdk</code>）虽然开源了完整的 checkpoint 访问 / serving / fine-tune 工具链，但所有 checkpoint 的实际下载仍被 Gemini Robotics Trusted Tester Program 限制——普通社区研究者既拿不到权重也拿不到训练数据，独立验证与社区扩展仍严重受限。</li>
+</ol>
+<h3 id="可信评估">可信评估<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#可信评估" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="artifact-可获取性">Artifact 可获取性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#artifact-可获取性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
 <ul>
-<li>在 novel objects 和 fine-grained instructions 上优于 baseline</li>
-<li>支持 typos、unseen languages、paraphrasing 等分布外指令</li>
+<li><strong>代码</strong>: 部分开源。官方 Safari SDK（<code>google-deepmind/gemini-robotics-sdk</code>，PyPI 可装 <code>safari_sdk</code>）提供完整的 checkpoint 访问、模型 serving、真机/仿真评估、数据上传、fine-tune、checkpoint 下载工具链，以及一个包含 Aloha embodiment 的 agent framework（对接 Gemini Live API）。flywheel CLI 暴露 <code>train</code> / <code>serve</code> / <code>list</code> / <code>data_stats</code> / <code>download</code> / <code>upload_data</code> 命令。ERQA benchmark 单独开源（github.com/embodiedreasoning/ERQA）</li>
+<li><strong>模型权重</strong>: checkpoint 不开放给一般公众——必须加入 <strong>Gemini Robotics Trusted Tester Program</strong> 才能通过 SDK 访问；SDK v2.4.1 起额外支持 Gemini Robotics On Device 模型。没有任何可直接下载的权重</li>
+<li><strong>训练细节</strong>: 仅高层描述（“thousands of hours of teleoperated data over 12 months”、“mixture of web + code + multi-modal + embodied reasoning + VQA data”），无具体 recipe、超参或 data ratio</li>
+<li><strong>数据集</strong>: 私有（ALOHA 2 遥操作数据未开源）；ERQA 的图像来源开源（OXE、UMI Data、MECCANO、HoloAssist、EGTEA Gaze+）</li>
 </ul>
-<p><strong>Generalization（85 个任务）：</strong></p>
+<h4 id="claim-可验证性">Claim 可验证性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#claim-可验证性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
 <ul>
-<li>Visual generalization：新背景、新光照条件下保持性能</li>
-<li>Instruction generalization：多语言、拼写错误下仍能执行</li>
-<li>Action generalization：不同物体实例、不同初始条件下泛化</li>
+<li>✅ Gemini Robotics-ER 在 ERQA、Paco-LVIS、Pixmo-Point、SUN-RGBD 上的 SOTA 数字：Table 1/3/4 提供完整 benchmark 对比，ERQA 开源，结果原则上可以第三方复现</li>
+<li>✅ Sim ALOHA 2 zero-shot/ICL 控制成功率：Table 5 有具体数字、50 trial 统计</li>
+<li>⚠️ “端到端 250ms、50Hz 有效控制”：无法独立验证——取决于未公开的 local decoder 和 backbone 蒸馏细节</li>
+<li>⚠️ “Out-of-the-box 20 任务显著优于 <a href="../Papers/2410-Pi0" class="internal alias" data-slug="Papers/2410-Pi0">π0</a> re-implement 和 diffusion baseline”：Figure 16 是柱状图，正文无完整数字表；且 <a href="../Papers/2410-Pi0" class="internal alias" data-slug="Papers/2410-Pi0">π0</a> baseline 是作者自己复现的版本，不是原作 checkpoint</li>
+<li>⚠️ “Origami fox 等 long-horizon 任务的成功率”：Figure 23 是可视化 breakdown，正文没有给出精确的数字表</li>
+<li>⚠️ Cross-embodiment bi-arm Franka 63%：有数字但没有 trial 数，且具体任务分解在附录 D.4</li>
+<li>❌ “bridges the gap between passive perception and active embodied interaction”：营销级叙事，无法用单一实验验证</li>
 </ul>
-<p><strong>Long-Horizon Dexterity（specialized models）：</strong></p>
+<hr/>
+<h2 id="关联工作">关联工作<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#关联工作" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="基于">基于<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#基于" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li>Origami fox：100% 成功率（唯一成功的方法）</li>
-<li>Lunch-box packing：100% 成功率（2+ 分钟任务）</li>
-<li>Spelling board game：印刷字 100%，手绘字 66%</li>
-<li>Baselines 在多数任务上为 0%</li>
+<li>Gemini 2.0：本模型的 VLM backbone 和 embodied reasoning 能力的起点</li>
+<li>ALOHA 2 硬件与 ALOHA Unleashed：数据采集平台与多任务 diffusion baseline 的灵感来源</li>
 </ul>
-<p><strong>Fast Adaptation：</strong></p>
+<h3 id="对比">对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li>仅 100 条 demonstration 即可在 8 个 short-horizon 任务中 7 个达到 >70% 成功率</li>
+<li><a href="../Papers/2410-Pi0" class="internal alias" data-slug="Papers/2410-Pi0">π0</a>：作为主要 VLA baseline，用作者自己的数据重训后作为”最强 VLA baseline”；论文 Section 3.3 / 3.4 / 4.3 反复与其对比</li>
+<li>Multi-task diffusion policy：task-conditioned diffusion baseline，覆盖”非 VLA 的 SOTA multi-task policy”比较维度</li>
 </ul>
-<p><strong>Cross-Embodiment：</strong></p>
+<h3 id="方法相关">方法相关<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#方法相关" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li>迁移至 bi-arm Franka：平均 63% 任务成功率</li>
-<li>迁移至 Apollo humanoid：初步实验成功</li>
-<li>显著优于 single-task diffusion baseline</li>
+<li>Embodied reasoning / pointing：与 Molmo、RoboPoint、<a href="../Papers/2401-SpatialVLM" class="internal alias" data-slug="Papers/2401-SpatialVLM">SpatialVLM</a> 等先前工作相关（ERQA 与 RealworldQA、BLINK 互补）</li>
+<li>Code generation for robot control：与 Code as Policies、VoxPoser、RoboCodeX 等 zero-shot 控制路径相关</li>
+<li>In-context learning for robot control：对应 VIMA、Diffusion-ICL 等少样本控制工作</li>
 </ul>
-<p><strong>ERQA Benchmark：</strong></p>
+<hr/>
+<h2 id="速查卡片">速查卡片<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#速查卡片" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Gemini Robotics: Bringing AI into the Physical World </p></div>
+                  
+                </div>
+<div class="callout-content">
 <ul>
-<li>Gemini 2.0 Flash：46.3%（CoT 50.3%），超过 GPT-4o（47.0%）和 Claude 3.5 Sonnet（35.5%）</li>
+<li><strong>核心</strong>: 基于 Gemini 2.0 的 VLA 双栈：Gemini Robotics-ER（embodied reasoning backbone）+ Gemini Robotics（cloud backbone + local decoder 的 VLA）</li>
+<li><strong>方法</strong>: 云端 backbone（&lt;160ms）+ 本地 action decoder（端到端 ~250ms、50Hz）；数千小时 ALOHA 2 数据 + web/code/multimodal mixture；generalist → specialization fine-tune pipeline</li>
+<li><strong>结果</strong>: ERQA 48.3 SOTA（CoT 54.8）；20 任务 out-of-the-box 显著超 <a href="../Papers/2410-Pi0" class="internal alias" data-slug="Papers/2410-Pi0">π0</a> re-implement 和 diffusion baseline；100 demo 内快速适配新任务；迁移到 bi-arm Franka（63% avg）和 Apollo humanoid</li>
+<li><strong>代码</strong>: 官方 Safari SDK 开源（google-deepmind/gemini-robotics-sdk），含 checkpoint 访问 / serving / fine-tune / agent framework，但 checkpoint 本身需加入 Trusted Tester Program；ERQA benchmark 单独开源</li>
 </ul>
-<h2 id="strengths--weaknesses">Strengths &amp; Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths--weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p><strong>Strengths:</strong></p>
-<ul>
-<li>首次系统性地将 embodied reasoning（空间/3D 理解）与 action prediction 集成到单一 foundation model 中</li>
-<li>Cloud backbone + local decoder 的架构设计在模型能力和推理延迟之间取得了实用平衡（50 Hz 有效控制）</li>
-<li>Generalization 验证非常全面，覆盖 visual/instruction/action 三个维度，且在 unseen languages 等极端场景下仍有效</li>
-<li>Specialization pipeline（generalist → specialist）展示了 foundation model 高效适配复杂任务的路径</li>
-<li>ERQA benchmark 填补了 VLM embodied reasoning 评测的空白</li>
-<li>数据规模（数千小时、数千任务）和 cross-embodiment 迁移（ALOHA 2 → Franka → Apollo）展示了强大的可扩展性</li>
-</ul>
-<p><strong>Weaknesses:</strong></p>
-<ul>
-<li>极精细操作仍有瓶颈（如 shoelace insertion 0% 成功率），dexterous manipulation 的上限尚未突破</li>
-<li>Sim-to-real gap 明显：banana handover 仿真 86% vs 真实 30%，实际部署仍有挑战</li>
-<li>Pi-0 baseline 使用作者自己收集的数据重新训练，难以判断优势来自架构还是训练 recipe</li>
-<li>Cross-embodiment 结果（Franka、Apollo）仍处于初步阶段，数据量和任务多样性有限</li>
-<li>Zero-shot code generation 平均仅 27%，复杂 multi-step planning 能力不足</li>
-<li>模型未开源，可复现性低，社区无法验证和扩展</li>
-</ul>
-<h2 id="mind-map">Mind Map<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mind-map" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;mindmap\n  root((Gemini Robotics))\n    Problem\n      VLM 能力未迁移至物理世界\n      缺乏统一 perception-reasoning-action 模型\n      Cross-embodiment 泛化困难\n    Gemini Robotics-ER\n      基于 Gemini 2.0 Flash\n      2D/3D spatial understanding\n      Object detection &amp; pointing\n      Trajectory prediction\n      Grasp pose estimation\n      Open-vocabulary query\n    Gemini Robotics VLA\n      Cloud backbone + local decoder\n        &lt; 160ms cloud latency\n        50 Hz 有效控制\n      数千小时 ALOHA 2 数据\n      Language-conditioned control\n      Specialization pipeline\n        Generalist → Specialist\n        100-5000 demonstrations\n    Results\n      Dexterity 超越 Pi-0\n      三维度 generalization\n      Origami fox 100%\n      Cross-embodiment 迁移\n      ERQA benchmark SOTA\n    Limitations\n      精细操作瓶颈\n      Sim-to-real gap\n      未开源\n      Cross-embodiment 初步&quot;">mindmap
-  root((Gemini Robotics))
-    Problem
-      VLM 能力未迁移至物理世界
-      缺乏统一 perception-reasoning-action 模型
-      Cross-embodiment 泛化困难
-    Gemini Robotics-ER
-      基于 Gemini 2.0 Flash
-      2D/3D spatial understanding
-      Object detection &amp; pointing
-      Trajectory prediction
-      Grasp pose estimation
-      Open-vocabulary query
-    Gemini Robotics VLA
-      Cloud backbone + local decoder
-        &lt; 160ms cloud latency
-        50 Hz 有效控制
-      数千小时 ALOHA 2 数据
-      Language-conditioned control
-      Specialization pipeline
-        Generalist → Specialist
-        100-5000 demonstrations
-    Results
-      Dexterity 超越 Pi-0
-      三维度 generalization
-      Origami fox 100%
-      Cross-embodiment 迁移
-      ERQA benchmark SOTA
-    Limitations
-      精细操作瓶颈
-      Sim-to-real gap
-      未开源
-      Cross-embodiment 初步
-</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
+</div>
+</blockquote>
+<hr/>
 <h2 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
 <ul>
-<li>Gemini Robotics 代表了 Google DeepMind 在 robot foundation model 赛道的最新力作，与 Physical Intelligence 的 Pi 系列形成直接竞争</li>
-<li>Cloud backbone + local decoder 的设计思路值得关注：利用云端大模型的强大能力，同时通过本地 decoder 保证实时控制，这可能是大模型部署到机器人的实用范式</li>
-<li>ERQA benchmark 的提出很有价值，当前缺乏针对 embodied reasoning 的标准化评测，这为后续研究提供了 common ground</li>
-<li>与 Pi-0 的对比需谨慎解读：baseline 使用作者数据重训，可能不完全反映架构优劣</li>
-<li>Specialization pipeline（generalist pretrain → task-specific finetune）与 Pi-0 的 pre-training/post-training 范式高度一致，说明这可能是 robot foundation model 的通用 recipe</li>
-<li>Cross-embodiment 结果虽然初步，但从 ALOHA 2（平行夹爪）到 Apollo humanoid（五指灵巧手）的迁移展示了 foundation model 的潜力</li>
-</ul></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="gyuvxz" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#problem--motivation" data-for="problem--motivation">Problem &amp; Motivation</a></li><li class="depth-0"><a href="#method" data-for="method">Method</a></li><li class="depth-0"><a href="#key-results" data-for="key-results">Key Results</a></li><li class="depth-0"><a href="#strengths--weaknesses" data-for="strengths--weaknesses">Strengths &amp; Weaknesses</a></li><li class="depth-0"><a href="#mind-map" data-for="mind-map">Mind Map</a></li><li class="depth-0"><a href="#notes" data-for="notes">Notes</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+<li>Cloud backbone + local decoder 是把大模型塞进真实机器人的一个可复用范式。延迟预算的拆分方式（backbone &lt;160ms + local decoder 补偿）是工程上最值得迁移的部分</li>
+<li>“先建 ER 再蒸馏成 VLA” 的 stack 顺序在本论文和后续 Gemini Robotics 1.5 / ER 1.6 系列中都得到延续——验证了”embodied reasoning 是 VLA 能力上限”的假设</li>
+<li>ERQA 作为 benchmark 的设计很克制——7 个类别、400 题、28% 多图，不追求规模而追求 coverage。这种规模适合作为 evaluation 而非 training set</li>
+<li>与 <a href="../Papers/2410-Pi0" class="internal alias" data-slug="Papers/2410-Pi0">π0</a> 的对比需要谨慎解读：<a href="../Papers/2410-Pi0" class="internal alias" data-slug="Papers/2410-Pi0">π0</a> re-implement 训练在作者自己的数据 mixture 上，理论上比原作开源 checkpoint 更强，但也不能说”公平对比了两个架构”——更准确的说法是”在 Google 的数据 mixture 上，Gemini Robotics 架构优于 <a href="../Papers/2410-Pi0" class="internal alias" data-slug="Papers/2410-Pi0">π0</a> 架构”</li>
+<li>Cross-embodiment 的迁移部分是本论文最 exciting 也最不完整的一段——bi-arm Franka 有清晰数字，Apollo humanoid 只有 demo，距离”foundation model 真正跨 embodiment”还有一大段</li>
+</ul></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="8he1kx" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#introduction" data-for="introduction">Introduction</a></li><li class="depth-0"><a href="#embodied-reasoning-with-gemini-20" data-for="embodied-reasoning-with-gemini-20">Embodied Reasoning with Gemini 2.0</a></li><li class="depth-1"><a href="#erqa-benchmark" data-for="erqa-benchmark">ERQA Benchmark</a></li><li class="depth-1"><a href="#gemini-20s-embodied-reasoning-capabilities" data-for="gemini-20s-embodied-reasoning-capabilities">Gemini 2.0’s Embodied Reasoning Capabilities</a></li><li class="depth-1"><a href="#gemini-20-enables-zero-and-few-shot-robot-control" data-for="gemini-20-enables-zero-and-few-shot-robot-control">Gemini 2.0 Enables Zero and Few-Shot Robot Control</a></li><li class="depth-0"><a href="#robot-actions-with-gemini-robotics" data-for="robot-actions-with-gemini-robotics">Robot Actions with Gemini Robotics</a></li><li class="depth-1"><a href="#gemini-robotics-model-and-data" data-for="gemini-robotics-model-and-data">Gemini Robotics: Model and Data</a></li><li class="depth-1"><a href="#gemini-robotics-can-solve-diverse-dexterous-manipulation-tasks-out-of-the-box" data-for="gemini-robotics-can-solve-diverse-dexterous-manipulation-tasks-out-of-the-box">Gemini Robotics can solve diverse dexterous manipulation tasks out of the box</a></li><li class="depth-1"><a href="#gemini-robotics-can-closely-follow-language-instructions" data-for="gemini-robotics-can-closely-follow-language-instructions">Gemini Robotics can closely follow language instructions</a></li><li class="depth-1"><a href="#gemini-robotics-brings-geminis-generalization-to-the-physical-world" data-for="gemini-robotics-brings-geminis-generalization-to-the-physical-world">Gemini Robotics brings Gemini’s generalization to the physical world</a></li><li class="depth-0"><a href="#specializing-and-adapting-gemini-robotics-for-dexterity-reasoning-and-new-embodiments" data-for="specializing-and-adapting-gemini-robotics-for-dexterity-reasoning-and-new-embodiments">Specializing and Adapting Gemini Robotics for Dexterity, Reasoning, and New Embodiments</a></li><li class="depth-1"><a href="#long-horizon-dexterity" data-for="long-horizon-dexterity">Long-horizon dexterity</a></li><li class="depth-1"><a href="#enhanced-reasoning-and-generalization" data-for="enhanced-reasoning-and-generalization">Enhanced reasoning and generalization</a></li><li class="depth-1"><a href="#fast-adaptation-to-new-tasks" data-for="fast-adaptation-to-new-tasks">Fast adaptation to new tasks</a></li><li class="depth-1"><a href="#adaptation-to-new-embodiments" data-for="adaptation-to-new-embodiments">Adaptation to new embodiments</a></li><li class="depth-0"><a href="#responsible-development-and-safety" data-for="responsible-development-and-safety">Responsible Development and Safety</a></li><li class="depth-0"><a href="#论文点评" data-for="论文点评">论文点评</a></li><li class="depth-1"><a href="#strengths" data-for="strengths">Strengths</a></li><li class="depth-1"><a href="#weaknesses" data-for="weaknesses">Weaknesses</a></li><li class="depth-1"><a href="#可信评估" data-for="可信评估">可信评估</a></li><li class="depth-0"><a href="#关联工作" data-for="关联工作">关联工作</a></li><li class="depth-1"><a href="#基于" data-for="基于">基于</a></li><li class="depth-1"><a href="#对比" data-for="对比">对比</a></li><li class="depth-1"><a href="#方法相关" data-for="方法相关">方法相关</a></li><li class="depth-0"><a href="#速查卡片" data-for="速查卡片">速查卡片</a></li><li class="depth-0"><a href="#notes" data-for="notes">Notes</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
 </script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
 </script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>
