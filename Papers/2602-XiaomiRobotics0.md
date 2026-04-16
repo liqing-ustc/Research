@@ -11,6 +11,15 @@ github: https://github.com/XiaomiRobotics/Xiaomi-Robotics-0
 rating: 2
 date_added: 2026-04-14
 ---
+## 速查卡片
+
+> [!summary] Xiaomi-Robotics-0
+> - **核心**: 4.7B VLM+DiT VLA，用 Λ-shape attention mask 防止 async prefix shortcut，在消费级 4090 上 80ms 延迟平滑实时执行
+> - **方法**: Qwen3-VL-4B 冻结 + 16-layer DiT flow-matching + VL data co-train (1:6) + Λ-mask + RoPE offset + dynamic loss reweight
+> - **结果**: LIBERO 98.7% / CALVIN 4.80/4.75 / SimplerEnv 85.5-79.2%，real-robot Towel Folding 吞吐 1.2 vs [[2504-Pi05|π0.5]] 的 1.0 pcs/min，ERQA 40.8 略超基座 Qwen3-VL
+> - **Sources**: [arxiv](https://arxiv.org/abs/2602.12684) | [website](https://xiaomi-robotics-0.github.io) | [github](https://github.com/XiaomiRobotics/Xiaomi-Robotics-0)
+
+---
 ## Summary
 
 一个 4.7B MoT（VLM + DiT）VLA 模型，通过 Λ-shape 注意力 mask + 动态 loss reweighting + timestep 对齐，在消费级 GPU 上实现平滑的异步实时控制。
@@ -24,8 +33,6 @@ date_added: 2026-04-14
 
 **Video 1.** Overview teaser — Xiaomi-Robotics-0 real-robot rollouts highlight reel
 <video src="https://robotics.xiaomi.com/robot-model/xiaomi-robotics-0.mp4" controls muted playsinline width="720"></video>
-
-**Sources**: [arxiv](https://arxiv.org/abs/2602.12684) | [website](https://xiaomi-robotics-0.github.io) | [github](https://github.com/XiaomiRobotics/Xiaomi-Robotics-0)
 
 ---
 ## Introduction
@@ -299,16 +306,6 @@ $$
 - **Action Chunking**（Zhao et al.）：action chunk 预测范式的基础。
 - **Qwen3-VL-4B-Instruct**：VLM 基座。
 - **Grounded SAM / Grounding DINO 1.5 / LLMDet**：VL 数据 grounding 标注的三方共识机制。
-
----
-
-## 速查卡片
-
-> [!summary] Xiaomi-Robotics-0
-> - **核心**: 4.7B VLM+DiT VLA，用 Λ-shape attention mask 防止 async prefix shortcut，在消费级 4090 上 80ms 延迟平滑实时执行
-> - **方法**: Qwen3-VL-4B 冻结 + 16-layer DiT flow-matching + VL data co-train (1:6) + Λ-mask + RoPE offset + dynamic loss reweight
-> - **结果**: LIBERO 98.7% / CALVIN 4.80/4.75 / SimplerEnv 85.5-79.2%，real-robot Towel Folding 吞吐 1.2 vs [[2504-Pi05|π0.5]] 的 1.0 pcs/min，ERQA 40.8 略超基座 Qwen3-VL
-> - **代码**: https://github.com/XiaomiRobotics/Xiaomi-Robotics-0（inference-only + 6 个 HF checkpoint）
 
 ---
 ## Notes

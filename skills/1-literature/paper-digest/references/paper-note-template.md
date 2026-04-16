@@ -11,6 +11,16 @@ github:
 rating:              # 1=有参考价值, 2=重要, 3=必读
 date_added:          # 填写今天的日期 YYYY-MM-DD
 ---
+## 速查卡片
+
+> [!summary] {Paper Title}
+> - **核心**: {一句话核心}
+> - **方法**: {关键方法}
+> - **结果**: {主要结果}
+> - **Sources**: [arxiv](arxiv_url) | [website](website_url) | [github](github_url)
+> %% 三类 slot 对应 sources.arxiv / sources.website / sources.github，不互斥——有几类就保留几类，缺失的整段删除（含 `|` 分隔符）。label 文本固定不改，只替换括号内 URL。 %%
+
+---
 ## Summary
 %% 用一句话概括这篇论文的核心贡献，不超过50字 %%
 
@@ -21,9 +31,6 @@ date_added:          # 填写今天的日期 YYYY-MM-DD
 
 **Teaser. {描述}** 
 %% 若源有独立 teaser 图/视频（ Abstract / Intro 里的 overview / concept / motivation 示意），在这里直接嵌入；若论文唯一的 high-level 视觉就是架构图，跳过不写，不留 placeholder %%
-
-**Sources**: [arxiv](arxiv_url) | [website](website_url) | [github](github_url)
-%% 三类 slot 对应 sources.arxiv / sources.website / sources.github，不互斥——有几类就保留几类，缺失的整段删除（含 `|` 分隔符）。label 文本固定不改，只替换括号内 URL。 %%
 
 ---
 <!-- ═══ Body：章节结构镜像源文档，不是固定模板 ═══ -->
@@ -111,16 +118,6 @@ $$
 ### 方法相关
 - {核心技术}: {说明}
 - ...
-
----
-
-## 速查卡片
-
-> [!summary] {Paper Title}
-> - **核心**: {一句话核心}
-> - **方法**: {关键方法}
-> - **结果**: {主要结果}
-> - **Sources**: [arxiv](arxiv_url) | [website](website_url) | [github](github_url)
 
 ---
 ## Notes

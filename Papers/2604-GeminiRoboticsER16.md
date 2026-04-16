@@ -11,6 +11,15 @@ github: https://github.com/google-deepmind/gemini-robotics-sdk
 rating: 2
 date_added: "2026-04-15"
 ---
+## 速查卡片
+
+> [!summary] Gemini Robotics ER 1.6
+> - **核心**: 面向机器人的 embodied reasoning 模型，推理与控制解耦
+> - **方法**: Pointing-based spatial reasoning + multi-view success detection + agentic vision (视觉推理 + code execution)
+> - **结果**: Instrument reading 93% (vs ER 1.5 23%)；ASIMOV safety +6%/+10% over Flash
+> - **Sources**: [website](https://deepmind.google/blog/gemini-robotics-er-1-6/) | [github](https://github.com/google-deepmind/gemini-robotics-sdk)
+
+---
 ## Summary
 Google DeepMind 发布 Gemini Robotics-ER 1.6，一个面向机器人的 embodied reasoning 升级模型，在 pointing/spatial reasoning、multi-view success detection、instrument reading 三个核心能力上显著超越 ER 1.5 和 Gemini 3.0 Flash，并通过 agentic vision（视觉推理 + 代码执行）将工业仪表读数准确率从 23% 提升至 93%。
 
@@ -21,8 +30,6 @@ Google DeepMind 发布 Gemini Robotics-ER 1.6，一个面向机器人的 embodie
 
 **Teaser. Benchmark results: ER 1.6 consistently outperforms ER 1.5 and Gemini 3.0 Flash across all four evaluation tasks.**
 ![](https://lh3.googleusercontent.com/_dicgE2AAgiQBrY1zvNrdLqTsE5oNi3vbp95Zo4-vp809tdsRitsV4uOQHLBJES4QFjdqrJEW0gFUvwnYVDrbqcE6yd_wuigVj2Xxi-9Q-KA1UjodQ=w2880-h1620-n-nu-rw-lo)
-
-**Sources**: [website](https://deepmind.google/blog/gemini-robotics-er-1-6/) | [github](https://github.com/google-deepmind/gemini-robotics-sdk)
 
 ---
 
@@ -141,16 +148,6 @@ ER 1.6 通过 **agentic vision** 实现高精度读数：视觉推理 + 代码�
 ### 方法相关
 - Agentic vision: 视觉推理 + 代码执行的组合范式，ER 1.6 的核心差异化技术
 - ASIMOV benchmark v2: 基于真实伤害报告的机器人安全评估基准
-
----
-
-## 速查卡片
-
-> [!summary] Gemini Robotics ER 1.6
-> - **核心**: 面向机器人的 embodied reasoning 模型，推理与控制解耦
-> - **方法**: Pointing-based spatial reasoning + multi-view success detection + agentic vision (视觉推理 + code execution)
-> - **结果**: Instrument reading 93% (vs ER 1.5 23%)；ASIMOV safety +6%/+10% over Flash
-> - **代码**: [Gemini API](https://ai.google.dev/gemini-api/docs/robotics-overview) | [Safari SDK](https://github.com/google-deepmind/gemini-robotics-sdk)
 
 ---
 ## Notes
