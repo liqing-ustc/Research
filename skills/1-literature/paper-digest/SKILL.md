@@ -10,7 +10,7 @@ allowed-tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 给定一篇论文或技术 blog 的来源（URL、PDF 路径、论文标题或者关键词），它自动获取内容、提炼核心信息，生成结构化笔记。
 
 支持两种内容类型：
-- **paper**：arXiv 学术论文
+- **paper**：学术论文
 - **blog**：所有 blog 类文章（tech blog，product blog 等）
 
 ## Steps
@@ -86,7 +86,7 @@ allowed-tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 
 | 类型      | 落盘方式                                                                                                                                     |
 | ------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| arxiv   | Bash `npx defuddle parse "https://arxiv.org/html/{id}" --json --markdown -o /tmp/arxiv_{id}.json`（如 `/tmp/arxiv_2512.04601.json`）        |
+| arxiv   | Bash `npx defuddle parse "https://arxiv.org/html/{id}" --json --markdown -o /tmp/arxiv_{id}.json`（如 `/tmp/arxiv_2512.04601.json`）。若官方 HTML 缺失 / 404 / 转换失败（老论文或复杂 LaTeX 常见），fallback 到 `https://ar5iv.labs.arxiv.org/html/{id}`——ar5iv 是 arXiv 官方 HTML 的前身，基于同一套 LaTeXML，但覆盖更完整 |
 | website | Bash `npx defuddle parse "<url>" --json --markdown -o /tmp/website_{slug}.json`（slug 取 URL 最后一段，如 `/tmp/website_apr-02-2026-GEN-1.json`） |
 | github  | Bash `curl -sL https://raw.githubusercontent.com/<org>/<repo>/main/README.md -o /tmp/github_<org>_<repo>.md`（若 main 分支不存在，试 master）      |
 
