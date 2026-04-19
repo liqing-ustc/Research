@@ -5,7 +5,7 @@ institutes: [NVIDIA, University of Washington, UT Austin]
 date_publish: "2025-05"
 venue: "CoRL 2025"
 tags: [world-model, VLA, imitation-learning, cross-embodiment]
-arxiv: "https://arxiv.org/abs/2505.12705"
+paper: "https://arxiv.org/abs/2505.12705"
 website:
 github: "https://github.com/NVIDIA/GR00T-Dreams"
 rating: 2

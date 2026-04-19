@@ -5,7 +5,7 @@ institutes: [Stanford University, UT Austin, UIUC, USC, Salesforce Research]
 date_publish: 2024-03
 venue: CoRL 2022 / arXiv 2024
 tags: [mobile-manipulation, task-planning]
-arxiv: https://arxiv.org/abs/2403.09227
+paper: https://arxiv.org/abs/2403.09227
 website: https://behavior.stanford.edu
 github: https://github.com/StanfordVL/BEHAVIOR-1K
 rating: 2
@@ -17,7 +17,7 @@ date_added: 2026-04-16
 > - **核心**: 基于人类需求调查的 1,000 活动 Embodied AI benchmark + OmniGibson 高保真仿真器
 > - **方法**: BDDL 谓词逻辑定义活动 + OmniGibson (Omniverse + PhysX 5) 支持刚体/可变形体/流体仿真
 > - **结果**: 端到端 RL 完全失败；action primitives + 辅助抓取可达 ~50-88% 成功率；sim-to-real 迁移差距显著（0% 真实成功率）
-> - **Sources**: [arxiv](https://arxiv.org/abs/2403.09227) | [website](https://behavior.stanford.edu) | [github](https://github.com/StanfordVL/BEHAVIOR-1K)
+> - **Sources**: [paper](https://arxiv.org/abs/2403.09227) | [website](https://behavior.stanford.edu) | [github](https://github.com/StanfordVL/BEHAVIOR-1K)
 
 ---
 ## Summary

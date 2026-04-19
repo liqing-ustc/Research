@@ -5,7 +5,7 @@ institutes: [CMU, UC Santa Barbara]
 date_publish: 2023-07-25
 venue: ICLR 2024
 tags: [web-agent, VLM, instruction-following, task-planning]
-arxiv: https://arxiv.org/abs/2307.13854
+paper: https://arxiv.org/abs/2307.13854
 website: https://webarena.dev/
 github:
 rating: 2

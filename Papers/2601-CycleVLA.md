@@ -5,7 +5,7 @@ institutes: [University of Oxford, University of Cambridge]
 date_publish: "2026-01"
 venue: "arXiv"
 tags: [VLA, manipulation, task-planning]
-arxiv: "https://arxiv.org/abs/2601.02295"
+paper: "https://arxiv.org/abs/2601.02295"
 website:
 github:
 rating: 2

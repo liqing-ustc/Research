@@ -5,7 +5,7 @@ institutes: [Sun Yat-sen University, HKUST]
 date_publish: 2026-04-07
 venue: arXiv
 tags: [VLA, RL, manipulation]
-arxiv: http://arxiv.org/abs/2604.05595v1
+paper: http://arxiv.org/abs/2604.05595v1
 website:
 github:
 rating: 1

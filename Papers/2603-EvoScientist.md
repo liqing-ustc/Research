@@ -18,7 +18,7 @@ date_publish: 2026-03
 venue: arXiv
 tags:
   - auto-research
-arxiv: https://arxiv.org/abs/2603.08127
+paper: https://arxiv.org/abs/2603.08127
 website:
 github:
 rating: 1

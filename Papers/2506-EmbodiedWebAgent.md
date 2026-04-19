@@ -5,7 +5,7 @@ institutes: [UCLA]
 date_publish: 2025-06
 venue: NeurIPS 2025 Datasets and Benchmarks Track (Spotlight)
 tags: [web-agent, navigation, task-planning]
-arxiv: https://arxiv.org/abs/2506.15677
+paper: https://arxiv.org/abs/2506.15677
 website: https://embodied-web-agent.github.io/
 github: https://github.com/Embodied-Web-Agent/Embodied-Web-Agent
 rating: 2
@@ -17,7 +17,7 @@ date_added: 2026-04-16
 > - **核心**: 提出跨物理-数字域的 AI agent 范式，构建统一仿真平台和 ~1.5k 任务 benchmark
 > - **方法**: 集成 AI2-THOR (indoor) + Google Earth (outdoor) + 5 个功能性 web 界面，覆盖 cooking/navigation/shopping/traveling/geolocation
 > - **结果**: 最佳模型 overall accuracy 远低于人类（cooking 6.4% vs 77%），66.6% 错误是 cross-domain integration failure
-> - **Sources**: [arxiv](https://arxiv.org/abs/2506.15677) | [website](https://embodied-web-agent.github.io/) | [github](https://github.com/Embodied-Web-Agent/Embodied-Web-Agent)
+> - **Sources**: [paper](https://arxiv.org/abs/2506.15677) | [website](https://embodied-web-agent.github.io/) | [github](https://github.com/Embodied-Web-Agent/Embodied-Web-Agent)
 
 ---
 ## Summary

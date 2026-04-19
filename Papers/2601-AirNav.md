@@ -5,7 +5,7 @@ institutes: [Sun Yat-Sen University, Beihang University, Peking University, Beij
 date_publish: "2026-01"
 venue: "arXiv"
 tags: [VLN, navigation, instruction-following]
-arxiv: "https://arxiv.org/abs/2601.03707"
+paper: "https://arxiv.org/abs/2601.03707"
 website:
 github: "https://github.com/nopride03/AirNav"
 rating: 2

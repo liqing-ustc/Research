@@ -5,7 +5,7 @@ institutes: [Beijing Institute of Technology]
 date_publish: 2025-09-28
 venue: arXiv
 tags: [RL, web-agent]
-arxiv: https://arxiv.org/abs/2509.23866
+paper: https://arxiv.org/abs/2509.23866
 website:
 github: https://github.com/Computer-use-agents/dart-gui
 rating: 2

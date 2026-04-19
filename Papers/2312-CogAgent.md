@@ -5,7 +5,7 @@ institutes: [Tsinghua University, Zhipu AI]
 date_publish: 2023-12-14
 venue: "CVPR 2024 (Highlight)"
 tags: [web-agent, VLM, instruction-following]
-arxiv: https://arxiv.org/abs/2312.08914
+paper: https://arxiv.org/abs/2312.08914
 website:
 github: https://github.com/THUDM/CogAgent
 rating: 2

@@ -5,7 +5,7 @@ institutes: [CUHK, HKU, SJTU, Shenzhen Institute of Advanced Technology]
 date_publish: 2024-12-27
 venue: ACL 2025
 tags: [web-agent, imitation-learning, VLM, instruction-following]
-arxiv: https://arxiv.org/abs/2412.19723
+paper: https://arxiv.org/abs/2412.19723
 website: https://qiushisun.github.io/OS-Genesis-Home/
 github:
 rating: 2

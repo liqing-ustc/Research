@@ -5,7 +5,7 @@ institutes: [DAMO Academy, Alibaba Group]
 date_publish: 2026-02
 venue: arXiv
 tags: [VLA, spatial-reasoning, task-planning]
-arxiv: https://arxiv.org/abs/2602.14979
+paper: https://arxiv.org/abs/2602.14979
 website: https://alibaba-damo-academy.github.io/RynnBrain.github.io
 github: https://github.com/alibaba-damo-academy/RynnBrain
 rating: 2
@@ -17,7 +17,7 @@ date_added: 2026-04-16
 > - **核心**: 统一 egocentric understanding、spatio-temporal localization、physically grounded reasoning 和 physics-aware planning 的开源 embodied foundation model
 > - **方法**: 基于 Qwen3-VL 做 physics-aware spatio-temporal pretraining（20M 样本），引入 Chain-of-Point (CoP) interleaved reasoning + GRPO RL
 > - **结果**: 在 20 个 embodied benchmarks 上大幅超越同等规模 embodied brain 模型；post-trained 变体在 VLN、manipulation planning、VLA 任务上均取得 SOTA
-> - **Sources**: [arxiv](https://arxiv.org/abs/2602.14979) | [website](https://alibaba-damo-academy.github.io/RynnBrain.github.io) | [github](https://github.com/alibaba-damo-academy/RynnBrain)
+> - **Sources**: [paper](https://arxiv.org/abs/2602.14979) | [website](https://alibaba-damo-academy.github.io/RynnBrain.github.io) | [github](https://github.com/alibaba-damo-academy/RynnBrain)
 
 ---
 ## Summary

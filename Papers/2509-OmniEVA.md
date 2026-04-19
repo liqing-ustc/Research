@@ -5,7 +5,7 @@ institutes: [Huawei Noah's Ark Lab]
 date_publish: 2025-09
 venue:
 tags: [embodied-reasoning, spatial-reasoning, task-planning]
-arxiv: https://arxiv.org/abs/2509.09332
+paper: https://arxiv.org/abs/2509.09332
 website: https://omnieva.github.io/
 github:
 rating: 2
@@ -17,7 +17,7 @@ date_added: 2026-04-16
 > - **核心**: 通过 Task-Adaptive 3D Grounding 和 Embodiment-Aware Reasoning 实现跨 2D/3D 的通用具身推理与可执行规划
 > - **方法**: Gated Router 动态注入 3D positional encoding + TE-GRPO 强化学习引入物理约束奖励
 > - **结果**: 8 个 embodied reasoning benchmark 中 7 个 SOTA，mobile manipulation 实机部署成功率显著提升
-> - **Sources**: [arxiv](https://arxiv.org/abs/2509.09332) | [website](https://omnieva.github.io/)
+> - **Sources**: [paper](https://arxiv.org/abs/2509.09332) | [website](https://omnieva.github.io/)
 
 ---
 ## Summary

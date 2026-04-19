@@ -5,7 +5,7 @@ institutes: [BAAI]
 date_publish: 2026-01
 venue: arXiv preprint
 tags: [spatial-reasoning, VLA, RL]
-arxiv: https://arxiv.org/abs/2601.14352
+paper: https://arxiv.org/abs/2601.14352
 website: https://superrobobrain.github.io/
 github: https://github.com/FlagOpen/RoboBrain2.5
 rating: 2
@@ -17,7 +17,7 @@ date_added: 2026-04-16
 > - **核心**: Embodied AI 基座模型，在 [[2507-RoboBrain2|RoboBrain 2.0]] 基础上新增 Precise 3D Spatial Reasoning 和 Dense Temporal Value Estimation 两大能力
 > - **方法**: 采用 decoupled $(u,v,d)$ 表示做 3D spatial trace generation；hop-normalized temporal transition labels + multi-perspective fusion 做 dense value estimation；基于 Qwen3-VL 8B 架构两阶段训练 12.4M 样本
 > - **结果**: 2D/3D spatial reasoning benchmarks SOTA；temporal value estimation VOC 远超 GPT-5.2 和 Gemini-3-Pro-Preview，尤其 reverse VOC 差距极大；RL 训练 20min 实现 95%+ 成功率
-> - **Sources**: [arxiv](https://arxiv.org/abs/2601.14352) | [website](https://superrobobrain.github.io/) | [github](https://github.com/FlagOpen/RoboBrain2.5)
+> - **Sources**: [paper](https://arxiv.org/abs/2601.14352) | [website](https://superrobobrain.github.io/) | [github](https://github.com/FlagOpen/RoboBrain2.5)
 
 ---
 ## Summary

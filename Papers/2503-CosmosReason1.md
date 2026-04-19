@@ -5,7 +5,7 @@ institutes: [NVIDIA]
 date_publish: 2025-03
 venue: arXiv
 tags: [embodied-reasoning, VLM, spatial-reasoning]
-arxiv: https://arxiv.org/abs/2503.15558
+paper: https://arxiv.org/abs/2503.15558
 website: https://research.nvidia.com/labs/cosmos-lab/cosmos-reason1/
 github: https://github.com/nvidia-cosmos/cosmos-reason1
 rating: 2
@@ -17,7 +17,7 @@ date_added: 2026-04-16
 > - **核心**: 面向 Physical AI 的推理 VLM，通过 physical common sense 和 embodied reasoning 两类能力定义 + 专用 SFT/RL 训练，让多模态 LLM 具备物理世界理解与具身决策能力
 > - **方法**: 定义 physical common sense（Space/Time/Physics 三类 16 子类）和 embodied reasoning（4 能力 × 5 agent 类型）两套 ontology；基于 Qwen2.5-VL-7B 和 Nemotron-H-56B 做 Physical AI SFT + GRPO RL，用 MCQ 形式的 rule-based verifiable reward
 > - **结果**: SFT 阶段 embodied reasoning 提升 10%+，RL 阶段在 intuitive physics（arrow of time, spatial puzzle, object permanence）上从近随机提升至 81.5%
-> - **Sources**: [arxiv](https://arxiv.org/abs/2503.15558) | [website](https://research.nvidia.com/labs/cosmos-lab/cosmos-reason1/) | [github](https://github.com/nvidia-cosmos/cosmos-reason1)
+> - **Sources**: [paper](https://arxiv.org/abs/2503.15558) | [website](https://research.nvidia.com/labs/cosmos-lab/cosmos-reason1/) | [github](https://github.com/nvidia-cosmos/cosmos-reason1)
 
 ---
 ## Summary

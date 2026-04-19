@@ -5,7 +5,7 @@ institutes: [Beijing Innovation Center of Humanoid Robotics (X-Humanoid)]
 date_publish: 2025-11
 venue: arXiv
 tags: [VLA, spatial-reasoning, agentic-RL]
-arxiv: https://arxiv.org/abs/2511.00108
+paper: https://arxiv.org/abs/2511.00108
 website: https://pelican-vl.github.io/
 github: https://github.com/Open-X-Humanoid/pelican-vl
 rating: 2
@@ -17,7 +17,7 @@ date_added: 2026-04-16
 > - **核心**: 提出 DPPO（Deliberate Practice Policy Optimization）训练框架，通过 RL-SFT metaloop 迭代训练最大规模开源 embodied VLM（7B-72B）
 > - **方法**: DPPO metaloop = RL 探索弱项 → 难样本发现 → SFT 巩固，统一于 preference learning 框架；从 4B+ token 中蒸馏高质量数据
 > - **结果**: 72B 模型在 embodied benchmark 上平均 63.8%，超越 Qwen2.5-VL-72B 基座 20.3%，比肩 GPT-5 等闭源系统
-> - **Sources**: [arxiv](https://arxiv.org/abs/2511.00108) | [website](https://pelican-vl.github.io/) | [github](https://github.com/Open-X-Humanoid/pelican-vl)
+> - **Sources**: [paper](https://arxiv.org/abs/2511.00108) | [website](https://pelican-vl.github.io/) | [github](https://github.com/Open-X-Humanoid/pelican-vl)
 
 ---
 ## Summary

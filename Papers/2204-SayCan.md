@@ -53,7 +53,7 @@ tags:
   - task-planning
   - mobile-manipulation
   - scene-understanding
-arxiv: https://arxiv.org/abs/2204.01691
+paper: https://arxiv.org/abs/2204.01691
 website:
 github:
 rating: 3

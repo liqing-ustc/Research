@@ -5,7 +5,7 @@ institutes: []
 date_publish: 2026-03
 venue: arXiv
 tags: [3D-representation, scene-understanding, VLM]
-arxiv: https://arxiv.org/abs/2603.07660
+paper: https://arxiv.org/abs/2603.07660
 website:
 github:
 rating: 1

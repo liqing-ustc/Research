@@ -5,7 +5,7 @@ institutes: [Microsoft Research]
 date_publish: 2025-08
 venue: arXiv
 tags: [RL]
-arxiv: https://arxiv.org/abs/2508.03680
+paper: https://arxiv.org/abs/2508.03680
 website:
 github: https://github.com/microsoft/agent-lightning
 rating: 1

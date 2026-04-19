@@ -5,7 +5,7 @@ institutes: [University of Hong Kong, Salesforce Research, Carnegie Mellon Unive
 date_publish: 2024-04-11
 venue: NeurIPS 2024
 tags: [web-agent, instruction-following, VLM]
-arxiv: https://arxiv.org/abs/2404.07972
+paper: https://arxiv.org/abs/2404.07972
 website:
 github: https://github.com/xlang-ai/OSWorld
 rating: 3

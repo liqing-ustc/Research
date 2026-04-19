@@ -5,7 +5,7 @@ institutes: [Shanghai AI Laboratory, The University of Hong Kong, Zhejiang Unive
 date_publish: "2025-07"
 venue: "ICRA 2026"
 tags: [VLN, navigation, scene-understanding]
-arxiv: "https://arxiv.org/abs/2507.05240"
+paper: "https://arxiv.org/abs/2507.05240"
 website: "https://streamvln.github.io/"
 github:
 rating: 3

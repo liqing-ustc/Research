@@ -5,7 +5,7 @@ institutes: [Tsinghua University]
 date_publish: "2024-11"
 venue: "ACM CSUR 2025"
 tags: [world-model, RL]
-arxiv: "https://arxiv.org/abs/2411.14499"
+paper: "https://arxiv.org/abs/2411.14499"
 website:
 github: "https://github.com/tsinghua-fib-lab/World-Model"
 rating: 3

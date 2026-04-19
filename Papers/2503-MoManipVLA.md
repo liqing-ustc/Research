@@ -5,7 +5,7 @@ institutes: [Beijing University of Posts and Telecommunications, Nanyang Technol
 date_publish: 2025-03-17
 venue: CVPR 2025
 tags: [VLA, mobile-manipulation, manipulation, cross-embodiment, instruction-following]
-arxiv: https://arxiv.org/abs/2503.13446
+paper: https://arxiv.org/abs/2503.13446
 website: https://gary3410.github.io/momanipVLA/
 github:
 rating: 1

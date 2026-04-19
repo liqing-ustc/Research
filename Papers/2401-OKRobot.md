@@ -5,7 +5,7 @@ institutes: [NYU]
 date_publish: 2024-01
 venue: RSS 2024
 tags: [mobile-manipulation, navigation, scene-understanding]
-arxiv: https://arxiv.org/abs/2401.12202
+paper: https://arxiv.org/abs/2401.12202
 website:
 github: https://github.com/ok-robot/ok-robot
 rating: 2

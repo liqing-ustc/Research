@@ -5,7 +5,7 @@ institutes: [Stanford]
 date_publish: 2024-01
 venue: CoRL 2024
 tags: [mobile-manipulation, imitation-learning, manipulation]
-arxiv: https://arxiv.org/abs/2401.02117
+paper: https://arxiv.org/abs/2401.02117
 website:
 github: https://github.com/MarkFzp/mobile-aloha
 rating: 2

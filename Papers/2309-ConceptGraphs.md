@@ -5,7 +5,7 @@ institutes: [MIT, Université de Montréal]
 date_publish: 2023-09
 venue: ICRA 2024
 tags: [scene-understanding, task-planning, SLAM]
-arxiv: https://arxiv.org/abs/2309.16650
+paper: https://arxiv.org/abs/2309.16650
 website:
 github: https://github.com/concept-graphs/concept-graphs
 rating: 3

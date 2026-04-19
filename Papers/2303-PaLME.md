@@ -5,7 +5,7 @@ institutes: [Robotics at Google, TU Berlin, Google Research]
 date_publish: 2023-03
 venue: ICML 2023
 tags: [VLM, embodied-reasoning, task-planning]
-arxiv: https://arxiv.org/abs/2303.03378
+paper: https://arxiv.org/abs/2303.03378
 website: https://palm-e.github.io/
 github:
 rating: 3
@@ -17,7 +17,7 @@ date_added: 2026-04-16
 > - **核心**: 将连续传感器信号直接注入 LLM embedding 空间，构建统一的 embodied multimodal 模型
 > - **方法**: 多模态 token 与文本 token 交错形成 multi-modal sentences，端到端训练 encoder + PaLM LLM
 > - **结果**: 单一 562B 模型同时完成机器人规划、VQA、captioning，OK-VQA SOTA，且跨任务 positive transfer
-> - **Sources**: [arxiv](https://arxiv.org/abs/2303.03378) | [website](https://palm-e.github.io/)
+> - **Sources**: [paper](https://arxiv.org/abs/2303.03378) | [website](https://palm-e.github.io/)
 
 ---
 ## Summary

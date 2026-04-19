@@ -5,7 +5,7 @@ institutes: [Xiaomi]
 date_publish: 2025-11
 venue: arXiv
 tags: [VLM, cross-embodiment, spatial-reasoning]
-arxiv: https://arxiv.org/abs/2511.16518
+paper: https://arxiv.org/abs/2511.16518
 website: 
 github: https://github.com/XiaomiMiMo/MiMo-Embodied
 rating: 1
@@ -17,7 +17,7 @@ date_added: 2026-04-16
 > - **核心**: 首个跨 embodiment 的统一 VLM，同时覆盖 Embodied AI 和 Autonomous Driving，通过多阶段训练实现两域正迁移
 > - **方法**: 基于 MiMo-VL 的四阶段渐进训练（Embodied SFT → AD SFT → CoT SFT → GRPO RL），配合跨域数据构建
 > - **结果**: 17 个 Embodied AI benchmark 和 12 个 AD benchmark 上超越 open/closed-source 通用和专用 VLM
-> - **Sources**: [arxiv](https://arxiv.org/abs/2511.16518) | [github](https://github.com/XiaomiMiMo/MiMo-Embodied)
+> - **Sources**: [paper](https://arxiv.org/abs/2511.16518) | [github](https://github.com/XiaomiMiMo/MiMo-Embodied)
 
 ---
 ## Summary

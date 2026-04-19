@@ -5,7 +5,7 @@ institutes: [Tongji University, Shanghai AI Laboratory, Shanghai Jiao Tong Unive
 date_publish: "2025-07"
 venue: "ICCV 2025"
 tags: [VLN, navigation, cross-embodiment]
-arxiv: "https://arxiv.org/abs/2507.13019"
+paper: "https://arxiv.org/abs/2507.13019"
 website: "https://crystalsixone.github.io/vln_pe.github.io/"
 github:
 rating: 2

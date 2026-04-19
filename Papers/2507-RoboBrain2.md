@@ -5,7 +5,7 @@ institutes: [BAAI]
 date_publish: 2025-07
 venue: Technical Report
 tags: [spatial-reasoning, VLM, task-planning]
-arxiv: https://arxiv.org/abs/2507.02029
+paper: https://arxiv.org/abs/2507.02029
 website: https://superrobobrain.github.io/
 github: https://github.com/FlagOpen/RoboBrain2.5
 rating: 2
@@ -17,7 +17,7 @@ date_added: 2026-04-16
 > - **核心**: 统一 perception、reasoning、planning 的 embodied VLM，在空间和时序推理 benchmark 上取得领先结果
 > - **方法**: 异构 ViT + LLM 架构（基于 Qwen2.5-VL），三阶段渐进训练（基础时空学习 → embodied 增强 → CoT 推理 + RLVR）
 > - **结果**: 32B 变体在 12+ benchmark 中 6 个 SOTA，超越 GPT-4o、Gemini-2.5-Pro 等闭源模型
-> - **Sources**: [arxiv](https://arxiv.org/abs/2507.02029) | [website](https://superrobobrain.github.io/) | [github](https://github.com/FlagOpen/RoboBrain2.5)
+> - **Sources**: [paper](https://arxiv.org/abs/2507.02029) | [website](https://superrobobrain.github.io/) | [github](https://github.com/FlagOpen/RoboBrain2.5)
 
 ---
 ## Summary

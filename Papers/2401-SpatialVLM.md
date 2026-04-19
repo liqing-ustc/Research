@@ -5,7 +5,7 @@ institutes: [Google DeepMind, MIT, Stanford University]
 date_publish: 2024-01
 venue: CVPR 2024
 tags: [VLM, spatial-reasoning, 3D-representation]
-arxiv: https://arxiv.org/abs/2401.12168
+paper: https://arxiv.org/abs/2401.12168
 website:
 github: https://github.com/remyxai/VQASynth
 rating: 1

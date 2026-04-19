@@ -5,7 +5,7 @@ institutes: [Shanda AI, National Taiwan University]
 date_publish: 2026-04-02
 venue: arXiv
 tags: [world-model, 3D-representation]
-arxiv: https://arxiv.org/abs/2604.02329
+paper: https://arxiv.org/abs/2604.02329
 website:
 github: https://github.com/ShandaAI/AlayaRenderer
 rating: 1

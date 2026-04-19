@@ -5,7 +5,7 @@ institutes: [Google DeepMind]
 date_publish: 2026-04-14
 venue: Google DeepMind Blog
 tags: [embodied-reasoning, spatial-reasoning, scene-understanding]
-arxiv:
+paper:
 website: https://deepmind.google/blog/gemini-robotics-er-1-6/
 github: https://github.com/google-deepmind/gemini-robotics-sdk
 rating: 2

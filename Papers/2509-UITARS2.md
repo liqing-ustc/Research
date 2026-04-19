@@ -5,7 +5,7 @@ institutes: [ByteDance Seed]
 date_publish: 2025-09-02
 venue: arXiv
 tags: [web-agent, RL, VLM, instruction-following]
-arxiv: https://arxiv.org/abs/2509.02544
+paper: https://arxiv.org/abs/2509.02544
 website:
 github: https://github.com/bytedance/ui-tars
 rating: 2

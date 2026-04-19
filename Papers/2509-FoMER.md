@@ -23,7 +23,7 @@ tags:
   - scene-understanding
   - navigation
   - manipulation
-arxiv: "https://arxiv.org/abs/2509.15293"
+paper: "https://arxiv.org/abs/2509.15293"
 website: "https://mbzuai-oryx.github.io/FoMER-Bench/"
 github:
 rating: 1

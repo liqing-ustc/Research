@@ -5,7 +5,7 @@ institutes: [ACE Robotics, Shanghai Jiao Tong University, Nanyang Technological 
 date_publish: 2026-03
 venue: arXiv
 tags: [VLA, cross-embodiment, spatial-reasoning]
-arxiv: https://arxiv.org/abs/2603.03198
+paper: https://arxiv.org/abs/2603.03198
 website: https://ACE-Brain-Team.github.io/ACE-Brain-0/
 github: https://github.com/ACE-Brain-Team/ACE-Brain-0
 rating: 2
@@ -17,7 +17,7 @@ date_added: 2026-04-16
 > - **核心**: 以 spatial intelligence 为共享 scaffold，通过 Scaffold-Specialize-Reconcile (SSR) 范式训练统一跨 embodiment 的 generalist brain
 > - **方法**: 先训 Spatial Expert 作为 scaffold，再分支训练 AD/UAV domain expert，data-free model merging 合并，最后 Embodied SFT + GRPO
 > - **结果**: 8B 模型在 24 个 benchmark（Spatial / AD / UAV / Embodied）上取得 competitive 或 SOTA 性能
-> - **Sources**: [arxiv](https://arxiv.org/abs/2603.03198) | [website](https://ACE-Brain-Team.github.io/ACE-Brain-0/) | [github](https://github.com/ACE-Brain-Team/ACE-Brain-0)
+> - **Sources**: [paper](https://arxiv.org/abs/2603.03198) | [website](https://ACE-Brain-Team.github.io/ACE-Brain-0/) | [github](https://github.com/ACE-Brain-Team/ACE-Brain-0)
 
 ---
 ## Summary

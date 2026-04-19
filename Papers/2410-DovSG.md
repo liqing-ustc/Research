@@ -5,7 +5,7 @@ institutes: [Beijing Institute of Technology]
 date_publish: 2024-10
 venue: RA-L 2025
 tags: [mobile-manipulation, scene-understanding, semantic-map, 3D-representation, task-planning, instruction-following]
-arxiv: https://arxiv.org/abs/2410.11989
+paper: https://arxiv.org/abs/2410.11989
 website:
 github:
 rating: 1

@@ -5,7 +5,7 @@ institutes: [AgiBot Research, AgiBot, Shanghai Innovation Institute]
 date_publish: 2025-12
 venue: arXiv preprint
 tags: [VLA, embodied-reasoning, flow-matching]
-arxiv: https://arxiv.org/abs/2512.24125
+paper: https://arxiv.org/abs/2512.24125
 website: https://geniereasoner.github.io/GenieReasoner/
 github:
 rating: 2
@@ -17,7 +17,7 @@ date_added: 2026-04-16
 > - **核心**: 提出 FACT（Flow-matching Action Tokenizer）将连续动作离散化为 token 序列，在统一自回归框架中联合优化 VLM 推理与精确动作执行
 > - **方法**: VQ-encoder 将动作 chunk 压缩为离散 code，flow-matching decoder 从离散 code 重建高保真连续轨迹；三阶段训练（tokenizer → 联合预训练 → 后训练）
 > - **结果**: ERIQ benchmark 平均 82.72%（vs. base 58.64%）；真机实验在 language following 和 success rate 上均超越 [[2504-Pi05|π0.5]]（连续）和 π0-FAST（离散）baseline
-> - **Sources**: [arxiv](https://arxiv.org/abs/2512.24125) | [website](https://geniereasoner.github.io/GenieReasoner/)
+> - **Sources**: [paper](https://arxiv.org/abs/2512.24125) | [website](https://geniereasoner.github.io/GenieReasoner/)
 
 ---
 ## Summary

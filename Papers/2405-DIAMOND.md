@@ -5,7 +5,7 @@ institutes: [University of Geneva, University of Edinburgh, Microsoft Research]
 date_publish: 2024-05
 venue: "NeurIPS 2024 Spotlight"
 tags: [world-model, RL]
-arxiv: "https://arxiv.org/abs/2405.12399"
+paper: "https://arxiv.org/abs/2405.12399"
 website: "https://diamond-wm.github.io/"
 github:
 rating: 2

@@ -5,7 +5,7 @@ institutes: [Fudan University, University of Adelaide]
 date_publish: "2026-01"
 venue: "arXiv"
 tags: [VLN, scene-understanding, semantic-map]
-arxiv: "https://arxiv.org/abs/2601.06806"
+paper: "https://arxiv.org/abs/2601.06806"
 website:
 github:
 rating: 2

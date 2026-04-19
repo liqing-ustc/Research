@@ -5,7 +5,7 @@ institutes: []
 date_publish: "2024-11-28"
 venue: "Lilian Weng Blog"
 tags: [RL]
-arxiv:
+paper:
 website: "https://lilianweng.github.io/posts/2024-11-28-reward-hacking/"
 github:
 rating: 1

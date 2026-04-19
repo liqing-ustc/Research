@@ -5,7 +5,7 @@ institutes: [University of Science and Technology of China, Shanghai Artificial 
 date_publish: 2026-02
 venue: ICLR 2026
 tags: [VLA, manipulation, embodied-reasoning]
-arxiv: https://arxiv.org/abs/2602.09973
+paper: https://arxiv.org/abs/2602.09973
 website: https://lihaohn.github.io/RoboInter.github.io/
 github: https://github.com/InternRobotics/RoboInter
 rating: 2
@@ -17,7 +17,7 @@ date_added: 2026-04-16
 > - **核心**: 构建大规模中间表示标注数据集（230k episodes, 10+ 类标注），并提出 plan-then-execute VLA 框架
 > - **方法**: RoboInter-Tool 半自动标注 → RoboInter-Data（密集逐帧标注）→ RoboInter-VQA（2.3M VQA 样本训练 VLM）→ RoboInter-VLA（三种 plan-then-execute 变体）
 > - **结果**: VLM Planner 在 RoboRefIt 上比 [[2507-RoboBrain2|RoboBrain2.0]] 提升 76.8%；EC-E2E 实现 8.3% 最小 ID→OOD drop
-> - **Sources**: [arxiv](https://arxiv.org/abs/2602.09973) | [website](https://lihaohn.github.io/RoboInter.github.io/) | [github](https://github.com/InternRobotics/RoboInter)
+> - **Sources**: [paper](https://arxiv.org/abs/2602.09973) | [website](https://lihaohn.github.io/RoboInter.github.io/) | [github](https://github.com/InternRobotics/RoboInter)
 
 ---
 ## Summary

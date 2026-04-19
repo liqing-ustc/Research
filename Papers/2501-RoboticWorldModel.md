@@ -5,7 +5,7 @@ institutes: [ETH Zurich]
 date_publish: "2025-01"
 venue: "arXiv"
 tags: [world-model, RL, legged]
-arxiv: "https://arxiv.org/abs/2501.10100"
+paper: "https://arxiv.org/abs/2501.10100"
 website:
 github:
 rating: 1

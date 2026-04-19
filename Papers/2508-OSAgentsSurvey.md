@@ -5,7 +5,7 @@ institutes: [Zhejiang University, OPPO AI Center, Tsinghua University, Shanghai 
 date_publish: 2025-08-06
 venue: ACL 2025 (Oral)
 tags: [web-agent, VLM, task-planning]
-arxiv: https://arxiv.org/abs/2508.04482
+paper: https://arxiv.org/abs/2508.04482
 website: https://os-agent-survey.github.io/
 github:
 rating: 2

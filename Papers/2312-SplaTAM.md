@@ -5,7 +5,7 @@ institutes: [CMU]
 date_publish: 2023-12
 venue: CVPR 2024
 tags: [SLAM, 3D-representation]
-arxiv: https://arxiv.org/abs/2312.02126
+paper: https://arxiv.org/abs/2312.02126
 website:
 github: https://github.com/spla-tam/SplaTAM
 rating: 2

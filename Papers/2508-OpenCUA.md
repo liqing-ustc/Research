@@ -5,7 +5,7 @@ institutes: [XLANG Lab - The University of Hong Kong, Moonshot AI, Stanford Univ
 date_publish: 2025-08-12
 venue: "NeurIPS 2025 Spotlight"
 tags: [computer-use, gui-agent, VLM, imitation-learning]
-arxiv: https://arxiv.org/abs/2508.09123
+paper: https://arxiv.org/abs/2508.09123
 website: https://opencua.xlang.ai
 github:
 rating: 3

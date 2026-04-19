@@ -18,7 +18,7 @@ tags:
   - navigation
   - instruction-following
   - scene-understanding
-arxiv: https://arxiv.org/abs/2509.21006
+paper: https://arxiv.org/abs/2509.21006
 website:
 github:
 rating: 1

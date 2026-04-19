@@ -5,7 +5,7 @@ institutes: [KAIST]
 date_publish: "2025-06"
 venue: "NeurIPS 2025"
 tags: [VLM, RL, spatial-reasoning, manipulation, VLA]
-arxiv: "https://arxiv.org/abs/2506.00070"
+paper: "https://arxiv.org/abs/2506.00070"
 website:
 github:
 rating: 2

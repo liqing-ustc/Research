@@ -5,7 +5,7 @@ institutes: [Peking University, USTC, HKU]
 date_publish: 2026-04
 venue: arXiv
 tags: [web-agent]
-arxiv: https://arxiv.org/abs/2604.06132
+paper: https://arxiv.org/abs/2604.06132
 website:
 github:
 rating: 1

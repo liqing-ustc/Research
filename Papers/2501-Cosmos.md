@@ -5,7 +5,7 @@ institutes: [NVIDIA]
 date_publish: "2025-01"
 venue: "arXiv"
 tags: [world-model]
-arxiv: "https://arxiv.org/abs/2501.03575"
+paper: "https://arxiv.org/abs/2501.03575"
 website:
 github: "https://github.com/nvidia-cosmos/cosmos-predict1"
 rating: 2

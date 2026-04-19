@@ -5,7 +5,7 @@ institutes: [ZTE NebulaBrain Team]
 date_publish: 2025-10
 venue: arXiv
 tags: [task-planning, VLA, spatial-reasoning]
-arxiv: https://arxiv.org/abs/2510.20578
+paper: https://arxiv.org/abs/2510.20578
 website: https://zterobot.github.io/EmbodiedBrain.github.io
 github:
 rating: 1
@@ -17,7 +17,7 @@ date_added: 2026-04-16
 > - **核心**: 基于 Qwen2.5-VL 构建面向 embodied task planning 的 VLM，通过 agent-aligned 数据结构 + Step-GRPO 强化学习实现长序列规划 SOTA
 > - **方法**: 两阶段训练——rejection sampling SFT cold-start + Step-Augmented GRPO（在 planning sequence 中注入前置步骤作为 Guided Precursors）；设计 Generative Reward Model (GRM) 评估规划合理性
 > - **结果**: 7B/32B 两个尺度在 spatial perception（平均 +33.8%/+11.7% vs baseline）和 task planning（VLM-PlanSim-99: 31.31%/46.46%）全面 SOTA
-> - **Sources**: [arxiv](https://arxiv.org/abs/2510.20578) | [website](https://zterobot.github.io/EmbodiedBrain.github.io)
+> - **Sources**: [paper](https://arxiv.org/abs/2510.20578) | [website](https://zterobot.github.io/EmbodiedBrain.github.io)
 
 ---
 ## Summary

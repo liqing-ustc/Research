@@ -5,7 +5,7 @@ institutes: [Google DeepMind]
 date_publish: 2025-10
 venue: arXiv
 tags: [VLA, cross-embodiment, embodied-reasoning]
-arxiv: https://arxiv.org/abs/2510.03342
+paper: https://arxiv.org/abs/2510.03342
 website: https://deepmind.google/blog/gemini-robotics-15-brings-ai-agents-into-the-physical-world/
 github: https://github.com/google-deepmind/gemini-robotics-sdk
 rating: 3
@@ -17,7 +17,7 @@ date_added: "2026-04-16"
 > - **核心**: 多 embodiment VLA + embodied reasoning VLM 组成 agentic robot 系统，引入 Motion Transfer 和 Thinking VLA
 > - **方法**: Motion Transfer (MT) 训练范式实现跨 embodiment 技能迁移；VLA 生成多层级 thinking traces 后再出动作；GR-ER 1.5 作为 orchestrator 配合 GR 1.5 作为 action model
 > - **结果**: 跨 3 种机器人 (ALOHA, Bi-arm Franka, Apollo) 零样本技能迁移；Thinking VLA 在多步任务上大幅提升；GR-ER 1.5 在 15 个 embodied reasoning benchmark 上 SOTA
-> - **Sources**: [arxiv](https://arxiv.org/abs/2510.03342) | [website](https://deepmind.google/blog/gemini-robotics-15-brings-ai-agents-into-the-physical-world/) | [github](https://github.com/google-deepmind/gemini-robotics-sdk)
+> - **Sources**: [paper](https://arxiv.org/abs/2510.03342) | [website](https://deepmind.google/blog/gemini-robotics-15-brings-ai-agents-into-the-physical-world/) | [github](https://github.com/google-deepmind/gemini-robotics-sdk)
 
 ---
 ## Summary

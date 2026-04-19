@@ -5,7 +5,7 @@ institutes: [Tencent]
 date_publish: 2026-04
 venue: arXiv
 tags: [VLM, spatial-reasoning, VLA]
-arxiv: https://arxiv.org/abs/2604.07430
+paper: https://arxiv.org/abs/2604.07430
 website: 
 github: https://github.com/Tencent-Hunyuan/HY-Embodied
 rating: 2
@@ -17,7 +17,7 @@ date_added: 2026-04-16
 > - **核心**: 面向 embodied agent 的 VLM 基座，用 MoT 架构 + 大规模 embodied 数据 + 迭代 RL/RFT 后训练打造 2B/32B 两档模型
 > - **方法**: Mixture-of-Transformers (MoT) 架构实现模态自适应计算 + visual latent tokens + 100M+ embodied 数据预训练 + GRPO-based RL + on-policy distillation
 > - **结果**: MoT-2B 在 22 个 embodied benchmark 中 16 个 SOTA；32B 超越 Gemini 3.0 Pro；VLA 下游 real-world 操作超越 [[2410-Pi0|π0]]/[[2504-Pi05|π0.5]]
-> - **Sources**: [arxiv](https://arxiv.org/abs/2604.07430) | [github](https://github.com/Tencent-Hunyuan/HY-Embodied)
+> - **Sources**: [paper](https://arxiv.org/abs/2604.07430) | [github](https://github.com/Tencent-Hunyuan/HY-Embodied)
 
 ---
 ## Summary

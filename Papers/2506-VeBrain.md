@@ -5,7 +5,7 @@ institutes: [Shanghai AI Laboratory, Tsinghua University, USTC, SJTU, Xiamen Uni
 date_publish: 2025-06
 venue: arXiv
 tags: [VLA, spatial-reasoning, embodied-reasoning]
-arxiv: https://arxiv.org/abs/2506.00123
+paper: https://arxiv.org/abs/2506.00123
 website: https://internvl.github.io/blog/2025-05-26-VeBrain/
 github: https://github.com/OpenGVLab/VeBrain
 rating: 2
@@ -17,7 +17,7 @@ date_added: 2026-04-16
 > - **核心**: 将机器人控制重新表述为 2D 视觉空间中的文本 MLLM 任务（keypoint detection + skill recognition），统一多模态理解、空间推理和机器人控制
 > - **方法**: 基于 Qwen2.5-VL-7B，通过 robotic adapter（point tracker + movement controller + skill executor + dynamic takeover）将 MLLM 文本信号转换为运动策略；构建 VeBrain-600k 指令数据集
 > - **结果**: 在 13 个多模态 benchmark 上平均超越 Qwen2.5-VL（MMVet +5.6%），在足式机器人任务上平均成功率 86.4%（+50% vs Qwen2.5-VL），在机械臂任务上成功率 74.3%（+42.9% vs π0）
-> - **Sources**: [arxiv](https://arxiv.org/abs/2506.00123) | [website](https://internvl.github.io/blog/2025-05-26-VeBrain/) | [github](https://github.com/OpenGVLab/VeBrain)
+> - **Sources**: [paper](https://arxiv.org/abs/2506.00123) | [website](https://internvl.github.io/blog/2025-05-26-VeBrain/) | [github](https://github.com/OpenGVLab/VeBrain)
 
 ---
 ## Summary

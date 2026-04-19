@@ -5,7 +5,7 @@ institutes: [Show Lab, National University of Singapore]
 date_publish: "2026-02"
 venue: "arXiv"
 tags: [world-model, VLA, RL]
-arxiv: "https://arxiv.org/abs/2602.06508"
+paper: "https://arxiv.org/abs/2602.06508"
 website:
 github: "https://github.com/showlab/World-VLA-Loop"
 rating: 2

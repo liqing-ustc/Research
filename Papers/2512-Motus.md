@@ -5,7 +5,7 @@ institutes: [Tsinghua University, Motus Robotics]
 date_publish: "2025-12"
 venue: "arXiv"
 tags: [world-model, VLA, cross-embodiment]
-arxiv: "https://arxiv.org/abs/2512.13030"
+paper: "https://arxiv.org/abs/2512.13030"
 website:
 github:
 rating: 3

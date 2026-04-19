@@ -5,7 +5,7 @@ institutes: [Peking University, Beijing Academy of Artificial Intelligence, CASI
 date_publish: 2024-02
 venue: RSS 2024
 tags: [VLN, VLM, navigation]
-arxiv: https://arxiv.org/abs/2402.15852
+paper: https://arxiv.org/abs/2402.15852
 website: "https://pku-epic.github.io/NaVid/"
 github:
 rating: 2

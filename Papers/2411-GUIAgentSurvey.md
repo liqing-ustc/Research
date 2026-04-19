@@ -5,7 +5,7 @@ institutes: [Microsoft, Shanghai AI Laboratory, Peking University]
 date_publish: 2024-11-27
 venue: arXiv
 tags: [web-agent, VLM, task-planning]
-arxiv: https://arxiv.org/abs/2411.18279
+paper: https://arxiv.org/abs/2411.18279
 website:
 github: https://github.com/vyokky/LLM-Brained-GUI-Agents-Survey
 rating: 2

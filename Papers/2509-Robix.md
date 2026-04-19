@@ -5,7 +5,7 @@ institutes: [ByteDance Seed]
 date_publish: 2025-09
 venue: arXiv
 tags: [embodied-reasoning, task-planning, VLM]
-arxiv: https://arxiv.org/abs/2509.01106
+paper: https://arxiv.org/abs/2509.01106
 website: https://robix-seed.github.io/robix/
 github:
 rating: 2
@@ -17,7 +17,7 @@ date_added: 2026-04-16
 > - **核心**: 将 robot reasoning、task planning、human-robot interaction 统一到单个 VLM 中，作为层级式机器人系统的高层认知模块
 > - **方法**: 三阶段训练（continued pretraining → SFT with synthesized interaction data → RL with GRPO + thought-action consistency reward）
 > - **结果**: 在 offline/online 评测中超越 GPT-4o 和 Gemini-2.5-Pro，OOD 泛化能力突出
-> - **Sources**: [arxiv](https://arxiv.org/abs/2509.01106) | [website](https://robix-seed.github.io/robix/)
+> - **Sources**: [paper](https://arxiv.org/abs/2509.01106) | [website](https://robix-seed.github.io/robix/)
 
 ---
 ## Summary

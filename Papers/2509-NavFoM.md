@@ -5,7 +5,7 @@ institutes: [Peking University, Galbot, USTC, BAAI, University of Adelaide, Zhej
 date_publish: 2025-09
 venue: arXiv
 tags: [VLN, navigation, cross-embodiment]
-arxiv: https://arxiv.org/abs/2509.12129
+paper: https://arxiv.org/abs/2509.12129
 website:
 github:
 rating: 2

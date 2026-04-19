@@ -5,7 +5,7 @@ institutes: [Microsoft]
 date_publish: 2024-09-12
 venue: arXiv
 tags: [web-agent, VLM, instruction-following, task-planning]
-arxiv: https://arxiv.org/abs/2409.08264
+paper: https://arxiv.org/abs/2409.08264
 website:
 github: https://github.com/microsoft/WindowsAgentArena
 rating: 1

@@ -5,7 +5,7 @@ institutes: [Google DeepMind]
 date_publish: 2025-03-25
 venue: arXiv
 tags: [VLA, manipulation, embodied-reasoning]
-arxiv: https://arxiv.org/abs/2503.20020
+paper: https://arxiv.org/abs/2503.20020
 website: https://deepmind.google/models/gemini-robotics/
 github: https://github.com/google-deepmind/gemini-robotics-sdk
 rating: 3
@@ -17,7 +17,7 @@ date_added: "2026-03-30"
 > - **核心**: 基于 Gemini 2.0 的 VLA 双栈：Gemini Robotics-ER（embodied reasoning backbone）+ Gemini Robotics（cloud backbone + local decoder 的 VLA）
 > - **方法**: 云端 backbone（<160ms）+ 本地 action decoder（端到端 ~250ms、50Hz）；数千小时 ALOHA 2 数据 + web/code/multimodal mixture；generalist → specialization fine-tune pipeline
 > - **结果**: ERQA 48.3 SOTA（CoT 54.8）；20 任务 out-of-the-box 显著超 [[2410-Pi0|π0]] re-implement 和 diffusion baseline；100 demo 内快速适配新任务；迁移到 bi-arm Franka（63% avg）和 Apollo humanoid
-> - **Sources**: [arxiv](https://arxiv.org/abs/2503.20020) | [website](https://deepmind.google/models/gemini-robotics/) | [github](https://github.com/google-deepmind/gemini-robotics-sdk)
+> - **Sources**: [paper](https://arxiv.org/abs/2503.20020) | [website](https://deepmind.google/models/gemini-robotics/) | [github](https://github.com/google-deepmind/gemini-robotics-sdk)
 
 ---
 ## Summary

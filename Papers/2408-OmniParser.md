@@ -5,7 +5,7 @@ institutes: [Microsoft Research, Microsoft Gen AI]
 date_publish: 2024-08-01
 venue: "arXiv"
 tags: [web-agent, VLM, scene-understanding]
-arxiv: https://arxiv.org/abs/2408.00203
+paper: https://arxiv.org/abs/2408.00203
 website:
 github: https://github.com/microsoft/OmniParser
 rating: 2

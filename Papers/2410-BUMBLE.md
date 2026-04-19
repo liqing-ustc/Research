@@ -5,7 +5,7 @@ institutes: [UT Austin]
 date_publish: 2024-10
 venue: arXiv
 tags: [mobile-manipulation, VLM, task-planning, navigation, spatial-memory, instruction-following]
-arxiv: https://arxiv.org/abs/2410.06237
+paper: https://arxiv.org/abs/2410.06237
 website: https://robin-lab.cs.utexas.edu/BUMBLE/
 github:
 rating: 1

@@ -5,7 +5,7 @@ institutes: [Physical Intelligence]
 date_publish: 2025-02
 venue: arXiv
 tags: [VLA, VLM, manipulation, instruction-following, task-planning]
-arxiv: https://arxiv.org/abs/2502.19417
+paper: https://arxiv.org/abs/2502.19417
 website:
 github:
 rating: 3

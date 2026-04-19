@@ -5,7 +5,7 @@ institutes: [Meta AI, Georgia Tech, CMU, Simon Fraser University]
 date_publish: 2023-06
 venue: NeurIPS 2023 Competition Track
 tags: [mobile-manipulation, scene-understanding, navigation]
-arxiv: https://arxiv.org/abs/2306.11565
+paper: https://arxiv.org/abs/2306.11565
 website:
 github: https://github.com/facebookresearch/home-robot
 rating: 1

@@ -5,7 +5,7 @@ institutes: [University of Illinois Urbana-Champaign, Stanford University, Amazo
 date_publish: "2025-02"
 venue: ICML 2025
 tags: [VLM, navigation, manipulation, task-planning, scene-understanding, instruction-following]
-arxiv: "https://arxiv.org/abs/2502.09560"
+paper: "https://arxiv.org/abs/2502.09560"
 website:
 github: "https://github.com/EmbodiedBench/EmbodiedBench"
 rating: 1

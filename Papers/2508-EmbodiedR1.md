@@ -5,7 +5,7 @@ institutes: [Tianjin University]
 date_publish: "2025-08"
 venue: arXiv
 tags: [VLM, RL, manipulation, cross-embodiment, scene-understanding, VLA]
-arxiv: "https://arxiv.org/abs/2508.13998"
+paper: "https://arxiv.org/abs/2508.13998"
 website:
 github: "https://github.com/pickxiguapi/Embodied-R1"
 rating: 2

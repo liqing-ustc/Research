@@ -5,7 +5,7 @@ institutes: [Peking University, BAAI, Institute of Automation CAS, Institute of 
 date_publish: 2025-02
 venue: CVPR 2025
 tags: [VLA, task-planning, manipulation]
-arxiv: https://arxiv.org/abs/2502.21257
+paper: https://arxiv.org/abs/2502.21257
 website: https://superrobobrain.github.io/
 github: https://github.com/FlagOpen/RoboBrain
 rating: 1
@@ -17,7 +17,7 @@ date_added: 2026-04-16
 > - **核心**: 基于 MLLM 构建统一 robotic brain，从抽象指令到具体执行覆盖 planning、affordance perception、trajectory prediction 三层能力
 > - **方法**: LLaVA 架构 (SigLIP + Qwen2.5-7B) + 多阶段训练 + ShareRobot 数据集 + A-LoRA/T-LoRA 专项模块
 > - **结果**: 在 RoboVQA、OpenEQA、ShareRobot 三个 benchmark 上达到 SOTA；affordance AP 27.1%，trajectory DFD 降低 42.9%
-> - **Sources**: [arxiv](https://arxiv.org/abs/2502.21257) | [website](https://superrobobrain.github.io/) | [github](https://github.com/FlagOpen/RoboBrain)
+> - **Sources**: [paper](https://arxiv.org/abs/2502.21257) | [website](https://superrobobrain.github.io/) | [github](https://github.com/FlagOpen/RoboBrain)
 
 ---
 ## Summary
