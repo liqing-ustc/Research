@@ -5,24 +5,20 @@ institutes:         # [institute1, institute2, ...]
 date_publish:
 venue:
 tags:               # [tag1, tag2, ...]
-arxiv:
+paper:
 website: 
 github:
 rating:              # 1=有参考价值, 2=重要, 3=必读
 date_added:          # 填写今天的日期 YYYY-MM-DD
 ---
-## 速查卡片
+## Summary
 
 > [!summary] {Paper Title}
 > - **核心**: {一句话核心}
 > - **方法**: {关键方法}
 > - **结果**: {主要结果}
-> - **Sources**: [arxiv](arxiv_url) | [website](website_url) | [github](github_url)
-> %% 三类 slot 对应 sources.arxiv / sources.website / sources.github，不互斥——有几类就保留几类，缺失的整段删除（含 `|` 分隔符）。label 文本固定不改，只替换括号内 URL。 %%
-
----
-## Summary
-%% 用一句话概括这篇论文的核心贡献，不超过50字 %%
+> - **Sources**: [paper](paper_url) | [website](website_url) | [github](github_url)
+> %% 三类 slot 对应 frontmatter 的 paper / website / github 字段，不互斥——有几类就保留几类，缺失的整段删除（含 `|` 分隔符）。label 文本固定不改，只替换括号内 URL。 %%
 
 **Key Takeaways:** 
 1. **{Takeaway 1}**: 简要说明
@@ -30,19 +26,10 @@ date_added:          # 填写今天的日期 YYYY-MM-DD
 3. ...
 
 **Teaser. {描述}** 
-%% 若源有独立 teaser 图/视频（ Abstract / Intro 里的 overview / concept / motivation 示意），在这里直接嵌入；若论文唯一的 high-level 视觉就是架构图，跳过不写，不留 placeholder %%
+%% 若有独立 teaser 图/视频，在这里直接嵌入；若无，则跳过 %%
 
 ---
-<!-- ═══ Body：章节结构镜像源文档，不是固定模板 ═══ -->
-%% 
-Body 区使用源文档的 section 结构。原则：
-- 标题取自源的章节名原文（`heading` 字段），层级（`##` / `###`）根据源结构和阅读顺畅度判断，不强制
-- 源里没有的 section 不写，不留 placeholder
-- 源里有但 extraction 草稿没挖出任何内容的 section 也不写
-- 图 / 公式 / 表 / 视频就近嵌入对应段落（section_id 匹配）
-%%
-
-%% 以下只是"可用构件"的展示，**不是**必须按序出现的章节。实际章节数量、顺序、标题、层级都由 `source_sections[]` 决定。每种构件（图 / 公式 / 表 / 视频）在自己的 section_id 对应的 section 里就近嵌入，不需要集中。%%
+<!-- ═══ Body （内容解读）  ═══ -->
 
 <!-- 可用构件 1：嵌入图 -->
 **Figure #. {描述}**
@@ -58,21 +45,18 @@ $$
 **符号说明**：
 **含义**：
 
-<!-- 可用构件 3：嵌入数字表（仅当 extraction 草稿存在正式数字表时写；禁止从 bar/line chart 目测编造） -->
+<!-- 可用构件 3：嵌入数字表 -->
 **Table #. {描述}**
 
 | Col1 | Col2 |
 | ---- | ---- |
 | ...  | ...  |
 
-**Insights**: {关键发现和解释}
-
-<!-- 可用构件 4：嵌入视频（外链 mp4 用 <video>，YouTube 用 ![](watch?v=...)，详见 obsidian-syntax.md §3）-->
+<!-- 可用构件 4：嵌入视频 -->
 **Video #. {描述}**
 <video src="https://.../clip.mp4" controls muted playsinline width="720"></video>
 
 ---
-<!-- ═══ 固定 outro：vault 编辑 overlay，所有笔记一致 ═══ -->
 ## 论文点评
 %% 方法亮点与局限的点评，以及对可复现性的评估。 %%
 
@@ -89,7 +73,6 @@ $$
 3. ...
 
 ### 可信评估
-%% 两个互不替代的子轴：artifact 层（有没有开源）+ claim 层（每个 claim 有没有 grounding）。任何 content_type 都填两栏。 %%
 
 #### Artifact 可获取性
 %% 结合Github README和正文内容分析，未知就写 "未说明"，严禁推测。 %%

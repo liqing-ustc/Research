@@ -5,144 +5,145 @@ institutes: [Xiaomi]
 date_publish: 2026-02
 venue: arXiv preprint
 tags: [VLA, manipulation, flow-matching]
-arxiv: https://arxiv.org/abs/2602.12684
+paper: https://arxiv.org/abs/2602.12684
 website: https://xiaomi-robotics-0.github.io
 github: https://github.com/XiaomiRobotics/Xiaomi-Robotics-0
 rating: 2
-date_added: 2026-04-14
----
-## 速查卡片
-
-> [!summary] Xiaomi-Robotics-0
-> - **核心**: 4.7B VLM+DiT VLA，用 Λ-shape attention mask 防止 async prefix shortcut，在消费级 4090 上 80ms 延迟平滑实时执行
-> - **方法**: Qwen3-VL-4B 冻结 + 16-layer DiT flow-matching + VL data co-train (1:6) + Λ-mask + RoPE offset + dynamic loss reweight
-> - **结果**: LIBERO 98.7% / CALVIN 4.80/4.75 / SimplerEnv 85.5-79.2%，real-robot Towel Folding 吞吐 1.2 vs [[2504-Pi05|π0.5]] 的 1.0 pcs/min，ERQA 40.8 略超基座 Qwen3-VL
-> - **Sources**: [arxiv](https://arxiv.org/abs/2602.12684) | [website](https://xiaomi-robotics-0.github.io) | [github](https://github.com/XiaomiRobotics/Xiaomi-Robotics-0)
-
+date_added: 2026-04-19
 ---
 ## Summary
 
-一个 4.7B MoT（VLM + DiT）VLA 模型，通过 Λ-shape 注意力 mask + 动态 loss reweighting + timestep 对齐，在消费级 GPU 上实现平滑的异步实时控制。
+> [!summary] Xiaomi-Robotics-0
+> - **核心**: 4.7B MoT（Qwen3-VL-4B + 16-layer DiT）VLA，用 Λ-shape attention mask 阻断 action-prefix shortcut，在 RTX 4090 上 80 ms 延迟实现平滑异步实时执行
+> - **方法**: pre-train 两步（Choice Policies + VL co-train 1:6 防遗忘 → 冻结 VLM 训 DiT 用 flow matching）；post-train RoPE offset + Λ-mask + L1-error 动态 loss reweight 解决 prefix shortcut
+> - **结果**: LIBERO 98.7%，CALVIN ABCD→D 4.80 / ABC→D 4.75，SimplerEnv VM 85.5% / VA 74.7% / WidowX 79.2%；real-robot Towel Folding 1.2 vs [[2504-Pi05|π0.5]] 1.0 pcs/min；ERQA 40.8 略超基座 Qwen3-VL-4B 的 40.0
+> - **Sources**: [paper](https://arxiv.org/abs/2602.12684) | [website](https://xiaomi-robotics-0.github.io) | [github](https://github.com/XiaomiRobotics/Xiaomi-Robotics-0)
 
 **Key Takeaways:**
-1. **Λ-shape attention mask 防止 action-prefix shortcut**：training-time RTC 的副作用是 later-timestep 动作直接 copy prefix 而不看视觉/语言；用 Λ-mask 让后段 token 无法 attend prefix，强制转向 visual/language 条件。
-2. **VLM + DiT 的 MoT 架构 + KV cache 桥接**：VLM（Qwen3-VL-4B-Instruct）冻结后作为多模态 conditioner，16 层 DiT 从 scratch 训练，只 attend 最后 16 层的 KV cache，控制推理延迟到 80 ms。
-3. **预训练阶段 VL 数据 co-train 是关键**：去掉 VL 数据后 VLM 能力在所有 benchmark 归零（catastrophic forgetting），而保留 VL co-train 后 ERQA 甚至略高于基座 Qwen3-VL-4B（40.8 vs 40.0），说明 robot-centric VL 数据反而增强了具身感知。
-4. **三个 sim benchmark SOTA**：LIBERO 98.7% avg（14 对比），CALVIN ABC→D 4.75 / ABCD→D 4.80，SimplerEnv Google Robot VM 85.5% / VA 74.7% / WidowX 79.2%。
-5. **开源但 inference-only**：放出 base + 5 个 fine-tuned checkpoint 上 HuggingFace，推理和评测代码通过 transformers ecosystem，**未开放训练代码**。
+1. **Λ-shape attention mask 治 action-prefix shortcut**：training-time RTC 把 committed prefix 拼到 noisy action 前，但 later-timestep 的 noisy action 会走捷径直接 copy prefix 而忽略视觉/语言条件，导致 reactive 能力下降。Λ-mask 让后段 token 无法 attend prefix，强制它们 attend VLM KV cache。
+2. **VLM + DiT 的 MoT 架构 + KV cache 桥接**：Qwen3-VL-4B-Instruct 冻结后作 multimodal conditioner，16-layer DiT 从 scratch 训，只 condition 于 VLM 最后 16 层的 KV cache 来压缩推理延迟到 80 ms @ RTX 4090。
+3. **VL co-train 是必需品而非 nice-to-have**：w/o VL data 的 ablation 在所有 10 个 VL benchmark 全部归零，VL co-train 后 ERQA 甚至略超基座（40.8 vs 40.0）——robot-trajectory-derived 的 VL 数据反而强化了 robot-centric 的 embodied perception。
+4. **三个 sim benchmark SOTA + real-robot 最高吞吐**：LIBERO 98.7%、CALVIN 4.75/4.80、SimplerEnv 三个设置全胜；Towel Folding 1.2 pcs/min 比 [[2504-Pi05|π0.5]] 的 1.0 高 20%，Training RTC 变体会陷入 repetitive fling loop 失败——直接印证 prefix shortcut 假设。
+5. **开源但 inference-only**：base + 5 个 fine-tune checkpoint 发布到 HuggingFace，推理代码走 transformers 生态，**未放出训练代码、VL 数据 curation pipeline 与 Λ-mask 窗口/Beta 分布/reweight 公式等关键超参**。
 
-**Video 1.** Overview teaser — Xiaomi-Robotics-0 real-robot rollouts highlight reel
+**Teaser.** 项目主页 hero 视频，展示 Lego Disassembly 与 Towel Folding 两个 in-house 任务的真实机器人执行效果。
+
 <video src="https://robotics.xiaomi.com/robot-model/xiaomi-robotics-0.mp4" controls muted playsinline width="720"></video>
 
 ---
 ## Introduction
 
-VLA 模型建立在预训练 VLM 之上，把 observation + instruction 映射到 action。痛点：参数量大 → 推理延迟高 → consecutive chunks 不平滑会引入 OOD jerky 动作。
+VLA 建立在预训练 VLM 之上，把 observation + language instruction 映射到 action。主要痛点是：参数量大 → 推理延迟高 → consecutive chunks 之间不平滑会引入 OOD jerky 动作。本文的切入点是 training recipe + deployment strategy 两手兼修：
 
-本文的切入点是 training recipe + deployment strategy 两手兼修：
-- 预训练阶段用 cross-embodiment robot trajectory + VL data co-train，避免 catastrophic forgetting 基座 VLM 的 vision-language 能力。
-- 后训练阶段为异步执行定制技术：把 previous inference 的 action 作为 prefix condition 生成新 chunk，但用 Λ-shape attention mask 防止 later-timestep 动作走捷径直接 copy prefix。
-- 部署阶段严格对齐 consecutive chunks 的 timestep 以保证平滑过渡。
+- **Pre-training**：cross-embodiment robot trajectory + vision-language (VL) data 联合训练，让 VLM 既获得 action generation 能力、又不忘掉原始的 vision-semantic 知识（catastrophic forgetting 是本文一贯强调的对手）。
+- **Post-training (async)**：沿用 training RTC 的 prefix-conditioning 范式，但用 Λ-shape attention mask 阻止后段 noisy action 直接 copy prefix——强迫它们去 attend 视觉/语言，从而保留 reactive 能力。
+- **Deployment**：严格对齐 consecutive chunks 的 timestep，保证接缝平滑。
 
-**Figure 1. Overview.** Xiaomi-Robotics-0 在三个 sim benchmark 上 SOTA，在两个真实双手操作任务上吞吐最高，并在多个 VLM benchmark 上匹配基座 VLM。
+**Figure 1. Overview.** Xiaomi-Robotics-0 在三个 sim benchmark 上 SOTA，在两个 bimanual real-robot 任务上达到最高吞吐，并在多个 VLM benchmark 上匹配基座 VLM。
 
 ![](https://arxiv.org/html/2602.12684v2/x1.png)
 
-Headline results（原文正文声明）：LIBERO 98.7%；CALVIN ABCD→D 从 4.67 → 4.80，ABC→D 从 4.54 → 4.75；SimplerEnv VM 85.5%、VA 74.7%、WidowX 79.2%；real-robot 在 Lego Disassembly 和 Towel Folding 上 success rate 和 throughput 都高于 state-of-the-art。发布了 pre-trained + post-trained checkpoints 和 inference code。
+Headline 数字（正文声明）：LIBERO 98.7%，CALVIN ABCD→D 从 prior SOTA 4.67 → 4.80、ABC→D 从 4.54 → 4.75，SimplerEnv VM 85.5% / VA 74.7% / WidowX 79.2%；real-robot Lego Disassembly 和 Towel Folding 上 success rate 和 throughput 均高于 SOTA。发布 pre-trained + post-trained checkpoint 和 inference code。
 
 ---
 ## Xiaomi-Robotics-0
 
-End-to-end VLA：输入观测图像 + 语言指令 + 本体状态，输出 action chunk 控制双手 bimanual 机器人。
+End-to-end VLA：输入观测图像 $\mathbf{o}_t$ + 语言指令 $l$ + proprioceptive state $\mathbf{s}_t$，输出 $T$-step action chunk $\mathbf{a}_{t:t+T}$ 控制 bimanual 机器人。
 
 ### Data
 
-**Figure 2. Data.** Xiaomi-Robotics-0 在预训练阶段同时使用 robot trajectory 数据和 vision-language (VL) 数据。
+**Figure 2. Data.** Robot trajectory 和 vision-language 数据在 pre-training 阶段联合使用，覆盖 grounding / VQA / captioning / embodied reasoning & planning 四类 VL 任务。
 
 ![](https://arxiv.org/html/2602.12684v2/x2.png)
 
-- **Robot trajectory**：开源数据集 DROID、MolmoAct 等 + 自采。自采集中在两个长任务：Lego Disassembly（338 小时）和 Towel Folding（400 小时）。总计约 200M timesteps。
-- **Vision-language 数据**：~80M samples。两条主干：
-  1. 通用 VL 数据集（captioning / VQA / grounding）；
-  2. 从 robot trajectory 数据衍生出的 VL 数据，强化 robot-centric 视觉感知（egocentric、wrist camera 视角）。
-- 覆盖的四类 VL 任务：visual grounding、VQA、captioning、embodied reasoning & planning。
-- Grounding 标注管道：Grounded SAM + Grounding DINO 1.5 + LLMDet 交叉验证保证 pixel 级精度；VQA/captioning 用 SOTA VLM re-label；EQA / high-level planning / point trajectory 用预训练 VLM 从 trajectory 自动生成。
+- **Robot trajectory** (~200M timesteps)：开源数据集（DROID、MolmoAct 等）+ 自采。自采集中于两个长任务——Lego Disassembly 338 小时 + Towel Folding 400 小时。
+- **Vision-language 数据** (~80M samples)：两条主干——(1) 通用 VL 数据集（Conceptual 12M、Conceptual Captions、Cambrian-1、FineVision 等）；(2) 从 robot trajectory 衍生的 VL 数据，强化 egocentric / wrist camera 视角的 robot-centric 感知。
+- **标注管道**：
+  - Grounding：Grounded SAM + Grounding DINO 1.5 + LLMDet 的 cross-validated consensus 保证 pixel-level 精度；
+  - VQA/captioning：用 SOTA VLM (Qwen3-VL) 重新 re-label；
+  - EQA / high-level planning / point trajectory：用预训练 VLM 直接从 trajectory 生成。
 
 ### Model & Training
 
-**Figure 3. Model & Training.** (a) 预训练第一步：在 VL 数据（左，next-token prediction）和 robot trajectory 数据（右，Choice Policies 多 candidate + WTA）上联合训练 VLM。(b) 预训练第二步：冻结 VLM，从 scratch 训练 DiT 通过 flow-matching 生成 action。(c) 后训练 for 异步执行：把 clean action prefix 拼接在 noisy action token 前。
+**Figure 3. Model & Training.** (a) Pre-training step 1：VLM 在 VL 数据（next-token-prediction）和 robot trajectory（Choice Policies 多 candidate + winner-takes-all）上联合训练。(b) Pre-training step 2：冻结 VLM，从 scratch 训 DiT 用 flow-matching 生成 action。(c) Post-training for async：clean action prefix 拼在 noisy action tokens 前。
 
 ![](https://arxiv.org/html/2602.12684v2/x3.png)
 
-架构：**Mixture-of-Transformers (MoT)**——Qwen3-VL-4B-Instruct 作为 VLM + 一个 16-layer DiT。VLM 处理 $\mathbf{o}_t$ 和语言 $l$，DiT 通过 flow-matching 生成 $T$-step action chunk $\mathbf{a}_{t:t+T}$，conditioned on VLM KV cache 和 proprioceptive state。总参数 4.7B。
+架构：**Mixture-of-Transformers (MoT)**——Qwen3-VL-4B-Instruct + 16-layer DiT，共 4.7B 参数。VLM 处理 $\mathbf{o}_t$ 和 $l$ 产生 KV cache；DiT 通过 flow-matching 生成 action chunk，conditioned on VLM KV cache 和 proprioceptive state。
 
 #### Pre-training
 
-两步走。
-
-**Step 1**：让 VLM 本身学会动作预测。采用 Choice Policies 的范式处理多模态轨迹——同时预测 $N$ 个 action chunk 候选 + 每个候选的 score。Loss 设计：
-- Action prediction 用 **winner-takes-all**，只对 $L_1$ 距离最小的候选做 BP；
+**Step 1**：让 VLM 本身学会动作预测。采用 **Choice Policies** 处理 trajectory 的多模态——同时预测 $N$ 个 action chunk 候选 + 每个候选的 score：
+- Action prediction 用 **winner-takes-all**：只对与 ground truth 的 $L_1$ 距离最小的候选做反向传播；
 - Score prediction 的 target 是每个候选到 ground truth 的 $L_1$ 距离。
 
-Token 序列 `[𝐨_t, l, 𝐬_t, [A_1], ..., [A_T], [S]]`，proprioceptive state 由 MLP 编码，action/score 用额外 learnable token `[A_i]`、`[S]` 预测。VL 数据与 robot 数据按 1:6 比例 co-train（next-token-prediction 目标），这是防 catastrophic forgetting 的关键。
+Token 序列为 $\mathbf{o}_t, l, \mathbf{s}_t, [A_1], \ldots, [A_T], [S]$。Proprioceptive state 用 MLP 编码；每个 $[A_i]$ 输出 $N$ 个 $i$-th timestep 预测；$[S]$ 输出 $N$ 个 score。
 
-**Step 2**：冻结 VLM，从 scratch 训练 DiT 用 flow-matching 生成 action。Loss：
+**防遗忘的关键**：VL 数据与 robot 数据按 **1:6** 比例 co-train（VL 走 next-token-prediction 目标）。Table 3 的 w/o VL data ablation 全零显示这一步是必需品。
+
+**Step 2**：冻结 VLM，从 scratch 训 DiT 用 flow-matching：
 
 $$
-L(\theta)=\big\|\mathbf{v}_{\theta}(\mathbf{o}_{t},l,\mathbf{s}_{t},\tilde{\mathbf{a}}_{t:t+T}^{\tau},\tau)-\mathbf{u}(\tilde{\mathbf{a}}_{t:t+T}^{\tau},\mathbf{a}_{t:t+T},\tau)\big\|^{2}_{2}
+L(\theta) = \Big\|\mathbf{v}_{\theta}(\mathbf{o}_{t}, l, \mathbf{s}_{t}, \tilde{\mathbf{a}}_{t:t+T}^{\tau}, \tau) - \mathbf{u}(\tilde{\mathbf{a}}_{t:t+T}^{\tau}, \mathbf{a}_{t:t+T}, \tau)\Big\|^{2}_{2}
 $$
 
 **符号说明**：
-- $\tau \in [0, 0.999]$ 是 flow-matching 的 timestep，从 Beta 分布采样（偏向 noisier timesteps）。
-- $\tilde{\mathbf{a}}^{\tau}_{t:t+T} = \tau \mathbf{a}_{t:t+T} + (1-\tau)\boldsymbol{\epsilon}$，其中 $\boldsymbol{\epsilon} \sim \mathcal{N}(\mathbf{0}, \mathbf{I})$。
-- $\mathbf{v}_\theta$ 是 DiT 预测的速度场，$\mathbf{u}$ 是 ground-truth 的条件 flow field。
+- $\tau \in [0, 0.999]$ 是 flow-matching timestep，从 **Beta 分布**采样（偏 noisier timesteps，具体参数未披露）；
+- $\tilde{\mathbf{a}}_{t:t+T}^{\tau} = \tau \mathbf{a}_{t:t+T} + (1-\tau)\boldsymbol{\epsilon}$，其中 $\boldsymbol{\epsilon} \sim \mathcal{N}(\mathbf{0}, \mathbf{I})$ 是 noisy action；
+- $\mathbf{v}_\theta$ 是 DiT 预测速度场，$\mathbf{u}$ 是 ground-truth 条件 flow field。
 
-**架构细节**：adaLN 注入 timestep 条件；proprioceptive state 和 noisy action 用 MLP 编码；前置一个 learnable **attention sink token** 稳定训练；DiT 内部 causal attention；DiT 只 condition 在 VLM 最后 16 层的 KV cache 上（减小延迟）；VLM 在 Step 2 只接收 $\mathbf{o}_t$ 和 $l$，不含 Step 1 引入的 action token。
+**架构细节**：adaLN 注入 timestep 条件；proprioceptive state 和 noisy action 走 MLP 编码；最前面插一个 learnable **attention sink token** 稳定 attention；DiT 内部 causal attention；DiT 只 condition 于 VLM 最后 16 层的 KV cache 压低延迟；Step 2 里 VLM 的输入不含 Step 1 引入的 `[A_i]`/`[S]` token。
+
+> ❓ Beta 分布的具体 shape 参数（$\alpha, \beta$）论文没给，只说 "placing more weight on noisier timesteps"。
 
 #### Post-training
 
-针对特定机器人，只用该机器人的 trajectory 数据继续训练。分 synchronous 和 asynchronous 两种模式。
+针对特定机器人，只用该机器人的 trajectory 数据继续训练。分 synchronous 和 asynchronous 两种模式：
 
 - **Sync**：简单 unfreeze 整个模型（VLM + DiT），继续 flow-matching 训练。
-- **Async**：遵循 training RTC 的做法，把 $\Delta t_c$ 个 previously committed actions 作为 clean prefix 拼接到 noisy action tokens 前。DiT 序列变成：`[SINK], 𝐬_t, 𝐚_t, ..., 𝐚_{t+Δt_c-1}, 𝐚̃^τ_{t+Δt_c}, ..., 𝐚̃^τ_{t+T-1}`。
+- **Async**：follow training RTC——把 $\Delta t_c$ 个 previously committed actions 作为 clean prefix 拼到 noisy action tokens 前。DiT 输入序列变为：
 
-**Problem**：这种 prefix conditioning 让 later-timestep 的 noisy action 直接 copy prefix（shortcut），不看 visual/language，reactive 性下降。
+$$
+[\text{SINK}], \mathbf{s}_t, \mathbf{a}_t, \ldots, \mathbf{a}_{t+\Delta t_c - 1}, \tilde{\mathbf{a}}^{\tau}_{t+\Delta t_c}, \ldots, \tilde{\mathbf{a}}^{\tau}_{t+T-1}
+$$
 
-**Fix**：
+**Problem**：这种 prefix conditioning 让 later-timestep 的 noisy action 直接 copy prefix（shortcut）——模型不再 attend 视觉/语言，reactive 能力下降。
 
-**Figure 4. Λ-Shape Attention Mask for Post-Training.** Noisy action token 只能 attend VLM KV cache、sink token、state token、以及前 $w$ 个 timestep 的 action tokens。Token 上的数字是 RoPE positional index；noisy action token 的 RoPE 被加了 offset 10，用来和 clean prefix token 区分。
+**Figure 4. Λ-Shape Attention Mask for Post-Training.** Noisy action token 只能 attend VLM KV cache、sink、state、以及前 $w$ 个 timestep 的 action token。每个 token 标注的数字是 RoPE positional index——noisy action 的 RoPE 加了 10 的 offset，以便模型区分 noisy 与 clean prefix。
 
 ![](https://arxiv.org/html/2602.12684v2/x4.png)
 
-两个 trick：
-1. **RoPE offset**：给 noisy action token 的 positional index 加 10，让模型能区分它和 clean prefix。
-2. **Λ-shape attention mask**：noisy action token 只能 attend 到紧邻 prefix 结尾的窗口 + VLM KV cache + sink + state；更后面的 noisy action 无法再看到 prefix，被迫去 attend 视觉/语言。
+**Fix**：两个小 trick：
 
-**训练采样**：$\Delta t_c$ 从 $\{0, 1, \ldots, 6\}$ 均匀采样。当 $\Delta t_c > 0$ 时，根据 **online-predicted actions** 相对 ground truth 的 $L_1$ error 动态 reweight flow-matching loss，重点学习偏差大的样本。
+1. **RoPE offset**：给 noisy action token 的 positional index 加 10，区分 noisy vs clean prefix。
+2. **Λ-shape attention mask**：noisy action token 只能 attend 到紧邻 prefix 结尾的窗口 + VLM KV cache + sink + state；更后面的 noisy action 看不到 prefix，被迫 attend 视觉/语言。
+
+**训练采样**：$\Delta t_c$ 从 $\{0, 1, \ldots, 6\}$ 均匀采样。当 $\Delta t_c > 0$ 时，根据 **online-predicted actions** 相对 ground truth 的 $L_1$ error 动态 reweight flow-matching loss——优先学偏差大的样本。
+
+> ❓ Λ-mask 的窗口大小 $w$ 具体值、以及 reweight 公式都没在正文给出，需要看代码或 appendix。
 
 ### Deployment
 
-**Figure 5. Asynchronous Execution.** 可视化两个连续 chunk 如何在机器人 rollout 中被拼接。
+**Figure 5. Asynchronous Execution.** 两个 consecutive chunk 如何在 robot rollout 中被拼接。
 
 ![](https://arxiv.org/html/2602.12684v2/x5.png)
 
-**Synchronous Execution**：每次执行 chunk 的前 $T_e$ 步 → idle → 用最新观测推新 chunk。
+- **Synchronous**：执行当前 chunk 前 $T_e$ 步 → 触发新推理 → **机器人 idle 等待**推理完成。
+- **Asynchronous**：
+  - 执行 $T_e$ 步后立即触发新推理；
+  - 推理期间机器人继续执行当前 chunk 剩余动作；
+  - 用第 $T_e$ 到 $T_e + \Delta t_c - 1$ 步的动作作为 prefix condition 新 chunk；
+  - 新 chunk 从第 $\Delta t_{\mathrm{inf}}$ 步开始执行（$\Delta t_{\mathrm{inf}}$ 为推理延迟）；
+  - 约束 $\Delta t_c \geq \Delta t_{\mathrm{inf}}$ 保证 prefix 覆盖整个推理窗口，衔接无缝。
 
-**Asynchronous Execution**：
-- 执行 $T_e$ 步后立即触发下一轮推理；
-- 推理期间机器人继续执行当前 chunk 的剩余动作；
-- 用步 $T_e$ 到 $T_e + \Delta t_c - 1$ 的动作作为 prefix condition 新 chunk；
-- 新 chunk 从步 $\Delta t_{\mathrm{inf}}$ 开始执行，其中 $\Delta t_{\mathrm{inf}}$ 是推理延迟；
-- 要求 $\Delta t_c \geq \Delta t_{\mathrm{inf}}$ 保证 prefix 覆盖整个推理窗口，实现无缝衔接。
-
-推理细节：action chunk 从 $\mathcal{N}(\mathbf{0}, \mathbf{I})$ 采样后执行 5 步 flow-matching 积分（$\tau: 0 \to 1$）。**NVIDIA RTX 4090** 上延迟 $t_{\mathrm{inf}} = 80$ ms。所有模态在 30Hz timeline 上 resample 对齐，每个 tick 取时间最近的测量聚合成输入。
+**推理细节**：action chunk 从 $\mathcal{N}(\mathbf{0}, \mathbf{I})$ 采样初始化，执行 5 步 flow-matching 积分（$\tau: 0 \to 1$）。**NVIDIA RTX 4090** 上 $t_{\mathrm{inf}} = 80$ ms。所有模态 resample 到 30Hz 统一 timeline，每个 tick 取时间最近的测量聚合成 model input。
 
 ---
 ## Experiments
 
 ### Simulation Benchmarks
 
-三个 sim benchmark：LIBERO、CALVIN、SimplerEnv。
+三个 sim benchmark：**LIBERO**（4 个 suite，$T=10$）、**CALVIN**（ABCD→D in-distribution + ABC→D OOD，$T=10$）、**SimplerEnv**（Google Robot VM/VA + WidowX，$T=4$）。
 
 **Table 1. Results on the LIBERO benchmark.**
 
@@ -161,7 +162,7 @@ $$
 | EO-1 | 99.7% | 99.8% | 99.2% | 94.8% | 98.2% |
 | **Xiaomi-Robotics-0 (Ours)** | **98.8%** | **100.0%** | **98.8%** | **97.2%** | **98.7%** |
 
-**Insights**：在 Libero-Long（最考验 long-horizon）上把次优的 FLOWER 94.9% 提升到 97.2%，是本表最大 gap。
+**Insights**：Libero-Long 上把次优 FLOWER 的 94.9% 拉到 97.2%（+2.3）——long-horizon 的 gap 明显大于其他 suite，是 ablation 中最 informative 的一列。LIBERO 本身已近饱和，98.7% vs EO-1 98.2% 的 0.5% 差距在噪声量级。
 
 **Table 2. Results on the CALVIN benchmark.**
 
@@ -188,45 +189,74 @@ $$
 | FLOWER | ABC→D | 99.4% | 95.8% | 90.7% | 84.9% | 77.8% | 4.53 |
 | **Xiaomi-Robotics-0 (Ours)** | ABC→D | **100.0%** | **98.3%** | **96.0%** | **92.6%** | **88.1%** | **4.75** |
 
-**Insights**：ABC→D 是 OOD 泛化 split（训练时没见过 D），本方法把 Task-5 成功率从 FLOWER 的 77.8% 拉到 88.1%——10 个点的 gap 比 ABCD→D 的 in-distribution split 更大，说明 VL co-train 带来的表示质量对 OOD 有实质增益。
+**Insights**：ABC→D 是 OOD 泛化 split（训练不含 D），Xiaomi-Robotics-0 在 Task-5 从 FLOWER 77.8% 拉到 88.1%——**10 个点的 gap 比 in-distribution ABCD→D split 更大**，说明 VL co-train 带来的表示质量对 OOD 迁移有实质增益。
 
-**Benchmark action chunk 长度**：LIBERO $T=10$、CALVIN $T=10$、SimplerEnv $T=4$。SimplerEnv 详细数字在 Appendix B，笔记不展开。
+**Table 3. SimplerEnv WidowX (Bridge-trained).**
+
+| Method | Put Spoon on Towel | Put Carrot on Plate | Stack Blocks | Put Eggplant in Basket | Overall |
+|---|---|---|---|---|---|
+| [[2405-Octo\|Octo]]-Small | 47.2% | 9.7% | 4.2% | 56.9% | 29.5% |
+| [[2406-OpenVLA\|OpenVLA]] | 0% | 0% | 0% | 4.1% | 1.0% |
+| [[2410-Pi0\|π0]] | 83.8% | 52.5% | 52.5% | 87.9% | 69.2% |
+| SpatialVLA | 16.7% | 25.0% | 29.2% | 100% | 42.7% |
+| EO-1 | 63.6% | 54.5% | 81.8% | 90.9% | 72.7% |
+| **Xiaomi-Robotics-0 (Ours)** | **95.8%** | **62.5%** | 75.0% | 83.3% | **79.2%** |
+
+**Table 4. SimplerEnv Google Robot (Fractal-trained, Visual Matching).**
+
+| Method | Pick Coke Can | Move Near | Open/Close Drawer | Drawer Apple | Overall |
+|---|---|---|---|---|---|
+| [[2406-OpenVLA\|OpenVLA]] | 16.3% | 46.2% | 35.6% | 0% | 24.5% |
+| RT-1 | 85.7% | 44.2% | 73.0% | 6.5% | 52.4% |
+| [[2307-RT2\|RT-2]]-X | 78.7% | 77.9% | 25.0% | 7.4% | 47.3% |
+| [[2410-Pi0\|π0]] | 97.9% | 78.7% | 62.3% | 46.6% | 71.4% |
+| EO-1 | 98.0% | 83.8% | 71.3% | 52.8% | 76.5% |
+| **Xiaomi-Robotics-0 (Ours)** | **98.7%** | **88.8%** | **79.6%** | **75.0%** | **85.5%** |
+
+**Insights**：Drawer Apple 任务（最难，涉及 compositional drawer + 物体操作）从 EO-1 52.8% 拉到 75.0%（+22）——和 CALVIN ABC→D 的 OOD gap 一致，都是在"更难的设置下差距更大"，暗示 VL co-train + 大 trajectory pool 对困难场景增益更明显。VA split 略（overall 74.7%），数字在 paper Appendix B Table 5 完整给出。
 
 ### Real-Robot Experiments
 
-**Figure 6. Real-Robot Experiments.** (a) Lego Disassembly 评测设置。(b) Towel Folding 评测设置和使用的 6 种毛巾。(c) 两个任务上的定量结果。
+**Figure 6. Real-Robot Experiments.** (a) Lego Disassembly 评测设置（LA-5/10/20 + MA 34 bricks）。(b) Towel Folding 评测设置和使用的 6 种毛巾。(c) 两个任务上的定量结果（条形图，无数值表）。
 
 ![](https://arxiv.org/html/2602.12684v2/x6.png)
 
-**平台**：bimanual robot，两个 6-DoF arm，三个相机（2 个 wrist-mounted + 1 个 global external）。
+**平台**：bimanual robot，两个 6-DoF arm，三相机（2 wrist-mounted + 1 external global）。
 
 **Tasks**：
-- **Lego Disassembly**：拆解 Lego 结构为单独砖块，按颜色分拣到对应 bin。要求 bimanual 协同抓取 + 精确放置。两个 setting：LA（large-assembly，LA-5 / LA-10 / LA-20 三个尺寸）和 MA（multi-assembly，共 34 块含单块和 2-3 块组合）。Metric：正确分拣砖块数 / 总砖块数（success rate）和 throughput（单位时间分拣数）。
-- **Towel Folding**：从托盘取毛巾 → 展平 → 对折两次 → 放到 staging area。毛巾 deformable，动力学复杂。用 6 条不同毛巾，每个方法跑两次 30 分钟 rollout；单次折叠超过 2 分钟算失败；metric 是 throughput（成功折叠数 / rollout 时间）。
+- **Lego Disassembly**：拆 Lego → 按颜色分拣到 bin。要求 bimanual 协同 + 精确放置。两个 setting：**LA**（large-assembly，LA-5 / LA-10 / LA-20 三个尺寸 × 3 configs × 3 trials）和 **MA**（multi-assembly，共 34 块含单块和 2-3 块组合，3 trials）。Metric：正确分拣率 + throughput（#bricks/time）。
+- **Towel Folding**：从托盘取毛巾 → 展平 → 对折两次 → 放到 staging area。毛巾 deformable，动力学复杂（wrinkles、遮挡）。用 6 条不同毛巾，每方法跑两次 30 分钟；单次折叠 > 2 分钟视为失败。Metric：throughput（#folded/time）。
 
-**Implementation**：
-- **Baselines**：[[2504-Pi05|π0.5]]（SOTA VLA）、Xiaomi-Robotics-0（主方法，异步）、Xiaomi-Robotics-0 (Sync)、Xiaomi-Robotics-0 (Training RTC)。[[2504-Pi05|π0.5]] 按官方 OpenPi 的 fine-tune 协议从 release 的 base 启动。
-- **Training**：pre-train 40k steps, batch 32,768；post-train Lego 40k steps、Towel 80k steps, batch 2,048；AdamW + DeepSpeed ZeRO-2；**action chunk $T=30$ 对应 1 秒动作**。
+**Baselines**：
+- [[2504-Pi05|π0.5]]：按官方 OpenPi fine-tune 协议从 release base 启动，训练 setting 与本文一致；
+- **Xiaomi-Robotics-0**：主方法（async + Λ-mask）；
+- **Xiaomi-Robotics-0 (Sync)**：同步变体；
+- **Xiaomi-Robotics-0 (Training RTC)**：纯 training RTC 变体（prefix conditioning 但无 Λ-mask），作为消融。
 
-**Results**（文中叙述，定量在 Fig.6c 不抽数字）：
-- Lego Disassembly：所有方法 avg success rate 相当，sync 方法（[[2504-Pi05|π0.5]] 和 Xiaomi-Robotics-0 Sync）精度略高因为反应性更好（异步 inference 的动作生成稍晚，导致砖块 tension 爆开）。但 throughput 上 Xiaomi-Robotics-0 (Sync) 就超过 [[2504-Pi05|π0.5]]；Xiaomi-Robotics-0（异步）throughput 最高。
-- Towel Folding：[[2504-Pi05|π0.5]]、Xiaomi-Robotics-0 (Sync)、Xiaomi-Robotics-0 (Training RTC) 都是 1 pcs/min；**Xiaomi-Robotics-0 达到 1.2 pcs/min**。Training RTC 变体有一个典型 failure：flinging 时不小心抓到两层毛巾会陷入重复 fling loop 无法自救——印证了 prefix shortcut 假设（模型只 copy prefix 而不 attend 当前观测）。
+**Training**：pre-train 40k steps × batch 32,768；post-train Lego 40k steps、Towel 80k steps × batch 2,048；AdamW + DeepSpeed ZeRO-2；action chunk $T=30$ 对应 1 秒。
 
-**Video 2. Lego Disassembly — complex task manipulation.**
+**Results**（定量在 Fig.6c 条形图）：
+
+- **Lego Disassembly**：所有方法 avg success rate 接近。两个 sync 方法（[[2504-Pi05|π0.5]] 和 Xiaomi-Robotics-0 Sync）精度略高——异步方法 reactive 性稍差，会出现 gripper 和 brick 之间张力过大导致 brick 弹飞。**Throughput**：Xiaomi-Robotics-0 (Sync) > [[2504-Pi05|π0.5]]；**Xiaomi-Robotics-0 (async) 最高**，还超过 training RTC 变体。
+- **Towel Folding**：[[2504-Pi05|π0.5]]、Xiaomi-Robotics-0 (Sync)、Xiaomi-Robotics-0 (Training RTC) 三者均为 1 pcs/min；**Xiaomi-Robotics-0 达到 1.2 pcs/min**（+20%）。Training RTC 变体有一个典型 failure mode——flinging 时不小心抓到两层毛巾会陷入 repetitive fling loop 无法自救，**直接印证 prefix shortcut 假设**（模型 copy prefix 而不 attend 当前观测）。
+
+**Video 2. Lego Disassembly — complex task manipulation.** 拆解最多 20 块的复杂 Lego 组合，对应 LA-20 设置。
 <video src="https://robotics.xiaomi.com/robot-model/xiaomi-robotics-0-Lego-disassembly-complex-task-manipulation.mp4" controls muted playsinline width="720"></video>
 
-**Video 3. Lego Disassembly — flexible motion switch.**
+**Video 3. Lego Disassembly — flexible motion switch.** 抓取失败后自适应切换抓取动作——展示 async + Λ-mask 保留的 reactive 能力。
 <video src="https://robotics.xiaomi.com/robot-model/xiaomi-robotics-0-Lego-disassembly-flexible-%20motion-switch.mp4" controls muted playsinline width="720"></video>
 
-**Video 4. Towel Folding — fling motion.**
+**Video 4. Towel Folding — fling motion.** 当毛巾角被遮挡时，单手甩动暴露隐藏角——这是 Training RTC 变体陷入 repetitive loop 的同一动作，但本方法能正常退出。
 <video src="https://robotics.xiaomi.com/robot-model/xiaomi-robotics-0-towel-folding-fling.mp4" controls muted playsinline width="720"></video>
 
-**Video 5. Towel Folding — put back.**
+**Video 5. Towel Folding — put back.** 抓出两条毛巾时先放回多余的再开始折叠，需要 attend 当前视觉而非按 prefix 惯性继续。
 <video src="https://robotics.xiaomi.com/robot-model/xiaomi-robotics-0-towel-folding-put-back.mp4" controls muted playsinline width="720"></video>
 
 ### Preservation of Vision-Language Capabilities
 
-**Table 3. Quantitative results on general vision-language and embodied reasoning benchmarks.**
+10 个 VL benchmark（含 ERQA embodied reasoning），对比 [[2410-Pi0|π0]]（无 VL co-train）、[[2504-Pi05|π0.5]]（有 VL 训练）、MolmoAct（有 VL 训练）、Xiaomi-Robotics-0 自己的 w/o VL data ablation、以及基座 Qwen3-VL-4B-Instruct。
+
+**Table 5. Quantitative results on general VL + embodied reasoning benchmarks.**
 
 | Model | ERQA | SEED | POPE | AI2D | MMBench | MME | MMMU | TextVQA | SciQA | ChartQA |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -238,79 +268,84 @@ $$
 | Qwen3-VL-4B-Instruct (base) | 40.0 | 78.8 | 89.7 | 81.6 | 88.7 | 87.1 | 51.7 | 78.0 | 92.7 | 76.8 |
 
 **Insights**：
-- **[[2410-Pi0|π0]] / [[2504-Pi05|π0.5]] 几乎全归零**：说明单纯在 robot trajectory 上训练会彻底摧毁基座 VLM 的 VL 能力。[[2504-Pi05|π0.5]] 在个别 benchmark 上有极小值可能是训练配方不同。
-- **Xiaomi-Robotics-0 (w/o VL data) = 全 0**：本方法自己做 ablation，证明不 co-train VL 数据也会 catastrophic forgetting。
-- **Ours 在 9/10 benchmark 上领先所有 VLA 基线，并在 ERQA 上略超基座**（40.8 vs 40.0）——作者假设是因为 robot-trajectory-derived VL 数据加强了 robot-centric 场景下的 embodied perception。其他 benchmark 略落后基座但幅度小（如 AI2D 78.7 vs 81.6）。
-- **Vs MolmoAct**：唯一在 SciQA 上输给 MolmoAct（79.4 vs 91.1），其他 9 个 benchmark 全部领先。
+- **[[2410-Pi0|π0]] 几乎全归零，Xiaomi-Robotics-0 (w/o VL data) 全 0**——双重 ablation 证明：不 co-train VL 数据会**彻底**摧毁基座 VLM 的 VL 能力（catastrophic forgetting）。
+- **[[2504-Pi05|π0.5]] 有零星残留（SEED 21.5、MMBench 22.1、MMMU 19.9 等）但远低于正常**——可能是其训练配方里某种程度保留了 VL 数据。
+- **Ours 在 9/10 benchmark 上领先所有 VLA 基线，ERQA 40.8 略超基座 40.0**——作者 hypothesis 是 robot-trajectory-derived 的 VL 数据强化了 robot-centric embodied perception。
+- **唯一输给 MolmoAct**：SciQA 79.4 vs 91.1。其他 benchmark 略落后基座但幅度都小（AI2D 78.7 vs 81.6；MMBench 84.4 vs 88.7），"preservation" 的 claim 成立。
+
+> ❓ [[2504-Pi05|π0.5]] 的 VL 分数为什么是"非零但离谱低"的状态（如 SEED 21.5、MMMU 19.9）？值得和 [[2504-Pi05|π0.5]] 原论文对比其 VL 训练配比。
 
 ---
 ## 论文点评
 
 ### Strengths
 
-1. **Λ-shape attention mask 是一个简洁、first-principles 的 fix**：精准定位到 training-time RTC 的根本问题（prefix shortcut），并用最小侵入的 attention mask 改动解决。比单纯加 regularization 或扩大数据更可证伪、更可解释。
-2. **VL co-train ablation 做得漂亮**：Table 3 里 "Xiaomi-Robotics-0 (w/o VL data) 全 0" 这一行是整篇 report 最有信息量的数字——直接证明 VL co-train 不是 nice-to-have 而是必需品，同时排除了"仅仅是更大 VLM base model 导致 VL 能力"的混淆解释。
-3. **Real-time 工程约束的 end-to-end 闭环**：80 ms 延迟 @ RTX 4090 + 30Hz resample + $\Delta t_c \geq \Delta t_{\mathrm{inf}}$ 的 deployment 约束，这组数字是能被 industry practitioner 直接复用的 deployment recipe。
-4. **硬证据支撑 Training RTC failure mode**：Towel Folding 的 repetitive fling loop 是一个直观、不可辩驳的 negative example，直接 visualize 了 shortcut 假设。这种 failure case 比 +0.3% SOTA 更有说服力。
+1. **Λ-shape attention mask 是一个简洁的 first-principles fix**。精准定位到 training-time RTC 的失败机制（prefix shortcut）并用最小侵入的 attention mask 改动解决，比加 regularization 或堆数据的做法更可证伪、更可解释。Towel Folding 的 repetitive fling loop 失败案例给出了直观、非 SOTA-chasing 的 negative example。
+2. **VL co-train ablation 做得漂亮**。Table 5 里 `w/o VL data` 全 0 这一行是最有信息量的数字，直接证伪"仅仅是更大 VLM base model 导致 VL 能力"的混淆解释，把 VL co-train 从 nice-to-have 变成 necessity。
+3. **Real-time 工程约束形成 end-to-end 闭环**。80 ms @ RTX 4090 + 30Hz resample + $\Delta t_c \geq \Delta t_{\mathrm{inf}}$ 这组数字是能被 practitioner 直接复用的 deployment recipe，有工程说服力。
+4. **OOD 场景的 gap 比 in-distribution 大**。CALVIN ABC→D vs ABCD→D、SimplerEnv Drawer Apple vs 其他 task，都呈现"越难 gap 越大"的 pattern，暗示方法对表示质量的改进不是 benchmark-overfitting。
 
 ### Weaknesses
 
-1. **"Training RTC 有 shortcut" 和 "Λ-mask 能 fix" 是强关联但非严格因果**：虽然结论符合直觉，但缺少对 mask 后 attention 分布的定量分析（比如 attention 权重 entropy、visual token 的 attention mass 占比），只有 throughput 结果。如果能给出 mask 前后 noisy action token 对 visual token 的 attention 比例变化，会更有说服力。
-2. **Real-robot 结果在 Figure 6c 中只有图，没有给出 throughput 的绝对数字表**：正文只提到 "Towel Folding 1.0 vs 1.2 pcs/min"，Lego 的具体数字要读图。一个正式 throughput/success table 会更可验证。
-3. **LIBERO 98.7% vs EO-1 98.2% 的 gap 已经接近 benchmark 饱和噪声**，不能作为核心卖点；论文主要 novelty 应更清晰集中在 real-time + VL preservation 两条线。
-4. **只开源 inference + fine-tuned checkpoint，不开源训练代码和 VL 数据 curation pipeline**。考虑到 VL co-train 是本方法的关键，这个 pipeline 的缺失会显著阻碍复现——例如 Grounded SAM + DINO 1.5 + LLMDet 三者的 cross-validation 机制具体如何实现、阈值设多少，都不是简单从 inference code 能反推的。
-5. **Post-training 的 Beta 分布和 $\Delta t_c$ loss reweight 细节（具体 Beta 参数、reweight 公式）在正文没给全**，需要看 appendix 或者代码才能复现。
-6. **Λ-mask 的具体形状参数 $w$ 没有 ablation**：窗口大小如何选、对 reactive-vs-smooth 的 trade-off 在哪里，文章只给了一个"用"而没给"为什么这么用"。
+1. **"Λ-mask 解决 shortcut"仅是强相关，未闭合因果**。缺少 mask 前后 noisy action token 对 visual token 的 attention 分布对比（entropy、attention mass）；目前只有 throughput 差距和一个 failure video。如果能给出 attention 可视化/定量分析会大大加强。
+2. **Real-robot 结果只有 Fig.6c 条形图，没有数字表**。正文口述 "Towel 1.2 vs 1.0 pcs/min"，Lego 的 throughput 具体数字要读图。一个正式 table 会让 claim 更可验证。
+3. **LIBERO 98.7% vs EO-1 98.2% 已近饱和噪声**，不应作为核心卖点；real-time 和 VL preservation 才是本文的 novelty。
+4. **只开源 inference + fine-tuned checkpoint，训练代码 / VL 数据 curation pipeline / 关键超参缺失**。Beta 分布参数、Λ-mask 窗口 $w$、reweight 具体公式、Grounded SAM + DINO 1.5 + LLMDet 的共识机制阈值——这些都不是从 inference code 能反推的，**实际复现门槛相当高**。
+5. **关键超参未做 ablation**：VL:robot 的 1:6 比例、Λ-mask 窗口 $w$——前者可能是拍脑袋，后者决定 reactive vs smooth 的 trade-off。一个 ratio sweep + 窗口 sweep 会让方法更 scalable。
+6. **只在两个 in-house 任务验证 post-training**，对 mobile manipulation、接触丰富、非-bimanual embodiment 的泛化没给证据。
 
 ### 可信评估
 
 #### Artifact 可获取性
 
-- **代码**: inference-only（README 明确只包含 inference code 和 evaluation scripts，无 training 代码）
-- **模型权重**: 6 个 checkpoint 全部发布在 HuggingFace 的 XiaomiRobotics collection —— base pre-trained `Xiaomi-Robotics-0` (4.7B)、`Xiaomi-Robotics-0-LIBERO`（4 个 LIBERO suite 微调）、`Xiaomi-Robotics-0-Calvin-ABCD_D`、`Xiaomi-Robotics-0-Calvin-ABC_D`、`Xiaomi-Robotics-0-SimplerEnv-Google-Robot`（Fractal 微调）、`Xiaomi-Robotics-0-SimplerEnv-WidowX`（Bridge 微调）
-- **训练细节**: 高层描述 + 部分超参（pre-train 40k steps batch 32,768；post-train 40k/80k steps batch 2,048；AdamW + DeepSpeed ZeRO-2；$T=30$）。Beta 分布参数、Λ-mask 窗口 $w$、dynamic loss reweight 公式等细节不全；VL 数据比例 1:6 给出。完整复现困难。
-- **数据集**: 部分公开。开源部分：DROID、MolmoAct、VL 通用数据集（引用）。私有部分：Lego Disassembly 338 小时 + Towel Folding 400 小时 in-house teleoperation 数据；VL 数据的 curation pipeline（Grounded SAM + DINO 1.5 + LLMDet 共识机制 + VLM re-label）只有高层描述。
+- **代码**: **inference-only**（README 明确只包含 inference + evaluation scripts，无训练代码）
+- **模型权重**: 6 个 checkpoint 全部发布在 HuggingFace `XiaomiRobotics` collection——base `Xiaomi-Robotics-0` (4.7B pre-trained)、`Xiaomi-Robotics-0-LIBERO`（4 suite 合并微调）、`Xiaomi-Robotics-0-Calvin-ABCD_D`、`Xiaomi-Robotics-0-Calvin-ABC_D`、`Xiaomi-Robotics-0-SimplerEnv-Google-Robot` (Fractal)、`Xiaomi-Robotics-0-SimplerEnv-WidowX` (Bridge)
+- **训练细节**: 部分——pre-train 40k steps / batch 32,768，post-train Lego 40k / Towel 80k / batch 2,048，AdamW + DeepSpeed ZeRO-2，$T=30$ 对应 1 秒，VL:robot=1:6；**Beta 分布参数、Λ-mask 窗口 $w$、reweight 公式、学习率调度**等细节不全。完整复现困难。
+- **数据集**: 部分公开。开源：DROID、MolmoAct 轨迹数据、Conceptual 12M/Conceptual Captions/Cambrian-1/FineVision 等通用 VL 数据集。私有：Lego 338h + Towel 400h in-house teleop；VL 数据 curation pipeline（Grounded SAM + DINO 1.5 + LLMDet 共识 + VLM re-label）只有高层描述。
 
 #### Claim 可验证性
 
-- ✅ **三个 sim benchmark SOTA（LIBERO 98.7%、CALVIN 4.80/4.75、SimplerEnv 85.5/74.7/79.2）**：数字来自论文 Table 1、Table 2、Appendix，可通过发布的 fine-tuned checkpoint 直接复现评测（README 里给了每个 benchmark 的 eval 指引）。
-- ✅ **VL 能力保留（Table 3 ERQA 40.8 略超基座 40.0）**：数字和方法清晰；ablation 的 w/o VL data 全 0 强支持了 catastrophic forgetting 假设。可通过发布的 base checkpoint 在任意标准 VLM evaluator 上独立验证。
-- ✅ **80 ms inference latency on RTX 4090**：消费级 GPU 的明确硬件 + 数字 + 推理步数（5 flow-matching steps）组合，可用发布的 inference code 直接测。
-- ⚠️ **"Λ-shape mask 解决 prefix shortcut"**：论文给出的证据是 Towel Folding 的 repetitive fling loop 失败模式 + throughput gap，但没有 attention 可视化或 counter-example 证明 fix 的 mechanism 确实是通过改变 attention 分布实现的。相关性强，但因果链条没有闭合。
-- ⚠️ **"pre-training recipe 泛化到新机器人 / 新任务"**：只在两个 in-house 任务（Lego、Towel）上验证 post-training。是否能泛化到移动操作、接触丰富的 manipulation、或 bimanual 之外的 embodiment 未知。
-- ⚠️ **Real-robot throughput 数字（Towel 1.2 pcs/min）**：依赖 evaluation protocol 的实现细节（2 分钟超时判定、30 分钟 rollout 等），无独立复现时不易 cross-check。
+- ✅ **三个 sim benchmark SOTA**：数字来自 Table 1/2/4 和 Appendix B；可用发布的 fine-tuned checkpoint 直接复现（README 有每个 benchmark 的 eval 指引）。
+- ✅ **VL 能力保留（ERQA 40.8 略超基座 40.0）**：数字清晰，w/o VL data 的全 0 ablation 强支持 catastrophic forgetting 假设；可用发布的 base checkpoint 在标准 VLM evaluator 上独立验证。
+- ✅ **80 ms latency on RTX 4090**：消费级硬件 + 明确 inference step 数（5）；可用 inference code 直接测。
+- ⚠️ **"Λ-mask 解决 prefix shortcut"**：证据是 Towel fling loop 失败模式 + throughput gap，但**无 attention 分布的定量/可视化证明 fix 的 mechanism**。因果链条没闭合，属于强相关 + 有说服力的 failure narrative，但 mechanism 层面未严格验证。
+- ⚠️ **"pre-training recipe 泛化"**：只在两个 in-house 任务 post-train 验证；mobile manipulation、non-bimanual、contact-rich 之外的迁移能力未知。
+- ⚠️ **Real-robot throughput（Towel 1.2 pcs/min）**：依赖 evaluation protocol 的实现细节（2 分钟超时、30 分钟 rollout），无独立复现时不易 cross-check。
 
 ---
 ## 关联工作
 
 ### 基于
 
-- [[2410-Pi0|π0]]: Flow-matching VLA，MoT 架构的直接先驱。本文的 DiT + 冻结 VLM 架构思路来自 [[2410-Pi0|π0]]，但用 Qwen3-VL-4B 替代 PaliGemma，并加入 Λ-mask 创新。
-- [[2504-Pi05|π0.5]]：training-time RTC（action prefix conditioning）的出处，本文的 async 训练范式直接基于它。
-- Choice Policies：pre-training Step 1 用的 multi-candidate + winner-takes-all 范式来自这里。
-- **DiT / adaLN**：Diffusion Transformer 架构（Peebles & Xie）。
-- **Flow matching**：Lipman et al. / Liu et al. 的条件 flow matching 作为 action 生成的目标。
+- [[2410-Pi0|π0]]：flow-matching VLA 的直接先驱，MoT 架构思路来源；本文用 Qwen3-VL-4B 替代 PaliGemma，并新增 Λ-mask。
+- [[2504-Pi05|π0.5]]：training-time RTC 的出处，本文 async 训练范式的起点；同时是 real-robot 主 baseline。
+- **Choice Policies**（Qi et al. 2512.25072）：pre-training Step 1 的 multi-candidate + winner-takes-all 范式。
+- **DiT / adaLN**（Peebles & Xie）：Diffusion Transformer 架构基础。
+- **Flow matching**（Lipman et al. / Liu et al.）：action generation 的目标函数来源。
+- **Qwen3-VL-4B-Instruct**：VLM 基座。
 
 ### 对比
 
-- [[2406-OpenVLA|OpenVLA]] / [[2502-OpenVLA-OFT|OpenVLA-OFT]]: LIBERO 上的开源 VLA baseline。
-- [[2503-GR00TN1|GR00T-N1]]: NVIDIA 的 foundation 模型，LIBERO 上对比。
-- [[2410-Pi0|π0]] / [[2504-Pi05|π0.5]] / π0-FAST：Physical Intelligence 的 VLA 系列，三个 sim benchmark 全部对比 + Table 3 里 VL 能力对比。
-- FLOWER, EO-1, MemoryVLA, UniVLA, Discrete Diffusion VLA：LIBERO + CALVIN 次优 baseline。
-- MolmoAct：Table 3 的 VL 能力对比，作为另一条 "VLA 模型保留 VLM 能力" 的路线。
+- **LIBERO**: [[2406-OpenVLA|OpenVLA]]、[[2502-OpenVLA-OFT|OpenVLA-OFT]]、[[2410-Pi0|π0]]、π0-FAST、[[2504-Pi05|π0.5]]、[[2503-GR00TN1|GR00T-N1]]、UniVLA、Discrete Diffusion VLA、MemoryVLA、FLOWER、EO-1。
+- **CALVIN**: RoboFlamingo、GR-1、MoDE、[[2412-RoboVLMs|RoboVLMs]]、MDT、UniVLA、FLOWER、SuSIE、3DDA、GR-MG、Seer-Large、VPP。
+- **SimplerEnv**: [[2405-Octo|Octo]]、[[2406-OpenVLA|OpenVLA]]、RT-1、[[2307-RT2|RT-2]]-X、Magma、[[2412-RoboVLMs|RoboVLMs]]、[[2410-Pi0|π0]]、π0-FAST、SpatialVLA、ThinkAct、EO-1、MolmoAct。
+- **Real-robot**: [[2504-Pi05|π0.5]]（主 SOTA baseline）+ 自己的 Sync / Training RTC 变体。
+- **VL preservation**: [[2410-Pi0|π0]]、[[2504-Pi05|π0.5]]、MolmoAct、Qwen3-VL-4B base。
 
 ### 方法相关
 
-- **Training RTC / Real-Time Chunking**：action chunk prefix conditioning + async execution 的基础 protocol。
-- **Λ-shape attention mask**：之前用于 multimodal / streaming generation 的 mask pattern（cited refs 20, 71, 16），本文首次应用到 VLA action generation。
-- **Action Chunking**（Zhao et al.）：action chunk 预测范式的基础。
-- **Qwen3-VL-4B-Instruct**：VLM 基座。
+- **Training RTC / Real-Time Chunking**（Black et al. 2506.07339 / 2512.05964）：action chunk prefix conditioning + async execution 的基础 protocol。本文方法是对它的 fix。
+- **Λ-shape attention mask**：原用于 multimodal / streaming generation（MInference、LM-Infinite、StreamingLLM），本文首次应用到 VLA action generation 中。
+- **Action Chunking**（Zhao et al. ALOHA 的 action chunk 范式）。
+- **Attention sink token**（Xiao et al. StreamingLLM）：DiT 训练稳定化。
 - **Grounded SAM / Grounding DINO 1.5 / LLMDet**：VL 数据 grounding 标注的三方共识机制。
+- **Knowledge Insulating VLA**（Driess et al. 2505.23705）：防 VLM 被破坏的另一条思路（detach 梯度）——本文选择的是 freeze + co-train 路线。
 
 ---
 ## Notes
 
-- 真正让我关心的一个问题：VL co-train 的 1:6 比例是拍脑袋还是 sweep 出来的？如果是拍的，那可能意味着"只要 VL 数据比例非零就不会 forget"是更强的结论——需要一个 ratio sweep 来确认。
-- Λ-mask 的窗口大小 $w$ 没 ablation。直觉上 $w$ 太小会让 transition 不平滑（还是有 jerky），$w$ 太大会退化回 training-time RTC。这是一个小而有意思的 follow-up 实验。
-- 注意 Table 3 里 [[2504-Pi05|π0.5]] 的 VL benchmark 数字非常奇怪（SEED 21.5 / AI2D 14.4 / MMBench 22.1 / MMMU 19.9 / SciQA 28.0）——这些不是 0 但也不是正常水平，像是某种 partial preservation。为什么 [[2410-Pi0|π0]] 完全归零而 [[2504-Pi05|π0.5]] 有零星残留？可能和 [[2504-Pi05|π0.5]] 的训练配方（更多 VL 数据 / post-training 策略）有关，值得比对 [[2504-Pi05|π0.5]] 原论文。
-- Paper name 是 "Xiaomi-Robotics-0"，暗示后面会有 1、2，类似 [[2410-Pi0|π0]] → [[2504-Pi05|π0.5]]。本 report 是 v1.0 的内部代号。
+- **1:6 比例是拍脑袋还是 sweep？** 这是最想知道的 recipe 参数。如果没 sweep，那"只要 VL 数据比例非零就不会 forget"是更强的结论——一个 ratio sweep 能区分这两个假设。
+- **Λ-mask 窗口 $w$ 没 ablation**。直觉上 $w$ 太小 → transition jerky，$w$ 太大 → 退化回 training-time RTC。这是一个小而有意思的 follow-up 实验，也是本文 fix 的潜在 trade-off 空间。
+- **为什么 [[2410-Pi0|π0]] 全 0 而 [[2504-Pi05|π0.5]] 有零星残留？** Table 5 里 [[2504-Pi05|π0.5]] 的数字（SEED 21.5、AI2D 14.4、MMBench 22.1、MMMU 19.9、SciQA 28.0）处于一种"非零但离谱低"的状态，可能反映 [[2504-Pi05|π0.5]] 的训练配方已经部分包含 VL 数据——比对原论文可能揭示其 recipe。
+- **命名暗示**："Xiaomi-Robotics-0" 是 version 0，对应 [[2410-Pi0|π0]] → [[2504-Pi05|π0.5]] → [[2604-Pi07|π0.7]] 的命名节奏。可以期待后续 iteration（Λ-mask 参数优化、VL 数据 scaling、mobile manipulation extension）。
+- **与 [[2604-Pi07|π0.7]] 的对比**：π0.7 走的是"diverse prompts + heterogeneous data + compositional generalization"的路线，Xiaomi-Robotics-0 走的是"工程 recipe + real-time async + VL preservation"路线。两者关心的维度不同，前者是 generality，后者是 deployability；长期看二者需要合并。
