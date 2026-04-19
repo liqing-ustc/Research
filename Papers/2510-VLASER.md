@@ -5,7 +5,7 @@ institutes: [Shanghai AI Laboratory, USTC, SJTU, Zhejiang University, Nanjing Un
 date_publish: 2025-10
 venue: ICLR 2026
 tags: [VLA, embodied-reasoning, flow-matching]
-arxiv: https://arxiv.org/abs/2510.11027
+paper: https://arxiv.org/abs/2510.11027
 website: https://internvl.github.io/blog/2025-10-11-Vlaser/
 github: https://github.com/OpenGVLab/Vlaser
 rating: 2
@@ -17,7 +17,7 @@ date_added: 2026-04-16
 > - **核心**: 基于 InternVL3 构建 embodied VLM，系统研究 VLM 预训练数据对下游 VLA 微调的影响
 > - **方法**: Vlaser-6M 多任务 embodied 数据集 + flow matching action expert；分离 VLM embodied reasoning 预训练和 VLA 微调两阶段
 > - **结果**: 12 个 embodied reasoning benchmark SOTA（avg 51.3@8B）；WidowX SOTA（65.1%）；关键发现：in-domain 数据远比 OOD embodied reasoning 数据对 VLA 性能更关键
-> - **Sources**: [arxiv](https://arxiv.org/abs/2510.11027) | [website](https://internvl.github.io/blog/2025-10-11-Vlaser/) | [github](https://github.com/OpenGVLab/Vlaser)
+> - **Sources**: [paper](https://arxiv.org/abs/2510.11027) | [website](https://internvl.github.io/blog/2025-10-11-Vlaser/) | [github](https://github.com/OpenGVLab/Vlaser)
 
 ---
 ## Summary
