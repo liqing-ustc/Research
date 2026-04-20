@@ -16,3 +16,12 @@ Workbench/daily/.history.json
 # Quartz build output
 website/node_modules/
 dist/
+
+# Python / uv
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ruff_cache/
+.mypy_cache/
+.pytest_cache/

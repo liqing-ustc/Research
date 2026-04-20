@@ -34,13 +34,13 @@ allowed-tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 
 #### Step 2.2：抓取源、生成源文件
 
-对上一步发现的每类源，按下表抓取到 **`/tmp/{ShortTitle}-{YYYY-MM-DD}/`** 目录下。先创建目录。
+对上一步发现的每类源，按下表抓取到 **`/tmp/{ShortTitle}/`** 目录下。先创建目录。
 
-| 源       | 抓取方式                                                                                                                                                                                       |
-| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| paper   | Bash `npx defuddle parse <url> --json --md -o /tmp/{ShortTitle}-{YYYY-MM-DD}/paper.json`。先尝试 `"https://arxiv.org/html/{arxiv_id}"`, 若失败，再试试 `https://ar5iv.labs.arxiv.org/html/{arxiv_id}` |
-| website | Bash `npx defuddle parse "<url>" --json --md -o /tmp/{ShortTitle}-{YYYY-MM-DD}/website.json`                                                                                               |
-| github  | Bash `curl -sL https://raw.githubusercontent.com/<org>/<repo>/main/README.md -o /tmp/{ShortTitle}-{YYYY-MM-DD}/github.md`。若 main 分支不存在，试 master。                                           |
+| 源       | 抓取方式                                                                                                                                                                                                                                                                                                                                                                                               |
+| ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| paper   | **arxiv**: Bash `npx defuddle parse <url> --json --md -o /tmp/{ShortTitle}/paper.json`。先试 `"https://arxiv.org/html/{arxiv_id}"`，失败则 `"https://ar5iv.labs.arxiv.org/html/{arxiv_id}"`。<br>**PDF**: Bash `curl -sL <url> -o /tmp/{ShortTitle}/paper.pdf && uv run {skill_dir}/scripts/pdf_to_md.py /tmp/{ShortTitle}/paper.pdf` → 输出 `paper.md` + `images/`。 |
+| website | Bash `npx defuddle parse "<url>" --json --md -o /tmp/{ShortTitle}/website.json`                                                                                                                                                                                                                                                                                                       |
+| github  | Bash `curl -sL https://raw.githubusercontent.com/<org>/<repo>/main/README.md -o /tmp/{ShortTitle}/github.md`。若 main 分支不存在，试 master。                                                                                                                                                                                                                                                   |
 
 **记下每类 source 的 `local_path`。**
 
@@ -67,7 +67,7 @@ allowed-tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 
 `## Summary`→ **Body**（内容解读） →`## 论文点评` → `## 关联工作` → `## Notes`
 
-**撰写顺序**：先写 Body，再回头写 `## Summary`——它是对全文的压缩，依赖对 Body 的完整理解。
+**撰写顺序**：先写 Body 等其他内容，最后回头写 `## Summary`——它是对全文的压缩，依赖对内容的完整理解。
 
 **Body**（内容解读）：
 - **批判性阅读**：综合源文件内容和你自己的理解，生成笔记，不要机械翻译
@@ -81,6 +81,7 @@ allowed-tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 
 - **装饰性图片**：OG image / social card / banner / favicon 一律不嵌入。
 - **模板注释**：模板里的 `%% ... %%` 提示必须全部替换或整块删除，禁止外泄到正文。
+- **PDF 源的 images**：把需要嵌入的图从 `/tmp/{ShortTitle}/images/` 拷到 `Papers/assets/{ShortTitle}/`，再用 `![](assets/{ShortTitle}/fig_N.png)` 引用。
 
 #### 文件名 + Tag + Write
 
@@ -149,9 +150,8 @@ Glob DomainMaps/*<TermCamelCase>*.md   # 若目录存在
 
 ### Step 2 (Fetch) 自检
 - [ ] 三类源（paper / website / github）均已尝试发现；WebSearch 兜底已对每一类跑过（不可跳过）
-- [ ] paper / website 源已通过 defuddle 抓到 `/tmp/{ShortTitle}-{YYYY-MM-DD}/paper.json` 或 `website.json`；github 源已通过 `curl` 抓到同目录下的 `github.md`
+- [ ] paper / website 源已通过 defuddle 抓到 `/tmp/{ShortTitle}/paper.json` 或 `website.json`；github 源已通过 `curl` 抓到同目录下的 `github.md`
 - [ ] Step 2.3 两项检查（文件完整性；website 的 video/figure URL 完整性）均已过；未过的已记入 Step 5 log 的 `issues`
-- [ ] 每类源文件已通过 Read 读入对话，可供 Step 3 compose 使用
 
 ### Step 3 (Compose & Save) 自检
 - [ ] `Papers/{笔记文件名}.md` 已创建
