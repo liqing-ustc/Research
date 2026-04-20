@@ -75,7 +75,6 @@ MindFlow/
 │   ├── {CamelCase}.md   #   各 domain 的认知地图
 │
 ├── Templates/           # Obsidian 模板（Paper.md, Idea.md, ...）
-├── Attachments/         # 文件附件
 │
 ├── skills/              # Skill 定义（详见 §4.3）
 │   ├── 1-literature/    #   文献技能

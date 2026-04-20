@@ -17,7 +17,7 @@ An Obsidian-based research workspace for building a **human-AI collaborative res
 5. **Research Idea 生成** — 基于知识积累，碰撞产出研究想法
 6. **实验设计与验证** — 设计实验方案，跟踪结果，验证假设
 
-![Obsidian Demo](Attachments/obsidian-demo.png)
+![Obsidian Demo](docs/obsidian-demo.png)
 
 ## Features
 
@@ -52,7 +52,6 @@ Install MindFlow from: https://github.com/liqing-ustc/mindflow/blob/main/docs/IN
 | `skills/` | AI 研究技能库 | — |
 | `Templates/` | Obsidian 模板 | — |
 | `references/` | 协议文档（tag taxonomy 等） | — |
-| `Attachments/` | 附件与图片 | — |
 
 ## Templates
 
