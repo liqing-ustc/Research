@@ -132,6 +132,19 @@ async function startServing(
     persistent: true,
     cwd: argv.directory,
     ignoreInitial: true,
+    ignored: (p, stats) => {
+      const base = path.basename(p)
+      if (
+        base === "node_modules" ||
+        base === ".git" ||
+        base === "public" ||
+        base === ".quartz-cache"
+      ) {
+        return true
+      }
+      if (stats?.isFile() && !p.endsWith(".md")) return true
+      return false
+    },
   })
 
   const buildFromEntry = argv.fastRebuild ? partialRebuildFromEntrypoint : rebuildFromEntrypoint

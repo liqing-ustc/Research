@@ -24,6 +24,7 @@ import Flex from "./Flex"
 import TopNav from "./TopNav"
 import HomepageStats from "./HomepageStats"
 import HomepageTags from "./HomepageTags"
+import HomepageRecent from "./HomepageRecent"
 import SidebarTags from "./SidebarTags"
 import PaperMeta from "./PaperMeta"
 
@@ -54,6 +55,7 @@ export {
   TopNav,
   HomepageStats,
   HomepageTags,
+  HomepageRecent,
   SidebarTags,
   PaperMeta,
 }

@@ -15,6 +15,9 @@ Workbench/daily/.history.json
 
 # Quartz build output
 website/node_modules/
+website/public/
+website/quartz/.quartz-cache/
+website/tsconfig.tsbuildinfo
 dist/
 
 # Python / uv

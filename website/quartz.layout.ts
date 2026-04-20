@@ -7,6 +7,7 @@ export const sharedPageComponents: SharedLayout = {
   header: [],
   afterBody: [
     Component.HomepageStats(),
+    Component.HomepageRecent(),
     Component.HomepageTags(),
     Component.Comments({
       provider: "giscus",
