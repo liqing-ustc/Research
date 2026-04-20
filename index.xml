@@ -10,61 +10,61 @@
     <link>https://liqing.io/mindflow/</link>
     <guid>https://liqing.io/mindflow/</guid>
     <description>A mind space for both human and AI. Author: Qing Li Source: github.com/liqing-ustc/mindflow.</description>
-    <pubDate>Mon, 20 Apr 2026 02:59:16 GMT</pubDate>
+    <pubDate>Mon, 20 Apr 2026 03:09:20 GMT</pubDate>
   </item><item>
     <title>llms.txt: 让网站对 LLM 可读的新标准</title>
     <link>https://liqing.io/mindflow/Topics/llms-txt</link>
     <guid>https://liqing.io/mindflow/Topics/llms-txt</guid>
     <description>是什么 llms.txt 是由 Jeremy Howard（fast.ai 创始人）提出的 Web 标准提案，在网站根目录放置一个 Markdown 格式的文件，为 LLM 和 AI agent 提供网站的结构化概览。 核心理念：LLM 的 context window 无法处理整个网站，而将复杂 HTML 转换为 LLM-friendly 纯文本既困难又有损 ...</description>
-    <pubDate>Mon, 20 Apr 2026 02:59:16 GMT</pubDate>
+    <pubDate>Mon, 20 Apr 2026 03:09:20 GMT</pubDate>
   </item><item>
     <title>World Model Survey</title>
     <link>https://liqing.io/mindflow/Topics/WorldModel-Survey</link>
     <guid>https://liqing.io/mindflow/Topics/WorldModel-Survey</guid>
     <description>Overview World model 是 AI 系统中用于理解环境动态并预测未来状态的内部模拟器。这一概念源于 Kenneth Craik (1943) 的 mental model 理论，在深度学习时代获得了全新的技术内涵。如 2411-WorldModelSurvey 所总结，world model 的核心功能可分为两大类：implicit ...</description>
-    <pubDate>Mon, 20 Apr 2026 02:59:16 GMT</pubDate>
+    <pubDate>Mon, 20 Apr 2026 03:09:20 GMT</pubDate>
   </item><item>
     <title>World Action Model Survey</title>
     <link>https://liqing.io/mindflow/Topics/WorldActionModel-Survey</link>
     <guid>https://liqing.io/mindflow/Topics/WorldActionModel-Survey</guid>
     <description>Overview World Action Model (WAM) 是 embodied AI 领域的新兴范式，核心思想是将 world modeling（理解和预测物理世界动态）与 action prediction（生成机器人控制信号）统一到同一框架中。这一范式的兴起源于一个关键洞察：video generation model ...</description>
-    <pubDate>Mon, 20 Apr 2026 02:59:16 GMT</pubDate>
+    <pubDate>Mon, 20 Apr 2026 03:09:20 GMT</pubDate>
   </item><item>
     <title>WebMCP: 让网站成为 AI Agent 的结构化工具</title>
     <link>https://liqing.io/mindflow/Topics/WebMCP</link>
     <guid>https://liqing.io/mindflow/Topics/WebMCP</guid>
     <description>是什么 Google 提出的 Web 标准提案，让网站主动声明自己能执行哪些操作，AI agent 可以直接调用结构化的 tool，而不需要解析 UI 或模拟人类交互。 核心理念：网站不再是 agent 需要”看”的页面，而是可以直接”调用”的服务。 官方博客：Chrome Developers Blog GitHub：webmachinelearning/webmcp ...</description>
-    <pubDate>Mon, 20 Apr 2026 02:59:16 GMT</pubDate>
+    <pubDate>Mon, 20 Apr 2026 03:09:20 GMT</pubDate>
   </item><item>
     <title>VLN-VLA Unification: Foundation Models for Indoor Robot Navigation and Manipulation</title>
     <link>https://liqing.io/mindflow/Topics/VLN-VLA-Unification</link>
     <guid>https://liqing.io/mindflow/Topics/VLN-VLA-Unification</guid>
     <description>Overview 本 survey 从 foundation model 视角，系统梳理了 VLN（Vision-and-Language Navigation）和 VLA（Vision-Language-Action）两个领域的技术演进与架构趋同。通过分析 20 篇核心论文，我们发现：VLN 和 VLA 在四个维度上正在趋同——VLM ...</description>
-    <pubDate>Mon, 20 Apr 2026 02:59:16 GMT</pubDate>
+    <pubDate>Mon, 20 Apr 2026 03:09:20 GMT</pubDate>
   </item><item>
     <title>Vision-Language Navigation Survey</title>
     <link>https://liqing.io/mindflow/Topics/VLN-Survey</link>
     <guid>https://liqing.io/mindflow/Topics/VLN-Survey</guid>
     <description>Overview Vision-and-Language Navigation (VLN) 是 embodied AI 的核心任务之一，要求 agent 根据自然语言指令在视觉环境中导航到目标位置。自 2018 年 R2R benchmark 提出以来，VLN 经历了从 discrete navigation graph 到 continuous ...</description>
-    <pubDate>Mon, 20 Apr 2026 02:59:16 GMT</pubDate>
+    <pubDate>Mon, 20 Apr 2026 03:09:20 GMT</pubDate>
   </item><item>
     <title>Vision-Language-Action (VLA) Models Survey</title>
     <link>https://liqing.io/mindflow/Topics/VLA-Survey</link>
     <guid>https://liqing.io/mindflow/Topics/VLA-Survey</guid>
     <description>Overview Vision-Language-Action (VLA) 模型是将预训练 Vision-Language Models (VLMs) 扩展为 robot policy 的新范式，旨在通过统一视觉感知、语言理解和动作生成，构建跨任务、跨平台的通用机器人基础模型。该领域自 2023 年 RT-2 开创以来，经历了爆发式增长，短短三年内从”概念验证”演进到”真实家庭部署”。 ...</description>
-    <pubDate>Mon, 20 Apr 2026 02:59:16 GMT</pubDate>
+    <pubDate>Mon, 20 Apr 2026 03:09:20 GMT</pubDate>
   </item><item>
     <title>Language-Conditioned Mobile Manipulation: From Modular Pipelines to End-to-End VLA</title>
     <link>https://liqing.io/mindflow/Topics/LanguageConditioned-MobileManipulation-Survey</link>
     <guid>https://liqing.io/mindflow/Topics/LanguageConditioned-MobileManipulation-Survey</guid>
     <description>Overview Language-conditioned mobile manipulation（LCMM）是 embodied AI 的核心挑战之一：机器人需要理解自然语言指令，在大规模环境中自主导航到目标位置，并完成精细操作。它同时涉及 language understanding、spatial reasoning、navigation ...</description>
-    <pubDate>Mon, 20 Apr 2026 02:59:16 GMT</pubDate>
+    <pubDate>Mon, 20 Apr 2026 03:09:20 GMT</pubDate>
   </item><item>
     <title>Embodied Reasoning Survey</title>
     <link>https://liqing.io/mindflow/Topics/Embodied-Reasoning-Survey</link>
     <guid>https://liqing.io/mindflow/Topics/Embodied-Reasoning-Survey</guid>
     <description>Overview Embodied Reasoning 指 AI agent 在物理世界（或其仿真）中，基于感知输入进行推理并输出可执行动作的能力。它是连接 foundation model 的通用智能与具身控制的核心桥梁——不仅要 “看懂” 场景，还要 “想明白” 该怎么操作、怎么导航。 这一领域在 2023-2026 年间经历了爆发式增长。2023 ...</description>
-    <pubDate>Mon, 20 Apr 2026 02:59:16 GMT</pubDate>
+    <pubDate>Mon, 20 Apr 2026 03:09:19 GMT</pubDate>
   </item>
     </channel>
   </rss>
