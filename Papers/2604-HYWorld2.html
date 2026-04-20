@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en"><head><title>HY-World 2.0: A Multi-Modal World Model for Reconstructing, Generating, and Simulating 3D Worlds</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="HY-World 2.0: A Multi-Modal World Model for Reconstructing, Generating, and Simulating 3D Worlds"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="HY-World 2.0: A Multi-Modal World Model for Reconstructing, Generating, and Simulating 3D Worlds"/><meta name="twitter:description" content="Summary HY-World 2.0: A Multi-Modal World Model for Reconstructing, Generating, and Simulating 3D Worlds 核心: 开源的多模态 offline 3D world model，统一”生成”（text/single-view → navigable ..."/><meta property="og:description" content="Summary HY-World 2.0: A Multi-Modal World Model for Reconstructing, Generating, and Simulating 3D Worlds 核心: 开源的多模态 offline 3D world model，统一”生成”（text/single-view → navigable ..."/><meta property="og:image:alt" content="Summary HY-World 2.0: A Multi-Modal World Model for Reconstructing, Generating, and Simulating 3D Worlds 核心: 开源的多模态 offline 3D world model，统一”生成”（text/single-view → navigable ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2604-HYWorld2"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2604-HYWorld2"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary HY-World 2.0: A Multi-Modal World Model for Reconstructing, Generating, and Simulating 3D Worlds 核心: 开源的多模态 offline 3D world model，统一”生成”（text/single-view → navigable ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  padding: 2rem;
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2604-HYWorld2"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Meetings\&quot;,\&quot;Resources\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="a246wo"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/RL" class="sidebar-tag-pill">#RL</a><a href="/mindflow/tags/web-agent" class="sidebar-tag-pill">#web-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/scene-understanding" class="sidebar-tag-pill">#scene-understanding</a><a href="/mindflow/tags/instruction-following" class="sidebar-tag-pill">#instruction-following</a><a href="/mindflow/tags/cross-embodiment" class="sidebar-tag-pill">#cross-embodiment</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2604-HYWorld2</a></div></nav><h1 class="article-title">HY-World 2.0: A Multi-Modal World Model for Reconstructing, Generating, and Simulating 3D Worlds</h1><div class="paper-meta"><span class="paper-venue">arXiv</span><span class="paper-authors"><span class="meta-sep">·</span>Tencent Hunyuan</span></div><p show-comma="true" class="content-meta"><time datetime="2026-04-01T00:00:00.000Z">Apr 01, 2026</time><span>19 min read</span></p><ul class="tags"><li><a href="../tags/world-model" class="internal tag-link">world-model</a></li><li><a href="../tags/3D-representation" class="internal tag-link">3D-representation</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>HY-World 2.0: A Multi-Modal World Model for Reconstructing, Generating, and Simulating 3D Worlds </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><strong>核心</strong>: 开源的多模态 offline 3D world model，统一”生成”（text/single-view → navigable 3DGS）和”重建”（multi-view/video → 3D 几何），四阶段 pipeline: Panorama → Trajectory → Expansion → Composition</li>
+<li><strong>方法</strong>: HY-Pano 2.0（MMDiT panorama）+ WorldNav（5 种 heuristic trajectory）+ WorldStereo 2.0（keyframe-latent VDM + GGM/SSM++ memory + DMD 4-step 蒸馏）+ WorldMirror 2.0（feed-forward 几何预测，normalized RoPE + depth-to-normal）+ 3DGS with MaskGaussian</li>
+<li><strong>结果</strong>: 开源 SOTA，一张场景端到端 ~10 分钟（712s on H20）；claim 和闭源 Marble 相当；WorldMirror 2.0 在 7-Scenes/NRGBD/DTU 全面超 VGGT / π³；单场景 ~1.38M Gaussian</li>
+<li><strong>Sources</strong>: <a href="https://arxiv.org/abs/2604.14268" class="external">paper<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://3d-models.hunyuan.tencent.com/world/" class="external">website<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://github.com/Tencent-Hunyuan/HY-World-2.0" class="external">github<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+</ul>
+</div>
+</blockquote>
+<p><strong>Key Takeaways:</strong></p>
+<ol>
+<li><strong>“生成”和”重建”的统一靠 WorldMirror 2.0 这座桥</strong>: 生成 pipeline 在最后一步用重建模型把生成的 keyframes 转回 3D 点云来初始化 3DGS，两个任务共享一个 feed-forward 几何 backbone</li>
+<li><strong>Keyframe-latent VDM 是核心新意</strong>: 放弃 Video-VAE 的时空压缩，改成稀疏 keyframe 上的 spatial-only VAE，用更大采样间隔换同等视角覆盖，但保留高频细节（尤其快速相机运动下）</li>
+<li><strong>Memory 机制是工程重点</strong>: GGM（全局点云作 3D prior）+ SSM++（retrieval-based 空间拼接 + RoPE 修改），把原 WorldStereo 的 two-branch 简化进 DiT 主干</li>
+<li><strong>WorldMirror 2.0 的 normalized RoPE 解决 multi-resolution</strong>: 把位置编码从 <code>[0, H_p-1]</code> 改成 <code>[-1,1]</code>，高分辨率推理从 extrapolation 变成 interpolation，AUC@30 在 high-res 从 66.29 拉回 86.89</li>
+<li><strong>和 Marble 的对比主要靠”fidelity to input”</strong>: 论文的核心卖点是生成结果严格 adhere to 输入 panorama/image，Marble 倾向 drift；但只有定性图、没有定量与 Marble 的对比</li>
+</ol>
+<p><strong>Teaser. 框架总览：从 text/image/multi-view 输入统一到 3DGS 世界。</strong></p>
+<p><img src="https://arxiv.org/html/2604.14268v1/x1.png" alt/></p>
+<hr/>
+<h2 id="1-motivation-与-positioning">1. Motivation 与 Positioning<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-motivation-与-positioning" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>HY-World 2.0 定位是 HY-World 1.0（offline 3D）+ HY-World 1.5（online video-based）之后的一次 paradigm consolidation。作者的 framing：</p>
+<ul>
+<li>当前 3D world modeling 生态 bifurcated——生成类（FlashWorld、Lyra、WonderJourney 等）擅长 hallucinate 未见区域，但几何精度不够；重建类（VGGT、π³、DepthAnything3、MapAnything 等）擅长 recover 几何，但无生成 prior</li>
+<li>闭源的 Marble (World Labs) 已经展示统一范式，但开源社区缺一个 comprehensive multi-modal foundational world model</li>
+<li>HY-World 2.0 明确选择 <strong>offline 3DGS 路线</strong>（区别于 Genie 3 这类 online/autoregressive video generation），以便兼容标准 CG pipeline</li>
+</ul>
+<blockquote>
+<p>❓ “offline 3DGS 路线” vs “online interactive video” 是两条根本不同的路径：前者把世界冻结为 static 3DGS，交互只是 camera control；后者（Genie 3）支持事件级干预和动态响应。HY-World 2.0 选择前者，<strong>本质上不是真正的”world model”</strong>（没有 dynamics），而是”navigable 3D scene generator”。后面点评会重点讨论。</p>
+</blockquote>
+<hr/>
+<h2 id="2-四阶段-pipeline-总览">2. 四阶段 Pipeline 总览<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-四阶段-pipeline-总览" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><img src="https://arxiv.org/html/2604.14268v1/x2.png" alt/>
+<strong>Figure 2. 四阶段架构：Panorama Generation → Trajectory Planning → World Expansion → World Composition。</strong></p>
+<p>流水线：</p>
+<ol>
+<li><strong>Stage I — Panorama Generation (HY-Pano 2.0)</strong>: 文本或单图 → 360° ERP panorama</li>
+<li><strong>Stage II — Trajectory Planning (WorldNav)</strong>: 解析 panorama 的几何+语义，生成 5 类 collision-free 相机轨迹</li>
+<li><strong>Stage III — World Expansion (WorldStereo 2.0)</strong>: 沿轨迹用 camera-guided VDM 生成 novel-view keyframes</li>
+<li><strong>Stage IV — World Composition</strong>: WorldMirror 2.0 把 keyframes 重建为点云，对齐到 panorama 全局坐标系，训 3DGS</li>
+</ol>
+<hr/>
+<h2 id="3-hy-pano-20panorama-generation">3. HY-Pano 2.0：Panorama Generation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-hy-pano-20panorama-generation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="关键设计">关键设计<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#关键设计" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>放弃显式几何 warping</strong>（HY-World 1.0 需要 camera intrinsics），改用 MMDiT，把 perspective input latent 和 panorama noise latent 拼成统一 token 序列，让 self-attention 自己学 perspective→ERP 映射</li>
+<li><strong>边界 seam 处理</strong>：latent 级 circular padding + 像素级 linear blending，消除 ERP 左右边界不连续</li>
+</ul>
+<p><img src="https://arxiv.org/html/2604.14268v1/x3.png" alt/>
+<strong>Figure 3. HY-Pano 2.0 架构：MMDiT + circular padding + pixel blending。</strong></p>
+<h3 id="数据">数据<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#数据" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Real-world panorama（scale 提升）+ 合成（UE 渲染）。严格过滤 stitching artifacts 和设备露出的样本</li>
+</ul>
+<h3 id="结果">结果<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#结果" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table 4. T2P / I2P 对比（摘要）：HY-Pano 2.0 几乎全面领先 DiT360 / Matrix3D / HY-World 1.0 / CubeDiff / GenEx。</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>指标</th><th>T2P HY-World 1.0</th><th>T2P HY-Pano 2.0</th><th>I2P HY-World 1.0</th><th>I2P HY-Pano 2.0</th></tr></thead><tbody><tr><td>CLIP-T/I ↑</td><td>0.250</td><td><strong>0.258</strong></td><td>0.831</td><td><strong>0.844</strong></td></tr><tr><td>Q-Align Qual (Persp) ↑</td><td>3.992</td><td><strong>4.103</strong></td><td>3.317</td><td><strong>4.026</strong></td></tr><tr><td>Q-Align Aes (Persp) ↑</td><td><strong>3.404</strong></td><td>3.376</td><td>2.638</td><td><strong>3.208</strong></td></tr></tbody></table></div>
+<blockquote>
+<p>❓ T2P 上 Q-Align Qual (Equi) 是 4.403 &lt; HY-World 1.0 的 4.493——被 1.0 反超了。作者没 highlight 这点。</p>
+</blockquote>
+<hr/>
+<h2 id="4-worldnavtrajectory-planning">4. WorldNav：Trajectory Planning<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-worldnavtrajectory-planning" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>纯 heuristic，<strong>没有 learned planner</strong>。先做 scene parsing：</p>
+<ul>
+<li>MoGe2 多视角深度对齐（12 → 42 views, GPU-accelerated LSMR）得到 panoramic point cloud</li>
+<li>Qwen3-VL + SAM3 做语义 grounding</li>
+<li>Recast Navigation 构建 NavMesh</li>
+</ul>
+<p><img src="https://arxiv.org/html/2604.14268v1/x5.png" alt/>
+<strong>Figure 5. 五类 heuristic trajectory: Regular / Surrounding / Reconstruct-Aware / Wandering / Aerial。</strong></p>
+<p><strong>Table 1. 最多 35 条轨迹 per scene。</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th></th><th>Regular</th><th>Surrounding</th><th>Recon-Aware</th><th>Wandering</th><th>Aerial</th><th>Total</th></tr></thead><tbody><tr><td>Max Number</td><td>9</td><td>5</td><td>10</td><td>3</td><td>8</td><td>35</td></tr></tbody></table></div>
+<p><strong>Reconstruct-Aware</strong> 值得注意：检测 panoramic mesh 中 aspect ratio 过大的”拉伸面”作为欠观测区域，专门规划轨迹去补这些 hole。是几何驱动的 active view selection。</p>
+<blockquote>
+<p>❓ 全部轨迹是 heuristic 启发式，这部分天花板很明显——把 “trajectory planning” 做成可学习的策略（结合场景先验和 reconstruction uncertainty）应该能显著更好。现在这个版本像传统 CV pipeline 的模块化组合。</p>
+</blockquote>
+<hr/>
+<h2 id="5-worldstereo-20world-expansion">5. WorldStereo 2.0：World Expansion<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#5-worldstereo-20world-expansion" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>核心 IP 所在。训练分三阶段：domain-adaption → middle-training (memory) → post-distillation。</p>
+<p><img src="https://arxiv.org/html/2604.14268v1/x7.png" alt/>
+<strong>Figure 7. WorldStereo 2.0 pipeline：主 DiT 分支 + SSM++ retrieval stitching，控制分支以 panoramic point cloud 作 GGM。</strong></p>
+<h3 id="51-keyframe-vae最关键的设计决策">5.1 Keyframe-VAE：最关键的设计决策<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#51-keyframe-vae最关键的设计决策" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>问题</strong>：camera-guided VDM 用标准 Video-VAE 做时空压缩，快 camera motion 下产生 motion blur / geometric distortion。</p>
+<p><strong>方案</strong>：不做时间压缩，每帧独立按 image 处理（spatial-only VAE）。采样间隔加大以保持相同 viewpoint coverage。</p>
+<p><img src="https://arxiv.org/html/2604.14268v1/x9.png" alt/>
+<strong>Figure 9. Keyframe-VAE vs Video-VAE：前者保留高频细节。</strong></p>
+<p><strong>Table 7. VAE + Frozen Parts 的 ablation（user study 占主导）：</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Frozen</th><th>VAE</th><th>RotErr ↓</th><th>TransErr ↓</th><th>Camera 偏好 ↑</th><th>Quality 偏好 ↑</th></tr></thead><tbody><tr><td>Main DiT</td><td>Video-VAE (baseline)</td><td>0.762</td><td>1.245</td><td>84.85%</td><td>46.46%</td></tr><tr><td>None</td><td>Keyframe-VAE</td><td>0.578</td><td>1.115</td><td>93.81%</td><td>60.61%</td></tr><tr><td><strong>Cross-Attn + FFN</strong></td><td><strong>Keyframe-VAE (final)</strong></td><td><strong>0.492</strong></td><td><strong>0.968</strong></td><td>92.44%</td><td><strong>64.39%</strong></td></tr></tbody></table></div>
+<p>冻结 cross-attn + FFN 最佳 trade-off：既吸收 keyframe latent 又防 style drift。</p>
+<h3 id="52-memory-mechanisms">5.2 Memory Mechanisms<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#52-memory-mechanisms" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>GGM (Global-Geometric Memory)</strong>：额外从 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">g</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span> novel view 采样点云扩展为 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8491em;"></span><span class="mord"><span class="mord mathbf">P</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">g</span><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span><span class="mord mathnormal mtight">o</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1995em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord"><span class="mord mathbf">P</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">re</span><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span></span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9495em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathbf">P</span></span><span style="top:-3.2551em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1667em;"><span class="mord">^</span></span></span></span></span></span></span><span class="mclose">]</span></span></span></span>，提供全局 3D prior。强迫 VDM 真正”看”点云结构而不是把它当 soft hint。</p>
+<p><strong>SSM++ (Improved Spatial-Stereo Memory)</strong>：相比 WorldStereo 1.0，</p>
+<ol>
+<li>丢掉独立 memory 分支，retrieved keyframes 直接进主 DiT</li>
+<li>修改 RoPE 让 retrieved view 继承 target frame 的 temporal index（横向拼接 2W）</li>
+<li>选择性检索（不是每帧都 retrieve）</li>
+<li>显式 pointmap guidance → 隐式 camera embedding (7-dim quaternion+translation, 3-layer MLP, zero-init)</li>
+</ol>
+<p><img src="https://arxiv.org/html/2604.14268v1/x11.png" alt/>
+<strong>Figure 11. RoPE 修改：retrieved view 继承 target frame 的 temporal index。</strong></p>
+<p><strong>数据配对</strong>：</p>
+<ul>
+<li>Multi-view 真实数据 → temporally misaligned retrieval（30%-90% 时序重叠）</li>
+<li>UE 合成数据 → multi-trajectory retrieval（跨轨迹按 3D FoV similarity 选）</li>
+</ul>
+<p><strong>Table 8. Memory + Distillation ablation：</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Config</th><th>PSNR ↑</th><th>PSNR_m ↑</th><th>RotErr ↓</th><th>ATE ↓</th></tr></thead><tbody><tr><td>Baseline (camera control only)</td><td>16.13</td><td>28.81</td><td>0.396</td><td>0.071</td></tr><tr><td>+ GGM + SSM++</td><td>20.94</td><td>30.27</td><td>0.407</td><td>0.046</td></tr><tr><td>+ Trainable FFN</td><td>21.56</td><td>30.44</td><td>0.351</td><td>0.035</td></tr><tr><td>Temporal-concat SSM (ablation ✗)</td><td>19.83</td><td>29.77</td><td>0.545</td><td>0.114</td></tr><tr><td><strong>Final (A-F)</strong></td><td><strong>21.63</strong></td><td><strong>30.76</strong></td><td>0.296</td><td>0.041</td></tr><tr><td><strong>After DMD distillation (G)</strong></td><td><strong>21.84</strong></td><td><strong>30.93</strong></td><td>0.316</td><td>0.072</td></tr></tbody></table></div>
+<p><strong>关键发现</strong>：SSM 的 spatial 拼接 vs 时间拼接，差距极大（PSNR 21.63 vs 19.83，RotErr 0.296 vs 0.545）——spatial stereo 拼接是核心设计。</p>
+<h3 id="53-dmd-post-distillation">5.3 DMD Post-Distillation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#53-dmd-post-distillation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>基于 Distribution Matching Distillation，4-step 学生。跟 WorldStereo 1.0 只蒸馏 camera control 不同，这里 memory 也一起蒸馏（得益于 SSM++ 不需要显式 depth 对齐）。</p>
+<h3 id="54-scene-reconstruction-结果">5.4 Scene Reconstruction 结果<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#54-scene-reconstruction-结果" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table 5. Single-view scene reconstruction (Tanks-and-Temples + MipNeRF360):</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Method</th><th>T&amp;T F1 ↑</th><th>T&amp;T AUC ↑</th><th>MipNeRF360 F1 ↑</th><th>MipNeRF360 AUC ↑</th></tr></thead><tbody><tr><td>SEVA</td><td>36.73</td><td>51.03</td><td>28.75</td><td>46.81</td></tr><tr><td>Gen3C</td><td>31.24</td><td>42.44</td><td>35.26</td><td>52.10</td></tr><tr><td>Lyra</td><td>32.54</td><td>43.05</td><td>36.05</td><td>49.89</td></tr><tr><td>FlashWorld</td><td>22.29</td><td>30.45</td><td>42.60</td><td>53.86</td></tr><tr><td><strong>WorldStereo 2.0</strong></td><td><strong>41.43</strong></td><td><strong>58.19</strong></td><td><strong>51.27</strong></td><td><strong>65.79</strong></td></tr><tr><td>WorldStereo 2.0 (DMD)</td><td><strong>43.16</strong></td><td><strong>60.09</strong></td><td>50.52</td><td>65.64</td></tr></tbody></table></div>
+<p>显著超过所有 open-source 竞品。</p>
+<hr/>
+<h2 id="6-worldmirror-20feed-forward-reconstruction">6. WorldMirror 2.0：Feed-Forward Reconstruction<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#6-worldmirror-20feed-forward-reconstruction" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>扮演”桥梁”角色——既做独立 reconstruction benchmark，又作为 Stage IV 的几何 extractor。</p>
+<p><img src="https://arxiv.org/html/2604.14268v1/x12.png" alt/>
+<strong>Figure 12. WorldMirror 2.0 架构：Any-Modal Tokenization + 共享 Transformer + 多 DPT decoder heads。</strong></p>
+<h3 id="61-三大-model-改进">6.1 三大 Model 改进<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#61-三大-model-改进" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>1. Normalized RoPE</strong>：把 patch grid 从 <code>[0, H_p-1]</code> 整数索引 → <code>[-1,1]</code> 归一化坐标。</p>
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">x</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2222em;"><span class="mord">^</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.3086em;vertical-align:-0.9721em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3365em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0813em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">p</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9721em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.9805em;vertical-align:-0.2861em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:1em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1944em;"><span class="mord">^</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.3086em;vertical-align:-0.9721em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3365em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">p</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9721em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span>
+<p>把 resolution extrapolation 变成 interpolation。Figure 13 显示 cross-resolution cosine similarity > 0.95（标准 RoPE 大幅 degrade）。</p>
+<p><strong>2. Depth-to-Normal Loss</strong>：显式耦合 depth 和 normal。</p>
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.173em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.923em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathbf">N</span></span><span style="top:-3.6051em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1667em;"><span class="mord">~</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.4em;vertical-align:-0.95em;"></span><span class="mop"><span class="mord mathrm">normalize</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">(</span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="margin-right:0.05556em;">∂</span><span class="mord mathnormal">u</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="margin-right:0.05556em;">∂</span><span class="mord"><span class="mord mathbf">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="margin-right:0.05556em;">∂</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="margin-right:0.05556em;">∂</span><span class="mord"><span class="mord mathbf">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">)</span></span></span></span></span></span></span>
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathcal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">d2n</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:3.0717em;vertical-align:-1.3217em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">∣</span><span class="mord mathcal" style="margin-right:0.08222em;">V</span><span class="mord">∣</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.05em;"><span style="top:-1.8557em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">x</span><span class="mrel mtight">∈</span><span class="mord mathcal mtight" style="margin-right:0.08222em;">V</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.3217em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">arccos</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size4">(</span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6265em;"><span style="top:-2.1604em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">∥</span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.923em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathbf">N</span></span><span style="top:-3.6051em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1667em;"><span class="mord">~</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mord">∥∥</span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9495em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathbf">N</span></span><span style="top:-3.2551em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1667em;"><span class="mord">^</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mord">∥</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.923em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathbf">N</span></span><span style="top:-3.6051em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1667em;"><span class="mord">~</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9495em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathbf">N</span></span><span style="top:-3.2551em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1667em;"><span class="mord">^</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.0896em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size4">)</span></span></span></span></span></span></span>
+<p>对 real-world dataset 用 monocular normal teacher 作 pseudo target，绕过 depth pseudo-label 的 multi-view inconsistency（pointcloud layering artifacts）。</p>
+<p><strong>3. Depth Mask Prediction Head</strong>：显式 per-pixel validity（BCE loss），替代原 1.0 只用 confidence weighting。</p>
+<h3 id="62-data--training--inference-改进">6.2 Data / Training / Inference 改进<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#62-data--training--inference-改进" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Data：加入 UE 合成 + normal pseudo labels（而非 depth pseudo labels，后者 multi-view 不一致）</li>
+<li>Training：Token-budget dynamic batch（固定 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mop mtight"><span class="mtight">m</span><span class="mtight">a</span><span class="mtight">x</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">25000</span></span></span></span> tokens/GPU，views 反算）+ 三阶段 curriculum</li>
+<li>Inference：Token/Frame SP + BF16 + FSDP，256-view inference 在 4 GPU 17.52s（baseline OOM）</li>
+</ul>
+<h3 id="63-重建-benchmarks">6.3 重建 Benchmarks<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#63-重建-benchmarks" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table 11/12/13 摘要（点云、相机、深度、normal、NVS）：</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Metric</th><th>Best Baseline</th><th>WM 1.0 (M)</th><th>WM 2.0 (H)</th></tr></thead><tbody><tr><td>7-Scenes Acc ↓</td><td>π³ 0.048</td><td>0.043</td><td><strong>0.037</strong></td></tr><tr><td>7-Scenes + all priors Acc ↓</td><td>-</td><td>0.018 (M)</td><td><strong>0.012</strong></td></tr><tr><td>RealEstate10K Cam AUC@30 ↑</td><td>π³ 85.90</td><td>86.13</td><td><strong>86.89</strong></td></tr><tr><td>WM 1.0 (H) Cam AUC@30</td><td>-</td><td><strong>66.29</strong> ⚠️</td><td>-</td></tr><tr><td>ScanNet Normal mean ↓</td><td>DSine 16.2</td><td>13.8</td><td><strong>12.5</strong></td></tr></tbody></table></div>
+<p><strong>关键</strong>：WorldMirror 1.0 在 high-res 严重崩溃（AUC 86.13 → 66.29，normal error 13.8 → 17.6），2.0 彻底解决。</p>
+<hr/>
+<h2 id="7-world-composition-stage-iv">7. World Composition (Stage IV)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#7-world-composition-stage-iv" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>把 generated keyframes 转成 3DGS 的最后一步。</p>
+<h3 id="71-depth-alignment">7.1 Depth Alignment<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#71-depth-alignment" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>WorldMirror 2.0 预测的 depth 有 scale ambiguity，需对齐到 panoramic point cloud。方案：</p>
+<ol>
+<li>渲染 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6861em;"></span><span class="mord"><span class="mord mathbf">P</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">p</span><span class="mord mathnormal mtight">an</span></span></span></span></span></span></span></span></span></span></span></span> 到每个 view 作 sparse guidance</li>
+<li>交集 mask <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8361em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathbf">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6861em;"></span><span class="mord"><span class="mord mathbf">M</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">m</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∩</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6861em;"></span><span class="mord"><span class="mord mathbf">M</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">g</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∩</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6861em;"></span><span class="mord"><span class="mord mathbf">M</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∩</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6861em;"></span><span class="mord"><span class="mord mathbf">M</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∩</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.1251em;"></span><span class="mord"><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8861em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathbf">M</span></span></span><span style="top:-3.8061em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:1.1251em;"><span style="top:-3.339em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span></span></span></span></span></span></span></span></span></span></span></span>（confidence、normal consistency、percentile outlier、sky mask 全部 AND）</li>
+<li>RANSAC 估 per-frame linear scale+shift <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05556em;">γ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0556em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0528em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></li>
+<li>全局 outlier detection：9 个 anchor depth 算 transformed value 的 median，偏差超 90th percentile 的 coefficient 被替换成最近 inlier</li>
+</ol>
+<p><img src="https://arxiv.org/html/2604.14268v1/x14.png" alt/>
+<strong>Figure 14. Depth alignment pipeline。</strong></p>
+<h3 id="72-3dgs-with-maskgaussian">7.2 3DGS with MaskGaussian<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#72-3dgs-with-maskgaussian" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Growth Strategy 两难</strong>：不densify → sky 区 Gaussian 过多拖慢渲染；densify → 天空区产生 floater。</p>
+<p><strong>解法</strong>：</p>
+<ol>
+<li>把点云分成 sky / scene 子集，<strong>只对 scene 子集 apply densification</strong></li>
+<li>引入 MaskGaussian：每个 Gaussian 有 Gumbel-Softmax 采样的 binary mask <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，rendering 时 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathbf">c</span><span class="mopen">(</span><span class="mord mathbf">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0497em;vertical-align:-0.2997em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1864em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2997em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathbf">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，配合 squared loss 稀疏化</li>
+</ol>
+<p><strong>Table 9. 3DGS ablation:</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Voxel</th><th>Densify</th><th>MaskGauss</th><th>GS #</th><th>PSNR ↑</th><th>LPIPS ↓</th></tr></thead><tbody><tr><td></td><td></td><td></td><td>6.000M</td><td><strong>25.176</strong></td><td><strong>0.209</strong></td></tr><tr><td>✓</td><td></td><td></td><td>1.000M</td><td>24.504</td><td>0.276</td></tr><tr><td>✓</td><td>✓</td><td></td><td>5.254M</td><td>25.158</td><td>0.210</td></tr><tr><td>✓</td><td>✓</td><td>✓</td><td>1.383M</td><td>25.017</td><td>0.216</td></tr><tr><td><strong>✓</strong></td><td><strong>✓†</strong></td><td><strong>✓</strong></td><td><strong>1.381M</strong></td><td><strong>25.023</strong></td><td><strong>0.215</strong></td></tr></tbody></table></div>
+<p>以 77% Gaussian 数量换 -0.15 dB PSNR——很合理的 efficiency/quality trade-off。</p>
+<h3 id="73-optimization">7.3 Optimization<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#73-optimization" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Photometric (L1 + SSIM + LPIPS) + Depth L1 (稀疏) + Normal cosine (密集，MoGe2 提供的 alignment-free normal) + scale regularization + mask loss。</p>
+<p>弃用 Spherical Harmonics 改 view-independent RGB（generated scenes 没有明显 view-dependent effects）。</p>
+<hr/>
+<h2 id="8-整体结果与-marble-对比">8. 整体结果与 Marble 对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#8-整体结果与-marble-对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><img src="https://arxiv.org/html/2604.14268v1/x21.png" alt/>
+<strong>Figure 21. 整体 pipeline 输出：panorama、点云、3DGS、mesh、novel views。</strong></p>
+<p><strong>Table 10. Runtime (H20 GPU)：</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Stage</th><th>Panorama</th><th>Trajectory</th><th>Expansion</th><th>Recon+Align</th><th>3DGS</th><th><strong>Total</strong></th></tr></thead><tbody><tr><td>Time</td><td>15s</td><td>182s</td><td>286s</td><td>102s</td><td>127s</td><td><strong>712s</strong></td></tr></tbody></table></div>
+<p>端到端 ~12 分钟 per scene。</p>
+<p><strong>与 Marble 的对比（Figure 23/24）</strong>：<strong>纯定性</strong>。作者 claim：</p>
+<ul>
+<li>更严格 adhere to 输入 panorama / image（Marble drift）</li>
+<li>更好的 detail preservation 和 geometric consistency</li>
+</ul>
+<p><img src="https://arxiv.org/html/2604.14268v1/x22.png" alt/>
+<strong>Figure 22. 交互探索：用 extracted mesh 作 collision proxy，支持 real-time 物理反馈和 character navigation（楼梯、室内布局）。</strong></p>
+<hr/>
+<h2 id="论文点评">论文点评<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#论文点评" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="strengths">Strengths<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>系统级的完整度</strong>：一套从 text/image 到可交互 3DGS 的端到端开源 pipeline，代码 + 权重 + 技术细节全部释放，对开源社区是实打实的贡献。runtime 712s 已经到 practical 门槛</li>
+<li><strong>Keyframe-VAE 是真 insight</strong>：快 camera motion 下 Video-VAE 的时空压缩造成重建灾难，改成 spatial-only + 稀疏采样是干净的修复。不是新模型堆料，是对现有 paradigm 的反思</li>
+<li><strong>WorldMirror 2.0 的 normalized RoPE 干净利落</strong>：识别到 multi-resolution extrapolation → interpolation 的本质，一行公式修复。cross-resolution cosine sim > 0.95 的验证曲线很漂亮。此外 7-Scenes / NRGBD / DTU / 深度 / normal benchmark 基本全面刷新 open-source SOTA，实打实的贡献</li>
+<li><strong>Ablation 扎实</strong>：Tab 7/8/9/11 都给了足够细的 configuration 对比，SSM 的 spatial vs temporal concatenation 差距 PSNR 1.8dB，立即说服</li>
+<li><strong>MaskGaussian 的工程价值</strong>：77% Gaussian 数量削减只掉 0.15 dB PSNR，配合 sky/scene 分离 densification，解决 generated 数据训 3DGS 的 floater 顽疾</li>
+</ol>
+<h3 id="weaknesses">Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>“World model” 的命名严重虚胖</strong>。这不是 world model，是 <strong>panorama-conditioned 3D scene generator</strong>。没有 dynamics、没有 action-conditioning、没有 physics simulation，场景一旦生成就冻结成静态 3DGS。把 “collision detection + character navigation” 当 “Simulating 3D Worlds” 写进 title，和 Genie 3 / WorldLabs Marble 的 interactive world modeling 定义完全不在一个层次</li>
+<li><strong>和 Marble 的对比没定量数据</strong>。整个 Sec 8.1.5 就两张定性对比图（Fig 23, 24），选 cherry-picked scenes 说”我们更 adhere to input”。Marble 不开放 API 是客观约束，但至少应该做 user study 或者在 WorldScore 这类共同 benchmark 上跑——作者自己引用了 WorldScore [^15] 但没用它对比 Marble</li>
+<li><strong>Trajectory planning 是 hand-crafted heuristic</strong>。五种固定 mode + 硬编码的 45° pitch / 120° FoV / 72 candidate nodes——典型的”规则驱动，刚好 work”。每个常数的选择没有 ablation。真正 scalable 的 active view planning 应该是 learned policy（with uncertainty estimation），这部分是下一代该做的事</li>
+<li><strong>Panorama → 3DGS 的 information bottleneck 没量化</strong>。整个生成的”世界”被一张 panorama 初始化，然后 35 条轨迹内的 novel view 扩展。这意味着生成世界的 semantic scope 完全被 panorama 锁死，超出 panorama 覆盖的部分都是视频模型 hallucinate 的。<strong>可探索空间的真实边界有多大？</strong> 论文没给。看 Fig 22 演示的 character navigation 范围，仍然是单房间/单街角尺度</li>
+<li><strong>Panorama 的 T2P Q-Align Equi 被 HY-World 1.0 反超</strong>（4.493 → 4.403），作者在 Tab 4 旁只说 “best on majority of metrics”，没解释这个回归</li>
+<li><strong>Memory 机制的 retrieval 策略是 3D FoV similarity</strong>，但 how robust is this to drift？长轨迹下 memory bank 持续积累生成 keyframes，generation artifacts 也会进 memory——没有针对 error accumulation 的长轨迹 stress test</li>
+<li><strong>System/engineering 占比极高</strong>。论文 70% 篇幅是 VAE 选型、RoPE 修改、memory 机制、数据过滤、3DGS tricks、inference 并行、mesh 抽取。science contribution 相对薄——主要就是 keyframe-latent VDM 这一个 insight，其余是 competent 的工程优化和已有技术的巧妙组合。对社区有用，但本质上是 HY-World 1.0/1.5 + Uni3C + WorldMirror 1.0 + FlashWorld 的 incremental integration</li>
+<li><strong>“Comparable to Marble” 的 claim 过度</strong>。读者只能看到挑选过的 panoramic input 下的定性对比，Marble 的 text-to-world 模式、较大空间尺度、interactive event 都没比</li>
+</ol>
+<h3 id="可信评估">可信评估<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#可信评估" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="artifact-可获取性">Artifact 可获取性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#artifact-可获取性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><strong>代码</strong>: 已开源（GitHub: Tencent-Hunyuan/HY-World-2.0，README 已存在）</li>
+<li><strong>模型权重</strong>: HuggingFace <code>tencent/HY-World-2.0</code>，包含 HY-Pano 2.0、WorldStereo 2.0、WorldMirror 2.0</li>
+<li><strong>训练细节</strong>: 论文给出 batch size、三阶段 curriculum、augmentation 比例、DMD 蒸馏步数，但无具体 hyper-param / step count 全量披露</li>
+<li><strong>数据集</strong>: 部分公开——real-world panorama 未详述来源，UE 合成 asset 未开放；训练用的 multi-view 数据集（Map-Free、RealEstate10K 等）引用了公共来源</li>
+</ul>
+<h4 id="claim-可验证性">Claim 可验证性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#claim-可验证性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>✅ <strong>WorldMirror 2.0 在 7-Scenes/NRGBD/DTU/ScanNet/NYUv2 SOTA</strong>：Tab 11/12/13 数据齐全，各 resolution 对比清晰，开源 checkpoint 可复现</li>
+<li>✅ <strong>Keyframe-VAE 优于 Video-VAE</strong>：Tab 7 user study（92.44% camera + 64.39% quality）+ camera metric 一致支持</li>
+<li>✅ <strong>端到端 712s on H20</strong>：Tab 10 给出分解，可复现</li>
+<li>⚠️ <strong>“Open-source SOTA” in world generation</strong>：对比 SEVA/Gen3C/Lyra/FlashWorld 确实领先（Tab 5），但没对比 Scene Splatter、DimensionX、WonderWorld 等同期工作</li>
+<li>⚠️ <strong>“Results comparable to Marble”</strong>：只有定性图，scene 是 cherry-picked，没 user study，没共同 benchmark。对闭源 baseline 的定性对比几乎不构成有效 claim</li>
+<li>⚠️ <strong>WorldNav 的 5 类 trajectory 是最优配置</strong>：Fig 19 定性消融展示各类互补性，但没定量证明 35 是合适的总数</li>
+<li>❌ <strong>“Simulating 3D Worlds”</strong>：title 里的 “Simulating” 在论文中对应的是 mesh-based collision detection + character locomotion（WorldLens）——这是 real-time rendering + physics primitive，不是任何意义上的 dynamics simulation。严重的 marketing overreach</li>
+<li>❌ <strong>“World Model” 的定位</strong>：完整 pipeline 没有任何 temporal dynamics 或 action-conditioned prediction，不符合 Ha &amp; Schmidhuber 意义上的 world model 定义。属于 “3D scene generator” 蹭 world model 概念的热度</li>
+</ul>
+<hr/>
+<h2 id="关联工作">关联工作<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#关联工作" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="基于">基于<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#基于" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>HY-World 1.0</strong>: 前置 offline 3D world model 基线，HY-Pano 2.0、WorldNav 的 scene parsing 都继承 1.0 的工作</li>
+<li><strong>WorldStereo 1.0 / Uni3C</strong>: camera-conditioned VDM 和 memory 机制的前身；WorldStereo 2.0 的 GGM + SSM 思想来自此</li>
+<li><strong>WorldMirror 1.0</strong>: feed-forward 3D 重建 foundation，Any-Modal Tokenization</li>
+<li><strong>3DGS [Kerbl et al. 2023]</strong>: 场景表示</li>
+<li><strong>MoGe2</strong>: panoramic point cloud 初始化和 normal supervision 都靠它</li>
+</ul>
+<h3 id="对比">对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Marble (World Labs)</strong>: 唯一的闭源标杆，但对比纯定性</li>
+<li><strong>SEVA / Gen3C / Lyra / FlashWorld</strong>: open-source 生成类 baseline（Tab 5/6）</li>
+<li><strong><a href="../Papers/2402-Genie" class="internal alias" data-slug="Papers/2402-Genie">Genie</a> 3 / WorldLabs Marble</strong>: 同期 world model，但范式不同（Genie 3 是 online video，这里是 offline 3DGS）</li>
+<li><strong>VGGT / π³ / DepthAnything3 / MapAnything / CUT3R / Fast3R / FLARE</strong>: WorldMirror 2.0 的 reconstruction baseline</li>
+</ul>
+<h3 id="方法相关">方法相关<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#方法相关" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>DMD (Distribution Matching Distillation)</strong>: 4-step diffusion 蒸馏</li>
+<li><strong>DINOv3</strong>: normalized RoPE 的灵感来源</li>
+<li><strong>MaskGaussian</strong>: 概率 mask 的 3DGS pruning</li>
+<li><strong>Recast Navigation</strong>: NavMesh 构建</li>
+<li><strong>SAM3 / Qwen3-VL</strong>: 语义 grounding</li>
+<li><strong><a href="../Papers/2411-WorldModelSurvey" class="internal alias" data-slug="Papers/2411-WorldModelSurvey">World Model Survey</a></strong>: 本文定位背景</li>
+</ul>
+<hr/>
+<h2 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>核心方法论判断</strong>：HY-World 2.0 的真正贡献是<strong>证明了 open-source 社区可以通过 competent 的工程整合逼近闭源 world generation 效果</strong>——这本身有价值。但它没有 push 科学边界。真正的 insight 是 keyframe-latent VDM；其余是该做的 integration</li>
+<li><strong>对我研究的启发</strong>：
+<ol>
+<li>Spatial-only VAE vs 时空 VAE 的 trade-off——在 VLA 的 action prediction 里，action sequence 短而快变化，是否该用类似的思想（按 keyframe 独立 encode 而非统一时空 latent）？</li>
+<li>Normalized RoPE 对 resolution generalization 的根本性修复——可以迁移到任何有 multi-scale 输入的 embodied 模型</li>
+<li>Memory 机制的 spatial concatenation vs temporal concatenation——SSM++ 用 retrieval-stitched target-reference 对的设计，对 long-horizon video prediction 里的 memory bank 很有启发</li>
+</ol>
+</li>
+<li><strong>要追问</strong>：为什么 “offline 3DGS” 路线和 “online video world model” 路线在 2026 年仍然平行发展？本质是 <strong>static scene generation</strong> vs <strong>dynamic event simulation</strong> 的根本分野。HY-World 2.0 选前者，因为可以对接 CG pipeline、支持 standard rendering；Genie / Marble 选后者，因为更接近”真正的 world model”定义。对 Embodied AI 来说，前者用于 perception/nav prior，后者用于 policy rollout——<strong>需要的是后者</strong></li>
+<li><strong>可能的 follow-up 攻击面</strong>：把 WorldNav 替换成 learned planner（with uncertainty-driven active view selection）；在 WorldStereo 2.0 上加入动作条件（从 camera-conditioned → action-conditioned），让它变成真正的 interactive world model；针对长轨迹 error accumulation 设计 benchmark</li>
+</ul></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="0iq0gx" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#1-motivation-与-positioning" data-for="1-motivation-与-positioning">1. Motivation 与 Positioning</a></li><li class="depth-0"><a href="#2-四阶段-pipeline-总览" data-for="2-四阶段-pipeline-总览">2. 四阶段 Pipeline 总览</a></li><li class="depth-0"><a href="#3-hy-pano-20panorama-generation" data-for="3-hy-pano-20panorama-generation">3. HY-Pano 2.0：Panorama Generation</a></li><li class="depth-1"><a href="#关键设计" data-for="关键设计">关键设计</a></li><li class="depth-1"><a href="#数据" data-for="数据">数据</a></li><li class="depth-1"><a href="#结果" data-for="结果">结果</a></li><li class="depth-0"><a href="#4-worldnavtrajectory-planning" data-for="4-worldnavtrajectory-planning">4. WorldNav：Trajectory Planning</a></li><li class="depth-0"><a href="#5-worldstereo-20world-expansion" data-for="5-worldstereo-20world-expansion">5. WorldStereo 2.0：World Expansion</a></li><li class="depth-1"><a href="#51-keyframe-vae最关键的设计决策" data-for="51-keyframe-vae最关键的设计决策">5.1 Keyframe-VAE：最关键的设计决策</a></li><li class="depth-1"><a href="#52-memory-mechanisms" data-for="52-memory-mechanisms">5.2 Memory Mechanisms</a></li><li class="depth-1"><a href="#53-dmd-post-distillation" data-for="53-dmd-post-distillation">5.3 DMD Post-Distillation</a></li><li class="depth-1"><a href="#54-scene-reconstruction-结果" data-for="54-scene-reconstruction-结果">5.4 Scene Reconstruction 结果</a></li><li class="depth-0"><a href="#6-worldmirror-20feed-forward-reconstruction" data-for="6-worldmirror-20feed-forward-reconstruction">6. WorldMirror 2.0：Feed-Forward Reconstruction</a></li><li class="depth-1"><a href="#61-三大-model-改进" data-for="61-三大-model-改进">6.1 三大 Model 改进</a></li><li class="depth-1"><a href="#62-data--training--inference-改进" data-for="62-data--training--inference-改进">6.2 Data / Training / Inference 改进</a></li><li class="depth-1"><a href="#63-重建-benchmarks" data-for="63-重建-benchmarks">6.3 重建 Benchmarks</a></li><li class="depth-0"><a href="#7-world-composition-stage-iv" data-for="7-world-composition-stage-iv">7. World Composition (Stage IV)</a></li><li class="depth-1"><a href="#71-depth-alignment" data-for="71-depth-alignment">7.1 Depth Alignment</a></li><li class="depth-1"><a href="#72-3dgs-with-maskgaussian" data-for="72-3dgs-with-maskgaussian">7.2 3DGS with MaskGaussian</a></li><li class="depth-1"><a href="#73-optimization" data-for="73-optimization">7.3 Optimization</a></li><li class="depth-0"><a href="#8-整体结果与-marble-对比" data-for="8-整体结果与-marble-对比">8. 整体结果与 Marble 对比</a></li><li class="depth-0"><a href="#论文点评" data-for="论文点评">论文点评</a></li><li class="depth-1"><a href="#strengths" data-for="strengths">Strengths</a></li><li class="depth-1"><a href="#weaknesses" data-for="weaknesses">Weaknesses</a></li><li class="depth-1"><a href="#可信评估" data-for="可信评估">可信评估</a></li><li class="depth-0"><a href="#关联工作" data-for="关联工作">关联工作</a></li><li class="depth-1"><a href="#基于" data-for="基于">基于</a></li><li class="depth-1"><a href="#对比" data-for="对比">对比</a></li><li class="depth-1"><a href="#方法相关" data-for="方法相关">方法相关</a></li><li class="depth-0"><a href="#notes" data-for="notes">Notes</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+</script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>

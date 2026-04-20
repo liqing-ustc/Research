@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en"><head><title>Do Vision-Language Models Truly Perform Vision Reasoning? A Rigorous Study of the Modality Gap</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="Do Vision-Language Models Truly Perform Vision Reasoning? A Rigorous Study of the Modality Gap"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Do Vision-Language Models Truly Perform Vision Reasoning? A Rigorous Study of the Modality Gap"/><meta name="twitter:description" content="Summary Do VLMs Truly Perform Vision Reasoning? A Rigorous Study of the Modality Gap 核心: 构造 text-only / image-only / image+text 三种信息等价的同一道数学 crossword puzzle，用此对照 SOTA VLM，发现模型在 ..."/><meta property="og:description" content="Summary Do VLMs Truly Perform Vision Reasoning? A Rigorous Study of the Modality Gap 核心: 构造 text-only / image-only / image+text 三种信息等价的同一道数学 crossword puzzle，用此对照 SOTA VLM，发现模型在 ..."/><meta property="og:image:alt" content="Summary Do VLMs Truly Perform Vision Reasoning? A Rigorous Study of the Modality Gap 核心: 构造 text-only / image-only / image+text 三种信息等价的同一道数学 crossword puzzle，用此对照 SOTA VLM，发现模型在 ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2604-DoVLMsTrulyReason"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2604-DoVLMsTrulyReason"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary Do VLMs Truly Perform Vision Reasoning? A Rigorous Study of the Modality Gap 核心: 构造 text-only / image-only / image+text 三种信息等价的同一道数学 crossword puzzle，用此对照 SOTA VLM，发现模型在 ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  padding: 2rem;
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2604-DoVLMsTrulyReason"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Meetings\&quot;,\&quot;Resources\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="a246wo"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/RL" class="sidebar-tag-pill">#RL</a><a href="/mindflow/tags/web-agent" class="sidebar-tag-pill">#web-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/scene-understanding" class="sidebar-tag-pill">#scene-understanding</a><a href="/mindflow/tags/instruction-following" class="sidebar-tag-pill">#instruction-following</a><a href="/mindflow/tags/cross-embodiment" class="sidebar-tag-pill">#cross-embodiment</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2604-DoVLMsTrulyReason</a></div></nav><h1 class="article-title">Do Vision-Language Models Truly Perform Vision Reasoning? A Rigorous Study of the Modality Gap</h1><div class="paper-meta"><span class="paper-venue">arXiv preprint</span><span class="paper-authors"><span class="meta-sep">·</span>Yige Xu <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, Yongjie Wang</span><span>, Zizhuo Wu</span><span>, Kaisong Song</span><span>, Jun Lin</span><span>, Zhiqi Shen</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2026-04-01T00:00:00.000Z">Apr 01, 2026</time><span>19 min read</span></p><ul class="tags"><li><a href="../tags/VLM" class="internal tag-link">VLM</a></li><li><a href="../tags/LLM" class="internal tag-link">LLM</a></li><li><a href="../tags/embodied-reasoning" class="internal tag-link">embodied-reasoning</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Do VLMs Truly Perform Vision Reasoning? A Rigorous Study of the Modality Gap </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><strong>核心</strong>: 构造 text-only / image-only / image+text 三种<strong>信息等价</strong>的同一道数学 crossword puzzle，用此对照 SOTA VLM，发现模型在 text-only 远好于 image-only，加入 image 反而<strong>拖累</strong> text-only baseline —— 当前 VLM 的”视觉推理”主要跑在 text backbone 上。</li>
+<li><strong>方法</strong>: 构建 CrossMath（5000 训 / 250 测），自动管线爬取 crossword-math 在线生成器，图像→Markdown 表（像素颜色区分单元格角色 + Qwen3-VL-Max 批量 OCR），符号求解器产出带 hop 标注的 CoT；用 LoRA SFT + GRPO（position-weighted reward）在 image-only 上 post-train Qwen3.5-9B。</li>
+<li><strong>结果</strong>: Qwen3.5-Plus 在 Macro Acc 上 text 92.8% vs image 12.4% vs multimodal 74.8%；SFT+GRPO 把 Qwen3.5-9B 的 image Macro 从 3.20 拉到 50.40，但与同模型 text 76.40 仍差一截；MathVerse +2.46 / MMMU +1.39。</li>
+<li><strong>Sources</strong>: <a href="https://arxiv.org/abs/2604.16256" class="external">paper<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://github.com/xuyige/CrossMath" class="external">github<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+</ul>
+</div>
+</blockquote>
+<p><strong>Key Takeaways:</strong></p>
+<ol>
+<li><strong>Rigorous cross-modal equivalence</strong>: 每道题同时有 image / text / image+text 三种等价形式（人工校对 250 题），是相对前人 MathVerse/EMMA 等 “信息不对称” benchmark 的关键改进。</li>
+<li><strong>Modality gap 远超预期</strong>: 不只是 image &lt; text，更反直觉的是 <strong>image+text &lt; text</strong>——即使 text 已经给了完整解题信息，VLM 还是会被视觉 token 拖下水。</li>
+<li><strong>Bottleneck 不是 perception</strong>: OCR 可被 VLM 高精度完成；Accuracy 随 hop 数急剧衰减而非随图像复杂度衰减，定位为”把视觉 symbol 组织进 reasoning chain”的失败。</li>
+<li><strong>Image-only post-training 可修复但无法闭合 gap</strong>: SFT+GRPO 在 image-only 上暴涨 +47 pt Macro，text-only 也同时受益（44→76.4），但 image vs text 仍差 ~26 pt，作者归因为 visual encoder / cross-modal alignment 的底层架构瓶颈。</li>
+<li><strong>Scale 不救 image-only</strong>: 27B 到 397B-A17B 在 image-only 下 Macro Acc 在 12-16 间盘整无单调提升；text-only 则呈正常 scaling —— 证据指向 vision module 而非 language backbone 容量。</li>
+</ol>
+<p><strong>Teaser. CrossMath 的三模态等价示例（image / markdown table / image+text）</strong></p>
+<p><img src="https://arxiv.org/html/2604.16256v1/res/math_puzzle_0217_markdown.png" alt/></p>
+<p><img src="https://arxiv.org/html/2604.16256v1/res/math_puzzle_0004_blank.png" alt/></p>
+<hr/>
+<h2 id="1-motivation为什么现有-benchmark-测不出-genuine-visual-reasoning">1. Motivation：为什么现有 benchmark 测不出 “genuine visual reasoning”<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-motivation为什么现有-benchmark-测不出-genuine-visual-reasoning" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>作者指出两类失效：</p>
+<ol>
+<li><strong>Surface-level / text-prior 泄漏型</strong>（如经典 VQA）：只需粗粒度视觉识别 + 文本先验即可答对，无法逼模型做 multi-step spatial / geometric 推理。</li>
+<li><strong>Modality-entangled 型</strong>（MMMU / MathVerse / EMMA 等）：问题本身同时需要图和文，抽掉任一模态题目不成立——因此跨模态性能差异<strong>混淆</strong>了”信息缺失”和”模态特定推理能力”两个变量。</li>
+</ol>
+<p>为了 cleanly 分离后者，作者提出三条评测原则：</p>
+<ul>
+<li>(i) <strong>Vision-first</strong>：任务本身就得靠空间/几何推理解。</li>
+<li>(ii) <strong>Difficulty-stratified</strong>：避免 saturation / floor effect。</li>
+<li>(iii) <strong>Strictly equivalent</strong> 的多模态版本：三种输入<strong>任务相关信息完全一致</strong>，且都独立可解。</li>
+</ul>
+<p>这第三条是本文的核心主张，也是和过往 modality-gap 类论文（如 [^10] VISTA-Bench visualized-text）的关键区别：不仅等价，还要每种单模态都 self-sufficient。</p>
+<h2 id="2-crossmathbenchmark-构造">2. CrossMath：Benchmark 构造<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-crossmathbenchmark-构造" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="21-任务定义">2.1 任务定义<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#21-任务定义" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>2D 网格上纵横交错的算术方程，部分单元格缺失（标 <code>?</code>），要求同时满足所有横/竖方向方程，输出缺失值（按 top-to-bottom, left-to-right 顺序）。</p>
+<p>VLM 解题流程形式化为两阶段：</p>
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2329em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9468em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathcal" style="margin-right:0.075em;">S</span></span><span style="top:-3.2523em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1667em;"><span class="mord">^</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.075em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2653em;vertical-align:-0.5153em;"></span><span class="mopen">[</span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">s</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1944em;"><span class="mord">^</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">s</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1944em;"><span class="mord">^</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">s</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1944em;"><span class="mord">^</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3821em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∣</span><span class="mord mtight"><span class="mord accent mtight"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9468em;"><span style="top:-2.7em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord mathcal mtight" style="margin-right:0.075em;">S</span></span><span style="top:-2.9523em;"><span class="pstrut" style="height:2.7em;"></span><span class="accent-body" style="left:-0.1667em;"><span class="mord mtight">^</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3281em;"><span style="top:-2.357em;margin-left:-0.075em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2819em;"><span></span></span></span></span></span></span><span class="mord mtight">∣</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.5153em;"><span></span></span></span></span></span></span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:1em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">s</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1944em;"><span class="mord">^</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathrm">VLM</span></span><span class="mopen">(</span><span class="mord mathcal" style="margin-right:0.07382em;">I</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathcal">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">s</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1944em;"><span class="mord">^</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mrel mtight">&lt;</span><span class="mord mathnormal mtight">i</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span>
+<p>每个 step 包含 rationale tokens + 该步 answer span，最后按序拼成 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2329em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9468em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathcal">A</span></span><span style="top:-3.2523em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1111em;"><span class="mord">^</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span>。</p>
+<h3 id="22-data-curation-管线4-步">2.2 Data Curation 管线（4 步）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#22-data-curation-管线4-步" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>Raw Collection</strong>：用 Playwright 从某在线 arithmetic puzzle 生成器抓取，系统性变化难度（Easy/Medium/Hard）、运算符组合（<code>{+,-,×,÷}</code>）、数值范围（50–250）、方程数量（5–15）。每题同时截”未解”+“带解”两图，并解析 HTML 拿到 ground-truth。</li>
+<li><strong>Image → Markdown</strong>：利用 <strong>像素颜色</strong>辨认单元格角色（blue = 固定常数、white + red 字 = 未知变量、yellow = 运算符），把单元格切碎拼成带 index 的 mosaic，再让 Qwen3-VL-Max 批量 OCR，配合正则修正 <code>1/l/|</code> 类 OCR 歧义，最终人工 audit 250 测试样全部校对。<strong>这一步保证了三模态信息严格对称</strong>。</li>
+<li><strong>Reasoning Path Extraction</strong>：符号求解器基于 known-cells 集合做<strong>迭代推演</strong>——每轮找”三元里已知两元”的方程标 solvable，同一轮内求解的所有方程共同构成一个 reasoning step，推出的单元直到下一轮才并入 known-cells（保证严格因果顺序）。这给每题产出带<strong>hop 数</strong>的 gold CoT。</li>
+<li><strong>Visual Style Augmentation</strong>：4 个 style —— Original / Border-Removal / Background-Complexity / Font+Palette Variation —— 用于探模型是否仅在 exploit 特定渲染。</li>
+</ol>
+<h3 id="23-benchmark-统计">2.3 Benchmark 统计<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#23-benchmark-统计" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table 1. CrossMath 测试集按难度与 hop 分布（N=250）</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Difficulty</th><th># Examples / %</th><th>Avg. Problems</th><th>1 Hop</th><th>2 Hops</th><th>3 Hops</th><th>4+ Hops</th></tr></thead><tbody><tr><td>Easy</td><td>90 / 36.0%</td><td>10.46</td><td>10.46</td><td>0.00</td><td>0.00</td><td>0.00</td></tr><tr><td>Medium</td><td>85 / 34.0%</td><td>9.81</td><td>7.66</td><td>1.53</td><td>0.53</td><td>0.09</td></tr><tr><td>Hard</td><td>75 / 30.0%</td><td>10.64</td><td>5.13</td><td>2.52</td><td>1.73</td><td>1.25</td></tr><tr><td>Total</td><td>250</td><td>10.29</td><td>7.91</td><td>1.28</td><td>0.70</td><td>0.41</td></tr></tbody></table></div>
+<blockquote>
+<p>❓ Hop 分布严重向 1-hop 倾斜（总体 77% 是 1-hop，4+ hop 只占 4%）。这会让 hop-scaling 曲线的尾段样本量偏低，某些数值（如 Qwen3.5-Plus 4+hop 8.82%）的置信度值得打折。</p>
+</blockquote>
+<h2 id="3-post-training能否靠训练补齐">3. Post-Training：能否靠训练补齐<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-post-training能否靠训练补齐" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="31-data">3.1 Data<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#31-data" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>5000 张 puzzle 图 + 解；每张原图与其背景增强版配对（增强 visual robustness）。训测严格 disjoint。</p>
+<h3 id="32-sftcold-start">3.2 SFT（cold start）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#32-sftcold-start" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>用 Qwen3-VL-Max 把 symbolic step 转成自然语言 CoT（给 text-only + Markdown table prompt），即使偶有错答也全部保留做 behavioral cold-start。</li>
+<li>Qwen3.5-9B + LoRA r=16，lr=2e-5，2 epoch，cosine schedule + warmup 0.03，max len 5000，grad accum 8。</li>
+<li>平均 CoT 长约 5200 token（已强调 concise）。</li>
+</ul>
+<h3 id="33-rlvr-with-grpo">3.3 RLVR with GRPO<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#33-rlvr-with-grpo" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>SFT 初始化后用 GRPO，每 instance 采 4 rollouts，LoRA r=16，lr=1e-6，200 steps，max completion 6000。</p>
+<p><strong>核心改动：position-weighted reward</strong>——给 hop 数更深的子问题更大权重，避免规则 reward 对中间结果的脆弱抽取：</p>
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.9781em;vertical-align:-1.234em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.7441em;"><span style="top:-2.11em;"><span class="pstrut" style="height:3.0671em;"></span><span class="mord"><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0671em;"><span style="top:-2.4231em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2421em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∣</span><span class="mord mtight"><span class="mord mathcal mtight" style="margin-right:0.075em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3281em;"><span style="top:-2.357em;margin-left:-0.075em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2819em;"><span></span></span></span></span></span></span><span class="mord mtight">∣</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2769em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.2971em;"><span class="pstrut" style="height:3.0671em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.7441em;"><span class="pstrut" style="height:3.0671em;"></span><span class="mord"><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0671em;"><span style="top:-2.4231em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2421em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∣</span><span class="mord mtight"><span class="mord mathcal mtight" style="margin-right:0.075em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3281em;"><span style="top:-2.357em;margin-left:-0.075em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2819em;"><span></span></span></span></span></span></span><span class="mord mtight">∣</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2769em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathbb">I</span><span class="mopen">[</span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">a</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">^</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose">]</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.234em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>
+<p><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 随逻辑深度递增。</p>
+<h2 id="4-main-results">4. Main Results<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-main-results" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="41-三模态对比table-2">4.1 三模态对比（Table 2）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#41-三模态对比table-2" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Model</th><th>Img-Only Micro/Macro</th><th>Img+Text Micro/Macro</th><th>Text-Only Micro/Macro</th></tr></thead><tbody><tr><td>Qwen3.6-Plus</td><td>32.23 / 11.60</td><td>90.76 / 79.60</td><td>96.23 / 88.20</td></tr><tr><td>Qwen3.5-Plus</td><td>35.65 / 12.40</td><td>85.22 / 74.80</td><td><strong>97.27 / 92.80</strong></td></tr><tr><td>Qwen3.5-397B-A17B</td><td>39.26 / 16.00</td><td>87.54 / 78.40</td><td>96.86 / 92.00</td></tr><tr><td>Qwen3.5-122B-A10B</td><td>36.85 / 12.80</td><td>81.37 / 61.20</td><td>89.61 / 77.60</td></tr><tr><td>Qwen3.5-27B</td><td>40.74 / 12.40</td><td>87.04 / 66.40</td><td>88.67 / 75.20</td></tr><tr><td>Qwen3.5-9B</td><td>23.25 / 3.20</td><td>61.56 / 29.60</td><td>73.39 / 44.00</td></tr><tr><td>Qwen3.5-9B-SFT</td><td>59.52 / 48.50</td><td>67.90 / 60.00</td><td>82.58 / 69.60</td></tr><tr><td>Qwen3.5-9B-SFT+GRPO</td><td><strong>62.33 / 50.40</strong></td><td>71.21 / 62.80</td><td>87.36 / 76.40</td></tr></tbody></table></div>
+<h3 id="42-三条核心发现">4.2 三条核心发现<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#42-三条核心发现" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>(1) Image vs Text 存在巨大 gap</strong>：信息对称的前提下，Qwen3.5-Plus Macro 从 92.8 % 掉到 12.4 %（−80 pt）。<strong>更反常的是 image+text 几乎总是低于 text-only</strong>——当 text 已给全信息，视觉输入非但不加分，还注入”ambiguous or poorly grounded features”干扰内部逻辑。</p>
+<p><strong>(2) 失败不来自 perception</strong>：理由三条，都相对扎实：</p>
+<ul>
+<li>让 VLM 把 puzzle 图转成 Markdown 的 OCR 错误率极低；</li>
+<li>若是 perception 瓶颈，reasoning-chain supervision 应无效——但 SFT/GRPO 大幅改善 image-only 成绩；</li>
+<li>若是 perception 瓶颈，准确率应与 hop 数<strong>独立</strong>——但实测 accuracy 随 hop 数剧烈塌陷。</li>
+</ul>
+<p><strong>(3) Reasoning depth 才是核心瓶颈</strong>：Macro vs Micro 的巨大 gap 说明模型能拼对局部但守不住全局一致性。<strong>Table 3</strong> 的 hop 分解验证：所有模型随 hop 数单调衰减，Qwen3.5-27B image-only 从 1-hop 42.26% 崩到 4+hop 5.88%。</p>
+<h3 id="43-post-training-效果table-3">4.3 Post-training 效果（Table 3）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#43-post-training-效果table-3" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Model</th><th>Micro</th><th>Macro</th><th>1 Hop</th><th>2 Hops</th><th>3 Hops</th><th>4+ Hops</th></tr></thead><tbody><tr><td>Qwen3.5-9B (zero-shot)</td><td>23.25</td><td>3.20</td><td>26.27</td><td>3.37</td><td>2.32</td><td>1.96</td></tr><tr><td>Qwen3.5-9B-SFT</td><td>59.52</td><td>48.50</td><td>57.92</td><td>53.96</td><td>52.18</td><td>40.93</td></tr><tr><td>Qwen3.5-9B-SFT+GRPO</td><td><strong>62.33</strong></td><td><strong>50.40</strong></td><td><strong>61.02</strong></td><td><strong>58.42</strong></td><td><strong>56.98</strong></td><td><strong>41.18</strong></td></tr></tbody></table></div>
+<ul>
+<li>SFT 把 Macro 从 3.20 拉到 48.50（<strong>+45.3</strong>），GRPO 再加 +1.9，主要收益来自 multi-hop。</li>
+<li>但和同模型 text-only（87.36 / 76.40）比，<strong>image-only 仍差约 25 pt</strong>——作者得到一个相当尖锐的结论：<strong>仅对齐 visual embedding 到 text space 不够，要闭合 gap 需要更强的 vision foundation，让模型从 pixel-level recognition 升级到”内化物理/结构约束”</strong>。</li>
+</ul>
+<h2 id="5-辅助实验">5. 辅助实验<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#5-辅助实验" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="51-style-robustnesstable-4">5.1 Style Robustness（Table 4）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#51-style-robustnesstable-4" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Post-trained 模型对 font/color/background 扰动基本不掉点（原 style 50.40 → 换色/背景 50.10 左右，字体+色 48.40）。<strong>唯独去掉边框掉 4-6 pt</strong>——暗示 grid border 给了重要的单元格分割结构信号，模型”理解 2D 结构”的能力比”抗色干扰”弱。</p>
+<blockquote>
+<p>❓ 这其实是一个值得深挖的 finding：去掉 border 精度掉 5 pt 并不”小”，它说明模型依赖<strong>显式视觉 delimiter</strong> 来切分 reasoning unit。如果换到自然图像里，根本没有这种清晰 border——暗示这里的”visual reasoning”依然在”精心设计的 structured visual”的舒适区。</p>
+</blockquote>
+<h3 id="52-ood-generalizationtable-5">5.2 OOD Generalization（Table 5）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#52-ood-generalizationtable-5" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Model</th><th>MathVerse (Vision-Only)</th><th>MMMU</th></tr></thead><tbody><tr><td>Qwen3.5-9B</td><td>48.94</td><td>67.52</td></tr><tr><td>Qwen3.5-9B-SFT</td><td>50.76</td><td>68.05</td></tr><tr><td>Qwen3.5-9B-SFT+GRPO</td><td>51.40</td><td>68.91</td></tr></tbody></table></div>
+<p>CrossMath 训练 transfer 到两个通用多模态数学 benchmark 都是<strong>小正收益</strong>（MathVerse +2.46, MMMU +1.39）——作者 admit 这不等于通用 transferability，仅是”structured multi-step math”范围内的 cross-task synergy。</p>
+<h3 id="53-vlm-规模-vs-模态57-节">5.3 VLM 规模 vs 模态（5.7 节）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#53-vlm-规模-vs-模态57-节" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Image-only 不随 scale 单调提升</strong>：27B 到 397B-A17B Macro 在 12-16 盘整。</li>
+<li><strong>Text-only scaling 正常</strong>：Plus / 397B-A17B 明显优于 27B / 9B。</li>
+<li>解读：语言 backbone 再大也救不了视觉通路；vision module 能力 / cross-modal grounding 才是真瓶颈。这是对”做大 LLM 即可”观点相当直接的反例。</li>
+</ul>
+<h2 id="6-我的批判性解读">6. 我的批判性解读<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#6-我的批判性解读" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="做对的">做对的<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#做对的" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>控制变量设计</strong>是本文最硬的贡献：三模态信息等价 + 全部人工校 250 道，比 MathVerse / EMMA 这类 entangled benchmark 干净。</li>
+<li><strong>把 OCR 失败 / reasoning 失败 disentangle 的三条论证</strong>都不仅仅靠一个数字，而是从 “OCR 本身准确” + “supervision 有用” + “hop-scaling 行为” 三路交叉验证，结构比典型”一张图一个结论”类 critique 论文强。</li>
+<li><strong>position-weighted reward</strong>是个简单但合理的 trick，避开了从 free-form CoT 里抽中间答案的脆弱性。</li>
+</ul>
+<h3 id="存疑--没做够的">存疑 / 没做够的<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#存疑--没做够的" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>“Vision-first”真的 vision-first 吗？</strong> CrossMath 本质是 <strong>2D 排版的符号算术</strong>，视觉部分只是一个 color-coded grid——这更像”structured visual symbol parsing”而非真正的几何 / 物理视觉推理。去掉 border 掉 5 pt 的实验恰恰说明模型的 “visual reasoning” 依赖显式 delimiter。移到自然场景（图表、几何图、物理 diagram）结论能否保持？未验证。</li>
+<li><strong>只做了 Qwen 系列</strong>。所有 main table 全是 Qwen3.5 / 3.6 家族，连 GPT-4o、Gemini、Claude、InternVL、LLaVA 一个都没有。“current VLMs” 这种大词用在只测了一家的实验上，claim 的外推性被自家 vision module 的设计高度 bias。</li>
+<li><strong>Image+Text &lt; Text-only</strong> 这个 headline finding 的 <strong>intervention</strong> 不够：作者把它解释成”visual token 注入噪声”，但没做 <strong>attention/attribution 分析</strong>证明模型确实”看”了 visual token。可能的 confound：multimodal prompt 的 system prefix 触发了不同的 behavior mode（如 multimodal 下模型更”话痨”更容易跑题）、或 image token 消耗 context 导致 text 部分 attention 分配改变。缺少 causal probe。</li>
+<li><strong>Hop 分布极度不平衡</strong>：4+hop 只占 4%（Easy 档完全没有多 hop）。“accuracy 随 hop 衰减”的曲线尾部是样本量 ~10 的点，数字波动大。</li>
+<li><strong>OOD 增益过小</strong> (+1.4 到 +2.5)。虽然作者诚实 disclaim 不 claim 普适 transfer，但如果 CrossMath 真揭示了”modality gap 的本质”，针对性训练在同族 math-vision benchmark 上应有更明显的迁移。</li>
+<li><strong>Post-training 只用 image-only 数据</strong>，那 text-only 也跟着涨（44 → 76.4）怎么解释？论文没分析。一个合理猜测：CoT trajectories 由 text 端生成，模型主要学到的是 CoT 格式和算术模式，而非”看图推理”。这会弱化”我们修复了 modality gap” 的 claim。</li>
+<li><strong>“更强的 visual foundation 才能闭合 gap”</strong> 是结论性断言，但论文本身没提供任何 intervention 证据——它是 narrative 而非被验证的 hypothesis。</li>
+</ol>
+<h3 id="和过往工作的关系">和过往工作的关系<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#和过往工作的关系" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>与 [^10] VISTA-Bench（visualized text vs pure text）共享思路，但 VISTA 关注”同一段 text 被 render 成图后变难”，CrossMath 关注的是”vision-first 任务在三模态下的对称比较”，定位不同。</li>
+<li>与 PuzzleVQA、Bongard 系列的抽象视觉推理一脉相承，优势在 cross-modal equivalence；劣势在视觉形式仍然是合成的 structured grid，不是自然图。</li>
+<li>针对 MMMU / MathVerse / EMMA 的”entangled”批评扎实——但严格说，它们的设计目标是 end-to-end 多模态能力，和 CrossMath 要做的 modality-specific disentanglement 是不同的 goal，不完全是替代关系。</li>
+</ul>
+<hr/>
+<h2 id="论文点评">论文点评<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#论文点评" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="strengths">Strengths<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>三模态信息等价的 benchmark 设计</strong>扎实，且人工校 250 道保证了 strict equivalence，这是 claim “rigorous” 的前提。</li>
+<li><strong>“Image+Text &lt; Text-only”</strong> 这个 finding 很反直觉且可复现（至少在 Qwen 族内），有 headline 价值。</li>
+<li><strong>三路证据排除 perception bottleneck</strong>（OCR 准确 + SFT 有效 + hop-scaling）比单论据 critique 类论文严谨。</li>
+<li><strong>Difficulty + Style + Hop 三维分解</strong>让 failure mode 可被定位到 reasoning depth，而非笼统”VLM 不行”。</li>
+<li><strong>Position-weighted GRPO reward</strong> 简洁可推广，避免了抽 intermediate answer 的 regex 脆弱性。</li>
+</ol>
+<h3 id="weaknesses">Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>只测 Qwen 家族</strong>是硬伤，“state-of-the-art VLMs” 的 claim 没有 GPT-4o / Gemini / Claude / InternVL 等背书。</li>
+<li><strong>任务形式是 structured symbolic grid</strong>，离真正的自然视觉推理（几何图、物理 diagram、图表）有距离；去 border 掉 5 pt 已暴露模型依赖显式 delimiter。</li>
+<li><strong>没有 causal probe / attention 分析</strong>证明 image+text 下模型”确实看了图”，“visual distractor” 的解释停留在 narrative。</li>
+<li><strong>Post-training image-only 让 text-only 也涨</strong> 的现象没给解释，削弱”闭合 modality gap”的 claim——更可能是学到了 CoT 格式。</li>
+<li><strong>Hop 分布极偏</strong>（1-hop 77%，4+hop 4%），尾部数字的置信区间没给。</li>
+<li><strong>OOD transfer 增益小</strong>（+1.4 / +2.5），和”真正修复 visual reasoning” 的叙事不太配。</li>
+</ol>
+<h3 id="可信评估">可信评估<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#可信评估" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="artifact-可获取性">Artifact 可获取性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#artifact-可获取性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><strong>代码</strong>: GitHub <code>xuyige/CrossMath</code> 声明开源（截至写稿未访问）。</li>
+<li><strong>模型权重</strong>: 未提及是否发布 SFT / GRPO checkpoint。</li>
+<li><strong>训练细节</strong>: 超参（LoRA rank、lr、epoch、max len、batch、GRPO rollouts/steps）基本完整，但未给随机种子、数据预处理完整配置。</li>
+<li><strong>数据集</strong>: CrossMath 自构，声明开源 5000 train + 250 eval，4 种 style augment 总计 1000 image 测试样本。</li>
+</ul>
+<h4 id="claim-可验证性">Claim 可验证性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#claim-可验证性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>✅ <strong>Image vs Text Macro Acc gap（92.8 → 12.4）</strong>：Table 2 数据点完整、跨 6 个 Qwen 变体一致。</li>
+<li>✅ <strong>Hop-scaling 单调衰减</strong>：Table 3 直接展示。</li>
+<li>⚠️ <strong>“Image+Text &lt; Text-only 是因为视觉输入干扰”</strong>：现象可复现，但归因没 attention/attribution 证据，可能被 context-length / prompt-format confound。</li>
+<li>⚠️ <strong>“Perception 不是瓶颈”</strong>：三路论证总体有说服力，但”OCR 可被准确完成”是<strong>同一模型在被 explicit 指令 OCR 时</strong>的表现，不等于<strong>在 reasoning flow 里模型隐式地把 symbol 读对了</strong>——这是两个任务。</li>
+<li>⚠️ <strong>“Current VLMs 普遍依赖 textual shortcut”</strong>：只测 Qwen 家族，外推到 “current VLMs” 过宽。</li>
+<li>❌ <strong>“闭合 gap 需要更强的 visual foundation”</strong>：narrative 结论，论文本身没做 intervention。</li>
+</ul>
+<hr/>
+<h2 id="关联工作">关联工作<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#关联工作" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="基于">基于<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#基于" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>GRPO</strong> ([^3] DeepSeek-R1)：作为 RLVR 框架，作者替换了 reward 为 position-weighted variant。</li>
+<li><strong>LoRA</strong> ([^6])：参数高效 fine-tuning。</li>
+</ul>
+<h3 id="对比--批判对象">对比 / 批判对象<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#对比--批判对象" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>MMMU / MathVerse / EMMA / MMReason</strong>：作者主要的 “entangled multimodal benchmark” 批评对象。CrossMath 以 strict equivalence 区别于它们。</li>
+<li><strong>PuzzleVQA</strong> ([^2])、<strong>Jigsaw-Puzzles</strong> ([^13])：抽象/空间视觉推理的 benchmark 家族。</li>
+</ul>
+<h3 id="方法相关">方法相关<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#方法相关" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>VISTA-Bench</strong> ([^10])：visualized text 类论文，共享”rendering to image 会让任务变难”的观察，但 formulation 不同。</li>
+<li><strong>Bring Reason to Vision</strong> ([^1])、<strong>Compositional Ability Gap in VLR</strong> ([^8])：mechanistic 视角的 perception-reasoning coupling 分析。</li>
+</ul>
+<hr/>
+<h2 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>🔖 最值得记住的一个数字：Qwen3.5-Plus text 92.8 → image 12.4 → multimodal 74.8。即使信息完全给在 text 里，加图也要掉 18 pt。</li>
+<li>🔖 <strong>Image-only post-training 让 text-only 也涨</strong> 是个被论文低估的反直觉信号；值得单独做 ablation 验证”学到的到底是 visual grounding 还是 CoT 格式”。</li>
+<li>🔖 本文的范式若要 generalize 到 agent / embodied 场景，关键在于：自然场景的 visual reasoning 没有显式 delimiter（border），模型对 border 的依赖暗示当前 VLM 对”自发切分视觉 reasoning unit”的能力远不如作者语气所 imply 的那样”只差架构升级”。</li>
+<li>🔖 Follow-up：我的 VLA / spatial reasoning 方向里，“text hint 中掺入 visual token 是否反而干扰”这个现象值得在 <a href="../Papers/2307-RT2" class="internal alias" data-slug="Papers/2307-RT2">RT-2</a> / <a href="../Papers/2406-OpenVLA" class="internal alias" data-slug="Papers/2406-OpenVLA">OpenVLA</a> / <a href="../Papers/2410-Pi0" class="internal alias" data-slug="Papers/2410-Pi0">π0</a> 这类 VLA 上自己复现一把——理论上 action policy 不像 math CoT 那样有 text shortcut，现象应该不同。</li>
+</ul></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="0iq0gx" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#1-motivation为什么现有-benchmark-测不出-genuine-visual-reasoning" data-for="1-motivation为什么现有-benchmark-测不出-genuine-visual-reasoning">1. Motivation：为什么现有 benchmark 测不出 “genuine visual reasoning”</a></li><li class="depth-0"><a href="#2-crossmathbenchmark-构造" data-for="2-crossmathbenchmark-构造">2. CrossMath：Benchmark 构造</a></li><li class="depth-1"><a href="#21-任务定义" data-for="21-任务定义">2.1 任务定义</a></li><li class="depth-1"><a href="#22-data-curation-管线4-步" data-for="22-data-curation-管线4-步">2.2 Data Curation 管线（4 步）</a></li><li class="depth-1"><a href="#23-benchmark-统计" data-for="23-benchmark-统计">2.3 Benchmark 统计</a></li><li class="depth-0"><a href="#3-post-training能否靠训练补齐" data-for="3-post-training能否靠训练补齐">3. Post-Training：能否靠训练补齐</a></li><li class="depth-1"><a href="#31-data" data-for="31-data">3.1 Data</a></li><li class="depth-1"><a href="#32-sftcold-start" data-for="32-sftcold-start">3.2 SFT（cold start）</a></li><li class="depth-1"><a href="#33-rlvr-with-grpo" data-for="33-rlvr-with-grpo">3.3 RLVR with GRPO</a></li><li class="depth-0"><a href="#4-main-results" data-for="4-main-results">4. Main Results</a></li><li class="depth-1"><a href="#41-三模态对比table-2" data-for="41-三模态对比table-2">4.1 三模态对比（Table 2）</a></li><li class="depth-1"><a href="#42-三条核心发现" data-for="42-三条核心发现">4.2 三条核心发现</a></li><li class="depth-1"><a href="#43-post-training-效果table-3" data-for="43-post-training-效果table-3">4.3 Post-training 效果（Table 3）</a></li><li class="depth-0"><a href="#5-辅助实验" data-for="5-辅助实验">5. 辅助实验</a></li><li class="depth-1"><a href="#51-style-robustnesstable-4" data-for="51-style-robustnesstable-4">5.1 Style Robustness（Table 4）</a></li><li class="depth-1"><a href="#52-ood-generalizationtable-5" data-for="52-ood-generalizationtable-5">5.2 OOD Generalization（Table 5）</a></li><li class="depth-1"><a href="#53-vlm-规模-vs-模态57-节" data-for="53-vlm-规模-vs-模态57-节">5.3 VLM 规模 vs 模态（5.7 节）</a></li><li class="depth-0"><a href="#6-我的批判性解读" data-for="6-我的批判性解读">6. 我的批判性解读</a></li><li class="depth-1"><a href="#做对的" data-for="做对的">做对的</a></li><li class="depth-1"><a href="#存疑--没做够的" data-for="存疑--没做够的">存疑 / 没做够的</a></li><li class="depth-1"><a href="#和过往工作的关系" data-for="和过往工作的关系">和过往工作的关系</a></li><li class="depth-0"><a href="#论文点评" data-for="论文点评">论文点评</a></li><li class="depth-1"><a href="#strengths" data-for="strengths">Strengths</a></li><li class="depth-1"><a href="#weaknesses" data-for="weaknesses">Weaknesses</a></li><li class="depth-1"><a href="#可信评估" data-for="可信评估">可信评估</a></li><li class="depth-0"><a href="#关联工作" data-for="关联工作">关联工作</a></li><li class="depth-1"><a href="#基于" data-for="基于">基于</a></li><li class="depth-1"><a href="#对比--批判对象" data-for="对比--批判对象">对比 / 批判对象</a></li><li class="depth-1"><a href="#方法相关" data-for="方法相关">方法相关</a></li><li class="depth-0"><a href="#notes" data-for="notes">Notes</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+</script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>

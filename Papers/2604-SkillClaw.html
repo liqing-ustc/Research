@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en"><head><title>SkillClaw: Let Skills Evolve Collectively with Agentic Evolver</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="SkillClaw: Let Skills Evolve Collectively with Agentic Evolver"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="SkillClaw: Let Skills Evolve Collectively with Agentic Evolver"/><meta name="twitter:description" content="Summary SkillClaw: Let Skills Evolve Collectively with Agentic Evolver 核心: 在一个多用户部署的 Claude-Code 风格 agent 生态里，把所有用户的交互轨迹聚到一起，用一个”agentic evolver”按技能分组、反复重写共享 skill 文件，夜间在真实环境里验证后再推送给所有用户——一个典型的”日间用、夜间进化”的 ..."/><meta property="og:description" content="Summary SkillClaw: Let Skills Evolve Collectively with Agentic Evolver 核心: 在一个多用户部署的 Claude-Code 风格 agent 生态里，把所有用户的交互轨迹聚到一起，用一个”agentic evolver”按技能分组、反复重写共享 skill 文件，夜间在真实环境里验证后再推送给所有用户——一个典型的”日间用、夜间进化”的 ..."/><meta property="og:image:alt" content="Summary SkillClaw: Let Skills Evolve Collectively with Agentic Evolver 核心: 在一个多用户部署的 Claude-Code 风格 agent 生态里，把所有用户的交互轨迹聚到一起，用一个”agentic evolver”按技能分组、反复重写共享 skill 文件，夜间在真实环境里验证后再推送给所有用户——一个典型的”日间用、夜间进化”的 ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2604-SkillClaw"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2604-SkillClaw"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary SkillClaw: Let Skills Evolve Collectively with Agentic Evolver 核心: 在一个多用户部署的 Claude-Code 风格 agent 生态里，把所有用户的交互轨迹聚到一起，用一个”agentic evolver”按技能分组、反复重写共享 skill 文件，夜间在真实环境里验证后再推送给所有用户——一个典型的”日间用、夜间进化”的 ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  padding: 2rem;
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2604-SkillClaw"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Meetings\&quot;,\&quot;Resources\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="a246wo"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/RL" class="sidebar-tag-pill">#RL</a><a href="/mindflow/tags/web-agent" class="sidebar-tag-pill">#web-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/scene-understanding" class="sidebar-tag-pill">#scene-understanding</a><a href="/mindflow/tags/instruction-following" class="sidebar-tag-pill">#instruction-following</a><a href="/mindflow/tags/cross-embodiment" class="sidebar-tag-pill">#cross-embodiment</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2604-SkillClaw</a></div></nav><h1 class="article-title">SkillClaw: Let Skills Evolve Collectively with Agentic Evolver</h1><div class="paper-meta"><span class="paper-venue">arXiv preprint</span><span class="paper-authors"><span class="meta-sep">·</span>Ziyu Ma <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, Shidong Yang</span><span>, Yuxiang Ji</span><span>, Xucong Wang</span><span>, Yong Wang</span><span>, Yiming Hu</span><span>, Tongwen Huang</span><span>, Xiangxiang Chu</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2026-04-09T00:00:00.000Z">Apr 09, 2026</time><span>20 min read</span></p><ul class="tags"><li><a href="../tags/LLM" class="internal tag-link">LLM</a></li><li><a href="../tags/task-planning" class="internal tag-link">task-planning</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>SkillClaw: Let Skills Evolve Collectively with Agentic Evolver </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><strong>核心</strong>: 在一个多用户部署的 Claude-Code 风格 agent 生态里，把所有用户的交互轨迹聚到一起，用一个”agentic evolver”按技能分组、反复重写共享 skill 文件，夜间在真实环境里验证后再推送给所有用户——一个典型的”日间用、夜间进化”的 skill-library self-evolution 循环。</li>
+<li><strong>方法</strong>: Trajectory → 按 referenced skill 分组 → agentic evolver 选 {refine, create, skip} → 夜间在真实 tool 环境里拉 A/B 对拍 → 仅 Accept 入池，Reject 丢弃。</li>
+<li><strong>结果</strong>: 6 天 6 轮在 WildClawBench 的 4 个类目上以 Qwen3-Max 为 backbone：Social +11.7%, Search +52%, Creative +88.4%, Safety +33.3%（均为相对于 Day 1 的相对增益）。</li>
+<li><strong>Sources</strong>: <a href="https://arxiv.org/abs/2604.08377" class="external">paper<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://github.com/AMAP-ML/SkillClaw" class="external">github<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+</ul>
+</div>
+</blockquote>
+<p><strong>Key Takeaways:</strong></p>
+<ol>
+<li><strong>“自然 ablation” 是唯一真正新颖的立论</strong>：同一个 skill 被不同用户在不同 context 下调用，把 skill 本身变成受控变量，这样把 trajectory 聚合看成 cross-user A/B，就能区分一次性 fix 与可泛化改进。这是论文唯一站得住脚的 motivation。</li>
+<li><strong>Agentic evolver = 让另一个 LLM agent 直接去改 skill Markdown</strong>：不是规则流水线，不是 fine-tune，就是给它 trajectory 证据 + 当前 skill 文件，让它 diff。三个动作：refine / create / skip。prompts 全部在 appendix 里暴露（长得像 Claude skills 的 SOP 修订器）。</li>
+<li><strong>夜间 validator 是真执行 A/B，不是 LLM-judge</strong>：候选 skill 在真实 tool 环境里和老 skill 各跑一遍同样的 daytime 任务子集，model 比较 outcome。这是 monotonic deployment 的机制保证——但也等于在 test set 上调 skill。</li>
+<li><strong>实验规模极小</strong>：6 天、8 concurrent users、4 个类目、每类不超过十几个 task。很多 cell 里一个 skill update 涨一次就 plateau 5 天，根本看不出 “continuous evolution”。</li>
+<li><strong>Claude Code / Anthropic skills 的直接复刻</strong>：method 与 Anthropic 2026 的 “skills” 范式 1:1 对应，差异是集中化 evolver + validator 闭环；但集中化本身带来 privacy / skill 漂移 / 跨用户污染的大坑，论文完全没触及。</li>
+</ol>
+<p><strong>Teaser. 系统全景：多用户轨迹聚合 → agentic evolver 在共享 skill repo 上做 refine/create → 夜间 validator 真实执行对拍 → 推送回所有 agent。</strong></p>
+<p><img src="../assets/SkillClaw/fig1_overview.png" alt/></p>
+<hr/>
+<h2 id="problem--motivation">Problem &amp; Motivation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#problem--motivation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>论文的问题设定相当直白：在 OpenClaw（论文里的 Claude Code stand-in）这种”skill 即可复用 markdown 程序”的 agent 系统里，skill 库一经部署就基本静态化。用户在与 agent 试错中偶尔找到了一个能 work 的 procedure（比如正确的 Slack API port、正确的 <code>/tmp_workspace</code> 目录约定），这些发现不会沉淀回 skill 文件，也不会传播到其他用户；结果是每一个用户都要独立重新发现同一个坑。</p>
+<p>Motivation 的核心 observation 值得抄下来：</p>
+<blockquote>
+<p>different users exercising the same skill under diverse contexts produce complementary views of that skill’s behavioral boundary, revealing both the conditions under which it works and those under which it breaks. A single user rarely generates enough signal to separate a generalizable improvement from an idiosyncratic fix.</p>
+</blockquote>
+<p>这句话是整篇的立论。作者管这叫 <strong>natural ablation</strong>：同一个 skill 被不同用户在不同任务/环境下调用，相当于把 skill 本身做了受控变量处理——这样一旦多 session 对比出现”有的成功、有的失败”，就有机会识别出是 skill 指令的缺陷、还是场景偶发。这个 framing 挺漂亮；但实验里 8 个用户 × 几十个 task 的规模，很难真实跑出这种 ablation 效应。</p>
+<h2 id="method">Method<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#method" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="21-from-isolated-sessions-to-shared-evidence">2.1 From Isolated Sessions to Shared Evidence<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#21-from-isolated-sessions-to-shared-evidence" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>SkillClaw 把系统级 loop 定义为：</p>
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">Multi-user Interaction</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">Session Collection</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">Skill Evolution</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">Skill Synchronization</span></span></span></span></span></span>
+<p>每个 session trajectory τ 是一个完整的因果链：</p>
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8095em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">prompt</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6679em;"></span><span class="mord text"><span class="mord">action</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">feedback</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8095em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">agent response</span></span></span></span></span></span>
+<p>为什么要保留整条链？论文的解释倒是实在：<strong>skill-level failure 多是 procedural 失败</strong>——错误的 argument 格式、漏掉一步 validation、tool call 顺序错——这些在 final response 里看不出来，只能从中间 action-feedback trace 诊断。</p>
+<p>轻量 metadata：(i) 引用了哪些 skill；(ii) 是否出现 tool error；(iii) coarse quality 估计。然后把 session 按 referenced skill 分组：</p>
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">G</span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1132em;">τ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.1132em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1132em;">τ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.1132em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord text"><span class="mord"> invoked </span></span><span class="mord mathnormal">s</span><span class="mclose">}</span><span class="mpunct">,</span><span class="mspace" style="margin-right:1em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">G</span><span class="mopen">(</span><span class="mord">∅</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1132em;">τ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.1132em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1132em;">τ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.1132em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord text"><span class="mord"> invoked no skill</span></span><span class="mclose">}</span></span></span></span></span>
+<p>G(s) 用来 refine 老 skill，G(∅) 用来挖 create 新 skill 的机会。</p>
+<h3 id="22-agentic-skill-evolution核心">2.2 Agentic Skill Evolution（核心）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#22-agentic-skill-evolution核心" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Algorithm 1</strong> 基本就是把 agentic evolver 套进 for-loop：</p>
+<pre><code>for each group G(s):
+    evolver 分析 recurring success/failure patterns
+    action ∈ {refine, create, skip}
+    生成候选 skill 更新
+    conservative editing + validation
+    approved → merge
+分析 G(∅) 找缺失的可复用 procedure → 创建新 skill
+Sync 回所有 agent
+</code></pre>
+<p>Evolver 是一个 LLM agent + “结构化 harness”。Harness 提供：grouped 证据、当前 skill 定义、允许的 action 集。具体决策（refine 哪个段落、create 什么 slug、skip 的依据）完全开放。论文强调 evolver 要”successful + failed session 联合推理”：successful session 定义 skill 的 invariant（不能改的部分），failed session 定义 correction target。这是为了防止 “fixing one problem while breaking a previously effective procedure”——听起来合理，但没有任何定量指标衡量是否真做到了。</p>
+<blockquote>
+<p>❓ <strong>Agentic Evolve Prompt 里最刺眼的一条反模式警告</strong>（Appendix）：</p>
+<blockquote>
+<p>“if the skill ALREADY contains correct environment information… and the agent failed because it did NOT use that information… that is an AGENT problem, not a skill problem. Do NOT delete the correct API information from the skill and replace it with instructions like ‘go read utils.py’.”</p>
+</blockquote>
+<p>这说明作者自己在 iterate 过程中已经观察到 evolver 会把正确的 API endpoint 删掉改成 “去读源码”——换句话说 evolver 有把 skill 当 postmortem 笔记写、而不是当 reusable artifact 写的倾向。这个风险在方法描述里被弱化为一个 prompt 约束，但实际上是 agentic evolver 这个范式的结构性问题。</p>
+</blockquote>
+<h3 id="23-skill-synchronization--validation">2.3 Skill Synchronization &amp; Validation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#23-skill-synchronization--validation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>validator 机制：对每个 candidate s′，取 daytime 里对应的 task 子集，s 和 s′ 在同一 tool 环境下真跑，model-based 对比 outcome（任务成功 + 执行稳定）。Accept → 入 best pool；Reject → 丢弃。从而保证部署池 monotonic。</p>
+<p>注意这里有两个关键信息：</p>
+<ol>
+<li><strong>validator 用的 task 就是 daytime 用户跑过的 task</strong>——这是在 test traffic 上调 skill，等于把用户当 validation set 用。论文没有说 validation 和后续 daytime 评估之间是否有任务隔离。</li>
+<li><strong>validation 在 idle user environment 里执行</strong>——用户设备夜里要替系统跑对比实验。这在 multi-user 产品里是个不小的运营假设。</li>
+</ol>
+<h2 id="experiments">Experiments<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#experiments" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="31-wildclawbench">3.1 WildClawBench<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#31-wildclawbench" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>60 个任务、6 个类目（Productivity / Code / Social / Search / Creative / Safety）；全 Linux container 执行；任务长度 15–50 步；多模态输入；hard constraints → critical error 直接零分。<strong>论文只报告其中 4 个类目</strong>，另 2 个 “to be included in the future version”——这个省略值得扣分。</p>
+<h3 id="32-setup">3.2 Setup<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#32-setup" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>6 天 × 6 rounds，每天 day-phase + night-phase</li>
+<li>8 concurrent users</li>
+<li>backbone: Qwen3-Max（唯一一个 backbone，未做 model ablation）</li>
+<li>Day 1 = baseline（初始 skill set）</li>
+<li>Validator 决策：accept 进池 / reject 作为候选</li>
+</ul>
+<h3 id="33-main-results">3.3 Main Results<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#33-main-results" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table 3. User-side daytime results（best-skill deployment view）</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Category</th><th>Day 1</th><th>Day 2</th><th>Day 3</th><th>Day 4</th><th>Day 5</th><th>Day 6</th><th>Abs. Gain</th><th>Rel. Gain</th></tr></thead><tbody><tr><td>Social Interaction</td><td>54.01%</td><td><strong>60.34%</strong></td><td>60.34%</td><td>60.34%</td><td>60.34%</td><td>60.34%</td><td>+6.33</td><td>+11.72%</td></tr><tr><td>Search &amp; Retrieval</td><td>22.73%</td><td>30.00%</td><td>30.00%</td><td><strong>34.55%</strong></td><td>34.55%</td><td>34.55%</td><td>+11.82</td><td>+52.00%</td></tr><tr><td>Creative Synthesis</td><td>11.57%</td><td><strong>21.80%</strong></td><td>21.80%</td><td>21.80%</td><td>21.80%</td><td>21.80%</td><td>+10.23</td><td>+88.41%</td></tr><tr><td>Safety &amp; Alignment</td><td>24.00%</td><td>24.00%</td><td>24.00%</td><td>24.00%</td><td><strong>32.00%</strong></td><td>32.00%</td><td>+8.00</td><td>+33.33%</td></tr></tbody></table></div>
+<p>一眼可见的问题：<strong>4 个类目里 3 个在 Day 2 或 Day 5 提升一次后就 plateau 到 Day 6</strong>。换句话说 “continuous evolution” 在这张表里并不 continuous——真实发生的是一次性大的 skill 重写 + 后续 5 天 reject。把这说成”6 轮持续改进”在 abstract 里略有 overclaim。</p>
+<p>类目分析（摘自 Table 4-7，我筛出真正 Accept 入池的 update 数）：</p>
+<ul>
+<li><strong>Social Interaction</strong>：6 天只有 1 次 Accept（Day 1 的 <code>03_task6</code>，executive summary skill 被从描述性说明重写为 strictly-ordered steps）。整个 +11.7% 全来自这一次 skill 重写。</li>
+<li><strong>Search &amp; Retrieval</strong>：2 次 Accept（<code>validate-file-existence</code> 和一次”确认当前 pool 为 best-so-far”的空操作）。其中一次 Accept 严格意义上没有 skill 文本落地——有点凑数。</li>
+<li><strong>Creative Synthesis</strong>：1 次 Accept（<code>validate-tmp-workspace-inputs</code>）。<code>+88.41%</code> 的相对增益完全来自这一次 workspace preflight skill 的加入，而 baseline 只有 11.57%——<strong>低 baseline 放大相对值是这里数字最亮眼但最误导的地方</strong>。</li>
+<li><strong>Safety &amp; Alignment</strong>：3 次 Accept（全是 <code>git-push-with-auth-fallback</code> 的迭代版本 + 一次 directory cloning）。这是全文 Accept 最密集的类目，但 Day 5-6 继续 iterate 同一个 skill 都被 Reject——说明很快就 saturate 了。</li>
+</ul>
+<h3 id="34-controlled-validation-table-8">3.4 Controlled Validation (Table 8)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#34-controlled-validation-table-8" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>作者挑了 3 个自定义 query 做 “Skill Evolve Lite” 控制实验：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Query</th><th>Baseline</th><th>Post-Evolve</th><th>Gain</th></tr></thead><tbody><tr><td>basic extraction</td><td>21.7%</td><td><strong>69.6%</strong></td><td>+47.8%</td></tr><tr><td>deadline parsing</td><td>41.1%</td><td><strong>48.0%</strong></td><td>+6.9%</td></tr><tr><td>save report</td><td>28.3%</td><td><strong>100.0%</strong></td><td>+71.7%</td></tr><tr><td>Average</td><td>30.4%</td><td><strong>72.5%</strong></td><td>+42.1%</td></tr></tbody></table></div>
+<p><code>save report</code> 28.3% → 100% 的来源是”缺少 environment-specific procedure（output path/format），一旦编码成 skill 就完全修复”——这基本等于在说：如果你告诉 agent 正确的输出路径，它就会用正确的输出路径。这是个相当 trivial 的因果链，把它 framed 成 “skill evolution” 对证据价值打了大折扣。</p>
+<h3 id="35-case-studies">3.5 Case Studies<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#35-case-studies" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Figure 2. Slack message analysis 的 skill 进化。</strong> Original skill 里写着错的 API port（<code>9100</code>），evolved skill 改成 <code>9110</code>，同时加了”先用 preview 筛候选、再拉 full message”的 task decomposition。</p>
+<p><img src="../assets/SkillClaw/fig2_case_slack.png" alt/></p>
+<p>这个例子很有说服力——<strong>但注意它本质是个 “skill 里有个错字，被修正了” 的 case</strong>，不是真正复杂 procedural 改进。3 个改进里 “修正 API port” 和 “指定正确输出路径” 都是 hardcoded fact 修正；只有 “task decomposition（先扫 preview 再拉 full）” 算真正 procedural evolution。</p>
+<p><strong>Figure 3. ICCV Oral 论文归属统计任务。</strong> Original skill 靠 “affiliation list 里出现 SJTU” 就算；evolved skill 显式定义 “first affiliation” = official PDF 首页第一个机构，并对 noisy extraction 做 targeted re-check。</p>
+<p><img src="../assets/SkillClaw/fig3_case_iccv.png" alt/></p>
+<p>这个 case 更有意思——它显示 evolver 能把一个”模糊匹配”的 heuristic 升级成”precise structural definition + verification-aware reasoning”。是 4 个 case 里唯一让我觉得 agentic evolver 在做非平凡事的例子。</p>
+<h2 id="论文点评">论文点评<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#论文点评" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="strengths">Strengths<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>立论站得住</strong>：“cross-user 的同 skill 不同 context 调用 = natural ablation” 这个 framing 确实比 single-user 的 self-reflection 有可扩展性，是全文最有价值的观点。</li>
+<li><strong>Validator 是真跑实验而不是 LLM-as-judge</strong>：A/B 对拍在真实 tool 环境里执行，比很多 agentic self-improvement 论文的 model-judge 闭环要 honest 得多。虽然”用 user daytime task 当 validation set”本身有问题（见 Weaknesses）。</li>
+<li><strong>Appendix 里的 prompt 本身是个 artifact</strong>：把 “agent problem vs skill problem” 的区分、“保留 API fact 不许删”的硬约束显式写进 evolver prompt，这些工程细节比 method section 还值得读——实际上就是在告诉你 agentic evolver 会犯哪些错。</li>
+<li><strong>Creative Synthesis 的 workspace preflight skill</strong> 和 <strong>Safety 的 git auth fallback</strong> 这两个 Accept 的 skill 内容本身挺合理，复现难度不大。</li>
+</ol>
+<h3 id="weaknesses">Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>“Continuous evolution” 是营销修辞</strong>：Table 3 里 4 个类目有 3 个一次性涨完就 plateau 5 天，和 abstract 里的 “continuous improvement across six rounds of evolution” 明显不符。真实故事是 “第一轮大 rewrite + 后面几乎全 reject”。</li>
+<li><strong>88.41% 是低 baseline 放大的</strong>：Creative Synthesis baseline 11.57% 绝对值太低，+10 个百分点就变成 +88% 相对增益。把这个数字放在 HF paper card 当宣传头条有刻意误导嫌疑。abstract 应当给绝对值。</li>
+<li><strong>规模过小且缺 ablation</strong>：
+<ul>
+<li>只有 Qwen3-Max 一个 backbone，未验证换模型是否还 work</li>
+<li>只有 8 个 concurrent user，“collective” 的 collective 性几乎不存在；natural ablation 的 framing 在 N=8 规模下很难说真 revealed 了什么</li>
+<li>6 个类目只报 4 个，另 2 个（Productivity Flow / Code Intelligence）“to be included in the future version”——<strong>大概率是没涨或者掉了</strong></li>
+<li>没有对比 baseline：既没和 “single-user reflection”（Reflexion 之类）比，也没和 “static skill library + RAG over trajectories” 比。所以”collective”带来的增益 vs “单纯跑 6 轮 skill refinement”的增益无法区分</li>
+</ul>
+</li>
+<li><strong>Validation leaks</strong>：validator 用的是 daytime users 跑过的同一批 task 来测 candidate skill。Accept 的 skill 完全可能是在 overfit 这批 task 的 procedural quirk。要证明真泛化需要一个 held-out validation set，论文里完全没有。</li>
+<li><strong>Privacy / 跨用户污染完全没讨论</strong>：
+<ul>
+<li>一个用户的 Slack trajectory（包含真实对话内容、内部 API、人名）会被传回 central evolver 做 grouping——<strong>这里的隐私边界论文只字未提</strong></li>
+<li>一个恶意或 idiosyncratic 用户的 trajectory 可能把某个 skill 带偏（比如把某个 endpoint 改成自己环境的专用 port），而 validator 只用 “其他 daytime task” 做 A/B——没机制防止 skill pool 被少数用户的 environmental quirk 主导</li>
+<li>“best-skill 对所有用户同步”这个假设隐含了”所有用户环境同构”。真实 Claude Code 用户环境差异极大（不同 OS、不同 API 版本、不同私有工具），一个用户的 workspace preflight skill 推给所有人可能反而制造 regression</li>
+</ul>
+</li>
+<li><strong>Agentic evolver 没做 ablation</strong>：evolver 的 action 空间 {refine, create, skip}、是否需要 conservative mode、如果换成 rule-based evolver（如 diff patch generator）效果会差多少——这些都没测。整个 agentic 的论点只靠 “开放 reasoning > 规则” 这句话。</li>
+<li><strong>与 Anthropic skills、Voyager skill library、AgentKB、ExpeL 等工作的 delta 很薄</strong>：Related work 里列了一大堆 skill-based / memory-based / reflection-based 方法，但正文只说 “they don’t aggregate across users”。真实 delta 就是 “dispatcher 从 per-user 换成 central + validator 闭环”——这在工程上也许有价值，但作为 ML paper 的方法贡献偏弱。</li>
+<li><strong>命名碰瓷严重</strong>：OpenClaw / CoPaw / IronClaw / PicoClaw / ZeroClaw / NanoClaw / NemoClaw 这一长串明显在蹭 Claude / Anthropic 的名字。HF Trending 高度怀疑有一部分是 brand association 带来的。</li>
+<li><strong>“同一 best pool retest 也被标为 Accept”</strong>：Table 5 Day 3 和 Table 7 Day 4 都出现 “(none) candidate 却 Accept” 的条目——这种 no-op 被计入 Accept 明显是在粉饰 accept rate。</li>
+</ol>
+<h3 id="可信评估">可信评估<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#可信评估" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="artifact-可获取性">Artifact 可获取性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#artifact-可获取性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><strong>代码</strong>: 开源（<a href="https://github.com/AMAP-ML/SkillClaw" class="external">AMAP-ML/SkillClaw<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>），README 声明包含 evolver / validator / 示例 skill 库</li>
+<li><strong>模型权重</strong>: 不适用（方法不涉及训练；backbone 是商用 Qwen3-Max API）</li>
+<li><strong>训练细节</strong>: 不适用（纯 prompting / orchestration）；关键的 evolver / summarizer prompt 在 appendix 完整给出</li>
+<li><strong>数据集</strong>: WildClawBench 外部依赖，作者指向 InternLM/WildClawBench 仓库（第三方 benchmark，非本文提出）</li>
+</ul>
+<h4 id="claim-可验证性">Claim 可验证性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#claim-可验证性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>✅ <strong>“agentic evolver 能真改 skill markdown”</strong>：Case study（Figure 2-5）的 skill diff 是真实可信的 artifact</li>
+<li>✅ <strong>“6 轮在 4 类目均有提升”</strong>：数字在 Table 3 可 grep 到，与方法一致</li>
+<li>⚠️ <strong>“continuous improvement”</strong>：与 Table 3 的实际 plateau 模式矛盾；更诚实的 phrasing 是 “one-time step improvement”</li>
+<li>⚠️ <strong>“88.41% relative improvement in Creative Synthesis”</strong>：技术上正确，但分母 11.57% 使其不具备与其他方法的可比性；abstract 应报绝对 gain</li>
+<li>⚠️ <strong>“collective evolution”</strong>：N=8 用户规模下，collective 的信号与 single-user 反复试错难以区分；没有 ablation 支撑</li>
+<li>❌ <strong>“enables continuously improving agent systems”</strong>：这个 general claim 在 6-day / 4-category / 1-backbone 的证据下是 overclaim，属于 positioning 修辞而非可验证 claim</li>
+</ul>
+<hr/>
+<h2 id="关联工作">关联工作<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#关联工作" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="基于">基于<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#基于" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Anthropic Skills (2026)</strong>: SkillClaw 的 skill = markdown 格式可复用 procedure，这个 representation 直接继承自 Claude skills</li>
+<li><strong>Voyager (Wang et al. 2023)</strong>: skill library 的 lifelong learning paradigm 是远祖；但 Voyager 是 single-agent 无 validator，SkillClaw 把它扩展成 multi-user + central validator</li>
+<li><strong>Reflexion (Shinn et al. 2023)</strong>: self-reflection 改 behavior 的范式，SkillClaw 声称改进点是 cross-user</li>
+</ul>
+<h3 id="对比">对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>ExpeL (Zhao et al. 2024)</strong>: per-agent insight extraction；SkillClaw 等于 ExpeL + 集中化 aggregation + 真 execution validator</li>
+<li><strong>AgentKB (Tang et al. 2025)</strong>: cross-domain experience 作为外部知识库，但不直接修改 skill 定义</li>
+<li><strong>ReasoningBank (Ouyang et al. 2025)</strong>: reasoning memory scaling；对比维度是 memory vs skill，SkillClaw 选择后者</li>
+<li><strong>SkillWeaver (Zheng et al. 2025)</strong>: web agent self-improve by skill discovery；SkillClaw 把 “skill” 从 web 场景推广到通用 OpenClaw</li>
+<li><strong>EvoSkill / AutoSkill / MetaClaw（同期 2026 年工作）</strong>: 近期大量类似 “skill self-evolution” 工作涌现，SkillClaw 的差异化仅在 “multi-user aggregation + real-execution validator”</li>
+</ul>
+<h3 id="方法相关">方法相关<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#方法相关" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>LLM-as-judge vs execution-based validation</strong>: SkillClaw 选 execution-based，是对比 LLM-judge 的一个数据点</li>
+<li><strong>Lifelong agent learning</strong>: 属于 “无参数更新的 lifelong adaptation” 分支，与 “agentic RL / weight-space 更新” 形成对照</li>
+<li><strong>Anthropic “skill writing principles”</strong>: Evolver prompt 里的 conservative editing / distinguish skill vs agent problem 原则明显借鉴 Anthropic 官方 skill 写作指南</li>
+</ul>
+<hr/>
+<h2 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>HF Trending 279 更多反映 “Claude Code skill evolution” 这个叙事热度，而非方法创新；判断为 <strong>1 (可参考)</strong>——idea 有价值（natural ablation framing 和 real-execution validator 值得借鉴），但证据不足以支撑其宏大 claim。</li>
+<li>对我们 VLM / agent 相关项目的可能启发：如果未来做 agent skill library，“real-execution A/B validator” 这个 pattern 值得抄，但要做一个真正的 held-out validation set；不要把用户 daytime traffic 当 validation。</li>
+<li>值得关注的问题：cross-user skill evolution 在真实产品里的 privacy 边界和 skill quality drift 如何保障？本文回避了，但这是落地必答题。</li>
+<li>Appendix 的 Agentic Evolve Prompt 本身是这篇论文最高信息密度的部分，可单独摘出作为 “如何写 skill 编辑 prompt” 的 reference。</li>
+</ul></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="0iq0gx" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#problem--motivation" data-for="problem--motivation">Problem &amp; Motivation</a></li><li class="depth-0"><a href="#method" data-for="method">Method</a></li><li class="depth-1"><a href="#21-from-isolated-sessions-to-shared-evidence" data-for="21-from-isolated-sessions-to-shared-evidence">2.1 From Isolated Sessions to Shared Evidence</a></li><li class="depth-1"><a href="#22-agentic-skill-evolution核心" data-for="22-agentic-skill-evolution核心">2.2 Agentic Skill Evolution（核心）</a></li><li class="depth-1"><a href="#23-skill-synchronization--validation" data-for="23-skill-synchronization--validation">2.3 Skill Synchronization &amp; Validation</a></li><li class="depth-0"><a href="#experiments" data-for="experiments">Experiments</a></li><li class="depth-1"><a href="#31-wildclawbench" data-for="31-wildclawbench">3.1 WildClawBench</a></li><li class="depth-1"><a href="#32-setup" data-for="32-setup">3.2 Setup</a></li><li class="depth-1"><a href="#33-main-results" data-for="33-main-results">3.3 Main Results</a></li><li class="depth-1"><a href="#34-controlled-validation-table-8" data-for="34-controlled-validation-table-8">3.4 Controlled Validation (Table 8)</a></li><li class="depth-1"><a href="#35-case-studies" data-for="35-case-studies">3.5 Case Studies</a></li><li class="depth-0"><a href="#论文点评" data-for="论文点评">论文点评</a></li><li class="depth-1"><a href="#strengths" data-for="strengths">Strengths</a></li><li class="depth-1"><a href="#weaknesses" data-for="weaknesses">Weaknesses</a></li><li class="depth-1"><a href="#可信评估" data-for="可信评估">可信评估</a></li><li class="depth-0"><a href="#关联工作" data-for="关联工作">关联工作</a></li><li class="depth-1"><a href="#基于" data-for="基于">基于</a></li><li class="depth-1"><a href="#对比" data-for="对比">对比</a></li><li class="depth-1"><a href="#方法相关" data-for="方法相关">方法相关</a></li><li class="depth-0"><a href="#notes" data-for="notes">Notes</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+</script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>
