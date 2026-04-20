@@ -8,7 +8,7 @@ tags:               # [tag1, tag2, ...]
 paper:
 website: 
 github:
-rating:              # 1=有参考价值, 2=重要, 3=必读
+rating:              # 1=可参考, 2=重要, 3=必读
 date_added:          # 填写今天的日期 YYYY-MM-DD
 ---
 ## Summary
