@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><title>V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning"/><meta name="twitter:description" content="Summary Meta FAIR 提出 V-JEPA 2，基于 self-supervised mask-denoising 预训练的 video foundation model，在 22M 视频上训练 1B 参数 ViT，冻结 representation 后仅用 62 小时无标签机器人视频即可训练 action-conditioned ..."/><meta property="og:description" content="Summary Meta FAIR 提出 V-JEPA 2，基于 self-supervised mask-denoising 预训练的 video foundation model，在 22M 视频上训练 1B 参数 ViT，冻结 representation 后仅用 62 小时无标签机器人视频即可训练 action-conditioned ..."/><meta property="og:image:alt" content="Summary Meta FAIR 提出 V-JEPA 2，基于 self-supervised mask-denoising 预训练的 video foundation model，在 22M 视频上训练 1B 参数 ViT，冻结 representation 后仅用 62 小时无标签机器人视频即可训练 action-conditioned ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2506-VJEPA2"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2506-VJEPA2"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary Meta FAIR 提出 V-JEPA 2，基于 self-supervised mask-denoising 预训练的 video foundation model，在 22M 视频上训练 1B 参数 ViT，冻结 representation 后仅用 62 小时无标签机器人视频即可训练 action-conditioned ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+<html lang="en"><head><title>V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning"/><meta name="twitter:description" content="Summary V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning 核心: 用 JEPA 范式在 1M+ 小时互联网视频上自监督预训练 1B 参数 video encoder，再用 62 小时无标签机器人视频训练 action-conditioned ..."/><meta property="og:description" content="Summary V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning 核心: 用 JEPA 范式在 1M+ 小时互联网视频上自监督预训练 1B 参数 video encoder，再用 62 小时无标签机器人视频训练 action-conditioned ..."/><meta property="og:image:alt" content="Summary V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning 核心: 用 JEPA 范式在 1M+ 小时互联网视频上自监督预训练 1B 参数 video encoder，再用 62 小时无标签机器人视频训练 action-conditioned ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2506-VJEPA2"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2506-VJEPA2"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning 核心: 用 JEPA 范式在 1M+ 小时互联网视频上自监督预训练 1B 参数 video encoder，再用 62 小时无标签机器人视频训练 action-conditioned ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
   position: absolute;
   display: flex;
   float: right;
@@ -116,88 +116,546 @@ pre:hover > .expand-button {
   padding: 0 12px;
   font-size: 14px;
 }
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2506-VJEPA2"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="gc1ghh"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/RL" class="sidebar-tag-pill">#RL</a><a href="/mindflow/tags/web-agent" class="sidebar-tag-pill">#web-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/scene-understanding" class="sidebar-tag-pill">#scene-understanding</a><a href="/mindflow/tags/instruction-following" class="sidebar-tag-pill">#instruction-following</a><a href="/mindflow/tags/cross-embodiment" class="sidebar-tag-pill">#cross-embodiment</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2506-VJEPA2</a></div></nav><h1 class="article-title">V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning</h1><div class="paper-meta"><span class="paper-venue">arXiv 2025</span><span class="paper-authors"><span class="meta-sep">·</span>Mahmoud Assran <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, Adrien Bardes</span><span>, David Fan</span><span>, Quentin Garrido</span><span>, Russell Howes</span><span>, Mojtaba Komeili</span><span>, Matthew Muckley</span><span>, Ammar Rizvi</span><span>, Claire Roberts</span><span>, Koustuv Sinha</span><span>, Artem Zholus</span><span>, Sergio Arnaud</span><span>, Abha Gejji</span><span>, Ada Martin</span><span>, Francois Robert Hogan</span><span>, Daniel Dugas</span><span>, Piotr Bojanowski</span><span>, Vasil Khalidov</span><span>, Patrick Labatut</span><span>, Francisco Massa</span><span>, Marc Szafraniec</span><span>, Kapil Krishnakumar</span><span>, Yong Li</span><span>, Xiaodong Ma</span><span>, Sarath Chandar</span><span>, Franziska Meier</span><span>, Yann LeCun</span><span>, Michael Rabbat</span><span>, Nicolas Ballas</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2025-06-01T00:00:00.000Z">Jun 01, 2025</time><span>5 min read</span></p><ul class="tags"><li><a href="../tags/world-model" class="internal tag-link">world-model</a></li><li><a href="../tags/cross-embodiment" class="internal tag-link">cross-embodiment</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>Meta FAIR 提出 V-JEPA 2，基于 self-supervised mask-denoising 预训练的 video foundation model，在 22M 视频上训练 1B 参数 ViT，冻结 representation 后仅用 62 小时无标签机器人视频即可训练 action-conditioned world model，实现 zero-shot 机器人操控的 goal-conditioned planning。</p>
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2506-VJEPA2"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="mm0h7i"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/embodied-reasoning" class="sidebar-tag-pill">#embodied-reasoning</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/computer-use" class="sidebar-tag-pill">#computer-use</a><a href="/mindflow/tags/agentic-RL" class="sidebar-tag-pill">#agentic-RL</a><a href="/mindflow/tags/gui-agent" class="sidebar-tag-pill">#gui-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/world-model" class="sidebar-tag-pill">#world-model</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2506-VJEPA2</a></div></nav><h1 class="article-title">V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning</h1><div class="paper-meta"><span class="paper-venue">arXiv 2025</span><span class="paper-authors"><span class="meta-sep">·</span>Mahmoud Assran <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, Adrien Bardes</span><span>, David Fan</span><span>, Quentin Garrido</span><span>, Russell Howes</span><span>, Mojtaba Komeili</span><span>, Matthew Muckley</span><span>, Ammar Rizvi</span><span>, Claire Roberts</span><span>, Koustuv Sinha</span><span>, Artem Zholus</span><span>, Sergio Arnaud</span><span>, Abha Gejji</span><span>, Ada Martin</span><span>, Francois Robert Hogan</span><span>, Daniel Dugas</span><span>, Piotr Bojanowski</span><span>, Vasil Khalidov</span><span>, Patrick Labatut</span><span>, Francisco Massa</span><span>, Marc Szafraniec</span><span>, Kapil Krishnakumar</span><span>, Yong Li</span><span>, Xiaodong Ma</span><span>, Sarath Chandar</span><span>, Franziska Meier</span><span>, Yann LeCun</span><span>, Michael Rabbat</span><span>, Nicolas Ballas</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2025-06-01T00:00:00.000Z">Jun 01, 2025</time><span>20 min read</span></p><ul class="tags"><li><a href="../tags/world-model" class="internal tag-link">world-model</a></li><li><a href="../tags/video-understanding" class="internal tag-link">video-understanding</a></li><li><a href="../tags/manipulation" class="internal tag-link">manipulation</a></li><li><a href="../tags/Samples" class="internal tag-link">Samples</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><strong>核心</strong>: 用 JEPA 范式在 1M+ 小时互联网视频上自监督预训练 1B 参数 video encoder，再用 62 小时无标签机器人视频训练 action-conditioned predictor，得到一个能同时做视频理解、动作预测、和 zero-shot robot planning 的 world model</li>
+<li><strong>方法</strong>: Mask-denoising in representation space (V-JEPA 2 pretraining) + 冻结 encoder + 在 representation space 上学 autoregressive action-conditioned predictor (V-JEPA 2-AC) + cross-entropy method 做 receding-horizon planning</li>
+<li><strong>结果</strong>: SSv2 77.3 top-1 / EK100 39.7 R@5 (相对 PlausiVL +44%) / Franka 上 zero-shot pick-and-place avg 65–80% / latent planning 16s vs Cosmos 4min per action</li>
+<li><strong>Sources</strong>: <a href="https://arxiv.org/abs/2506.09985" class="external">paper<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://ai.meta.com/blog/v-jepa-2-world-model-benchmarks/" class="external">website<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://github.com/facebookresearch/vjepa2" class="external">github<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><strong>Rating</strong>: 3 - Foundation（在一个 encoder 上完整打通 understanding / prediction / planning 三条 pipeline，为 JEPA 路线在 video + robotics 提供首个 end-to-end 证据，后续 video world model / latent planning 工作的绕不开 reference）</li>
+</ul>
+</div>
+</blockquote>
+<p><strong>Key Takeaways:</strong></p>
+<ol>
+<li><strong>Self-supervised video pretraining 真的可以同时做 understanding + prediction + planning</strong>：单一 V-JEPA 2 encoder 在 6 个分类、action anticipation、VidQA、机器人 planning 四类任务上都拿了竞争性或 SOTA 的成绩，且不依赖任何 language supervision。这是 LeCun 长期主张的 JEPA 路线在 video domain 的第一次完整 end-to-end 验证</li>
+<li><strong>Latent-space planning 相对 pixel-space video generation 有 ~15× 计算优势</strong>：V-JEPA 2-AC 16 秒/action vs. Cosmos 4 分钟/action，且 success rate 更高。这从工程上证伪了 “robot planning 需要先生成像素级视频” 的 implicit assumption</li>
+<li><strong>62 小时无标签机器人视频 + 冻结 video encoder = zero-shot 跨 lab 部署</strong>：post-training 数据量比典型 imitation learning 小 1–2 个数量级，且不需要 reward / task label / 成功失败标签，对 cross-embodiment world model 的数据需求给出了一个新的下界</li>
+<li><strong>Scaling recipe 清晰但有限</strong>：1B 参数已开始进入 plateau 苗头，data scaling 22M videos 的边际收益也在递减，作者主动 flag 了 long-horizon planning、language-goal、模型规模 (>1B) 三个方向作为 open problems</li>
+</ol>
+<p><strong>Teaser. V-JEPA 2 整体框架：在 1M 小时视频上做 mask denoising 预训练得到 video encoder，下游既可以用 attentive probe 做分类/anticipation 也可以对齐 LLM 做 VidQA；冻结 encoder 后用机器人交互数据训练 action-conditioned predictor (V-JEPA 2-AC)，再用 MPC 做 zero-shot manipulation planning。</strong></p>
+<p><img src="https://arxiv.org/html/2506.09985v1/x1.png" alt/></p>
+<hr/>
 <h2 id="problem--motivation">Problem &amp; Motivation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#problem--motivation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>AI 系统如何通过观察学习理解世界并采取行动，是 Yann LeCun 长期倡导的核心问题。当前方法面临两个关键挑战：（1）大规模 video understanding 模型通常依赖 supervised 或 language-supervised 训练，限制了从纯视觉数据学习物理规律的能力；（2）将互联网视频中学到的 visual representation 迁移到 robotic manipulation 需要大量 robot interaction data。V-JEPA 2 试图证明：纯 self-supervised video pretraining 可以同时赋能视觉理解、未来预测和物理世界规划，且仅需极少量机器人数据即可迁移。</p>
+<p>人类（包括动物）通过观察世界获得大量的物理常识，并利用这种 internal world model 做感知和规划。LeCun 长期主张构建能够 (1) 理解世界、(2) 预测未来、(3) 在新情境下规划 的 AI 系统，而 JEPA (Joint Embedding Predictive Architecture) 是其推荐的技术路径。</p>
+<p>之前的工作存在几个互不打通的孤岛：</p>
+<ul>
+<li><strong>Video understanding 模型</strong>（CLIP / SigLIP / Perception Encoder）依赖 language supervision，限制了对纯物理动态的学习</li>
+<li><strong>Pixel-space world models</strong>（<a href="../Papers/2501-Cosmos" class="internal alias" data-slug="Papers/2501-Cosmos">Cosmos</a> 等 video generation 类）能生成看起来合理的未来帧，但由于 planning 需要在 pixel space 滚动，计算开销巨大，鲜有真正闭环 robot 控制的 demo</li>
+<li><strong>Imitation learning / VLA</strong>（如 <a href="../Papers/2405-Octo" class="internal alias" data-slug="Papers/2405-Octo">Octo</a>、<a href="../Papers/2410-Pi0" class="internal alias" data-slug="Papers/2410-Pi0">π0</a>）需要大量 successful demonstration，对 reward / label 有强依赖，且无法天然利用 failure trajectories</li>
+</ul>
+<p>V-JEPA 2 试图证明：仅靠 self-supervised video pretraining，配合极少量无标签机器人视频，就能贯通 understanding → prediction → planning 整条 pipeline。</p>
+<blockquote>
+<p>❓ 一个隐含的辩论：JEPA 的支持者长期与 generative world model 阵营有方法论分歧。这篇论文用 16s vs 4min 的速度对比、以及 manipulation 上的 success rate 优势，给出了 JEPA 路线的第一个 strong empirical argument——但这个对比是否完全公平（Cosmos 是 latent diffusion，并非专门为 control 设计）值得保留怀疑。</p>
+</blockquote>
+<hr/>
 <h2 id="method">Method<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#method" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
 <h3 id="v-jepa-2-pretraining">V-JEPA 2 Pretraining<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#v-jepa-2-pretraining" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Mask-Denoising in Representation Space</strong> — 核心 objective：</p>
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0973em;vertical-align:-0.3473em;"></span><span class="mord"><span class="mord text"><span class="mord">minimize</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">ϕ</span><span class="mpunct mtight">,</span><span class="mord mtight"><span class="mord mtight">Δ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1645em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2819em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3473em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:1em;"></span><span class="mopen">∥</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">ϕ</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord">Δ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">))</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0628em;vertical-align:-0.3128em;"></span><span class="mord text"><span class="mord">sg</span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.6872em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord overline mtight"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9394em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span><span style="top:-3.8414em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line mtight" style="border-bottom-width:0.049em;"></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3128em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">))</span><span class="mclose"><span class="mclose">∥</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span>
+<p><strong>符号说明</strong>：<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 是 encoder，<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">ϕ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> 是 predictor，<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord">Δ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> 是位置 mask token，<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8944em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span></span></span><span style="top:-3.8144em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span></span></span></span> 是 encoder 权重的 EMA，<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">sg</span></span></span></span></span> 是 stop-gradient。Loss 只在 masked patch 上计算，用 EMA + stop-gradient 防止 representation collapse。</p>
+<p><strong>Architecture</strong>：encoder 和 predictor 都是 ViT，最大 1B 参数 (ViT-g)。三个工程改动：</p>
 <ul>
-<li><strong>架构</strong>: Vision Transformer (ViT)，最大 1B 参数</li>
-<li><strong>训练范式</strong>: Mask-denoising，在 <strong>representation space</strong>（非 pixel space）操作</li>
-<li><strong>数据</strong>: VideoMix22M 数据集，融合 Something-Something v2、Kinetics、HowTo100M、YT-Temporal-1B、ImageNet 共 2200 万样本</li>
-<li><strong>Scaling 策略</strong>:
+<li><strong>3D-RoPE</strong>（取代原 V-JEPA 的 absolute sincos）——稳定大模型训练</li>
+<li><strong>Tubelet patchify</strong>：<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">16</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">16</span></span></span></span>（<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span></span></span></span>）</li>
+<li><strong>Multiblock masking</strong>（沿用 V-JEPA）</li>
+</ul>
+<p><strong>Key Scaling Ingredients</strong>（这部分是相对原 V-JEPA 的核心增量）：</p>
+<p><strong>Figure 3. 四个 scaling ingredient 的累计效果（average accuracy across SSv2/Diving-48/Jester/K400/COIN/IN1K）。</strong></p>
+<p><img src="https://arxiv.org/html/2506.09985v1/x4.png" alt/></p>
+<ol>
+<li><strong>Data scaling</strong>: 2M → 22M videos (VideoMix22M, +1 pt average)</li>
+<li><strong>Model scaling</strong>: ViT-L 300M → ViT-g 1B (+1.5 pt)</li>
+<li><strong>Longer training</strong>: warmup-constant-decay schedule，90K → 252K iterations (+0.8 pt)</li>
+<li><strong>Progressive resolution</strong>: warmup/main 阶段用 16 frames @ 256²，cooldown 阶段升到 64 frames @ 384² (+0.7 pt)，最关键是给出 <strong>8.4× GPU-time 节省</strong>——直接全分辨率训练 ViT-g 需 ~60 GPU-years</li>
+</ol>
+<h3 id="pretraining-dataset-videomix22m">Pretraining Dataset: VideoMix22M<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#pretraining-dataset-videomix22m" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table 1. VideoMix22M 数据组成。Source-specific 采样权重通过手动 tuning 确定。</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Source</th><th>Samples</th><th>Type</th><th>Total Hours</th><th>Curation</th><th>Weight</th></tr></thead><tbody><tr><td>SSv2</td><td>168K</td><td>EgoVideo</td><td>168</td><td>No</td><td>0.056</td></tr><tr><td>Kinetics</td><td>733K</td><td>ExoVideo</td><td>614</td><td>No</td><td>0.188</td></tr><tr><td>HowTo100M</td><td>1.1M</td><td>ExoVideo</td><td>134K</td><td>No</td><td>0.318</td></tr><tr><td>YT-Temporal-1B</td><td>19M</td><td>ExoVideo</td><td>1.6M</td><td>Yes</td><td>0.188</td></tr><tr><td>ImageNet</td><td>1M</td><td>Images</td><td>n/a</td><td>No</td><td>0.250</td></tr></tbody></table></div>
+<p>YT1B 的 1.6M 小时数据未经 curation，作者用 cluster-based retrieval（target 分布是 Kinetics + SSv2 + COIN + EpicKitchen 训练集）把它过滤成 Curated-YT1B，单独用此数据集训 ViT-L 就能逼近 VM22M 的水平，但更大模型 (ViT-g) 仍然受益于完整 mix——说明 curation 在小模型上 enough，大模型仍需更广 visual coverage。</p>
+<blockquote>
+<p>❓ 22M 视频的 source weight 是 “manually tuned”，paper 没披露 sweep 范围或 sensitivity，这是个可复现性的弱点。</p>
+</blockquote>
+<h3 id="v-jepa-2-ac-action-conditioned-post-training">V-JEPA 2-AC: Action-Conditioned Post-training<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#v-jepa-2-ac-action-conditioned-post-training" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>冻结 V-JEPA 2 video encoder，在其 representation space 上训一个 ~300M 参数的 action-conditioned predictor。</p>
+<p><strong>Figure 6. V-JEPA 2-AC 训练流程。Teacher forcing 把当前帧 representation 喂给 predictor 预测下一帧，rollout loss 把 predictor 输出反馈作为输入做 multi-step 预测以减小 autoregressive error accumulation。</strong></p>
+<p><img src="https://arxiv.org/html/2506.09985v1/x10.png" alt/></p>
+<p><strong>Setup</strong>：</p>
 <ul>
-<li>数据：2M → 22M 视频</li>
-<li>模型：300M → 1B 参数</li>
-<li>训练：90K → 252K iterations</li>
-<li><strong>Progressive resolution training</strong>：多阶段递增分辨率，提升训练效率</li>
+<li>数据：Droid 中 ≥4s 的视频片段，~62 小时，4 fps，16 帧 256² clip</li>
+<li>End-effector state <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6891em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathbb">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">7</span></span></span></span></span></span></span></span></span></span></span>（3 position + 3 orientation Euler + 1 gripper），action <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7917em;vertical-align:-0.2083em;"></span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></li>
+<li>Encoder 用 frozen ViT-g，每帧得到 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">16</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">16</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1408</span></span></span></span> feature map</li>
+<li>Predictor 是 24-layer / 16-head / 1024-dim transformer，<strong>block-causal attention</strong>（每个 patch 能 attend 同步 + 历史的所有 patch / action / state token）</li>
+<li>3D-RoPE 给 video patch，仅 temporal RoPE 给 action / state token</li>
 </ul>
-</li>
-</ul>
-<h3 id="v-jepa-2-ac-action-conditioned-post-training">V-JEPA 2-AC (Action-Conditioned Post-training)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#v-jepa-2-ac-action-conditioned-post-training" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<ul>
-<li><strong>300M 参数</strong> action-conditioned transformer</li>
-<li>仅用 <strong>62 小时</strong>无标签机器人视频训练</li>
-<li>在冻结的 V-JEPA 2 representation 之上学习 action-conditioned next-state prediction</li>
-<li><strong>Goal-conditioned planning</strong>: 通过 energy minimization 在 latent space 搜索达到目标状态的 action sequence</li>
-</ul>
-<h3 id="latent-space-planning">Latent-Space Planning<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#latent-space-planning" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<ul>
-<li>在 latent space 进行 model-predictive planning（非 pixel space video generation）</li>
-<li>计算效率显著提升：<strong>16 秒 vs. 4 分钟</strong>/action</li>
-<li>无需 environment-specific training 或 reward signal 即可 zero-shot 部署</li>
-</ul>
+<p><strong>Loss</strong>：teacher forcing + 2-step rollout</p>
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mopen">(</span><span class="mord mathnormal">ϕ</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathcal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">teacher-forcing</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">ϕ</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathcal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">rollout</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">ϕ</span><span class="mclose">)</span></span></span></span></span>
+<p>其中 rollout loss 只反传一步 recurrent，避免 BPTT 爆炸。</p>
+<h3 id="planning-by-energy-minimization">Planning by Energy Minimization<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#planning-by-energy-minimization" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>给定 goal image <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">g</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> 编码成 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">g</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span>，规划目标是最小化 latent space 的 L1 距离：</p>
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord mathcal" style="margin-right:0.08944em;">E</span><span class="mopen">(</span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">a</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">^</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mrel mtight">:</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">g</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">:=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">∥</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">a</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">^</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mrel mtight">:</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">g</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose"><span class="mclose">∥</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span>
+<p>用 <strong>Cross-Entropy Method (CEM)</strong> 做 sampling-based optimization：每 planning step 从一组高斯分布采样 action 序列，取 top-k 更新分布均值方差，迭代若干轮，执行第一个 action，re-plan（receding horizon control）。</p>
+<p><strong>Figure 7. Planning 示意图：在 latent space 用 CEM 优化 action 序列，使 imagined future state 接近 goal representation；只执行第一个 action 后 re-plan。</strong></p>
+<p><img src="https://arxiv.org/html/2506.09985v1/x12.png" alt/></p>
+<hr/>
 <h2 id="key-results">Key Results<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-results" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="robot-planning最强-selling-point">Robot Planning（最强 selling point）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#robot-planning最强-selling-point" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table 2. Zero-shot Robot Manipulation。两个 lab 的 Franka + RobotiQ gripper，每个任务 10 次 trial，物体位置/初始姿态 randomize。</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th></th><th></th><th></th><th>Grasp</th><th></th><th>Reach w/ Obj.</th><th></th><th>Pick-&amp;-Place</th><th></th></tr></thead><tbody><tr><td>Method</td><td></td><td>Reach</td><td>Cup</td><td>Box</td><td>Cup</td><td>Box</td><td>Cup</td><td>Box</td></tr><tr><td>Octo (BC fine-tune) Avg</td><td></td><td>100%</td><td>15%</td><td>0%</td><td>15%</td><td>70%</td><td>15%</td><td>10%</td></tr><tr><td><strong>V-JEPA 2-AC Avg</strong></td><td></td><td>100%</td><td>65%</td><td>25%</td><td>75%</td><td>75%</td><td>80%</td><td>65%</td></tr></tbody></table></div>
+<p><strong>Table 3. Planning Performance vs Cosmos (latent diffusion 7B)。Single RTX 4090 GPU。</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Method</th><th><a href=".././tags/Samples" class="tag-link internal alias" data-slug="tags/Samples">Samples</a></th><th>Iter</th><th>Horizon</th><th>Time/action</th><th>Reach</th><th>Grasp Cup</th><th>Grasp Box</th><th>P&amp;P Cup</th><th>P&amp;P Box</th></tr></thead><tbody><tr><td>Cosmos</td><td>80</td><td>10</td><td>1</td><td><strong>4 min</strong></td><td>80%</td><td>0%</td><td>20%</td><td>0%</td><td>0%</td></tr><tr><td>V-JEPA 2-AC</td><td>800</td><td>10</td><td>1</td><td><strong>16 sec</strong></td><td>100%</td><td>60%</td><td>20%</td><td>80%</td><td>50%</td></tr></tbody></table></div>
+<p>V-JEPA 2-AC 用 <strong>10× sample budget</strong> 但 <strong>15× 更快</strong>，并且 success rate 全面占优。Cosmos 在 grasp 和 pick-and-place 上几乎全 0，作者归因于 pixel-space prediction 的 fidelity 不足以支持精确控制。</p>
+<p><strong>Figure 10. Pick-and-place 的闭环 rollout。Highlighted frames 是 sub-goal 切换点（grasp → vicinity → final placement）。</strong></p>
+<p><img src="https://arxiv.org/html/2506.09985v1/extracted/6532843/assets/mido/traj-pnp-0.jpg" alt/></p>
+<blockquote>
+<p>❓ Octo 的 baseline performance 显得很差（grasp box 0%），作者用 hindsight relabeling fine-tune 整个 Droid。是否真正调到 Octo 的最佳状态？社区常报 Octo 在 in-distribution 任务上明显高于这个数字，所以 baseline 选择和 fine-tuning 配置可能 favor V-JEPA 2-AC。</p>
+</blockquote>
+<h3 id="understanding-probe-based-classification">Understanding (Probe-based Classification)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#understanding-probe-based-classification" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table 4. 6 个分类任务的 attentive probe 结果（V-JEPA 2 ViT-g₃₈₄ 是 cooldown 时升到 384²，其他用 256²）。</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Method</th><th>Param.</th><th>Avg.</th><th>SSv2</th><th>Diving-48</th><th>Jester</th><th>K400</th><th>COIN</th><th>IN1K</th></tr></thead><tbody><tr><td>DINOv2</td><td>1.1B</td><td>81.1</td><td>50.7</td><td>82.5</td><td>93.4</td><td>83.6</td><td>90.7</td><td>86.1</td></tr><tr><td>PE core G</td><td>1.9B</td><td>82.3</td><td>55.4</td><td>76.9</td><td>90.0</td><td>88.5</td><td>95.3</td><td>87.6*</td></tr><tr><td>SigLIP2</td><td>1.2B</td><td>81.1</td><td>49.9</td><td>75.3</td><td>91.0</td><td>87.3</td><td>95.1</td><td>88.0</td></tr><tr><td>V-JEPA ViT-H</td><td>600M</td><td>85.2</td><td>74.3</td><td>87.9</td><td>97.7</td><td>84.5</td><td>87.1</td><td>80.0</td></tr><tr><td>InternVideo2 s2-1B</td><td>1B</td><td>87.0</td><td>69.7</td><td>86.4</td><td>97.0</td><td>89.4</td><td>93.8</td><td>85.8</td></tr><tr><td><strong>V-JEPA 2 ViT-g</strong></td><td>1B</td><td><strong>87.5</strong></td><td>75.3</td><td>90.1</td><td>97.7</td><td>86.6</td><td>90.7</td><td>84.6</td></tr><tr><td><strong>V-JEPA 2 ViT-g₃₈₄</strong></td><td>1B</td><td><strong>88.2</strong></td><td><strong>77.3</strong></td><td><strong>90.2</strong></td><td><strong>97.8</strong></td><td>87.3</td><td>91.1</td><td>85.1</td></tr></tbody></table></div>
+<p>V-JEPA 2 在 motion 任务（SSv2, Diving-48, Jester）显著超过 image-based encoder，appearance 任务 (K400, COIN, IN1K) 略弱于 PE/SigLIP——符合 motion-vs-appearance 的直觉分工。</p>
+<h3 id="prediction-action-anticipation-on-ek100">Prediction (Action Anticipation on EK100)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#prediction-action-anticipation-on-ek100" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table 5. Epic-Kitchens-100 1-second action anticipation, mean-class recall@5（验证集）。</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Method</th><th>Param.</th><th>Verb</th><th>Noun</th><th>Action</th></tr></thead><tbody><tr><td>InAViT</td><td>160M</td><td>51.9</td><td>52.0</td><td>25.8</td></tr><tr><td>Video-LLaMA</td><td>7B</td><td>52.9</td><td>52.0</td><td>26.0</td></tr><tr><td>PlausiVL</td><td>8B</td><td>55.6</td><td>54.2</td><td>27.6</td></tr><tr><td>V-JEPA 2 ViT-L</td><td>300M</td><td>57.8</td><td>53.8</td><td>32.7</td></tr><tr><td>V-JEPA 2 ViT-g</td><td>1B</td><td>61.2</td><td>55.7</td><td>38.0</td></tr><tr><td><strong>V-JEPA 2 ViT-g₃₈₄</strong></td><td>1B</td><td><strong>63.6</strong></td><td><strong>57.1</strong></td><td><strong>39.7</strong></td></tr></tbody></table></div>
+<p>300M 的 V-JEPA 2 ViT-L 已经显著超过 8B 的 PlausiVL（32.7 vs 27.6 action recall@5），1B 模型再 +5.3。<strong>linear scaling with model size</strong> —— 在该任务上未见 plateau。Probe 用了 V-JEPA 2 的 predictor 输出 + encoder 输出 concat，三个 query token 分别预测 action / verb / noun。</p>
+<h3 id="video-qa-aligned-with-llm">Video QA (Aligned with LLM)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#video-qa-aligned-with-llm" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table 8. Full-scale alignment (88.5M samples, Llama 3.1 8B 后端)。≤8B 类别 SOTA。</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Method</th><th>Params</th><th>Avg.</th><th>PerceptionTest</th><th>MVP</th><th>TempCompass</th><th>TemporalBench</th><th>TOMATO</th><th>TVBench</th><th>MVBench</th></tr></thead><tbody><tr><td>InternVL-2.5</td><td>300M/7B</td><td>52.1</td><td>68.9</td><td>39.9</td><td>68.3</td><td>24.3</td><td>29.4</td><td>61.6</td><td>72.6</td></tr><tr><td>Qwen2.5VL</td><td>1B/7B</td><td>49.7</td><td>70.5</td><td>36.7</td><td>71.7</td><td>24.5</td><td>24.6</td><td>50.5</td><td>69.6</td></tr><tr><td>PLM 8B</td><td>1B/8B</td><td>56.7</td><td>82.7</td><td>39.7</td><td>72.7</td><td>28.3</td><td>33.2</td><td>63.5</td><td>77.1</td></tr><tr><td><strong>V-JEPA 2 + Llama 3.1 8B</strong></td><td>1B/8B</td><td><strong>59.5</strong></td><td><strong>84.0</strong></td><td><strong>44.5</strong></td><td><strong>76.9</strong></td><td><strong>36.7</strong></td><td><strong>40.3</strong></td><td>60.6</td><td>73.5</td></tr></tbody></table></div>
+<p>注意：V-JEPA 2 在 5/7 个 benchmark 上拿 SOTA，但在 TVBench / MVBench 略输 PLM 8B——这两个是 general / 偏 appearance 的 benchmark，与 V-JEPA 2 强 motion / 弱 appearance 的 profile 一致。<strong>值得强调</strong>：这是首次 video encoder（无 language supervision）在对齐 LLM 后达成 SOTA VidQA，挑战了 “VidQA 必须用 CLIP-style language-supervised encoder” 的 conventional wisdom。</p>
+<hr/>
+<h2 id="关联工作">关联工作<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#关联工作" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="基于">基于<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#基于" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li><strong>Motion Understanding</strong>: Something-Something v2 top-1 accuracy <strong>77.3</strong></li>
-<li><strong>Action Anticipation</strong>: Epic-Kitchens-100 recall@5 <strong>39.7</strong>（相比此前方法提升 <strong>44%</strong>）</li>
-<li><strong>Video QA</strong>: 8B 规模下 SOTA（PerceptionTest <strong>84.0</strong>、TempCompass <strong>76.9</strong>）</li>
-<li><strong>Robot Manipulation</strong>: Franka 机械臂上 zero-shot 部署，grasping 和 pick-and-place 成功率 <strong>65-75%</strong></li>
-<li><strong>Latent planning 效率</strong>: 比 pixel-space video generation 快约 <strong>15×</strong></li>
+<li><strong>V-JEPA (CVPR 2024)</strong>: 直接前身。V-JEPA 2 主要增量是数据 (2M→22M)、模型 (600M→1B)、progressive resolution、3D-RoPE、warmup-constant-decay schedule</li>
+<li><strong>JEPA (LeCun 2022 position paper)</strong>: 整套方法论的源头，“learn predictive models in representation space, not pixel space”</li>
+<li><strong>DINOv2 / SigLIP 2 / Perception Encoder</strong>: 同代 image foundation model 对手，被作为 frozen-encoder VidQA baseline</li>
+<li><strong>Droid Dataset (Khazatsky et al. 2024)</strong>: 提供机器人 post-training data；选 ≥4s 子集后 ~62 小时</li>
 </ul>
-<h2 id="strengths--weaknesses">Strengths &amp; Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths--weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p><strong>Strengths</strong>:</p>
+<h3 id="对比">对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li>完整验证了 self-supervised video pretraining → understanding + prediction + planning 的统一路径，符合 LeCun 的 world model 哲学</li>
-<li>仅 62 小时无标签机器人视频即可实现 zero-shot manipulation，数据效率极高</li>
-<li>在 representation space 而非 pixel space 做 prediction 和 planning，计算效率提升显著</li>
-<li>Scaling 实验充分（数据量、模型规模、训练时长三个维度），为社区提供了清晰的 scaling recipe</li>
-<li>同时在 video understanding benchmark 和 robot manipulation 上验证，跨域泛化令人印象深刻</li>
+<li><strong><a href="../Papers/2405-Octo" class="internal alias" data-slug="Papers/2405-Octo">Octo</a></strong>: vision-language-action behavior cloning baseline（基于 OXE 1M+ trajectories pretrain，Droid hindsight relabeling fine-tune）。在 manipulation 表上完败 V-JEPA 2-AC，但 baseline 调优强度存疑</li>
+<li><strong><a href="../Papers/2501-Cosmos" class="internal alias" data-slug="Papers/2501-Cosmos">Cosmos</a> (Nvidia 2025)</strong>: pixel-space latent diffusion world model 代表。被用来证明 “pixel-space planning 计算上不可行 + success rate 低”，是这篇 paper 最关键的对比</li>
+<li><strong>PlausiVL / Video-LLaMA / InAViT</strong>: action anticipation baseline，被 V-JEPA 2 ViT-L (300M) 直接超过——挑战了 “anticipation 必须用大 LLM” 的设定</li>
+<li><strong>PerceptionLM 8B</strong>: VidQA SOTA baseline，V-JEPA 2 用同 recipe + 不同 encoder 在 5/7 benchmark 上反超</li>
 </ul>
-<p><strong>Weaknesses</strong>:</p>
+<h3 id="方法相关">方法相关<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#方法相关" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li>Robot manipulation 成功率 65-75%，距离实用部署仍有差距</li>
-<li>Zero-shot 仅在简单任务（grasping、pick-and-place）上验证，复杂长序列任务未涉及</li>
-<li>22M 视频的训练数据规模和 1B 参数的计算需求对大多数实验室不可及</li>
-<li>Action-conditioned model 仅在 Franka 单一平台上验证，cross-embodiment 迁移能力有待更多实验支撑</li>
+<li><strong>Mask Image/Video Modeling</strong>: VideoMAE / VideoMAEv2、I-JEPA、MAE-ST。V-JEPA 系列的关键差异是在 <strong>representation space</strong> mask denoising（非 pixel space），避免预测 unpredictable details</li>
+<li><strong>Cross-Entropy Method (CEM)</strong>: 经典 sampling-based optimizer，Williams &amp; Bagnell etc. 在 MPC 中常用，这里被搬到 latent space planning</li>
+<li><strong>Receding-horizon / Model-Predictive Control</strong>: 经典控制论范式，V-JEPA 2-AC 的部署方式是 latent-space MPC——和 Dreamer / TD-MPC 一脉相承，但完全 zero-shot</li>
+<li><strong>Visual Servoing</strong>: 作者明确将 single-goal reaching 类比为 “learned visual servoing”——同样是用视觉反馈控制 motion，但不用 explicit camera calibration</li>
 </ul>
-<h2 id="mind-map">Mind Map<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mind-map" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;mindmap\n  root((V-JEPA 2))\n    Problem\n      Self-supervised learning 能否同时赋能理解与规划\n      互联网视频知识向机器人迁移\n    Method\n      Mask-Denoising in Representation Space\n      ViT 1B 参数\n      VideoMix22M 数据集\n      Progressive Resolution Training\n      Action-Conditioned Transformer\n      62h 无标签机器人视频\n      Latent-Space Energy Minimization Planning\n    Results\n      SSv2 77.3 top-1\n      EK-100 39.7 R@5\n      Zero-shot Franka 65-75%\n      Latent planning 15x faster&quot;">mindmap
-  root((V-JEPA 2))
-    Problem
-      Self-supervised learning 能否同时赋能理解与规划
-      互联网视频知识向机器人迁移
-    Method
-      Mask-Denoising in Representation Space
-      ViT 1B 参数
-      VideoMix22M 数据集
-      Progressive Resolution Training
-      Action-Conditioned Transformer
-      62h 无标签机器人视频
-      Latent-Space Energy Minimization Planning
-    Results
-      SSv2 77.3 top-1
-      EK-100 39.7 R@5
-      Zero-shot Franka 65-75%
-      Latent planning 15x faster
-</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
-<h2 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<hr/>
+<h2 id="论文点评">论文点评<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#论文点评" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="strengths">Strengths<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>方法论上的”统一证据”价值</strong>：在一个 encoder 上同时论证 understanding (SOTA classification + VidQA)、prediction (SOTA anticipation)、planning (zero-shot Franka) 三件事，且都不依赖 language supervision——为 JEPA 路线提供了第一个完整的端到端 case study。这是一个真正的 “important” 而非仅 “publishable” 工作</li>
+<li><strong>Latent vs pixel planning 的对比是这篇 paper 最有 actionable insight 的实验</strong>：16s vs 4min，且 success rate 反超。这从工程上为 robot world model 社区指明了一个方向：not all world models need to be generative</li>
+<li><strong>数据效率的直接证据</strong>：62 小时无标签机器人视频 + 冻结 encoder 即可 zero-shot 跨 lab 部署，对比 Octo（OXE 1M+ trajectories fine-tune Droid）。给后续 cross-embodiment world model 工作设了一个数据下界</li>
+<li><strong>Scaling ablation 设计扎实</strong>：四个 ingredient 各自给数字（+1 / +1.5 / +0.8 / +0.7 pt），并且配合 progressive resolution 给出 8.4× GPU-time 节省的工程贡献，复现门槛说明完整</li>
+<li><strong>诚实的 failure analysis</strong>：4.3 节直接 flag camera positioning sensitivity / long-horizon limitation / image-only goal 三个限制，附录还有 camera position 的 quantitative sensitivity 分析。这种 self-disclosure 在大厂 paper 中并不常见</li>
+</ol>
+<h3 id="weaknesses">Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>Cosmos 作为 pixel-space baseline 不太公平</strong>：<a href="../Papers/2501-Cosmos" class="internal alias" data-slug="Papers/2501-Cosmos">Cosmos</a> 是为 video generation 设计的 latent diffusion 模型，不是 robot control 优化的。Cosmos 的 0% grasp 成绩与其说是 “pixel-space 范式输了”，不如说是 “通用 video generation 模型 zero-shot 接 control 不 work”。一个更公平的对比应该是专门为 control 设计的 generative world model（如 GAIA / <a href="../Papers/2402-Genie" class="internal alias" data-slug="Papers/2402-Genie">Genie</a> / DreamerV3-style），但这些都没出现</li>
+<li><strong>Manipulation 任务范围狭窄</strong>：仅 grasp + reach + pick-and-place + 3 个物体（cup / box / bottle），且都是单步 prehensile manipulation。任何需要 in-hand reorientation、deformable object、bimanual、tool use 的任务都未触及，作者也承认 long-horizon 是未解问题</li>
+<li><strong>Cross-embodiment 措辞过强</strong>：tag 上自称 cross-embodiment，但实际只在 Franka 这一种 embodiment 上验证，仅是 “cross-lab”（两个不同的 Franka 安装环境）。对比 <a href="../Papers/2405-Octo" class="internal alias" data-slug="Papers/2405-Octo">Octo</a> / <a href="../Papers/2406-OpenVLA" class="internal alias" data-slug="Papers/2406-OpenVLA">OpenVLA</a> 等真正的 cross-embodiment 工作（涵盖 7+ 种臂），V-JEPA 2-AC 的迁移性主张需要打折</li>
+<li><strong>Camera positioning 是个严重 caveat</strong>：作者承认 “manually tried different camera positions before settling on one that worked”——这意味着 zero-shot 的代价是 expert 需要先 tune camera placement，离 truly autonomous 部署还有距离</li>
+<li><strong>Octo baseline 调优可能 underdone</strong>：Octo 在 grasp box 上拿 0% 异常低，社区常见复现的 <a href="../Papers/2405-Octo" class="internal alias" data-slug="Papers/2405-Octo">Octo</a> 在 in-distribution 简单任务能到 30-50%。需要看 community independent 复现才能确认 V-JEPA 2-AC 的真实优势幅度</li>
+<li><strong>“无 language supervision” 的 framing 略 misleading</strong>：V-JEPA 2 pretraining 没用 language，但 7.4 节做 SOTA VidQA 时用了 88.5M image/video-text 对齐数据。所以更准确的说法是 “encoder 无 language supervision，downstream alignment 仍需 paired data”</li>
+</ol>
+<h3 id="可信评估">可信评估<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#可信评估" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="artifact-可获取性">Artifact 可获取性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#artifact-可获取性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
 <ul>
-<li>该工作是 LeCun 提出的 JEPA (Joint Embedding Predictive Architecture) 在 video domain 的最新进展，代表了 self-supervised world model 路线的重大里程碑</li>
-<li>“冻结 representation + 轻量 action-conditioned head” 的范式与 VLA 中 frozen vision encoder 的思路一致，但 V-JEPA 2 完全不依赖语言监督</li>
-<li>Latent planning 的 15× 速度优势对 real-time robot control 有重要实践意义</li>
-<li>Cross-embodiment tag 基于其从互联网视频到机器人的迁移能力，但严格来说仅在单一 embodiment (Franka) 上验证</li>
-</ul></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="uevi3i" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#problem--motivation" data-for="problem--motivation">Problem &amp; Motivation</a></li><li class="depth-0"><a href="#method" data-for="method">Method</a></li><li class="depth-1"><a href="#v-jepa-2-pretraining" data-for="v-jepa-2-pretraining">V-JEPA 2 Pretraining</a></li><li class="depth-1"><a href="#v-jepa-2-ac-action-conditioned-post-training" data-for="v-jepa-2-ac-action-conditioned-post-training">V-JEPA 2-AC (Action-Conditioned Post-training)</a></li><li class="depth-1"><a href="#latent-space-planning" data-for="latent-space-planning">Latent-Space Planning</a></li><li class="depth-0"><a href="#key-results" data-for="key-results">Key Results</a></li><li class="depth-0"><a href="#strengths--weaknesses" data-for="strengths--weaknesses">Strengths &amp; Weaknesses</a></li><li class="depth-0"><a href="#mind-map" data-for="mind-map">Mind Map</a></li><li class="depth-0"><a href="#notes" data-for="notes">Notes</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+<li><strong>代码</strong>: inference + training 代码均开源（见 GitHub README，包含 pretraining、AC post-training、attentive probe、VQA alignment 四类训练脚本）</li>
+<li><strong>模型权重</strong>: 已发布完整 ckpt 系列：<code>vjepa2-vit-{l,h,g}</code> (256² 与 384²)、<code>vjepa2-vit-g-{384,512}</code> for VidQA、以及 <code>vjepa2-ac-vit-g</code>。HF Collection 集中托管</li>
+<li><strong>训练细节</strong>: 完整披露——附录 §10–14 给出 4 个 stage 的逐项 hyperparameter table（learning rate / batch size / EMA schedule / mask ratio / RoPE 配置等），含数据 source weight 和 iteration 数</li>
+<li><strong>数据集</strong>: VideoMix22M 的所有 source 均为公开数据集（SSv2 / Kinetics / HowTo100M / YT-Temporal-1B / ImageNet），但 Curated-YT1B 的 retrieval 索引和最终采样列表未发布；Droid 公开</li>
+</ul>
+<h4 id="claim-可验证性">Claim 可验证性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#claim-可验证性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>✅ <strong>6 个 classification 任务 SOTA</strong>：标准 frozen-encoder + attentive probe protocol，结果可独立复现，绝对数字与他人 reported 一致（DINOv2/SigLIP2/PE 数字与原文匹配）</li>
+<li>✅ <strong>EK100 anticipation +44% over PlausiVL</strong>：标准 benchmark + standard recall@5 metric，附 model-size linear scaling 趋势作为佐证</li>
+<li>✅ <strong>VidQA SOTA in 8B class on 5/7 benchmarks</strong>：用 PerceptionLM 8B 同 recipe 公平比较</li>
+<li>✅ <strong>Latent planning 16s/action vs Cosmos 4min/action</strong>：硬件 (RTX 4090) + sample/iteration 数公开</li>
+<li>⚠️ <strong>Zero-shot Franka manipulation 65–80% success rate</strong>：sample size 小（10 trials/task × 2 labs × 7 tasks ≈ 140 trials），且 grasp box 只有 25% avg；“various permutations” 的具体 randomization protocol 未充分说明，cherry-picking 风险中等</li>
+<li>⚠️ <strong>“Cross-lab generalization”</strong>：两个 lab 都用 Franka + RobotiQ + 类似的 operational space controller，硬件差异远小于 cross-embodiment——claim 应为 “cross-environment within same robot platform”</li>
+<li>⚠️ <strong>Octo baseline performance</strong>：Octo 在 grasp box 上 0% 与社区其他复现存在 gap，可能是 Droid hindsight relabeling fine-tune 的实现细节问题，paper 未给独立 sanity check</li>
+<li>⚠️ <strong>“无 language supervision 即可对齐 LLM 拿 SOTA VidQA”</strong>：encoder 本身确实无 language supervision，但 7.4 节用了 88.5M image/video-text 对齐数据，alignment phase 对语言 paired data 依然有 significant requirement——standalone “无监督” 的暗示需要打折</li>
+</ul>
+<h3 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>这篇是 LeCun 长期主张的 JEPA 路线在 video + robotics 领域的一次完整 end-to-end 验证。重要性主要在于：把”video understanding pretraining”和”robot world model”两个原本是不同社区的研究方向用一个方法论统一起来。这种统一比单点 SOTA 更有价值</li>
+<li>Latent vs pixel planning 的速度对比（16s vs 4min）是工程上极有 actionable 的 insight。如果你在做 robot world model，这给了一个明确信号：不要把 budget 全压在 pixel-space 生成质量上</li>
+<li>62 小时无标签机器人视频的设定可被视为 cross-embodiment world model 的一个 lower bound：未来若要做真正多机器人迁移，可以以此为参考量级</li>
+<li>Camera positioning 必须 manual tune 这个 caveat 暗示 V-JEPA 2-AC 学到的不是真正 metric 3D 物理动态，而是 in-distribution 的 visual-action 关联——这与其在 box / cup 这样有不同 grasping affordance 的物体上波动较大的 success rate 一致</li>
+<li>一个值得跟进的 open question：V-JEPA 2-AC 的 representation 是否能反过来改善 V-JEPA 2 encoder？目前是单向 distillation（encoder frozen），如果允许 encoder 在 action data 上 fine-tune，是否能得到更适合 control 的 representation？这是 future work 没提但值得做的 ablation</li>
+<li>对我们自己的 world model 工作的启示：don’t rush to pixel-space generation。先确认 representation space 内 prediction + planning 能 close the loop，再考虑是否需要 generative head</li>
+</ul>
+<h3 id="rating">Rating<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#rating" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>分数</strong>：3 - Foundation
+<strong>理由</strong>：如 Strengths #1 所写，V-JEPA 2 在一个 encoder 上完整打通 understanding (SOTA classification + VidQA) / prediction (SOTA anticipation) / planning (zero-shot Franka) 三条 pipeline，是 JEPA 路线在 video + robotics 的第一个 end-to-end 证据，兼具方法论统一价值和 actionable 的工程对比（16s vs 4min latent vs pixel planning）。相比相邻的 2 - Frontier，这篇不是单点 SOTA 或某个范式的代表作，而是明确改变了 video world model 社区的讨论框架（“not all world models need to be generative”），且 FAIR 同步开源了完整 ckpt 系列与训练 recipe，已成为 video world model / latent planning 工作必引的 reference；Weaknesses 里列的 Cosmos 基线不公平、cross-embodiment 说辞过强等问题属于 scope 限制而非 foundational value 的动摇。</p></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="ud8fg4" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#problem--motivation" data-for="problem--motivation">Problem &amp; Motivation</a></li><li class="depth-0"><a href="#method" data-for="method">Method</a></li><li class="depth-1"><a href="#v-jepa-2-pretraining" data-for="v-jepa-2-pretraining">V-JEPA 2 Pretraining</a></li><li class="depth-1"><a href="#pretraining-dataset-videomix22m" data-for="pretraining-dataset-videomix22m">Pretraining Dataset: VideoMix22M</a></li><li class="depth-1"><a href="#v-jepa-2-ac-action-conditioned-post-training" data-for="v-jepa-2-ac-action-conditioned-post-training">V-JEPA 2-AC: Action-Conditioned Post-training</a></li><li class="depth-1"><a href="#planning-by-energy-minimization" data-for="planning-by-energy-minimization">Planning by Energy Minimization</a></li><li class="depth-0"><a href="#key-results" data-for="key-results">Key Results</a></li><li class="depth-1"><a href="#robot-planning最强-selling-point" data-for="robot-planning最强-selling-point">Robot Planning（最强 selling point）</a></li><li class="depth-1"><a href="#understanding-probe-based-classification" data-for="understanding-probe-based-classification">Understanding (Probe-based Classification)</a></li><li class="depth-1"><a href="#prediction-action-anticipation-on-ek100" data-for="prediction-action-anticipation-on-ek100">Prediction (Action Anticipation on EK100)</a></li><li class="depth-1"><a href="#video-qa-aligned-with-llm" data-for="video-qa-aligned-with-llm">Video QA (Aligned with LLM)</a></li><li class="depth-0"><a href="#关联工作" data-for="关联工作">关联工作</a></li><li class="depth-1"><a href="#基于" data-for="基于">基于</a></li><li class="depth-1"><a href="#对比" data-for="对比">对比</a></li><li class="depth-1"><a href="#方法相关" data-for="方法相关">方法相关</a></li><li class="depth-0"><a href="#论文点评" data-for="论文点评">论文点评</a></li><li class="depth-1"><a href="#strengths" data-for="strengths">Strengths</a></li><li class="depth-1"><a href="#weaknesses" data-for="weaknesses">Weaknesses</a></li><li class="depth-1"><a href="#可信评估" data-for="可信评估">可信评估</a></li><li class="depth-1"><a href="#notes" data-for="notes">Notes</a></li><li class="depth-1"><a href="#rating" data-for="rating">Rating</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
 </script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
 </script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>

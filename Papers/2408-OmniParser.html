@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><title>OmniParser for Pure Vision Based GUI Agent</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="OmniParser for Pure Vision Based GUI Agent"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="OmniParser for Pure Vision Based GUI Agent"/><meta name="twitter:description" content="Summary 提出 OmniParser，一个纯视觉的 UI 屏幕解析方法，通过结合 fine-tuned 检测模型（YOLOv8）和描述模型（BLIP-v2）将 UI 截图解析为结构化可交互元素，显著提升 GPT-4V 在 ScreenSpot、Mind2Web、AITW 等 benchmark 上的 GUI agent 性能。 ..."/><meta property="og:description" content="Summary 提出 OmniParser，一个纯视觉的 UI 屏幕解析方法，通过结合 fine-tuned 检测模型（YOLOv8）和描述模型（BLIP-v2）将 UI 截图解析为结构化可交互元素，显著提升 GPT-4V 在 ScreenSpot、Mind2Web、AITW 等 benchmark 上的 GUI agent 性能。 ..."/><meta property="og:image:alt" content="Summary 提出 OmniParser，一个纯视觉的 UI 屏幕解析方法，通过结合 fine-tuned 检测模型（YOLOv8）和描述模型（BLIP-v2）将 UI 截图解析为结构化可交互元素，显著提升 GPT-4V 在 ScreenSpot、Mind2Web、AITW 等 benchmark 上的 GUI agent 性能。 ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2408-OmniParser"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2408-OmniParser"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary 提出 OmniParser，一个纯视觉的 UI 屏幕解析方法，通过结合 fine-tuned 检测模型（YOLOv8）和描述模型（BLIP-v2）将 UI 截图解析为结构化可交互元素，显著提升 GPT-4V 在 ScreenSpot、Mind2Web、AITW 等 benchmark 上的 GUI agent 性能。 ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+<html lang="en"><head><title>OmniParser for Pure Vision Based GUI Agent</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="OmniParser for Pure Vision Based GUI Agent"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="OmniParser for Pure Vision Based GUI Agent"/><meta name="twitter:description" content="Summary OmniParser for Pure Vision Based GUI Agent 核心: 把 GUI screenshot 解析成结构化（bbox + 语义描述）DOM-like 表示，让 GPT-4V 这类通用 VLM 在没有 HTML/view-hierarchy 输入的情况下也能可靠 ground action 到 UI 元素 ..."/><meta property="og:description" content="Summary OmniParser for Pure Vision Based GUI Agent 核心: 把 GUI screenshot 解析成结构化（bbox + 语义描述）DOM-like 表示，让 GPT-4V 这类通用 VLM 在没有 HTML/view-hierarchy 输入的情况下也能可靠 ground action 到 UI 元素 ..."/><meta property="og:image:alt" content="Summary OmniParser for Pure Vision Based GUI Agent 核心: 把 GUI screenshot 解析成结构化（bbox + 语义描述）DOM-like 表示，让 GPT-4V 这类通用 VLM 在没有 HTML/view-hierarchy 输入的情况下也能可靠 ground action 到 UI 元素 ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2408-OmniParser"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2408-OmniParser"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary OmniParser for Pure Vision Based GUI Agent 核心: 把 GUI screenshot 解析成结构化（bbox + 语义描述）DOM-like 表示，让 GPT-4V 这类通用 VLM 在没有 HTML/view-hierarchy 输入的情况下也能可靠 ground action 到 UI 元素 ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
   position: absolute;
   display: flex;
   float: right;
@@ -116,78 +116,406 @@ pre:hover > .expand-button {
   padding: 0 12px;
   font-size: 14px;
 }
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2408-OmniParser"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="gc1ghh"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/RL" class="sidebar-tag-pill">#RL</a><a href="/mindflow/tags/web-agent" class="sidebar-tag-pill">#web-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/scene-understanding" class="sidebar-tag-pill">#scene-understanding</a><a href="/mindflow/tags/instruction-following" class="sidebar-tag-pill">#instruction-following</a><a href="/mindflow/tags/cross-embodiment" class="sidebar-tag-pill">#cross-embodiment</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2408-OmniParser</a></div></nav><h1 class="article-title">OmniParser for Pure Vision Based GUI Agent</h1><div class="paper-meta"><span class="paper-venue">arXiv</span><span class="paper-authors"><span class="meta-sep">·</span>Yadong Lu <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, Jianwei Yang</span><span>, Yelong Shen</span><span>, Ahmed Awadallah</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2024-08-01T00:00:00.000Z">Aug 01, 2024</time><span>5 min read</span></p><ul class="tags"><li><a href="../tags/web-agent" class="internal tag-link">web-agent</a></li><li><a href="../tags/VLM" class="internal tag-link">VLM</a></li><li><a href="../tags/scene-understanding" class="internal tag-link">scene-understanding</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>提出 OmniParser，一个纯视觉的 UI 屏幕解析方法，通过结合 fine-tuned 检测模型（YOLOv8）和描述模型（BLIP-v2）将 UI 截图解析为结构化可交互元素，显著提升 GPT-4V 在 ScreenSpot、Mind2Web、AITW 等 benchmark 上的 GUI agent 性能。</p>
-<h2 id="problem--motivation">Problem &amp; Motivation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#problem--motivation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>多模态大模型（如 GPT-4V）作为通用 GUI agent 的潜力被<strong>严重低估</strong>，核心原因是缺乏可靠的屏幕解析技术。现有方法要么依赖 HTML/DOM（不跨平台），要么纯视觉解析精度不够。需要一个<strong>平台无关、纯视觉</strong>的 UI 解析方案，能准确检测可交互区域并提取功能语义，让 VLM 能真正理解屏幕内容。</p>
-<h2 id="method">Method<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#method" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p><strong>OmniParser 由三个核心模块组成：</strong></p>
-<p><strong>1. Interactable Region Detection</strong></p>
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2408-OmniParser"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="mm0h7i"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/embodied-reasoning" class="sidebar-tag-pill">#embodied-reasoning</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/computer-use" class="sidebar-tag-pill">#computer-use</a><a href="/mindflow/tags/agentic-RL" class="sidebar-tag-pill">#agentic-RL</a><a href="/mindflow/tags/gui-agent" class="sidebar-tag-pill">#gui-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/world-model" class="sidebar-tag-pill">#world-model</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2408-OmniParser</a></div></nav><h1 class="article-title">OmniParser for Pure Vision Based GUI Agent</h1><div class="paper-meta"><span class="paper-venue">arXiv</span><span class="paper-authors"><span class="meta-sep">·</span>Yadong Lu <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, Jianwei Yang</span><span>, Yelong Shen</span><span>, Ahmed Awadallah</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2024-08-01T00:00:00.000Z">Aug 01, 2024</time><span>15 min read</span></p><ul class="tags"><li><a href="../tags/gui-agent" class="internal tag-link">gui-agent</a></li><li><a href="../tags/computer-use" class="internal tag-link">computer-use</a></li><li><a href="../tags/VLM" class="internal tag-link">VLM</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>OmniParser for Pure Vision Based GUI Agent </p></div>
+                  
+                </div>
+<div class="callout-content">
 <ul>
-<li>Fine-tuned YOLOv8 检测模型</li>
-<li>训练数据：从流行网页的 DOM tree 中提取 bounding box，共 66,990 张截图</li>
-<li>检测所有可交互 UI 元素（按钮、输入框、链接等）</li>
-<li>重叠框合并（>90% IoU 阈值）</li>
+<li><strong>核心</strong>: 把 GUI screenshot 解析成结构化（bbox + 语义描述）DOM-like 表示，让 GPT-4V 这类通用 VLM 在没有 HTML/view-hierarchy 输入的情况下也能可靠 ground action 到 UI 元素</li>
+<li><strong>方法</strong>: 三件套——finetuned YOLOv8 interactable region detector（在 67k 自爬的 webpage DOM bbox 上训练）+ finetuned BLIP-2 icon caption 模型（7k GPT-4o 生成的 icon-description pair）+ OCR；输出 SoM 标注图 + 文本语义列表</li>
+<li><strong>结果</strong>: ScreenSpot 平均 73.0%（vs GPT-4V 16.2%）；Mind2Web 不用 HTML 也超过用 HTML 的 GPT-4V baseline；AITW 比最强 GPT-4V+history baseline 高 4.7 pts</li>
+<li><strong>Sources</strong>: <a href="https://arxiv.org/abs/2408.00203" class="external">paper<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://microsoft.github.io/OmniParser/" class="external">website<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://github.com/microsoft/OmniParser" class="external">github<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><strong>Rating</strong>: 2 - Frontier（pure-vision GUI parsing 的代表工作，后续 V2/OmniTool 与多篇 computer-use agent 把它作为 perception 前置 baseline，但单步 grounding 评测 + modular 范式正被 end-to-end grounding VLM 逐步取代）</li>
 </ul>
-<p><strong>2. Icon Functional Description</strong></p>
+</div>
+</blockquote>
+<p><strong>Key Takeaways:</strong></p>
+<ol>
+<li><strong>Pure-vision parsing 是 cross-platform GUI agent 的瓶颈</strong>：之前 Set-of-Marks 方法都依赖 DOM/view-hierarchy 拿到 bbox ground truth，限制在 web；OmniParser 的核心论点是只要能可靠地从像素拿到 interactable region + 语义，GPT-4V 的 grounding 能力被严重低估</li>
+<li><strong>解耦 perception 与 action prediction</strong>：把”识别 icon 是什么”从 GPT-4V 主调用里拆出来，作为前置文本注入 prompt，显著降低 VLM 的 composite-task 负担（SeeAssign hard split: 0.620 → 0.900）</li>
+<li><strong>DOM 自动标注是 scalable 的数据源</strong>：从 100k popular URL 用 DOM tree 自动抽 bbox，得到 67k 训练样本，无需人工标注；YOLOv8 detector 还能 zero-shot 泛化到 mobile screen（AITW 上 work）</li>
+<li><strong>Web-trained detector 泛化到 mobile</strong>：interactable region detection 在 webpages 上训，但在 AITW (Android) 上替换原本专门为 Android 训的 IconNet 反而带来增益，说明 interactability 概念跨 platform 具有一定通用性</li>
+</ol>
+<p><strong>Teaser. OmniParser 的输入输出 pipeline</strong>：用户任务 + UI screenshot 输入，输出 SoM 标注的 screenshot + 局部语义文本（OCR text + icon description）。</p>
+<p><img src="https://microsoft.github.io/OmniParser/static/images/flow_merged0.png" alt/></p>
+<hr/>
+<h2 id="1-problem--motivation">1. Problem &amp; Motivation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-problem--motivation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>GUI agent 的核心瓶颈不在”理解任务”而在 <strong>action grounding</strong>——把 LLM 预测的高层动作变成屏幕上的精确 click 坐标。已有路线：</p>
 <ul>
-<li>Fine-tuned BLIP-v2 描述模型</li>
-<li>训练数据：7,185 个 icon-description pairs，由 GPT-4o 生成</li>
-<li>为 icon 生成功能语义描述（如”三个点图标”→“打开更多选项菜单”）</li>
+<li><strong>直接预测 xy 坐标</strong>：GPT-4V 在这上面表现极差，SoM 论文已经指出</li>
+<li><strong>Set-of-Marks (SoM) prompting</strong>：在原图上叠 numbered bbox，GPT-4V 只需输出 ID。但<strong>已有 SoM 用法都依赖 HTML DOM 或 Android view hierarchy 拿 ground-truth bbox</strong>，所以局限在 web 浏览器或 Android。</li>
 </ul>
-<p><strong>3. OCR + Set-of-Marks</strong></p>
+<p>OmniParser 的论点：<strong>pure-vision 也能拿到可靠的 SoM bbox</strong>，关键是要有针对性 finetune 过的 detector 和能输出 functional semantics 的 caption 模型。一旦补上这两块，GPT-4V 在 cross-platform GUI 上的能力被严重低估。</p>
+<blockquote>
+<p>❓ 这里其实绕过了一个更根本的问题：为什么不直接训一个 end-to-end VLA 风格的 GUI 模型？作者的 implicit answer 是 GPT-4V 已经够强，瓶颈在 perception 这层；但同时期 SeeClick / CogAgent 走的就是端到端路线。这是 perception-action 分离 vs end-to-end 的典型 framing 差异。</p>
+</blockquote>
+<hr/>
+<h2 id="2-method">2. Method<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-method" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>OmniParser = <strong>interactable region detector + icon caption + OCR</strong>，三路并联，输出 (SoM 图, 局部语义文本) 给下游 VLM。</p>
+<h3 id="21-interactable-region-detection">2.1 Interactable Region Detection<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#21-interactable-region-detection" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="data-curation">Data Curation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#data-curation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
 <ul>
-<li>OCR 模块提取文本 bounding box</li>
-<li>Set-of-Marks 在检测到的区域上叠加数字标签</li>
-<li>最终生成标注过的截图供 GPT-4V 处理</li>
+<li>从 ClueWeb22 取 100k popular URL，渲染网页，从 <strong>DOM tree</strong> 自动抽 interactable element 的 bbox</li>
+<li>最终得到 <strong>67k unique screenshot + bbox 标注</strong>（95/5 train/val 划分: 63641/3349）</li>
+<li>没有人工标注，scalable</li>
 </ul>
-<p><strong>Processing Pipeline</strong>: 检测可交互区域 → 合并重叠框 → 生成 icon 描述 → OCR 提取文本 → Set-of-Marks 标注 → 输入 GPT-4V</p>
-<h2 id="key-results">Key Results<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-results" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Figure 2. Interactable Region Detection 数据集示例</strong>——bbox 来自 webpage DOM tree。
+<img src="https://microsoft.github.io/OmniParser/static/images/curated_data.png" alt/></p>
+<h4 id="detector">Detector<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#detector" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
 <ul>
-<li><strong>ScreenSpot</strong>: 73.0% overall accuracy（GPT-4V baseline 16.2%, SeeClick 53.4%, CogAgent 47.4%）</li>
-<li><strong>Mind2Web</strong> element accuracy: Cross-Website 41.0%, Cross-Domain 45.5%, Cross-Task 42.4%（超 GPT-4V+textual choice 4-5%）</li>
-<li><strong>AITW</strong>: 57.7%（超 GPT-4V+history baseline 4.7%）</li>
-<li><strong>SeeAssign ablation</strong>: 无 local semantics 70.5% → 有 local semantics 93.8%（+23.3%）</li>
+<li><strong>YOLOv8</strong>，20 epochs, batch 256, lr 1e-3, Adam, 4 GPU</li>
+<li>训练完后与 OCR module 输出的文本 bbox 合并；overlap > 90% 的去重</li>
+<li>每个 bbox 标 unique ID，labeling 算法尽量减小数字与其他 bbox 的重叠</li>
 </ul>
-<h2 id="strengths--weaknesses">Strengths &amp; Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths--weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p><strong>Strengths</strong>:</p>
+<blockquote>
+<p>❓ 为什么用 YOLOv8 而不是 Grounding DINO？论文 Table 2 ablation 显示 finetuned YOLOv8 (ID) 比 raw Grounding DINO (GD) 在 ScreenSpot 上高 4.3 pts。但没有对比 finetuned Grounding DINO——所以无法判断是 YOLOv8 架构本身 better 还是单纯是 finetune 数据的功劳。</p>
+</blockquote>
+<h3 id="22-local-semantics-icon-caption">2.2 Local Semantics: Icon Caption<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#22-local-semantics-icon-caption" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>观察：仅给 SoM 标注图，GPT-4V 经常在 “认 icon 是什么” + “选哪个 ID” 这两个 composite task 上失败。<strong>前置注入语义文本</strong>能解耦这两步。</p>
+<h4 id="caption-模型">Caption 模型<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#caption-模型" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
 <ul>
-<li><strong>方法简洁有效</strong>: 不依赖 HTML/DOM，纯视觉方案，跨平台通用性强——符合 “simple, scalable, generalizable” 原则</li>
-<li><strong>模块化设计</strong>: 检测、描述、OCR 独立可替换，未来升级单个模块即可提升整体性能</li>
-<li><strong>揭示关键 insight</strong>: local semantics（icon 功能描述）对 GUI grounding 至关重要（+23.3%），这一发现具有普遍指导价值</li>
-<li><strong>实用性高</strong>: 作为 plug-in 可增强任意 VLM 的 GUI agent 能力</li>
+<li><strong>BLIP-2</strong> finetune</li>
+<li>数据集：7185 个 icon-description pair，<strong>GPT-4o 在 ScreenSpot 截图的 detected bbox 上自动生成</strong>——若 GPT-4o 判定是 icon，输出一句话 functionality 描述；不是 icon 也保留并标 “this is not an icon”</li>
+<li>训练：1 epoch, lr 1e-5 constant, no weight decay, Adam</li>
 </ul>
-<p><strong>Weaknesses</strong>:</p>
+<p><strong>Figure 4. BLIP-2 vs finetuned 对比</strong>——原模型描述 icon 的形状颜色，finetune 后能描述功能语义。
+<img src="https://arxiv.org/html/2408.00203v1/extracted/5767271/finetune_icon.png" alt/></p>
+<h3 id="23-pipeline-整体">2.3 Pipeline 整体<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#23-pipeline-整体" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>最终 prompt 给 GPT-4V 的输入：</p>
+<ol>
+<li><strong>图像</strong>：原 screenshot 叠 SoM bbox + ID</li>
+<li><strong>文本</strong>：每个 bbox 的 (text 内容 / icon description) 列表 + 用户任务</li>
+</ol>
+<hr/>
+<h2 id="3-experiments">3. Experiments<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-experiments" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="31-seeassign自构造的-grounding-单步评测">3.1 SeeAssign（自构造的 grounding 单步评测）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#31-seeassign自构造的-grounding-单步评测" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>作者手工造了 112 个任务（Mobile/Desktop/Web 各取自 ScreenSpot），每个任务对应一个明确的 bbox（如 “click on settings”），按 bbox 数量分 easy (&lt;10) / medium (10-40) / hard (>40)。</p>
+<p><strong>Table 1. Local semantics 对 GPT-4V grounding 准确率的提升</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Setting</th><th>Easy</th><th>Medium</th><th>Hard</th><th>Overall</th></tr></thead><tbody><tr><td>GPT-4V w.o. local semantics</td><td>0.913</td><td>0.692</td><td>0.620</td><td>0.705</td></tr><tr><td>GPT-4V w. local semantics</td><td>1.000</td><td>0.949</td><td>0.900</td><td><strong>0.938</strong></td></tr></tbody></table></div>
+<p>bbox 越多，semantic 文本前置的增益越大——印证 “composite task 拆分” 的假设。</p>
+<h3 id="32-screenspot">3.2 ScreenSpot<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#32-screenspot" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>跨 Mobile/Desktop/Web 三平台，600+ screenshot。</p>
+<p><strong>Table 2. ScreenSpot 全面对比</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Methods</th><th>Size</th><th>Mobile-T</th><th>Mobile-I</th><th>Desk-T</th><th>Desk-I</th><th>Web-T</th><th>Web-I</th><th>Avg</th></tr></thead><tbody><tr><td>Fuyu</td><td>8B</td><td>41.0</td><td>1.3</td><td>33.0</td><td>3.6</td><td>33.9</td><td>4.4</td><td>19.5</td></tr><tr><td>CogAgent</td><td>18B</td><td>67.0</td><td>24.0</td><td>74.2</td><td>20.0</td><td>70.4</td><td>28.6</td><td>47.4</td></tr><tr><td>SeeClick</td><td>9.6B</td><td>78.0</td><td>52.0</td><td>72.2</td><td>30.0</td><td>55.7</td><td>32.5</td><td>53.4</td></tr><tr><td>GPT-4V</td><td>-</td><td>22.6</td><td>24.5</td><td>20.2</td><td>11.8</td><td>9.2</td><td>8.8</td><td>16.2</td></tr><tr><td>OmniParser (w.o. LS, w. GD)</td><td>-</td><td>92.7</td><td>49.4</td><td>64.9</td><td>26.3</td><td>77.3</td><td>39.7</td><td>58.4</td></tr><tr><td>OmniParser (w. LS + GD)</td><td>-</td><td>94.8</td><td>53.7</td><td>89.3</td><td>44.9</td><td>83.0</td><td>45.1</td><td>68.7</td></tr><tr><td><strong>OmniParser (w. LS + ID)</strong></td><td>-</td><td>93.9</td><td>57.0</td><td>91.3</td><td>63.6</td><td>81.3</td><td>51.0</td><td><strong>73.0</strong></td></tr></tbody></table></div>
+<p>GPT-4V 16.2 → 73.0，碾压同期 finetuned GUI 专用模型 (SeeClick 53.4, CogAgent 47.4)。LS 和 finetuned ID 各自有显著贡献（ablation: w/o LS 掉 10 pts，GD→ID 涨 4.3 pts）。</p>
+<h3 id="33-mind2web">3.3 Mind2Web<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#33-mind2web" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Web navigation，3 个 split: Cross-Website / Cross-Domain / Cross-Task。</p>
+<p><strong>Table 3. Mind2Web Step Success Rate（摘 SR 指标）</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Methods</th><th>HTML-free</th><th>image</th><th>CW-SR</th><th>CD-SR</th><th>CT-SR</th></tr></thead><tbody><tr><td>SeeClick</td><td>✓</td><td>✓</td><td>16.4</td><td>20.8</td><td>25.5</td></tr><tr><td>MindAct (GPT-4 + HTML)</td><td>×</td><td>×</td><td>38.9</td><td>39.6</td><td>39.6</td></tr><tr><td>GPT-4V+SOM (HTML bbox)</td><td>×</td><td>✓</td><td>32.7</td><td>23.7</td><td>20.3</td></tr><tr><td>GPT-4V+textual choice</td><td>×</td><td>✓</td><td>32.4</td><td>36.8</td><td><strong>40.2</strong></td></tr><tr><td>OmniParser (w. LS + GD)</td><td>✓</td><td>✓</td><td>36.1</td><td>36.8</td><td>38.7</td></tr><tr><td><strong>OmniParser (w. LS + ID)</strong></td><td>✓</td><td>✓</td><td><strong>36.5</strong></td><td><strong>42.0</strong></td><td>39.4</td></tr></tbody></table></div>
+<p>关键观察：<strong>OmniParser 不用 HTML 也能比用 HTML 的 GPT-4 / GPT-4V baselines 强</strong>（CW +4.1, CD +5.2 over GPT-4V+textual）。Cross-Task 上略输 0.8 pts。</p>
+<h3 id="34-aitwandroid-in-the-wild">3.4 AITW（Android in the Wild）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#34-aitwandroid-in-the-wild" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>30k instruction, 715k trajectory 的 Android navigation benchmark。</p>
+<p><strong>Table 4. AITW Overall</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Methods</th><th>General</th><th>Install</th><th>GoogleApps</th><th>Single</th><th>WebShop</th><th>Overall</th></tr></thead><tbody><tr><td>GPT-4V image-only</td><td>41.7</td><td>42.6</td><td>49.8</td><td>72.8</td><td>45.7</td><td>50.5</td></tr><tr><td>GPT-4V + history (IconNet)</td><td>43.0</td><td>46.1</td><td>49.2</td><td>78.3</td><td>48.2</td><td>53.0</td></tr><tr><td><strong>OmniParser (w. LS + ID)</strong></td><td>48.3</td><td>57.8</td><td>51.6</td><td>77.4</td><td>52.9</td><td><strong>57.7</strong></td></tr></tbody></table></div>
+<p>最重要的发现：<strong>ID detector 在 webpage 上训，直接替换专为 Android 训的 IconNet 还能涨 4.7 pts</strong>——interactability 概念跨平台泛化。</p>
+<blockquote>
+<p>❓ 但这里没控制 caption 模型的影响，因为 IconNet baseline 没有 LS。所以 +4.7 里有多少来自 detector swap、多少来自 LS，分不清。</p>
+</blockquote>
+<h3 id="35-plugin-to-other-vlms来自-website">3.5 Plugin to other VLMs（来自 website）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#35-plugin-to-other-vlms来自-website" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>OmniParser 也作为 plugin 接到 Phi-3.5-V 和 Llama-3.2-V，相同的 finetuned ID + LS 模式带来一致提升。说明前置 perception 这个 framework 对底座 VLM 不绑定。</p>
+<hr/>
+<h2 id="4-failure-modes作者诚实讨论的部分">4. Failure Modes（作者诚实讨论的部分）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-failure-modes作者诚实讨论的部分" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ol>
+<li><strong>Repeated icons/texts</strong>：7 个一样的 alarm 按钮，GPT-4V 选不准——SoM ID 不足以区分语义重复元素</li>
+<li><strong>Coarse OCR bbox</strong>：OCR 把整段文字框住，但 click point 用 box center，落在 hyperlink 之外 → 失败。作者建议把 OCR 和 interactable detection 合并到一个模型</li>
+<li><strong>Icon misinterpretation</strong>：三个点 icon 既可能是 “more” 也可能是 “loading”——caption 模型只看裁剪的小图，缺 global context</li>
+</ol>
+<hr/>
+<h2 id="关联工作">关联工作<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#关联工作" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="基于">基于<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#基于" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li><strong>重复元素处理差</strong>: 页面中多个相同 icon/文本时 GPT-4V 无法区分——这是 Set-of-Marks 方法的固有局限</li>
-<li><strong>Icon 描述缺乏上下文</strong>: 孤立的 icon 描述缺少页面级上下文，相同 icon 在不同场景含义不同</li>
-<li><strong>OCR 不理解 clickability</strong>: 检测到的文本区域未必可交互，中心点可能落在目标外</li>
-<li><strong>依赖外部 VLM</strong>: OmniParser 本身不做决策，性能上限取决于下游 VLM（GPT-4V）</li>
-<li><strong>评估局限</strong>: 仅在 web-based benchmark 上评估，desktop/mobile native app 的效果未知</li>
-<li><strong>v1 论文，后续有 OmniParser v2</strong>: 需关注更新版本的改进</li>
+<li><strong>Set-of-Marks Prompting</strong> [Yang et al. 2023]: OmniParser 的 visual prompting 范式直接来自 SoM，关键扩展是把 bbox 来源从 HTML/view-hierarchy 换成 finetuned 视觉 detector</li>
+<li><strong>BLIP-2</strong> [Li et al. 2023]: icon caption 模型 backbone</li>
+<li><strong>YOLOv8</strong>: interactable detector 架构</li>
+<li><strong>ClueWeb22</strong> [Overwijk et al. 2022]: 数据爬取的 seed URL 来源</li>
 </ul>
-<h2 id="mind-map">Mind Map<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mind-map" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;mindmap\n  root((OmniParser))\n    Problem\n      VLM GUI agent 缺乏屏幕解析\n      依赖 HTML/DOM 不跨平台\n      纯视觉解析精度不足\n    Method\n      YOLOv8 可交互区域检测\n      BLIP-v2 icon 功能描述\n      OCR + Set-of-Marks 标注\n    Results\n      ScreenSpot 73.0%\n      Mind2Web +4-5%\n      Local semantics +23.3%&quot;">mindmap
-  root((OmniParser))
-    Problem
-      VLM GUI agent 缺乏屏幕解析
-      依赖 HTML/DOM 不跨平台
-      纯视觉解析精度不足
-    Method
-      YOLOv8 可交互区域检测
-      BLIP-v2 icon 功能描述
-      OCR + Set-of-Marks 标注
-    Results
-      ScreenSpot 73.0%
-      Mind2Web +4-5%
-      Local semantics +23.3%
-</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
-<h2 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="对比">对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li>OmniParser 后来发展为 OmniParser v2，集成到 Microsoft 的 GUI agent 方案中，已被广泛采用</li>
-<li>与 SeeClick (2401) 形成互补：SeeClick 训练 VLM 直接做 grounding，OmniParser 用外部检测模型辅助——哪种范式更好是 open question</li>
-<li>核心 insight “local semantics matters” 在后续工作（如 UI-TARS、OpenCUA）中被验证——icon 的功能描述比视觉外观更重要</li>
-<li>可作为 data augmentation tool：用 OmniParser 解析截图生成 structured annotation 来训练端到端模型</li>
-</ul></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="uevi3i" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#problem--motivation" data-for="problem--motivation">Problem &amp; Motivation</a></li><li class="depth-0"><a href="#method" data-for="method">Method</a></li><li class="depth-0"><a href="#key-results" data-for="key-results">Key Results</a></li><li class="depth-0"><a href="#strengths--weaknesses" data-for="strengths--weaknesses">Strengths &amp; Weaknesses</a></li><li class="depth-0"><a href="#mind-map" data-for="mind-map">Mind Map</a></li><li class="depth-0"><a href="#notes" data-for="notes">Notes</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+<li><strong>SeeClick</strong> [Cheng et al. 2024]: end-to-end finetuned GUI VLM，OmniParser 在 ScreenSpot 上以 modular pipeline + GPT-4V 大幅超越（73.0 vs 53.4）</li>
+<li><strong>CogAgent</strong> [Hong et al. 2023]: 18B GUI 专用 VLM，同样被 OmniParser 超越</li>
+<li><strong>SeeAct</strong> [Zheng et al. 2024]: 同样用 GPT-4V，但依赖 HTML 抽 element，OmniParser 在不用 HTML 的情况下平了或超过</li>
+<li><strong>MindAct</strong> [Deng et al. 2023]: Mind2Web 原始 baseline，用 HTML，OmniParser 在 Cross-Domain/Website 上反超</li>
+</ul>
+<h3 id="方法相关">方法相关<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#方法相关" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Ferret-UI</strong>, <strong>CogAgent</strong>, <strong>Fuyu</strong>: 同期端到端 mobile/GUI VLM，代表另一条路线（不分离 perception 和 action）</li>
+<li><strong>IconNet</strong> [Sunkara et al. 2022]: AITW 默认 detector，OmniParser 的 ID 直接替换它并涨点</li>
+<li><strong>Mobile-Agent / Mobile-Agent-v2</strong>: 类似 modular agent framework，在 mobile domain</li>
+<li><strong>OSWorld</strong>: cross-platform OS-level benchmark，OmniParser 没在上面评测，是一个明显的 next step</li>
+</ul>
+<hr/>
+<h2 id="论文点评">论文点评<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#论文点评" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="strengths">Strengths<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>Framing 简洁，问题定义清楚</strong>：把 GUI agent 的瓶颈从”VLM 不够强”重新 frame 成”perception 层不够强”，并且用一组干净的 ablation（w/o LS, w/o ID）证明了这个 framing。</li>
+<li><strong>Cross-platform 泛化的实证发现 valuable</strong>：webpage-trained ID detector 能直接用在 Android 上 (+4.7 pts over IconNet)，这是个 non-trivial 的正向 transfer 信号。</li>
+<li><strong>Pipeline 简单且 scalable</strong>：YOLOv8 + BLIP-2 + OCR，没有任何花哨架构；数据全部 DOM 自动抽 + GPT-4o 自动标注，完全可以 scale。</li>
+<li><strong>诚实讨论 failure mode</strong>：明确指出 repeated elements、coarse OCR、icon misinterpretation 三种典型失败，没有粉饰。</li>
+</ol>
+<h3 id="weaknesses">Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>Ablation 不完整</strong>：(a) 没对比 finetuned Grounding DINO，无法 isolate “YOLOv8 architecture” vs “finetune data” 的功劳；(b) AITW 上 IconNet baseline 没有 LS，所以 +4.7 pts 的归因混淆了 detector swap 和 LS 增益。</li>
+<li><strong>Caption 模型的 noisy supervision 没量化</strong>：7k 训练集是 GPT-4o 生成的，不是 human label。作者没分析 GPT-4o 自己的 icon naming 准确率上限，所以 caption 质量本身有 invisible ceiling。</li>
+<li><strong>End-to-end vs modular 的 trade-off 未讨论</strong>：模块化 perception + frozen GPT-4V 在 latency/cost 上比端到端 GUI VLA 显然劣（每步至少 3 次模型调用 + 1 次大模型推理），但论文没提这点。</li>
+<li><strong>Coordinate prediction 用 bbox center 是 hardcoded heuristic</strong>，AITW failure case 1 已经暴露这个问题，但没尝试修正。</li>
+<li><strong>Benchmark 都是 single-step 或 short-horizon evaluation</strong>：ScreenSpot 是单步 grounding，Mind2Web 用的是 step-wise success rate（不是 trajectory-level）；OSWorld 这种长序列任务上的表现没测。</li>
+</ol>
+<h3 id="可信评估">可信评估<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#可信评估" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="artifact-可获取性">Artifact 可获取性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#artifact-可获取性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><strong>代码</strong>: inference 完整开源（github.com/microsoft/OmniParser，含 demo）；training 代码未在 main paper 提及</li>
+<li><strong>模型权重</strong>: 已发布 finetuned YOLOv8 detector + BLIP-2 caption checkpoints（HuggingFace），后续 V2 checkpoints 在 2025/02 发布</li>
+<li><strong>训练细节</strong>: 较完整——detector (20 epochs, bs 256, lr 1e-3, Adam, 4 GPU), caption (1 epoch, lr 1e-5, Adam)；数据规模 67k + 7k 都说明</li>
+<li><strong>数据集</strong>: 67k interactable detection 数据集和 7k icon-caption 数据集是否公开 release，未明确说明（仅说明数据收集来自 ClueWeb22 + GPT-4o）</li>
+</ul>
+<h4 id="claim-可验证性">Claim 可验证性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#claim-可验证性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>✅ ScreenSpot / Mind2Web / AITW 数值改进：标准 benchmark + 公开 inference code，可独立复现</li>
+<li>✅ ID detector 跨平台泛化（web → mobile）：AITW 的 +4.7 是直接 swap，可验证</li>
+<li>⚠️ “GPT-4V 的 GUI 能力被严重低估”：定性 claim，依赖于 OmniParser 本身的 ceiling；如果 perception 模块还有缺陷（如失败案例），那 GPT-4V 的真实 ceiling 还是低估的</li>
+<li>⚠️ “interactability 概念跨平台通用”：仅基于 web → Android 一个方向的实验，没在 iOS / desktop OS-level 任务上系统验证</li>
+<li>⚠️ Caption 模型的 functionality 描述准确率：用 GPT-4o 自标，没有 human-annotated holdout 评测，质量上限不明</li>
+</ul>
+<h3 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>核心洞察</strong>: “把 perception bottleneck 解耦出来”是个简单但有效的 framing。后续 OmniParser V2 (2025/02) + OmniTool (Windows VM control) 验证了这条路线的工程可扩展性。</li>
+<li><strong>对我个人的启发</strong>: 在 GUI/computer-use agent 这条线，<strong>模块化 perception + 通用大脑</strong> 与 <strong>end-to-end VLA</strong> 是两条平行路线。OmniParser 的成功说明前者短期内可能更 practical（不用大规模 GUI 数据从头训），但长期可能被 end-to-end 替代——类似 vision pipeline 的 hand-crafted feature → CNN 的转变。</li>
+<li><strong>可借鉴方法</strong>: 用 DOM 自动抽 bbox + GPT-4o 自动生成 functionality description，这种”用现成大模型 bootstrap 标注”的 pattern 在 VLA / robotics affordance label 上也适用</li>
+<li><strong>疑问/后续可看</strong>:
+<ul>
+<li>这篇 single-step grounding 占大头的评测在 long-horizon 场景下是否还成立？OSWorld / Visual-WebArena trajectory-level success 才是最终的考验</li>
+<li>V2 解决了 V1 的哪些 failure mode？特别是 repeated element 和 coarse OCR 这两块</li>
+<li>与 SeeClick / Aria-UI / UGround 这些后来更强的 end-to-end GUI grounding 模型的 head-to-head 比较</li>
+</ul>
+</li>
+</ul>
+<h3 id="rating">Rating<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#rating" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>分数</strong>：2 - Frontier
+<strong>理由</strong>：OmniParser 是 pure-vision GUI parsing 的代表工作，被后续 computer-use agent（UFO、OmniTool、多篇 2025 agent 论文）广泛作为 perception 前置 baseline，github 影响力显著（V2 发布后社区采纳度持续扩大），符合 Frontier 的”必须比较的 Baseline / 方法范式的代表”标准。但不到 Foundation——Weakness 里指出的 modular pipeline 在长序列任务上未验证、Benchmark 仅 single-step 评测，加上外部信号显示 end-to-end grounding VLM（UGround、Aria-UI、UI-TARS 等）正在同一赛道持续提升 SOTA，把”perception + 通用大脑”范式本身推向 archived 风险中，因此不是方向脉络的奠基节点。</p></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="ud8fg4" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#1-problem--motivation" data-for="1-problem--motivation">1. Problem &amp; Motivation</a></li><li class="depth-0"><a href="#2-method" data-for="2-method">2. Method</a></li><li class="depth-1"><a href="#21-interactable-region-detection" data-for="21-interactable-region-detection">2.1 Interactable Region Detection</a></li><li class="depth-1"><a href="#22-local-semantics-icon-caption" data-for="22-local-semantics-icon-caption">2.2 Local Semantics: Icon Caption</a></li><li class="depth-1"><a href="#23-pipeline-整体" data-for="23-pipeline-整体">2.3 Pipeline 整体</a></li><li class="depth-0"><a href="#3-experiments" data-for="3-experiments">3. Experiments</a></li><li class="depth-1"><a href="#31-seeassign自构造的-grounding-单步评测" data-for="31-seeassign自构造的-grounding-单步评测">3.1 SeeAssign（自构造的 grounding 单步评测）</a></li><li class="depth-1"><a href="#32-screenspot" data-for="32-screenspot">3.2 ScreenSpot</a></li><li class="depth-1"><a href="#33-mind2web" data-for="33-mind2web">3.3 Mind2Web</a></li><li class="depth-1"><a href="#34-aitwandroid-in-the-wild" data-for="34-aitwandroid-in-the-wild">3.4 AITW（Android in the Wild）</a></li><li class="depth-1"><a href="#35-plugin-to-other-vlms来自-website" data-for="35-plugin-to-other-vlms来自-website">3.5 Plugin to other VLMs（来自 website）</a></li><li class="depth-0"><a href="#4-failure-modes作者诚实讨论的部分" data-for="4-failure-modes作者诚实讨论的部分">4. Failure Modes（作者诚实讨论的部分）</a></li><li class="depth-0"><a href="#关联工作" data-for="关联工作">关联工作</a></li><li class="depth-1"><a href="#基于" data-for="基于">基于</a></li><li class="depth-1"><a href="#对比" data-for="对比">对比</a></li><li class="depth-1"><a href="#方法相关" data-for="方法相关">方法相关</a></li><li class="depth-0"><a href="#论文点评" data-for="论文点评">论文点评</a></li><li class="depth-1"><a href="#strengths" data-for="strengths">Strengths</a></li><li class="depth-1"><a href="#weaknesses" data-for="weaknesses">Weaknesses</a></li><li class="depth-1"><a href="#可信评估" data-for="可信评估">可信评估</a></li><li class="depth-1"><a href="#notes" data-for="notes">Notes</a></li><li class="depth-1"><a href="#rating" data-for="rating">Rating</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
 </script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
 </script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>

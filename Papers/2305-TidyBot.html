@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><title>TidyBot: Personalized Robot Assistance with Large Language Models</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="TidyBot: Personalized Robot Assistance with Large Language Models"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="TidyBot: Personalized Robot Assistance with Large Language Models"/><meta name="twitter:description" content="Summary TidyBot 利用 LLM 的 few-shot summarization 能力，从少量用户示例中归纳出 generalized preference rules，指导 mobile manipulator 将物品放置到个性化的目标位置。在 benchmark 上对 unseen objects 达到 91.2% accuracy，真实机器人实验达到 ..."/><meta property="og:description" content="Summary TidyBot 利用 LLM 的 few-shot summarization 能力，从少量用户示例中归纳出 generalized preference rules，指导 mobile manipulator 将物品放置到个性化的目标位置。在 benchmark 上对 unseen objects 达到 91.2% accuracy，真实机器人实验达到 ..."/><meta property="og:image:alt" content="Summary TidyBot 利用 LLM 的 few-shot summarization 能力，从少量用户示例中归纳出 generalized preference rules，指导 mobile manipulator 将物品放置到个性化的目标位置。在 benchmark 上对 unseen objects 达到 91.2% accuracy，真实机器人实验达到 ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2305-TidyBot"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2305-TidyBot"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary TidyBot 利用 LLM 的 few-shot summarization 能力，从少量用户示例中归纳出 generalized preference rules，指导 mobile manipulator 将物品放置到个性化的目标位置。在 benchmark 上对 unseen objects 达到 91.2% accuracy，真实机器人实验达到 ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+<html lang="en"><head><title>TidyBot: Personalized Robot Assistance with Large Language Models</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="TidyBot: Personalized Robot Assistance with Large Language Models"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="TidyBot: Personalized Robot Assistance with Large Language Models"/><meta name="twitter:description" content="Summary TidyBot: Personalized Robot Assistance with Large Language Models 核心: 用 LLM 的 few-shot summarization 把少量 user-specific 物品摆放偏好抽象成通用 rule，作为家庭 cleanup 任务的 personalization ..."/><meta property="og:description" content="Summary TidyBot: Personalized Robot Assistance with Large Language Models 核心: 用 LLM 的 few-shot summarization 把少量 user-specific 物品摆放偏好抽象成通用 rule，作为家庭 cleanup 任务的 personalization ..."/><meta property="og:image:alt" content="Summary TidyBot: Personalized Robot Assistance with Large Language Models 核心: 用 LLM 的 few-shot summarization 把少量 user-specific 物品摆放偏好抽象成通用 rule，作为家庭 cleanup 任务的 personalization ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2305-TidyBot"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2305-TidyBot"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary TidyBot: Personalized Robot Assistance with Large Language Models 核心: 用 LLM 的 few-shot summarization 把少量 user-specific 物品摆放偏好抽象成通用 rule，作为家庭 cleanup 任务的 personalization ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
   position: absolute;
   display: flex;
   float: right;
@@ -116,99 +116,452 @@ pre:hover > .expand-button {
   padding: 0 12px;
   font-size: 14px;
 }
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2305-TidyBot"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="gc1ghh"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/RL" class="sidebar-tag-pill">#RL</a><a href="/mindflow/tags/web-agent" class="sidebar-tag-pill">#web-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/scene-understanding" class="sidebar-tag-pill">#scene-understanding</a><a href="/mindflow/tags/instruction-following" class="sidebar-tag-pill">#instruction-following</a><a href="/mindflow/tags/cross-embodiment" class="sidebar-tag-pill">#cross-embodiment</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2305-TidyBot</a></div></nav><h1 class="article-title">TidyBot: Personalized Robot Assistance with Large Language Models</h1><div class="paper-meta"><span class="paper-venue">Autonomous Robots</span><span class="paper-authors"><span class="meta-sep">·</span>Jimmy Wu <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, Rika Antonova</span><span>, Adam Kan</span><span>, Marion Lepert</span><span>, Andy Zeng</span><span>, Shuran Song</span><span>, Jeannette Bohg</span><span>, Szymon Rusinkiewicz</span><span>, Thomas Funkhouser</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2023-05-01T00:00:00.000Z">May 01, 2023</time><span>5 min read</span></p><ul class="tags"><li><a href="../tags/mobile-manipulation" class="internal tag-link">mobile-manipulation</a></li><li><a href="../tags/task-planning" class="internal tag-link">task-planning</a></li><li><a href="../tags/instruction-following" class="internal tag-link">instruction-following</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>TidyBot 利用 LLM 的 few-shot summarization 能力，从少量用户示例中归纳出 generalized preference rules，指导 mobile manipulator 将物品放置到个性化的目标位置。在 benchmark 上对 unseen objects 达到 91.2% accuracy，真实机器人实验达到 85.0% success rate。</p>
-<h2 id="problem--motivation">Problem &amp; Motivation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#problem--motivation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>家庭整理任务中，物品放置偏好高度个性化（不同人对同类物品的归类方式不同），传统方法要么需要为每个物品手动指定位置，要么依赖大量众包数据训练个性化模型。核心问题是：如何从极少量示例中学习可泛化的用户偏好？作者观察到 LLM 天然具备从具体实例中归纳抽象规则的 summarization 能力，将其引入机器人个性化场景。</p>
-<h2 id="method">Method<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#method" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2305-TidyBot"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="mm0h7i"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/embodied-reasoning" class="sidebar-tag-pill">#embodied-reasoning</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/computer-use" class="sidebar-tag-pill">#computer-use</a><a href="/mindflow/tags/agentic-RL" class="sidebar-tag-pill">#agentic-RL</a><a href="/mindflow/tags/gui-agent" class="sidebar-tag-pill">#gui-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/world-model" class="sidebar-tag-pill">#world-model</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2305-TidyBot</a></div></nav><h1 class="article-title">TidyBot: Personalized Robot Assistance with Large Language Models</h1><div class="paper-meta"><span class="paper-venue">Autonomous Robots / IROS 2023</span><span class="paper-authors"><span class="meta-sep">·</span>Jimmy Wu <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, Rika Antonova</span><span>, Adam Kan</span><span>, Marion Lepert</span><span>, Andy Zeng</span><span>, Shuran Song</span><span>, Jeannette Bohg</span><span>, Szymon Rusinkiewicz</span><span>, Thomas Funkhouser</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2023-05-09T00:00:00.000Z">May 09, 2023</time><span>16 min read</span></p><ul class="tags"><li><a href="../tags/LLM" class="internal tag-link">LLM</a></li><li><a href="../tags/mobile-manipulation" class="internal tag-link">mobile-manipulation</a></li><li><a href="../tags/scene-understanding" class="internal tag-link">scene-understanding</a></li><li><a href="../tags/instruction-following" class="internal tag-link">instruction-following</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>TidyBot: Personalized Robot Assistance with Large Language Models </p></div>
+                  
+                </div>
+<div class="callout-content">
 <ul>
-<li><strong>Two-stage LLM pipeline</strong>:
+<li><strong>核心</strong>: 用 LLM 的 few-shot summarization 把少量 user-specific 物品摆放偏好抽象成通用 rule，作为家庭 cleanup 任务的 personalization 信号</li>
+<li><strong>方法</strong>: 用户提供 4–10 条 “object → receptacle” 示例 → text-davinci-003 用 Pythonic prompt 总结成自然语言 rule → 抽出名词作为 CLIP 的 open-vocab label set → 移动机器人按 rule 抓取并执行 pick-and-place / pick-and-toss</li>
+<li><strong>结果</strong>: 文本 benchmark unseen object accuracy 91.2%（baseline 78.5%）；真实世界 mobile manipulator 8 个 scenarios × 3 runs 共 240 个物品，整机成功率 85.0%</li>
+<li><strong>Sources</strong>: <a href="https://arxiv.org/abs/2305.05658" class="external">paper<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://tidybot.cs.princeton.edu/" class="external">website<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://github.com/jimmyyhwu/tidybot" class="external">github<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><strong>Rating</strong>: 2 - Frontier（prompt-engineering 时代的 landmark 应用论文，IROS 2023 best paper，被 personalization / LLM-for-robotics 后续工作广泛引用为 baseline，但 method originality 有限且未成奠基框架）</li>
+</ul>
+</div>
+</blockquote>
+<p><strong>Key Takeaways:</strong></p>
 <ol>
-<li><strong>Summarization stage</strong>: 用户提供少量文本示例（如”黄色衬衫放抽屉，深紫色衬衫放衣柜”），LLM 通过 code-completion prompt 归纳为高层规则（如”浅色衣服放抽屉，深色衣服放衣柜”）</li>
-<li><strong>Application stage</strong>: 对新物品，用归纳的规则预测放置位置，无需 retraining</li>
+<li><strong>Summarization-as-generalization</strong>: 把 personalization 问题转成 “few-shot 示例 → 自然语言 rule”，relative to 直接 in-context inference 在 unseen object 上 +12.7pt accuracy（91.2% vs 78.5%）</li>
+<li><strong>LLM 输出反哺 perception 词表</strong>: rule 中的名词被自动抽取作为 CLIP 的 candidate label，把开放词表识别问题压成 2–5 类的 closed-set 分类，CLIP 准确率从 52.3% → 95.5%</li>
+<li><strong>Pythonic prompt 设计</strong>: 把 examples 表达成 <code>pick_and_place(&quot;yellow shirt&quot;, &quot;drawer&quot;)</code> 形式，再让 LLM 续写 <code># Summary: ...</code> 注释——结构化输入产生结构化、易解析的 summary，并复用 LLM 在 code 上的训练分布</li>
+<li><strong>Bottleneck 不在 LLM</strong>: 真机 pipeline 中 LLM 决策正确率 100%（在已识别物品上）；瓶颈在 perception（92.5% 定位 × 95.5% 分类 ≈ 88%）和执行（96.2%）</li>
 </ol>
-</li>
-<li><strong>Robot system pipeline</strong>:
+<p><strong>Teaser. 任务设定示意——机器人按用户偏好把地上的物品搬到 “应该去的位置”。</strong></p>
+<p><img src="https://arxiv.org/html/x1.png" alt/></p>
+<hr/>
+<h2 id="1-motivationpersonalization-为什么难">1. Motivation：personalization 为什么难<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-motivationpersonalization-为什么难" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>家庭整理任务的核心难点在于 <strong>“应该放哪”</strong> 没有标准答案。同样是衬衫，有人放抽屉，有人放衣柜，有人挂衣架。先前工作分两类：</p>
+<ul>
+<li><strong>指定每个物体目标位置</strong>（pointing gesture / target layout）：autonomy 不足，标注成本不可扩展</li>
+<li><strong>跨用户平均 + 学习个性化偏好</strong>（collaborative filtering、spatial relations、latent preference vectors）：要采集大规模 crowd-sourced preference dataset，且小数据集难泛化</li>
+</ul>
+<p>作者的视角：<strong>LLM 已经在海量文本上隐式学过 “什么物品属于什么类别”、“什么属性可以聚合” 的常识</strong>，这恰好是 personalization 需要的 generalization——不需要额外训练，只要让 LLM 把 4–10 条示例 summarize 成 rule，就能用 commonsense + summarization 把示例延展到未见物品。</p>
+<blockquote>
+<p>❓ 这是一个典型的 “把 ML 问题翻译成 LLM prompt 任务” 的早期工作（2023 年）。从今天看更像是 <strong>prompt engineering 的 application paper</strong>，而非 method paper；但 framing—— “summarization 是 generalization 的载体”——确实是个 reusable insight。</p>
+</blockquote>
+<hr/>
+<h2 id="2-method">2. Method<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-method" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="21-personalized-receptacle-selection">2.1 Personalized receptacle selection<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#21-personalized-receptacle-selection" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Step 1：summarize 偏好 → rule</strong></p>
+<p>把用户示例编码为 Pythonic prompt，让 LLM 续写最后一行的 <code># Summary:</code> 注释：</p>
+<pre><code>objects = [&quot;yellow shirt&quot;, &quot;dark purple shirt&quot;, &quot;white socks&quot;, &quot;black shirt&quot;]
+receptacles = [&quot;drawer&quot;, &quot;closet&quot;]
+pick_and_place(&quot;yellow shirt&quot;, &quot;drawer&quot;)
+pick_and_place(&quot;dark purple shirt&quot;, &quot;closet&quot;)
+pick_and_place(&quot;white socks&quot;, &quot;drawer&quot;)
+pick_and_place(&quot;black shirt&quot;, &quot;closet&quot;)
+# Summary: Put light-colored clothes in the drawer and dark-colored clothes in the closet.
+</code></pre>
+<p><strong>Step 2：用 rule 推理新物品</strong></p>
+<p>把 summary 作为 prompt 前缀，让 LLM 续写未见物品的 placement：</p>
+<pre><code># Summary: Put light-colored clothes in the drawer and dark-colored clothes in the closet.
+objects = [&quot;black socks&quot;, &quot;white shirt&quot;, &quot;navy socks&quot;, &quot;beige shirt&quot;]
+receptacles = [&quot;drawer&quot;, &quot;closet&quot;]
+pick_and_place(&quot;black socks&quot;, &quot;closet&quot;)
+pick_and_place(&quot;white shirt&quot;, &quot;drawer&quot;)
+...
+</code></pre>
+<p>为什么用 Pythonic 形式？(i) LLM 在 code 上训练量大，prompt 与训练分布更近；(ii) 输出是结构化的，正则就能 parse，避免 free-form 文本歧义；(iii) function name 本身（<code>pick_and_place</code>）就是一个语义 anchor。</p>
+<h3 id="22-personalized-primitive-selection">2.2 Personalized primitive selection<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#22-personalized-primitive-selection" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>同样的 summarization recipe 复用到 manipulation primitive 选择上——把 example 表达成 <code>pick_and_place(&quot;...&quot;)</code> vs <code>pick_and_toss(&quot;...&quot;)</code>，让 LLM 总结成 “Pick and place clothes, pick and toss snacks” 这类规则。这种 <strong>同构的 prompt 模板让 personalization 自然扩展到 manipulation 维度</strong>。</p>
+<h3 id="23-真实机器人-pipeline">2.3 真实机器人 pipeline<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#23-真实机器人-pipeline" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Figure 2. System overview——overhead camera 找物 → 移动到物品 → egocentric camera 拍特写 → CLIP 分类 → LLM rule 选 receptacle 和 primitive → 执行。</strong></p>
+<p><img src="https://arxiv.org/html/x2.png" alt/></p>
+<p>伪代码核心循环：</p>
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:4.5em;vertical-align:-2em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.5em;"><span style="top:-4.66em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">recep</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.16em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3175em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">prim</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span><span style="top:-1.66em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.5em;"><span style="top:-4.66em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord text"><span class="mord">LLM.Summarize</span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">recep</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span><span style="top:-3.16em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord text"><span class="mord">LLM.Summarize</span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3175em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">prim</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span><span style="top:-1.66em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord text"><span class="mord">LLM.GetCategories</span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">recep</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:1em;"></span><span class="mord text"><span class="mord">// </span><span class="mord cjk_fallback">抽取</span><span class="mord"> rule </span><span class="mord cjk_fallback">中的名词</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2em;"><span></span></span></span></span></span></span></span></span></span></span></span>
+<p>之后每一轮：用 ViLD 在 overhead 视角找到最近物品 → 移动 → egocentric CLIP 用 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span></span></span></span> 分类 → 查 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">recep</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3175em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">prim</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> → pick + place/toss。</p>
+<p><strong>关键设计</strong>：rule 里的名词集合 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span></span></span></span> 直接做 CLIP 的 label 集。不需要人工指定细粒度词表，也不需要 CLIP 处理 open-vocab 推断——只在 2–5 个抽象类别（“light-colored clothing”）之间二选一/五选一，把 perception 问题大幅简化。</p>
+<p>硬件配置：holonomic powered-caster 移动底盘 + Kinova Gen3 7-DoF 臂 + Robotiq 2F-85 夹爪；ArUco marker 做 base 位姿，ViLD 做物品定位（receptacle 位置硬编码）。</p>
+<hr/>
+<h2 id="3-experiments">3. Experiments<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-experiments" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="31-benchmark">3.1 Benchmark<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#31-benchmark" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>96 scenarios，4 个 room type（living room / bedroom / kitchen / pantry），每场景 2–5 个 receptacles + 4–10 seen examples + 同等数量 unseen evaluation。总计 672 seen + 672 unseen placements，覆盖 87 unique receptacles 和 1,076 unique objects。</p>
+<p>排序标准（一个 scenario 可同时 hit 多个）：</p>
+<p><strong>Table 1. Sorting criteria 在 96 个 scenarios 中的覆盖度。</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Category</th><th>Attribute</th><th>Function</th><th>Subcategory</th><th>Multiple</th></tr></thead><tbody><tr><td>86/96</td><td>27/96</td><td>24/96</td><td>31/96</td><td>17/96</td></tr></tbody></table></div>
+<h3 id="32-主结果与-baseline-对比">3.2 主结果与 baseline 对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#32-主结果与-baseline-对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table 2. Unseen object placement accuracy。</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Method</th><th>Accuracy (unseen)</th></tr></thead><tbody><tr><td>Examples only（不 summarize 直接续写）</td><td>78.5%</td></tr><tr><td>WordNet taxonomy（最近 seen object）</td><td>67.5%</td></tr><tr><td>RoBERTa embeddings（cosine 最近邻）</td><td>77.8%</td></tr><tr><td>CLIP embeddings</td><td>83.7%</td></tr><tr><td><strong>Summarization (ours)</strong></td><td><strong>91.2%</strong></td></tr></tbody></table></div>
+<p><strong>Table 3. 按 sorting criteria 拆分。</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Method</th><th>Category</th><th>Attribute</th><th>Function</th><th>Subcategory</th><th>Multiple</th></tr></thead><tbody><tr><td>Examples only</td><td>80.1%</td><td>72.7%</td><td>75.7%</td><td>77.0%</td><td>81.5%</td></tr><tr><td>WordNet</td><td>69.1%</td><td>59.8%</td><td>61.4%</td><td>71.3%</td><td>74.1%</td></tr><tr><td>RoBERTa</td><td>78.6%</td><td>75.5%</td><td>71.8%</td><td>71.7%</td><td>87.5%</td></tr><tr><td>CLIP emb</td><td>84.6%</td><td>79.8%</td><td>85.5%</td><td>84.7%</td><td>87.9%</td></tr><tr><td><strong>Summarization</strong></td><td><strong>91.0%</strong></td><td><strong>85.6%</strong></td><td><strong>93.9%</strong></td><td><strong>90.1%</strong></td><td><strong>93.5%</strong></td></tr></tbody></table></div>
+<p>最关键对比是 <strong>Examples only vs Summarization</strong>：唯一差异就是中间是否显式产出 rule，单这一步在 unseen 上 +12.7pt。这与 chain-of-thought 同源——让 LLM 显式输出中间推理可以提高最终决策质量。WordNet 在 attribute 和 function criteria 上 fail（59.8% / 61.4%），因为 WordNet 是基于 category 的语义层级，对 “light vs dark”、“workout vs casual” 这种属性维度无能为力。</p>
+<h3 id="33-ablation">3.3 Ablation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#33-ablation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table 4. Ablation。</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Method</th><th>Seen</th><th>Unseen</th></tr></thead><tbody><tr><td>Commonsense（不给偏好，纯常识）</td><td>45.0%</td><td>45.6%</td></tr><tr><td>Summarization</td><td>91.8%</td><td>91.2%</td></tr><tr><td>Human summary（人写 rule，oracle）</td><td>97.1%</td><td>97.5%</td></tr></tbody></table></div>
+<ul>
+<li>Commonsense baseline 45% 说明 <strong>任务本身需要 personalization</strong>，否则 LLM 凭常识只能猜到一半</li>
+<li>Human summary 97.5% 给 LLM summary 留下了 6pt 的 headroom，说明瓶颈在 summarize 质量而非 grounding</li>
+</ul>
+<p><strong>Table 5. 不同 LLM 的 commonsense vs summarization 表现。</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Model</th><th>CS-seen</th><th>CS-unseen</th><th>Sum-seen</th><th>Sum-unseen</th></tr></thead><tbody><tr><td>text-davinci-003</td><td>45.0%</td><td>45.6%</td><td>91.8%</td><td>91.2%</td></tr><tr><td>text-davinci-002</td><td>41.8%</td><td>37.5%</td><td>84.1%</td><td>75.7%</td></tr><tr><td>code-davinci-002</td><td>41.4%</td><td>39.4%</td><td>88.6%</td><td>83.2%</td></tr><tr><td>PaLM 540B</td><td>45.5%</td><td>49.6%</td><td>84.6%</td><td>75.7%</td></tr></tbody></table></div>
+<p>老模型 seen-unseen gap 大（PaLM 540B: 84.6 → 75.7），原因是它们更倾向于在 summary 里 list 出 seen objects 而不是抽象成类别——summary 不够 abstract → 不泛化。</p>
+<h3 id="34-用户研究">3.4 用户研究<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#34-用户研究" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>40 participants，每人 24 个 scenario，960 次评估。让用户在 CLIP embeddings baseline vs Summarization 之间选 “更符合 preference 的”。</p>
+<p><strong>Table 6. 用户偏好结果。</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Method</th><th>Category</th><th>Attribute</th><th>Function</th><th>Subcategory</th><th>Multiple</th><th>Overall</th></tr></thead><tbody><tr><td>CLIP embeddings</td><td>19.7%</td><td>23.7%</td><td>11.2%</td><td>22.6%</td><td>21.2%</td><td>19.1%</td></tr><tr><td>Summarization (ours)</td><td>47.4%</td><td>41.9%</td><td>60.0%</td><td>46.1%</td><td>40.6%</td><td>46.9%</td></tr><tr><td>Equally preferred</td><td>32.9%</td><td>34.4%</td><td>28.8%</td><td>31.3%</td><td>38.2%</td><td>34.1%</td></tr></tbody></table></div>
+<p>paired t-test: t=9.93 (df=39), p&lt;0.001。Function criteria 上 60% vs 11.2% 差距最大——CLIP embedding 倾向于按 category 聚合（dress pants 和 sweatpants 都归 “pants”），但用户排序逻辑可能是 formal vs casual，这种语义鸿沟 embedding 没法跨。</p>
+<h3 id="35-真实世界结果">3.5 真实世界结果<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#35-真实世界结果" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>8 个 scenarios × 3 runs × 10 objects = 240 次拾取，整机成功率 <strong>85.0%</strong>。Pipeline 各级精度：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Stage</th><th>Success rate</th></tr></thead><tbody><tr><td>Overhead camera localization</td><td>92.5%</td></tr><tr><td>Object classification (CLIP)</td><td>95.5%</td></tr><tr><td>LLM receptacle + primitive selection</td><td>100%</td></tr><tr><td>Manipulation primitive execution</td><td>96.2%</td></tr></tbody></table></div>
+<p>平均每物品 15–20 秒。</p>
+<h3 id="36-vlm-对比">3.6 VLM 对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#36-vlm-对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>222 张真机 egocentric 图，三种模型 × 三种 vocabulary：</p>
+<p><strong>Table 7. VLM 对比。</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th></th><th>CLIP</th><th>ViLD</th><th>OWL-ViT</th></tr></thead><tbody><tr><td>Summarized categories</td><td><strong>95.5%</strong></td><td>76.1%</td><td>45.9%</td></tr><tr><td>Scenario object names</td><td>70.7%</td><td>59.9%</td><td>24.8%</td></tr><tr><td>All object names</td><td>52.3%</td><td>36.5%</td><td>18.5%</td></tr></tbody></table></div>
+<p>两个发现：</p>
 <ol>
-<li>Overhead camera + ArUco marker 定位机器人，ViLD 检测地面物品</li>
-<li>靠近物品获取 egocentric close-up image</li>
-<li>CLIP 将物品分类到 LLM 归纳的 category 中（关键：LLM summarization 自动生成候选类别，减少分类难度）</li>
-<li>LLM 根据规则确定目标 receptacle 和 manipulation primitive</li>
-<li>执行 pick-and-place 或 pick-and-toss</li>
+<li><strong>Vocabulary 越粗精度越高</strong>——把识别压成 2–5 选 1 远比 65 选 1 容易。LLM summarization 自动生成的小词表是这个收益的关键</li>
+<li><strong>CLIP 优于 ViLD/OWL-ViT</strong>——后两者会出现 “no detection” 的情况，且作为 detector 派生模型在 classification 上 degrade。CLIP 的 image-wide classification 在 egocentric 视角下因为前景物品占主导反而是优势</li>
 </ol>
-</li>
-<li><strong>Robot platform</strong>: Holonomic mobile base + Kinova Gen3 7-DoF arm + Robotiq parallel-jaw gripper</li>
-<li><strong>Manipulation primitives</strong>: 手写的 pick-and-place / pick-and-toss，仅支持 top-down grasps</li>
-<li><strong>LLM</strong>: text-davinci-003（GPT-3.5 系列）</li>
-</ul>
-<h2 id="key-results">Key Results<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-results" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote>
+<p>❓ 但 CLIP 95.5% 是建立在 “egocentric camera 已经把目标物品摆中央” 的强 prior 上的；如果换成 cluttered scene，CLIP 的弱 spatial grounding 会暴露。</p>
+</blockquote>
+<h3 id="37-真实场景-demos">3.7 真实场景 demos<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#37-真实场景-demos" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Video. Annotated scenario——recycle drink cans, put away other items where they belong。</strong>
+<video src="https://tidybot.cs.princeton.edu/videos/IMG_5056-4x-annotated.mp4#t=0.001" controls muted playsinline width="720"></video></p>
+<p><strong>Video. Toss drink cans into the recycling bin。</strong>
+<video src="https://tidybot.cs.princeton.edu/videos/IMG_8817-2x.mp4" controls muted playsinline width="720"></video></p>
+<hr/>
+<h2 id="4-limitations作者自陈">4. Limitations（作者自陈）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-limitations作者自陈" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
 <ul>
-<li><strong>Benchmark</strong>（96 scenarios, 672 unseen objects）:
-<ul>
-<li>Summarization: <strong>91.2%</strong> accuracy（unseen），显著优于 CLIP embeddings 83.7%、examples-only 78.5%</li>
-<li>按 sorting criteria 分：category 91.0%, attribute 85.6%, function 93.9%, subcategory 90.1%, multiple 93.5%</li>
-<li>Human-written summaries 达 97.5%，说明 LLM summarization 仍有提升空间</li>
-<li>Commonsense-only baseline 仅 45.6%，证明个性化的必要性</li>
+<li><strong>Summary failure modes</strong>: (i) 直接 list seen objects 而不抽象（不泛化）；(ii) 把不同 receptacle group 起来（如 top drawer + bottom drawer → drawers），导致选错具体目标</li>
+<li><strong>真机系统简化</strong>: 手写 manipulation primitives；只用 top-down grasp；receptacle 位置硬编码；过度 cluttered 场景无法工作（机器人不能跨越物品）</li>
 </ul>
-</li>
-<li><strong>Human evaluation</strong>（40 participants, 960 evaluations）: 46.9% 偏好本方法 vs 19.1% 偏好 CLIP embeddings</li>
-<li><strong>Real-world</strong>（mobile manipulator）:
+<hr/>
+<h2 id="关联工作">关联工作<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#关联工作" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="基于">基于<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#基于" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li>整体 success rate <strong>85.0%</strong></li>
-<li>Overhead camera 定位 92.5%，物品分类 95.5%，LLM 选择 100%，primitive 执行 96.2%</li>
-<li>每个物品处理时间 15-20 秒</li>
+<li><strong>CLIP</strong> (Radford et al., 2021)：开放词表图像分类的 backbone</li>
+<li><strong>ViLD</strong> (Gu et al., 2022)：overhead camera 物品定位</li>
+<li><strong>GPT-3 / text-davinci-003</strong> (Brown et al., 2020)：summarization 与 rule 推理</li>
+<li><strong>Code-as-Policies / <a href="../Papers/2204-SayCan" class="internal alias" data-slug="Papers/2204-SayCan">SayCan</a> / Inner Monologue</strong> (Liang, Ahn, Huang et al., 2022)：用 LLM 生成机器人控制 / 规划的并行线索</li>
 </ul>
-</li>
-<li><strong>Visual model 对比</strong>: CLIP + LLM-summarized categories 95.5% >> ViLD 76.1% >> OWL-ViT 45.9%</li>
-</ul>
-<h2 id="strengths--weaknesses">Strengths &amp; Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths--weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p><strong>Strengths</strong>:</p>
+<h3 id="对比">对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li>Problem formulation 清晰且实用：从”个性化偏好泛化”角度切入，避免了大规模数据收集</li>
-<li>LLM summarization → category generation → CLIP classification 的 pipeline 设计巧妙，summarization 同时简化了下游视觉分类的难度</li>
-<li>实验设计全面：benchmark + human eval + real-world 三层验证，ablation 充分</li>
-<li>Human-written summary 作为 upper bound 的对比很有说服力</li>
+<li><strong>Object rearrangement benchmarks</strong>（Habitat 2.0, AI2-THOR, ALFRED）：作者强调这些任务里 target location 是预指定的，不涉及 personalization</li>
+<li><strong>Personalized placement via collaborative filtering / spatial relations / latent preference vectors</strong>：需要大规模 user preference dataset，TidyBot 不需要</li>
 </ul>
-<p><strong>Weaknesses</strong>:</p>
+<h3 id="方法相关">方法相关<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#方法相关" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li><strong>系统工程性强但方法创新有限</strong>：核心 contribution 是用 LLM 做 few-shot summarization，这更像是一个 application insight 而非方法论突破</li>
-<li><strong>Manipulation pipeline 过于简化</strong>：手写 primitives、top-down grasps only、已知 receptacle 位置——这些假设大幅降低了问题难度，离真实家庭场景差距较大</li>
-<li><strong>Scalability 存疑</strong>：每个用户需要单独提供示例，多用户/偏好变化场景未讨论</li>
-<li><strong>LLM 依赖强且不可控</strong>：summarization 质量完全取决于 LLM，LLM 偶尔列举而非归纳（文中承认），且无纠错机制</li>
-<li><strong>Evaluation 局限</strong>：benchmark 的 sorting criteria 较简单（color/category/function），未覆盖更复杂的组合偏好或上下文依赖偏好</li>
+<li><strong>Chain-of-thought prompting</strong> (Wei et al., 2022)：summarization-then-act 的 framing 与 CoT 同源</li>
+<li><strong>Code-as-Policies</strong> (Liang et al., 2022)：Pythonic prompt 形式的直接 inspiration</li>
+<li><strong>TossingBot</strong> (Zeng et al., 2020)：pick-and-toss primitive 的引用源</li>
 </ul>
-<h2 id="mind-map">Mind Map<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mind-map" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;mindmap\n  root((TidyBot))\n    Personalization\n      Few-shot user examples\n      LLM summarization → rules\n      Generalize to unseen objects\n    LLM Pipeline\n      Summarization stage\n        Code-completion prompt\n        text-davinci-003\n      Application stage\n        Rule-based prediction\n    Perception\n      Overhead camera + ViLD\n      Egocentric CLIP classification\n      LLM-generated categories\n    Robot System\n      Holonomic mobile base\n      Kinova Gen3 7-DoF arm\n      Pick-and-place / pick-and-toss\n    Results\n      91.2% benchmark accuracy\n      85.0% real-world success\n      Human evaluation preferred&quot;">mindmap
-  root((TidyBot))
-    Personalization
-      Few-shot user examples
-      LLM summarization → rules
-      Generalize to unseen objects
-    LLM Pipeline
-      Summarization stage
-        Code-completion prompt
-        text-davinci-003
-      Application stage
-        Rule-based prediction
-    Perception
-      Overhead camera + ViLD
-      Egocentric CLIP classification
-      LLM-generated categories
-    Robot System
-      Holonomic mobile base
-      Kinova Gen3 7-DoF arm
-      Pick-and-place / pick-and-toss
-    Results
-      91.2% benchmark accuracy
-      85.0% real-world success
-      Human evaluation preferred
-</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
-<h2 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<hr/>
+<h2 id="论文点评">论文点评<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#论文点评" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="strengths">Strengths<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>Framing 干净</strong>：把 personalization 翻译成 few-shot summarization，不需要数据集、不需要训练，直接用 off-the-shelf LLM。这种 reframing 本身有迁移价值</li>
+<li><strong>Closed-loop 的 perception/LLM 协同</strong>：rule 的名词反哺 CLIP 的词表，让 perception 从 open-vocab 退化为小 closed-set——这个设计在多个层面（precision、speed、可解释性）都受益。是一个值得抽象出来的 design pattern</li>
+<li><strong>Ablation 严谨</strong>：human-summary oracle 给出 6pt 上界，说明真正的 bottleneck 已经定位到 LLM summarization quality；commonsense baseline 证明 task 确实需要 personalization 而非常识</li>
+<li><strong>真机数据完整</strong>：分阶段拆解了 localization / classification / planning / execution 各自的精度，让读者能看清 system bottleneck 在哪</li>
+</ol>
+<h3 id="weaknesses">Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>Method 是 prompt engineering</strong>：核心贡献是 prompt 模板设计。这在 2023 年是合理 framing，但今天看 “用 LLM summarize examples” 已经是 baseline 操作，方法 originality 有限</li>
+<li><strong>真机 scope 窄</strong>：只 8 个 scenarios，每个 scenario receptacle 位置硬编码、物品基本不重叠、地面平整。“85% success” 的语境与 BC/RL 论文里 manipulation 的 85% 完全不同——这里失败基本是 perception/grasp 错，不是 LLM 错</li>
+<li><strong>Personalization 概念被简化</strong>：用户偏好只在 “object → receptacle/primitive” 这一映射层。但真实 personalization 还涉及时间、上下文、隐含约束（不要把脏衣服和干净衣服放一起），这些 LLM rule 形式很难表达</li>
+<li><strong>未对比 fine-tuning baseline</strong>：既然 summarize 优于 in-context examples-only，那一个自然问题是：能否直接 fine-tune 一个小 LM 在 (examples, placement) pairs 上？没做这个对比</li>
+</ol>
+<h3 id="可信评估">可信评估<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#可信评估" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="artifact-可获取性">Artifact 可获取性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#artifact-可获取性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
 <ul>
-<li>这篇文章的核心 insight——LLM 可以从具体实例中归纳抽象规则——在 2023 年有一定新意，但到 2024-2025 年已经是常见 pattern。其价值更多在于提出了 personalized robot assistance 这个问题 framing</li>
-<li>Rating 3 的原因：问题重要且 well-motivated，但方法本身（prompt engineering + 简化 manipulation）的 technical depth 有限，contribution 偏 system/application</li>
-<li>与 SayCan、Code-as-Policies 等工作的关系：都是 LLM-for-robotics 的早期探索，TidyBot 聚焦 personalization，但 manipulation 部分远不如后续 VLA 工作</li>
-<li>值得关注的后续问题：如何在 preference 随时间演变时持续学习？如何处理 conflicting preferences？</li>
-</ul></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="uevi3i" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#problem--motivation" data-for="problem--motivation">Problem &amp; Motivation</a></li><li class="depth-0"><a href="#method" data-for="method">Method</a></li><li class="depth-0"><a href="#key-results" data-for="key-results">Key Results</a></li><li class="depth-0"><a href="#strengths--weaknesses" data-for="strengths--weaknesses">Strengths &amp; Weaknesses</a></li><li class="depth-0"><a href="#mind-map" data-for="mind-map">Mind Map</a></li><li class="depth-0"><a href="#notes" data-for="notes">Notes</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+<li><strong>代码</strong>: 已开源（GitHub jimmyyhwu/tidybot），含 server + robot + benchmark + STL 3D-print 件</li>
+<li><strong>模型权重</strong>: 不需要——使用 OpenAI text-davinci-003 API + 预训练 CLIP / ViLD</li>
+<li><strong>训练细节</strong>: 无训练；prompt 全文在 Appendix A 给出，temperature=0</li>
+<li><strong>数据集</strong>: Benchmark 96 scenarios 已开源，含 1076 unique objects + 87 unique receptacles</li>
+</ul>
+<h4 id="claim-可验证性">Claim 可验证性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#claim-可验证性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>✅ <strong>Benchmark 91.2% unseen accuracy</strong>：可在公开 benchmark 复现，prompt 模板在 Appendix A 完整</li>
+<li>✅ <strong>Real-world 85.0% 成功率</strong>：240 次试验、8 scenarios，样本量足够；分阶段拆解可信</li>
+<li>⚠️ <strong>“Summarization 是 generalization 的关键”</strong>：实验只对比了 in-context examples vs summarization，没排除 “summary 提供了额外计算 budget”（CoT 效应）的混淆。即 summary 本身可能不是 generalization 的来源，而是更长的 thinking 过程</li>
+<li>⚠️ <strong>“CLIP 95.5% 优于 ViLD/OWL-ViT”</strong>：是基于 egocentric “目标在画面中央” 的强 prior 评测的；外推到 cluttered scene 不一定成立</li>
+</ul>
+<h3 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Reusable design pattern</strong>: “LLM 输出反哺 perception 的词表” 这个闭环值得记到 mental model。在任何 “VLM 要识别开放类别” 的场景里，先用 LLM 把 task-relevant concept 集合压缩到 K 类，再让 VLM 在 K 类里分类，比让 VLM 直接 open-vocab 分类要稳得多</li>
+<li><strong>对 VLA 时代的启示</strong>: TidyBot 是 modular pipeline 的代表（perception + LLM planner + 手写 primitive）。今天的 VLA 路线倾向于 end-to-end，但 TidyBot 揭示的 “personalization rule 可显式表达” 这一性质，被 end-to-end 模型隐式吃掉了——一个值得思考的 trade-off：可解释性 vs scalability</li>
+<li><strong>Summarization-as-generalization 的边界</strong>: 这套 framing 适用于偏好可以被自然语言 compactly 描述的场景。一旦偏好需要”如果今天周三且上次穿过则放洗衣篮”这种条件复合规则，summarize 就会失败——值得验证 LLM summarize 的复杂度上限</li>
+<li>❓ <strong>后续问题</strong>: 在多模态 LLM（GPT-4V / Gemini）成熟之后，summarize 这一步可以直接吃图像 examples 而不是 textual examples，prompt 不再需要人工把物品翻译成 “yellow shirt”。会不会因此让真机系统去掉对硬编码 textual preference 的依赖？</li>
+</ul>
+<h3 id="rating">Rating<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#rating" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>分数</strong>：2 - Frontier</p>
+<p><strong>理由</strong>：TidyBot 属于 LLM-for-robotics personalization 方向的 representative 工作（IROS 2023 best paper，Google Scholar 500+ 引用），在 household robot / preference learning / LLM-planner 相关工作中被广泛作为 baseline 或 motivating reference 引用；笔记 Strengths 里的 summarization-as-generalization 和 LLM 输出反哺 perception 词表是可迁移的 design pattern。但没有达到 3 级的奠基/必读位置——Weaknesses 里 method 实质是 prompt engineering，且在 end-to-end VLA 主导的今天，modular LLM-planner 路线已被 <a href="../Papers/2307-RT2" class="internal alias" data-slug="Papers/2307-RT2">RT-2</a> / <a href="../Papers/2406-OpenVLA" class="internal alias" data-slug="Papers/2406-OpenVLA">OpenVLA</a> / <a href="../Papers/2504-Pi05" class="internal alias" data-slug="Papers/2504-Pi05">π0.5</a> 等 end-to-end 方法的势头所压过；不足以作为方向主脉络上的奠基工作。</p></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="ud8fg4" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#1-motivationpersonalization-为什么难" data-for="1-motivationpersonalization-为什么难">1. Motivation：personalization 为什么难</a></li><li class="depth-0"><a href="#2-method" data-for="2-method">2. Method</a></li><li class="depth-1"><a href="#21-personalized-receptacle-selection" data-for="21-personalized-receptacle-selection">2.1 Personalized receptacle selection</a></li><li class="depth-1"><a href="#22-personalized-primitive-selection" data-for="22-personalized-primitive-selection">2.2 Personalized primitive selection</a></li><li class="depth-1"><a href="#23-真实机器人-pipeline" data-for="23-真实机器人-pipeline">2.3 真实机器人 pipeline</a></li><li class="depth-0"><a href="#3-experiments" data-for="3-experiments">3. Experiments</a></li><li class="depth-1"><a href="#31-benchmark" data-for="31-benchmark">3.1 Benchmark</a></li><li class="depth-1"><a href="#32-主结果与-baseline-对比" data-for="32-主结果与-baseline-对比">3.2 主结果与 baseline 对比</a></li><li class="depth-1"><a href="#33-ablation" data-for="33-ablation">3.3 Ablation</a></li><li class="depth-1"><a href="#34-用户研究" data-for="34-用户研究">3.4 用户研究</a></li><li class="depth-1"><a href="#35-真实世界结果" data-for="35-真实世界结果">3.5 真实世界结果</a></li><li class="depth-1"><a href="#36-vlm-对比" data-for="36-vlm-对比">3.6 VLM 对比</a></li><li class="depth-1"><a href="#37-真实场景-demos" data-for="37-真实场景-demos">3.7 真实场景 demos</a></li><li class="depth-0"><a href="#4-limitations作者自陈" data-for="4-limitations作者自陈">4. Limitations（作者自陈）</a></li><li class="depth-0"><a href="#关联工作" data-for="关联工作">关联工作</a></li><li class="depth-1"><a href="#基于" data-for="基于">基于</a></li><li class="depth-1"><a href="#对比" data-for="对比">对比</a></li><li class="depth-1"><a href="#方法相关" data-for="方法相关">方法相关</a></li><li class="depth-0"><a href="#论文点评" data-for="论文点评">论文点评</a></li><li class="depth-1"><a href="#strengths" data-for="strengths">Strengths</a></li><li class="depth-1"><a href="#weaknesses" data-for="weaknesses">Weaknesses</a></li><li class="depth-1"><a href="#可信评估" data-for="可信评估">可信评估</a></li><li class="depth-1"><a href="#notes" data-for="notes">Notes</a></li><li class="depth-1"><a href="#rating" data-for="rating">Rating</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
 </script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
 </script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><title>OpenVLA: An Open-Source Vision-Language-Action Model</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="OpenVLA: An Open-Source Vision-Language-Action Model"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="OpenVLA: An Open-Source Vision-Language-Action Model"/><meta name="twitter:description" content="Summary OpenVLA 是 Stanford 等机构推出的 7B 参数开源 VLA 模型，基于 Llama 2 + DINOv2/SigLIP 双视觉编码器架构，在 970k 真实 robot demonstration（Open X-Embodiment）上训练，性能超过 RT-2-X（55B）16.5%，同时支持消费级 GPU ..."/><meta property="og:description" content="Summary OpenVLA 是 Stanford 等机构推出的 7B 参数开源 VLA 模型，基于 Llama 2 + DINOv2/SigLIP 双视觉编码器架构，在 970k 真实 robot demonstration（Open X-Embodiment）上训练，性能超过 RT-2-X（55B）16.5%，同时支持消费级 GPU ..."/><meta property="og:image:alt" content="Summary OpenVLA 是 Stanford 等机构推出的 7B 参数开源 VLA 模型，基于 Llama 2 + DINOv2/SigLIP 双视觉编码器架构，在 970k 真实 robot demonstration（Open X-Embodiment）上训练，性能超过 RT-2-X（55B）16.5%，同时支持消费级 GPU ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2406-OpenVLA"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2406-OpenVLA"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary OpenVLA 是 Stanford 等机构推出的 7B 参数开源 VLA 模型，基于 Llama 2 + DINOv2/SigLIP 双视觉编码器架构，在 970k 真实 robot demonstration（Open X-Embodiment）上训练，性能超过 RT-2-X（55B）16.5%，同时支持消费级 GPU ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+<html lang="en"><head><title>OpenVLA: An Open-Source Vision-Language-Action Model</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="OpenVLA: An Open-Source Vision-Language-Action Model"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="OpenVLA: An Open-Source Vision-Language-Action Model"/><meta name="twitter:description" content="Summary OpenVLA: An Open-Source Vision-Language-Action Model 核心: 把 Prismatic-7B VLM (DINOv2+SigLIP+Llama-2) 在 970k OpenX 轨迹上做 next-token 微调，打开第一个真正开源、可复现、可微调的 generalist ..."/><meta property="og:description" content="Summary OpenVLA: An Open-Source Vision-Language-Action Model 核心: 把 Prismatic-7B VLM (DINOv2+SigLIP+Llama-2) 在 970k OpenX 轨迹上做 next-token 微调，打开第一个真正开源、可复现、可微调的 generalist ..."/><meta property="og:image:alt" content="Summary OpenVLA: An Open-Source Vision-Language-Action Model 核心: 把 Prismatic-7B VLM (DINOv2+SigLIP+Llama-2) 在 970k OpenX 轨迹上做 next-token 微调，打开第一个真正开源、可复现、可微调的 generalist ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2406-OpenVLA"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2406-OpenVLA"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary OpenVLA: An Open-Source Vision-Language-Action Model 核心: 把 Prismatic-7B VLM (DINOv2+SigLIP+Llama-2) 在 970k OpenX 轨迹上做 next-token 微调，打开第一个真正开源、可复现、可微调的 generalist ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
   position: absolute;
   display: flex;
   float: right;
@@ -116,89 +116,380 @@ pre:hover > .expand-button {
   padding: 0 12px;
   font-size: 14px;
 }
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2406-OpenVLA"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="gc1ghh"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/RL" class="sidebar-tag-pill">#RL</a><a href="/mindflow/tags/web-agent" class="sidebar-tag-pill">#web-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/scene-understanding" class="sidebar-tag-pill">#scene-understanding</a><a href="/mindflow/tags/instruction-following" class="sidebar-tag-pill">#instruction-following</a><a href="/mindflow/tags/cross-embodiment" class="sidebar-tag-pill">#cross-embodiment</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2406-OpenVLA</a></div></nav><h1 class="article-title">OpenVLA: An Open-Source Vision-Language-Action Model</h1><div class="paper-meta"><span class="paper-venue">ICML 2025</span><span class="paper-authors"><span class="meta-sep">·</span>Moo Jin Kim <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, Karl Pertsch</span><span>, Siddharth Karamcheti</span><span>, Ted Xiao</span><span>, Ashwin Balakrishna</span><span>, Suraj Nair</span><span>, Rafael Rafailov</span><span>, Ethan Foster</span><span>, Grace Lam</span><span>, Pannag Sanketi</span><span>, Quan Vuong</span><span>, Thomas Kollar</span><span>, Benjamin Burchfiel</span><span>, Russ Tedrake</span><span>, Dorsa Sadigh</span><span>, Sergey Levine</span><span>, Percy Liang</span><span>, Chelsea Finn</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2024-06-01T00:00:00.000Z">Jun 01, 2024</time><span>4 min read</span></p><ul class="tags"><li><a href="../tags/VLA" class="internal tag-link">VLA</a></li><li><a href="../tags/manipulation" class="internal tag-link">manipulation</a></li><li><a href="../tags/cross-embodiment" class="internal tag-link">cross-embodiment</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>OpenVLA 是 Stanford 等机构推出的 7B 参数开源 VLA 模型，基于 Llama 2 + DINOv2/SigLIP 双视觉编码器架构，在 970k 真实 robot demonstration（Open X-Embodiment）上训练，性能超过 RT-2-X（55B）16.5%，同时支持消费级 GPU fine-tuning，是 VLA 领域最重要的开源基准之一。</p>
-<h2 id="problem--motivation">Problem &amp; Motivation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#problem--motivation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>RT-2 等 VLA 模型证明了 VLM→robot action 的可行性，但模型闭源、体量巨大（55B），社区无法复现和迭代。作者旨在构建一个开源、高效、可 fine-tune 的 VLA 模型，降低 VLA 研究的门槛。</p>
-<h2 id="method">Method<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#method" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p><strong>1. 模型架构（7B）</strong></p>
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2406-OpenVLA"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="mm0h7i"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/embodied-reasoning" class="sidebar-tag-pill">#embodied-reasoning</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/computer-use" class="sidebar-tag-pill">#computer-use</a><a href="/mindflow/tags/agentic-RL" class="sidebar-tag-pill">#agentic-RL</a><a href="/mindflow/tags/gui-agent" class="sidebar-tag-pill">#gui-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/world-model" class="sidebar-tag-pill">#world-model</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2406-OpenVLA</a></div></nav><h1 class="article-title">OpenVLA: An Open-Source Vision-Language-Action Model</h1><div class="paper-meta"><span class="paper-venue">CoRL 2024</span><span class="paper-authors"><span class="meta-sep">·</span>Moo Jin Kim <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, Karl Pertsch</span><span>, Siddharth Karamcheti</span><span>, Ted Xiao</span><span>, Ashwin Balakrishna</span><span>, Suraj Nair</span><span>, Rafael Rafailov</span><span>, Ethan Foster</span><span>, Grace Lam</span><span>, Pannag Sanketi</span><span>, Quan Vuong</span><span>, Thomas Kollar</span><span>, Benjamin Burchfiel</span><span>, Russ Tedrake</span><span>, Dorsa Sadigh</span><span>, Sergey Levine</span><span>, Percy Liang</span><span>, Chelsea Finn</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2024-06-13T00:00:00.000Z">Jun 13, 2024</time><span>17 min read</span></p><ul class="tags"><li><a href="../tags/VLA" class="internal tag-link">VLA</a></li><li><a href="../tags/manipulation" class="internal tag-link">manipulation</a></li><li><a href="../tags/cross-embodiment" class="internal tag-link">cross-embodiment</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>OpenVLA: An Open-Source Vision-Language-Action Model </p></div>
+                  
+                </div>
+<div class="callout-content">
 <ul>
-<li><strong>Visual encoder</strong>：融合 DINOv2（空间特征）和 SigLIP（语义特征）的 dual encoder</li>
-<li><strong>Language model</strong>：Llama 2 7B 作为 backbone</li>
-<li><strong>Action head</strong>：autoregressive token prediction，将 action 离散化为 token</li>
-<li>整体架构继承 Prismatic VLM 设计</li>
+<li><strong>核心</strong>: 把 Prismatic-7B VLM (DINOv2+SigLIP+Llama-2) 在 970k OpenX 轨迹上做 next-token 微调，打开第一个真正开源、可复现、可微调的 generalist VLA</li>
+<li><strong>方法</strong>: 7-DoF 连续动作离散化为 256 bin、覆写 Llama tokenizer 末尾 256 个最少使用 token；fused DINOv2+SigLIP vision encoder（必须 unfreeze）；27 epoch、64 A100 × 14 天</li>
+<li><strong>结果</strong>: 在 BridgeData V2 / Google Robot 共 29 个任务上比 RT-2-X (55B) 平均高 <strong>+16.5% absolute</strong>，参数仅 1/7；fine-tune 7 个 Franka 任务平均比 Diffusion Policy 高 <strong>+20.4%</strong>；LoRA (rank=32, 1.4% params) 与 full FT 平齐；int4 量化与 bfloat16 等效</li>
+<li><strong>Sources</strong>: <a href="https://arxiv.org/abs/2406.09246" class="external">paper<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://openvla.github.io/" class="external">website<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://github.com/openvla/openvla" class="external">github<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><strong>Rating</strong>: 3 - Foundation（第一个真正开源可复现的 7B VLA，成为整个 VLA 领域的 substrate 和 de facto baseline，后续工作普遍基于或对标它）</li>
 </ul>
-<p><strong>2. 训练数据</strong></p>
+</div>
+</blockquote>
+<p><strong>Key Takeaways:</strong></p>
+<ol>
+<li><strong>Open-source matters</strong>: 真正可复现的 7B VLA 把 RT-2-X 系列 closed-source 局面打破，整个社区围绕它开展 follow-up（OpenVLA-OFT、FAST tokenizer、OpenVLA-mini 等）</li>
+<li><strong>Vision encoder 必须 unfreeze</strong>: 与 VLM 训练经验相反——frozen vision encoder 在 VLA 上掉 22.7%（69.7% → 47.0%），说明 Internet 视觉特征不够 fine-grained 以支撑精确控制</li>
+<li><strong>VLA 需要超多 epoch</strong>: 27 epoch / action token accuracy > 95% 才停，远高于 LLM/VLM 的 1-2 epoch convention</li>
+<li><strong>LoRA + 量化让 VLA 平民化</strong>: 单卡 A100 10-15 小时 LoRA 微调（vs 8 卡），int4 推理 7GB 显存（vs 16.8GB），且性能不掉</li>
+</ol>
+<p><strong>Teaser. OpenVLA 在 BridgeData V2 / Google Robot / Franka 三类平台上的 zero-shot 与 fine-tune 表现 overview。</strong></p>
+<p><video src="https://openvla.github.io/static/videos/openvla_teaser_video.mp4" controls muted playsinline width="720"></video></p>
+<hr/>
+<h2 id="1-motivation">1. Motivation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-motivation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>VLA 思路（直接把 VLM 当 robot policy 微调）已经被 <a href="../Papers/2307-RT2" class="internal alias" data-slug="Papers/2307-RT2">RT-2</a> / RT-2-X 验证有效，但有两个落地瓶颈：</p>
+<ol>
+<li><strong>闭源</strong>：RT-2-X、PaLI 等的权重、架构细节、数据 mixture 全部不可见，社区无法复现也无法在自己的 robot 上 fine-tune</li>
+<li><strong>缺乏 fine-tune 最佳实践</strong>：模型太大（55B），如何在消费级 GPU 上做 efficient adaptation 完全是空白</li>
+</ol>
+<p>OpenVLA 的研究问题：<strong>能否用 7B 量级的开源 VLM 训出比 55B 闭源 VLA 更强的 generalist policy，并提供完整的 fine-tune toolkit？</strong></p>
+<blockquote>
+<p>❓ “为什么 7B 能打 55B” 的本质——OpenVLA 给出的归因是 (a) 数据更多（970k vs 350k）+ 更细致清洗、(b) 更好的 vision backbone（DINOv2+SigLIP fused）。但 RT-2-X 并未开放，无法 controlled compare，这个对比里 confounder 很多。</p>
+</blockquote>
+<hr/>
+<h2 id="2-the-openvla-model">2. The OpenVLA Model<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-the-openvla-model" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="21-architecture">2.1 Architecture<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#21-architecture" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Figure 1. OpenVLA model architecture：vision encoder（DINOv2 + SigLIP concat）+ MLP projector + Llama-2 7B LLM。给定 image + language instruction，输出 7-DoF action token 序列。</strong></p>
+<p><img src="https://arxiv.org/html/2406.09246v3/x1.png" alt/></p>
+<p>三个组件：</p>
 <ul>
-<li>970k 真实 robot demonstrations，来自 Open X-Embodiment 数据集</li>
-<li>覆盖多种 robot embodiment 和任务</li>
-<li>仅使用 robot 数据训练（不混合 web 数据）</li>
+<li><strong>Vision encoder (600M)</strong>：把 image patches <strong>分别</strong>过 SigLIP 和 DINOv2，channel-wise concat。SigLIP 提供 semantic 特征，DINOv2 提供 spatial 特征——后者对机器人控制至关重要</li>
+<li><strong>Projector</strong>：2-layer MLP，把视觉特征投影到 LLM embedding space</li>
+<li><strong>LLM backbone</strong>：Llama-2 7B</li>
 </ul>
-<p><strong>3. Fine-tuning 支持</strong></p>
+<p>底座是 <strong>Prismatic-7B VLM</strong>——OpenVLA 不从头训 VLM，而是 reuse Prismatic 已经在 LLaVA 1.5 ~1M image-text 数据上对齐好的版本。</p>
+<h3 id="22-action-tokenization">2.2 Action Tokenization<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#22-action-tokenization" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>把 7-DoF 连续动作转成离散 token：</p>
 <ul>
-<li>支持 LoRA 等 parameter-efficient fine-tuning</li>
-<li>可在消费级 GPU（单卡）上完成 fine-tuning</li>
-<li>支持 INT8 量化部署，性能不下降</li>
+<li>每个 dimension 独立离散化为 <strong>256 bin</strong></li>
+<li>bin 边界用训练数据中该维度的 <strong>1st / 99th quantile</strong> 之间均匀划分（不用 min-max——避免 outlier 撑大区间，损失精度）</li>
+<li>N 维 action 得到 N 个 <code>[0, 255]</code> 的整数</li>
 </ul>
-<p><strong>4. Action Representation</strong></p>
+<p><strong>Llama tokenizer 只为 fine-tune 预留了 100 个 special token，不够 256</strong>。OpenVLA 沿用 RT-2 的处理：直接<strong>覆写 Llama vocab 中最少使用的 256 个 token</strong>作为 action token。训练目标是标准 next-token prediction，只对 action token 算 cross-entropy loss。</p>
+<blockquote>
+<p>❓ 覆写 tokenizer 末尾 token 是 hack——这些 “least used” token 真的不会被自然语言用到吗？这块对中文等 low-resource 语种应该有副作用，但论文未讨论。</p>
+</blockquote>
+<h3 id="23-training-data">2.3 Training Data<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#23-training-data" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>基础是 Open X-Embodiment 数据集（70+ datasets, 2M+ trajectories）。两步 curation：</p>
+<ol>
+<li><strong>统一输入输出空间</strong>：只保留含至少一个 third-person camera 且使用 single-arm end-effector control 的 manipulation dataset</li>
+<li><strong>平衡 mixture</strong>：直接复用 <a href="../Papers/2405-Octo" class="internal alias" data-slug="Papers/2405-Octo">Octo</a> 的 mixture weights（heuristically down-weight 低多样性数据集）</li>
+</ol>
+<p><strong>Table 3 (摘要). 训练 mixture 的主要权重（共 25 个 dataset，970k trajectories）：</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Dataset</th><th>Weight</th></tr></thead><tbody><tr><td>Fractal (RT-1)</td><td>12.7%</td></tr><tr><td>Kuka</td><td>12.7%</td></tr><tr><td>Bridge V2</td><td>13.3%</td></tr><tr><td>BC-Z</td><td>7.5%</td></tr><tr><td>FMB Dataset</td><td>7.1%</td></tr><tr><td>Stanford Hydra</td><td>4.4%</td></tr><tr><td>Language Table</td><td>4.4%</td></tr><tr><td>DROID</td><td>10% (后 1/3 训练去掉)</td></tr><tr><td>…其余 17 个 dataset</td><td>&lt; 3% each</td></tr></tbody></table></div>
+<p><strong>注意</strong>：DROID 加入时权重 10%，但 action token accuracy 始终上不去，最后 1/3 训练把它移除以保护最终模型质量。</p>
+<blockquote>
+<p>💡 这条经验很有用：<strong>当某个高多样性 dataset 上 token accuracy 不收敛，强行混合反而拖累整体</strong>。可能需要更大模型或者更高权重。</p>
+</blockquote>
+<h3 id="24-关键-design-decisions">2.4 关键 Design Decisions<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#24-关键-design-decisions" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>通过在 BridgeData V2 上做小规模消融得出：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Decision</th><th>选择</th><th>关键观察</th></tr></thead><tbody><tr><td><strong>VLM Backbone</strong></td><td>Prismatic > LLaVA > IDEFICS-1</td><td>LLaVA 比 IDEFICS-1 高 35%（多物体 language grounding 任务）；Prismatic 再比 LLaVA 高 ~10%（归功于 DINOv2+SigLIP fused encoder 的 spatial reasoning）</td></tr><tr><td><strong>Image Resolution</strong></td><td>224×224（不是 384×384）</td><td>二者性能相同，但 384 训练时间 3x。<strong>与 VLM 不同</strong>——更高分辨率没带来 VLA gain</td></tr><tr><td><strong>Vision Encoder</strong></td><td><strong>必须 unfreeze</strong></td><td>与 VLM training 经验相反！frozen vision encoder 性能掉 22.7%。Internet pretraining 的视觉特征对精细机器人控制不够</td></tr><tr><td><strong>Training Epochs</strong></td><td><strong>27 epochs</strong>（直到 action token acc > 95%）</td><td>LLM/VLM 通常 1-2 epoch；VLA 需要超多 epoch 才能 fit action distribution</td></tr><tr><td><strong>Learning Rate</strong></td><td>2e-5 fixed (与 VLM 预训练相同)，无 warmup</td><td>跨多个数量级 sweep 后的最优</td></tr></tbody></table></div>
+<h3 id="25-infrastructure">2.5 Infrastructure<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#25-infrastructure" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li>与 RT-2 类似的 action tokenization</li>
-<li>7-DoF discrete action tokens</li>
-<li>Autoregressive 生成</li>
+<li>训练：64 A100 × 14 天 = 21,500 A100-hours，batch size 2048</li>
+<li>推理：bfloat16 下需 15GB GPU 内存，RTX 4090 上 ~6Hz（无 compile / speculative decoding）</li>
+<li>提供 <strong>remote VLA inference server</strong> 实现：远程流式预测 action，机器人本地不需要强算力</li>
 </ul>
-<h2 id="key-results">Key Results<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-results" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<hr/>
+<h2 id="3-experiments">3. Experiments<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-experiments" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="31-direct-evaluation-multi-robot-out-of-the-box">3.1 Direct Evaluation: Multi-Robot Out-of-the-Box<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#31-direct-evaluation-multi-robot-out-of-the-box" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Figure 2. BridgeData V2 (WidowX) 评估：17 个任务 × 10 trial，覆盖 visual / motion / physical / semantic generalization 和 language grounding。OpenVLA 在所有类别（除 semantic generalization）超过 RT-2-X (55B)。</strong></p>
+<p><img src="https://arxiv.org/html/2406.09246v3/x2.png" alt/></p>
+<p><strong>Figure 3. Google Robot 评估：12 个任务 × 5 trial。OpenVLA 与 RT-2-X 相当，显著超过 RT-1-X 和 Octo。</strong></p>
+<p><img src="https://arxiv.org/html/2406.09246v3/x3.png" alt/></p>
+<p><strong>对比 baseline</strong>：</p>
 <ul>
-<li><strong>vs RT-2-X（55B）</strong>：在 29 个任务上绝对成功率提升 16.5%，参数量仅 1/7</li>
-<li><strong>vs Diffusion Policy</strong>：fine-tuning 后超出 20.4%</li>
-<li><strong>跨 embodiment</strong>：在 WidowX 和 Franka 等多个平台上验证</li>
-<li><strong>Fine-tuning 效率</strong>：几小时即可适配新任务</li>
-<li><strong>量化部署</strong>：INT8 量化后性能无损</li>
+<li>RT-1-X (35M, from-scratch transformer, OpenX 子集训练)</li>
+<li><a href="../Papers/2405-Octo" class="internal alias" data-slug="Papers/2405-Octo">Octo</a> (93M, 当时 SOTA 开源 generalist policy)</li>
+<li>RT-2-X (55B, closed-source VLA)</li>
 </ul>
-<h2 id="strengths--weaknesses">Strengths &amp; Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths--weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p><strong>Strengths:</strong></p>
+<p><strong>关键发现</strong>：</p>
 <ul>
-<li>完全开源（模型权重、训练代码、fine-tuning notebook），极大推动了 VLA 社区发展</li>
-<li>7B 参数量在实用性和性能间取得良好平衡</li>
-<li>DINOv2 + SigLIP 双视觉编码器设计有效融合空间和语义特征</li>
-<li>LoRA fine-tuning 使个人研究者也能参与 VLA 研究</li>
-<li>成为后续 VLA 研究的重要 baseline</li>
+<li>BridgeData V2: <strong>OpenVLA 超 RT-2-X +16.5% absolute</strong>（参数 1/7）</li>
+<li>Google Robot: OpenVLA ≈ RT-2-X</li>
+<li>RT-2-X 仅在 <strong>semantic generalization</strong>（互联网未见过的物体/概念）上更强——因为它有 co-fine-tuning（机器人数据 + 互联网数据混训）保护预训练知识；OpenVLA 纯机器人数据 fine-tune</li>
 </ul>
-<p><strong>Weaknesses:</strong></p>
+<p>性能差异归因：(a) 970k vs 350k trajectories，(b) 数据清洗（如 Bridge 上过滤了 all-zero actions，详见 Appendix C），(c) DINOv2+SigLIP fused vision encoder。</p>
+<h3 id="32-data-efficient-adaptation-fine-tune-to-franka">3.2 Data-Efficient Adaptation: Fine-tune to Franka<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#32-data-efficient-adaptation-fine-tune-to-franka" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Figure 4. Adapting to new robot setups：7 个 Franka 任务，10-150 demos each。比较 Diffusion Policy (from scratch) vs Octo (fine-tune) vs OpenVLA (fine-tune) vs OpenVLA (scratch, 即直接 fine-tune Prismatic 跳过 OpenX pretraining)。OpenVLA 在所有任务上 ≥ 50% 成功率，aggregate 最高。</strong></p>
+<p><img src="https://arxiv.org/html/2406.09246v3/x4.png" alt/></p>
+<p>测试两个 setup：</p>
 <ul>
-<li>仍使用 autoregressive action token 预测，控制频率受限</li>
-<li>未采用 action chunking 或 flow matching，灵巧操作能力有限</li>
-<li>在高频精细操作任务上不如 π₀ 等 continuous action 模型</li>
-<li>仅支持 image + language 输入，无 proprioception 输入</li>
+<li><strong>Franka-Tabletop</strong>: 5Hz 非阻塞控制器</li>
+<li><strong>Franka-DROID</strong>: 15Hz，可移动支架</li>
 </ul>
-<h2 id="mind-map">Mind Map<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mind-map" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;mindmap\n  root((OpenVLA))\n    Problem\n      VLA 模型闭源\n      55B 参数过大\n      社区无法复现\n    Method\n      Llama 2 7B backbone\n      DINOv2 + SigLIP 双编码器\n      970k demonstrations\n      Open X-Embodiment\n      LoRA fine-tuning\n    Results\n      超越 RT-2-X 16.5%\n      参数量仅 1/7\n      消费级 GPU fine-tuning\n      INT8 量化无损\n    Limitations\n      Autoregressive 低频控制\n      无 action chunking\n      灵巧操作受限&quot;">mindmap
-  root((OpenVLA))
-    Problem
-      VLA 模型闭源
-      55B 参数过大
-      社区无法复现
-    Method
-      Llama 2 7B backbone
-      DINOv2 + SigLIP 双编码器
-      970k demonstrations
-      Open X-Embodiment
-      LoRA fine-tuning
-    Results
-      超越 RT-2-X 16.5%
-      参数量仅 1/7
-      消费级 GPU fine-tuning
-      INT8 量化无损
-    Limitations
-      Autoregressive 低频控制
-      无 action chunking
-      灵巧操作受限
-</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
-<h2 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>关键发现</strong>：</p>
 <ul>
-<li>OpenVLA 的核心贡献是”开源”本身——让 VLA 研究从少数大实验室扩展到整个社区</li>
-<li>DINOv2 + SigLIP 双编码器的设计值得注意：DINOv2 擅长空间/几何特征，SigLIP 擅长语义对齐</li>
-<li>后续 MiniVLA 进一步压缩到更小尺寸，说明 VLA 并不一定需要很大的模型</li>
-<li>作为 baseline 被 π₀、π0.5 等论文广泛对比，是 VLA 领域的”标准参考点”</li>
-</ul></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="uevi3i" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#problem--motivation" data-for="problem--motivation">Problem &amp; Motivation</a></li><li class="depth-0"><a href="#method" data-for="method">Method</a></li><li class="depth-0"><a href="#key-results" data-for="key-results">Key Results</a></li><li class="depth-0"><a href="#strengths--weaknesses" data-for="strengths--weaknesses">Strengths &amp; Weaknesses</a></li><li class="depth-0"><a href="#mind-map" data-for="mind-map">Mind Map</a></li><li class="depth-0"><a href="#notes" data-for="notes">Notes</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+<li><strong>窄而专的 single-instruction 任务（如 Pour Corn into Pot）</strong>: Diffusion Policy 仍然更胜，trajectories 更平滑精细</li>
+<li><strong>多物体 + language grounding 任务</strong>: pretrained generalist 显著占优——OpenVLA > Diffusion Policy by <strong>+20.4%</strong></li>
+<li>OpenVLA (scratch, 无 OpenX pretraining) 在 diverse 任务上掉队，证明 OpenX pretraining 提供的 language grounding 是关键</li>
+</ul>
+<blockquote>
+<p>💡 这构成了一个 trade-off：<strong>dexterity vs generalization</strong>。Diffusion Policy 的 action chunking + temporal smoothing 让它在窄任务更稳；OpenVLA 的 language conditioning 让它在 diverse 任务更强。后续 <a href="../Papers/2502-OpenVLA-OFT" class="internal alias" data-slug="Papers/2502-OpenVLA-OFT">OpenVLA-OFT</a> 正是把 action chunking + 连续 action head 融入 OpenVLA 来弥补 dexterity gap。</p>
+</blockquote>
+<h3 id="33-parameter-efficient-fine-tuning">3.3 Parameter-Efficient Fine-Tuning<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#33-parameter-efficient-fine-tuning" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table 1. Fine-tuning strategy 对比（Franka-Tabletop, batch size 16）：</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Strategy</th><th>Success Rate</th><th>Train Params (×10⁶)</th><th>VRAM</th></tr></thead><tbody><tr><td>Full FT</td><td>69.7 ± 7.2 %</td><td>7,188.1</td><td>163.3 GB (FSDP, 2 GPU)</td></tr><tr><td>Last layer only</td><td>30.3 ± 6.1 %</td><td>465.1</td><td>51.4 GB</td></tr><tr><td>Frozen vision</td><td>47.0 ± 6.9 %</td><td>6,760.4</td><td>156.2 GB (FSDP)</td></tr><tr><td>Sandwich (vision + last + embed)</td><td>62.1 ± 7.9 %</td><td>914.2</td><td>64.0 GB</td></tr><tr><td><strong>LoRA, rank=32</strong></td><td><strong>68.2 ± 7.5 %</strong></td><td><strong>97.6</strong></td><td><strong>59.7 GB</strong></td></tr><tr><td>LoRA, rank=64</td><td>68.2 ± 7.8 %</td><td>195.2</td><td>60.5 GB</td></tr></tbody></table></div>
+<p><strong>关键观察</strong>：</p>
+<ul>
+<li>Last layer / frozen vision 都不行——再次印证 vision encoder 必须 adapt</li>
+<li>LoRA rank=32 与 full FT 持平，但只训 1.4% 参数</li>
+<li>LoRA rank 在 32 vs 64 没差别——推荐默认 r=32</li>
+<li><strong>单 A100 GPU 10-15h 完成 fine-tune，相比 full FT 减少 8x compute</strong></li>
+</ul>
+<h3 id="34-memory-efficient-inference-quantization">3.4 Memory-Efficient Inference: Quantization<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#34-memory-efficient-inference-quantization" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Figure 5. OpenVLA 在不同 GPU 上的推理速度。bfloat16 与 int4 在 Ada Lovelace 架构（RTX 4090 / H100）上吞吐都很高。</strong></p>
+<p><img src="https://arxiv.org/html/2406.09246v3/x5.png" alt/></p>
+<p><strong>Table 2. 量化对成功率的影响（8 个 BridgeData V2 任务，80 rollouts）：</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Precision</th><th>Bridge Success</th><th>VRAM</th></tr></thead><tbody><tr><td>bfloat16</td><td>71.3 ± 4.8 %</td><td>16.8 GB</td></tr><tr><td>int8</td><td>58.1 ± 5.1 %</td><td>10.2 GB</td></tr><tr><td><strong>int4</strong></td><td><strong>71.9 ± 4.7 %</strong></td><td><strong>7.0 GB</strong></td></tr></tbody></table></div>
+<p><strong>反常发现</strong>：<strong>int4 与 bfloat16 性能持平甚至略高</strong>，显存只需 &lt; 50%。int8 反而掉到 58.1%。</p>
+<blockquote>
+<p>❓ int4 比 int8 好这个反常结果，论文未深入解释。可能是 int4 推理 pipeline (bitsandbytes 4-bit NF4) 与 int8 实现质量差异、或样本噪声所致。需要 follow-up 验证。</p>
+</blockquote>
+<hr/>
+<h2 id="4-limitations-作者承认">4. Limitations (作者承认)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-limitations-作者承认" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ol>
+<li><strong>Single-image only</strong>：不支持多视角、proprio、history。真实机器人系统通常异构感知</li>
+<li><strong>Inference frequency 不够</strong>：6Hz 远不够 <a href="../Papers/2401-MobileALOHA" class="internal alias" data-slug="Papers/2401-MobileALOHA">ALOHA</a> 50Hz 这类 dexterous bimanual 任务。需要 action chunking / speculative decoding 等加速</li>
+<li><strong>绝对成功率仍不高</strong>：跨任务 ~70% 上下，离工业可靠性距离尚远</li>
+<li><strong>缺乏理论指导</strong>：data mixture、objective、co-training 等关键设计还没有原理性结论</li>
+</ol>
+<hr/>
+<h2 id="关联工作">关联工作<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#关联工作" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="基于">基于<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#基于" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Prismatic-7B VLM</strong>: OpenVLA 的 VLM backbone，提供 DINOv2+SigLIP fused vision encoder + Llama-2</li>
+<li><strong>Llama-2 7B</strong>: LLM backbone，action token 通过覆写 vocab 末尾 256 个 least-used token 实现</li>
+<li><strong>DINOv2 / SigLIP</strong>: 双视觉编码器，分别提供 spatial / semantic features</li>
+<li><a href="../Papers/2307-RT2" class="internal alias" data-slug="Papers/2307-RT2">RT-2</a>: 直接继承 action discretization scheme（256-bin per dim, vocab override）和 “VLA = next-token prediction” formulation</li>
+<li><strong>Open X-Embodiment</strong>: 970k 训练 trajectories 的来源</li>
+<li><strong>LLaVA 1.5</strong>: Prismatic 预训练用的 vision-language data mixture</li>
+</ul>
+<h3 id="对比">对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>RT-2-X (55B, closed)</strong>: 主要对比对象，OpenVLA 用 1/7 参数超越（除 semantic generalization）</li>
+<li><strong>RT-1-X (35M, from-scratch transformer)</strong>: 不带 internet pretraining 的 baseline</li>
+<li><a href="../Papers/2405-Octo" class="internal alias" data-slug="Papers/2405-Octo">Octo</a> (93M): 当时 SOTA 开源 generalist policy，对比 fine-tune 表现</li>
+<li><strong>Diffusion Policy</strong>: 数据高效 imitation learning baseline，在窄任务仍胜 OpenVLA</li>
+</ul>
+<h3 id="方法相关">方法相关<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#方法相关" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>LoRA</strong>: PEFT 方法，rank=32 即可与 full FT 持平</li>
+<li><strong>bitsandbytes int4 (NF4)</strong>: 推理量化，与 bfloat16 性能等效</li>
+<li><strong>FSDP / Flash-Attention / AMP</strong>: 训练 infra</li>
+<li><a href="../Papers/2502-OpenVLA-OFT" class="internal alias" data-slug="Papers/2502-OpenVLA-OFT">OpenVLA-OFT</a> (2025-03): 后续工作，引入 continuous action head + parallel decoding，推理快 25-50x，弥补 OpenVLA 的 dexterity 与 frequency 短板</li>
+<li><strong>FAST tokenizer</strong> (2025-01): Physical Intelligence 的后续，把 action chunk 压缩成更少 token，推理快 15x</li>
+<li><a href="../Papers/2410-Pi0" class="internal alias" data-slug="Papers/2410-Pi0">π0</a>: 同期/后续 VLA 路线（flow matching + continuous action），与 OpenVLA 形成 discrete vs continuous action 的两条主线对比</li>
+</ul>
+<hr/>
+<h2 id="论文点评">论文点评<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#论文点评" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="strengths">Strengths<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>真正完整的开源</strong>：模型权重 + 训练代码 + fine-tune notebook + 推理 server + 数据 mixture——一篇论文把”复现”和”adapt 到自己机器人”两个最大障碍同时打掉，社区影响力巨大（CoRL 2024 Outstanding Paper Finalist 实至名归）</li>
+<li><strong>设计决策的 ablation 很扎实</strong>：vision encoder unfreeze、resolution 224、27 epoch、quantile-based discretization——每条都对应一个 counter-intuitive 选择 + 实证支撑，且与 VLM 经验对比着讲，对后续做 VLA 的人是直接 transferable 的”how-to”</li>
+<li><strong>DINOv2+SigLIP fused vision encoder 的设计</strong>对 spatial reasoning 的强调是个 generalizable 的 takeaway</li>
+<li><strong>PEFT + 量化的可行性</strong> 第一次系统验证：LoRA rank=32 与 full FT 持平 + int4 推理无损，让 7B VLA 真的可以在消费级硬件上 deploy。这比 method paper 本身的 contribution 更影响生态</li>
+</ol>
+<h3 id="weaknesses">Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>与 RT-2-X 的对比不够公平</strong>：参数数量、数据量、训练数据 mixture 都不同，无法 isolate “model size” vs “data quality” vs “vision encoder” 各自的贡献。Appendix D 的 ablation 也没法完全 controlled</li>
+<li><strong>Action 离散化是个 known bottleneck</strong>：256-bin uniform 限制了精细动作。后续 FAST tokenizer、OpenVLA-OFT 的 continuous head 都在补这个洞——说明这是核心方法层面的局限</li>
+<li><strong>6Hz 推理速度不够 dexterous 任务</strong>：ALOHA / 双臂任务直接 out of scope。这制约了 OpenVLA 能解决的任务集</li>
+<li><strong>co-fine-tuning 缺失</strong>：纯机器人数据微调导致 semantic generalization 弱于 RT-2-X（保留互联网知识）。这是个明显可改进点但作者未做</li>
+<li><strong>DROID 拒绝拟合的问题没有深挖</strong>：直接从 mixture 里去掉而不是分析 why——这是个有 information value 的 negative result，被回避了</li>
+</ol>
+<h3 id="可信评估">可信评估<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#可信评估" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="artifact-可获取性">Artifact 可获取性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#artifact-可获取性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><strong>代码</strong>: ✅ 完整开源（inference + LoRA fine-tune + full fine-tune + remote serving + training from scratch）<code>github.com/openvla/openvla</code></li>
+<li><strong>模型权重</strong>: ✅ <code>openvla/openvla-7b</code>（旗舰，DINOv2+SigLIP+Llama-2 + Open-X Magic Soup++ mixture）+ <code>openvla/openvla-7b-v01</code>（早期 SigLIP-only + Vicuña 1.5）。HuggingFace 直接拉取</li>
+<li><strong>训练细节</strong>: ✅ 完整披露——超参（lr 2e-5, batch 2048, 27 epoch）、infra（64 A100 × 14d）、data mixture weights（Appendix A）</li>
+<li><strong>数据集</strong>: ✅ Open X-Embodiment 全开源（含 Bridge、Fractal、DROID 等子数据集）</li>
+</ul>
+<h4 id="claim-可验证性">Claim 可验证性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#claim-可验证性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>✅ <strong>OpenVLA 7B > RT-2-X 55B by +16.5% absolute on BridgeData V2</strong>：170 rollouts × A/B 比较，task setup 与 BridgeData V2 evaluations 齐名，可信。但因为 RT-2-X 闭源，无法 isolated 复现这个 delta</li>
+<li>✅ <strong>Fine-tune > Diffusion Policy +20.4% on diverse Franka tasks</strong>：129 rollouts，A/B 对照，控制公平</li>
+<li>✅ <strong>LoRA rank=32 与 Full FT 持平 (68.2 vs 69.7)</strong>：Table 1，33 rollouts，可独立 LoRA fine-tune 验证</li>
+<li>✅ <strong>int4 量化与 bfloat16 性能等效 (71.9 vs 71.3)</strong>：80 rollouts，可独立验证（虽然 int4 > bfloat16 这个反常需小心解读）</li>
+<li>⚠️ <strong>“DINOv2+SigLIP fused encoder 提升 spatial reasoning”</strong>：归因正确性受限——只与 SigLIP-only Prismatic 比，没有控制 DINOv2-only 或 CLIP+DINOv2 等替代组合</li>
+<li>⚠️ <strong>“OpenVLA 在 motion/physical generalization 强是因为数据多+清洗+vision encoder”</strong>：三因素同时变化，归因混淆</li>
+<li>⚠️ <strong>“action token accuracy > 95% 即性能饱和”</strong>：作为停训信号合理，但 95% 这个具体阈值是 empirical heuristic，非 principled</li>
+<li>❌ 无明显营销话术，论文措辞总体克制</li>
+</ul>
+<h3 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>OpenVLA 可以看作 VLA 的 “BERT moment”——之后 VLA 的研究范式（discretize action / fine-tune VLM / 在 OpenX 上预训练）很大程度上 anchor 在它的设计上</li>
+<li><strong>要追问的开放问题</strong>：
+<ul>
+<li><strong>Action discretization 的极限在哪？</strong> 256-bin uniform 是否限制了 dexterous 任务？continuous head（OpenVLA-OFT、π0）的 trade-off 是什么？</li>
+<li><strong>Co-fine-tuning（机器人 + 互联网数据）</strong> 在多大规模下值得？OpenVLA 没做但理论上可补 semantic generalization 的短板</li>
+<li><strong>VLA scaling law</strong>：data / params / epochs 三者关系？DROID 拟合不上是 model 太小还是 mixture weight 太低？这个 negative result 值得重做</li>
+</ul>
+</li>
+<li>与我研究方向的连接：spatial intelligence 角度看，DINOv2+SigLIP fused encoder 是个明确 takeaway——纯 CLIP/SigLIP 对机器人控制空间感不够。这个 design pattern 应该可以迁移到 VLN 和 spatial reasoning 任务</li>
+</ul>
+<h3 id="rating">Rating<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#rating" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>分数</strong>：3 - Foundation
+<strong>理由</strong>：OpenVLA 是 VLA 方向的 substrate-level 工作——Strengths 中的”真正完整开源 + LoRA/int4 可行性第一次系统验证”让它从 method 升级为 infra；关联工作显示几乎所有后续 VLA 论文（OpenVLA-OFT、π0、FAST、SmolVLA 等）都把它作为基础架构或 de facto baseline。区别于 2-Frontier：它已经过了”前沿竞争”阶段，成为范式本身（discretize action / fine-tune VLM / OpenX pretrain），GitHub 6k+ star、CoRL 2024 Outstanding Paper Finalist 及持续被引证实其奠基地位，而非一时 SOTA。</p></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="ud8fg4" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#1-motivation" data-for="1-motivation">1. Motivation</a></li><li class="depth-0"><a href="#2-the-openvla-model" data-for="2-the-openvla-model">2. The OpenVLA Model</a></li><li class="depth-1"><a href="#21-architecture" data-for="21-architecture">2.1 Architecture</a></li><li class="depth-1"><a href="#22-action-tokenization" data-for="22-action-tokenization">2.2 Action Tokenization</a></li><li class="depth-1"><a href="#23-training-data" data-for="23-training-data">2.3 Training Data</a></li><li class="depth-1"><a href="#24-关键-design-decisions" data-for="24-关键-design-decisions">2.4 关键 Design Decisions</a></li><li class="depth-1"><a href="#25-infrastructure" data-for="25-infrastructure">2.5 Infrastructure</a></li><li class="depth-0"><a href="#3-experiments" data-for="3-experiments">3. Experiments</a></li><li class="depth-1"><a href="#31-direct-evaluation-multi-robot-out-of-the-box" data-for="31-direct-evaluation-multi-robot-out-of-the-box">3.1 Direct Evaluation: Multi-Robot Out-of-the-Box</a></li><li class="depth-1"><a href="#32-data-efficient-adaptation-fine-tune-to-franka" data-for="32-data-efficient-adaptation-fine-tune-to-franka">3.2 Data-Efficient Adaptation: Fine-tune to Franka</a></li><li class="depth-1"><a href="#33-parameter-efficient-fine-tuning" data-for="33-parameter-efficient-fine-tuning">3.3 Parameter-Efficient Fine-Tuning</a></li><li class="depth-1"><a href="#34-memory-efficient-inference-quantization" data-for="34-memory-efficient-inference-quantization">3.4 Memory-Efficient Inference: Quantization</a></li><li class="depth-0"><a href="#4-limitations-作者承认" data-for="4-limitations-作者承认">4. Limitations (作者承认)</a></li><li class="depth-0"><a href="#关联工作" data-for="关联工作">关联工作</a></li><li class="depth-1"><a href="#基于" data-for="基于">基于</a></li><li class="depth-1"><a href="#对比" data-for="对比">对比</a></li><li class="depth-1"><a href="#方法相关" data-for="方法相关">方法相关</a></li><li class="depth-0"><a href="#论文点评" data-for="论文点评">论文点评</a></li><li class="depth-1"><a href="#strengths" data-for="strengths">Strengths</a></li><li class="depth-1"><a href="#weaknesses" data-for="weaknesses">Weaknesses</a></li><li class="depth-1"><a href="#可信评估" data-for="可信评估">可信评估</a></li><li class="depth-1"><a href="#notes" data-for="notes">Notes</a></li><li class="depth-1"><a href="#rating" data-for="rating">Rating</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
 </script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
 </script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>

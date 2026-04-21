@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><title>Windows Agent Arena: Evaluating Multi-Modal OS Agents at Scale</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="Windows Agent Arena: Evaluating Multi-Modal OS Agents at Scale"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Windows Agent Arena: Evaluating Multi-Modal OS Agents at Scale"/><meta name="twitter:description" content="Summary 提出首个针对 Windows 操作系统的多模态 agent 评估 benchmark，包含 150+ 任务覆盖 11 个应用，利用 Azure 云部署实现大规模并行评估（~20 分钟完成全部评估），其 Navi agent 达到 19.5% 成功率 vs 人类 74.5%。 Problem &amp; Motivation 现有 agent ..."/><meta property="og:description" content="Summary 提出首个针对 Windows 操作系统的多模态 agent 评估 benchmark，包含 150+ 任务覆盖 11 个应用，利用 Azure 云部署实现大规模并行评估（~20 分钟完成全部评估），其 Navi agent 达到 19.5% 成功率 vs 人类 74.5%。 Problem &amp; Motivation 现有 agent ..."/><meta property="og:image:alt" content="Summary 提出首个针对 Windows 操作系统的多模态 agent 评估 benchmark，包含 150+ 任务覆盖 11 个应用，利用 Azure 云部署实现大规模并行评估（~20 分钟完成全部评估），其 Navi agent 达到 19.5% 成功率 vs 人类 74.5%。 Problem &amp; Motivation 现有 agent ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2409-WindowsAgentArena"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2409-WindowsAgentArena"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary 提出首个针对 Windows 操作系统的多模态 agent 评估 benchmark，包含 150+ 任务覆盖 11 个应用，利用 Azure 云部署实现大规模并行评估（~20 分钟完成全部评估），其 Navi agent 达到 19.5% 成功率 vs 人类 74.5%。 Problem &amp; Motivation 现有 agent ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+<html lang="en"><head><title>WindowsAgentArena: Evaluating Multi-Modal OS Agents at Scale</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="WindowsAgentArena: Evaluating Multi-Modal OS Agents at Scale"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="WindowsAgentArena: Evaluating Multi-Modal OS Agents at Scale"/><meta name="twitter:description" content="Summary WindowsAgentArena: Evaluating Multi-Modal OS Agents at Scale 核心: 把 OSWorld 框架移植到真实 Windows 11 OS 上，构建 154 个跨应用任务的 agent benchmark，并通过 Azure 容器化 VM 实现”全 benchmark 20 分钟跑完”的并行评估 ..."/><meta property="og:description" content="Summary WindowsAgentArena: Evaluating Multi-Modal OS Agents at Scale 核心: 把 OSWorld 框架移植到真实 Windows 11 OS 上，构建 154 个跨应用任务的 agent benchmark，并通过 Azure 容器化 VM 实现”全 benchmark 20 分钟跑完”的并行评估 ..."/><meta property="og:image:alt" content="Summary WindowsAgentArena: Evaluating Multi-Modal OS Agents at Scale 核心: 把 OSWorld 框架移植到真实 Windows 11 OS 上，构建 154 个跨应用任务的 agent benchmark，并通过 Azure 容器化 VM 实现”全 benchmark 20 分钟跑完”的并行评估 ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2409-WindowsAgentArena"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2409-WindowsAgentArena"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary WindowsAgentArena: Evaluating Multi-Modal OS Agents at Scale 核心: 把 OSWorld 框架移植到真实 Windows 11 OS 上，构建 154 个跨应用任务的 agent benchmark，并通过 Azure 容器化 VM 实现”全 benchmark 20 分钟跑完”的并行评估 ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
   position: absolute;
   display: flex;
   float: right;
@@ -116,33 +116,62 @@ pre:hover > .expand-button {
   padding: 0 12px;
   font-size: 14px;
 }
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2409-WindowsAgentArena"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="gc1ghh"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/RL" class="sidebar-tag-pill">#RL</a><a href="/mindflow/tags/web-agent" class="sidebar-tag-pill">#web-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/scene-understanding" class="sidebar-tag-pill">#scene-understanding</a><a href="/mindflow/tags/instruction-following" class="sidebar-tag-pill">#instruction-following</a><a href="/mindflow/tags/cross-embodiment" class="sidebar-tag-pill">#cross-embodiment</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2409-WindowsAgentArena</a></div></nav><h1 class="article-title">Windows Agent Arena: Evaluating Multi-Modal OS Agents at Scale</h1><div class="paper-meta"><span class="paper-venue">arXiv</span><span class="paper-authors"><span class="meta-sep">·</span>Rogerio Bonatti <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, Dan Zhao</span><span>, Francesco Bonacci</span><span>, Dillon Dupont</span><span>, Sara Abdali</span><span>, Yinheng Li</span><span>, Yadong Lu</span><span>, Justin Wagle</span><span>, Kazuhito Koishida</span><span>, Arthur Bucker</span><span>, Lawrence Jang</span><span>, Zack Hui</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2024-09-12T00:00:00.000Z">Sep 12, 2024</time><span>4 min read</span></p><ul class="tags"><li><a href="../tags/web-agent" class="internal tag-link">web-agent</a></li><li><a href="../tags/VLM" class="internal tag-link">VLM</a></li><li><a href="../tags/instruction-following" class="internal tag-link">instruction-following</a></li><li><a href="../tags/task-planning" class="internal tag-link">task-planning</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>提出首个针对 Windows 操作系统的多模态 agent 评估 benchmark，包含 150+ 任务覆盖 11 个应用，利用 Azure 云部署实现大规模并行评估（~20 分钟完成全部评估），其 Navi agent 达到 19.5% 成功率 vs 人类 74.5%。</p>
-<h2 id="problem--motivation">Problem &amp; Motivation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#problem--motivation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>现有 agent benchmark 局限于特定模态或领域（web、mobile、Q&amp;A），缺乏在完整操作系统环境下的综合评估。Windows 占桌面 OS 73% 市场份额却没有对应的评估框架。更关键的是，串行评估极其耗时（数天量级），阻碍了快速迭代。</p>
-<h2 id="method">Method<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#method" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p><strong>环境设计：</strong></p>
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2409-WindowsAgentArena"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="mm0h7i"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/embodied-reasoning" class="sidebar-tag-pill">#embodied-reasoning</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/computer-use" class="sidebar-tag-pill">#computer-use</a><a href="/mindflow/tags/agentic-RL" class="sidebar-tag-pill">#agentic-RL</a><a href="/mindflow/tags/gui-agent" class="sidebar-tag-pill">#gui-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/world-model" class="sidebar-tag-pill">#world-model</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2409-WindowsAgentArena</a></div></nav><h1 class="article-title">WindowsAgentArena: Evaluating Multi-Modal OS Agents at Scale</h1><div class="paper-meta"><span class="paper-venue">arXiv</span><span class="paper-authors"><span class="meta-sep">·</span>Rogerio Bonatti <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, Dan Zhao</span><span>, Francesco Bonacci</span><span>, Dillon Dupont</span><span>, Sara Abdali</span><span>, Yinheng Li</span><span>, Yadong Lu</span><span>, Justin Wagle</span><span>, Kazuhito Koishida</span><span>, Arthur Bucker</span><span>, Lawrence Jang</span><span>, Zack Hui</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2024-09-13T00:00:00.000Z">Sep 13, 2024</time><span>17 min read</span></p><ul class="tags"><li><a href="../tags/computer-use" class="internal tag-link">computer-use</a></li><li><a href="../tags/gui-agent" class="internal tag-link">gui-agent</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>WindowsAgentArena: Evaluating Multi-Modal OS Agents at Scale </p></div>
+                  
+                </div>
+<div class="callout-content">
 <ul>
-<li>真实 Windows 11 OS 运行于 Docker 容器（QEMU/KVM）</li>
-<li>154 个任务，覆盖 11 个应用（LibreOffice, Chrome, Edge, VSCode, VLC, Windows Settings, File Explorer 等）</li>
-<li>6 个 domain：Office (28%), Web (19%), System (16%), Coding (16%), Media (14%), Utilities (8%)</li>
+<li><strong>核心</strong>: 把 <a href="../Papers/2404-OSWorld" class="internal alias" data-slug="Papers/2404-OSWorld">OSWorld</a> 框架移植到真实 Windows 11 OS 上，构建 154 个跨应用任务的 agent benchmark，并通过 Azure 容器化 VM 实现”全 benchmark 20 分钟跑完”的并行评估</li>
+<li><strong>方法</strong>: Docker + QEMU/KVM 封装 Win11 VM；任务 JSON 包含 setup script + 自动化 reward function；同时发布 Navi agent，用 SoM (Set-of-Marks) 把 UIA accessibility tree、OCR、icon detector、Omniparser 多源信息叠加到截图上喂 VLM</li>
+<li><strong>结果</strong>: 最佳 Navi 配置 (UIA + Omniparser + GPT-4V-1106) 取得 19.5% 成功率，远低于人类 74.5%。Office / Windows Utils 几乎全 0%；Web Browser、Windows System 相对最好</li>
+<li><strong>Sources</strong>: <a href="https://arxiv.org/abs/2409.08264" class="external">paper<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://microsoft.github.io/WindowsAgentArena/" class="external">website<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://github.com/microsoft/WindowsAgentArena" class="external">github<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><strong>Rating</strong>: 2 - Frontier（Windows OS agent 评测的代表性 benchmark + 可 scale 的云端评估基础设施，被后续 OS agent 工作作为重要参考，但 154 任务规模和 zero-shot-only 结果限制其成为 de facto 标准）</li>
 </ul>
-<p><strong>Navi Agent 架构：</strong></p>
+</div>
+</blockquote>
+<p><strong>Key Takeaways:</strong></p>
+<ol>
+<li><strong>OS-level benchmark 的价值在 task realism + scalable eval</strong>：跟 <a href="../Papers/2404-OSWorld" class="internal alias" data-slug="Papers/2404-OSWorld">OSWorld</a> 区别不在 OS 选择本身，而在用 Azure ML job 把每个 task 分发到独立 VM，把单机串行的”几天”压到 20 分钟。</li>
+<li><strong>SoM 质量是 zero-shot VLM agent 性能的关键瓶颈</strong>：单纯像素 OCR/icon 检测 vs 加上 UIA accessibility tree，GPT-4V 的成功率从 12.5% 涨到 19.5%（相对提升 57%）。“看得懂屏幕” 比 “推理强” 更稀缺。</li>
+<li><strong>Visual-language mis-alignment 是常见 failure mode</strong>：agent 文本说 “click 红色”，但选了 SoM ID 对应的黄色——VLM 训练分布里没有”上百个小标号的截图”这种数据。</li>
+<li><strong>Generalist VLM 远未饱和</strong>：19.5% vs 74.5% human 的 gap，跟 OSWorld / AndroidWorld 的 gap 量级一致——说明 OS agent 的瓶颈不在 OS 选择，而在底层模型的 grounding 能力。</li>
+</ol>
+<p><strong>Teaser. WindowsAgentArena 的整体框架与多任务覆盖范围。</strong></p>
+<p><img src="https://arxiv.org/html/2409.08264v2/x1.png" alt/></p>
+<p><video src="https://microsoft.github.io/WindowsAgentArena/static/videos/mosaic.mp4" controls muted playsinline width="720"></video></p>
+<hr/>
+<h2 id="1-motivation-与定位">1. Motivation 与定位<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-motivation-与定位" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>现有 agent benchmark 有两个 pain point：</p>
+<ol>
+<li><strong>Modality / domain 受限</strong>：text-only Q&amp;A、web navigation、coding 各自为政，跟人类真实跨应用工作流脱节。</li>
+<li><strong>评估慢</strong>：multi-step 任务串行跑完一遍 benchmark 要 days。OS 不是物理仿真，没法”加速时钟”——多个进程异步运行，仿真速度等于 wall clock。</li>
+</ol>
+<p><a href="../Papers/2404-OSWorld" class="internal alias" data-slug="Papers/2404-OSWorld">OSWorld</a> 已经把”真实 OS”塞进 benchmark，但聚焦 Linux，且并行只能在单机内开多 VMware VM（受单机内存/CPU 限制，最多个位数）。Windows 占 73% 桌面市场份额却没人做。WindowsAgentArena (WAA) 的定位就是 <strong>Windows 版 <a href="../Papers/2404-OSWorld" class="internal alias" data-slug="Papers/2404-OSWorld">OSWorld</a> + Azure-native 并行</strong>。</p>
+<blockquote>
+<p>❓ “Windows 占 73% 市场” 作为研究 motivation 有点弱——真正的技术 motivation 应该是 Windows 上有 UIA accessibility tree 这种结构化信号，跟 Linux/macOS 的 a11y stack 行为差异大。论文没强调这点。</p>
+</blockquote>
+<h2 id="2-环境设计">2. 环境设计<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-环境设计" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="21-任务形式化pomdp">2.1 任务形式化（POMDP）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#21-任务形式化pomdp" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>标准的 POMDP <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathcal" style="margin-right:0.02778em;">O</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathcal">A</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathcal">R</span><span class="mclose">)</span></span></span></span>。Agent 在每一步看到 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">o</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，输出 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，直到 DONE/FAIL 或超过 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7651em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mop mtight"><span class="mtight">m</span><span class="mtight">a</span><span class="mtight">x</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。Reward 在终止时返回 [0,1]：binary 任务返 0/1，相似度任务返小数。</p>
+<h3 id="22-observation-space">2.2 Observation Space<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#22-observation-space" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Agent 每步能看到：</p>
 <ul>
-<li>多模态输入：Screenshot + Accessibility Tree + Set-of-Marks (SoM)</li>
-<li>SoM 方法：UI Automation (UIA) tree parsing, OCR, icon detection, OmniParser</li>
-<li>Chain-of-thought prompting</li>
-<li>Action space：通过 Python 代码调用鼠标/键盘</li>
+<li><strong>任务指令</strong> + <strong>clipboard 内容</strong>（文本直接拷，图像用 VLM 生成 caption）</li>
+<li><strong>Foreground / background 窗口标题</strong>（pygetwindow 抓取）</li>
+<li><strong>当前屏幕截图</strong>（1440×900 RGB）+ <strong>上一步截图</strong></li>
+<li><strong>UIA tree</strong>（pywinauto 抓取，不直接喂给 agent，而是用来生成 SoM 标记）</li>
 </ul>
-<p><strong>云端并行评估：</strong></p>
+<h3 id="23-action-space">2.3 Action Space<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#23-action-space" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>两套并存：</p>
 <ul>
-<li>Docker 容器部署在 Azure ML compute instances</li>
-<li>Python Flask server 桥接 agent 命令与 VM</li>
-<li>Windows 11 快照存储在 Azure Blob Storage</li>
-<li>分布式任务调度，全量评估 ~20 分钟（vs 串行数小时）</li>
+<li><strong>Free-form pyautogui / Python 代码执行</strong>：最大灵活性。</li>
+<li><strong>Computer class wrapper</strong>：把 mouse / keyboard / clipboard / OS / window manager 封装成结构化函数。关键能力是 <code>mouse.move_id(id)</code>——直接按 SoM 标号交互，不用算绝对像素坐标，大幅降低 grounding 难度。</li>
 </ul>
-<p><strong>评估方式：</strong> 执行后状态验证脚本，检查文件修改/系统设置/应用状态。</p>
-<h2 id="key-results">Key Results<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-results" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Table 1. Computer class actions.</strong></p>
 
 
 
@@ -164,51 +193,330 @@ pre:hover > .expand-button {
 
 
 
-<div class="table-container"><table><thead><tr><th>Configuration</th><th>Success Rate</th></tr></thead><tbody><tr><td>Navi (UIA + OmniParser + GPT-4V-1106)</td><td>19.5%</td></tr><tr><td>Navi (GPT-4o)</td><td>~9% (约为 GPT-4V 一半)</td></tr><tr><td>Human</td><td>74.5%</td></tr></tbody></table></div>
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Group</th><th>Functions</th></tr></thead><tbody><tr><td><code>computer.mouse</code></td><td><code>move_id(id)</code>, <code>move_abs(x,y)</code>, <code>single_click()</code>, <code>double_click()</code>, <code>right_click()</code>, <code>scroll(direction)</code></td></tr><tr><td><code>computer.keyboard</code></td><td><code>write(text)</code>, <code>press(key)</code></td></tr><tr><td><code>computer.clipboard</code></td><td><code>copy_text(text)</code>, <code>copy_image(image)</code>, <code>paste()</code></td></tr><tr><td><code>computer.os</code></td><td><code>open_program(program)</code></td></tr><tr><td><code>computer.window_manager</code></td><td><code>switch_to_application(window)</code></td></tr></tbody></table></div>
+<h3 id="24-rewardexecution-based">2.4 Reward：Execution-based<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#24-rewardexecution-based" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>跟 OSWorld 一样用后处理脚本判断完成：读系统/app settings、对比文件内容、或动态调用 web API 验证。<strong>关键是不要求 agent 复刻人类轨迹，只看终态</strong>——这给 agent 解题的自由度。</p>
+<h2 id="3-任务-curation">3. 任务 Curation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-任务-curation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>154 个任务，覆盖典型 Windows 用户工作流：</p>
 <ul>
-<li>GPT-4V-1106 显著优于 GPT-4o（超过两倍成功率），这是一个反直觉的发现</li>
-<li>Cross-benchmark：Navi 在 Mind2Web 上达到 47.3% step success（SOTA）</li>
-<li>Domain 差异大：Web 任务人类 76.7% vs VLC 任务人类 42.8%</li>
+<li><strong>Office</strong>: LibreOffice Calc / Writer</li>
+<li><strong>Web Browser</strong>: Microsoft Edge, Google Chrome</li>
+<li><strong>Windows System</strong>: File Explorer, Settings</li>
+<li><strong>Coding</strong>: VS Code</li>
+<li><strong>Media &amp; Video</strong>: VLC Player</li>
+<li><strong>Windows Utils</strong>: Notepad, Clock, Paint</li>
 </ul>
-<h2 id="strengths--weaknesses">Strengths &amp; Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths--weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p><strong>Strengths：</strong></p>
+<p><strong>任务来源</strong>：约 2/3 从 OSWorld Linux 任务移植（改文件路径、把 bash 改成 PowerShell、Edge/Chrome 反向代理改造、修订 evaluator 函数）；剩余 1/3 从零创建覆盖 Windows-specific 应用。</p>
+<p><strong>任务定义</strong>：每个任务一份 JSON：</p>
 <ul>
-<li>首个 Windows 平台综合 agent benchmark，填补重要空白</li>
-<li>Azure 云端并行评估架构具备实际工程价值，解决了评估效率瓶颈</li>
-<li>任务覆盖多样，贴近真实用户工作流</li>
-<li>开源完整代码/任务/模型</li>
-<li>执行后状态验证（非轨迹匹配）</li>
+<li>自然语言指令（“Make the line spacing of first two paragraphs into double line spacing”）</li>
+<li>Setup script（下载文件、打开应用）</li>
+<li>Evaluator 元数据 + Python 比对脚本</li>
 </ul>
-<p><strong>Weaknesses：</strong></p>
+<p><strong>人类基线</strong>：74.5% 成功率，最高 Windows Utilities 91.7%，最低 VLC Player 42.8%（VLC 的 UI 本身对人都不友好）。</p>
+<p><img src="https://arxiv.org/html/2409.08264v2/x2.png" alt/></p>
+<h2 id="4-deployment-infrastructure">4. Deployment Infrastructure<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-deployment-infrastructure" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>WAA 真正的工程贡献在这。</p>
+<p><strong>架构</strong>：</p>
 <ul>
-<li>任务数量（154）相对较少，可能不足以细粒度评估</li>
-<li>仅一位人类评估者参与，baseline 代表性存疑</li>
-<li>未探索 fine-tuning，仅评估 zero-shot generalist</li>
-<li>Visual grounding 问题突出——agent 能正确描述操作但选错 UI 元素，说明视觉-语言对齐是瓶颈</li>
-<li>SoM 标注质量对性能影响极大（15-57% 差异），benchmark 结果可能更多反映 SoM 质量而非 agent 能力</li>
+<li>外层：Docker container（windowsarena/winarena）</li>
+<li>内层：QEMU + KVM 跑 Windows 11 VM（adapted from dockur/windows）</li>
+<li>VM 内：Python Flask server，作为 client 进程和 OS 之间的桥梁——接收命令、在 VM 内执行、返回 observation</li>
 </ul>
-<h2 id="mind-map">Mind Map<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mind-map" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;mindmap\n  root((WindowsAgentArena))\n    Problem\n      缺乏 Windows OS agent benchmark\n      串行评估耗时过长\n    Method\n      Windows 11 Docker 容器\n      Navi agent: Screenshot + A11y Tree + SoM\n      Azure 云端并行评估\n    Results\n      Navi 19.5% vs Human 74.5%\n      GPT-4V > GPT-4o\n      Visual grounding 是核心瓶颈&quot;">mindmap
-  root((WindowsAgentArena))
-    Problem
-      缺乏 Windows OS agent benchmark
-      串行评估耗时过长
-    Method
-      Windows 11 Docker 容器
-      Navi agent: Screenshot + A11y Tree + SoM
-      Azure 云端并行评估
-    Results
-      Navi 19.5% vs Human 74.5%
-      GPT-4V > GPT-4o
-      Visual grounding 是核心瓶颈
-</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
-<h2 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Local 部署</strong>：WSL 或 Ubuntu。把 OS image 和 code 通过 volume mount 进 container，避免每次 rebuild。</p>
+<p><strong>Cloud 部署</strong>：用 Azure Machine Learning jobs 拉起 N 个 compute instance，每个跑一个 task。Win11 snapshot 和日志存在 Azure Blob Store。<strong>任务平均分发到 worker，结束后聚合结果</strong>。</p>
+<p><img src="https://arxiv.org/html/2409.08264v2/x4.png" alt/></p>
+<p><strong>对比 OSWorld 的并行方式</strong>：OSWorld 在单机起多个 VMware VM——受单机资源限制；WAA 把 worker 数量上限抬到等于任务数。论文报告全 154 任务并行评估只需约 20 分钟（Appendix A.7）。</p>
+<p><strong>Security</strong>：Docker 隔离 + VM 端口不暴露公网，所有通信走本地。这对 OS agent 这类有 destructive action 能力的系统是必要的。</p>
+<blockquote>
+<p>❓ 一个隐性成本：Win11 license 限制让 Microsoft 没法发预制 snapshot——用户得自己从 Microsoft 服务器拉 trial image，跑脚本配置。这降低复现性，且 trial 过期后任务初始状态会不会受影响没说。</p>
+</blockquote>
+<h2 id="5-navi-agent-设计">5. Navi Agent 设计<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#5-navi-agent-设计" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="51-输入处理">5.1 输入处理<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#51-输入处理" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Navi 是 zero-shot prompted VLM agent，用 chain-of-thought prompting。每步喂给模型：</p>
 <ul>
-<li>与 OSWorld（2404）互补：OSWorld 覆盖 Ubuntu，本工作覆盖 Windows，两者设计哲学类似</li>
-<li>GPT-4V-1106 > GPT-4o 这个发现值得深思——可能 GPT-4o 的视觉编码在密集 UI 场景下有退化</li>
-<li>Visual-language misalignment（正确描述但选错元素）是 GUI agent 的核心未解决问题，不仅仅是 benchmark 问题</li>
-<li>并行评估框架的工程设计值得借鉴，但对大多数研究者来说 Azure 依赖可能是门槛</li>
-<li>SoM 质量影响 15-57% 这个数据说明，当前 GUI agent 性能很大程度取决于 perception pipeline 而非 reasoning</li>
-</ul></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="uevi3i" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#problem--motivation" data-for="problem--motivation">Problem &amp; Motivation</a></li><li class="depth-0"><a href="#method" data-for="method">Method</a></li><li class="depth-0"><a href="#key-results" data-for="key-results">Key Results</a></li><li class="depth-0"><a href="#strengths--weaknesses" data-for="strengths--weaknesses">Strengths &amp; Weaknesses</a></li><li class="depth-0"><a href="#mind-map" data-for="mind-map">Mind Map</a></li><li class="depth-0"><a href="#notes" data-for="notes">Notes</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+<li>任务指令 + Computer class 描述 + action history + clipboard + memory block</li>
+<li>当前截图（带 SoM 标注） + 上一步截图</li>
+</ul>
+<p><strong>SoM 来源 5 种</strong>，可组合：</p>
+<ul>
+<li><strong>UIA tree parsing</strong>：从 Windows accessibility tree 抽可见元素</li>
+<li><strong>DOM tree parsing</strong>：仅浏览器内</li>
+<li><strong>OCR</strong>：proprietary（OneOCR）或 open（Tesseract）</li>
+<li><strong>Icon / image detection</strong>：proprietary 或 Grounding DINO</li>
+<li><strong><a href="../Papers/2408-OmniParser" class="internal alias" data-slug="Papers/2408-OmniParser">Omniparser</a></strong>：Microsoft 自家的多元素检测 + icon captioning 模型</li>
+</ul>
+<p>输出格式：先回答几个屏幕理解 + 长程规划相关的问题，再输出下一步的 Python action 代码。</p>
+<p><strong>Figure. Set-of-Marks 标注示例（proprietary 像素模型版本）：OCR 蓝色 / icon 绿色 / image 红色。</strong></p>
+<p><img src="https://arxiv.org/html/2409.08264v2/x9.png" alt/></p>
+<p><strong>Figure. <a href="../Papers/2408-OmniParser" class="internal alias" data-slug="Papers/2408-OmniParser">Omniparser</a> 版 SoM：text 蓝色 / icons 绿色，附带 icon caption。</strong></p>
+<p><img src="https://arxiv.org/html/2409.08264v2/x12.png" alt/></p>
+<h3 id="52-主结果">5.2 主结果<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#52-主结果" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table 2. Navi 在 WindowsAgentArena 上的成功率（按 SoM 配置和 base model 分组，节选 GPT-4V-1106 行）。</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>SoM 配置</th><th style="text-align:center;">UIA</th><th>Model</th><th style="text-align:center;">Office</th><th style="text-align:center;">Web</th><th style="text-align:center;">WinSys</th><th style="text-align:center;">Coding</th><th style="text-align:center;">Media</th><th style="text-align:center;">Utils</th><th style="text-align:center;"><strong>Total</strong></th></tr></thead><tbody><tr><td>Pytesseract+DOM+GroundingDINO</td><td style="text-align:center;">✗</td><td>GPT-4V-1106</td><td style="text-align:center;">0.0%</td><td style="text-align:center;">10.3%</td><td style="text-align:center;">21.3%</td><td style="text-align:center;">12.5%</td><td style="text-align:center;">9.8%</td><td style="text-align:center;">0.0%</td><td style="text-align:center;">8.6%</td></tr><tr><td>Pytesseract+DOM+GroundingDINO</td><td style="text-align:center;">✓</td><td>GPT-4V-1106</td><td style="text-align:center;">0.0%</td><td style="text-align:center;">13.3%</td><td style="text-align:center;">25.0%</td><td style="text-align:center;">13.0%</td><td style="text-align:center;">28.9%</td><td style="text-align:center;">8.3%</td><td style="text-align:center;">13.1%</td></tr><tr><td>OneOCR + proprietary</td><td style="text-align:center;">✗</td><td>GPT-4V-1106</td><td style="text-align:center;">2.3%</td><td style="text-align:center;">13.7%</td><td style="text-align:center;">16.7%</td><td style="text-align:center;">13.6%</td><td style="text-align:center;">19.3%</td><td style="text-align:center;">8.3%</td><td style="text-align:center;">11.3%</td></tr><tr><td>OneOCR + proprietary</td><td style="text-align:center;">✓</td><td>GPT-4V-1106</td><td style="text-align:center;">0.0%</td><td style="text-align:center;">26.3%</td><td style="text-align:center;">16.7%</td><td style="text-align:center;">17.4%</td><td style="text-align:center;">19.3%</td><td style="text-align:center;">0.0%</td><td style="text-align:center;">13.1%</td></tr><tr><td>Omniparser</td><td style="text-align:center;">✗</td><td>GPT-4V-1106</td><td style="text-align:center;">2.3%</td><td style="text-align:center;">23.6%</td><td style="text-align:center;">20.8%</td><td style="text-align:center;">8.3%</td><td style="text-align:center;">20.0%</td><td style="text-align:center;">0.0%</td><td style="text-align:center;">12.5%</td></tr><tr><td><strong>Omniparser</strong></td><td style="text-align:center;"><strong>✓</strong></td><td><strong>GPT-4V-1106</strong></td><td style="text-align:center;"><strong>0.0%</strong></td><td style="text-align:center;"><strong>27.3%</strong></td><td style="text-align:center;"><strong>33.3%</strong></td><td style="text-align:center;"><strong>27.3%</strong></td><td style="text-align:center;"><strong>30.3%</strong></td><td style="text-align:center;"><strong>8.3%</strong></td><td style="text-align:center;"><strong>19.5%</strong></td></tr><tr><td>Human</td><td style="text-align:center;">—</td><td>—</td><td style="text-align:center;">75.8%</td><td style="text-align:center;">76.7%</td><td style="text-align:center;">83.3%</td><td style="text-align:center;">68.4%</td><td style="text-align:center;">42.8%</td><td style="text-align:center;">91.7%</td><td style="text-align:center;"><strong>74.5%</strong></td></tr></tbody></table></div>
+<p>（完整 Table 4 还覆盖 Phi3-V / GPT-4o-mini / GPT-4o，结论一致：模型越大越好；GPT-4V-1106 整体最强，比 GPT-4o 在 Omniparser+UIA 上几乎翻倍——9.4% vs 19.5%。）</p>
+<p><strong>Figure. Navi 成功完成”将网页保存为 PDF 到桌面”任务的轨迹示例。</strong></p>
+<p><img src="https://arxiv.org/html/2409.08264v2/x6.png" alt/></p>
+<h3 id="53-关键-findings">5.3 关键 Findings<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#53-关键-findings" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>Generalist zero-shot VLM 远未饱和</strong>：19.5% vs 74.5%。Office / Windows Utils 任务接近 0%——这些任务依赖键盘快捷键和小图标，VLM 都不擅长。</li>
+<li><strong>SoM 质量是性能上限</strong>：加 UIA marker 在 <a href="../Papers/2408-OmniParser" class="internal alias" data-slug="Papers/2408-OmniParser">Omniparser</a> 上让 GPT-4V 提升 57%（12.5% → 19.5%）。代价是 UIA tree 查询慢——复杂屏幕可能要几秒到几分钟。</li>
+<li><strong>Visual-language mis-alignment 是常见 failure mode</strong>：agent 文本输出 “move to red”，但选了对应黄色调色板的 SoM #59。这是 VLM 训练数据分布里缺少 “上百个小标号的截图” 的直接后果。<a href="../Papers/2408-OmniParser" class="internal alias" data-slug="Papers/2408-OmniParser">Omniparser</a> 的优势很大程度来自 icon captioning——直接给 agent 提供”标号 → 文本含义”的映射。</li>
+<li><strong>Phi3-V 在长上下文时容易 hallucinate</strong>：小模型的规划能力跟不上 OS 任务的长度。</li>
+</ol>
+<h3 id="54-mind2web-验证">5.4 Mind2Web 验证<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#54-mind2web-验证" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>为了证明 Navi 不是只在自己 benchmark 上 work，作者把它跑到 Mind2Web。</p>
+<p><strong>Table 3. Navi 在 Mind2Web 上的结果。</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Modality</th><th>Model</th><th>Inputs</th><th style="text-align:center;">Element Acc</th><th style="text-align:center;">Op F1</th><th style="text-align:center;">Step SR</th></tr></thead><tbody><tr><td>Text-Only</td><td>GPT-4o</td><td>DOM</td><td style="text-align:center;">26.3%</td><td style="text-align:center;">69.1%</td><td style="text-align:center;">24.6%</td></tr><tr><td>Multimodal</td><td>GPT-4o</td><td>SoM (DOM + Pixel)</td><td style="text-align:center;">37.4%</td><td style="text-align:center;">79.2%</td><td style="text-align:center;">35.1%</td></tr><tr><td>Multimodal</td><td>GPT-4o</td><td>SoM (Pixel)</td><td style="text-align:center;">40.6%</td><td style="text-align:center;">84.5%</td><td style="text-align:center;">38.3%</td></tr><tr><td>Multimodal</td><td>GPT-4o</td><td>SoM (DOM)</td><td style="text-align:center;">38.7%</td><td style="text-align:center;">81.1%</td><td style="text-align:center;">36.9%</td></tr><tr><td>Multimodal</td><td>GPT-4o</td><td>Image+SoM (DOM)</td><td style="text-align:center;">42.8%</td><td style="text-align:center;">84.3%</td><td style="text-align:center;">40.7%</td></tr><tr><td><strong>Multimodal</strong></td><td><strong>GPT-4o</strong></td><td><strong>Image+SoM (DOM + Pixel)</strong></td><td style="text-align:center;"><strong>47.3%</strong></td><td style="text-align:center;"><strong>85.8%</strong></td><td style="text-align:center;"><strong>45.2%</strong></td></tr><tr><td>SeeAct</td><td>GPT-4V</td><td>Image+SoM (DOM)</td><td style="text-align:center;">44.3%</td><td style="text-align:center;">71.8%</td><td style="text-align:center;">38.3%</td></tr></tbody></table></div>
+<p>结论：<strong>Image + SoM(DOM+Pixel) 组合最好</strong>，跟 WAA 上 UIA + 像素混合的结论同构——多源 grounding 信号融合是 SoM agent 的通用 pattern。</p>
+<h2 id="6-discussion-中作者自己的开放问题">6. Discussion 中作者自己的开放问题<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#6-discussion-中作者自己的开放问题" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>Full autonomy vs human-in-the-loop</strong>：让 agent 主动 ask user clarification 可能提升成功率，但 benchmark 评估变难。</li>
+<li><strong>Generalist vs specialized agents</strong>：“agent of agents”——通用大模型协调 fine-tuned domain sub-agent。</li>
+<li><strong>Imitation vs RL</strong>：OS agent 缺 ground-truth action data，类似 robotics。WAA 的 reward function 天然适合做大规模 RL 数据生成。</li>
+<li><strong>Action space 设计</strong>：free-form code vs predefined skill library 是开放问题——后者执行精度高但限制 agent 推理空间。</li>
+</ul>
+<hr/>
+<h2 id="关联工作">关联工作<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#关联工作" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="基于">基于<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#基于" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong><a href="../Papers/2404-OSWorld" class="internal alias" data-slug="Papers/2404-OSWorld">OSWorld</a></strong>：WAA 直接 fork OSWorld 的任务结构和 evaluator 设计，2/3 任务从 Linux 移植。OSWorld 是 WAA 的最重要前置工作。</li>
+<li><strong>Set-of-Marks (SoM) prompting</strong>：把”在图上画标号 + 让 VLM 用标号交互”作为 grounding 范式，WAA 的 Navi 是 SoM 在 OS-level 任务上的扩展。</li>
+<li><strong>dockur/windows</strong>：Docker 镜像用 QEMU/KVM 跑 Windows VM 的开源方案，WAA 部署的底层依赖。</li>
+</ul>
+<h3 id="对比">对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>AndroidWorld</strong>：同期的 mobile OS benchmark，思路相同（real OS + execution-based reward）。</li>
+<li><strong><a href="../Papers/2307-WebArena" class="internal alias" data-slug="Papers/2307-WebArena">WebArena</a> / VisualWebArena / WorkArena</strong>：纯 web domain 的交互式 benchmark；WAA 跨 web + desktop apps 是 superset。</li>
+<li><strong>SeeAct</strong>：Mind2Web 上的强 baseline，Navi 在 Mind2Web 上的对比对象。</li>
+</ul>
+<h3 id="方法相关">方法相关<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#方法相关" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong><a href="../Papers/2408-OmniParser" class="internal alias" data-slug="Papers/2408-OmniParser">Omniparser</a></strong>：Microsoft 自家的屏幕解析模型（OCR + icon detection + caption），是 Navi 最佳配置的关键组件。</li>
+<li><strong>Grounding DINO</strong>：开源 icon detection 替代品。</li>
+<li><strong>GPT-4V / GPT-4o / Phi3-V</strong>：base VLM，决定 agent 推理上限。</li>
+<li><strong>UFO / OS-Copilot / CC-Net / <a href="../Papers/2312-CogAgent" class="internal alias" data-slug="Papers/2312-CogAgent">CogAgent</a></strong>：同期或更早的 OS / desktop agent 工作。</li>
+</ul>
+<hr/>
+<h2 id="论文点评">论文点评<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#论文点评" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="strengths">Strengths<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>工程价值清晰</strong>：Azure-native 并行 + 容器化 VM 把 OS agent 评估从 days 压到 20 minutes，这是 OSWorld 的实质改进，对所有做 OS agent 的人都有用。</li>
+<li><strong>SoM 多源融合做了系统的 ablation</strong>：不是单纯刷 SOTA，而是把 OCR / icon / DOM / UIA / Omniparser 排列组合都跑了一遍，给后人一张明确的”什么 grounding 信号有用”的地图。</li>
+<li><strong>诚实报告 failure modes</strong>：visual-language mis-alignment、Phi3-V hallucination、Office 类任务接近 0%——这些 negative result 比 main number 信息量更大。</li>
+<li><strong>跨 benchmark 验证</strong>：在 Mind2Web 上重复了”多源 grounding 信号融合最好”的结论，说明 finding 不是 WAA-specific artifact。</li>
+</ol>
+<h3 id="weaknesses">Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>任务规模偏小</strong>：154 个任务 vs OSWorld 369 个、WorkArena 18000+。给定 zero-shot agent 的高方差，这个规模做 model comparison 的统计置信度不高（每个 cell 平均才 ~25 任务）。</li>
+<li><strong>没有 agentic RL 实验</strong>：一直在讨论”WAA 适合做 RL data generation”，但论文里全是 zero-shot prompted result。这是最显然的 follow-up 但没做。</li>
+<li><strong>Navi 是 reference baseline，不是 contribution</strong>：把 Navi 称作”new agent”有点 overclaim——核心是 SoM prompting + chain-of-thought，跟 SeeAct 思路同构。真正的 novelty 在 environment，不在 agent。</li>
+<li><strong>Win11 license 限制损害复现性</strong>：用户得自己从 Microsoft 拉 trial image。trial 过期、Windows update 改 UI 都可能让历史结果不再可复现——这是基于 commercial OS 做 benchmark 的根本困境。</li>
+<li><strong>没讨论”过 benchmark”导致的 hill-climb 风险</strong>：154 个任务规模下，如果未来 agent 团队针对每个任务做 prompt engineering 或 fine-tuning，benchmark 很快被 overfit。</li>
+</ol>
+<h3 id="可信评估">可信评估<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#可信评估" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="artifact-可获取性">Artifact 可获取性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#artifact-可获取性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><strong>代码</strong>: inference + 基础设施开源（agent loop、Docker、Azure deployment scripts 全公开）；training 不适用——Navi 是 prompted agent</li>
+<li><strong>模型权重</strong>: Navi 本身只是 prompt + scaffolding；底层 VLM (GPT-4V/4o) 闭源；Omniparser 已开源（2024-10-23 Microsoft 单独 release）</li>
+<li><strong>训练细节</strong>: 不适用（无训练）；prompt 全文在 Appendix D</li>
+<li><strong>数据集</strong>: 154 个任务 JSON 配置全部开源；Win11 VM image 因 license 问题用户需自行下载 trial</li>
+</ul>
+<h4 id="claim-可验证性">Claim 可验证性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#claim-可验证性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>✅ <strong>“154 个任务可在 ~20 分钟内并行跑完”</strong>：基础设施开源，Appendix A.7 给了 Azure VM 类型，可独立验证</li>
+<li>✅ <strong>“UIA + Omniparser + GPT-4V-1106 达 19.5%“</strong>：Table 4 完整 ablation 展示数据点，配置和 prompt 都开源</li>
+<li>⚠️ <strong>“Navi 在 Mind2Web 上 SOTA”</strong>：只跟 SeeAct 比较，没对比同期更新的 web agent（如 WebVoyager、AutoWebGLM），SOTA claim 范围窄</li>
+<li>⚠️ <strong>“Human 74.5%“</strong>：人数、被试招募方式、是否给操作时长上限等没披露细节，作为 upper bound 有不确定性</li>
+<li>⚠️ <strong>“OSWorld 单机并行 limited to single digits”</strong>：没给具体数字证据，更像 design rationale 而非测量结果</li>
+</ul>
+<h3 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>WAA 的真正贡献是 <strong>infrastructure</strong>，不是 agent。它把 “OS agent benchmark 怎么做才能 scale” 这个问题做出了一个 reference answer：容器化 VM + 云端 worker pool。这套基础设施可以直接迁移到任何需要”在真实 OS 里跑 multi-step task” 的工作（包括 RL 训练数据生成）。</li>
+<li>对我来说最有用的 takeaway 是 SoM grounding 的 ablation——<strong>accessibility tree 信号（UIA / DOM）跟 pixel-based 检测是互补的，融合后才能逼近 ceiling</strong>。这个原则对设计 GUI agent 的 perception stack 是直接可用的。</li>
+<li>一个值得追问的方向：<strong>OS agent 的 visual-language mis-alignment 问题能否通过 in-context fine-tuning 解决？</strong> 论文把这归因到 VLM 训练分布缺乏”上百个小标号的截图”——那么用 WAA 自己生成的 trajectory 做 SFT data 应该能补上。这是个明显的 follow-up。</li>
+<li>19.5% 这个数字在 2024-09 是 reasonable 的，但放到 2026 应该已经被远超。值得追踪后续在 WAA 上的 SOTA 进展（比如 Anthropic computer use、<a href="../Papers/2501-UITARS" class="internal alias" data-slug="Papers/2501-UITARS">UI-TARS</a> / <a href="../Papers/2509-UITARS2" class="internal alias" data-slug="Papers/2509-UITARS2">UI-TARS-2</a>、<a href="../Papers/2504-AgentS2" class="internal alias" data-slug="Papers/2504-AgentS2">Agent S2</a> 系列）来评估 OS agent 这两年的真实进步幅度。</li>
+</ul>
+<h3 id="rating">Rating<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#rating" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>分数</strong>：2 - Frontier
+<strong>理由</strong>：WAA 作为 Windows OS agent 的代表性 benchmark，提供了可复现的云端并行评估基础设施（Strengths #1）和系统的 SoM ablation（Strengths #2），被后续 OS/GUI agent 工作作为重要参考；但相较 <a href="../Papers/2404-OSWorld" class="internal alias" data-slug="Papers/2404-OSWorld">OSWorld</a> 已成为 Linux OS agent 的 de facto 标准（引用数与社区采纳显著更高），WAA 任务规模偏小（Weaknesses #1）、Win11 license 损害复现性（Weaknesses #4），在社区采纳度上尚未达到 Foundation 档，更符合 Frontier 定位——重要参考但非必读必引的奠基工作。</p></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="ud8fg4" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#1-motivation-与定位" data-for="1-motivation-与定位">1. Motivation 与定位</a></li><li class="depth-0"><a href="#2-环境设计" data-for="2-环境设计">2. 环境设计</a></li><li class="depth-1"><a href="#21-任务形式化pomdp" data-for="21-任务形式化pomdp">2.1 任务形式化（POMDP）</a></li><li class="depth-1"><a href="#22-observation-space" data-for="22-observation-space">2.2 Observation Space</a></li><li class="depth-1"><a href="#23-action-space" data-for="23-action-space">2.3 Action Space</a></li><li class="depth-1"><a href="#24-rewardexecution-based" data-for="24-rewardexecution-based">2.4 Reward：Execution-based</a></li><li class="depth-0"><a href="#3-任务-curation" data-for="3-任务-curation">3. 任务 Curation</a></li><li class="depth-0"><a href="#4-deployment-infrastructure" data-for="4-deployment-infrastructure">4. Deployment Infrastructure</a></li><li class="depth-0"><a href="#5-navi-agent-设计" data-for="5-navi-agent-设计">5. Navi Agent 设计</a></li><li class="depth-1"><a href="#51-输入处理" data-for="51-输入处理">5.1 输入处理</a></li><li class="depth-1"><a href="#52-主结果" data-for="52-主结果">5.2 主结果</a></li><li class="depth-1"><a href="#53-关键-findings" data-for="53-关键-findings">5.3 关键 Findings</a></li><li class="depth-1"><a href="#54-mind2web-验证" data-for="54-mind2web-验证">5.4 Mind2Web 验证</a></li><li class="depth-0"><a href="#6-discussion-中作者自己的开放问题" data-for="6-discussion-中作者自己的开放问题">6. Discussion 中作者自己的开放问题</a></li><li class="depth-0"><a href="#关联工作" data-for="关联工作">关联工作</a></li><li class="depth-1"><a href="#基于" data-for="基于">基于</a></li><li class="depth-1"><a href="#对比" data-for="对比">对比</a></li><li class="depth-1"><a href="#方法相关" data-for="方法相关">方法相关</a></li><li class="depth-0"><a href="#论文点评" data-for="论文点评">论文点评</a></li><li class="depth-1"><a href="#strengths" data-for="strengths">Strengths</a></li><li class="depth-1"><a href="#weaknesses" data-for="weaknesses">Weaknesses</a></li><li class="depth-1"><a href="#可信评估" data-for="可信评估">可信评估</a></li><li class="depth-1"><a href="#notes" data-for="notes">Notes</a></li><li class="depth-1"><a href="#rating" data-for="rating">Rating</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
 </script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
 </script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>

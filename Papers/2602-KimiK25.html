@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><title>Kimi K2.5: Visual Agentic Intelligence</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="Kimi K2.5: Visual Agentic Intelligence"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Kimi K2.5: Visual Agentic Intelligence"/><meta name="twitter:description" content="Summary Kimi K2.5 是一个开源多模态 agentic 模型，通过 joint text-vision 训练（含 zero-vision SFT 和跨模态 RL）实现文本与视觉的双向增强，并提出 Agent Swarm 并行 agent 编排框架实现 3-4.5× 延迟降低和显著性能提升。 Problem &amp; Motivation ..."/><meta property="og:description" content="Summary Kimi K2.5 是一个开源多模态 agentic 模型，通过 joint text-vision 训练（含 zero-vision SFT 和跨模态 RL）实现文本与视觉的双向增强，并提出 Agent Swarm 并行 agent 编排框架实现 3-4.5× 延迟降低和显著性能提升。 Problem &amp; Motivation ..."/><meta property="og:image:alt" content="Summary Kimi K2.5 是一个开源多模态 agentic 模型，通过 joint text-vision 训练（含 zero-vision SFT 和跨模态 RL）实现文本与视觉的双向增强，并提出 Agent Swarm 并行 agent 编排框架实现 3-4.5× 延迟降低和显著性能提升。 Problem &amp; Motivation ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2602-KimiK25"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2602-KimiK25"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary Kimi K2.5 是一个开源多模态 agentic 模型，通过 joint text-vision 训练（含 zero-vision SFT 和跨模态 RL）实现文本与视觉的双向增强，并提出 Agent Swarm 并行 agent 编排框架实现 3-4.5× 延迟降低和显著性能提升。 Problem &amp; Motivation ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+<html lang="en"><head><title>Kimi K2.5: Visual Agentic Intelligence</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="Kimi K2.5: Visual Agentic Intelligence"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Kimi K2.5: Visual Agentic Intelligence"/><meta name="twitter:description" content="Summary Kimi K2.5: Visual Agentic Intelligence 核心: 把 1T-param MoE 文本模型 (Kimi K2) 通过 ~15T mixed vision-text token 的 continual pre-training 升级为原生多模态 agentic 模型；同时引入 Agent Swarm，让 ..."/><meta property="og:description" content="Summary Kimi K2.5: Visual Agentic Intelligence 核心: 把 1T-param MoE 文本模型 (Kimi K2) 通过 ~15T mixed vision-text token 的 continual pre-training 升级为原生多模态 agentic 模型；同时引入 Agent Swarm，让 ..."/><meta property="og:image:alt" content="Summary Kimi K2.5: Visual Agentic Intelligence 核心: 把 1T-param MoE 文本模型 (Kimi K2) 通过 ~15T mixed vision-text token 的 continual pre-training 升级为原生多模态 agentic 模型；同时引入 Agent Swarm，让 ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2602-KimiK25"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2602-KimiK25"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary Kimi K2.5: Visual Agentic Intelligence 核心: 把 1T-param MoE 文本模型 (Kimi K2) 通过 ~15T mixed vision-text token 的 continual pre-training 升级为原生多模态 agentic 模型；同时引入 Agent Swarm，让 ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
   position: absolute;
   display: flex;
   float: right;
@@ -116,116 +116,530 @@ pre:hover > .expand-button {
   padding: 0 12px;
   font-size: 14px;
 }
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2602-KimiK25"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="gc1ghh"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/RL" class="sidebar-tag-pill">#RL</a><a href="/mindflow/tags/web-agent" class="sidebar-tag-pill">#web-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/scene-understanding" class="sidebar-tag-pill">#scene-understanding</a><a href="/mindflow/tags/instruction-following" class="sidebar-tag-pill">#instruction-following</a><a href="/mindflow/tags/cross-embodiment" class="sidebar-tag-pill">#cross-embodiment</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2602-KimiK25</a></div></nav><h1 class="article-title">Kimi K2.5: Visual Agentic Intelligence</h1><div class="paper-meta"><span class="paper-venue">arXiv</span><span class="paper-authors"><span class="meta-sep">·</span>Kimi Team (551 contributors)</span></div><p show-comma="true" class="content-meta"><time datetime="2026-02-01T00:00:00.000Z">Feb 01, 2026</time><span>7 min read</span></p><ul class="tags"><li><a href="../tags/VLM" class="internal tag-link">VLM</a></li><li><a href="../tags/web-agent" class="internal tag-link">web-agent</a></li><li><a href="../tags/RL" class="internal tag-link">RL</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>Kimi K2.5 是一个开源多模态 agentic 模型，通过 joint text-vision 训练（含 zero-vision SFT 和跨模态 RL）实现文本与视觉的双向增强，并提出 Agent Swarm 并行 agent 编排框架实现 3-4.5× 延迟降低和显著性能提升。</p>
-<h2 id="problem--motivation">Problem &amp; Motivation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#problem--motivation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>当前多模态大模型面临两个核心瓶颈：(1) 视觉与文本能力的训练通常是分离的，视觉能力作为后期”注入”导致模态之间无法深度协同；(2) 单 agent 架构在复杂任务上受限于串行执行，延迟高、无法高效分解并行子任务。Kimi K2.5 旨在同时解决这两个问题——让视觉与文本在训练全阶段互相增强，并构建可学习的并行 agent 编排系统。</p>
-<h2 id="method">Method<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#method" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<h3 id="基础模型">基础模型<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#基础模型" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p>基于 Kimi K2 构建：1.04T 总参数，32B 激活参数，384 experts（每 token 激活 8 个，48% 稀疏度），在 15T 高质量文本 token 上用 MuonClip optimizer 预训练。</p>
-<h3 id="joint-text-vision-训练">Joint Text-Vision 训练<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#joint-text-vision-训练" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2602-KimiK25"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="mm0h7i"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/embodied-reasoning" class="sidebar-tag-pill">#embodied-reasoning</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/computer-use" class="sidebar-tag-pill">#computer-use</a><a href="/mindflow/tags/agentic-RL" class="sidebar-tag-pill">#agentic-RL</a><a href="/mindflow/tags/gui-agent" class="sidebar-tag-pill">#gui-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/world-model" class="sidebar-tag-pill">#world-model</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2602-KimiK25</a></div></nav><h1 class="article-title">Kimi K2.5: Visual Agentic Intelligence</h1><div class="paper-meta"><span class="paper-venue">arXiv 2602.02276</span><span class="paper-authors"><span class="meta-sep">·</span>Kimi Team</span></div><p show-comma="true" class="content-meta"><time datetime="2026-02-02T00:00:00.000Z">Feb 02, 2026</time><span>18 min read</span></p><ul class="tags"><li><a href="../tags/VLM" class="internal tag-link">VLM</a></li><li><a href="../tags/agentic-RL" class="internal tag-link">agentic-RL</a></li><li><a href="../tags/LLM" class="internal tag-link">LLM</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Kimi K2.5: Visual Agentic Intelligence </p></div>
+                  
+                </div>
+<div class="callout-content">
 <ul>
-<li><strong>MoonViT-3D 视觉编码器</strong>：采用原生分辨率处理（NaViT patch packing）。视频处理时每 4 帧一组共享 MoonViT，patch 级时序平均实现 4× 时序压缩，图像和视频编码器完全共享权重。</li>
-<li><strong>Native Multimodal Pre-Training</strong>：核心发现——早期融合 + 低视觉比例（10% vision tokens）优于后期注入 + 高视觉比例（50%）。全程保持恒定的 vision-text token mixing。</li>
-<li><strong>Decoupled Encoder Process (DEP)</strong>：解决 pipeline parallelism 中的负载不均衡问题，在所有 GPU 上均衡视觉前向，丢弃中间激活值后重算，实现相对纯文本 baseline 90% 的多模态训练效率。</li>
+<li><strong>核心</strong>: 把 1T-param MoE 文本模型 (Kimi K2) 通过 ~15T mixed vision-text token 的 continual pre-training 升级为原生多模态 agentic 模型；同时引入 Agent Swarm，让 orchestrator 通过 PARL 学习并行调度 frozen 子 agent。</li>
+<li><strong>方法</strong>: (1) Native multimodal pre-training (early fusion + low vision ratio) + zero-vision SFT + 联合多模态 RL；(2) MoonViT-3D 共享图像/视频编码空间；(3) Parallel-Agent RL — 训练 orchestrator + 冻结子 agent，用 critical-steps 作为资源约束。</li>
+<li><strong>结果</strong>: 在 reasoning / coding / vision / agentic benchmark 上对位 Claude Opus 4.5 / GPT-5.2 / Gemini 3 Pro；Agent Swarm 在 BrowseComp 78.4%（超 GPT-5.2 Pro 77.9）、WideSearch 79.0%；wide-search 上比单 agent 快 3-4.5×。</li>
+<li><strong>Sources</strong>: <a href="https://arxiv.org/abs/2602.02276" class="external">paper<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://www.kimi.com/blog/kimi-k2-5" class="external">website<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://github.com/MoonshotAI/Kimi-K2.5" class="external">github<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><strong>Rating</strong>: 2 - Frontier（open-weight frontier VLM + 首个 system-level RL-trained agent swarm，在 agentic / video benchmark 上 frontier，但方法论以工程整合为主，未达 Foundation 的奠基性）</li>
 </ul>
-<h3 id="三阶段预训练-15t-tokens">三阶段预训练 (~15T tokens)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#三阶段预训练-15t-tokens" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+</div>
+</blockquote>
+<p><strong>Key Takeaways:</strong></p>
 <ol>
-<li><strong>ViT Training (1T tokens)</strong>：从 SigLIP 继续训练图文对</li>
-<li><strong>Joint Pre-training (15T tokens)</strong>：视觉与文本联合训练，4K 序列长度</li>
-<li><strong>Long-context Mid-training</strong>：通过 YaRN 插值将上下文扩展至 262K tokens</li>
+<li><strong>Early fusion 优于 late fusion</strong>：固定 vision-text token 预算下，10:90 ratio 全程混合 > 50:50 后期注入，挑战了”先训文本再贴视觉”的主流做法。</li>
+<li><strong>Zero-vision SFT 即可激活视觉 agentic 能力</strong>：text-only SFT（图像操作通过 IPython 代码完成）比 text-vision SFT 更通用，因为 joint pre-training 已建立 vision-text 对齐——加视觉 SFT 反而损害泛化。</li>
+<li><strong>Vision RL 反向增益 text</strong>：MMLU-Pro +1.7、GPQA-Diamond +2.1、LongBench v2 +2.2，说明视觉 RL 改善了 calibration &amp; 结构化抽取，跨模态泛化是 free lunch。</li>
+<li><strong>Agent Swarm = 主动 context 管理</strong>：通过 sub-agent 分片（context sharding）替代被动截断/总结，单 agent (60.6%) → swarm (78.4%) 的 BrowseComp 提升不只是速度。</li>
+<li><strong>PARL 决耦训练</strong>：orchestrator trainable + sub-agent frozen，回避 credit assignment ambiguity；用 <code>critical steps</code>（最长并行支路长度之和）作 resource metric 抑制 spurious parallelism。</li>
 </ol>
-<h3 id="zero-vision-sft">Zero-Vision SFT<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#zero-vision-sft" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p>关键发现：纯文本 SFT 可以激活视觉推理能力。图像操作通过 IPython 代理执行，实现像素级操作和物体定位等多样视觉行为，无需专门的视觉训练数据。</p>
-<h3 id="跨模态-rl-迁移">跨模态 RL 迁移<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#跨模态-rl-迁移" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p>视觉 RL 显著提升文本性能：MMLU-Pro 84.7%→86.4%，GPQA-Diamond 84.3%→86.4%，LongBench v2 56.7%→58.9%。证明了双向跨模态增强的有效性。</p>
-<h3 id="token-efficient-rl-toggle">Token-Efficient RL (Toggle)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#token-efficient-rl-toggle" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p>交替执行 budget-limited 和标准 scaling 两个阶段：Phase 0 在准确率超过阈值 λ 时强制 token 预算限制；Phase 1 允许完整 token 使用。在 K2 Thinking 上实现 25-30% token 减少，性能影响可忽略。</p>
-<h3 id="agent-swarm-parl">Agent Swarm (PARL)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#agent-swarm-parl" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Teaser. Kimi K2.5 主结果总览</strong>：跨 reasoning / coding / vision / agentic 的多面雷达图，对比 Claude Opus 4.5 / GPT-5.2 / Gemini 3 Pro / DeepSeek-V3.2 / Qwen3-VL。
+<img src="../assets/KimiK25/k25-main-result.png" alt/></p>
+<hr/>
+<h2 id="1-motivation-与定位">1. Motivation 与定位<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-motivation-与定位" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>LLM agent 当前两个核心瓶颈：</p>
 <ul>
-<li><strong>架构</strong>：Parallel-Agent Reinforcement Learning，可训练 orchestrator + 冻结的 subagents（来自中间策略检查点）。解耦设计避免端到端联合优化的 credit assignment 模糊和训练不稳定问题。</li>
-<li><strong>奖励设计</strong>：<code>r = rperf + λ₁·rparallel + λ₂·rfinish</code>，其中 rparallel 防止退化为串行，rfinish 防止虚假并行。λ₁ 和 λ₂ 在训练中退火至零。</li>
-<li><strong>Critical Steps 指标</strong>：<code>∑(Smain(t) + max Ssub,i(t))</code>，直接激励有效并行化和延迟降低。</li>
-<li><strong>Context 管理</strong>：主动 context sharding 而非被动截断，维护任务级连贯性同时保持 subagent 上下文有界。</li>
+<li><strong>模态分裂</strong>：vision 通常作为后期 adapter 加在文本 backbone 上，导致 vision/text 互相竞争而非互相增益。</li>
+<li><strong>顺序执行的延迟天花板</strong>：即使是 Kimi K2-Thinking 这种支持上百 step reasoning 的系统，inference time 仍线性 scale，限制可处理任务的复杂度。</li>
 </ul>
-<h2 id="key-results">Key Results<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-results" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p><strong>推理与通用能力</strong>：</p>
+<p>K2.5 的两条主要 bet：</p>
+<ol>
+<li><strong>Joint Optimization of Text and Vision</strong> — 从 pre-training 到 RL 全程统一两模态。</li>
+<li><strong>Agent Swarm + PARL</strong> — 把任务复杂度从 linear scaling 拆成 parallel processing。</li>
+</ol>
+<blockquote>
+<p>❓ 论文反复强调”native multimodal”和”joint optimization”，但 K2.5 是从 K2 文本 checkpoint 续训的，本质上仍是 mid-fusion 的工程性 continual pre-training。它和 Gemini / GPT-4o 那种”从零原生多模态”还是有区别——更像是”激进 early fusion 的 continual pre-training”。</p>
+</blockquote>
+<hr/>
+<h2 id="2-joint-optimization-of-text-and-vision">2. Joint Optimization of Text and Vision<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-joint-optimization-of-text-and-vision" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="21-native-multimodal-pre-training">2.1 Native Multimodal Pre-training<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#21-native-multimodal-pre-training" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table 1. 不同 vision-text joint-training 策略对比</strong>（固定总 token 预算）</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th></th><th>Vision Injection Timing</th><th>Vision-Text Ratio</th><th>Vision Knowledge</th><th>Vision Reasoning</th><th>OCR</th><th>Text Knowledge</th><th>Text Reasoning</th><th>Code</th></tr></thead><tbody><tr><td>Early</td><td>0%</td><td>10:90</td><td>25.8</td><td>43.8</td><td>65.7</td><td>45.5</td><td>58.5</td><td>24.8</td></tr><tr><td>Mid</td><td>50%</td><td>20:80</td><td>25.0</td><td>40.7</td><td>64.1</td><td>43.9</td><td>58.6</td><td>24.0</td></tr><tr><td>Late</td><td>80%</td><td>50:50</td><td>24.2</td><td>39.0</td><td>61.5</td><td>43.1</td><td>57.8</td><td>24.0</td></tr></tbody></table></div>
+<p>关键 insight：早期低比例融合（10:90）反而更优。Appendix 进一步揭示 mid/late fusion 中存在 <strong>“dip-and-recover”</strong> 模式——突然引入 vision token 会破坏已建立的 linguistic representation space，逼模型短期牺牲文本能力换跨模态对齐。Early fusion 全程平稳。</p>
+<blockquote>
+<p>这个发现挺反直觉。直觉上”先把语言学好再加视觉”更像 curriculum learning，但实测 representation space 的”重构成本”远大于早期同时学的”塑形成本”。这点对 VLA / Video LLM 的训练 recipe 都有借鉴意义。</p>
+</blockquote>
+<h3 id="22-zero-vision-sft">2.2 Zero-Vision SFT<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#22-zero-vision-sft" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Pretrained VLM 不会主动 vision-based tool calling，是 multimodal RL 的 cold start 难题。常见做法是手工 CoT 数据，但多样性差，往往限制在简单 crop/rotate/flip。</p>
+<p>K2.5 做法：<strong>只用 text SFT 数据</strong>，所有图像操作 proxy 为 IPython 代码（binarization、object size estimation via counting 等）。这相当于把传统 “vision tool use” 推广为通用编程操作。</p>
+<p>发现：text-vision SFT <strong>反而更差</strong>。作者归因为 joint pre-training 已建立 vision-text alignment，所以 text SFT 的 reasoning 行为可以自然 generalize 到 visual tasks；引入低质量 vision SFT 反而引入 noise。</p>
+<blockquote>
+<p>❓ 这个 “text-vision SFT 反而更差” 的对照是否严谨？如果是因为 vision SFT 数据质量差而非方法本身有问题，那 zero-vision 的优越性就被夸大了。论文未给出 vision SFT 数据的细节。</p>
+</blockquote>
+<h3 id="23-joint-multimodal-rl">2.3 Joint Multimodal RL<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#23-joint-multimodal-rl" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Outcome-based visual RL</strong> 用三类需要视觉理解才能解的任务：</p>
 <ul>
-<li>AIME 2025: 96.1%（接近 GPT-5.2 满分）</li>
-<li>HMMT 2025: 95.4%</li>
-<li>GPQA-Diamond: 87.6%</li>
-<li>MMLU-Pro: 87.1%</li>
-<li>HLE-Full (with tools): 50.2%</li>
+<li>Visual grounding &amp; counting</li>
+<li>Chart &amp; document understanding</li>
+<li>Vision-critical STEM problems</li>
 </ul>
-<p><strong>编程</strong>：</p>
+<p><strong>Table 2. 视觉 RL 改进文本性能（cross-modal transfer）</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Benchmark</th><th>Before Vision-RL</th><th>After Vision-RL</th><th>Δ</th></tr></thead><tbody><tr><td>MMLU-Pro</td><td>84.7</td><td>86.4</td><td>+1.7</td></tr><tr><td>GPQA-Diamond</td><td>84.3</td><td>86.4</td><td>+2.1</td></tr><tr><td>LongBench v2</td><td>56.7</td><td>58.9</td><td>+2.2</td></tr></tbody></table></div>
+<p>作者的解释是 visual RL 改善了 structured information extraction 的 calibration，比如 counting / OCR 类查询的 grounding。</p>
+<p>K2.5 在 RL 中按<strong>能力</strong>而非模态分组（knowledge / reasoning / coding / agentic），所有 domain expert 同时学 text 和 multimodal query，GRM 也跨模态评估。</p>
+<hr/>
+<h2 id="3-agent-swarm-与-parl">3. Agent Swarm 与 PARL<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-agent-swarm-与-parl" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="31-设计动机">3.1 设计动机<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#31-设计动机" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Sequential agent 存在 reasoning depth &amp; tool-call budget 的硬性上限。K2.5 主张：<strong>parallelism 是否有利不预设，让 RL 学</strong>。</p>
+<h3 id="32-架构">3.2 架构<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#32-架构" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Figure 3. Agent Swarm 架构</strong>：trainable orchestrator + frozen sub-agent，orchestrator 学动态任务分解、子 agent 实例化、并行调度。
+<img src="../assets/KimiK25/multi-agent-rl-system.png" alt/></p>
+<p>PARL 的核心 design choice：sub-agent <strong>冻结</strong>，只把 trajectory 当 environmental observation。这避免了端到端协同优化的两个老大难问题：</p>
 <ul>
-<li>SWE-Bench Verified: 76.8%</li>
-<li>LiveCodeBench v6: 85.0%</li>
-<li>SWE-Bench Multilingual: 73.0%</li>
-<li>Terminal Bench 2.0: 50.8%</li>
+<li><strong>Credit assignment ambiguity</strong>：稀疏 outcome reward 下，无法把成败归因到单个 sub-agent。</li>
+<li><strong>Training instability</strong>：多 agent 联合优化的方差爆炸。</li>
 </ul>
-<p><strong>Agentic 任务</strong>：</p>
+<p>代价：sub-agent 的能力上限被冻结时点决定；得在 orchestrator 学习中分阶段切换 sub-agent 大小。</p>
+<h3 id="33-parl-reward">3.3 PARL Reward<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#33-parl-reward" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Equation. PARL reward</strong></p>
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">PARL</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">λ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:2.2035em;vertical-align:-1.6202em;"></span><span class="mord munder"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.4306em;"><span style="top:-1.3798em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">instantiation reward</span></span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord munder"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.4306em;"><span class="svg-align" style="top:-2.0659em;"><span class="pstrut" style="height:3em;"></span><span class="stretchy" style="height:0.548em;min-width:1.6em;"><span class="brace-left" style="height:0.548em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.548em" viewBox="0 0 400000 548" preserveAspectRatio="xMinYMin slice"><path d="M0 6l6-6h17c12.688 0 19.313.3 20 1 4 4 7.313 8.3 10 13
+ 35.313 51.3 80.813 93.8 136.5 127.5 55.688 33.7 117.188 55.8 184.5 66.5.688
+ 0 2 .3 4 1 18.688 2.7 76 4.3 172 5h399450v120H429l-6-1c-124.688-8-235-61.7
+-331-161C60.687 138.7 32.312 99.3 7 54L0 41V6z"></path></svg></span><span class="brace-center" style="height:0.548em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.548em" viewBox="0 0 400000 548" preserveAspectRatio="xMidYMin slice"><path d="M199572 214
+c100.7 8.3 195.3 44 280 108 55.3 42 101.7 93 139 153l9 14c2.7-4 5.7-8.7 9-14
+ 53.3-86.7 123.7-153 211-199 66.7-36 137.3-56.3 212-62h199568v120H200432c-178.3
+ 11.7-311.7 78.3-403 201-6 8-9.7 12-11 12-.7.7-6.7 1-18 1s-17.3-.3-18-1c-1.3 0
+-5-4-11-12-44.7-59.3-101.3-106.3-170-141s-145.3-54.3-229-60H0V214z"></path></svg></span><span class="brace-right" style="height:0.548em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.548em" viewBox="0 0 400000 548" preserveAspectRatio="xMaxYMin slice"><path d="M399994 0l6 6v35l-6 11c-56 104-135.3 181.3-238 232-57.3
+ 28.7-117 45-179 50H-300V214h399897c43.3-7 81-15 113-26 100.7-33 179.7-91 237
+-174 2.7-5 6-9 10-13 .7-1 7.3-1 20-1h17z"></path></svg></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">parallel</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9341em;"><span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.6202em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">λ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:2.2035em;vertical-align:-1.6202em;"></span><span class="mord munder"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.4306em;"><span style="top:-1.5159em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">sub-agent finish rate</span></span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord munder"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.4306em;"><span class="svg-align" style="top:-2.202em;"><span class="pstrut" style="height:3em;"></span><span class="stretchy" style="height:0.548em;min-width:1.6em;"><span class="brace-left" style="height:0.548em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.548em" viewBox="0 0 400000 548" preserveAspectRatio="xMinYMin slice"><path d="M0 6l6-6h17c12.688 0 19.313.3 20 1 4 4 7.313 8.3 10 13
+ 35.313 51.3 80.813 93.8 136.5 127.5 55.688 33.7 117.188 55.8 184.5 66.5.688
+ 0 2 .3 4 1 18.688 2.7 76 4.3 172 5h399450v120H429l-6-1c-124.688-8-235-61.7
+-331-161C60.687 138.7 32.312 99.3 7 54L0 41V6z"></path></svg></span><span class="brace-center" style="height:0.548em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.548em" viewBox="0 0 400000 548" preserveAspectRatio="xMidYMin slice"><path d="M199572 214
+c100.7 8.3 195.3 44 280 108 55.3 42 101.7 93 139 153l9 14c2.7-4 5.7-8.7 9-14
+ 53.3-86.7 123.7-153 211-199 66.7-36 137.3-56.3 212-62h199568v120H200432c-178.3
+ 11.7-311.7 78.3-403 201-6 8-9.7 12-11 12-.7.7-6.7 1-18 1s-17.3-.3-18-1c-1.3 0
+-5-4-11-12-44.7-59.3-101.3-106.3-170-141s-145.3-54.3-229-60H0V214z"></path></svg></span><span class="brace-right" style="height:0.548em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.548em" viewBox="0 0 400000 548" preserveAspectRatio="xMaxYMin slice"><path d="M399994 0l6 6v35l-6 11c-56 104-135.3 181.3-238 232-57.3
+ 28.7-117 45-179 50H-300V214h399897c43.3-7 81-15 113-26 100.7-33 179.7-91 237
+-174 2.7-5 6-9 10-13 .7-1 7.3-1 20-1h17z"></path></svg></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">finish</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.798em;"><span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.6202em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:2.3702em;vertical-align:-1.6202em;"></span><span class="mord munder"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.75em;"><span style="top:-1.3798em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">task-level outcome</span></span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord munder"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.75em;"><span class="svg-align" style="top:-2.0659em;"><span class="pstrut" style="height:3em;"></span><span class="stretchy" style="height:0.548em;min-width:1.6em;"><span class="brace-left" style="height:0.548em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.548em" viewBox="0 0 400000 548" preserveAspectRatio="xMinYMin slice"><path d="M0 6l6-6h17c12.688 0 19.313.3 20 1 4 4 7.313 8.3 10 13
+ 35.313 51.3 80.813 93.8 136.5 127.5 55.688 33.7 117.188 55.8 184.5 66.5.688
+ 0 2 .3 4 1 18.688 2.7 76 4.3 172 5h399450v120H429l-6-1c-124.688-8-235-61.7
+-331-161C60.687 138.7 32.312 99.3 7 54L0 41V6z"></path></svg></span><span class="brace-center" style="height:0.548em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.548em" viewBox="0 0 400000 548" preserveAspectRatio="xMidYMin slice"><path d="M199572 214
+c100.7 8.3 195.3 44 280 108 55.3 42 101.7 93 139 153l9 14c2.7-4 5.7-8.7 9-14
+ 53.3-86.7 123.7-153 211-199 66.7-36 137.3-56.3 212-62h199568v120H200432c-178.3
+ 11.7-311.7 78.3-403 201-6 8-9.7 12-11 12-.7.7-6.7 1-18 1s-17.3-.3-18-1c-1.3 0
+-5-4-11-12-44.7-59.3-101.3-106.3-170-141s-145.3-54.3-229-60H0V214z"></path></svg></span><span class="brace-right" style="height:0.548em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.548em" viewBox="0 0 400000 548" preserveAspectRatio="xMaxYMin slice"><path d="M399994 0l6 6v35l-6 11c-56 104-135.3 181.3-238 232-57.3
+ 28.7-117 45-179 50H-300V214h399897c43.3-7 81-15 113-26 100.7-33 179.7-91 237
+-174 2.7-5 6-9 10-13 .7-1 7.3-1 20-1h17z"></path></svg></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">perf</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9341em;"><span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.6202em;"><span></span></span></span></span></span></span></span></span></span>
+<p><strong>符号说明</strong>：</p>
 <ul>
-<li>BrowseComp: 78.4% (Agent Swarm，超过 GPT-5.2 Pro 77.9%)</li>
-<li>WideSearch: 79.0% (Agent Swarm)</li>
-<li>DeepSearchQA: 77.1%</li>
+<li><code>r_parallel</code> 防止 <strong>serial collapse</strong>（orchestrator 退化成单 agent）</li>
+<li><code>r_finish</code> 防止 <strong>spurious parallelism</strong>（spawn 一堆无意义 sub-agent 刷并行度指标）</li>
+<li><code>λ₁, λ₂</code> 在训练中 anneal 到 0，最终只优化主任务 reward</li>
 </ul>
-<p><strong>视觉</strong>：</p>
+<h3 id="34-critical-steps-as-resource-constraint">3.4 Critical Steps as Resource Constraint<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#34-critical-steps-as-resource-constraint" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Equation. Critical Steps</strong>（类比 computation graph 的 critical path）</p>
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">CriticalSteps</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:3.0954em;vertical-align:-1.2671em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.8283em;"><span style="top:-1.8829em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2671em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size2">(</span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0448em;"><span style="top:-2.4173em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">main</span></span></span></span></span><span style="top:-3.2198em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathnormal mtight">t</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2827em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.4306em;"><span style="top:-2.3723em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop">max</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7277em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0448em;"><span style="top:-2.3987em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">sub</span></span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight">i</span></span></span></span><span style="top:-3.2198em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathnormal mtight">t</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4374em;"><span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size2">)</span></span></span></span></span></span></span>
+<p>只算每个并行组里<strong>最长</strong>子 agent 的 step 数。这从 metric 层面对齐了”实际 wall-clock 时间”，逼 orchestrator 做平衡分解而非滥造 sub-agent。</p>
+<blockquote>
+<p>这个设计很聪明。简单用”总 step 数”作约束会鼓励 orchestrator 减少并行；改用 critical path 后，<strong>balanced parallelism</strong> 才是 reward maximizer。</p>
+</blockquote>
+<h3 id="35-prompt-engineering-for-capability-induction">3.5 Prompt Engineering for Capability Induction<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#35-prompt-engineering-for-capability-induction" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>合成两类任务：</p>
 <ul>
-<li>MMMU-Pro: 78.5%</li>
-<li>MathVista (mini): 90.1%</li>
-<li>VideoMMMU: 86.6%</li>
-<li>OCRBench: 92.3%</li>
+<li><strong>Wide search</strong>：同时探索很多独立信息源</li>
+<li><strong>Deep search</strong>：多分支 reasoning + delayed aggregation</li>
 </ul>
-<p><strong>Computer Use</strong>：</p>
+<p>外加 long-context document analysis 与 large-scale file downloading。<strong>不显式告诉模型要并行</strong>——只是让顺序执行的预算不够，逼并行策略自然涌现。</p>
+<hr/>
+<h2 id="4-架构与训练">4. 架构与训练<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-架构与训练" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="41-foundation-kimi-k2">4.1 Foundation: Kimi K2<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#41-foundation-kimi-k2" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li>OSWorld-Verified: 63.3%</li>
-<li>WebArena: 58.9%</li>
+<li>1.04T total / 32B activated MoE</li>
+<li>384 expert，每 token 激活 8 个（sparsity 48）</li>
+<li>MuonClip optimizer + QK-Clip 稳定性</li>
+<li>15T text tokens 预训练</li>
 </ul>
-<p><strong>Agent Swarm 加速</strong>：WideSearch 上 3×-4.5× 延迟降低；BrowseComp +17.8% 绝对提升。</p>
-<h2 id="strengths--weaknesses">Strengths &amp; Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths--weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p><strong>Strengths</strong>：</p>
+<h3 id="42-moonvit-3d">4.2 MoonViT-3D<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#42-moonvit-3d" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li><strong>跨模态双向增强是核心 insight</strong>：zero-vision SFT 和 visual RL 提升文本性能的发现非常有价值，说明模态间存在深层互补而非简单叠加</li>
-<li><strong>Agent Swarm 的 PARL 设计精巧</strong>：orchestrator 与 subagent 解耦训练解决了多 agent RL 的核心难题（credit assignment），奖励退火机制优雅</li>
-<li><strong>工程深度</strong>：DEP 解决多模态 pipeline parallelism 负载均衡，Toggle 实现 token 效率优化，都是落地所需的关键工程</li>
-<li><strong>全面 SOTA</strong>：在推理、编程、视觉、agentic 多个维度同时达到顶尖水平，BrowseComp 超过 GPT-5.2 Pro</li>
+<li>从 SigLIP-SO-400M 初始化，沿用 NaViT patch packing 处理原生分辨率</li>
+<li>视频处理：连续 4 帧打包成时空 volume，2D patch 联合 flatten + temporal pooling 4× 压缩</li>
+<li>完全 weight-shared between image / video，便于知识从 image 迁移到 video</li>
 </ul>
-<p><strong>Weaknesses</strong>：</p>
+<p><strong>Table 3. 训练 stages</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Stage</th><th>ViT Training</th><th>Joint Pre-training</th><th>Joint Long-context Mid-training</th></tr></thead><tbody><tr><td>Data</td><td>Alt text / Caption / Grounding / OCR / Video</td><td>+ Text, Knowledge Interleaving, Video, OS Screenshot</td><td>+ High-quality Text &amp; Multimodal, Long Text, Long Video Reasoning, Long-CoT</td></tr><tr><td>Sequence length</td><td>4096</td><td>4096</td><td>32768 → 262144</td></tr><tr><td>Tokens</td><td>1T</td><td>15T</td><td>500B → 200B</td></tr><tr><td>Trainable</td><td>ViT</td><td>ViT &amp; LLM</td><td>ViT &amp; LLM</td></tr></tbody></table></div>
+<h3 id="43-token-efficient-rl--toggle">4.3 Token Efficient RL — Toggle<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#43-token-efficient-rl--toggle" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>观察：固定 token budget RL 会导致 <strong>length-overfitting</strong>——模型无法利用更多 inference token 解难题。</p>
+<p><strong>Toggle</strong>：每 m 步交替两个 phase</p>
 <ul>
-<li><strong>Agent Swarm 的适用边界不够清晰</strong>：论文承认依赖任务可分解性，但未给出量化判断标准——什么类型的任务适合并行化？</li>
-<li><strong>551 作者的 industry report</strong>：资源规模难以复现，15T tokens + 1T 参数 MoE 的训练成本极高</li>
-<li><strong>Ablation 有限</strong>：跨模态迁移的机制解释较浅，为什么 visual RL 能提升 MMLU-Pro？因果路径不够清晰</li>
-<li><strong>Computer Use 结果中等</strong>：OSWorld 63.3% 和 WebArena 58.9% 仍有很大提升空间，作为主打 “agentic intelligence” 的模型，GUI agent 能力尚未拉开差距</li>
+<li><strong>Phase 0 (budget limited)</strong>：仅当某 prompt 的 mean accuracy > λ 时才施加 budget</li>
+<li><strong>Phase 1 (standard scaling)</strong>：放开到最大 token 限制</li>
 </ul>
-<h2 id="mind-map">Mind Map<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mind-map" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;mindmap\n  root((Kimi K2.5))\n    Problem\n      视觉-文本训练分离\n      单agent串行瓶颈\n    Method\n      Joint Text-Vision Training\n        MoonViT-3D 原生分辨率\n        早期融合优于后期注入\n        Zero-Vision SFT\n        跨模态 RL 迁移\n      Agent Swarm PARL\n        Orchestrator + 冻结 Subagents\n        奖励退火机制\n        Critical Steps 延迟优化\n      Token-Efficient RL Toggle\n    Results\n      AIME 96.1%\n      BrowseComp 78.4% 超 GPT-5.2 Pro\n      3-4.5x 延迟降低\n      跨模态增强 MMLU-Pro +1.7%&quot;">mindmap
-  root((Kimi K2.5))
-    Problem
-      视觉-文本训练分离
-      单agent串行瓶颈
-    Method
-      Joint Text-Vision Training
-        MoonViT-3D 原生分辨率
-        早期融合优于后期注入
-        Zero-Vision SFT
-        跨模态 RL 迁移
-      Agent Swarm PARL
-        Orchestrator + 冻结 Subagents
-        奖励退火机制
-        Critical Steps 延迟优化
-      Token-Efficient RL Toggle
-    Results
-      AIME 96.1%
-      BrowseComp 78.4% 超 GPT-5.2 Pro
-      3-4.5x 延迟降低
-      跨模态增强 MMLU-Pro +1.7%
-</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
-<h2 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>效果：Kimi K2-Thinking 输出 token 减少 25-30%，性能近乎无损；且 math/code 训出的能力可泛化到 GPQA/MMLU-Pro。</p>
+<h3 id="44-decoupled-encoder-process-dep">4.4 Decoupled Encoder Process (DEP)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#44-decoupled-encoder-process-dep" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>多模态训练的核心 infra trick：</p>
+<ol>
+<li><strong>Balanced Vision Forward</strong>：所有 GPU 复制 ViT，按 patch 数 load-balance vision encoder forward，仅保留输出 activation</li>
+<li><strong>Backbone Training</strong>：text-only 的并行策略可直接复用，gradient 累积到 ViT 输出</li>
+<li><strong>Vision Recomputation &amp; Backward</strong>：重算 vision forward + backward</li>
+</ol>
+<p>效果：multimodal training 效率达 text-only 的 90%，并提到 LongCat-Flash-Omni 同期独立提出类似设计。</p>
+<hr/>
+<h2 id="5-评估">5. 评估<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#5-评估" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="51-主表节选">5.1 主表（节选）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#51-主表节选" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table 4. 跨 benchmark 与 Claude Opus 4.5 / GPT-5.2 / Gemini 3 Pro / DeepSeek-V3.2 / Qwen3-VL 对比</strong>（节选关键行）</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Benchmark</th><th>K2.5</th><th>Claude Opus 4.5</th><th>GPT-5.2 (xhigh)</th><th>Gemini 3 Pro</th><th>DeepSeek-V3.2</th></tr></thead><tbody><tr><td>HLE-Full (w/ tools)</td><td>50.2</td><td>43.2</td><td>45.5</td><td>45.8</td><td>40.8†</td></tr><tr><td>AIME 2025</td><td>96.1</td><td>92.8</td><td>100</td><td>95.0</td><td>93.1</td></tr><tr><td>GPQA-Diamond</td><td>87.6</td><td>87.0</td><td>92.4</td><td>91.9</td><td>82.4</td></tr><tr><td>SWE-Bench Verified</td><td>76.8</td><td>80.9</td><td>80.0</td><td>76.2</td><td>73.1</td></tr><tr><td>BrowseComp</td><td>60.6</td><td>37.0</td><td>65.8</td><td>37.8</td><td>51.4</td></tr><tr><td>BrowseComp (Swarm)</td><td>78.4</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>WideSearch</td><td>72.7</td><td>76.2</td><td>-</td><td>57.0</td><td>32.5</td></tr><tr><td>WideSearch (Swarm)</td><td>79.0</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>OSWorld-Verified</td><td>63.3</td><td>66.3</td><td>8.6</td><td>20.7</td><td>-</td></tr><tr><td>MMMU-Pro</td><td>78.5</td><td>74.0</td><td>79.5</td><td>81.0</td><td>-</td></tr><tr><td>LongVideoBench</td><td>79.8</td><td>67.2</td><td>76.5</td><td>77.7</td><td>-</td></tr></tbody></table></div>
+<p>观察：</p>
 <ul>
-<li><strong>与我们研究的关联</strong>：Agent Swarm 的 PARL 框架对 computer-use agent 的多步任务编排有直接参考价值。orchestrator 作为可学习的 meta-policy 而非硬编码规则，是值得探索的方向。</li>
-<li><strong>关键疑问</strong>：zero-vision SFT 的 IPython proxy 机制具体是什么？文本指令如何映射到像素级操作？这个桥接机制的 generalization 边界在哪里？</li>
-<li><strong>Agent Swarm vs. 传统 tool-use</strong>：PARL 本质上是让 LLM 学会”管理其他 LLM”，与 hierarchical RL 的 option framework 有精神上的联系，但用 frozen subagent 回避了联合训练的难题——是否会限制 subagent 的适应性？</li>
-</ul></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="uevi3i" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#problem--motivation" data-for="problem--motivation">Problem &amp; Motivation</a></li><li class="depth-0"><a href="#method" data-for="method">Method</a></li><li class="depth-1"><a href="#基础模型" data-for="基础模型">基础模型</a></li><li class="depth-1"><a href="#joint-text-vision-训练" data-for="joint-text-vision-训练">Joint Text-Vision 训练</a></li><li class="depth-1"><a href="#三阶段预训练-15t-tokens" data-for="三阶段预训练-15t-tokens">三阶段预训练 (~15T tokens)</a></li><li class="depth-1"><a href="#zero-vision-sft" data-for="zero-vision-sft">Zero-Vision SFT</a></li><li class="depth-1"><a href="#跨模态-rl-迁移" data-for="跨模态-rl-迁移">跨模态 RL 迁移</a></li><li class="depth-1"><a href="#token-efficient-rl-toggle" data-for="token-efficient-rl-toggle">Token-Efficient RL (Toggle)</a></li><li class="depth-1"><a href="#agent-swarm-parl" data-for="agent-swarm-parl">Agent Swarm (PARL)</a></li><li class="depth-0"><a href="#key-results" data-for="key-results">Key Results</a></li><li class="depth-0"><a href="#strengths--weaknesses" data-for="strengths--weaknesses">Strengths &amp; Weaknesses</a></li><li class="depth-0"><a href="#mind-map" data-for="mind-map">Mind Map</a></li><li class="depth-0"><a href="#notes" data-for="notes">Notes</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+<li><strong>agentic search 强</strong>：BrowseComp (Discard-all 上下文管理) 74.9 单 agent，加 swarm 78.4；OSWorld 63.3 接近 Claude Opus 4.5（66.3），远超其他 open / proprietary。</li>
+<li><strong>video understanding 全 SOTA</strong>：LVBench 75.9 / LongVideoBench 79.8 全部领先，显示 MoonViT-3D 共享 image/video 设计是 effective 的。</li>
+<li><strong>frontier reasoning 仍弱于 GPT-5.2</strong>：HLE-Full 30.1 vs GPT-5.2 的 34.5；AIME 96.1 vs 100。</li>
+<li><strong>SimpleQA Verified 远落后 Gemini 3 Pro</strong>（36.9 vs 72.1），世界知识仍是短板。</li>
+</ul>
+<h3 id="52-agent-swarm-详细结果">5.2 Agent Swarm 详细结果<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#52-agent-swarm-详细结果" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table 6. Agent Swarm vs single agent vs proprietary baseline</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Benchmark</th><th>K2.5 Agent Swarm</th><th>K2.5 (single)</th><th>Claude Opus 4.5</th><th>GPT-5.2</th><th>GPT-5.2 Pro</th></tr></thead><tbody><tr><td>BrowseComp</td><td>78.4</td><td>60.6</td><td>37.0</td><td>65.8</td><td>77.9</td></tr><tr><td>WideSearch</td><td>79.0</td><td>72.7</td><td>76.2</td><td>-</td><td>-</td></tr><tr><td>In-house Swarm Bench</td><td>58.3</td><td>41.6</td><td>45.8</td><td>-</td><td>-</td></tr></tbody></table></div>
+<p>In-house Swarm Bench 提升最大 (+16.7%)，因为任务设计就是为 parallel decomposition 量身定做。</p>
+<p><strong>Figure 8. Agent Swarm 在 WideSearch 上的执行时间对比</strong>：随着目标 Item-F1 从 30% 升到 70%，单 agent 时间从 1.8× 涨到 7.0×，Agent Swarm 维持在 0.6-1.6× 区间——即 3-4.5× 加速。
+<img src="../assets/KimiK25/agent-swarm-speedup.png" alt/></p>
+<h3 id="53-agent-swarm-as-proactive-context-management">5.3 Agent Swarm as Proactive Context Management<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#53-agent-swarm-as-proactive-context-management" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>论文一个重要 framing：Agent Swarm 不只是加速，更是 <strong>proactive context management</strong>。</p>
+<ul>
+<li>传统 reactive 方案：Hide-Tool-Result / Summary / Discard-all 都是 context overflow 后被动 truncate。</li>
+<li>Agent Swarm 用 <strong>context sharding</strong>：每个 sub-agent 有 bounded local context，只把 task-relevant 输出回送 orchestrator。</li>
+</ul>
+<p>效果：在 BrowseComp 上既快又准，超过 Discard-all。</p>
+<blockquote>
+<p>这是个挺有意思的视角——把 multi-agent 重新解读为”一种正交的 context scaling 维度”，而不只是并行加速。如果属实，single agent 的 context window scaling 就有了竞争维度。</p>
+</blockquote>
+<hr/>
+<h2 id="关联工作">关联工作<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#关联工作" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="基于">基于<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#基于" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Kimi K2</strong> (1T MoE base)：K2.5 全部能力的语言基础，MuonClip optimizer / QK-Clip 直接继承</li>
+<li><strong>Kimi-VL</strong> (MoonViT)：MoonViT-3D 的 image-only 前身</li>
+<li><strong>Kimi K2-Thinking</strong>：作为 sub-agent 框架的 baseline，被 Toggle 优化（25-30% token 减少）</li>
+<li><strong>SigLIP-SO-400M</strong> + <strong>NaViT</strong>：MoonViT-3D 初始化 + patch packing 策略</li>
+</ul>
+<h3 id="对比">对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Claude Opus 4.5 / GPT-5.2 / Gemini 3 Pro</strong>：proprietary frontier baseline</li>
+<li><strong>DeepSeek-V3.2</strong>：open-source text reasoning baseline</li>
+<li><strong>Qwen3-VL-235B-A22B-Thinking</strong>：open-source vision baseline</li>
+<li><strong>LongCat-Flash-Omni</strong>：concurrent work 同样采用 decoupled vision encoder 思路</li>
+</ul>
+<h3 id="方法相关">方法相关<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#方法相关" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Parallel agent / multi-agent orchestration</strong>：与 LangGraph、AutoGen、LLM-Compiler 等系统级方案对比，但 K2.5 是 RL trained orchestrator 而非 LLM-as-orchestrator prompting</li>
+<li><strong>Context management</strong>：Hide-Tool-Result、Summary、Discard-all 是 reactive baseline，K2.5 主张 proactive sharding</li>
+<li><strong>Token-efficient RL</strong>：Toggle 与 length-budget RL 工作（K1.5）一脉相承</li>
+<li><strong>Native multimodal pre-training</strong>：与 Chameleon、Gemini 早期混合训练思路一致，但 K2.5 强调”low ratio + early”是 Pareto optimal</li>
+</ul>
+<hr/>
+<h2 id="论文点评">论文点评<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#论文点评" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="strengths">Strengths<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>Native multimodal pre-training 的 ablation 有说服力</strong>：Table 1 + Figure 9 的 dip-and-recover 现象给出 early fusion 的实证依据，这是 community 反直觉但有用的 finding。</li>
+<li><strong>Zero-vision SFT 优雅</strong>：把 image manipulation 统一为 IPython 代码，绕过手工 vision CoT 数据的 diversity bottleneck，思路漂亮。</li>
+<li><strong>PARL 的工程性 design</strong>：frozen sub-agent + critical steps + r_parallel/r_finish 的反 reward-hacking 设计，把 multi-agent RL 的训练问题拆得很干净。</li>
+<li><strong>Cross-modal RL transfer 的发现</strong>：vision RL 提升 text benchmark 是个正面 free lunch，如果可复现会改变多模态 post-training 的范式。</li>
+<li><strong>真开源</strong>：post-trained checkpoints 在 HF 上可下载（虽然 GitHub README 较薄）。</li>
+</ol>
+<h3 id="weaknesses">Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>方法栈过于 incremental</strong>：每个组件单独看都不算 novel——early fusion、joint RL、parallel agent、frozen sub-agent 都各自有先行研究。论文是 well-engineered 的 system paper，但缺少根本性的 conceptual contribution。</li>
+<li><strong>In-house Swarm Bench 不开源</strong>：Agent Swarm 最亮眼的性能提升（+16.7%）来自 internal benchmark，无法独立复现。</li>
+<li><strong>PARL 的 frozen sub-agent 是 ceiling</strong>：sub-agent 能力受冻结时点限制，长期来看 orchestrator 与 sub-agent 的 co-evolution 必然会成为瓶颈。论文未讨论 scaling 到更大 sub-agent 时的 transfer 策略。</li>
+<li><strong>Visual RL → text 提升 +1.7~+2.2 的归因含糊</strong>：作者解释为 calibration 改善，但缺少对照实验（如 RL 总 step 数、数据多样性）排除”训练时间更长”等替代解释。</li>
+<li><strong>HLE / SimpleQA 大幅落后</strong>：核心 frontier reasoning 与世界知识仍弱于 GPT-5.2 / Gemini 3 Pro，“SOTA”主要在 agentic + 视频场景。</li>
+<li><strong>Toggle 算法描述粗糙</strong>：phase 切换的 m 取值、λ 阈值如何设定都没给，复现门槛高。</li>
+</ol>
+<h3 id="可信评估">可信评估<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#可信评估" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="artifact-可获取性">Artifact 可获取性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#artifact-可获取性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><strong>代码</strong>: README 仅给出基本介绍，无明确 inference / training code 链接。可推断为 inference-only via API &amp; HF。</li>
+<li><strong>模型权重</strong>: Kimi K2.5 post-trained checkpoint 在 HuggingFace <code>moonshotai/Kimi-K2.5</code> 发布（Modified MIT License）；同时通过 platform.kimi.ai API 提供。</li>
+<li><strong>训练细节</strong>: 高层方法描述完整（stage 分配、token 量、sequence length），但具体超参（learning rate schedule、RL batch size、Toggle 的 m/λ/ρ）大多未披露；DEP 算法层面有描述无伪代码。</li>
+<li><strong>数据集</strong>: 大部分私有（in-house benchmark、SFT data、RL prompts）；评估 benchmark 全部公开。Agent Swarm 的训练 prompt 设计描述较泛，无法精确复现。</li>
+</ul>
+<h4 id="claim-可验证性">Claim 可验证性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#claim-可验证性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>✅ <strong>agent swarm 在 wide-search 上 3-4.5× 加速</strong>：论文 Figure 8 给出 WideSearch 上随目标 Item-F1 变化的曲线，metric 定义清晰（Item-F1 + 执行时间），可验证。</li>
+<li>✅ <strong>BrowseComp 60.6 单 agent / 78.4 swarm</strong>：公开 benchmark，可在 API 端复测。</li>
+<li>✅ <strong>Early fusion 优于 late fusion</strong>（Table 1）：标准 ablation 设计，token 预算固定，结论 well-supported。</li>
+<li>⚠️ <strong>Visual RL 提升 text +1.7~+2.2</strong>：单一前后对照，缺少对照组排除”训练时间 / 数据多样性”等混淆变量。</li>
+<li>⚠️ <strong>In-house Swarm Bench 提升 +16.7%</strong>：benchmark 不开源，无法独立验证。</li>
+<li>⚠️ <strong>“agent swarm = proactive context management”</strong>：framing 漂亮，但只在 BrowseComp 一个 benchmark 上对比 Discard-all，泛化性证据弱。</li>
+<li>❌ <strong>“new SOTA in visual-to-code generation”</strong>：作者称 internal evaluations 显示 SOTA，无 public benchmark 数据，是 marketing claim。</li>
+<li>❌ <strong>“open-source” 模糊定义</strong>：发布的是 post-trained checkpoint + Modified MIT；training code、PARL 实现、in-house data pipeline 全部未开源。技术报告级别的”open”。</li>
+</ul>
+<h3 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>对我的研究 takeaway</strong>：
+<ul>
+<li>Agent Swarm + PARL 的 frozen sub-agent 设计对 GUI agent / computer-use agent 的 hierarchical RL 训练有借鉴意义，特别是 critical-steps 这个 metric 能直接搬到 long-horizon GUI 任务里。</li>
+<li>Zero-vision SFT 的思路对 VLA 也有启发：是否可以 text-only SFT + IPython-style action proxy 来 bootstrap manipulation policy？需要思考 text → action 的 grounding 是否成立（文本 IPython 操作有自然 grounding，物理动作没有）。</li>
+<li>“Visual RL improves text” 如果是真现象，对 VLM 的 RL training data mix 设计有实践意义——别怕加视觉数据。</li>
+</ul>
+</li>
+<li><strong>疑问</strong>：
+<ul>
+<li>PARL 中 sub-agent 完全 frozen，那 orchestrator 学到的 task decomposition 策略是否会 over-fit 到当前 sub-agent 的能力分布？升级 sub-agent 后 orchestrator 是否需要重训？</li>
+<li>“Joint pre-training establishes vision-text alignment, so text SFT generalizes”——这个解释是否能用 representation analysis (probing) 验证？</li>
+</ul>
+</li>
+<li><strong>后续</strong>：值得追踪 Moonshot 是否后续放出 PARL 训练代码 / In-house Swarm Bench；如开源，PARL 应是值得复现的 baseline。</li>
+</ul>
+<h3 id="rating">Rating<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#rating" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>分数</strong>：2 - Frontier
+<strong>理由</strong>：K2.5 在 open-weight VLM 里属于 frontier——BrowseComp 单 agent 60.6 / swarm 78.4、OSWorld 63.3、LongVideoBench 79.8 均对位或超过 Claude Opus 4.5 / GPT-5.2（见正文 §5.1），且 PARL + critical-steps 是首个 system-level RL-trained agent swarm 的公开方案，这是 agentic RL 方向必须 cite 的参考点。之所以不到 3 - Foundation：方法栈偏 incremental（early fusion、frozen sub-agent 各有先行），核心 novelty（PARL）的训练代码与 in-house Swarm Bench 未开源导致难以成为 de facto baseline；之所以不降到 1 - Archived：发布仅 2 个月，open-weight 同档位 VLM 竞争者有限，仍会被直接 cite 和复测。</p></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="ud8fg4" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#1-motivation-与定位" data-for="1-motivation-与定位">1. Motivation 与定位</a></li><li class="depth-0"><a href="#2-joint-optimization-of-text-and-vision" data-for="2-joint-optimization-of-text-and-vision">2. Joint Optimization of Text and Vision</a></li><li class="depth-1"><a href="#21-native-multimodal-pre-training" data-for="21-native-multimodal-pre-training">2.1 Native Multimodal Pre-training</a></li><li class="depth-1"><a href="#22-zero-vision-sft" data-for="22-zero-vision-sft">2.2 Zero-Vision SFT</a></li><li class="depth-1"><a href="#23-joint-multimodal-rl" data-for="23-joint-multimodal-rl">2.3 Joint Multimodal RL</a></li><li class="depth-0"><a href="#3-agent-swarm-与-parl" data-for="3-agent-swarm-与-parl">3. Agent Swarm 与 PARL</a></li><li class="depth-1"><a href="#31-设计动机" data-for="31-设计动机">3.1 设计动机</a></li><li class="depth-1"><a href="#32-架构" data-for="32-架构">3.2 架构</a></li><li class="depth-1"><a href="#33-parl-reward" data-for="33-parl-reward">3.3 PARL Reward</a></li><li class="depth-1"><a href="#34-critical-steps-as-resource-constraint" data-for="34-critical-steps-as-resource-constraint">3.4 Critical Steps as Resource Constraint</a></li><li class="depth-1"><a href="#35-prompt-engineering-for-capability-induction" data-for="35-prompt-engineering-for-capability-induction">3.5 Prompt Engineering for Capability Induction</a></li><li class="depth-0"><a href="#4-架构与训练" data-for="4-架构与训练">4. 架构与训练</a></li><li class="depth-1"><a href="#41-foundation-kimi-k2" data-for="41-foundation-kimi-k2">4.1 Foundation: Kimi K2</a></li><li class="depth-1"><a href="#42-moonvit-3d" data-for="42-moonvit-3d">4.2 MoonViT-3D</a></li><li class="depth-1"><a href="#43-token-efficient-rl--toggle" data-for="43-token-efficient-rl--toggle">4.3 Token Efficient RL — Toggle</a></li><li class="depth-1"><a href="#44-decoupled-encoder-process-dep" data-for="44-decoupled-encoder-process-dep">4.4 Decoupled Encoder Process (DEP)</a></li><li class="depth-0"><a href="#5-评估" data-for="5-评估">5. 评估</a></li><li class="depth-1"><a href="#51-主表节选" data-for="51-主表节选">5.1 主表（节选）</a></li><li class="depth-1"><a href="#52-agent-swarm-详细结果" data-for="52-agent-swarm-详细结果">5.2 Agent Swarm 详细结果</a></li><li class="depth-1"><a href="#53-agent-swarm-as-proactive-context-management" data-for="53-agent-swarm-as-proactive-context-management">5.3 Agent Swarm as Proactive Context Management</a></li><li class="depth-0"><a href="#关联工作" data-for="关联工作">关联工作</a></li><li class="depth-1"><a href="#基于" data-for="基于">基于</a></li><li class="depth-1"><a href="#对比" data-for="对比">对比</a></li><li class="depth-1"><a href="#方法相关" data-for="方法相关">方法相关</a></li><li class="depth-0"><a href="#论文点评" data-for="论文点评">论文点评</a></li><li class="depth-1"><a href="#strengths" data-for="strengths">Strengths</a></li><li class="depth-1"><a href="#weaknesses" data-for="weaknesses">Weaknesses</a></li><li class="depth-1"><a href="#可信评估" data-for="可信评估">可信评估</a></li><li class="depth-1"><a href="#notes" data-for="notes">Notes</a></li><li class="depth-1"><a href="#rating" data-for="rating">Rating</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
 </script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
 </script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>

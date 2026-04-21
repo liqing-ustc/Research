@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><title>Rethinking the Embodied Gap in Vision-and-Language Navigation: A Holistic Study of Physical and Visual Disparities</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="Rethinking the Embodied Gap in Vision-and-Language Navigation: A Holistic Study of Physical and Visual Disparities"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Rethinking the Embodied Gap in Vision-and-Language Navigation: A Holistic Study of Physical and Visual Disparities"/><meta name="twitter:description" content="Summary VLN-PE 是首个支持 humanoid、quadruped、wheeled 三类机器人的 physically realistic VLN 平台，系统揭示了现有 VLN 方法从 simulation 迁移到 physical embodiment 时的性能退化（约 34% 相对 SR 下降），并发现 cross-embodiment ..."/><meta property="og:description" content="Summary VLN-PE 是首个支持 humanoid、quadruped、wheeled 三类机器人的 physically realistic VLN 平台，系统揭示了现有 VLN 方法从 simulation 迁移到 physical embodiment 时的性能退化（约 34% 相对 SR 下降），并发现 cross-embodiment ..."/><meta property="og:image:alt" content="Summary VLN-PE 是首个支持 humanoid、quadruped、wheeled 三类机器人的 physically realistic VLN 平台，系统揭示了现有 VLN 方法从 simulation 迁移到 physical embodiment 时的性能退化（约 34% 相对 SR 下降），并发现 cross-embodiment ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2507-VLNPE"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2507-VLNPE"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary VLN-PE 是首个支持 humanoid、quadruped、wheeled 三类机器人的 physically realistic VLN 平台，系统揭示了现有 VLN 方法从 simulation 迁移到 physical embodiment 时的性能退化（约 34% 相对 SR 下降），并发现 cross-embodiment ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+<html lang="en"><head><title>Rethinking the Embodied Gap in Vision-and-Language Navigation: A Holistic Study of Physical and Visual Disparities</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="Rethinking the Embodied Gap in Vision-and-Language Navigation: A Holistic Study of Physical and Visual Disparities"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Rethinking the Embodied Gap in Vision-and-Language Navigation: A Holistic Study of Physical and Visual Disparities"/><meta name="twitter:description" content="Summary Rethinking the Embodied Gap in Vision-and-Language Navigation 核心: 现有 VLN 模型在”理想伪运动 + 单一智能体”假设下训练，迁移到带物理控制器的多具身机器人时性能崩盘。VLN-PE 是第一个系统量化这一 embodied gap 的物理仿真平台与 benchmark。 ..."/><meta property="og:description" content="Summary Rethinking the Embodied Gap in Vision-and-Language Navigation 核心: 现有 VLN 模型在”理想伪运动 + 单一智能体”假设下训练，迁移到带物理控制器的多具身机器人时性能崩盘。VLN-PE 是第一个系统量化这一 embodied gap 的物理仿真平台与 benchmark。 ..."/><meta property="og:image:alt" content="Summary Rethinking the Embodied Gap in Vision-and-Language Navigation 核心: 现有 VLN 模型在”理想伪运动 + 单一智能体”假设下训练，迁移到带物理控制器的多具身机器人时性能崩盘。VLN-PE 是第一个系统量化这一 embodied gap 的物理仿真平台与 benchmark。 ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2507-VLNPE"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2507-VLNPE"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary Rethinking the Embodied Gap in Vision-and-Language Navigation 核心: 现有 VLN 模型在”理想伪运动 + 单一智能体”假设下训练，迁移到带物理控制器的多具身机器人时性能崩盘。VLN-PE 是第一个系统量化这一 embodied gap 的物理仿真平台与 benchmark。 ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
   position: absolute;
   display: flex;
   float: right;
@@ -116,110 +116,534 @@ pre:hover > .expand-button {
   padding: 0 12px;
   font-size: 14px;
 }
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2507-VLNPE"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="gc1ghh"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/RL" class="sidebar-tag-pill">#RL</a><a href="/mindflow/tags/web-agent" class="sidebar-tag-pill">#web-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/scene-understanding" class="sidebar-tag-pill">#scene-understanding</a><a href="/mindflow/tags/instruction-following" class="sidebar-tag-pill">#instruction-following</a><a href="/mindflow/tags/cross-embodiment" class="sidebar-tag-pill">#cross-embodiment</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2507-VLNPE</a></div></nav><h1 class="article-title">Rethinking the Embodied Gap in Vision-and-Language Navigation: A Holistic Study of Physical and Visual Disparities</h1><div class="paper-meta"><span class="paper-venue">ICCV 2025</span><span class="paper-authors"><span class="meta-sep">·</span>Liuyi Wang <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, Xinyuan Xia</span><span>, Hui Zhao</span><span>, Hanqing Wang</span><span>, Tai Wang</span><span>, Yilun Chen</span><span>, Chengju Liu</span><span>, Qijun Chen</span><span>, Jiangmiao Pang</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2025-07-01T00:00:00.000Z">Jul 01, 2025</time><span>6 min read</span></p><ul class="tags"><li><a href="../tags/VLN" class="internal tag-link">VLN</a></li><li><a href="../tags/navigation" class="internal tag-link">navigation</a></li><li><a href="../tags/cross-embodiment" class="internal tag-link">cross-embodiment</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>VLN-PE 是首个支持 humanoid、quadruped、wheeled 三类机器人的 physically realistic VLN 平台，系统揭示了现有 VLN 方法从 simulation 迁移到 physical embodiment 时的性能退化（约 34% 相对 SR 下降），并发现 cross-embodiment co-training 和 depth 融合是缓解 embodied gap 的有效策略。</p>
-<h2 id="problem--motivation">Problem &amp; Motivation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#problem--motivation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>现有 VLN 研究建立在理想化 simulation 假设之上，大多面向 point-based 或 wheeled agent 设计，忽略了 physical embodiment 带来的核心挑战：（1）不同 robot morphology 导致 viewpoint shift 和 motion error；（2）真实环境中光照变化、碰撞、摔倒等 physical challenges 未被评估；（3）从 Habitat 等 simulator 到 physical robot 的 transfer gap 缺乏系统量化。VLN-PE 旨在填补这一空白，建立首个 physically grounded 的 VLN 评估体系。</p>
-<h2 id="method">Method<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#method" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<h3 id="vln-pe-platform">VLN-PE Platform<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#vln-pe-platform" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p>基于 GRUTopia + NVIDIA Isaac Sim 构建，支持三类机器人形态：</p>
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2507-VLNPE"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="mm0h7i"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/embodied-reasoning" class="sidebar-tag-pill">#embodied-reasoning</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/computer-use" class="sidebar-tag-pill">#computer-use</a><a href="/mindflow/tags/agentic-RL" class="sidebar-tag-pill">#agentic-RL</a><a href="/mindflow/tags/gui-agent" class="sidebar-tag-pill">#gui-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/world-model" class="sidebar-tag-pill">#world-model</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2507-VLNPE</a></div></nav><h1 class="article-title">Rethinking the Embodied Gap in Vision-and-Language Navigation: A Holistic Study of Physical and Visual Disparities</h1><div class="paper-meta"><span class="paper-venue">ICCV 2025</span><span class="paper-authors"><span class="meta-sep">·</span>Liuyi Wang <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, Xinyuan Xia</span><span>, Hui Zhao</span><span>, Hanqing Wang</span><span>, Tai Wang</span><span>, Yilun Chen</span><span>, Chengju Liu</span><span>, Qijun Chen</span><span>, Jiangmiao Pang</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2025-07-17T00:00:00.000Z">Jul 17, 2025</time><span>19 min read</span></p><ul class="tags"><li><a href="../tags/VLN" class="internal tag-link">VLN</a></li><li><a href="../tags/cross-embodiment" class="internal tag-link">cross-embodiment</a></li><li><a href="../tags/navigation" class="internal tag-link">navigation</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Rethinking the Embodied Gap in Vision-and-Language Navigation </p></div>
+                  
+                </div>
+<div class="callout-content">
 <ul>
-<li><strong>Humanoid</strong>: Unitree H1, G1（RL-based locomotion controller）</li>
-<li><strong>Quadruped</strong>: Unitree Aliengo（相机高度约 0.5m，视角与人类差异大）</li>
-<li><strong>Wheeled</strong>: Jetbot</li>
+<li><strong>核心</strong>: 现有 VLN 模型在”理想伪运动 + 单一智能体”假设下训练，迁移到带物理控制器的多具身机器人时性能崩盘。VLN-PE 是第一个系统量化这一 embodied gap 的物理仿真平台与 benchmark。</li>
+<li><strong>方法</strong>: 基于 GRUTopia/Isaac Sim 搭建支持 humanoid (H1)/quadruped (Aliengo)/wheeled (Jetbot) 的物理 VLN 平台；评测 3 类 ego-centric pipeline——分类式 (Seq2Seq/CMA/NaVid)、扩散式 waypoint (新提出的 RDP)、map-based zero-shot LLM (改进 VLMaps)；引入 GRU-VLN10 (合成场景) 与 3DGS-Lab-VLN 数据集，新增 Fall Rate / Stuck Rate 指标。</li>
+<li><strong>结果</strong>: VLN-CE → VLN-PE 零样本 SR 相对掉 34%；NaVid 在低光下 SR 掉 12%、在 3DGS 场景几乎完全失效 (5.81 SR)；跨具身 co-training 让一个 6M 参数的 small baseline 在 R2R 上反超 7B 的 NaVid。</li>
+<li><strong>Sources</strong>: <a href="https://arxiv.org/abs/2507.13019" class="external">paper<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://crystalsixone.github.io/vln_pe.github.io/" class="external">website<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://github.com/InternRobotics/InternNav" class="external">github<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><strong>Rating</strong>: 2 - Frontier（第一个系统量化 VLN embodied gap 的 physical benchmark，且已被 InternRobotics/InternNav 采纳为 navigation foundation model 的 cross-embodiment 训练数据源；尚未定型为 community 标准）</li>
 </ul>
-<h3 id="场景与数据集">场景与数据集<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#场景与数据集" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<ul>
-<li>90 个 Matterport3D 场景转换为 USD 格式（含手动修复）</li>
-<li>10 个高质量合成场景（GRScenes）→ <strong>GRU-VLN10</strong> 数据集（441/111/1,287 episodes）</li>
-<li>3D Gaussian Splatting 渲染的实验室环境 → <strong>3DGS-Lab-VLN</strong>（160 train, 640 eval）</li>
-<li><strong>R2R-PE</strong>: 8,679/658/1,347 episodes（经 stair filtering 后）</li>
-</ul>
-<h3 id="评估-metric-扩展">评估 Metric 扩展<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#评估-metric-扩展" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p>标准 VLN metrics（TL, NE, SR, OS, SPL）之外新增：</p>
-<ul>
-<li><strong>Fall Rate (FR)</strong>: roll >15° 或 pitch >35°</li>
-<li><strong>Stuck Rate (StR)</strong>: 位置/航向变化 &lt;0.2m 和 15° 持续 50 步</li>
-</ul>
-<h3 id="baseline-方法">Baseline 方法<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#baseline-方法" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+</div>
+</blockquote>
+<p><strong>Key Takeaways:</strong></p>
 <ol>
-<li><strong>End-to-End 单步</strong>: Seq2Seq（~36M params）、CMA（~36M params）、NaVid（7B）</li>
-<li><strong>Multi-step continuous（新提出）</strong>: <strong>Recurrent Diffusion Policy (RDP)</strong> — LongCLIP encoder + ResNet50 depth encoder + GRU + Transformer-based diffusion decoder，预测 dense waypoints T×(Δx, Δy, Δyaw)</li>
-<li><strong>Map-based train-free</strong>: 改进版 VLMaps（LLM 解析 subgoals + LSeg semantic grounding + A* planning）</li>
+<li><strong>Pseudo-motion → physical 迁移代价巨大</strong>: 在 Habitat 上跑得好的 SoTA 直接搬到带 RL locomotion controller 的 H1 humanoid，SR 相对下降 34%（NaVid 从 ~40 掉到 22.42 on val-unseen）；这把”VLN-CE 已经接近真实”这种叙事直接证伪。</li>
+<li><strong>Camera height 是决定性变量</strong>: 把 CMA 的相机调到 1.8m (CMA-Height1.8) 就能恢复一部分零样本性能；quadruped (~0.5m) 视角让模型几近完全失效，说明现有 VLN 模型隐式 overfit 到 MP3D 默认 1.2-1.6m 视高。</li>
+<li><strong>多模态融合 ≠ 锦上添花，是抗光照退化的必需</strong>: 纯 RGB 的 NaVid 在低光 DL300 下 SR 掉 12.47，RGB+D 的 CMA/RDP 几乎不退；3DGS 渲染噪声让 NaVid 直接崩到 5.81 SR——MLLM 对像素级 perturbation 极其敏感。</li>
+<li><strong>One-for-All cross-embodiment 可行</strong>: 用 humanoid+quadruped+wheeled 三类数据 co-train 单个 CMA，在所有具身上都达到 (或接近) 各自的最佳，且训练数据量越大收益越线性——给跨具身 navigation foundation model 提供了第一份 controlled evidence。</li>
+<li><strong>Controller-in-the-loop 数据采集是 legged robot 的必需品</strong>: 训练数据 + 评测都用 RL controller 时性能最高且 FR/StR 最低；mismatch 时性能崩盘——意味着 legged VLN 不能简单复用 graph-based pseudo trajectories。</li>
 </ol>
-<h2 id="key-results">Key Results<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-results" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<h3 id="vln-ce--vln-pe-transferhumanoid-h1">VLN-CE → VLN-PE Transfer（Humanoid H1）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#vln-ce--vln-pe-transferhumanoid-h1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Teaser. VLN-PE 概览：覆盖 humanoid/quadruped/wheeled 三类机器人，集成 MP3D + GRU-VLN10 合成场景 + 3DGS 扫描场景，支持物理控制器与多种光照条件下的端到端评测。</strong></p>
+<p><img src="https://crystalsixone.github.io/vln_pe.github.io/static/images/fig1_overall.png" alt/></p>
+<p><video src="https://crystalsixone.github.io/vln_pe.github.io/static/videos/video_multiView_grayBg.mp4" controls muted playsinline width="720"></video></p>
+<hr/>
+<h2 id="vln-演化与-embodied-gap-的提出">VLN 演化与 embodied gap 的提出<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#vln-演化与-embodied-gap-的提出" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>VLN 从最初 MP3D 上节点跳跃式 navigation，演化到 VLN-CE 的连续动作 (Habitat)，再到本文主张的 physical VLN。作者指出：当前所有 VLN-CE benchmark 都把 agent 当成理想 wheeled 或 point-based mover，<strong>忽略机器人本体的物理约束</strong>——视角高度差异、跌倒、卡死、运动误差。这导致一个具体的开放问题：“To what extent do physical embodiment constraints and visual environmental variations impact existing VLN methods?”——之前<strong>没有</strong>任何系统性研究回答过。</p>
+<p><strong>Figure 1. VLN 任务的 evolution——从离散节点到 VLN-CE 再到 VLN-PE 的物理仿真。</strong>
+<img src="https://arxiv.org/html/2507.13019v2/x1.png" alt/></p>
+<h2 id="vln-pe-平台设计">VLN-PE 平台设计<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#vln-pe-平台设计" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="仿真基座与场景">仿真基座与场景<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#仿真基座与场景" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li>NaVid zero-shot: val-unseen SR 22.42%（约 18% 下降）</li>
-<li>CMA zero-shot: val-unseen SR 16.04%（约 16% 下降）</li>
-<li><strong>关键发现</strong>: 在 Habitat 上用 175K augmented samples 训练的模型，反而不如在 VLN-PE 上从头训练的模型，说明模型严重 overfit to specific simulation platform</li>
+<li><strong>基座</strong>: GRUTopia (NVIDIA Isaac Sim)，提供 RL-based locomotion controller 作为 API，支持 Unitree H1/G1 (humanoid)、Aliengo (quadruped)、Jetbot (wheeled)。</li>
+<li><strong>MP3D 移植</strong>: 90 个 MP3D 场景转 USD 格式，<strong>手工补洞</strong>（reconstruction error 导致地板裂缝会让 legged robot 卡死/跌入）。坐标对齐 VLN-CE 原始 annotation。Disk lighting 提供可调光强。</li>
+<li><strong>新增场景</strong>:
+<ul>
+<li><strong>GRU-VLN10</strong>: 10 个高质量合成 home scene (来自 GRScenes)，弥补 MP3D 视觉多样性不足。</li>
+<li><strong>3DGS-Lab-VLN</strong>: 一个 3DGS 扫描的实验室场景，online rendering，用来测试模型对 3DGS 渲染 artifact 的鲁棒性。</li>
 </ul>
-<h3 id="physical-controller-一致性">Physical Controller 一致性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#physical-controller-一致性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<ul>
-<li>训练/评估都不用 controller: val-seen SR 20.21%</li>
-<li>仅评估时用 controller: val-seen SR 12.92%, FR 31.76%（大量摔倒）</li>
-<li>训练+评估都用 controller: val-seen SR 21.12%, FR 23.40%（性能恢复）</li>
+</li>
 </ul>
-<h3 id="cross-embodiment-分析">Cross-Embodiment 分析<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#cross-embodiment-分析" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>❓ MP3D 补洞这步只在论文中一句带过——这种手工修复对 reproducibility 是隐患，原始 USD 转换 + 修复 patch 是否随代码发布？</p>
+</blockquote>
+<p><strong>Figure 2. VLN-PE 架构图——研究者可无缝接入新机器人 / 新场景。</strong>
+<img src="https://arxiv.org/html/2507.13019v2/x2.png" alt/></p>
+<h3 id="数据集">数据集<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#数据集" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li>Quadruped zero-shot SR 仅 2.07%（因 0.5m 相机高度导致严重视角偏差）</li>
-<li><strong>One-for-All co-training</strong>: Humanoid SR 26.44%, Quadruped SR 23.83%, Wheeled SR 20.02%（val-unseen）— 多机器人联合训练一致最优</li>
+<li><strong>R2R 适配</strong>: 因为 RL locomotion controller 处理楼梯不稳，作者<strong>过滤掉所有含楼梯的 episode</strong>，剩 train/val-seen/val-unseen = 8,679 / 658 / 1,347。</li>
+<li><strong>GRU-VLN10</strong>: 441 / 111 / 1,287 episodes，3 个训练场景 + 7 个 unseen 测试场景。</li>
+<li><strong>3DGS-Lab-VLN</strong>: 160 train + 640 eval。</li>
+<li><strong>指令生成</strong>: 基于 modular LLM pipeline（action recognition + environment recognition + GPT-4 in-context description + 人工 refine）。</li>
 </ul>
-<h3 id="光照鲁棒性">光照鲁棒性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#光照鲁棒性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>❓ 过滤楼梯 episode 让 SR 数字不再可直接和 VLN-CE 文献对比——一个公平的”VLN-CE on filtered split”baseline 应该单独报告。</p>
+</blockquote>
+<h3 id="指标除经典-5-项外引入-frstr">指标：除经典 5 项外引入 FR/StR<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#指标除经典-5-项外引入-frstr" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li>NaVid（仅 RGB）在低光 DL300 下 SR 从 22.42% 暴跌至 9.95%（-12.47%）</li>
-<li>CMA 和 RDP（RGB-D）在不同光照下表现稳定，证明 multimodal fusion 提升鲁棒性</li>
+<li>标准: TL / NE / SR / OS / SPL</li>
+<li>新增:
+<ul>
+<li><strong>Fall Rate (FR)</strong>: roll > 15° 或 pitch > 35° 或 CoM-to-foot 高度低于 robot-specific 阈值</li>
+<li><strong>Stuck Rate (StR)</strong>: 50 步内 position 变化 &lt; 0.2m 且 heading &lt; 15°</li>
 </ul>
-<h3 id="out-of-domaingru-vln10">Out-of-Domain（GRU-VLN10）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#out-of-domaingru-vln10" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<ul>
-<li>RDP fine-tuned: SR 32.43%（+14.41% vs 无 FT）</li>
-<li>3DGS-Lab-VLN: NaVid 完全失败（SR 5.81%），RDP SR 30.63%（3DGS artifacts 严重干扰 RGB-only 模型）</li>
+</li>
 </ul>
-<h3 id="真实世界验证unitree-go2-14-episodes">真实世界验证（Unitree Go2, 14 episodes）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#真实世界验证unitree-go2-14-episodes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>这两个 metric 是 VLN-PE 的关键贡献之一——把”会不会摔 / 会不会卡”从 pure 动作级 success 中分离出来。</p>
+<h3 id="locomotion-controllers-3-种">Locomotion Controllers (3 种)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#locomotion-controllers-3-种" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li>无 VLN-PE fine-tuning: SR 7.14%</li>
-<li>有 VLN-PE fine-tuning: SR 28.57%（+300% 提升）</li>
+<li><strong>Flash Control</strong>: 瞬移到目标位置，无物理约束（模拟无 cross-embodiment 支持的旧平台）</li>
+<li><strong>Move-by-Speed Control</strong>: RL policy 控制 legged robot 速度；wheeled 用 differential drive</li>
+<li><strong>Move-along-Path Control</strong>: A* + PID，主要给 VLMaps 用</li>
 </ul>
-<h2 id="strengths--weaknesses">Strengths &amp; Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths--weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p><strong>Strengths</strong>:</p>
+<h2 id="baselines">Baselines<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#baselines" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>3 类 pipeline，覆盖了 ego-centric VLN 主流方法：</p>
+<ol>
+<li><strong>End-to-end single-step 分类</strong>: Seq2Seq、CMA (~36M params)、NaVid (7B, video MLLM)</li>
+<li><strong>End-to-end multi-step 连续 waypoint</strong>: <strong>RDP</strong> (作者新提出的 Recurrent Diffusion Policy)</li>
+<li><strong>Train-free map-based</strong>: 改进版 VLMaps + VLFM frontier exploration + room-level CLIP classifier</li>
+</ol>
+<h3 id="rdp-第一个用于-vln-的-diffusion-policy">RDP: 第一个用于 VLN 的 diffusion policy<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#rdp-第一个用于-vln-的-diffusion-policy" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>把 diffusion policy 从 manipulation/local navigation 推到 VLN，关键设计：</p>
 <ul>
-<li>首次系统量化 physical embodiment gap，填补了 VLN 研究中长期缺失的 evaluation 维度</li>
-<li>Cross-embodiment 实验设计全面：3 种机器人、多种光照、多域场景，结论有说服力</li>
-<li>新提出的 RDP baseline 将 diffusion policy 引入 VLN，为 continuous action 提供新方向</li>
-<li>One-for-All co-training 结果有实际意义：一个模型服务多种机器人</li>
-<li>Fall Rate / Stuck Rate 等 physical metric 对未来 embodied navigation 评估有重要参考价值</li>
+<li>RGB + instruction 用 LongCLIP 编码（标准 CLIP 77 token 限制不够），depth 用 ResNet50（与 CMA 一致）</li>
+<li>历史信息用 <strong>GRU</strong> 维护——作者尝试过 NaVid-style 视频帧堆叠，但 diffusion loss 收敛过快导致严重 overfit</li>
+<li>Cross-attention 双向对齐 vision/language</li>
+<li><strong>Stop prediction head</strong>: 一个独立 MLP 输出 0→1 的 stop progress，解决 diffusion model 不擅长基于语言决定何时停的问题</li>
+<li>训练损失:</li>
 </ul>
-<p><strong>Weaknesses</strong>:</p>
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathcal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">RDP</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1491em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">MSE</span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">ϵ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8991em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">ϵ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-2.453em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.1491em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">ϵ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8991em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">))</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">λ</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord text"><span class="mord">MSE</span></span><span class="mopen">(</span><span class="mord"><span class="mord mathcal" style="margin-right:0.075em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.075em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight">p</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">p</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1667em;"><span class="mord">^</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight">p</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span>
+<p>其中 λ=10。每次预测 8 个未来 waypoint，执行 4 步后重新规划。</p>
+<p><strong>Figure 3. RDP 框架图。</strong>
+<img src="https://arxiv.org/html/2507.13019v2/x3.png" alt/></p>
+<h2 id="实验">实验<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#实验" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="q1-vln-ce-模型迁移到-vln-pe-表现如何">Q1: VLN-CE 模型迁移到 VLN-PE 表现如何？<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#q1-vln-ce-模型迁移到-vln-pe-表现如何" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table 1. R2R + Humanoid H1 + RL controller 上的全面对比 (节选关键行)。</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Idx</th><th>Method</th><th>Val-Unseen SR ↑</th><th>FR ↓</th><th>StR ↓</th></tr></thead><tbody><tr><td>2</td><td>Seq2Seq-Full (zero-shot)</td><td>15.00</td><td>13.88</td><td>3.79</td></tr><tr><td>3</td><td>CMA-Full (zero-shot)</td><td>16.04</td><td>15.07</td><td>4.31</td></tr><tr><td>6</td><td>NaVid 7B (zero-shot)</td><td>22.42</td><td>8.61</td><td>0.45</td></tr><tr><td>7</td><td>Seq2Seq (in-domain trained)</td><td>15.89</td><td>19.67</td><td>3.71</td></tr><tr><td>8</td><td>CMA (in-domain trained)</td><td>18.78</td><td>18.63</td><td>3.12</td></tr><tr><td>9</td><td><strong>RDP (in-domain trained)</strong></td><td><strong>21.98</strong></td><td>18.75</td><td>4.58</td></tr><tr><td>11</td><td><strong>CMA+ (fine-tuned)</strong></td><td><strong>23.31</strong></td><td>18.63</td><td>4.83</td></tr><tr><td>12</td><td>VLMaps* (zero-shot)</td><td>20.00</td><td>23.00</td><td>0.00</td></tr></tbody></table></div>
+<p><strong>关键发现</strong>：</p>
 <ul>
-<li>总体 SR 偏低（最佳约 28%），实用性有限，不过这本身就说明了 physically realistic VLN 的难度</li>
-<li>仅在 14 个 real-world episodes 上验证，统计显著性不足</li>
-<li>Quadruped 性能极低，虽然归因于相机高度差异，但是否有更好的解决方案（如 multi-height fusion）未深入探索</li>
-<li>场景主要基于 MP3D，outdoor 和更大规模场景的 generalization 未验证</li>
+<li>三个 zero-shot 模型 SR 分别相对掉 ~10/16/18 个点；<strong>整体 34% 相对下降</strong>（abstract 数字）</li>
+<li>NaVid 因 MLLM world knowledge 表现出最低 FR/StR——但作者指出 70% episode 里 NaVid 在目标附近<strong>反复转 25+ 步才停</strong>，反映 MLLM 对精确 stop signal 仍弱</li>
+<li>用 VLN-PE-collected 数据 <strong>fine-tune CMA</strong>（CMA+, 36M params）后 val-seen SR 28.72，<strong>反超</strong> NaVid 7B 的 21.58——说明 SoTA 大模型严重 overfit Habitat 训练分布</li>
+<li><strong>RDP from scratch 也超过 CMA from scratch</strong>——diffusion policy for VLN 是有前景的方向</li>
 </ul>
-<h2 id="mind-map">Mind Map<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mind-map" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;mindmap\n  root((VLN-PE))\n    Problem\n      Sim-to-Real embodied gap 未量化\n      忽略 robot morphology 差异\n      Physical challenges 未评估\n    Method\n      GRUTopia + Isaac Sim 平台\n      3 种机器人形态\n      R2R-PE / GRU-VLN10 / 3DGS-Lab-VLN\n      新 baseline: Recurrent Diffusion Policy\n    Results\n      ~34% 相对 SR 下降\n      Cross-embodiment co-training 最优\n      RGB-D 比 RGB-only 更鲁棒\n      Real-world +300% 提升&quot;">mindmap
-  root((VLN-PE))
-    Problem
-      Sim-to-Real embodied gap 未量化
-      忽略 robot morphology 差异
-      Physical challenges 未评估
-    Method
-      GRUTopia + Isaac Sim 平台
-      3 种机器人形态
-      R2R-PE / GRU-VLN10 / 3DGS-Lab-VLN
-      新 baseline: Recurrent Diffusion Policy
-    Results
-      ~34% 相对 SR 下降
-      Cross-embodiment co-training 最优
-      RGB-D 比 RGB-only 更鲁棒
-      Real-world +300% 提升
-</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
-<h2 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Figure 4. Humanoid H1 上的 zero-shot 性能下降可视化。</strong>
+<img src="https://arxiv.org/html/2507.13019v2/x4.png" alt/></p>
+<h3 id="q2-out-of-mp3d-domain-gru-vln10--3dgs-lab-vln">Q2: Out-of-MP3D-domain (GRU-VLN10 + 3DGS-Lab-VLN)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#q2-out-of-mp3d-domain-gru-vln10--3dgs-lab-vln" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table 2. GRU-VLN10 评测——441 episode fine-tune 即可让 small model 反超 NaVid zero-shot。</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Method</th><th>Val-Unseen SR</th><th>SPL</th></tr></thead><tbody><tr><td>NaVid (ZS)</td><td>18.64</td><td>13.99</td></tr><tr><td>CMA-CLIP w/o FT</td><td>15.31</td><td>13.12</td></tr><tr><td>CMA-CLIP</td><td>22.46</td><td>17.93</td></tr><tr><td>RDP w/o FT</td><td>26.19</td><td>18.70</td></tr><tr><td><strong>RDP</strong></td><td><strong>28.52</strong></td><td>22.53</td></tr></tbody></table></div>
+<p><strong>Table 3. 3DGS-Lab-VLN——NaVid 完全失效。</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Method</th><th>SR ↑</th><th>SPL ↑</th></tr></thead><tbody><tr><td>NaVid (ZS)</td><td><strong>5.81</strong></td><td>1.00</td></tr><tr><td>CMA-CLIP</td><td>24.88</td><td>17.43</td></tr><tr><td>RDP</td><td>30.63</td><td>22.69</td></tr></tbody></table></div>
+<p>3DGS rendering 引入人眼看不见但模型敏感的像素扰动 → RGB-only MLLM 直接失效。这是对 “vision foundation model 对 distribution shift 鲁棒” 这种叙事的直接打脸。</p>
+<h3 id="q3-physical-controller-engagement">Q3: Physical Controller Engagement<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#q3-physical-controller-engagement" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table 4. CMA from scratch，数据采集 / 评测 是否带 RL locomotion controller 的 2×2 实验。</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Collect w/ loco</th><th>Eval w/ loco</th><th>Val-Unseen SR</th><th>FR</th><th>StR</th></tr></thead><tbody><tr><td>✗</td><td>✗</td><td>21.31</td><td>0.00</td><td>0.00</td></tr><tr><td>✓</td><td>✗</td><td>15.90</td><td>0.00</td><td>0.00</td></tr><tr><td>✗</td><td>✓</td><td>13.51</td><td>25.69</td><td>4.75</td></tr><tr><td>✓</td><td>✓</td><td><strong>18.78</strong></td><td>18.63</td><td>3.12</td></tr></tbody></table></div>
+<p>核心结论：<strong>train-eval controller 一致时性能最高</strong>；mismatch 时显著掉分。controller-aware 数据收集对 legged robot 是 essential。</p>
+<h3 id="q4-cross-embodiment-co-training-one-for-all">Q4: Cross-Embodiment Co-Training (One-for-All)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#q4-cross-embodiment-co-training-one-for-all" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table 5. CMA 在不同训练数据组合下的性能（val-unseen 节选）。</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Robot</th><th>Training Data</th><th>OS</th><th>SR</th><th>SPL</th></tr></thead><tbody><tr><td>Humanoid</td><td>VLN-CE only</td><td>19.82</td><td>16.04</td><td>14.63</td></tr><tr><td>Humanoid</td><td>Humanoid only</td><td>31.33</td><td>18.78</td><td>14.56</td></tr><tr><td>Humanoid</td><td>All 3 robots</td><td>31.70</td><td>19.30</td><td>16.97</td></tr><tr><td>Humanoid</td><td><strong>VLN-CE + 3 bots</strong></td><td>34.08</td><td><strong>26.87</strong></td><td><strong>23.54</strong></td></tr><tr><td>Quadruped</td><td>VLN-CE only</td><td>7.84</td><td>4.73</td><td>3.80</td></tr><tr><td>Quadruped</td><td>Quadruped only</td><td>32.37</td><td>17.00</td><td>13.40</td></tr><tr><td>Quadruped</td><td><strong>VLN-CE + 3 bots</strong></td><td>29.62</td><td><strong>23.83</strong></td><td><strong>20.75</strong></td></tr><tr><td>Wheeled</td><td>VLN-CE only</td><td>13.75</td><td>11.02</td><td>10.80</td></tr><tr><td>Wheeled</td><td><strong>VLN-CE + 3 bots</strong></td><td>22.71</td><td><strong>20.02</strong></td><td><strong>19.38</strong></td></tr></tbody></table></div>
 <ul>
-<li>本文最核心的 insight 是 “models overfit to simulation platforms”：在 Habitat 上用大量数据训练的模型，迁移到 Isaac Sim 后性能反而不如少量 in-domain 数据训练的小模型。这对整个 VLN 社区都是重要警示</li>
-<li>Cross-embodiment co-training 的成功暗示了 data diversity 比 data volume 更重要的原则</li>
-<li>Quadruped 的极低性能（SR 2.07%）揭示了 camera height 是一个被严重低估的 factor，未来 VLN 方法需要设计 height-invariant representations</li>
-<li>3DGS rendering artifacts 导致 NaVid 失败的发现，说明 RGB-only 方法在新型 scene representation 下的脆弱性</li>
-</ul></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="uevi3i" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#problem--motivation" data-for="problem--motivation">Problem &amp; Motivation</a></li><li class="depth-0"><a href="#method" data-for="method">Method</a></li><li class="depth-1"><a href="#vln-pe-platform" data-for="vln-pe-platform">VLN-PE Platform</a></li><li class="depth-1"><a href="#场景与数据集" data-for="场景与数据集">场景与数据集</a></li><li class="depth-1"><a href="#评估-metric-扩展" data-for="评估-metric-扩展">评估 Metric 扩展</a></li><li class="depth-1"><a href="#baseline-方法" data-for="baseline-方法">Baseline 方法</a></li><li class="depth-0"><a href="#key-results" data-for="key-results">Key Results</a></li><li class="depth-1"><a href="#vln-ce--vln-pe-transferhumanoid-h1" data-for="vln-ce--vln-pe-transferhumanoid-h1">VLN-CE → VLN-PE Transfer（Humanoid H1）</a></li><li class="depth-1"><a href="#physical-controller-一致性" data-for="physical-controller-一致性">Physical Controller 一致性</a></li><li class="depth-1"><a href="#cross-embodiment-分析" data-for="cross-embodiment-分析">Cross-Embodiment 分析</a></li><li class="depth-1"><a href="#光照鲁棒性" data-for="光照鲁棒性">光照鲁棒性</a></li><li class="depth-1"><a href="#out-of-domaingru-vln10" data-for="out-of-domaingru-vln10">Out-of-Domain（GRU-VLN10）</a></li><li class="depth-1"><a href="#真实世界验证unitree-go2-14-episodes" data-for="真实世界验证unitree-go2-14-episodes">真实世界验证（Unitree Go2, 14 episodes）</a></li><li class="depth-0"><a href="#strengths--weaknesses" data-for="strengths--weaknesses">Strengths &amp; Weaknesses</a></li><li class="depth-0"><a href="#mind-map" data-for="mind-map">Mind Map</a></li><li class="depth-0"><a href="#notes" data-for="notes">Notes</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+<li><strong>Quadruped (~0.5m camera) 直接 zero-shot 几乎完全失败</strong> (SR 4.73)</li>
+<li>跨具身 co-training <strong>在所有 3 类机器人上都给出最佳</strong>结果——multi-view learning + 数据量提升的双重收益</li>
+<li>这是 VLA / cross-embodiment foundation model 在 navigation 场景的第一份 controlled evidence，比 manipulation 上的 cross-embodiment 工作 (RT-X 等) 更直接对应实际硬件部署</li>
+</ul>
+<p><strong>Figure 5. NaVid 在不同机器人平台上的性能差异。</strong>
+<img src="https://arxiv.org/html/2507.13019v2/figs/navid_cross_embodiment1.png" alt/></p>
+<h3 id="q5-lighting-conditions">Q5: Lighting Conditions<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#q5-lighting-conditions" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table 6. NaVid 单 RGB 受光照影响远大于 RGB+D 的 CMA/RDP。</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Method</th><th>Light</th><th>Val-Unseen SR</th><th>SPL</th></tr></thead><tbody><tr><td>NaVid</td><td>DL5000</td><td>22.42</td><td>18.58</td></tr><tr><td>NaVid</td><td>DL300</td><td><strong>9.95</strong></td><td>9.01</td></tr><tr><td>NaVid</td><td>CL</td><td>11.17</td><td>9.34</td></tr><tr><td>CMA</td><td>DL5000</td><td>18.78</td><td>14.56</td></tr><tr><td>CMA</td><td>DL300</td><td>17.37</td><td>15.34</td></tr><tr><td>RDP</td><td>DL5000</td><td>21.98</td><td>16.44</td></tr><tr><td>RDP</td><td>DL300</td><td>22.27</td><td>17.15</td></tr></tbody></table></div>
+<p><strong>Figure 6. 不同光照条件下的环境对比。</strong>
+<img src="https://arxiv.org/html/2507.13019v2/x5.png" alt/></p>
+<h3 id="sim-to-real-验证-appendix-b">Sim-to-Real 验证 (Appendix B)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#sim-to-real-验证-appendix-b" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Unitree Go2 + Intel RealSense D455，14 个室内 episode：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Method</th><th>Fine-tuned on VLN-PE</th><th>OS ↑</th><th>SR ↑</th></tr></thead><tbody><tr><td>CMA (Full)</td><td>✗</td><td>14.29</td><td>7.14</td></tr><tr><td>CMA</td><td>✓</td><td><strong>57.14</strong></td><td><strong>28.57</strong></td></tr></tbody></table></div>
+<p>VLN-PE fine-tune 在真实 Unitree Go2 上把 SR 从 7.14 提到 28.57——给”sim2real via physically realistic sim”提供了正向证据。但 14 episode 样本量很小，需要更大规模验证。</p>
+<hr/>
+<h2 id="关联工作">关联工作<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#关联工作" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="基于">基于<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#基于" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>GRUTopia (Wang et al., 2024)</strong>: VLN-PE 的仿真基座，提供 Isaac Sim + RL controller 集成</li>
+<li><strong>VLN-CE (Krantz et al., 2020)</strong>: continuous VLN benchmark 的前身，本文证明其物理 idealization 不充分</li>
+<li><a href="../Papers/2210-VLMaps" class="internal alias" data-slug="Papers/2210-VLMaps">VLMaps</a>: train-free map-based baseline，本文做了 frontier exploration + room-level classifier 的改进</li>
+<li><a href="../Papers/2402-NaVid" class="internal alias" data-slug="Papers/2402-NaVid">NaVid</a>: 7B video MLLM baseline，本文揭示其在物理设置下的局限</li>
+</ul>
+<h3 id="对比">对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><a href="../Papers/2412-NaVILA" class="internal alias" data-slug="Papers/2412-NaVILA">NaVILA</a>: 同样针对 legged robot 的 VLA，但走的是 VLM + locomotion 双系统路线，与 VLN-PE 的 ego-centric 单系统评测可互补</li>
+<li><a href="../Papers/2502-VLNav" class="internal alias" data-slug="Papers/2502-VLNav">VLNav</a> / <a href="../Papers/2506-VLNR1" class="internal alias" data-slug="Papers/2506-VLNR1">VLN-R1</a> / <a href="../Papers/2507-StreamVLN" class="internal alias" data-slug="Papers/2507-StreamVLN">StreamVLN</a> / <a href="../Papers/2412-LHVLN" class="internal alias" data-slug="Papers/2412-LHVLN">LH-VLN</a>: 同期 VLN 工作；VLN-PE 提供的 cross-embodiment + physical controller benchmark 可作为它们的 stress test</li>
+<li><a href="../Papers/2512-EfficientVLN" class="internal alias" data-slug="Papers/2512-EfficientVLN">EfficientVLN</a>: 后续 VLN 效率优化工作，可在 VLN-PE 上重新评测</li>
+</ul>
+<h3 id="方法相关">方法相关<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#方法相关" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Diffusion Policy (Chi et al., 2023)</strong>: RDP 的方法基础，本文是 diffusion policy 在 VLN 的首次系统应用</li>
+<li><strong>NavDP (Cai et al., 2025)</strong>: 同样把 diffusion policy + sim-to-real 用在 navigation，但聚焦 point-goal 而非 language-conditioned</li>
+<li><strong>InternVLA-N1 / InternData-N1 (2025)</strong>: 本文成果已被纳入 InternRobotics 的 navigation foundation model pipeline，VLN-PE 是其 cross-embodiment 训练数据来源之一</li>
+</ul>
+<hr/>
+<h2 id="论文点评">论文点评<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#论文点评" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="strengths">Strengths<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>第一个系统性把 embodied gap 量化的工作</strong>：把 “VLN-CE 已经够真实” 这种 community 假设直接证伪 (34% 相对 SR drop)，并把 gap 拆解成 viewpoint height、controller、lighting、3DGS 噪声四个 actionable 维度。</li>
+<li><strong>Cross-embodiment co-training 的 controlled experiment 漂亮</strong>：Table 5 的 4×3 grid 是这篇文章最有 reusable 价值的一组数据——在 navigation 场景下证明了 One-for-All 模型的可行性，且揭示了 “VLN-CE pseudo data + 3 robot real data” 的组合最优。</li>
+<li><strong>新增 FR / StR 指标</strong>：把 “成功 vs 摔倒/卡死” 解耦，对 legged robot navigation 是 sensible 且必要的。</li>
+<li><strong>RDP 设计中”stop progress head”细节</strong>：诚实指出 diffusion 模型在 VLN 中的 stop signal 难题，并给出工程上的有效解。这种 negative observation + fix 的写法比纯卖方法更可信。</li>
+<li><strong>Real-world 验证 (Appendix B)</strong>：虽然只有 14 episode，但 7.14 → 28.57 的提升足以支撑 “sim-to-real via physically realistic sim” 的核心 claim。</li>
+</ol>
+<h3 id="weaknesses">Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>Stair filtering 让 R2R 数字与文献不可直接对比</strong>：过滤完楼梯 episode，剩 1,347 val-unseen，所有 SR/SPL 数字与 VLN-CE 原始论文不在同一基准上——一个 “VLN-CE on filtered split” 的 reference 数字必须给出，否则 34% 相对下降的结论可能偏乐观/悲观。</li>
+<li><strong>NaVid 是 zero-shot，CMA/RDP 是 in-domain trained，对比不公平</strong>：表 1 把 zero-shot 的 7B NaVid 和 fine-tuned 的 36M CMA+ 比 SR，得出 “small model 反超” 的结论——但前者无 VLN-PE 数据训练，后者有。NaVid 本身的训练代码不开源使作者无法 fair fine-tune NaVid，但应该明确标注这是 fairness limitation。</li>
+<li><strong>MP3D 手工补洞缺失 reproducibility 细节</strong>：USD 转换 + hole patch 工作量大且对结果有影响，论文未说明 patch 是否发布。</li>
+<li><strong>3DGS 失效结论的归因不严</strong>：作者把 NaVid 在 3DGS-Lab-VLN 失败归因于 “3DGS rendering noise”，但只有一个场景的数据，且未做 controlled 对比 (e.g., 同场景非 3DGS 渲染 vs 3DGS 渲染)——可能还有场景布局、文化/室内类型 mismatch 等 confounding factor。</li>
+<li><strong>RDP 作为新方法但 ablation 不足</strong>：GRU vs video stacking 只有定性描述 (“rapid convergence to small losses, severe overfitting”)，没数字。stop head 的 ablation、λ=10 的扫描、8 waypoint / 4 step 频次的选择都缺。</li>
+<li><strong>Locomotion controller 把 stair 排除掉是 fundamental limitation</strong>：现实部署不可能避开楼梯，这把 benchmark 的 ecological validity 削弱了一档。</li>
+<li><strong>legged robot 的”摔倒/卡死”是 controller 的问题还是 policy 的问题，没有解耦</strong>：FR/StR 既受 high-level VLN policy 影响，也受 low-level RL controller 影响，论文用同一组 controller 对所有方法比较，但没有 ablation 说明 controller 本身的 baseline FR/StR (e.g., follow ground-truth waypoint 时的 FR)。</li>
+</ol>
+<h3 id="可信评估">可信评估<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#可信评估" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="artifact-可获取性">Artifact 可获取性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#artifact-可获取性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><strong>代码</strong>: 开源（合并进 InternRobotics/InternNav，含 evaluation 与 training 代码；2025/11 还加了 distributed evaluation 把 full benchmark 从单卡降到 16 GPU 1.6h）</li>
+<li><strong>模型权重</strong>: 提到 InternRobotics/VLN-PE on Hugging Face；具体 checkpoint 列表未在论文正文给出</li>
+<li><strong>训练细节</strong>: 较完整——hardware (4× RTX 4090)、optimizer (AdamW, lr 1e-4)、batch size、训练时长 (CMA 1 day, RDP 2 days)、cosine schedule 都有</li>
+<li><strong>数据集</strong>: GRU-VLN10 + 3DGS-Lab-VLN 公开（论文提及 InternData-N1 包含 2.8k+ VLN-PE episodes，已整合进 LeRobot v2.1 格式）</li>
+</ul>
+<h4 id="claim-可验证性">Claim 可验证性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#claim-可验证性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>✅ <strong>VLN-CE → VLN-PE 34% SR 相对下降</strong>：Table 1 表格直接支撑（CMA-Full 16.04 → CMA from scratch 18.78，但 zero-shot transfer 主线对比可见）</li>
+<li>✅ <strong>Cross-embodiment co-training 优于单具身训练</strong>：Table 5 4×3 grid 完整数据</li>
+<li>✅ <strong>NaVid 在低光下显著退化、CMA/RDP 稳定</strong>：Table 6 数字对比清晰</li>
+<li>✅ <strong>VLN-PE fine-tune 在真实 Go2 上 7.14 → 28.57 SR</strong>：Table 7 + Fig 11，但 N=14 episode</li>
+<li>⚠️ <strong>“NaVid 几乎完全失败 in 3DGS”</strong> (5.81 SR)：归因到 “3DGS rendering noise” 缺乏 controlled experiment——可能也有场景类型 distribution shift 影响</li>
+<li>⚠️ <strong>“6M params small baseline 反超 7B SoTA”</strong>：NaVid 是 zero-shot 而 CMA-CLIP 是 fine-tuned，对比不在同一 protocol 下</li>
+<li>⚠️ <strong>“VLN models tend to overfit specific simulation platforms”</strong>：基于 1 篇论文的 1 类实验得出的高层 claim，需要更多模型 + 更多平台才能 generalize</li>
+</ul>
+<h3 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>可借鉴的 benchmark 设计原则</strong>：把 “成功率” 和 “物理可行性” (FR/StR) 解耦，是 evaluation methodology 上值得复用的 pattern——manipulation/VLA benchmark 也应该报告 “task success” vs “safe execution”。</li>
+<li><strong>对 VLA 的启示</strong>：Table 5 cross-embodiment co-training 的 monotonic 收益给 “navigation foundation model is feasible” 提供了 controlled evidence，比 manipulation 域的 RT-X 类工作更干净——manipulation 因为 task 本身的多样性，cross-embodiment 增益常被 task 异质性混淆。</li>
+<li><strong>3DGS rendering 对 RGB-only MLLM 的影响</strong>：如果 sim-to-real 走 3DGS 路线，需要在训练时显式注入 3DGS-style perturbation 做 augmentation——这是个具体的 actionable insight。</li>
+<li><strong>关于 “small model 反超 SoTA 大模型”</strong>：要谨慎解读。fine-tune 36M model 在 in-domain 数据上 vs zero-shot 7B 模型——这只能说 7B 的 NaVid 没在 VLN-PE 数据上训练，不能说 small model 本质上更强。但确实揭示 MLLM 不是万能的——在物理 deploy 场景下，data distribution match 比 model scale 更重要。</li>
+<li><strong>可能的后续 idea</strong>: 把 VLN-PE 的 controller-aware 评测协议扩展到 manipulation——构造一个把 high-level policy 和 low-level controller 解耦的评测，量化 manipulation 类 VLA 的 controller-induced gap。</li>
+<li><strong>作者后续动向</strong>: 论文成果已并入 InternNav/InternVLA-N1 navigation foundation model pipeline，GitHub 维护活跃 (v0.3.0 released 2026/01)，是 navigation 方向值得跟踪的 codebase。</li>
+</ul>
+<h3 id="rating">Rating<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#rating" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>分数</strong>：2 - Frontier
+<strong>理由</strong>：作为 physical VLN benchmark，这是<strong>第一个</strong>系统量化 embodied gap 的工作（Strengths 1），把 “VLN-CE 已够真实” 这一 community 叙事直接证伪，且引入的 FR/StR 指标与 cross-embodiment co-training 协议具备 reusable 价值（Strengths 2-3）。达不到 3 - Foundation 的原因：benchmark 尚未成为 VLN 方向的 de facto 标准（同期 VLN-R1/StreamVLN 等仍主要在 VLN-CE 评测），且 stair filtering、3DGS 单场景等 weakness 削弱了 ecological validity；高于 1 - Archived 的原因：成果已被 InternRobotics/InternNav 吸纳为 navigation foundation model 的 cross-embodiment 训练数据源，是 physical VLN 方向的重要参考。</p></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="ud8fg4" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#vln-演化与-embodied-gap-的提出" data-for="vln-演化与-embodied-gap-的提出">VLN 演化与 embodied gap 的提出</a></li><li class="depth-0"><a href="#vln-pe-平台设计" data-for="vln-pe-平台设计">VLN-PE 平台设计</a></li><li class="depth-1"><a href="#仿真基座与场景" data-for="仿真基座与场景">仿真基座与场景</a></li><li class="depth-1"><a href="#数据集" data-for="数据集">数据集</a></li><li class="depth-1"><a href="#指标除经典-5-项外引入-frstr" data-for="指标除经典-5-项外引入-frstr">指标：除经典 5 项外引入 FR/StR</a></li><li class="depth-1"><a href="#locomotion-controllers-3-种" data-for="locomotion-controllers-3-种">Locomotion Controllers (3 种)</a></li><li class="depth-0"><a href="#baselines" data-for="baselines">Baselines</a></li><li class="depth-1"><a href="#rdp-第一个用于-vln-的-diffusion-policy" data-for="rdp-第一个用于-vln-的-diffusion-policy">RDP: 第一个用于 VLN 的 diffusion policy</a></li><li class="depth-0"><a href="#实验" data-for="实验">实验</a></li><li class="depth-1"><a href="#q1-vln-ce-模型迁移到-vln-pe-表现如何" data-for="q1-vln-ce-模型迁移到-vln-pe-表现如何">Q1: VLN-CE 模型迁移到 VLN-PE 表现如何？</a></li><li class="depth-1"><a href="#q2-out-of-mp3d-domain-gru-vln10--3dgs-lab-vln" data-for="q2-out-of-mp3d-domain-gru-vln10--3dgs-lab-vln">Q2: Out-of-MP3D-domain (GRU-VLN10 + 3DGS-Lab-VLN)</a></li><li class="depth-1"><a href="#q3-physical-controller-engagement" data-for="q3-physical-controller-engagement">Q3: Physical Controller Engagement</a></li><li class="depth-1"><a href="#q4-cross-embodiment-co-training-one-for-all" data-for="q4-cross-embodiment-co-training-one-for-all">Q4: Cross-Embodiment Co-Training (One-for-All)</a></li><li class="depth-1"><a href="#q5-lighting-conditions" data-for="q5-lighting-conditions">Q5: Lighting Conditions</a></li><li class="depth-1"><a href="#sim-to-real-验证-appendix-b" data-for="sim-to-real-验证-appendix-b">Sim-to-Real 验证 (Appendix B)</a></li><li class="depth-0"><a href="#关联工作" data-for="关联工作">关联工作</a></li><li class="depth-1"><a href="#基于" data-for="基于">基于</a></li><li class="depth-1"><a href="#对比" data-for="对比">对比</a></li><li class="depth-1"><a href="#方法相关" data-for="方法相关">方法相关</a></li><li class="depth-0"><a href="#论文点评" data-for="论文点评">论文点评</a></li><li class="depth-1"><a href="#strengths" data-for="strengths">Strengths</a></li><li class="depth-1"><a href="#weaknesses" data-for="weaknesses">Weaknesses</a></li><li class="depth-1"><a href="#可信评估" data-for="可信评估">可信评估</a></li><li class="depth-1"><a href="#notes" data-for="notes">Notes</a></li><li class="depth-1"><a href="#rating" data-for="rating">Rating</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
 </script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
 </script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>

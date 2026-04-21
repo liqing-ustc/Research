@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><title>NaVILA: Legged Robot Vision-Language-Action Model for Navigation</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="NaVILA: Legged Robot Vision-Language-Action Model for Navigation"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="NaVILA: Legged Robot Vision-Language-Action Model for Navigation"/><meta name="twitter:description" content="Summary NaVILA 将 VLM（VILA）微调为 navigation VLA，通过生成 mid-level 语言化动作指令（如 “move forward 75cm”）而非直接输出 low-level joint action，再由 RL locomotion policy 执行，实现了 legged robot 上的 vision-language ..."/><meta property="og:description" content="Summary NaVILA 将 VLM（VILA）微调为 navigation VLA，通过生成 mid-level 语言化动作指令（如 “move forward 75cm”）而非直接输出 low-level joint action，再由 RL locomotion policy 执行，实现了 legged robot 上的 vision-language ..."/><meta property="og:image:alt" content="Summary NaVILA 将 VLM（VILA）微调为 navigation VLA，通过生成 mid-level 语言化动作指令（如 “move forward 75cm”）而非直接输出 low-level joint action，再由 RL locomotion policy 执行，实现了 legged robot 上的 vision-language ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2412-NaVILA"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2412-NaVILA"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary NaVILA 将 VLM（VILA）微调为 navigation VLA，通过生成 mid-level 语言化动作指令（如 “move forward 75cm”）而非直接输出 low-level joint action，再由 RL locomotion policy 执行，实现了 legged robot 上的 vision-language ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+<html lang="en"><head><title>NaVILA: Legged Robot Vision-Language-Action Model for Navigation</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="NaVILA: Legged Robot Vision-Language-Action Model for Navigation"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="NaVILA: Legged Robot Vision-Language-Action Model for Navigation"/><meta name="twitter:description" content="Summary NaVILA: Legged Robot Vision-Language-Action Model for Navigation 核心: 把 VLA 拆成 high-level VLM（生成”move forward 75cm”这类语言化 mid-level action）+ low-level vision-based ..."/><meta property="og:description" content="Summary NaVILA: Legged Robot Vision-Language-Action Model for Navigation 核心: 把 VLA 拆成 high-level VLM（生成”move forward 75cm”这类语言化 mid-level action）+ low-level vision-based ..."/><meta property="og:image:alt" content="Summary NaVILA: Legged Robot Vision-Language-Action Model for Navigation 核心: 把 VLA 拆成 high-level VLM（生成”move forward 75cm”这类语言化 mid-level action）+ low-level vision-based ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2412-NaVILA"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2412-NaVILA"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary NaVILA: Legged Robot Vision-Language-Action Model for Navigation 核心: 把 VLA 拆成 high-level VLM（生成”move forward 75cm”这类语言化 mid-level action）+ low-level vision-based ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
   position: absolute;
   display: flex;
   float: right;
@@ -116,78 +116,362 @@ pre:hover > .expand-button {
   padding: 0 12px;
   font-size: 14px;
 }
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2412-NaVILA"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="gc1ghh"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/RL" class="sidebar-tag-pill">#RL</a><a href="/mindflow/tags/web-agent" class="sidebar-tag-pill">#web-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/scene-understanding" class="sidebar-tag-pill">#scene-understanding</a><a href="/mindflow/tags/instruction-following" class="sidebar-tag-pill">#instruction-following</a><a href="/mindflow/tags/cross-embodiment" class="sidebar-tag-pill">#cross-embodiment</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2412-NaVILA</a></div></nav><h1 class="article-title">NaVILA: Legged Robot Vision-Language-Action Model for Navigation</h1><div class="paper-meta"><span class="paper-venue">RSS 2025</span><span class="paper-authors"><span class="meta-sep">·</span>An-Chieh Cheng <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, Yandong Ji</span><span>, Zhaojing Yang</span><span>, Zaitian Gongye</span><span>, Xueyan Zou</span><span>, Jan Kautz</span><span>, Erdem Bıyık</span><span>, Hongxu Yin</span><span>, Sifei Liu</span><span>, Xiaolong Wang</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2024-12-01T00:00:00.000Z">Dec 01, 2024</time><span>3 min read</span></p><ul class="tags"><li><a href="../tags/VLA" class="internal tag-link">VLA</a></li><li><a href="../tags/VLN" class="internal tag-link">VLN</a></li><li><a href="../tags/VLM" class="internal tag-link">VLM</a></li><li><a href="../tags/navigation" class="internal tag-link">navigation</a></li><li><a href="../tags/legged" class="internal tag-link">legged</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>NaVILA 将 VLM（VILA）微调为 navigation VLA，通过生成 mid-level 语言化动作指令（如 “move forward 75cm”）而非直接输出 low-level joint action，再由 RL locomotion policy 执行，实现了 legged robot 上的 vision-language navigation。</p>
-<h2 id="problem--motivation">Problem &amp; Motivation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#problem--motivation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>现有 VLN 方法主要在 discrete nav-graph 或简单 continuous 环境中工作，缺乏对真实 legged robot 的部署能力。直接用 VLA 预测 low-level joint action 面临 sim-to-real gap 和高维 action space 的挑战。NaVILA 提出用语言作为 mid-level action representation，解耦高层语义理解和低层运动控制。</p>
-<h2 id="method">Method<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#method" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2412-NaVILA"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="mm0h7i"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/embodied-reasoning" class="sidebar-tag-pill">#embodied-reasoning</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/computer-use" class="sidebar-tag-pill">#computer-use</a><a href="/mindflow/tags/agentic-RL" class="sidebar-tag-pill">#agentic-RL</a><a href="/mindflow/tags/gui-agent" class="sidebar-tag-pill">#gui-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/world-model" class="sidebar-tag-pill">#world-model</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2412-NaVILA</a></div></nav><h1 class="article-title">NaVILA: Legged Robot Vision-Language-Action Model for Navigation</h1><div class="paper-meta"><span class="paper-venue">RSS 2025</span><span class="paper-authors"><span class="meta-sep">·</span>An-Chieh Cheng <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, Yandong Ji</span><span>, Zhaojing Yang</span><span>, Zaitian Gongye</span><span>, Xueyan Zou</span><span>, Jan Kautz</span><span>, Erdem Bıyık</span><span>, Hongxu Yin</span><span>, Sifei Liu</span><span>, Xiaolong Wang</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2024-12-01T00:00:00.000Z">Dec 01, 2024</time><span>20 min read</span></p><ul class="tags"><li><a href="../tags/VLN" class="internal tag-link">VLN</a></li><li><a href="../tags/VLA" class="internal tag-link">VLA</a></li><li><a href="../tags/navigation" class="internal tag-link">navigation</a></li><li><a href="../tags/legged" class="internal tag-link">legged</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>NaVILA: Legged Robot Vision-Language-Action Model for Navigation </p></div>
+                  
+                </div>
+<div class="callout-content">
 <ul>
-<li><strong>VLM Backbone</strong>: VILA（Visual Instruction Language Architecture），基于 stage-2 预训练模型微调</li>
-<li><strong>Two-level hierarchy</strong>:
-<ul>
-<li><strong>High-level VLA</strong>: 接收 egocentric 视觉 + 语言指令，输出 mid-level 语言动作（如 “turn left 30 degrees”, “move forward 75cm”）</li>
-<li><strong>Low-level RL policy</strong>: 将语言动作转换为 joint-level control</li>
+<li><strong>核心</strong>: 把 VLA 拆成 high-level VLM（生成”move forward 75cm”这类语言化 mid-level action）+ low-level vision-based RL locomotion policy 的两级架构，让 legged robot 能跑 VLN-CE 并迁移到真机</li>
+<li><strong>方法</strong>: 基于 VILA 的 image-based VLM，融合 R2R-CE / RxR-CE / EnvDrop / ScanQA / 2K YouTube 人类游览视频（通过 MASt3R 估计 metric pose 提取 trajectory）+ general VQA 做 SFT；底层用 single-stage PPO + LiDAR height map 训练 vision-based locomotion</li>
+<li><strong>结果</strong>: R2R-CE Val-Unseen SR 54%（+17% over prior SOTA，且仅用 single-view RGB 就超过用 panoramic+depth+odometry 的方法），ScanQA CIDEr 102.7 超过依赖 3D scan 的 LMM；real-world Unitree Go2/H1 + Booster T1 上 25 条指令 88% SR，跨形态零迁移</li>
+<li><strong>Sources</strong>: <a href="https://arxiv.org/abs/2412.04453" class="external">paper<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://navila-bot.github.io/" class="external">website<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://github.com/AnjieCheng/NaVILA" class="external">github<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><strong>Rating</strong>: 3 - Foundation（legged VLN 方向的奠基工作——RSS 2025 接收，“language as mid-level action” 范式 + YouTube video pipeline + VLN-CE-Isaac benchmark 已被后续 legged VLN 工作作为 de facto baseline 引用）</li>
 </ul>
-</li>
-<li><strong>Training data</strong>: 四类数据混合训练
+</div>
+</blockquote>
+<p><strong>Key Takeaways:</strong></p>
 <ol>
-<li>Real-world YouTube egocentric touring videos（2000 videos → 20000 trajectories）</li>
-<li>Simulated navigation（R2R-CE, RxR-CE in Habitat）</li>
-<li>Auxiliary tasks（EnvDrop augmented instructions, ScanQA 3D QA）</li>
-<li>General VQA datasets（保持通用能力）</li>
+<li><strong>语言作为 mid-level action 的接口</strong>：把 VLA 的输出从低维 joint command 抽象到 “turn right 30 degrees” 这种语言短语，自然解耦感知-推理与运动控制；同一个 VLA 可以替换 low-level policy 部署到 quadruped、humanoid（Go2/H1/T1）上零样本切换</li>
+<li><strong>Dual-frequency 架构</strong>：VLM 因体量大只能低频跑（1-2Hz），locomotion policy 高频跑（real-time），让 obstacle avoidance 和 reasoning 在不同时间尺度上并行——这是大模型上机器人的一个 robust 的工程模式</li>
+<li><strong>YouTube 人类游览视频是 navigation 的可用数据源</strong>：用 MASt3R 做 metric-pose estimation + entropy-based sampling + VLM/LLM 自动 captioning 把 2K 原视频变成 20K 监督 trajectory，是这篇论文里最 generalizable 的 contribution</li>
+<li><strong>Single-stage RL + LiDAR height map 在 locomotion 上打过 teacher-student distillation</strong>：collision rate 从 ROA 的 3.09 降到 0.81，说明对 vision-based locomotion 来说，distillation 不是必须的工程范式</li>
 </ol>
-</li>
-<li><strong>Action space</strong>: Mid-level 语言化动作（discrete 语义 + continuous 空间信息）</li>
+<p><strong>Teaser. NaVILA 实机演示——VLM 处理 RGB egocentric 视频生成语言指令，locomotion policy 在真实环境中执行长程导航和障碍避让。</strong>
+<img src="https://arxiv.org/html/2412.04453v2/x1.png" alt/></p>
+<hr/>
+<h2 id="problem--motivation">Problem &amp; Motivation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#problem--motivation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>VLN 在过去几年里从 discrete graph navigation（MP3D 节点跳转）走向 continuous environment（VLN-CE，Habitat 模拟器内连续移动），但仍存在两个未被打通的环节：</p>
+<ol>
+<li><strong>Continuous setting 仍然在 wheel-based / point-mass 抽象之上</strong>——agent 可以穿过 10cm 沙发缝隙，根本不考虑实体机器人物理约束。 legged robot 在 VLN 里几乎是空白</li>
+<li><strong>End-to-end VLA → joint action 的范式不自然</strong>：VLM 是用语言 / 图像数据预训练的，硬把它的输出 quantize 成低维 joint command 既丢掉 LLM 的语义优势，又撞上 sim-to-real gap</li>
+</ol>
+<p>NaVILA 的 first-principles 回答是：让 VLA 输出<strong>仍然停留在语言域</strong>——“move forward 75cm”、“turn left 30 degrees”——再让一个独立的 RL locomotion policy 把这些语言短语解释成 joint trajectory。这样：</p>
+<ul>
+<li>VLM 训练数据不必是 robot demonstration，可以用 R2R-CE 的 oracle action、YouTube 人类视频、ScanQA 这种异构数据混训</li>
+<li>同一个 VLA 可以驱动不同形态机器人（quadruped / humanoid），只需替换 low-level policy</li>
+<li>大模型低频跑 / locomotion 高频跑的 dual-frequency 模式天然 robust</li>
 </ul>
+<blockquote>
+<p>这其实和 SayCan / RT-Hierarchy 系的”LLM 出 skill name + 底层 skill 执行”思路一脉相承，但 NaVILA 的关键差异是<strong>输出的不是 discrete skill ID，而是带 continuous 数值参数的语言短语</strong>（角度、距离），这让 mid-level action 既保留语义性又有空间精度。</p>
+</blockquote>
+<hr/>
+<h2 id="method">Method<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#method" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>NaVILA 是一个 2-level framework：上层是 VLA（基于 VILA 微调），输出语言化的 mid-level action；下层是 vision-based RL locomotion policy，把语言指令解释成 12 自由度的 joint position 输出。</p>
+<p><strong>Figure 2. NaVILA 整体架构——VLA 处理 single-view egocentric RGB 序列输出自然语言 mid-level action，locomotion policy 把它转成 joint movement。</strong>
+<img src="https://arxiv.org/html/2412.04453v2/x2.png" alt/></p>
+<h3 id="ii-a-high-level-vla把-vila-改造成-navigation-agent">II-A High-level VLA：把 VILA 改造成 navigation agent<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#ii-a-high-level-vla把-vila-改造成-navigation-agent" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Backbone 选择 image-based VLM 而非 video VLM</strong>。理由是 image-text pretraining 数据规模远超 video-text，跨场景泛化更好。具体用 <a href="https://github.com/NVlabs/VILA" class="external">VILA<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>（Vision-Language Architecture），三段式结构：vision encoder → MLP projector → LLM (Llama3-8B 量级)。</p>
+<p><strong>Navigation prompt 设计</strong>——VLN 任务里 “current frame” 和 “history frames” 角色不同：current 决定下一步动作，history 是 memory bank。NaVILA 的处理：</p>
+<ul>
+<li>强制保留最新一帧作为 current observation，再从过去 t-1 帧均匀采样 + 强制保留第一帧</li>
+<li>在 prompt 里用 textual cue 区分：<code>&quot;a video of historical observations: &lt;frames>... current observation: &lt;frame_t>&quot;</code></li>
+<li><strong>不引入 special token</strong>——保持 LLM 输入输出都在 language domain，复用预训练 reasoning 能力</li>
+</ul>
+<p><strong>SFT 数据 blend（4 类）</strong>：</p>
+<ol>
+<li><strong>Navigational data from real videos</strong>——2K YouTube egocentric touring videos → 20K trajectories（关键贡献，下面详述）</li>
+<li><strong>Navigational data from simulations</strong>——R2R-CE 和 RxR-CE，用 shortest path follower 在 Habitat 内生成 oracle action 序列。 trick：合并最多 3 个连续相同动作（两个 forward 25cm 合并成 forward 50cm），既减小数据集又增加动作多样性，并对 stop action 做 rebalancing</li>
+<li><strong>Auxiliary navigational data</strong>——EnvDrop augmented instructions、ScanQA 3D QA（用 multi-view RGB 而不是 3D scan）、trajectory summarization</li>
+<li><strong>General VQA datasets</strong>——保住 broad reasoning capability</li>
+</ol>
+<p><strong>YouTube 人类视频数据 pipeline</strong>（这是 NaVILA 最 reusable 的方法贡献）：</p>
+<p><strong>Figure 4. 把 YouTube 人类游览视频转成 continuous-environment navigation supervision 的数据 pipeline——entropy-based sampling 切 trajectory，MASt3R 估计 metric camera pose 抽 step-wise action，VLM/LLM 自动生成 instruction。</strong>
+<img src="https://arxiv.org/html/2412.04453v2/x7.png" alt/></p>
+<ul>
+<li><strong>Entropy-based sampling</strong> 把长视频切成有信息量的 trajectory 段</li>
+<li><strong>MASt3R</strong> 做 metric-pose estimation（注意是 metric scale，不是 up-to-scale）—— 这是把”人类视频 → 可监督 action label”打通的关键技术依赖</li>
+<li>VLM-based captioning + LLM rephrasing 自动生成 instruction</li>
+</ul>
+<p><strong>Inference</strong>：用 regex parser 从 LLM 输出抽取 action type（forward / turn left / turn right / stop）+ 数值参数（距离/角度）。论文报告”all actions across all experiments are successfully matched and mapped”——这种 hard parsing 在 deployment 上简单粗暴但 reliable。</p>
+<h3 id="ii-b-low-levelvision-based-locomotion-policy">II-B Low-level：vision-based locomotion policy<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#ii-b-low-levelvision-based-locomotion-policy" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Action space</strong>：只控制 12 个腿部 joint motor（base 6 DoF 自由），joint position target → torque（PD 控制）</p>
+<p><strong>Observation</strong>：</p>
+<ul>
+<li>Critic 用 privileged terrain height scan + proprioception</li>
+<li>Actor 只用 proprio history（无 linear velocity）+ 从 LiDAR point cloud 重建的 2.5D height map</li>
+</ul>
+<p><strong>Figure 5. 从 LiDAR point cloud 重建 height map：(a) Go2 在仿真里执行速度命令，红点为 raycast；右图为预处理后的 height map。 (b) 玻璃面前的安全 locomotion——top-down height map 能检测到玻璃，而 depth/RGB 不行。</strong>
+<img src="https://arxiv.org/html/2412.04453v2/x8.png" alt/></p>
+<p><strong>LiDAR height map 的工程细节</strong>：</p>
+<ul>
+<li>Unitree L1 LiDAR：360°×90° FoV，15Hz</li>
+<li>每个 voxel 取最低值；过去 5 帧做 max filter 平滑</li>
+<li>选 LiDAR 而非 depth/RGB：在强阳光、玻璃面这种 corner case 上 robust</li>
+</ul>
+<p><strong>Single-stage RL（不做 teacher-student distillation）</strong>：</p>
+<ul>
+<li>之前主流做法是先训 privileged policy，再 distill 给 vision policy</li>
+<li>NaVILA 直接用 PPO 训 vision policy，靠 Isaac Lab 的 ray-casting 加速（>60K FPS on RTX 4090）</li>
+<li><strong>Command 接口</strong>：VLM 输出的 fixed action set {move forward, turn left, turn right, stop} 映射到固定 velocity command {0.5 m/s, π/6 rad/s, -π/6 rad/s, 0}，按目标距离/角度计算执行时长</li>
+</ul>
+<blockquote>
+<p>这里其实牺牲了一点表达力——所有 forward 都用 0.5 m/s 跑同样长的时间，没有真正的 continuous velocity tracking。 但好处是 sim-to-real 简单，且 VLM 输出的 fine-grained 数值（“forward 75cm”）通过执行时长来体现，而不是通过 velocity magnitude。</p>
+</blockquote>
+<hr/>
 <h2 id="key-results">Key Results<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-results" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="high-level-vla-on-vln-ce-benchmarks">High-level VLA on VLN-CE benchmarks<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#high-level-vla-on-vln-ce-benchmarks" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table I 摘要（R2R-CE / RxR-CE Val-Unseen）</strong>：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Method</th><th>Obs</th><th>R2R SR ↑</th><th>R2R SPL ↑</th><th>RxR SR ↑</th><th>RxR SPL ↑</th></tr></thead><tbody><tr><td>GridMM* (waypoint)</td><td>Pano+Depth+Odo</td><td>49.0</td><td>41.0</td><td>-</td><td>-</td></tr><tr><td>ETPNav* (waypoint)</td><td>Pano+Depth+Odo</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>NaVid (video VLM)</td><td>Single RGB</td><td>37.4</td><td>35.9</td><td>-</td><td>-</td></tr><tr><td><strong>NaVILA</strong></td><td><strong>Single RGB</strong></td><td><strong>54.0</strong></td><td><strong>49.0</strong></td><td><strong>44.0</strong></td><td><strong>35.0</strong></td></tr></tbody></table></div>
+<p>*indicates use of simulator pre-trained waypoint predictor</p>
+<p>关键观察：<strong>仅用 single-view RGB 就超过用 panoramic + depth + odometry 的方法</strong>，且不依赖 simulator pretrained waypoint predictor。 +17% SR over prior SOTA 在不靠 waypoint trick 的赛道上是显著优势。</p>
+<p><strong>Cross-dataset generalization</strong>：仅在 R2R 上训，零样本评估 RxR Val-Unseen，比 NaVid 高 +10% SR——说明 representation 学到的不只是 R2R-specific pattern。</p>
+<h3 id="spatial-scene-understanding-scanqa">Spatial scene understanding (ScanQA)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#spatial-scene-understanding-scanqa" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Model</th><th>CIDEr ↑</th><th>EM ↑</th><th>Input</th></tr></thead><tbody><tr><td>LEO (3D LMM)</td><td>101.4</td><td>24.5</td><td>3D scan</td></tr><tr><td>Scene-LLM*</td><td>80.0</td><td>27.2</td><td>3D scan</td></tr><tr><td>NaviLLM (2D VLA)</td><td>75.9</td><td>23.0</td><td>RGB</td></tr><tr><td><strong>NaVILA (8 frames)</strong></td><td><strong>95.1</strong></td><td><strong>27.0</strong></td><td><strong>RGB</strong></td></tr><tr><td><strong>NaVILA (64 frames)</strong></td><td><strong>102.7</strong></td><td><strong>28.6</strong></td><td><strong>RGB</strong></td></tr></tbody></table></div>
+<p>只用 multi-view RGB 就追平甚至超过依赖 3D scan / depth + camera pose 的 3D LMM。</p>
+<h3 id="locomotion-policytable-v">Locomotion policy（Table V）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#locomotion-policytable-v" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Method</th><th>Linear Vel Err ↓</th><th>Angular Vel Err ↓</th><th>Collision Rate ↓</th></tr></thead><tbody><tr><td>ROA (BCLoss)</td><td>0.189</td><td>0.152</td><td>3.25</td></tr><tr><td>ROA</td><td>0.161</td><td>0.152</td><td>3.09</td></tr><tr><td><strong>NaVILA</strong></td><td><strong>0.066</strong></td><td><strong>0.113</strong></td><td><strong>0.81</strong></td></tr></tbody></table></div>
+<p>Single-stage 比 distillation-based 全面更好，特别是 collision rate 降低 3.8 倍。</p>
+<h3 id="vln-ce-isaac-benchmark自家提出">VLN-CE-Isaac benchmark（自家提出）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#vln-ce-isaac-benchmark自家提出" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Figure 6. VLN-CE-Isaac benchmark 可视化——Isaac Sim 高保真物理仿真，Go2 / H1 等 legged robot 部署在 R2R 场景中。</strong>
+<img src="https://arxiv.org/html/2412.04453v2/x9.png" alt/></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Setup</th><th>Method</th><th>SR ↑</th><th>SPL ↑</th></tr></thead><tbody><tr><td>Go2</td><td>NaVILA-Blind (proprio only)</td><td>36.2</td><td>33.3</td></tr><tr><td>Go2</td><td><strong>NaVILA-Vision (LiDAR)</strong></td><td><strong>50.2</strong></td><td><strong>45.5</strong></td></tr><tr><td>H1</td><td>NaVILA-Blind</td><td>24.4</td><td>21.0</td></tr><tr><td>H1</td><td><strong>NaVILA-Vision (height scan)</strong></td><td><strong>45.3</strong></td><td><strong>40.3</strong></td></tr><tr><td>Oracle (perfect low-level)</td><td>-</td><td>51.3</td><td>46.9</td></tr></tbody></table></div>
+<p>Vision policy 比 blind 高 +14%（Go2）/ +21%（H1）SR；NaVILA-Vision 在 Go2 上几乎追平 Oracle low-level（50.2 vs 51.3），说明 vision-based locomotion 在物理仿真里基本不再是瓶颈。 H1 上仍有 6 个点 gap，humanoid 的 footing 比 quadruped 难。</p>
+<h3 id="real-world-deployment">Real-world deployment<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#real-world-deployment" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>25 条指令 × 3 次重复，Workspace / Home / Outdoor 三类环境，simple vs complex instruction：</p>
 <ul>
-<li>R2R-CE: 54.0% SR（比 prior SOTA 提升 17%）</li>
-<li>RxR-CE: 44.0% SR</li>
-<li>ScanQA: 102.7 CIDEr（超越需要 depth/pose 的 3D 模型）</li>
-<li>Real-world: 88% 成功率（Unitree Go2 四足机器人，25 条指令）</li>
-<li>引入 VLN-CE-Isaac benchmark（Isaac Sim 高保真环境）</li>
+<li>NaVILA on Unitree Go2: simple SR 1.00 / 1.00 / 1.00（across envs）, complex 0.80 / 0.67 / 0.83</li>
+<li>NaVILA on Booster T1（humanoid）: 直接用同一个 VLA 不重训，simple 0.93, complex 0.67</li>
+<li>vs GPT-4o baseline：NaVILA 全面碾压，特别在 complex 指令上（GPT-4o complex SR ≤0.33）</li>
 </ul>
-<h2 id="strengths--weaknesses">Strengths &amp; Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths--weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p><strong>Strengths</strong>:</p>
+<p><strong>Human touring video 的 ablation</strong>：去掉 YouTube 数据后（NaVILA†），outdoor 场景 SR 从 1.00 / 0.83 跌到 0.00 / 0.00——说明 YouTube 数据对 outdoor / out-of-distribution 泛化是 critical 的。</p>
+<p><strong>Video. 真实世界部署演示（Unitree Go2 + LiDAR）。</strong>
+<video src="https://navila-bot.github.io/videos/Real/output_grid_1_1.mp4" controls muted playsinline width="720"></video></p>
+<p><strong>Video. 跨形态部署：Booster T1 humanoid 上无需重训直接迁移。</strong>
+<video src="https://navila-bot.github.io/videos/Real/t1/1.mp4" controls muted playsinline width="720"></video></p>
+<p><strong>Video. 数据 pipeline：YouTube 人类游览视频 → trajectory + instruction 对。</strong>
+<video src="https://navila-bot.github.io/videos/method/pipeline.mp4" controls muted playsinline width="720"></video></p>
+<hr/>
+<h2 id="关联工作">关联工作<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#关联工作" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="基于">基于<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#基于" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li>语言作为 mid-level action 的设计非常优雅，自然解耦了感知理解与运动控制</li>
-<li>大规模利用 YouTube 视频数据，解决了 robot navigation data 稀缺问题</li>
-<li>真正实现了 sim-to-real transfer on legged robots</li>
-<li>架构 robot-agnostic，low-level policy 可替换</li>
+<li><strong>VILA</strong> ([VILA Family of VLMs, NVIDIA])：image-based VLM backbone，三段式 vision encoder + MLP projector + LLM；NaVILA 从 stage-2 pretrain checkpoint 开始 SFT</li>
+<li><strong>MASt3R</strong>：metric-pose estimation in the wild，是把 YouTube 视频转成可监督 trajectory 的关键技术依赖</li>
+<li><strong>Habitat / VLN-CE</strong>：simulated continuous VLN 的 benchmark 平台</li>
+<li><strong>Isaac Lab / Isaac Sim</strong>：locomotion policy 训练 + VLN-CE-Isaac benchmark 的物理仿真环境</li>
+<li><strong>PPO</strong>：locomotion RL 训练算法</li>
 </ul>
-<p><strong>Weaknesses</strong>:</p>
+<h3 id="对比">对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li>Mid-level 语言动作的粒度选择可能需要 task-specific 调优</li>
-<li>依赖预训练 RL locomotion policy 的质量</li>
-<li>对 VLN-VLA 统一的启示：语言化 mid-level action 是否可以扩展到 manipulation？</li>
+<li><a href="../Papers/2402-NaVid" class="internal alias" data-slug="Papers/2402-NaVid">NaVid</a>：同样是 single-view RGB 的 video VLM for VLN，NaVILA 比它 R2R SR 高 17%；架构差异在 NaVid 用 video encoder，NaVILA 用 image-based VLM + 显式区分 current/history frame</li>
+<li><strong>GridMM / ETPNav 等 waypoint-based 方法</strong>：依赖 simulator 预训练的 waypoint predictor，强是强但泛化差；NaVILA 不用 waypoint 也能赢</li>
+<li><strong>GPT-4o</strong>：作为 zero-shot baseline 在 real-world 测试中被 NaVILA 显著超越，特别是 complex 指令</li>
+<li><strong>ROA (Regularized Online Adaptation)</strong>：teacher-student distillation 的 locomotion baseline，被 single-stage RL 全面超越</li>
+<li><strong>3D LMM (LEO, Scene-LLM, 3D-LLM)</strong>：依赖 3D scan / depth 输入；NaVILA 仅用 multi-view RGB 就在 ScanQA 上追平/超越</li>
 </ul>
-<h2 id="mind-map">Mind Map<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mind-map" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;mindmap\n  root((NaVILA))\n    Problem\n      VLN on legged robots\n      Sim-to-real gap\n      High-dim action space\n    Method\n      VILA VLM backbone\n      Two-level hierarchy\n        Mid-level language actions\n        RL locomotion policy\n      Multi-source training data\n        YouTube videos\n        Simulated navigation\n        Auxiliary tasks\n    Results\n      R2R-CE 54% SR\n      Real-world 88% SR\n      VLN-CE-Isaac benchmark&quot;">mindmap
-  root((NaVILA))
-    Problem
-      VLN on legged robots
-      Sim-to-real gap
-      High-dim action space
-    Method
-      VILA VLM backbone
-      Two-level hierarchy
-        Mid-level language actions
-        RL locomotion policy
-      Multi-source training data
-        YouTube videos
-        Simulated navigation
-        Auxiliary tasks
-    Results
-      R2R-CE 54% SR
-      Real-world 88% SR
-      VLN-CE-Isaac benchmark
-</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
-<h2 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="方法相关">方法相关<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#方法相关" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li>NaVILA 是 VLN-VLA 统一最直接的证据之一：它本质上就是一个 navigation-focused VLA</li>
-<li>与 π0.5 的关键区别：π0.5 用 language subgoal 驱动 low-level flow matching action expert，NaVILA 用 language action 驱动 RL locomotion policy</li>
-<li>都使用 hierarchical 架构，但 action representation 不同（continuous flow vs. discrete RL policy）</li>
-<li>YouTube 视频数据的利用方式值得关注——能否同样用于 manipulation？</li>
-</ul></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="uevi3i" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#problem--motivation" data-for="problem--motivation">Problem &amp; Motivation</a></li><li class="depth-0"><a href="#method" data-for="method">Method</a></li><li class="depth-0"><a href="#key-results" data-for="key-results">Key Results</a></li><li class="depth-0"><a href="#strengths--weaknesses" data-for="strengths--weaknesses">Strengths &amp; Weaknesses</a></li><li class="depth-0"><a href="#mind-map" data-for="mind-map">Mind Map</a></li><li class="depth-0"><a href="#notes" data-for="notes">Notes</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+<li><strong>SayCan / RT-Hierarchy 系</strong>：同样是 high-level LLM + low-level skill 的两级架构思路；NaVILA 创新点在 mid-level action 是带连续参数的语言短语而非 discrete skill ID</li>
+<li><a href="../Papers/2410-Pi0" class="internal alias" data-slug="Papers/2410-Pi0">π0</a> / <a href="../Papers/2504-Pi05" class="internal alias" data-slug="Papers/2504-Pi05">π0.5</a>：另一类 hierarchical VLA，用 language subgoal 驱动 flow-matching action expert；与 NaVILA 的关键区别是底层用 continuous flow policy 而非 RL locomotion，且面向 manipulation</li>
+<li><a href="../Papers/2307-RT2" class="internal alias" data-slug="Papers/2307-RT2">RT-2</a>：end-to-end VLA 直接输出 low-level action，是 NaVILA 想避开的范式</li>
+<li><a href="../Papers/2412-LHVLN" class="internal alias" data-slug="Papers/2412-LHVLN">LH-VLN</a>：long-horizon VLN，与 NaVILA 在长程任务能力上有相似关注点</li>
+</ul>
+<hr/>
+<h2 id="论文点评">论文点评<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#论文点评" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="strengths">Strengths<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>语言作为 mid-level action 的接口设计很优雅</strong>——既保留 VLM 的语义推理能力，又通过数值参数（距离/角度）保留空间精度，且天然支持跨形态切换。 这种 “language as action interface” 的范式在 manipulation 上也值得复制（语言化的 grasp / waypoint 描述）</li>
+<li><strong>YouTube 视频数据 pipeline 是真正可复用的方法贡献</strong>——MASt3R 给出 metric pose 是关键打通点，过去用 human video 只能做 pretraining / landmark grounding，这是首次直接拿来训 continuous navigation 的 supervision label</li>
+<li><strong>Single-stage vision-based locomotion 打过 teacher-student distillation</strong>（collision rate 0.81 vs 3.09）—— Isaac Lab 的 ray-casting + LiDAR height map 让单阶段 RL 在效率和性能上都赢，挑战了 legged locomotion 必须 distillation 的 convention</li>
+<li><strong>Real-world 评测扎实</strong>——25 条指令 × 3 次 × 3 场景 × 2 robot platform，不是常见的”挑几条 demo 给 SR 100%“，complex outdoor 也敢报 0.83</li>
+<li><strong>Dual-frequency 架构对部署 friendly</strong>——大 VLM 跑慢一点不影响 locomotion，这是把大模型上机器人的一个被验证的工程模式</li>
+</ol>
+<h3 id="weaknesses">Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>Mid-level action set 极度受限</strong>——只有 4 种动作（forward / turn left / turn right / stop），forward 全速 0.5m/s，转向 π/6 rad/s 固定。 这意味着 “continuous value” 只通过执行时长间接体现，VLM 输出的 “forward 73cm” 和 “forward 75cm” 实际上无差别（都是固定速度跑 1.46s vs 1.50s）。 这种粒度对精细操作不够（侧移、对角线移动、变速避障都不支持）</li>
+<li><strong>VLA 在低频跑导致 reactive obstacle avoidance 完全靠 locomotion policy</strong>——如果 VLM 决策周期是 1-2Hz，在动态障碍场景里高层 planner 来不及反应，全靠 height map + RL 兜底；论文里没有讨论 dynamic obstacle / 行人场景</li>
+<li><strong>MASt3R metric pose 估计在 in-the-wild 视频上的可靠性没有量化分析</strong>——pipeline 里这个环节失败会直接污染 trajectory label，但论文没报 noise level / 失败率</li>
+<li><strong>“Real-world 88% SR” 这个数字需要小心解读</strong>——25 条指令 × 3 次 = 75 trial，simple 占主导且 simple SR 几乎全 1.00，complex SR 在 outdoor 也只是 0.83。 整体均值被 simple cases 拉高</li>
+<li><strong>跨 embodiment 迁移虽然演示了 Go2 → H1 → T1，但 H1 在 VLN-CE-Isaac 上 SR 仍比 Go2 低 5 个点</strong>，且需要重新训 H1 的 locomotion policy（不是真的 zero-shot；只有 VLA 是零迁移）。 论文标题暗示的”通用 VLA”主要指 VLA 部分</li>
+</ol>
+<h3 id="可信评估">可信评估<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#可信评估" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="artifact-可获取性">Artifact 可获取性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#artifact-可获取性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><strong>代码</strong>: inference + training 全开源（GitHub repo 列出了 train/eval scripts，locomotion code 在 <a href="https://github.com/yang-zj1026/legged-loco" class="external">legged-loco<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>，benchmark 在 <a href="https://github.com/yang-zj1026/NaVILA-Bench" class="external">NaVILA-Bench<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>）</li>
+<li><strong>模型权重</strong>: 已发布 <code>a8cheng/navila-llama3-8b-8f</code>（评估用 checkpoint）+ <code>a8cheng/navila-siglip-llama3-8b-v1.5-pretrain</code>（pretrain 起点）on HuggingFace</li>
+<li><strong>训练细节</strong>: 仅高层描述——附录 -C2 给了 VLA 超参，-C3 给了 locomotion 细节；但 SFT 数据混合的具体比例未完整披露</li>
+<li><strong>数据集</strong>: 部分公开——R2R / RxR / EnvDrop / ScanQA / Human 的 annotations 在 <a href="https://huggingface.co/datasets/a8cheng/NaVILA-Dataset" class="external">HuggingFace dataset<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> 上；YouTube 人类游览原视频因版权只放 video IDs，需用户自己 yt-dlp 下载；EnvDrop 视频也需用户自己用 VLN-CE renderer 重渲染</li>
+</ul>
+<h4 id="claim-可验证性">Claim 可验证性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#claim-可验证性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>✅ <strong>“+17% SR on R2R-CE Val-Unseen vs prior SOTA”</strong>：Table I 数字清楚，对比的 baseline 公开（NaVid 等），可在公开 benchmark 上独立复现</li>
+<li>✅ <strong>“single-stage RL 比 ROA distillation 更优”</strong>：Table V 三个 metric 都报了，code 开源可复现</li>
+<li>✅ <strong>“VLA 跨 embodiment 零迁移到 Booster T1”</strong>：Table VI + 真机视频佐证；T1 上 simple SR 0.93 / complex 0.67 是 nontrivial 的迁移强度</li>
+<li>⚠️ <strong>“88% real-world SR on 25 instructions”</strong>：trial 数 75 偏少；simple vs complex / 三类环境分布不均；GPT-4o baseline 是否在公平 prompt 下评估未细说</li>
+<li>⚠️ <strong>“YouTube human videos critical for generalization”</strong>：ablation 在 outdoor 上 NaVILA† SR 0.00 vs NaVILA 1.00 的 gap 戏剧性强，但 trial 数小（每环境约 5-10 条 indoor + 几条 outdoor），不能完全排除噪声</li>
+<li>⚠️ <strong>“first work to show direct training on human videos improves continuous navigation”</strong>：first 是结合 continuous + direct training 的 narrow 表述；human video 用于 navigation pretraining 此前已有工作（如 NaVid, EgoPlan）</li>
+<li>❌ 没有明显的营销话术 claim</li>
+</ul>
+<h3 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>NaVILA 的本质 takeaway 不是”language is mid-level action”这句话，而是”VLA 输出可以是 structured language with numerical parameters”</strong>——这种 representation 在 manipulation 上其实更值得探索（“grasp the cup at 30cm to your right”），目前 manipulation VLA 大都还在 token-quantized continuous action 上挣扎</li>
+<li>与 <a href="../Papers/2504-Pi05" class="internal alias" data-slug="Papers/2504-Pi05">π0.5</a> 的关键 architectural 对比：π0.5 用 language subgoal 驱动 low-level flow matching action expert（continuous, diffusion-style），NaVILA 用 language action 驱动 RL locomotion policy（discrete velocity command + duration）。两者都用 hierarchy，但 NaVILA 的 low-level 更”传统”（PPO + heuristic mapping），π0.5 的 low-level 更端到端。 哪种范式更 scale？我猜 long-term 是 π0.5 这种 differentiable hierarchy 赢，但 NaVILA 的工程简洁性短期内更易部署</li>
+<li><strong>YouTube 视频数据 pipeline 能否用于 manipulation？</strong>——理论上人类操作视频比游览视频更难（需要 hand pose + object 6D pose），但配上 HaMeR + FoundationPose 这类 in-the-wild estimation tool 应该可行。这是一个值得跟进的 thread</li>
+<li>❓ 论文没有报告 VLM 推理频率的具体数字。 从 8B model + 8 frames 的体量推断应该是 1-2Hz，那么在动态障碍场景的 reactive 性能完全依赖 locomotion policy；这个 dual-frequency 架构在静态环境很 robust，但在人多 / 移动物体场景里 high-level decision 可能会延迟严重</li>
+<li>❓ Mid-level action 的 4 类离散动作 + 固定速度，其实是个很强的 inductive bias / 限制。如果换成 humanoid 需要侧移、转身、蹲下，是否需要扩展 action vocabulary？这部分 paper 没讨论</li>
+<li>VLN-CE-Isaac benchmark 是个有用的 community resource，把 R2R 场景从 Habitat 抽象搬到 Isaac 物理仿真，能更真实评估 legged platform 的 navigation——后续 VLN 论文应该用这个而不是只跑 Habitat</li>
+</ul>
+<h3 id="rating">Rating<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#rating" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>分数</strong>：3 - Foundation
+<strong>理由</strong>：NaVILA 是 legged VLN 方向的奠基工作——把”language as mid-level action”范式 + YouTube 人类视频 pipeline + VLN-CE-Isaac 物理仿真 benchmark 一次性打通，RSS 2025 接收，且在 R2R-CE Val-Unseen 上 +17% SR、仅用 single-view RGB 即超越 panoramic+depth 方法（见 Strength 1-4）。 相比 Frontier 档：这不是一般的 SOTA 刷分，而是范式 + benchmark + 数据 pipeline 三位一体的 foundational contribution，后续 legged VLN 工作几乎无法绕开它作为 baseline；缺点（固定 action set、低频 VLM）是工程局限，不削弱其奠基意义。</p></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="ud8fg4" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#problem--motivation" data-for="problem--motivation">Problem &amp; Motivation</a></li><li class="depth-0"><a href="#method" data-for="method">Method</a></li><li class="depth-1"><a href="#ii-a-high-level-vla把-vila-改造成-navigation-agent" data-for="ii-a-high-level-vla把-vila-改造成-navigation-agent">II-A High-level VLA：把 VILA 改造成 navigation agent</a></li><li class="depth-1"><a href="#ii-b-low-levelvision-based-locomotion-policy" data-for="ii-b-low-levelvision-based-locomotion-policy">II-B Low-level：vision-based locomotion policy</a></li><li class="depth-0"><a href="#key-results" data-for="key-results">Key Results</a></li><li class="depth-1"><a href="#high-level-vla-on-vln-ce-benchmarks" data-for="high-level-vla-on-vln-ce-benchmarks">High-level VLA on VLN-CE benchmarks</a></li><li class="depth-1"><a href="#spatial-scene-understanding-scanqa" data-for="spatial-scene-understanding-scanqa">Spatial scene understanding (ScanQA)</a></li><li class="depth-1"><a href="#locomotion-policytable-v" data-for="locomotion-policytable-v">Locomotion policy（Table V）</a></li><li class="depth-1"><a href="#vln-ce-isaac-benchmark自家提出" data-for="vln-ce-isaac-benchmark自家提出">VLN-CE-Isaac benchmark（自家提出）</a></li><li class="depth-1"><a href="#real-world-deployment" data-for="real-world-deployment">Real-world deployment</a></li><li class="depth-0"><a href="#关联工作" data-for="关联工作">关联工作</a></li><li class="depth-1"><a href="#基于" data-for="基于">基于</a></li><li class="depth-1"><a href="#对比" data-for="对比">对比</a></li><li class="depth-1"><a href="#方法相关" data-for="方法相关">方法相关</a></li><li class="depth-0"><a href="#论文点评" data-for="论文点评">论文点评</a></li><li class="depth-1"><a href="#strengths" data-for="strengths">Strengths</a></li><li class="depth-1"><a href="#weaknesses" data-for="weaknesses">Weaknesses</a></li><li class="depth-1"><a href="#可信评估" data-for="可信评估">可信评估</a></li><li class="depth-1"><a href="#notes" data-for="notes">Notes</a></li><li class="depth-1"><a href="#rating" data-for="rating">Rating</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
 </script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
 </script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>

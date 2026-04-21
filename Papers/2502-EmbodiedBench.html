@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><title>EmbodiedBench: Comprehensive Benchmarking Multi-modal Large Language Models for Vision-Driven Embodied Agents</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="EmbodiedBench: Comprehensive Benchmarking Multi-modal Large Language Models for Vision-Driven Embodied Agents"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="EmbodiedBench: Comprehensive Benchmarking Multi-modal Large Language Models for Vision-Driven Embodied Agents"/><meta name="twitter:description" content="Summary EmbodiedBench 是一个综合性 benchmark，用于评估 MLLM（Multi-modal Large Language Models）作为 vision-driven embodied agent 的能力。包含 4 个环境（EB-ALFRED、EB-Habitat、EB-Navigation、EB-Manipulation）共 ..."/><meta property="og:description" content="Summary EmbodiedBench 是一个综合性 benchmark，用于评估 MLLM（Multi-modal Large Language Models）作为 vision-driven embodied agent 的能力。包含 4 个环境（EB-ALFRED、EB-Habitat、EB-Navigation、EB-Manipulation）共 ..."/><meta property="og:image:alt" content="Summary EmbodiedBench 是一个综合性 benchmark，用于评估 MLLM（Multi-modal Large Language Models）作为 vision-driven embodied agent 的能力。包含 4 个环境（EB-ALFRED、EB-Habitat、EB-Navigation、EB-Manipulation）共 ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2502-EmbodiedBench"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2502-EmbodiedBench"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary EmbodiedBench 是一个综合性 benchmark，用于评估 MLLM（Multi-modal Large Language Models）作为 vision-driven embodied agent 的能力。包含 4 个环境（EB-ALFRED、EB-Habitat、EB-Navigation、EB-Manipulation）共 ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+<html lang="en"><head><title>EmbodiedBench: Comprehensive Benchmarking Multi-modal Large Language Models for Vision-Driven Embodied Agents</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="EmbodiedBench: Comprehensive Benchmarking Multi-modal Large Language Models for Vision-Driven Embodied Agents"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="EmbodiedBench: Comprehensive Benchmarking Multi-modal Large Language Models for Vision-Driven Embodied Agents"/><meta name="twitter:description" content="Summary EmbodiedBench 核心: 一个把 MLLM-as-embodied-agent 评测拆成 high/low-level × 6-capability 的细粒度 benchmark；24 个模型、4 个环境、1128 个任务全部用统一 vision-driven agent pipeline 跑过一遍 方法: 4 ..."/><meta property="og:description" content="Summary EmbodiedBench 核心: 一个把 MLLM-as-embodied-agent 评测拆成 high/low-level × 6-capability 的细粒度 benchmark；24 个模型、4 个环境、1128 个任务全部用统一 vision-driven agent pipeline 跑过一遍 方法: 4 ..."/><meta property="og:image:alt" content="Summary EmbodiedBench 核心: 一个把 MLLM-as-embodied-agent 评测拆成 high/low-level × 6-capability 的细粒度 benchmark；24 个模型、4 个环境、1128 个任务全部用统一 vision-driven agent pipeline 跑过一遍 方法: 4 ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2502-EmbodiedBench"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2502-EmbodiedBench"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary EmbodiedBench 核心: 一个把 MLLM-as-embodied-agent 评测拆成 high/low-level × 6-capability 的细粒度 benchmark；24 个模型、4 个环境、1128 个任务全部用统一 vision-driven agent pipeline 跑过一遍 方法: 4 ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
   position: absolute;
   display: flex;
   float: right;
@@ -116,109 +116,590 @@ pre:hover > .expand-button {
   padding: 0 12px;
   font-size: 14px;
 }
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2502-EmbodiedBench"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="gc1ghh"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/RL" class="sidebar-tag-pill">#RL</a><a href="/mindflow/tags/web-agent" class="sidebar-tag-pill">#web-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/scene-understanding" class="sidebar-tag-pill">#scene-understanding</a><a href="/mindflow/tags/instruction-following" class="sidebar-tag-pill">#instruction-following</a><a href="/mindflow/tags/cross-embodiment" class="sidebar-tag-pill">#cross-embodiment</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2502-EmbodiedBench</a></div></nav><h1 class="article-title">EmbodiedBench: Comprehensive Benchmarking Multi-modal Large Language Models for Vision-Driven Embodied Agents</h1><div class="paper-meta"><span class="paper-venue">ICML 2025</span><span class="paper-authors"><span class="meta-sep">·</span>Rui Yang <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, Hanyang Chen</span><span>, Junyu Zhang</span><span>, Mark Zhao</span><span>, Cheng Qian</span><span>, Kangrui Wang</span><span>, Qineng Wang</span><span>, Teja Venkat Koripella</span><span>, Marziyeh Movahedi</span><span>, Manling Li</span><span>, Heng Ji</span><span>, Huan Zhang</span><span>, Tong Zhang</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2025-02-01T00:00:00.000Z">Feb 01, 2025</time><span>6 min read</span></p><ul class="tags"><li><a href="../tags/VLM" class="internal tag-link">VLM</a></li><li><a href="../tags/navigation" class="internal tag-link">navigation</a></li><li><a href="../tags/manipulation" class="internal tag-link">manipulation</a></li><li><a href="../tags/task-planning" class="internal tag-link">task-planning</a></li><li><a href="../tags/scene-understanding" class="internal tag-link">scene-understanding</a></li><li><a href="../tags/instruction-following" class="internal tag-link">instruction-following</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>EmbodiedBench 是一个综合性 benchmark，用于评估 MLLM（Multi-modal Large Language Models）作为 vision-driven embodied agent 的能力。包含 <strong>4 个环境</strong>（EB-ALFRED、EB-Habitat、EB-Navigation、EB-Manipulation）共 <strong>1,128 个测试任务</strong>，覆盖 high-level semantic planning 到 low-level atomic action control。设计了 <strong>6 个 capability-oriented 子集</strong>（commonsense reasoning、complex instruction understanding、spatial awareness、visual perception、long-term planning、basic task solving）进行细粒度评估。对 24 个 leading MLLM 的实验表明：模型在 high-level 任务表现尚可，但 low-level manipulation 极差（最好的 GPT-4o 平均仅 28.9%）；vision 输入对 low-level 任务至关重要（移除后性能下降 40%-70%）。</p>
-<h2 id="problem--motivation">Problem &amp; Motivation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#problem--motivation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2502-EmbodiedBench"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="mm0h7i"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/embodied-reasoning" class="sidebar-tag-pill">#embodied-reasoning</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/computer-use" class="sidebar-tag-pill">#computer-use</a><a href="/mindflow/tags/agentic-RL" class="sidebar-tag-pill">#agentic-RL</a><a href="/mindflow/tags/gui-agent" class="sidebar-tag-pill">#gui-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/world-model" class="sidebar-tag-pill">#world-model</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2502-EmbodiedBench</a></div></nav><h1 class="article-title">EmbodiedBench: Comprehensive Benchmarking Multi-modal Large Language Models for Vision-Driven Embodied Agents</h1><div class="paper-meta"><span class="paper-venue">ICML 2025 (Oral)</span><span class="paper-authors"><span class="meta-sep">·</span>Rui Yang <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, Hanyang Chen</span><span>, Junyu Zhang</span><span>, Mark Zhao</span><span>, Cheng Qian</span><span>, Kangrui Wang</span><span>, Qineng Wang</span><span>, Teja Venkat Koripella</span><span>, Marziyeh Movahedi</span><span>, Manling Li</span><span>, Heng Ji</span><span>, Huan Zhang</span><span>, Tong Zhang</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2025-02-13T00:00:00.000Z">Feb 13, 2025</time><span>19 min read</span></p><ul class="tags"><li><a href="../tags/embodied-reasoning" class="internal tag-link">embodied-reasoning</a></li><li><a href="../tags/VLM" class="internal tag-link">VLM</a></li><li><a href="../tags/task-planning" class="internal tag-link">task-planning</a></li><li><a href="../tags/Env" class="internal tag-link">Env</a></li><li><a href="../tags/Tasks" class="internal tag-link">Tasks</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>EmbodiedBench </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><strong>核心</strong>: 一个把 MLLM-as-embodied-agent 评测拆成 high/low-level × 6-capability 的细粒度 benchmark；24 个模型、4 个环境、1128 个任务全部用统一 vision-driven agent pipeline 跑过一遍</li>
+<li><strong>方法</strong>: 4 个环境（EB-ALFRED / EB-Habitat 高层；EB-Navigation / EB-Manipulation 低层）+ 6 个能力子集（Base / Common Sense / Complex Instruction / Spatial Awareness / Visual Appearance / Long Horizon）；统一 planner pipeline（visual desc → reflection → reasoning → language plan → executable plan，输出 JSON，多步规划）</li>
+<li><strong>结果</strong>: 最强模型 GPT-4o 在 EB-Manipulation 平均仅 28.9%；high-level 任务上去掉 vision 几乎无影响（甚至更好），low-level 任务去 vision 掉 40–70%；long-horizon 是最难子集；InternVL3-78B 是开源最强、在低层上贴近 GPT-4o</li>
+<li><strong>Sources</strong>: <a href="https://arxiv.org/abs/2502.09560" class="external">paper<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://embodiedbench.github.io" class="external">website<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://github.com/EmbodiedBench/EmbodiedBench" class="external">github<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><strong>Rating</strong>: 2 - Frontier（ICML 2025 Oral、覆盖 24 模型 × 4 环境 × 6 能力的 fine-grained MLLM embodied agent benchmark，正被后续工作采纳为参考；但尚未成为 de facto 标准）</li>
+</ul>
+</div>
+</blockquote>
+<p><strong>Key Takeaways:</strong></p>
 <ol>
-<li><strong>MLLM-based embodied agent 缺乏系统评估框架</strong>：现有 benchmark（ALFWorld、AgentBench、VisualAgentBench）主要面向 language-centric 或仅覆盖 high-level planning，未回答”视觉在 embodied 任务中的角色”和”MLLM 在 low-level 控制任务中的表现”两个关键问题。</li>
-<li><strong>评估粒度太粗</strong>：已有 benchmark 只看 overall accuracy，缺乏对 agent 各项核心能力（推理、感知、规划等）的细粒度拆解。</li>
-<li><strong>Action level 覆盖不全</strong>：无 benchmark 同时涵盖 high-level skill planning 和 low-level continuous control，无法全面反映 agent 能力。</li>
+<li><strong>Action-level taxonomy 是关键</strong>：把 MLLM agent 评测按”动作粒度”分成 high-level（skill 级）和 low-level（XYZ+rpy 级）才能暴露当前 MLLM 的真实瓶颈——前者主要是文本任务，后者才真正考验 vision</li>
+<li><strong>Vision 在 high-level 任务上几乎无用</strong>：GPT-4o (Lang) 在 EB-ALFRED / EB-Habitat 与有视觉的 GPT-4o 持平甚至略高（58.0 vs 56.3, 56.0 vs 59.0）。这是个对 “MLLM agent benchmark” 的根本性提醒——很多所谓 “MLLM agent” 评测其实可能不需要 vision</li>
+<li><strong>Long-horizon 是最一致的 failure mode</strong>：跨 4 个环境、跨模型规模、跨开源/闭源都是 base→long 跌幅最大的 subset</li>
+<li><strong>Low-level manipulation 很难解</strong>：即便加了 action discretization (100 bins for xyz, 120 for rpy) 和 YOLO detection box + index marker，GPT-4o 也只到 28.9%；planner error (44%) + perception error (33%) 是主因</li>
+<li><strong>Multi-step / multi-view image 不 work</strong>：当前 MLLM 加历史帧或多视角反而掉点——这是个独立的 capability gap</li>
 </ol>
-<h2 id="method">Method<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#method" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<h3 id="benchmark-设计">Benchmark 设计<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#benchmark-设计" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p><strong>四个环境，两个 action level</strong>：</p>
+<p><strong>Teaser. EmbodiedBench overview：4 环境 × 2 action level × 6 capability subsets</strong></p>
+<p><img src="https://arxiv.org/html/2502.09560v3/x1.png" alt/></p>
+<hr/>
+<h2 id="1-motivation-与问题定位">1. Motivation 与问题定位<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-motivation-与问题定位" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>现有 LLM-based embodied agent 评测（AgentBench、Lota-bench、Embodied Agent Interface）大多 text-only 或仅评 high-level planning；唯一覆盖 MLLM 的 VisualAgentBench 也只评 high-level，留下两个根本问题没回答：</p>
 <ul>
-<li><strong>EB-ALFRED</strong>（高层）：基于 ALFRED + AI2-THOR，household task planning，171-298 个 high-level skill 动作空间（pick up, open, close, slice 等），130 个测试任务</li>
-<li><strong>EB-Habitat</strong>（高层）：基于 Language Rearrangement + Habitat 2.0，70 个 high-level skill，282 个语言指令模板，限制 navigation 只能到 receptacle 类型目标</li>
-<li><strong>EB-Navigation</strong>（低层）：基于 AI2-THOR，8 个 low-level 动作（前后左右移动、旋转、摄像头上下倾斜），纯视觉观测导航到目标物体</li>
-<li><strong>EB-Manipulation</strong>（低层）：基于 ManiSkill2 + SAPIEN，7 维连续动作空间（end-effector 位移+旋转+gripper），tabletop 操作任务</li>
+<li><strong>vision 在 embodied tasks 里到底起多大作用？</strong></li>
+<li><strong>MLLM 在 low-level navigation/manipulation 上的真实水平？</strong></li>
 </ul>
-<p><strong>六个 Capability-oriented 子集</strong>：</p>
+<blockquote>
+<p>我的看法：这两个问题的提法本身就有 taste。一个 MLLM agent benchmark 如果不能 ablate “去掉 vision 性能掉多少”，那它评的可能是 LLM agent 而不是 MLLM agent。这篇论文的最有价值发现就是把这件事量化了。</p>
+</blockquote>
+<p><strong>与同类 benchmark 的定位差异</strong>（Table 1）：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Benchmark</th><th>Action Level</th><th><a href=".././tags/Env" class="tag-link internal alias" data-slug="tags/Env">Env</a></th><th><a href=".././tags/Tasks" class="tag-link internal alias" data-slug="tags/Tasks">Tasks</a></th><th>Multimodal</th><th>Fine-grained</th><th>LLM/VLM Support</th></tr></thead><tbody><tr><td>ALFWorld</td><td>High</td><td>1</td><td>274</td><td>×</td><td>×</td><td>×</td></tr><tr><td>Alfred</td><td>High</td><td>1</td><td>3062</td><td>✓</td><td>×</td><td>×</td></tr><tr><td>VLMbench</td><td>Low</td><td>1</td><td>4760</td><td>✓</td><td>×</td><td>×</td></tr><tr><td>Behavior-1K</td><td>High</td><td>1</td><td>1000</td><td>✓</td><td>×</td><td>×</td></tr><tr><td>AgentBench</td><td>High</td><td>8</td><td>1091</td><td>×</td><td>×</td><td>✓</td></tr><tr><td>Lota-bench</td><td>High</td><td>2</td><td>308</td><td>×</td><td>×</td><td>✓</td></tr><tr><td>VisualAgentBench</td><td>High</td><td>5</td><td>746</td><td>✓</td><td>×</td><td>✓</td></tr><tr><td>Embodied Agent Interface</td><td>High</td><td>2</td><td>438</td><td>×</td><td>✓</td><td>✓</td></tr><tr><td>VLABench</td><td>Low</td><td>1</td><td>100</td><td>✓</td><td>✓</td><td>✓</td></tr><tr><td><strong>EmbodiedBench</strong></td><td><strong>High &amp; Low</strong></td><td><strong>4</strong></td><td><strong>1128</strong></td><td>✓</td><td>✓</td><td>✓</td></tr></tbody></table></div>
+<p>唯一同时勾上 multimodal + fine-grained + 跨 action level 的 benchmark。</p>
+<hr/>
+<h2 id="2-embodiedbench-设计">2. EmbodiedBench 设计<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-embodiedbench-设计" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="21-action-level-形式化">2.1 Action Level 形式化<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#21-action-level-形式化" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li>Basic：标准任务</li>
-<li>Commonsense Reasoning：需要 world knowledge</li>
-<li>Complex Instruction：长句/多约束指令理解</li>
-<li>Spatial Awareness：空间关系推理</li>
-<li>Visual Perception：视觉细节辨识</li>
-<li>Long-horizon Planning：长步骤序列规划</li>
+<li><strong>Low-level</strong>：直接可执行的 atomic command。机械臂 7-D 动作 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">Z</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">Roll</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">Pitch</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">Yaw</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">Gripper</span></span><span class="mclose">]</span></span></span></span>，或 “move forward 0.1 m” 这种 kinematic 映射明确的指令</li>
+<li><strong>High-level</strong>：可分解为 low-level primitive 的 macro action <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8491em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">h</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">...</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">]</span></span></span></span>。例如 “find a HandTowel” 实际是 rotate→scan→move 的序列</li>
 </ul>
-<h3 id="vision-driven-agent-framework">Vision-driven Agent Framework<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#vision-driven-agent-framework" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p>统一的 agent pipeline：</p>
+<blockquote>
+<p>这个区分本身没啥新意，但它逼出了一个有价值的实验设计：同一套 capability subsets 在两种 action level 下都跑一遍，才能看出 vision 的真正贡献。</p>
+</blockquote>
+<p>Vision-driven agent 被建模为带 language instruction 的 POMDP <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathcal" style="margin-right:0.075em;">S</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathcal">A</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">Ω</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathcal" style="margin-right:0.25417em;">T</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathcal" style="margin-right:0.02778em;">O</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">L</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathcal">R</span><span class="mclose">)</span></span></span></span>，每步基于 history <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">...</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 选 action。</p>
+<h3 id="22-四个环境">2.2 四个环境<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#22-四个环境" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Env</th><th>Source</th><th>Action Level</th><th><a href=".././tags/Tasks" class="tag-link internal alias" data-slug="tags/Tasks">Tasks</a></th><th>Action Space</th></tr></thead><tbody><tr><td><strong>EB-ALFRED</strong></td><td>ALFRED + AI2-THOR (基于 Lota-Bench)</td><td>High</td><td>300</td><td>8 skill types × objects (动态 171–298 actions)</td></tr><tr><td><strong>EB-Habitat</strong></td><td>Language Rearrangement + Habitat 2.0</td><td>High</td><td>300</td><td>70 high-level skills（nav 限制到 receptacle）</td></tr><tr><td><strong>EB-Navigation</strong></td><td>AI2-THOR</td><td>Low</td><td>300</td><td>8 atomic: move ±x/±y, rotate ±θ, tilt ±φ</td></tr><tr><td><strong>EB-Manipulation</strong></td><td>VLMBench + CoppeliaSim (Franka 7-DoF)</td><td>Low</td><td>228</td><td>7-D 离散化（位置 100 bins、姿态 120 bins）</td></tr></tbody></table></div>
+<p><strong>关键工程选择</strong>：</p>
 <ul>
-<li><strong>输入</strong>：ego-centric 视觉图像 + few-shot in-context examples + interaction history + environment feedback</li>
-<li><strong>推理</strong>：MLLM 接收多模态输入，输出 structured JSON action</li>
-<li><strong>执行</strong>：action 发送至 simulator，获取反馈后循环</li>
-</ul>
-<h3 id="评估设置">评估设置<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#评估设置" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<ul>
-<li>24 个 MLLM：GPT-4o、Gemini、Claude-3.7、Qwen-VL-Max 等 proprietary + 7B-90B open-source（Llama-3.2 Vision、InternVL3、Qwen2.5-VL、Gemma-3）</li>
-<li>Language-centric ablation：去除视觉输入，用文本描述替代</li>
-<li>Visual-centric ablation：图像分辨率、多步图像输入、multi-view、detection box overlay、visual ICL</li>
-</ul>
-<h2 id="key-results">Key Results<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-results" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<h3 id="主要发现">主要发现<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#主要发现" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<li>EB-ALFRED 修了 Lota-Bench 的 3 个 bug（不支持多实例、put-down 错放、指令质量差），把 7 个 ALFRED task type 都补全</li>
+<li>EB-Manipulation 做了两个非平凡 enhancement：
 <ol>
-<li><strong>High-level 尚可，low-level 极差</strong>：GPT-4o 在 EB-ALFRED 达 53.1%，EB-Habitat 达 24.5%，但 EB-Navigation 仅 22.3%，EB-Manipulation 仅 15.7%，overall 仅 28.9%</li>
-<li><strong>Long-horizon planning 是最大瓶颈</strong>：在所有 capability subset 中，long-horizon planning 子集得分最低</li>
-<li><strong>Vision 对 low-level 任务至关重要</strong>：去除视觉输入后 low-level 任务性能骤降 40%-70%，但 high-level 任务影响较小（文本描述可部分替代）</li>
-<li><strong>开源 vs 闭源差距明显</strong>：最强开源模型（InternVL3-78B）overall ~20%，仍远低于 GPT-4o 的 28.9%</li>
-<li><strong>Manipulation 是最难的</strong>：即使最好的模型也只有 ~16% success rate</li>
+<li><strong>Action space discretization</strong>：把连续 xyz 切成 100 bins、姿态切成 120 bins，让 MLLM 输出 integer</li>
+<li><strong>YOLO detection box + index marker + 3D pose</strong>：把”精确 3D 定位”问题降为”指 index”问题</li>
 </ol>
-<h3 id="ablation-insights">Ablation Insights<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#ablation-insights" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<ul>
-<li>更高图像分辨率对 navigation 和 manipulation 有帮助</li>
-<li>Multi-step image（多帧历史）对 navigation 提升明显</li>
-<li>Visual in-context learning（图像示例）在部分任务有效但非 universal</li>
+</li>
+<li>EB-Navigation 仅给 validity feedback（无定位数据），符合真实机器人约束</li>
 </ul>
-<h2 id="strengths--weaknesses">Strengths &amp; Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths--weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="23-六个-capability-oriented-subsets">2.3 六个 Capability-Oriented Subsets<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#23-六个-capability-oriented-subsets" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Subset</th><th>评测能力</th><th>例子</th></tr></thead><tbody><tr><td>Base</td><td>基础任务规划</td><td>”Put washed lettuce in the refrigerator”</td></tr><tr><td>Common Sense</td><td>用常识间接指代物体</td><td>”a receptacle that can keep food fresh for several days”</td></tr><tr><td>Complex Instruction</td><td>长 context（含无关信息）下抽取意图</td><td>加一段背景描述包裹核心指令</td></tr><tr><td>Spatial Awareness</td><td>用相对位置指代物体</td><td>”the cabinet under the sink against the wall”</td></tr><tr><td>Visual Appearance</td><td>用视觉属性指代物体</td><td>”a knife in a blue container”</td></tr><tr><td>Long Horizon</td><td>步数 >15 的任务</td><td>”pick up knife, slice apple, put knife in bowl, heat…”</td></tr></tbody></table></div>
+<blockquote>
+<p>❓ Spatial Awareness 在 EB-Navigation 缺失、Long Horizon 在 EB-Manipulation 缺失，作者归因为 “design challenges”。这其实暴露了 capability 与 environment 的耦合——Spatial 在 navigation 里和 base 难以区分（每个导航任务本身就是 spatial），Long-horizon 在 15-step 上限的 manipulation 里塞不下。要小心解读这种 grid 不规则导致的 cross-env 比较。</p>
+</blockquote>
+<p>数据收集：EB-ALFRED / EB-Manipulation 用人工 + GPT-4o augmentation；EB-Habitat 复用 Language Rearrangement 子集；EB-Navigation 全 Python 程序生成。</p>
+<h3 id="24-统一-vision-driven-agent-pipeline">2.4 统一 Vision-Driven Agent Pipeline<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#24-统一-vision-driven-agent-pipeline" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Figure 2. EmbodiedBench 的 vision-driven agent pipeline。</strong></p>
+<p><img src="https://arxiv.org/html/2502.09560v3/x2.png" alt/></p>
+<p>输入：language instruction + 当前帧（或 sliding window 的多帧）+ in-context demos + interaction history + task-specific info（high-level 任务给 valid skill set；EB-Manipulation 给 action format + detection box + 3D coords）。</p>
+<p>Planner 每步五段输出（JSON 结构）：</p>
+<ol>
+<li>textual description of current visual input</li>
+<li>reflection on past actions + env feedback</li>
+<li>reasoning about goal</li>
+<li>language plan</li>
+<li>executable plan in required format</li>
+</ol>
+<p><strong>关键设计</strong>：multi-step planning（一次输出多个 action）而不是 prior work 的 one-action-per-timestep。优点：(1) 与 ICL examples 对齐；(2) 减少冗余规划——尤其在 low-level 任务里单 action 视觉变化小，省 API 调用。Planner 失败或动作 invalid 就 restart from latest state。</p>
+<blockquote>
+<p>这个 multi-step 选择是合理的。EB-Manipulation 上 GPT-4o 的 avg planner steps = 2.6 而 env steps = 12.9，相当于减了近 80% 的 LLM call——对评测大量 proprietary models 是 cost-saving 的工程决策。但也意味着 planner 对自己的”批量预测”长度有信心，这本身可能 bias 评测——某些模型可能因为不敢输出长动作链而被低估。</p>
+</blockquote>
+<hr/>
+<h2 id="3-核心实验结果">3. 核心实验结果<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-核心实验结果" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>24 个模型：8 proprietary（GPT-4o, GPT-4o-mini, Claude-3.5/3.7-Sonnet, Gemini-1.5-Pro/Flash, Gemini-2.0-Flash, Qwen-VL-Max）+ 16 open-source（InternVL2.5/3, Qwen2/2.5-VL, Llama-3.2-Vision, Gemma-3, Ovis2, 7B–90B 规模）。统一温度 0、max tokens 2048、resolution 500×500、max env steps 30/20/15。</p>
+<h3 id="31-high-level-taskseb-alfred--eb-habitat">3.1 High-Level Tasks（EB-ALFRED + EB-Habitat）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#31-high-level-taskseb-alfred--eb-habitat" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table 2. Task success rate, EB-ALFRED 和 EB-Habitat 各 6 子集（Lang = 去掉 vision input）。</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Model</th><th>ALFRED Avg</th><th>ALFRED Long</th><th>Habitat Avg</th><th>Habitat Long</th></tr></thead><tbody><tr><td><strong>Claude-3.7-Sonnet</strong></td><td><strong>67.7</strong></td><td>70</td><td>58.7</td><td>46</td></tr><tr><td>Claude-3.5-Sonnet</td><td>64.0</td><td>52</td><td><strong>68.0</strong></td><td>58</td></tr><tr><td>Gemini-1.5-Pro</td><td>62.3</td><td>58</td><td>56.3</td><td>52</td></tr><tr><td>GPT-4o</td><td>56.3</td><td>54</td><td>59.0</td><td><strong>64</strong></td></tr><tr><td><strong>GPT-4o (Lang)</strong></td><td><strong>58.0</strong></td><td>54</td><td>56.0</td><td>36</td></tr><tr><td>GPT-4o-mini</td><td>24.0</td><td>0</td><td>32.7</td><td>14</td></tr><tr><td>GPT-4o-mini (Lang)</td><td>31.3</td><td>14</td><td>36.7</td><td>14</td></tr><tr><td>InternVL3-78B</td><td>39.0</td><td>36</td><td>55.0</td><td>40</td></tr><tr><td>Qwen2.5-VL-72B-Ins</td><td>39.7</td><td>34</td><td>37.7</td><td>18</td></tr><tr><td>Llama-3.2-90B-Vision</td><td>32.0</td><td>16</td><td>40.3</td><td>14</td></tr></tbody></table></div>
+<p><strong>关键观察</strong>：</p>
+<ul>
+<li><strong>GPT-4o (Lang) 比 GPT-4o vision 还好</strong>（58.0 vs 56.3 on ALFRED；56.0 vs 59.0 on Habitat 接近持平）。GPT-4o-mini (Lang) 同样如此（31.3 vs 24.0 on ALFRED）。<strong>这说明 ALFRED-style high-level 任务的瓶颈在 reasoning/planning，不在 vision</strong></li>
+<li>Claude-3.7 和 Claude-3.5 互有胜负；3.7 强 ALFRED、3.5 强 Habitat</li>
+<li>开源最强 InternVL3-78B（Habitat 55.0）已逼近部分 proprietary</li>
+</ul>
+<h3 id="32-low-level-taskseb-navigation--eb-manipulation">3.2 Low-Level Tasks（EB-Navigation + EB-Manipulation）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#32-low-level-taskseb-navigation--eb-manipulation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table 3. Task success rate, EB-Navigation 5 子集、EB-Manipulation 5 子集。</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Model</th><th>Nav Avg</th><th>Nav Long</th><th>Man Avg</th><th>Man Spatial</th></tr></thead><tbody><tr><td>GPT-4o</td><td><strong>57.7</strong></td><td><strong>55.0</strong></td><td><strong>28.9</strong></td><td>25.0</td></tr><tr><td>Claude-3.7-Sonnet</td><td>45.0</td><td>26.7</td><td>28.5</td><td>20.8</td></tr><tr><td>Claude-3.5-Sonnet</td><td>44.7</td><td>26.7</td><td>25.4</td><td>22.9</td></tr><tr><td>Gemini-1.5-Pro</td><td>24.3</td><td>20.0</td><td>21.1</td><td>35.4</td></tr><tr><td><strong>GPT-4o (Lang)</strong></td><td><strong>17.4</strong></td><td><strong>0.0</strong></td><td>16.2</td><td>14.6</td></tr><tr><td>GPT-4o-mini (Lang)</td><td>8.3</td><td>0.0</td><td>6.6</td><td>14.6</td></tr><tr><td>InternVL3-78B</td><td>53.7</td><td>31.7</td><td>26.3</td><td>31.3</td></tr><tr><td>Ovis2-34B</td><td>45.7</td><td>11.7</td><td>26.8</td><td>31.3</td></tr><tr><td>Qwen2.5-VL-72B-Ins</td><td>40.0</td><td>33.3</td><td>16.2</td><td>18.8</td></tr></tbody></table></div>
+<p><strong>关键观察（与 high-level 形成强烈反差）</strong>：</p>
+<ul>
+<li><strong>GPT-4o → GPT-4o (Lang)</strong>：EB-Navigation 从 57.7 掉到 17.4（−40.3 pt），long-horizon 从 55.0 → <strong>0.0</strong>。EB-Manipulation 从 28.9 掉到 16.2（−12.7 pt）</li>
+<li><strong>vision input 对 low-level 任务是 critical</strong>——这是 high-level 和 low-level 评测最重要的分水岭</li>
+<li>Open-source InternVL3-78B（53.7 / 26.3）已追平 GPT-4o 在 navigation/manipulation 上的水平。<strong>low-level 是开源 catching up 最快的方向</strong></li>
+<li><strong>EB-Manipulation 整体仍很差</strong>：最好 28.9% 平均成功率，绝大多数模型 &lt;20%</li>
+</ul>
+<h3 id="33-fine-grained-cross-subset-观察">3.3 Fine-grained Cross-Subset 观察<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#33-fine-grained-cross-subset-观察" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>不同模型擅长不同 subset</strong>：Claude-3.5 整体强于 GPT-4o on Habitat (68 vs 59)，但 long-horizon 上 GPT-4o (64) > Claude-3.5 (58)。Claude-3.5 在 EB-Manipulation complex/visual 子集分别比 GPT-4o 高 14.6/5.6 pt，但其他 capability 上落后。<strong>aggregate score 隐藏了 capability-level 的真实差异</strong>——这是 fine-grained eval 的核心价值</li>
+<li><strong>Long-Horizon 是最一致的瓶颈</strong>：每个环境下都是 base→long 跌幅最大。Claude-3.5 on Habitat: base 96 → long 58（−38 pt）；GPT-4o on Habitat: base 86 → long 64（−22 pt）</li>
+</ul>
+<hr/>
+<h2 id="4-ablation-studies">4. Ablation Studies<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-ablation-studies" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="41-language-centric-ablations-on-eb-alfred">4.1 Language-Centric Ablations on EB-ALFRED<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#41-language-centric-ablations-on-eb-alfred" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Figure 4. Language-centric ablations.</strong></p>
+<p><img src="https://arxiv.org/html/2502.09560v3/x4.png" alt/></p>
+<ul>
+<li><strong>去掉 environment feedback</strong>：GPT-4o 掉 10 pt，Claude-3.5 掉 8 pt</li>
+<li><strong>In-context examples 数量</strong>：默认 10 shots，降到 0-shot 成功率掉到 ~40%</li>
+</ul>
+<blockquote>
+<p>结合 vision-removal 几乎无影响的事实，这进一步说明 high-level 任务的信号量主要在 textual prompt（feedback + ICL examples）里。high-level embodied benchmark 设计如果 textual scaffolding 太重，等于在评 LLM 的 text-prompted planning 能力。</p>
+</blockquote>
+<h3 id="42-visual-centric-ablations-on-eb-manipulation">4.2 Visual-Centric Ablations on EB-Manipulation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#42-visual-centric-ablations-on-eb-manipulation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Figure 5. Visual-centric ablations on EB-Manipulation。(a) camera resolution, (b) detection boxes, (c) multi-step images, (d) visual ICL。</strong></p>
+<p><img src="https://arxiv.org/html/2502.09560v3/x5.png" alt/></p>
+<ul>
+<li><strong>(a) Resolution</strong>：mid-range 500×500 最好；300×300 缺细节、700×700 反而更差（增加无关 token，分散注意力）</li>
+<li><strong>(b) Detection boxes</strong>：去掉 detection box，GPT-4o 39.6 → 27.1（−12.5 pt），Claude-3.5 37.5 → 29.2（−8.3 pt）。<strong>说明现阶段 MLLM 还没强到能裸眼 grounding 3D 物体位置</strong></li>
+<li><strong>(c) Multi-step image</strong>：加历史 2 帧反而掉点。MLLM 难以正确建模”我之前在哪、现在在哪”的时序关系</li>
+<li><strong>(d) Visual ICL</strong>：把图像也加入 in-context examples，Claude-3.5 涨 16.7 pt（虽然 N=2 vs 默认 text ICL N=10 的对比有 confound，方向性结论仍可信）</li>
+</ul>
+<p><strong>EB-Navigation 的 detection box 反例</strong>（Table 9）：multi-box 反而 hurts（GPT-4o：no-box 61.7、one-box 68.3、multi-box 53.3）。多 box 在导航场景遮挡了关键视觉路径线索。结论：<strong>visual augmentation 必须 task-tailored</strong>，无脑加不一定 work。</p>
+<h3 id="43-multi-view-images">4.3 Multi-View Images<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#43-multi-view-images" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>front-view + top-down (Nav) 或 front-view + wrist-view (Man) 的双视角输入 — GPT-4o 整体掉点。说明现阶段 MLLM 多视角 fusion 能力不足。</p>
+<hr/>
+<h2 id="5-error-analysisgpt-4o-110-个失败-episode">5. Error Analysis（GPT-4o 110 个失败 episode）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#5-error-analysisgpt-4o-110-个失败-episode" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Figure 6. Error analysis on GPT-4o failures across EB-ALFRED 和 EB-Manipulation。</strong></p>
+<p><img src="https://arxiv.org/html/2502.09560v3/x6.png" alt/></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>环境</th><th>Planning</th><th>Reasoning</th><th>Perception</th></tr></thead><tbody><tr><td>EB-ALFRED (high-level)</td><td>55%</td><td>41%</td><td>4%</td></tr><tr><td>EB-Manipulation (low-level)</td><td>44%</td><td>—</td><td>33%</td></tr></tbody></table></div>
+<ul>
+<li><strong>EB-ALFRED</strong>：planning errors 主导，其中 missing steps (23%) 和 invalid actions (22%) 最多；reflection errors (17%) 表明 GPT-4o 经常没意识到自己之前规划失误；wrong termination (13%) 是过早判断任务完成</li>
+<li><strong>EB-Manipulation</strong>：perception errors 显著上升到 33%（即便有 detection box 标注），其中 wrong recognition (22%) 最多——<strong>对 GPT-4o 来说，“看见 box” 不等于 “看懂 box 里是什么颜色/形状”</strong></li>
+</ul>
+<blockquote>
+<p>这是个有信息量的 finding。perception error 在低层任务上的占比说明：当前 MLLM 即便配上 grounding scaffold（detection box），底层 visual recognition 仍是 manipulation 失败的主因。这给 VLA 训练数据组成、low-level vision encoder 的预训练目标提供了直接证据。</p>
+</blockquote>
+<p><strong>项目主页放出的 EB-Manipulation 与 EB-Navigation 成功 rollout 示例（GPT-4o 驱动）：</strong></p>
+<p><video src="https://github.com/EmbodiedBench/embodiedbench.github.io/raw/main/website/videos/example_success_mani.mp4" controls muted playsinline width="720"></video></p>
+<p><video src="https://github.com/EmbodiedBench/embodiedbench.github.io/raw/main/website/videos/example_success_nav.mp4" controls muted playsinline width="720"></video></p>
+<hr/>
+<h2 id="关联工作">关联工作<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#关联工作" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="基于">基于<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#基于" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>ALFRED + AI2-THOR</strong>：EB-ALFRED / EB-Navigation 都基于 AI2-THOR 模拟器</li>
+<li><strong>Lota-Bench</strong>：EB-ALFRED 直接基于其 8 高层 skill 实现，并修了三个 bug</li>
+<li><strong>Language Rearrangement (Habitat 2.0)</strong>：EB-Habitat 来源</li>
+<li><strong>VLMBench (CoppeliaSim + Franka)</strong>：EB-Manipulation 扩展</li>
+</ul>
+<h3 id="对比">对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>AgentBench / Lota-Bench / Embodied Agent Interface</strong>：text-only 或不支持 multimodal，本工作补全 MLLM 评测</li>
+<li><strong>VisualAgentBench</strong>：第一个 MLLM agent benchmark，但只 high-level；本工作扩到 low-level + capability subsets</li>
+<li><strong>VLABench</strong>：focus 在 VLA 评测（端到端 policy），本工作 focus MLLM-as-planner（输出离散 action）</li>
+<li><strong>EmbodiedEval</strong>（concurrent work）：覆盖 nav + object interaction + social + QA，但无 low-level manipulation、规模仅 328</li>
+</ul>
+<h3 id="方法相关">方法相关<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#方法相关" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Action discretization</strong>：把连续 7-D action 离散到 integer bin —— 与 RT-2、OpenVLA 等 VLA 工作的 action tokenization 思路同源</li>
+<li><strong>Visual marker / detection box prompting</strong>：用 YOLO + index marker 让 MLLM 输出”指 index”而非”输出 3D 坐标”——SoM (Set-of-Marks) 类技术的工程化应用</li>
+<li><strong>后续工作 ERA (2025-10)</strong>：同组用 EmbodiedBench 数据集训了 reasoning + grounding 增强的 VLM-based embodied agent</li>
+</ul>
+<hr/>
+<h2 id="论文点评">论文点评<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#论文点评" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
 <h3 id="strengths">Strengths<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<ul>
-<li><strong>全面性</strong>：唯一同时覆盖 high-level 和 low-level 的 MLLM embodied benchmark，4 个环境+6 个能力维度</li>
-<li><strong>大规模评估</strong>：24 个 MLLM 的系统对比，包含 proprietary 和 open-source</li>
-<li><strong>Fine-grained capability assessment</strong>：从 commonsense 到 spatial awareness 的多维拆解，比 overall accuracy 更有诊断价值</li>
-<li><strong>丰富的 ablation</strong>：language-centric 和 visual-centric ablation 揭示了 vision 在不同任务层次的作用差异</li>
-<li><strong>工程贡献</strong>：修复 ALFRED 模拟器 bug，提供统一的 agent framework 和自动任务生成脚本</li>
-</ul>
+<ol>
+<li><strong>Coverage 真的全</strong>：4 个环境 × 24 个模型 × 6 个 capability subset × 多个 ablation 因子。这种规模的 benchmark 论文很少见有人愿意花成本去跑（proprietary API + 7B–90B 开源 local）</li>
+<li><strong>Action-level taxonomy 是个 useful axis</strong>：清晰区分 high-level skill agent 和 low-level control agent 的评测，第一次量化了”vision 在 high-level 任务里其实可有可无”这件事</li>
+<li><strong>Capability-oriented subsets 暴露了 aggregate 隐藏的差异</strong>：Claude-3.5 vs GPT-4o 在不同 subset 上互有胜负，这种 nuance 是单一 score 看不到的</li>
+<li><strong>多个工程决策非常负责</strong>：multi-step planning 节省 ~80% LLM call、action discretization 让 MLLM 输出 integer、detection box + index marker 把”3D 定位”降级为”指标号”——这些都是 reproducibility-friendly 的细节</li>
+<li><strong>Negative result 也报</strong>：multi-step image 不 work、multi-view 不 work、navigation 上 multi-box 不 work——这些反结论比正向 SOTA 有信息量</li>
+</ol>
 <h3 id="weaknesses">Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>仍然是 simulation-only</strong>：作者自己也承认。AI2-THOR / Habitat / CoppeliaSim 与真实机器人的 perception/dynamics gap 不小，benchmark 上的相对排序未必转移到 real-world</li>
+<li><strong>Capability subset 的”正交性”存疑</strong>：Common Sense 和 Complex Instruction 在某些任务里区分度不大（都是改写指令），缺少 cross-subset 的相关性分析</li>
+<li><strong>Capability × env 的 grid 不规则</strong>：EB-Navigation 缺 Spatial、EB-Manipulation 缺 Long-Horizon，cross-env 的 capability 分数无法直接平均比较</li>
+<li><strong>Pipeline 是固定的</strong>：所有模型用同一个 5-stage JSON planner pipeline。对某些模型（如 chain-of-thought 不擅长 JSON 的）可能不公平。Lack of “best-effort per-model prompt tuning” 限制了结果的 ceiling 解读</li>
+<li><strong>没有训练实验</strong>：纯 evaluation。EB-ALFRED / EB-Habitat 给出的 trajectory 数据集本可以用来 fine-tune 当 baseline——这部分 README 显示后续 (2025-06) 才补 trajectory dataset、(2025-10) 才有 ERA training recipe，主文未涉及</li>
+<li><strong>Vision-removal 结论的 confound</strong>：去掉 vision 时高层任务”几乎无影响”——但 in-context examples 是 text 形式，可能补足了 vision 的信号。如果同时去 ICL examples，结论可能不同</li>
+</ol>
+<h3 id="可信评估">可信评估<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#可信评估" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="artifact-可获取性">Artifact 可获取性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#artifact-可获取性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
 <ul>
-<li><strong>Performance 天花板低</strong>：最好模型 28.9%，说明 benchmark 有挑战性，但也意味着现有结论可能在模型进步后需重新验证</li>
-<li><strong>仅限 simulation</strong>：无 real-world 验证，sim-to-real gap 未讨论</li>
-<li><strong>Agent framework 固定</strong>：统一 pipeline 方便公平比较，但不代表各 MLLM 在其他 agent 架构下的最优表现</li>
-<li><strong>Low-level control 用 MLLM 直接输出 action</strong>：对 manipulation 而言，这并非当前最优范式（VLA 如 RT-2、pi0 更适合），benchmark 的 low-level 结论可能 scope 有限</li>
+<li><strong>代码</strong>：开源（github.com/EmbodiedBench/EmbodiedBench），inference + evaluation</li>
+<li><strong>模型权重</strong>：N/A（本工作不训模型，纯评测）。后续 (2025-10) 发布的 ERA 是单独的 training recipe</li>
+<li><strong>训练细节</strong>：未说明（本工作不训模型）</li>
+<li><strong>数据集</strong>：开源（HuggingFace EmbodiedBench org），含 EB-ALFRED / EB-Manipulation 数据，以及多模型 trajectory 数据集（2025-06 释出）</li>
 </ul>
-<h2 id="mind-map">Mind Map<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mind-map" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;mindmap\n  root((EmbodiedBench))\n    Problem\n      缺乏 MLLM embodied agent 系统评估\n      现有 benchmark 只覆盖 high-level\n      评估粒度粗，无 capability 拆解\n    Method\n      4 Environments\n        EB-ALFRED (high-level household)\n        EB-Habitat (high-level rearrangement)\n        EB-Navigation (low-level nav)\n        EB-Manipulation (low-level manip)\n      6 Capability Subsets\n        Commonsense Reasoning\n        Complex Instruction\n        Spatial Awareness\n        Visual Perception\n        Long-horizon Planning\n      Unified Agent Framework\n        Ego-centric vision + history + feedback\n    Results\n      GPT-4o best at 28.9% overall\n      High-level OK, low-level poor\n      Vision crucial for low-level\n      Long-horizon planning hardest\n      Open-source lags behind proprietary&quot;">mindmap
-  root((EmbodiedBench))
-    Problem
-      缺乏 MLLM embodied agent 系统评估
-      现有 benchmark 只覆盖 high-level
-      评估粒度粗，无 capability 拆解
-    Method
-      4 Environments
-        EB-ALFRED (high-level household)
-        EB-Habitat (high-level rearrangement)
-        EB-Navigation (low-level nav)
-        EB-Manipulation (low-level manip)
-      6 Capability Subsets
-        Commonsense Reasoning
-        Complex Instruction
-        Spatial Awareness
-        Visual Perception
-        Long-horizon Planning
-      Unified Agent Framework
-        Ego-centric vision + history + feedback
-    Results
-      GPT-4o best at 28.9% overall
-      High-level OK, low-level poor
-      Vision crucial for low-level
-      Long-horizon planning hardest
-      Open-source lags behind proprietary
-</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
-<h2 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h4 id="claim-可验证性">Claim 可验证性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#claim-可验证性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
 <ul>
-<li>Accepted at ICML 2025</li>
-<li>对我们的研究价值：作为 embodied agent 能力评估的参考框架，了解 MLLM 在 navigation/manipulation 上的能力边界；其 capability-oriented evaluation 思路可借鉴</li>
-<li>关键 takeaway：MLLM 直接做 low-level control 目前还远不够好，需要和专门的 VLA 结合或用 hierarchical 方案</li>
-</ul></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="uevi3i" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#problem--motivation" data-for="problem--motivation">Problem &amp; Motivation</a></li><li class="depth-0"><a href="#method" data-for="method">Method</a></li><li class="depth-1"><a href="#benchmark-设计" data-for="benchmark-设计">Benchmark 设计</a></li><li class="depth-1"><a href="#vision-driven-agent-framework" data-for="vision-driven-agent-framework">Vision-driven Agent Framework</a></li><li class="depth-1"><a href="#评估设置" data-for="评估设置">评估设置</a></li><li class="depth-0"><a href="#key-results" data-for="key-results">Key Results</a></li><li class="depth-1"><a href="#主要发现" data-for="主要发现">主要发现</a></li><li class="depth-1"><a href="#ablation-insights" data-for="ablation-insights">Ablation Insights</a></li><li class="depth-0"><a href="#strengths--weaknesses" data-for="strengths--weaknesses">Strengths &amp; Weaknesses</a></li><li class="depth-1"><a href="#strengths" data-for="strengths">Strengths</a></li><li class="depth-1"><a href="#weaknesses" data-for="weaknesses">Weaknesses</a></li><li class="depth-0"><a href="#mind-map" data-for="mind-map">Mind Map</a></li><li class="depth-0"><a href="#notes" data-for="notes">Notes</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+<li>✅ <strong>24 模型在 4 环境上的 success rate 表格</strong>：所有数据可由 codebase 复现，prompt 固定 temperature=0</li>
+<li>✅ <strong>Vision removal 实验</strong>：GPT-4o (Lang) vs GPT-4o 的对比是 controlled，结论清晰</li>
+<li>✅ <strong>Long-horizon 是最难子集</strong>：跨模型一致性强，证据充分</li>
+<li>⚠️ <strong>“InternVL3-78B 接近 GPT-4o on low-level”</strong>：依赖 single-run；MLLM agent 评测的 variance 不小（虽 temperature=0 但环境 stochasticity 存在）。多 seed 验证未报</li>
+<li>⚠️ <strong>Visual ICL +16.7 pt for Claude-3.5</strong>：N=2 visual ICL vs N=10 text ICL 的对比并非 apples-to-apples（数量不同），方向正确但 magnitude 可能 inflated</li>
+<li>⚠️ <strong>“Detection box 在 navigation 里 hurts”</strong>：仅在 GPT-4o + Claude-3.5 上验证（Table 9），未跨开源模型确认</li>
+</ul>
+<h3 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>这篇是评测论文里态度比较诚实的一篇——不光报 SOTA 排名，还报了 vision-ablation、multi-step image fail、multi-view fail 这些”对 MLLM 不利”的结论。这种 negative result 友好的 benchmark 才有长期价值</li>
+<li>对我个人最 useful 的两个 takeaway：(1) <strong>MLLM agent benchmark 必须 ablate vision</strong>，否则可能在评 LLM agent；(2) <strong>low-level manipulation 上 perception error 占 33%</strong>，detection box 也救不回来——意味着想做 MLLM-as-planner-for-manipulation 的方向，要么换更强的 visual encoder（DINOv2/SigLIP-2 量级），要么干脆走 end-to-end VLA</li>
+<li>后续值得跟进：ERA (2510.12693) 是同组的 training recipe，用 EmbodiedBench 作为 training/eval 平台，可以看 fine-tuning 能把 28.9% manipulation 推到多少</li>
+<li>❓ EB-Manipulation 的 28.9% ceiling 在哪？是 MLLM reasoning 不够还是 visual perception 不够？错误分析里 perception 33% + planning 44%，意味着即便 perception 完全修好，理论上限也只能到 ~70%——这个数字本身值得跟踪</li>
+<li>❓ Multi-step image / multi-view 失败是 MLLM training data 问题（缺多帧/多视角理解数据）还是 model arch 问题（attention 在多 image 上分散）？这是后续工作可以拆开的</li>
+</ul>
+<h3 id="rating">Rating<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#rating" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>分数</strong>：2 - Frontier
+<strong>理由</strong>：ICML 2025 Oral、同时具备 multimodal + fine-grained + high/low-level 两种 action-level 覆盖的唯一 embodied MLLM benchmark（见”与同类 benchmark 的定位差异”表），且有 24 模型 × 4 环境的规模证据。其 fine-grained capability subsets 和 vision-ablation 协议已被后续 ERA 等工作作为训练/评测平台采纳，但尚未达到 ImageNet / DROID 级的 de facto 标准（社区里 VLMBench、EmbodiedEval 等竞争者并存），仍处 Frontier 而非 Foundation；同时 simulation-only、grid 不规则等 Weaknesses 限制了它升档的证据强度。</p></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="ud8fg4" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#1-motivation-与问题定位" data-for="1-motivation-与问题定位">1. Motivation 与问题定位</a></li><li class="depth-0"><a href="#2-embodiedbench-设计" data-for="2-embodiedbench-设计">2. EmbodiedBench 设计</a></li><li class="depth-1"><a href="#21-action-level-形式化" data-for="21-action-level-形式化">2.1 Action Level 形式化</a></li><li class="depth-1"><a href="#22-四个环境" data-for="22-四个环境">2.2 四个环境</a></li><li class="depth-1"><a href="#23-六个-capability-oriented-subsets" data-for="23-六个-capability-oriented-subsets">2.3 六个 Capability-Oriented Subsets</a></li><li class="depth-1"><a href="#24-统一-vision-driven-agent-pipeline" data-for="24-统一-vision-driven-agent-pipeline">2.4 统一 Vision-Driven Agent Pipeline</a></li><li class="depth-0"><a href="#3-核心实验结果" data-for="3-核心实验结果">3. 核心实验结果</a></li><li class="depth-1"><a href="#31-high-level-taskseb-alfred--eb-habitat" data-for="31-high-level-taskseb-alfred--eb-habitat">3.1 High-Level Tasks（EB-ALFRED + EB-Habitat）</a></li><li class="depth-1"><a href="#32-low-level-taskseb-navigation--eb-manipulation" data-for="32-low-level-taskseb-navigation--eb-manipulation">3.2 Low-Level Tasks（EB-Navigation + EB-Manipulation）</a></li><li class="depth-1"><a href="#33-fine-grained-cross-subset-观察" data-for="33-fine-grained-cross-subset-观察">3.3 Fine-grained Cross-Subset 观察</a></li><li class="depth-0"><a href="#4-ablation-studies" data-for="4-ablation-studies">4. Ablation Studies</a></li><li class="depth-1"><a href="#41-language-centric-ablations-on-eb-alfred" data-for="41-language-centric-ablations-on-eb-alfred">4.1 Language-Centric Ablations on EB-ALFRED</a></li><li class="depth-1"><a href="#42-visual-centric-ablations-on-eb-manipulation" data-for="42-visual-centric-ablations-on-eb-manipulation">4.2 Visual-Centric Ablations on EB-Manipulation</a></li><li class="depth-1"><a href="#43-multi-view-images" data-for="43-multi-view-images">4.3 Multi-View Images</a></li><li class="depth-0"><a href="#5-error-analysisgpt-4o-110-个失败-episode" data-for="5-error-analysisgpt-4o-110-个失败-episode">5. Error Analysis（GPT-4o 110 个失败 episode）</a></li><li class="depth-0"><a href="#关联工作" data-for="关联工作">关联工作</a></li><li class="depth-1"><a href="#基于" data-for="基于">基于</a></li><li class="depth-1"><a href="#对比" data-for="对比">对比</a></li><li class="depth-1"><a href="#方法相关" data-for="方法相关">方法相关</a></li><li class="depth-0"><a href="#论文点评" data-for="论文点评">论文点评</a></li><li class="depth-1"><a href="#strengths" data-for="strengths">Strengths</a></li><li class="depth-1"><a href="#weaknesses" data-for="weaknesses">Weaknesses</a></li><li class="depth-1"><a href="#可信评估" data-for="可信评估">可信评估</a></li><li class="depth-1"><a href="#notes" data-for="notes">Notes</a></li><li class="depth-1"><a href="#rating" data-for="rating">Rating</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
 </script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
 </script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>

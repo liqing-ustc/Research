@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><title>EchoVLA: Synergistic Declarative Memory for VLA-Driven Mobile Manipulation</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="EchoVLA: Synergistic Declarative Memory for VLA-Driven Mobile Manipulation"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="EchoVLA: Synergistic Declarative Memory for VLA-Driven Mobile Manipulation"/><meta name="twitter:description" content="Summary 提出 EchoVLA，一个受人类 declarative memory 启发的 memory-aware VLA 模型，通过 scene memory（3D voxel 空间语义地图）和 episodic memory（token FIFO buffer）的双记忆系统解决 mobile manipulation 中的 non-Markovian ..."/><meta property="og:description" content="Summary 提出 EchoVLA，一个受人类 declarative memory 启发的 memory-aware VLA 模型，通过 scene memory（3D voxel 空间语义地图）和 episodic memory（token FIFO buffer）的双记忆系统解决 mobile manipulation 中的 non-Markovian ..."/><meta property="og:image:alt" content="Summary 提出 EchoVLA，一个受人类 declarative memory 启发的 memory-aware VLA 模型，通过 scene memory（3D voxel 空间语义地图）和 episodic memory（token FIFO buffer）的双记忆系统解决 mobile manipulation 中的 non-Markovian ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2511-EchoVLA"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2511-EchoVLA"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary 提出 EchoVLA，一个受人类 declarative memory 启发的 memory-aware VLA 模型，通过 scene memory（3D voxel 空间语义地图）和 episodic memory（token FIFO buffer）的双记忆系统解决 mobile manipulation 中的 non-Markovian ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+<html lang="en"><head><title>EchoVLA: Synergistic Declarative Memory for VLA-Driven Mobile Manipulation</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="EchoVLA: Synergistic Declarative Memory for VLA-Driven Mobile Manipulation"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="EchoVLA: Synergistic Declarative Memory for VLA-Driven Mobile Manipulation"/><meta name="twitter:description" content="Summary EchoVLA: Synergistic Declarative Memory for VLA-Driven Mobile Manipulation 核心: 把人脑 declarative memory 的 PHC（场景）+ hippocampus（情景）双路结构搬到 VLA 里，给 mobile manipulation ..."/><meta property="og:description" content="Summary EchoVLA: Synergistic Declarative Memory for VLA-Driven Mobile Manipulation 核心: 把人脑 declarative memory 的 PHC（场景）+ hippocampus（情景）双路结构搬到 VLA 里，给 mobile manipulation ..."/><meta property="og:image:alt" content="Summary EchoVLA: Synergistic Declarative Memory for VLA-Driven Mobile Manipulation 核心: 把人脑 declarative memory 的 PHC（场景）+ hippocampus（情景）双路结构搬到 VLA 里，给 mobile manipulation ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2511-EchoVLA"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2511-EchoVLA"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary EchoVLA: Synergistic Declarative Memory for VLA-Driven Mobile Manipulation 核心: 把人脑 declarative memory 的 PHC（场景）+ hippocampus（情景）双路结构搬到 VLA 里，给 mobile manipulation ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
   position: absolute;
   display: flex;
   float: right;
@@ -116,137 +116,641 @@ pre:hover > .expand-button {
   padding: 0 12px;
   font-size: 14px;
 }
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2511-EchoVLA"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="gc1ghh"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/RL" class="sidebar-tag-pill">#RL</a><a href="/mindflow/tags/web-agent" class="sidebar-tag-pill">#web-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/scene-understanding" class="sidebar-tag-pill">#scene-understanding</a><a href="/mindflow/tags/instruction-following" class="sidebar-tag-pill">#instruction-following</a><a href="/mindflow/tags/cross-embodiment" class="sidebar-tag-pill">#cross-embodiment</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2511-EchoVLA</a></div></nav><h1 class="article-title">EchoVLA: Synergistic Declarative Memory for VLA-Driven Mobile Manipulation</h1><div class="paper-meta"><span class="paper-venue">arXiv</span><span class="paper-authors"><span class="meta-sep">·</span>Min Lin <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, Xiwen Liang</span><span>, Bingqian Lin</span><span>, Liu Jingzhi</span><span>, Zijian Jiao</span><span>, Kehan Li</span><span>, Yu Sun</span><span>, Weijia Liufu</span><span>, Yuhan Ma</span><span>, Yuecheng Liu</span><span>, Shen Zhao</span><span>, Yuzheng Zhuang</span><span>, Xiaodan Liang</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2025-11-22T00:00:00.000Z">Nov 22, 2025</time><span>8 min read</span></p><ul class="tags"><li><a href="../tags/VLA" class="internal tag-link">VLA</a></li><li><a href="../tags/mobile-manipulation" class="internal tag-link">mobile-manipulation</a></li><li><a href="../tags/spatial-memory" class="internal tag-link">spatial-memory</a></li><li><a href="../tags/instruction-following" class="internal tag-link">instruction-following</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>提出 EchoVLA，一个受人类 declarative memory 启发的 memory-aware VLA 模型，通过 scene memory（3D voxel 空间语义地图）和 episodic memory（token FIFO buffer）的双记忆系统解决 mobile manipulation 中的 non-Markovian 长horizon决策问题，在仿真中达到 0.52（manipulation/navigation）和 0.31（mobile manipulation）的成功率，real-world 达 0.51 平均成功率。</p>
-<h2 id="problem--motivation">Problem &amp; Motivation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#problem--motivation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>现有 VLA 模型主要局限于短 horizon 的 table-top manipulation，采用 Markovian 控制（决策仅依赖当前观测），缺乏跨时间步的记忆与推理能力。Mobile manipulation 要求 agent 协调 navigation 和 manipulation，面临空间上下文持续变化的挑战——视觉上相似的两帧可能代表完全不同的任务进度（如”柜子已打开”vs”即将打开”）。作者认为需要显式的 declarative memory 机制来打破 Markovian 假设。</p>
-<p>动机来源于神经科学：模仿人脑海马旁回（PHC）的空间语义编码和海马体（hippocampus）的 episodic trace 整合。这个 neuroscience analogy 提供了直觉，但实际实现与生物机制的对应关系比较松散。</p>
-<h2 id="method">Method<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#method" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<h3 id="多模态状态表示">多模态状态表示<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#多模态状态表示" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p>编码四种模态为统一 token：</p>
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2511-EchoVLA"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="mm0h7i"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/embodied-reasoning" class="sidebar-tag-pill">#embodied-reasoning</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/computer-use" class="sidebar-tag-pill">#computer-use</a><a href="/mindflow/tags/agentic-RL" class="sidebar-tag-pill">#agentic-RL</a><a href="/mindflow/tags/gui-agent" class="sidebar-tag-pill">#gui-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/world-model" class="sidebar-tag-pill">#world-model</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2511-EchoVLA</a></div></nav><h1 class="article-title">EchoVLA: Synergistic Declarative Memory for VLA-Driven Mobile Manipulation</h1><div class="paper-meta"><span class="paper-venue">arXiv preprint</span><span class="paper-authors"><span class="meta-sep">·</span>Min Lin <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, Xiwen Liang</span><span>, Bingqian Lin</span><span>, Liu Jingzhi</span><span>, Zijian Jiao</span><span>, Kehan Li</span><span>, Yu Sun</span><span>, Weijia Liufu</span><span>, Yuhan Ma</span><span>, Yuecheng Liu</span><span>, Shen Zhao</span><span>, Yuzheng Zhuang</span><span>, Xiaodan Liang</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2025-11-22T00:00:00.000Z">Nov 22, 2025</time><span>19 min read</span></p><ul class="tags"><li><a href="../tags/mobile-manipulation" class="internal tag-link">mobile-manipulation</a></li><li><a href="../tags/VLA" class="internal tag-link">VLA</a></li><li><a href="../tags/spatial-memory" class="internal tag-link">spatial-memory</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>EchoVLA: Synergistic Declarative Memory for VLA-Driven Mobile Manipulation </p></div>
+                  
+                </div>
+<div class="callout-content">
 <ul>
-<li><strong>Language</strong>：SigLIP text encoder（frozen）</li>
-<li><strong>RGB</strong>：SigLIP vision tower（frozen），三个固定相机</li>
-<li><strong>3D Structure</strong>：可训练 PointAttn backbone 处理 depth point cloud</li>
-<li><strong>Proprioception</strong>：MLP 变换的关节状态</li>
+<li><strong>核心</strong>: 把人脑 declarative memory 的 PHC（场景）+ hippocampus（情景）双路结构搬到 VLA 里，给 mobile manipulation 加一个持久 voxel scene memory 和一个 FIFO episodic token buffer，分别用 coarse / fine cross-attention 检索后注入 per-part diffusion policy</li>
+<li><strong>方法</strong>: SigLIP（text + 3 view RGB，frozen）+ PointAttn（point cloud，trainable）+ MLP（proprio）→ token 序列 S_t；scene memory 是 voxelized 3D feature map，按 reconstruction-error 阈值 τ 触发更新；episodic memory 是窗口 L 的 FIFO；两路 cosine top-k 检索 + cross-attn 拼成条件 H_t，喂 base / arm 两个独立 diffusion denoiser</li>
+<li><strong>结果</strong>: RoboCasa 上 Manip+Nav avg SR 0.52 / mobile manip avg SR 0.31，分别比 π_0.5 baseline 高 +0.20 / +0.11；TidyBot++ 真机 6 任务 avg 0.44，π_0.5 0.33 / Diffusion Policy 0.32</li>
+<li><strong>Sources</strong>: <a href="https://arxiv.org/abs/2511.18112" class="external">paper<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><strong>Rating</strong>: 2 - Frontier（当前 mobile-manip VLA 的 frontier 探索：explicit dual memory + per-part diffusion 的组合有新意且带诚实的 failure mode 分析，但未开源、memory 的因果贡献未干净隔离，尚未达到 foundation 级影响力）</li>
 </ul>
-<p>组合表示：<code>S_t = [L, V_t, P_t, R_t]</code></p>
-<h3 id="双记忆系统dual-memory-system">双记忆系统（Dual-Memory System）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#双记忆系统dual-memory-system" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p><strong>Scene Memory</strong>：</p>
-<ul>
-<li>维护 voxelized 3D feature map（<code>V_t^{3D} ∈ R^{X×Y×Z×C}</code>），跨 episode 累积空间信息</li>
-<li>基于 discrepancy-driven update：仅重建误差超过阈值的区域更新，实现跨 episode 稳定收敛</li>
-<li>捕获持久性结构元素（表面、自由空间、容器几何）</li>
-<li>inference 时支持 online adaptation</li>
-</ul>
-<p><strong>Episodic Memory</strong>：</p>
-<ul>
-<li>固定大小 FIFO buffer，存储近期 token 序列与时间戳</li>
-<li>保留细粒度时间信息（抽屉开合度、抓取历史、末端执行器配置）</li>
-<li>无压缩的时间线索，用于解决 non-Markov 歧义</li>
-</ul>
-<h3 id="层次化检索机制hierarchical-retrieval">层次化检索机制（Hierarchical Retrieval）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#层次化检索机制hierarchical-retrieval" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p>两级 coarse-to-fine attention：</p>
+</div>
+</blockquote>
+<p><strong>Key Takeaways:</strong></p>
 <ol>
-<li><strong>Coarse Attention（Scene）</strong>：当前 3D 观测 query voxel map，cosine similarity 选 top-k，cross-attention</li>
-<li><strong>Fine Attention（Episodic）</strong>：当前多模态 token query 历史 buffer，cosine similarity 选相关子集，cross-attention</li>
+<li><strong>Dual memory ≠ single buffer</strong>: 把 “环境长期空间结构”（scene, voxel）和 “任务短期进度”（episodic, token FIFO）分开存、分开检索、分开融合，比 MemoryVLA 那种一锅端的隐式 perceptual cache 更解耦，主张是非 Markov 任务（“cabinet opened” vs “about to open”）需要 explicit time index</li>
+<li><strong>Per-part diffusion</strong>: 沿用 π_0.5 的 base / arm 解耦思路，但每路 denoiser 共享同一个 memory-augmented condition H_t，实验中比 π_0.5 在 mobile manip 上多 +0.11 SR</li>
+<li><strong>MoMani benchmark</strong>: 一个 MLLM-prompted 自动数据生成 pipeline（在线生成 + 硬质量门 + 离线词典序排序），产出 5K+ 仿真 nav-manip 联合轨迹，外加 1.2K TidyBot++ 真机 demo</li>
+<li><strong>Failure mode 自爆</strong>: 论文承认在 OR (open refrigerator) 上输给 baseline——动态遮挡（开门时几何剧变）让显式 voxel 3D memory 反而成累赘，依赖 implicit “muscle memory” 的方法此时更稳</li>
 </ol>
-<p>融合表示 <code>H_t = [Z_t^{scene}, Z_t^{epi}]</code> 送入 diffusion policy。</p>
-<h3 id="per-part-diffusion-policy">Per-Part Diffusion Policy<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#per-part-diffusion-policy" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p>将异构 action space 分解为 base 和 arm 的独立 denoiser：
-<code>ε_θ^(p) = Denoiser_p(z_t, H_t, t), p ∈ {base, arm}</code></p>
-<p>这一设计允许 locomotion 和 manipulation 行为结构化学习、解耦但协调。</p>
-<h3 id="momani-数据集">MoMani 数据集<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#momani-数据集" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Teaser. EchoVLA 与既有 memory-aware mobile manip 方法（BSC-Nav、MemoryVLA）的设计对比。</strong> EchoVLA 的关键差异是把 spatial 和 episodic 拆成两个独立 bank，分别走 coarse / fine cross-attn，最后融合后驱动 per-part diffusion。</p>
+<p><img src="https://arxiv.org/html/2511.18112v2/x1.png" alt/></p>
+<hr/>
+<h2 id="1-问题与动机">1. 问题与动机<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-问题与动机" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="mobile-manipulation-的-non-markov-困境">Mobile manipulation 的 non-Markov 困境<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mobile-manipulation-的-non-markov-困境" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>主流 OpenVLA / RT-2 系 VLA 都是 Markovian——<code>a_t = π(o_t, I)</code>，仅依赖当前观察。这在 table-top 短任务上 work，但 mobile manipulation 必须协调 navigation + manipulation，且：</p>
 <ul>
-<li><strong>仿真数据</strong>：MLLM 生成 executable task script → 物理仿真执行 → 闭环修正</li>
-<li><strong>真实数据</strong>：Kinova Gen3 7-DoF + holonomic mobile base（TidyBot++ 平台），30Hz 时间同步采集</li>
-<li>仿真轨迹长度 630-756 步（是 RoboCasa baseline 的 2.7 倍），真实世界 126-191 步</li>
+<li>视觉相似的两帧可能对应<strong>完全不同的进度状态</strong>（“cabinet opened” vs “about to open”）</li>
+<li>跨房间长任务里，刚刚走过的房间布局对当前决策仍然相关，但已经不在视野内</li>
 </ul>
-<h2 id="key-results">Key Results<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-results" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<h3 id="仿真robocasa50-episodes-平均">仿真（RoboCasa，50 episodes 平均）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#仿真robocasa50-episodes-平均" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>需要某种 memory。论文的 framing 是从 declarative memory 的脑科学类比出发：parahippocampal cortex (PHC) 编码空间-语义结构，hippocampus 把上下文整合成时序索引的 episodic trace。</p>
+<blockquote>
+<p>❓ 这种脑神经类比在 ML paper 里更多是 narrative 装裱，真正的 design choice 还是工程驱动的（voxel map + FIFO buffer）。读这类 paper 时建议直接看架构，不要被 PHC/hippocampus 这层叙事带偏对方法新颖性的判断。</p>
+</blockquote>
+<h3 id="与既有-memory-aware-方法的差异">与既有 memory-aware 方法的差异<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#与既有-memory-aware-方法的差异" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li><strong>Manipulation/Navigation 平均 SR</strong>：EchoVLA 0.52 vs. π₀.₅ 0.44（+18% 相对提升）</li>
-<li><strong>Navigation only</strong>：EchoVLA 0.51 vs. π₀.₅ 0.31（+64% 相对提升）</li>
-<li><strong>Mobile Manipulation 平均 SR</strong>：EchoVLA 0.31 vs. π₀.₅ 0.20（+55% 相对提升）</li>
-<li>传统方法（BC-T, DP3, Diffusion Policy）在 mobile manipulation 上几乎完全失败（~0.01-0.06）</li>
+<li><strong>BSC-Nav</strong>：landmark memory + cognitive map → LLM-based reasoning 和 planning（高层）</li>
+<li><strong>MemoryVLA</strong>：perceptual + cognitive memory → 直接条件 diffusion policy（低层），但 memory 是隐式 perceptual cache，没有 explicit 空间结构和 task-level experience</li>
+<li><strong>π_0.5</strong>：base / arm per-part 分解，带 partial episodic memory，但缺 explicit scene-level memory</li>
+<li><strong>EchoVLA</strong>：scene (voxel) + episodic (token FIFO) 两路独立存 + 两级 attention 融合，per-part diffusion 控制</li>
 </ul>
-<h3 id="real-world4-个家庭任务">Real-World（4 个家庭任务）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#real-world4-个家庭任务" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<hr/>
+<h2 id="2-方法">2. 方法<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-方法" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="21-架构总览">2.1 架构总览<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#21-架构总览" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Figure 2. EchoVLA 整体架构。</strong> 多模态观测（多视角 RGB、点云、language、proprio）→ 统一 token 序列 → 经 episodic / scene memory 的 coarse + fine cross-attn 检索 → 拼合后作为 per-part diffusion policy 的 condition，分别生成 arm / base 动作。</p>
+<p><img src="https://arxiv.org/html/2511.18112v2/x2.png" alt/></p>
+<p>三个模块：multimodal state representation (3.2) → memory retrieval &amp; interaction (3.3) → per-part diffusion (3.4)。</p>
+<h3 id="22-problem-formulation">2.2 Problem Formulation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#22-problem-formulation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>时刻 t，agent 观察多视角 RGB-D <code>O_t</code>、proprioceptive <code>s_t</code>、自然语言 instruction <code>I</code>，输出连续的 arm + base 动作：</p>
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1491em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7144em;"><span style="top:-2.453em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">arm</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8991em;"><span style="top:-2.453em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">base</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">π</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathcal" style="margin-right:0.07382em;">I</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathcal" style="margin-right:0.02778em;">O</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mrel mtight">:</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathbf">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mrel mtight">:</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mord">.</span></span></span></span></span>
+<p>强调是 non-Markov：condition 是从 1 到 t 的整段历史而非单 frame。</p>
+<h3 id="23-multimodal-state-representation">2.3 Multimodal State Representation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#23-multimodal-state-representation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>每个模态独立 encoder：</p>
 <ul>
-<li><strong>EchoVLA 平均 SR</strong>：0.51 vs. π₀.₅ 0.40 vs. Diffusion Policy 0.45</li>
-<li>最佳单任务：Close Microwave 0.70</li>
+<li><strong>Language</strong>：SigLIP text tower（frozen）→ <code>L</code></li>
+<li><strong>3 个固定相机的 RGB</strong>：SigLIP vision tower（frozen），独立编码后 concat + 投影 → <code>V_t</code></li>
+<li><strong>Depth → point cloud</strong>：trainable PointAttn → <code>P_t</code>（提供 free-space、support surface、object boundary 等几何线索）</li>
+<li><strong>Proprio <code>s_t</code></strong>：MLP → <code>R_t</code></li>
 </ul>
-<h3 id="ablation">Ablation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#ablation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>拼成统一 token 序列：</p>
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8361em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathbf">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathbf">L</span><span class="mpunct">,</span><span class="mspace"> </span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathbf" style="margin-right:0.01597em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.016em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace"> </span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathbf">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace"> </span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathbf">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">]</span></span></span></span></span>
+<p><code>S_t</code> 既是 episodic memory 的 query，也是 diffusion policy 的 condition base。</p>
+<blockquote>
+<p>❓ frozen SigLIP + trainable PointAttn 这种 “语义冻结、几何可学” 的组合很常见，但论文没说 RGB 与 PC token 之间是否有 cross-modal alignment loss——可能就是简单 concat，靠下游 cross-attn 自行学融合。</p>
+</blockquote>
+<h3 id="24-scene-memoryphc-类比">2.4 Scene Memory（PHC 类比）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#24-scene-memoryphc-类比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Figure 3. Voxelized 3D feature map 可视化。</strong> 把多次 episode 的 depth 观测累积进 voxel 网格，再用 PointAttn 编码成 3D feature volume。</p>
+<p><img src="https://arxiv.org/html/2511.18112v2/x3.png" alt/></p>
+<p>形式：</p>
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1383em;vertical-align:-0.247em;"></span><span class="mord"><span class="mord mathbf" style="margin-right:0.01597em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8913em;"><span style="top:-2.453em;margin-left:-0.016em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">D</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8913em;"></span><span class="mord"><span class="mord mathbb">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8913em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.07847em;">X</span><span class="mbin mtight">×</span><span class="mord mathnormal mtight" style="margin-right:0.22222em;">Y</span><span class="mbin mtight">×</span><span class="mord mathnormal mtight" style="margin-right:0.07153em;">Z</span><span class="mbin mtight">×</span><span class="mord mathnormal mtight" style="margin-right:0.07153em;">C</span></span></span></span></span></span></span></span></span><span class="mord">.</span></span></span></span></span>
+<p><strong>Discrepancy-driven 更新</strong>：当前 voxel 特征 <code>V^3D_t</code> 与 memory 已有重建做对比，error 超阈值 <code>τ</code> 的区域才用新 PointAttn 特征覆盖，未变区域保留旧值。Inference 时也同样在线 refine，所以理论上能自适应环境变化（rearrangement）。</p>
+<blockquote>
+<p>❓ “reconstruction” 怎么生成的没细写——猜是从 memory voxel 反向 decode 一组 PointAttn-comparable 特征做 cosine 比较。论文没给 decoder 结构，是 reproducibility 的洞。</p>
+</blockquote>
+<h3 id="25-episodic-memoryhippocampus-类比">2.5 Episodic Memory（hippocampus 类比）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#25-episodic-memoryhippocampus-类比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>短窗口 token buffer：</p>
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8805em;"></span><span class="mord"><span class="mord mathcal">M</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8805em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">epi</span></span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{(</span><span class="mord"><span class="mord mathbf">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mbin mtight">−</span><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathbf">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)}</span></span></span></span></span>
+<p>固定大小 FIFO，保存原始 encoded token（不做 abstract summary），强调 “原始 token 才能保住 fine-grained 时序线索”。窗口 size <code>L</code> 由 capacity 决定，ablation 中 L=8 最优。</p>
+<p>设计上和 scene memory 互补：scene 慢变 + 持久 + 空间结构；episodic 快变 + 短期 + 时序进度。</p>
+<h3 id="26-memory-matching--attention">2.6 Memory Matching &amp; Attention<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#26-memory-matching--attention" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>两步式：cosine top-k 选 → cross-attn 交互。</p>
+<p><strong>Scene memory（coarse）</strong>：query 是当前 <code>V^3D_t</code>，从 <code>M^scene</code> 中选 top-k 相近的 stored map：</p>
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9614em;vertical-align:-0.247em;"></span><span class="mord"><span class="mord mathbf">Z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7144em;"><span style="top:-2.453em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">scene</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2em;vertical-align:-0.35em;"></span><span class="mord"><span class="mord mathrm">CrossAttn</span></span><span class="mopen"><span class="delimsizing size1">(</span></span><span class="mord text"><span class="mord">q</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1413em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathbf" style="margin-right:0.01597em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8913em;"><span style="top:-2.453em;margin-left:-0.016em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mathnormal mtight" style="margin-right:0.02778em;">D</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">k / v</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2em;vertical-align:-0.35em;"></span><span class="mord"><span class="mord mathcal">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7144em;"><span style="top:-2.453em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">sel</span></span></span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">scene</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mclose"><span class="delimsizing size1">)</span></span><span class="mord">.</span></span></span></span></span>
+<p><strong>Episodic memory（fine）</strong>：query 是 <code>S_t</code>，从 <code>M^epi</code> 中 match：</p>
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1942em;vertical-align:-0.2458em;"></span><span class="mord"><span class="mord mathbf">Z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9484em;"><span style="top:-2.4542em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span style="top:-3.1809em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">epi</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2458em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2em;vertical-align:-0.35em;"></span><span class="mord"><span class="mord mathrm">CrossAttn</span></span><span class="mopen"><span class="delimsizing size1">(</span></span><span class="mord text"><span class="mord">q</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathbf">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">k / v</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2984em;vertical-align:-0.35em;"></span><span class="mord"><span class="mord mathcal">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9484em;"><span style="top:-2.3987em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">sel</span></span></span></span></span><span style="top:-3.1809em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">epi</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3013em;"><span></span></span></span></span></span></span><span class="mclose"><span class="delimsizing size1">)</span></span><span class="mord">.</span></span></span></span></span>
+<p>拼合：</p>
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8361em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathbf">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2984em;vertical-align:-0.35em;"></span><span class="mopen"><span class="delimsizing size1">[</span></span><span class="mord"><span class="mord mathbf">Z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7144em;"><span style="top:-2.453em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">scene</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathbf">Z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9484em;"><span style="top:-2.4542em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span style="top:-3.1809em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">epi</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2458em;"><span></span></span></span></span></span></span><span class="mclose"><span class="delimsizing size1">]</span></span></span></span></span></span>
+<p><code>H_t</code> 即下游 diffusion 的 condition。</p>
+<h3 id="27-per-part-diffusion-policy">2.7 Per-part Diffusion Policy<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#27-per-part-diffusion-policy" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>base 和 arm 各一套 denoiser，共享 condition <code>H_t</code>：</p>
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.3461em;vertical-align:-0.3013em;"></span><span class="mord"><span class="mord mathnormal">ϵ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0448em;"><span style="top:-2.3987em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span style="top:-3.2198em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathnormal mtight">p</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3013em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord text"><span class="mord">Denoiser</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">p</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathbf">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathbf">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:1em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">p</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord text"><span class="mord">base</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">arm</span></span><span class="mclose">}</span></span></span></span></span>
+<p>训练目标是两路 denoising loss 之和：</p>
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathcal">L</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.666em;vertical-align:-1.516em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.05em;"><span style="top:-1.809em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">p</span><span class="mrel mtight">∈</span><span class="mopen mtight">{</span><span class="mord text mtight"><span class="mord mtight">base</span></span><span class="mpunct mtight">,</span><span class="mord text mtight"><span class="mord mtight">arm</span></span><span class="mclose mtight">}</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.516em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathbb">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mpunct mtight">,</span><span class="mord mtight"><span class="mord mathbf mtight">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2963em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mord"><span class="delimsizing size2">[</span></span><span class="mord">∥</span><span class="mord mathnormal">ϵ</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.8em;vertical-align:-0.65em;"></span><span class="mord"><span class="mord mathnormal">ϵ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0448em;"><span style="top:-2.3987em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span style="top:-3.2198em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathnormal mtight">p</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3013em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathbf">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathbf">H</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">t</span><span class="mclose">)</span><span class="mord"><span class="mord">∥</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mord"><span class="delimsizing size2">]</span></span><span class="mord">.</span></span></span></span></span>
+<p>承袭 π0.5 的 per-part 解耦动机：base motion 和 arm manipulation 的动力学异质，强行共享 head 会互相干扰。</p>
+<blockquote>
+<p>❓ Per-part 设计在 mobile manip 上越来越像标配了（π0.5、MoManipVLA、AC-DiT 都做这件事），但每家 condition 怎么 share / split 各有差异，是个值得整理的小 pattern。</p>
+</blockquote>
+<hr/>
+<h2 id="3-momani-benchmark--dataset">3. MoMani Benchmark &amp; Dataset<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-momani-benchmark--dataset" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="31-与既有-benchmark-的对比">3.1 与既有 benchmark 的对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#31-与既有-benchmark-的对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table 1. MoMani vs 现有具身 benchmark。</strong> Sub-tasks 是单 trajectory 内的子任务数；R/S 是 real / sim；Co-Gen 指 navigation + manipulation 联合自动生成；Mobile-M (Sim) 指 sim 中的 mobile manipulator；Real-Robot 指有实体机器人数据。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Name</th><th>Sub-tasks</th><th>Real</th><th>Sim</th><th>Nav-gen</th><th>Manip-gen</th><th>Co-Gen</th><th>Mobile-M (Sim)</th><th>Real-Robot</th><th>Action</th></tr></thead><tbody><tr><td>ManiSkill2</td><td>1-2</td><td>-</td><td>✓</td><td>-</td><td>✓</td><td>-</td><td>✓</td><td>-</td><td>M</td></tr><tr><td>Social Nav</td><td>1</td><td>-</td><td>✓</td><td>✓</td><td>-</td><td>-</td><td>✓</td><td>-</td><td>N, M</td></tr><tr><td>HomeRobot</td><td>3</td><td>-</td><td>✓</td><td>✓</td><td>✓</td><td>-</td><td>✓</td><td>✓</td><td>N, M</td></tr><tr><td>ProcTHOR</td><td>3</td><td>-</td><td>✓</td><td>✓</td><td>✓</td><td>-</td><td>✓</td><td>-</td><td>N, M</td></tr><tr><td>Behavior-1K</td><td>>5</td><td>-</td><td>✓</td><td>✓</td><td>✓</td><td>-</td><td>✓</td><td>-</td><td>N, M</td></tr><tr><td>Open X-Embodiment</td><td>1-3</td><td>✓</td><td>-</td><td>-</td><td>-</td><td>-</td><td>✓</td><td>✓</td><td>M</td></tr><tr><td>RoboCasa365</td><td>2-16</td><td>-</td><td>✓</td><td>✓</td><td>✓</td><td>-</td><td>✓</td><td>-</td><td>N, M</td></tr><tr><td>InfinitedWorld</td><td>3</td><td>-</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>-</td><td>N, M</td></tr><tr><td><strong>MoMani (Ours)</strong></td><td>2-3</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>N, M</td></tr></tbody></table></div>
+<p>主张是只有 MoMani 同时勾上 Real + Sim + Co-Gen + Mobile-M (Sim) + Real-Robot。</p>
+<blockquote>
+<p>❓ 表里 sub-tasks 一栏 MoMani 写 “2-3”，反而比 RoboCasa365 (2-16) 和 Behavior-1K (>5) 短，但被宣传为 “richer task coverage”——richness 应该用任务数和环境多样性而非 sub-task 长度衡量，此处 framing 略 sloppy。</p>
+</blockquote>
+<h3 id="32-仿真数据-pipeline">3.2 仿真数据 pipeline<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#32-仿真数据-pipeline" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Figure 5. Quality-Controlled Data Engine。</strong> 两阶段——在线候选生成 + 离线挑选审计。</p>
+<p><img src="https://arxiv.org/html/2511.18112v2/x5.png" alt/></p>
+<p><strong>Stage I: Online Candidate Generation</strong></p>
 <ul>
-<li>去除 Scene Memory：mobile manipulation SR 从 0.17 降至 0.14</li>
-<li>去除 Episodic Memory：从 0.17 降至 0.09</li>
-<li>去除 Point Cloud：从 0.17 降至 0.09</li>
-<li>双记忆 + 多模态观测缺一不可，mobile manipulation 对记忆消融更敏感</li>
+<li>MMLM prompter 处理任务规范，依次执行 Target-Aligned Sampling (L1)、Safety-Aware Navigation (L2)、Continuous Nav-Manip Stitching (L3)</li>
+<li>引擎支持 base + arm 同时执行，用连续碰撞检测合成协调的 nav-manip 轨迹</li>
+<li><strong>Hard Quality Gates</strong>：零碰撞、对齐精度（Δpos &lt; 0.05 m、Δori &lt; 5°）、100% task success → 进入候选池 <code>D_pool</code></li>
 </ul>
-<h2 id="strengths--weaknesses">Strengths &amp; Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths--weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p><strong>Strengths</strong>:</p>
+<p><strong>Stage II: Offline Selection &amp; Audit</strong></p>
 <ul>
-<li>问题定义清晰：mobile manipulation 的 non-Markovian 挑战是真实痛点，双记忆系统的设计有合理的直觉支撑</li>
-<li>Scene memory 的 discrepancy-driven update 是实用的工程选择，避免了全量更新的计算开销</li>
-<li>Per-part diffusion policy 的 base/arm 解耦设计对异构 action space 合理</li>
-<li>提供了仿真 + real-world 的完整评估，ablation 覆盖了核心组件</li>
-<li>相比 π₀.₅ 在 navigation 上有显著提升（+64%），说明 scene memory 对空间推理有效</li>
+<li>Lexicographic Ranking (L4)：按 path length + planning cost 排序，取 top-K 作为专家级 <code>D_topK</code></li>
+<li>Scene-Camera Audit 保证训练就绪</li>
+<li>最终生成 5,000+ 多模态轨迹</li>
 </ul>
-<p><strong>Weaknesses</strong>:</p>
+<h3 id="33-real-robot-数据">3.3 Real-Robot 数据<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#33-real-robot-数据" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>基于 TidyBot++ 配置：Kinova Gen3 7-DoF 臂 + holonomic mobile base，前置 RGB-D + 顶视 stereo 相机，ROS 同步。Web teleop 30 Hz 录制，分割成 motion primitive，replay 验证成功的留下、失败丢弃。</p>
+<h3 id="34-dataset-composition">3.4 Dataset Composition<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#34-dataset-composition" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Figure 4. 仿真 + 真机数据分布。</strong> Sim 包含 4 个 mobile manip 任务 (TOF/PnPS2C/PnPC2S/TOS) 和大量纯 navigation；Real-world 6 个 mobile manip 任务 (CM/OD/OR/PCIS/RK/EnP)。</p>
+<p><img src="https://arxiv.org/html/2511.18112v2/x4.png" alt/></p>
 <ul>
-<li><strong>绝对性能偏低</strong>：mobile manipulation 最高 0.31 SR，即便最好的 manipulation/navigation 也仅 0.52，离实用距离很大。这既是问题的难度体现，也限制了方法的说服力</li>
-<li><strong>Neuroscience analogy 过度包装</strong>：PHC/hippocampus 的类比主要是 narrative，实际 scene memory 就是 3D feature map + 增量更新，episodic memory 就是 FIFO buffer，与生物机制的对应很表面</li>
-<li><strong>Baseline 选择有疑问</strong>：WB-VIMA 表现极差（0.15），Diffusion Policy 几乎为零（0.01），这些 baseline 是否经过充分调优存疑。主要竞争者仅 π₀.₅</li>
-<li><strong>Ablation 数值波动大</strong>：mobile manipulation 的 ablation 中数值在 0.09-0.17 之间，样本量可能不足以得出可靠结论（仅 50 episodes）</li>
-<li><strong>强依赖深度传感器</strong>：作者自己承认对 noisy/incomplete depth 敏感，这在真实部署场景中是实质性限制</li>
-<li><strong>Scene memory 的注意力可视化</strong>（Figure 13）显示对机器人自身部件有非预期关注，暗示检索机制存在 noise</li>
-<li><strong>缺乏 generalization 实验</strong>：仅在同类 kitchen 任务上评估，未测试跨场景/跨 embodiment 的泛化能力</li>
+<li><strong>Sim (7,889 episodes)</strong>：navigation-only 占 57.0%，PnPC2S/PnPS2C/TOS/TOF 各约 10.7-10.8%</li>
+<li><strong>Real-world (1,200 episodes)</strong>：OR/CM/OD/PCIS 各 20.8%，EnP/RK 各 8.3%</li>
 </ul>
-<h2 id="mind-map">Mind Map<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mind-map" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;mindmap\n  root((EchoVLA))\n    问题\n      VLA 的 Markovian 瓶颈\n      Mobile manipulation 需要跨时间步记忆\n      Navigation + manipulation 协调\n    方法\n      多模态表示\n        SigLIP frozen encoder\n        PointAttn 3D backbone\n        Proprioception MLP\n      双记忆系统\n        Scene Memory: 3D voxel map\n          Discrepancy-driven update\n          跨 episode 累积\n        Episodic Memory: FIFO buffer\n          Token + timestamp\n          无压缩时间线索\n      层次化检索\n        Coarse: scene cross-attention\n        Fine: episodic cross-attention\n      Per-Part Diffusion Policy\n        Base denoiser\n        Arm denoiser\n    数据\n      MoMani 数据集\n        MLLM 生成 + 闭环修正\n        Real-robot teleoperation\n    结果\n      仿真 SR 0.52 manip/nav\n      仿真 SR 0.31 mobile manip\n      Real-world SR 0.51\n      vs π₀.₅ 显著提升\n    局限\n      绝对性能偏低\n      深度传感器依赖\n      泛化未验证&quot;">mindmap
-  root((EchoVLA))
-    问题
-      VLA 的 Markovian 瓶颈
-      Mobile manipulation 需要跨时间步记忆
-      Navigation + manipulation 协调
-    方法
-      多模态表示
-        SigLIP frozen encoder
-        PointAttn 3D backbone
-        Proprioception MLP
-      双记忆系统
-        Scene Memory: 3D voxel map
-          Discrepancy-driven update
-          跨 episode 累积
-        Episodic Memory: FIFO buffer
-          Token + timestamp
-          无压缩时间线索
-      层次化检索
-        Coarse: scene cross-attention
-        Fine: episodic cross-attention
-      Per-Part Diffusion Policy
-        Base denoiser
-        Arm denoiser
-    数据
-      MoMani 数据集
-        MLLM 生成 + 闭环修正
-        Real-robot teleoperation
-    结果
-      仿真 SR 0.52 manip/nav
-      仿真 SR 0.31 mobile manip
-      Real-world SR 0.51
-      vs π₀.₅ 显著提升
-    局限
-      绝对性能偏低
-      深度传感器依赖
-      泛化未验证
-</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
-<h2 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<hr/>
+<h2 id="4-实验">4. 实验<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-实验" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="41-setup">4.1 Setup<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#41-setup" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>仿真：在 RoboCasa simulator 上跑 multiple mobile manip 任务。真机：TidyBot++ 平台，7m × 7m arena，包含跨房间 EnP (Enter and Pick) 任务。8× A100 训练。</p>
+<h3 id="42-robocasa-simulator-主结果">4.2 RoboCasa Simulator 主结果<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#42-robocasa-simulator-主结果" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table 2. RoboCasa 上 Manip / Nav 与 Mobile Manip 任务的 SR 对比。</strong> Manip/Nav 评单一动作类型；Mobile Manip 强制 base + arm 协调。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Category</th><th>Method</th><th>PnP C2S</th><th>PnP S2C</th><th>TOF</th><th>TOS</th><th>Nav only</th><th>Avg SR</th></tr></thead><tbody><tr><td>Manip / Nav</td><td>BC-T</td><td>0.04</td><td>0.46</td><td>0.33</td><td>0.45</td><td>0.10</td><td>0.28</td></tr><tr><td></td><td>Diffusion Policy</td><td>0.00</td><td>0.00</td><td>0.03</td><td>0.00</td><td>0.03</td><td>0.01</td></tr><tr><td></td><td>DP3</td><td>0.03</td><td>0.25</td><td>0.43</td><td>0.26</td><td>0.13</td><td>0.22</td></tr><tr><td></td><td>WB-VIMA</td><td>0.00</td><td>0.12</td><td>0.11</td><td>0.19</td><td>0.31</td><td>0.15</td></tr><tr><td></td><td><a href="../Papers/2504-Pi05" class="internal alias" data-slug="Papers/2504-Pi05">π0.5</a></td><td>0.18</td><td>0.20</td><td>0.44</td><td>0.52</td><td>0.24</td><td>0.32</td></tr><tr><td></td><td><strong>EchoVLA</strong></td><td><strong>0.21</strong></td><td><strong>0.68</strong></td><td><strong>0.51</strong></td><td><strong>0.67</strong></td><td><strong>0.51</strong></td><td><strong>0.52</strong></td></tr><tr><td>Mobile Manip</td><td>BC-T</td><td>0.00</td><td>0.11</td><td>0.04</td><td>0.04</td><td>–</td><td>0.05</td></tr><tr><td></td><td>DP3</td><td>0.00</td><td>0.10</td><td>0.08</td><td>0.04</td><td>–</td><td>0.06</td></tr><tr><td></td><td>WB-VIMA</td><td>0.00</td><td>0.12</td><td>0.11</td><td>0.19</td><td>–</td><td>0.11</td></tr><tr><td></td><td><a href="../Papers/2504-Pi05" class="internal alias" data-slug="Papers/2504-Pi05">π0.5</a></td><td>0.08</td><td>0.25</td><td>0.18</td><td>0.27</td><td>–</td><td>0.20</td></tr><tr><td></td><td><strong>EchoVLA</strong></td><td><strong>0.17</strong></td><td><strong>0.34</strong></td><td><strong>0.29</strong></td><td><strong>0.43</strong></td><td>–</td><td><strong>0.31</strong></td></tr></tbody></table></div>
+<p>观察：</p>
+<ol>
+<li>Diffusion Policy 在这套 setup 下几乎全零——可能 vanilla DP 的 visuomotor 表征不足以处理 RoboCasa 的多视角 + 跨场景泛化</li>
+<li>EchoVLA 在 PnP S2C 上跳到 0.68（baseline 最高 0.46）幅度异常大，暗示 spatial memory 对 “Sink → Counter” 这种长程参照变换帮助显著</li>
+<li>从 Manip/Nav 0.52 掉到 Mobile Manip 0.31，相对降幅 -40%，说明就算有 memory，“同时动 base + arm” 仍是真正的瓶颈</li>
+</ol>
+<h3 id="43-ablation">4.3 Ablation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#43-ablation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table 3. 观测模态 + memory 模块 ablation。</strong> M = mobile 变体的 SR；S = stationary 变体的 SR。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th></th><th>RGB</th><th>PC</th><th>EM</th><th>SM</th><th>M</th><th>S</th></tr></thead><tbody><tr><td>(a)</td><td>✗</td><td>✓</td><td>✓</td><td>✓</td><td>0.02</td><td>0.13</td></tr><tr><td>(b)</td><td>✓</td><td>✗</td><td>✓</td><td>✓</td><td>0.08</td><td>0.15</td></tr><tr><td>(c)</td><td>✓</td><td>✓</td><td>✓</td><td>✗</td><td>0.09</td><td>0.16</td></tr><tr><td>(d)</td><td>✓</td><td>✓</td><td>✗</td><td>✓</td><td>0.14</td><td>0.13</td></tr><tr><td>Ours</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>0.17</td><td>0.21</td></tr></tbody></table></div>
+<p>读法：</p>
 <ul>
-<li>核心贡献更多是工程集成（3D voxel map + FIFO buffer + per-part diffusion）而非方法论突破。每个组件单独看都不新颖，价值在于将它们整合到 mobile manipulation VLA 中</li>
-<li>与 MemoryVLA 的区别在于引入了显式 3D spatial memory，但 MemoryVLA 的 perceptual-cognitive memory 路线是否真的不如 explicit 3D map 需要更公平的对比</li>
-<li>Mobile manipulation 的 0.31 SR 说明这个问题确实很难，但也意味着方法离 deployment 很远。这篇更像是 proof-of-concept</li>
-<li>MoMani 数据集的 MLLM-guided 自动生成 pipeline 可能是最有长期价值的贡献——如果开源的话</li>
-<li>Rating 3/5：问题重要，方法合理但不够新颖，绝对性能较低，neuroscience narrative 过度包装</li>
-</ul></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="uevi3i" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#problem--motivation" data-for="problem--motivation">Problem &amp; Motivation</a></li><li class="depth-0"><a href="#method" data-for="method">Method</a></li><li class="depth-1"><a href="#多模态状态表示" data-for="多模态状态表示">多模态状态表示</a></li><li class="depth-1"><a href="#双记忆系统dual-memory-system" data-for="双记忆系统dual-memory-system">双记忆系统（Dual-Memory System）</a></li><li class="depth-1"><a href="#层次化检索机制hierarchical-retrieval" data-for="层次化检索机制hierarchical-retrieval">层次化检索机制（Hierarchical Retrieval）</a></li><li class="depth-1"><a href="#per-part-diffusion-policy" data-for="per-part-diffusion-policy">Per-Part Diffusion Policy</a></li><li class="depth-1"><a href="#momani-数据集" data-for="momani-数据集">MoMani 数据集</a></li><li class="depth-0"><a href="#key-results" data-for="key-results">Key Results</a></li><li class="depth-1"><a href="#仿真robocasa50-episodes-平均" data-for="仿真robocasa50-episodes-平均">仿真（RoboCasa，50 episodes 平均）</a></li><li class="depth-1"><a href="#real-world4-个家庭任务" data-for="real-world4-个家庭任务">Real-World（4 个家庭任务）</a></li><li class="depth-1"><a href="#ablation" data-for="ablation">Ablation</a></li><li class="depth-0"><a href="#strengths--weaknesses" data-for="strengths--weaknesses">Strengths &amp; Weaknesses</a></li><li class="depth-0"><a href="#mind-map" data-for="mind-map">Mind Map</a></li><li class="depth-0"><a href="#notes" data-for="notes">Notes</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+<li><strong>(a) 去 RGB</strong>：mobile 0.02、stationary 0.13——RGB 损失对 mobile 远比 stationary 致命，因为 mobile 任务依赖语义识别远处目标</li>
+<li><strong>(b) 去 PC</strong>：M 0.08、S 0.15——少了几何线索，grasp 精度全面下降</li>
+<li><strong>(c) 去 SM</strong>：M 0.09 vs full 0.17（-0.08）——scene memory 在 mobile 场景下贡献最大</li>
+<li><strong>(d) 去 EM</strong>：M 0.14 vs full 0.17（-0.03），但 S 0.13 vs full 0.21（-0.08）——episodic memory 有趣地在 stationary 场景反而更关键，可能是因为 stationary 任务更细粒度时序敏感（grasp 阶段衔接），mobile 场景的 SM 贡献掩盖了 EM</li>
+<li>两路都去会进一步退化</li>
+</ul>
+<blockquote>
+<p>❓ Ablation 没给 “EM + SM 都关、只剩 RGB+PC” 的 baseline，无法直接量化 memory 总贡献。从 (c)+(d) 推断 memory 总贡献约 +0.03 ~ +0.08，相对 baseline π_0.5 的 +0.11 增益，意味着 per-part diffusion + 数据集等其他变量也吃掉了不少 gain，单纯 memory 的因果效应没那么戏剧性。</p>
+</blockquote>
+<p><strong>Table 4. EM 窗口 size L 与 SM 更新阈值 τ 的敏感性（PnPC2S Mobile）。</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Window Size (L)</th><th>2</th><th>4</th><th>8</th><th>16</th></tr></thead><tbody><tr><td>SR ↑</td><td>0.08</td><td>0.12</td><td>0.17</td><td>0.15</td></tr></tbody></table></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Threshold (τ)</th><th>0.1</th><th>0.3</th><th>0.5</th><th>0.7</th></tr></thead><tbody><tr><td>SR ↑</td><td>0.11</td><td>0.14</td><td>0.17</td><td>0.13</td></tr></tbody></table></div>
+<p>L 太小（2/4）“plan forgetting”；L 太大（16）latency 增加且收益递减。τ 太低导致 representation 不稳；τ 太高 memory 过时。</p>
+<h3 id="44-真机实验">4.4 真机实验<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#44-真机实验" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Figure 6. EchoVLA 真机 rollouts。</strong> 完成 4 个 mobile manip 任务：关微波炉、把杯子从架子放到水槽、开抽屉、开冰箱。</p>
+<p><img src="https://arxiv.org/html/2511.18112v2/x6.png" alt/></p>
+<p><strong>Table 5. 真机 6 任务 SR。</strong> 每任务 20 次随机起始位姿试验。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Method</th><th>OD</th><th>CM</th><th>PCIS</th><th>OR</th><th>RK</th><th>EnP</th><th>Avg SR</th></tr></thead><tbody><tr><td><a href="../Papers/2504-Pi05" class="internal alias" data-slug="Papers/2504-Pi05">π0.5</a></td><td>0.35</td><td>0.55</td><td>0.20</td><td>0.50</td><td>0.40</td><td>0.00</td><td>0.33</td></tr><tr><td>Diffusion Policy</td><td>0.40</td><td>0.60</td><td>0.50</td><td>0.30</td><td>0.10</td><td>0.03</td><td>0.32</td></tr><tr><td><strong>EchoVLA</strong></td><td><strong>0.45</strong></td><td><strong>0.70</strong></td><td>0.50</td><td>0.40</td><td><strong>0.50</strong></td><td><strong>0.10</strong></td><td><strong>0.44</strong></td></tr></tbody></table></div>
+<p>亮点：</p>
+<ul>
+<li><strong>CM 0.70 / RK 0.50</strong> 上明显甩开 baseline；论文归因 “EM 作为时序锚点弥补 SM 中 voxel ghosting”</li>
+<li><strong>EnP 0.10</strong>（vs baseline 0.00 / 0.03）：跨房间长程任务上虽然绝对值低但唯一非零</li>
+<li><strong>OR 0.40 &lt; π_0.5 0.50</strong>：作者诚实地分析 failure——开冰箱门时几何剧变让 explicit 3D scene memory 失效，而 baseline 靠 implicit “muscle memory” 反而更鲁棒。这是一个有意思的 explicit vs implicit memory trade-off</li>
+</ul>
+<hr/>
+<h2 id="关联工作">关联工作<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#关联工作" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="基于">基于<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#基于" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>π0.5：per-part (base/arm) 分解 + partial episodic memory 的直接前身，EchoVLA 在此基础上引入 explicit scene + episodic dual memory</li>
+<li>SigLIP：frozen text + vision encoder</li>
+<li>PointAttn：trainable 3D 表示</li>
+</ul>
+<h3 id="对比">对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>MemoryVLA</strong>（concurrent）：单 perceptual + cognitive memory 的隐式 cache，没有 explicit 空间结构和 task-level experience。EchoVLA 主张 explicit 拆分更适合 mobile manip</li>
+<li><strong>BSC-Nav</strong>：landmark + cognitive map 给 LLM 做 high-level reasoning，而 EchoVLA 的 memory 直接条件 low-level diffusion policy</li>
+<li>OpenVLA / RT-2：纯 Markovian VLA，作为 “无 memory 基线” 的代表</li>
+<li>AC-DiT：另一种 base-arm coordination 的 adaptive diffusion 方案</li>
+<li>MoManipVLA：另一篇 mobile-manip-VLA 工作，可对比设计</li>
+</ul>
+<h3 id="方法相关">方法相关<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#方法相关" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Diffusion Policy</strong>：作为 single-head diffusion baseline 出现</li>
+<li><strong>DP3</strong>：3D diffusion policy，被 EchoVLA 全面超越</li>
+<li><strong>WB-VIMA</strong>：whole-body VIMA 类方法</li>
+<li>TidyBot / TidyBot++：硬件平台</li>
+<li><strong>RoboCasa</strong>：仿真 benchmark</li>
+<li>Behavior-1K / ManiSkill2 / HomeRobot / ProcTHOR：MoMani 的 benchmark 对比对象</li>
+</ul>
+<hr/>
+<h2 id="论文点评">论文点评<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#论文点评" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="strengths">Strengths<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>Memory 解耦的设计动机清晰</strong>：把 “环境长期空间结构 vs 任务短期时序” 这两类性质截然不同的信息分开存、分开检索，有明确的 inductive bias 支撑（不是单纯堆参数）。Ablation 也部分验证了两路确有互补性</li>
+<li><strong>诚实承认 failure mode</strong>：OR 任务输给 baseline 时直接归因到 “explicit 3D memory 在动态遮挡下成累赘”，而非掩盖。这种 explicit vs implicit memory trade-off 的观察其实比 main result 更有 insight</li>
+<li><strong>真机 EnP 任务</strong>：跨房间长程 mobile manip，baseline 全军覆没，EchoVLA 0.10——绝对值不高但说明这条路至少能 non-trivial 地启动这类任务</li>
+<li><strong>MoMani 的 nav-manip co-gen pipeline</strong>：显式做 “base + arm 同时执行 + 连续碰撞检测” 来生成协调轨迹，比 stitching 离散 skill 的做法更自然</li>
+</ol>
+<h3 id="weaknesses">Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>没开源</strong>：截至当前没有 code / project page / weight，整个 pipeline 的超参（discrepancy threshold τ、L、PointAttn 配置、diffusion 超参）只有 ablation 里的几个数字，复现成本极高</li>
+<li><strong>Memory 总贡献可能被 oversell</strong>：从 ablation (c)(d) 推断 EM+SM 联合贡献约 +0.03~+0.08，但 vs π_0.5 baseline 的 +0.11 gain 中至少一半可能来自 PointAttn / per-part diffusion / 训练数据差异。论文没有一个 “完全去 memory、其他全留” 的 baseline</li>
+<li><strong>Scene memory update rule 描述不充分</strong>：reconstruction 怎么生成、threshold 怎么校准、跨 episode 累积时如何处理坐标对齐（odometry drift？），都缺细节。论文末尾 limitations 直接承认 odometry drift 会导致 voxel ghosting，但没量化</li>
+<li><strong>MoMani 的 sub-task 长度只有 2-3</strong>：和 Behavior-1K (>5) / RoboCasa365 (2-16) 比短得多，论文却 frame 成 “richer task coverage”，是 spin</li>
+<li><strong>脑科学类比的 narrative 重于 technical justification</strong>：PHC + hippocampus 只是装饰——voxel map + FIFO buffer 的设计完全可以从工程动机推出，无需脑科学</li>
+</ol>
+<h3 id="可信评估">可信评估<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#可信评估" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="artifact-可获取性">Artifact 可获取性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#artifact-可获取性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><strong>代码</strong>：未开源（截至 v2，无 GitHub / project page 链接）</li>
+<li><strong>模型权重</strong>：未发布</li>
+<li><strong>训练细节</strong>：仅高层描述（8× A100、frozen SigLIP、trainable PointAttn、per-part diffusion，未给完整超参 / 训练步数 / 数据配比）</li>
+<li><strong>数据集</strong>：MoMani 未说明是否会发布；real-robot 数据更不太可能开放</li>
+</ul>
+<h4 id="claim-可验证性">Claim 可验证性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#claim-可验证性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>✅ <strong>EchoVLA SR 在论文 setup 下高于 π_0.5 baseline</strong>：仿真 +0.20 / +0.11，真机 +0.11 avg；3 random seeds × 50 episodes 报告，比许多论文严谨</li>
+<li>✅ <strong>OR 任务 EchoVLA 输给 π_0.5</strong>：作者主动汇报，反 cherry-pick</li>
+<li>⚠️ <strong>“synergistic memory” 的因果贡献</strong>：ablation 设计未隔离 memory vs 其他变量，归因不严</li>
+<li>⚠️ <strong>MoMani “richer task coverage”</strong>：sub-task 长度比 Behavior-1K / RoboCasa365 短，“richer” 是定性 claim</li>
+<li>⚠️ <strong>“neuro-inspired” framing</strong>：脑科学类比对 design choice 的指导价值未验证，更像 narrative wrapping</li>
+</ul>
+<h3 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Memory pattern 整理</strong>：mobile-manip 领域的 memory 设计目前可分三派——（i）implicit perceptual cache（MemoryVLA）；（ii）explicit landmark + cognitive map for LLM planning（BSC-Nav）；（iii）explicit dual memory + low-level policy condition（EchoVLA）。值得做一篇小调研梳理 memory granularity / update rule / retrieval mechanism / 接入位置 这几个维度</li>
+<li><strong>OR failure 是个真问题</strong>：explicit 3D memory 在动态几何变化下劣于 implicit，提示我们 memory 系统应该有某种 “动态区域置信度衰减” 机制，或者用 hybrid（explicit static + implicit dynamic）。这可能是个 follow-up idea</li>
+<li><strong>per-part diffusion 在 mobile manip 已经是 default 了</strong>：π0.5、MoManipVLA、AC-DiT、EchoVLA 都用这个思路。下一个问题应该是 “怎么在 part 之间显式建模 coupling”（base 速度直接影响 arm 末端）而非简单共享 condition</li>
+<li><strong>“5K+ trajectory” 不算大数据</strong>：相比 Behavior-1K 或 OXE，MoMani 的规模其实有限，但 nav-manip co-gen 的 pipeline 本身可能比数据更有价值</li>
+</ul>
+<h3 id="rating">Rating<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#rating" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>分数</strong>：2 - Frontier
+<strong>理由</strong>：按笔记 Strengths 段的判断，EchoVLA 在 mobile-manip VLA 方向上提出了 explicit dual memory + per-part diffusion 的新组合，并带有反 cherry-pick 的 failure mode 分析，是当前 frontier 上值得对比的 baseline 候选；但还达不到 foundation 档——Weaknesses 明确指出方法未开源、memory 的因果贡献未被干净隔离，且作为 2025-11 的 arXiv preprint 尚无社区采纳或 baseline 化的证据；也不是 Archived，因为 memory-aware mobile-manip 仍是当前活跃方向，而非被后续工作取代的 incremental 变体。</p></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="ud8fg4" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#1-问题与动机" data-for="1-问题与动机">1. 问题与动机</a></li><li class="depth-1"><a href="#mobile-manipulation-的-non-markov-困境" data-for="mobile-manipulation-的-non-markov-困境">Mobile manipulation 的 non-Markov 困境</a></li><li class="depth-1"><a href="#与既有-memory-aware-方法的差异" data-for="与既有-memory-aware-方法的差异">与既有 memory-aware 方法的差异</a></li><li class="depth-0"><a href="#2-方法" data-for="2-方法">2. 方法</a></li><li class="depth-1"><a href="#21-架构总览" data-for="21-架构总览">2.1 架构总览</a></li><li class="depth-1"><a href="#22-problem-formulation" data-for="22-problem-formulation">2.2 Problem Formulation</a></li><li class="depth-1"><a href="#23-multimodal-state-representation" data-for="23-multimodal-state-representation">2.3 Multimodal State Representation</a></li><li class="depth-1"><a href="#24-scene-memoryphc-类比" data-for="24-scene-memoryphc-类比">2.4 Scene Memory（PHC 类比）</a></li><li class="depth-1"><a href="#25-episodic-memoryhippocampus-类比" data-for="25-episodic-memoryhippocampus-类比">2.5 Episodic Memory（hippocampus 类比）</a></li><li class="depth-1"><a href="#26-memory-matching--attention" data-for="26-memory-matching--attention">2.6 Memory Matching &amp; Attention</a></li><li class="depth-1"><a href="#27-per-part-diffusion-policy" data-for="27-per-part-diffusion-policy">2.7 Per-part Diffusion Policy</a></li><li class="depth-0"><a href="#3-momani-benchmark--dataset" data-for="3-momani-benchmark--dataset">3. MoMani Benchmark &amp; Dataset</a></li><li class="depth-1"><a href="#31-与既有-benchmark-的对比" data-for="31-与既有-benchmark-的对比">3.1 与既有 benchmark 的对比</a></li><li class="depth-1"><a href="#32-仿真数据-pipeline" data-for="32-仿真数据-pipeline">3.2 仿真数据 pipeline</a></li><li class="depth-1"><a href="#33-real-robot-数据" data-for="33-real-robot-数据">3.3 Real-Robot 数据</a></li><li class="depth-1"><a href="#34-dataset-composition" data-for="34-dataset-composition">3.4 Dataset Composition</a></li><li class="depth-0"><a href="#4-实验" data-for="4-实验">4. 实验</a></li><li class="depth-1"><a href="#41-setup" data-for="41-setup">4.1 Setup</a></li><li class="depth-1"><a href="#42-robocasa-simulator-主结果" data-for="42-robocasa-simulator-主结果">4.2 RoboCasa Simulator 主结果</a></li><li class="depth-1"><a href="#43-ablation" data-for="43-ablation">4.3 Ablation</a></li><li class="depth-1"><a href="#44-真机实验" data-for="44-真机实验">4.4 真机实验</a></li><li class="depth-0"><a href="#关联工作" data-for="关联工作">关联工作</a></li><li class="depth-1"><a href="#基于" data-for="基于">基于</a></li><li class="depth-1"><a href="#对比" data-for="对比">对比</a></li><li class="depth-1"><a href="#方法相关" data-for="方法相关">方法相关</a></li><li class="depth-0"><a href="#论文点评" data-for="论文点评">论文点评</a></li><li class="depth-1"><a href="#strengths" data-for="strengths">Strengths</a></li><li class="depth-1"><a href="#weaknesses" data-for="weaknesses">Weaknesses</a></li><li class="depth-1"><a href="#可信评估" data-for="可信评估">可信评估</a></li><li class="depth-1"><a href="#notes" data-for="notes">Notes</a></li><li class="depth-1"><a href="#rating" data-for="rating">Rating</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
 </script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
 </script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>

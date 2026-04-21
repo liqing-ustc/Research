@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><title>OpenSpatial: A Principled Data Engine for Empowering Spatial Intelligence</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="OpenSpatial: A Principled Data Engine for Empowering Spatial Intelligence"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="OpenSpatial: A Principled Data Engine for Empowering Spatial Intelligence"/><meta name="twitter:description" content="Summary 提出 OpenSpatial，一个统一、可扩展的开源空间数据引擎，以 3D oriented bounding box 为核心表征，通过 scene graph 驱动的 QA 合成覆盖 5 大类 19 个空间子任务，生成 3M 规模数据集，训练的模型在空间推理 benchmark 上取得约 19% 的相对提升，接近 Gemini-2.5-Pro ..."/><meta property="og:description" content="Summary 提出 OpenSpatial，一个统一、可扩展的开源空间数据引擎，以 3D oriented bounding box 为核心表征，通过 scene graph 驱动的 QA 合成覆盖 5 大类 19 个空间子任务，生成 3M 规模数据集，训练的模型在空间推理 benchmark 上取得约 19% 的相对提升，接近 Gemini-2.5-Pro ..."/><meta property="og:image:alt" content="Summary 提出 OpenSpatial，一个统一、可扩展的开源空间数据引擎，以 3D oriented bounding box 为核心表征，通过 scene graph 驱动的 QA 合成覆盖 5 大类 19 个空间子任务，生成 3M 规模数据集，训练的模型在空间推理 benchmark 上取得约 19% 的相对提升，接近 Gemini-2.5-Pro ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2604-OpenSpatial"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2604-OpenSpatial"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary 提出 OpenSpatial，一个统一、可扩展的开源空间数据引擎，以 3D oriented bounding box 为核心表征，通过 scene graph 驱动的 QA 合成覆盖 5 大类 19 个空间子任务，生成 3M 规模数据集，训练的模型在空间推理 benchmark 上取得约 19% 的相对提升，接近 Gemini-2.5-Pro ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+<html lang="en"><head><title>OpenSpatial: A Principled Data Engine for Empowering Spatial Intelligence</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="OpenSpatial: A Principled Data Engine for Empowering Spatial Intelligence"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="OpenSpatial: A Principled Data Engine for Empowering Spatial Intelligence"/><meta name="twitter:description" content="Summary OpenSpatial: A Principled Data Engine for Empowering Spatial Intelligence 核心: 把”空间数据生产”从静态数据集升级成开源、可控、可扩展的 data engine——以 3D Oriented Bounding Box (OBB) 作为唯一原语，通过 ..."/><meta property="og:description" content="Summary OpenSpatial: A Principled Data Engine for Empowering Spatial Intelligence 核心: 把”空间数据生产”从静态数据集升级成开源、可控、可扩展的 data engine——以 3D Oriented Bounding Box (OBB) 作为唯一原语，通过 ..."/><meta property="og:image:alt" content="Summary OpenSpatial: A Principled Data Engine for Empowering Spatial Intelligence 核心: 把”空间数据生产”从静态数据集升级成开源、可控、可扩展的 data engine——以 3D Oriented Bounding Box (OBB) 作为唯一原语，通过 ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2604-OpenSpatial"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2604-OpenSpatial"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary OpenSpatial: A Principled Data Engine for Empowering Spatial Intelligence 核心: 把”空间数据生产”从静态数据集升级成开源、可控、可扩展的 data engine——以 3D Oriented Bounding Box (OBB) 作为唯一原语，通过 ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
   position: absolute;
   display: flex;
   float: right;
@@ -116,82 +116,465 @@ pre:hover > .expand-button {
   padding: 0 12px;
   font-size: 14px;
 }
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2604-OpenSpatial"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="gc1ghh"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/RL" class="sidebar-tag-pill">#RL</a><a href="/mindflow/tags/web-agent" class="sidebar-tag-pill">#web-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/scene-understanding" class="sidebar-tag-pill">#scene-understanding</a><a href="/mindflow/tags/instruction-following" class="sidebar-tag-pill">#instruction-following</a><a href="/mindflow/tags/cross-embodiment" class="sidebar-tag-pill">#cross-embodiment</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2604-OpenSpatial</a></div></nav><h1 class="article-title">OpenSpatial: A Principled Data Engine for Empowering Spatial Intelligence</h1><div class="paper-meta"><span class="paper-venue">arXiv</span><span class="paper-authors"><span class="meta-sep">·</span>Jianhui Liu <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, Haoze Sun</span><span>, Wenbo Li</span><span>, Yanbing Zhang</span><span>, Rui Yang</span><span>, Zhiliang Zhu</span><span>, Yijun Yang</span><span>, Shenghe Zheng</span><span>, Nan Jiang</span><span>, Jiaxiu Jiang</span><span>, Haoyang Huang</span><span>, Tien-Tsin Wong</span><span>, Nan Duan</span><span>, Xiaojuan Qi</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2026-04-01T00:00:00.000Z">Apr 01, 2026</time><span>7 min read</span></p><ul class="tags"><li><a href="../tags/scene-understanding" class="internal tag-link">scene-understanding</a></li><li><a href="../tags/3D-representation" class="internal tag-link">3D-representation</a></li><li><a href="../tags/VLM" class="internal tag-link">VLM</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>提出 OpenSpatial，一个统一、可扩展的开源空间数据引擎，以 3D oriented bounding box 为核心表征，通过 scene graph 驱动的 QA 合成覆盖 5 大类 19 个空间子任务，生成 3M 规模数据集，训练的模型在空间推理 benchmark 上取得约 19% 的相对提升，接近 Gemini-2.5-Pro 水平。</p>
-<h2 id="problem--motivation">Problem &amp; Motivation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#problem--motivation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>当前 MLLM 在语义理解上表现优秀，但空间推理能力严重不足——无法准确感知距离、保持多视角一致性或构建空间认知地图。核心瓶颈不在模型架构，而在数据：现有空间数据生成依赖封闭、专有的 pipeline，缺乏透明性和可复现性，导致所谓的 “spatial myopia”（高 benchmark 分数但缺乏真实世界泛化能力）。亟需一个开源、有原则的数据引擎来统一异构空间数据的生产。</p>
-<h2 id="method">Method<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#method" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p><strong>核心设计原则</strong>：</p>
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2604-OpenSpatial"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="mm0h7i"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/embodied-reasoning" class="sidebar-tag-pill">#embodied-reasoning</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/computer-use" class="sidebar-tag-pill">#computer-use</a><a href="/mindflow/tags/agentic-RL" class="sidebar-tag-pill">#agentic-RL</a><a href="/mindflow/tags/gui-agent" class="sidebar-tag-pill">#gui-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/world-model" class="sidebar-tag-pill">#world-model</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2604-OpenSpatial</a></div></nav><h1 class="article-title">OpenSpatial: A Principled Data Engine for Empowering Spatial Intelligence</h1><div class="paper-meta"><span class="paper-venue">arXiv</span><span class="paper-authors"><span class="meta-sep">·</span>Jianhui Liu <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, Haoze Sun</span><span>, Wenbo Li</span><span>, Yanbing Zhang</span><span>, Rui Yang</span><span>, Zhiliang Zhu</span><span>, Yijun Yang</span><span>, Shenghe Zheng</span><span>, Nan Jiang</span><span>, Jiaxiu Jiang</span><span>, Haoyang Huang</span><span>, Tien-Tsin Wong</span><span>, Nan Duan</span><span>, Xiaojuan Qi</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2026-04-08T00:00:00.000Z">Apr 08, 2026</time><span>17 min read</span></p><ul class="tags"><li><a href="../tags/spatial-reasoning" class="internal tag-link">spatial-reasoning</a></li><li><a href="../tags/VLM" class="internal tag-link">VLM</a></li><li><a href="../tags/3D-representation" class="internal tag-link">3D-representation</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>OpenSpatial: A Principled Data Engine for Empowering Spatial Intelligence </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><strong>核心</strong>: 把”空间数据生产”从静态数据集升级成开源、可控、可扩展的 data engine——以 <strong>3D Oriented Bounding Box (OBB)</strong> 作为唯一原语，通过 manual annotation + automated 3D lifting 两条路径，跨 5 类任务程序化合成 3M 条 spatial QA。</li>
+<li><strong>方法</strong>: OBB-centric scene graph → frame-level attribute mapping (projection + visibility 过滤 + SAM mask 精修) → single-view / multi-view QA 合成；automated lifting pipeline 用 Gemini 做 per-view recognition、SAM 做 mask、3D 关联 + convex hull 拟合 OBB，把 in-the-wild web video 也纳入数据源。</li>
+<li><strong>结果</strong>: SFT on Qwen3-VL-8B / Qwen2.5-VL-7B / InternVL3-8B / InternVL2.5-8B，3D-Avg 平均提升 ~14%，最大单基座增益 19% (Qwen2.5-VL-7B)；在 BLINK / AllAngles / MMSI 上超过 SenseNova-SI 与 <a href="../Papers/2401-SpatialVLM" class="internal alias" data-slug="Papers/2401-SpatialVLM">SpatialVLM</a>。</li>
+<li><strong>Sources</strong>: <a href="https://arxiv.org/abs/2604.07296" class="external">paper<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://github.com/VINHYU/OpenSpatial" class="external">github<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><strong>Rating</strong>: 2 - Frontier（开放整套 spatial data engine 的立场到位、OBB-centric 设计清晰、multi-backbone 验证扎实，但核心归因 ablation 缺失、3D lifting 定量质量未评估、关键 artifact 仍在 roadmap，不足以成为 Foundation）</li>
+</ul>
+</div>
+</blockquote>
+<p><strong>Key Takeaways:</strong></p>
 <ol>
-<li>
-<p><strong>3D Box-Centric Grounding</strong>：所有标注锚定在 object-aligned 3D oriented bounding boxes (OBBs) 而非 2D 投影。每个物体参数化为 (x,y,z,x_l,y_l,z_l,r,p,y)，提供 viewpoint-invariant 的世界坐标表征，支持 metric reasoning 和跨视角对应。</p>
-</li>
-<li>
-<p><strong>3D Lifting for Scalability</strong>：除了遵循 EmbodiedScan 协议的手动标注外，设计了自动化 pipeline——用 Gemini 做物体识别、SAM 做 instance segmentation，在 3D 空间中关联和合并实例，拟合 convex hull 生成 oriented boxes。这使得标注能力扩展到未策划的 web 数据和开源资产。</p>
-</li>
-<li>
-<p><strong>Scene-Graph-Driven Synthesis</strong>：通过 scene graph 程序化生成平衡的 QA pairs，覆盖多样的空间任务，而非依赖 ad-hoc 数据收集。</p>
-</li>
+<li><strong>3D box-centric supervision 是这套 engine 的”杠杆”</strong>：OBB 同时提供 viewpoint-invariance（解决跨视图对应）+ metric scale（支持距离/尺寸 QA）+ canonical anchor（支撑 mask 精修和遮挡过滤），是 “weak 2D label” 与 “expensive dense 3D recon” 之间的中间表示。</li>
+<li><strong>可扩展性来自 automated 3D lifting</strong>：让数据脱离 EmbodiedScan 等 curated 室内集，能从 in-the-wild web video 生成 3D 标注，缓解 spatial data 的”室内偏置”。</li>
+<li><strong>Task taxonomy 是 “spatial myopia” 的解药</strong>：5 类任务 (SM/SR/CP/MC/SAR) 跨 19 子任务，ablation 显示任务多样性比单纯堆数据更能拉动 3D-Avg。</li>
+<li><strong>Data scaling 已有 diminishing return</strong>：20%→100% 数据量，3D-Avg 从 57.6 → 59.7，曲线趋平——3M 已接近 single-engine 的上限，再涨需要换源或换 backbone。</li>
 </ol>
-<p><strong>数据处理 Pipeline</strong>：场景级 3D box 标注 → 属性中心的物体-帧映射（含基于深度的 volumetric occupancy 遮挡过滤和 SAM-refined 2D masks）→ QA 合成（单视角和多视角）。</p>
-<p><strong>5 大核心任务（19 个子任务）</strong>：</p>
+<p><strong>Teaser. OpenSpatial pipeline overview——左：从 2D web data 到 3D spatial supervision 的整体流；右：OpenSpatial-3M SFT 在多 backbone × 多 benchmark 上的提升。</strong></p>
+<p><img src="https://arxiv.org/html/2604.07296v2/x1.png" alt/></p>
+<hr/>
+<h2 id="1-motivation为什么-spatial-intelligence-卡在数据上">1. Motivation：为什么 spatial intelligence 卡在数据上<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-motivation为什么-spatial-intelligence-卡在数据上" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>作者把当前 spatialized VLM 的瓶颈归因到<strong>数据基础设施</strong>而非模型架构：</p>
 <ul>
-<li>Spatial Measurement (SM)：几何度量（长、宽、高、距离）</li>
-<li>Spatial Relationship (SR)：相对定位和物体间依赖关系</li>
-<li>Camera Perception (CP)：相机位姿估计和物体-相机关系</li>
-<li>Multi-view Consistency (MC)：跨视角对应</li>
-<li>Scene-Aware Reasoning (SAR)：场景级理解和导航规划</li>
+<li><strong>Spatial myopia</strong>：现有 spatial 数据集（VST、SenseNova-SI、Cambrian-S）在某些 benchmark 上 SOTA，但任务覆盖窄，泛化差。</li>
+<li><strong>黑箱 pipeline</strong>：多数工作只 release 预处理后的 fixed dataset，<strong>生成引擎闭源</strong>，无法做受控 ablation、无法判断到底是哪个 design choice 在 work——这才是阻碍累积式进步的根本原因。</li>
 </ul>
-<p><strong>数据来源</strong>：EmbodiedScan（ScanNet、Matterport3D、ARKitScenes 的手动 3D box 标注）、ScanNet++、Hypersim，以及通过 3D lifting 获取的 web 数据，最终产出 3M 规模数据集。</p>
-<h2 id="key-results">Key Results<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-results" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>OpenSpatial 的立场：<strong>放弃 “再发一个 dataset” 的范式，开源整套生成 infrastructure</strong>。三个 design pillar：</p>
+<ol>
+<li><strong>3D box-centric grounding</strong>——quality 来自 OBB 的 viewpoint-invariance；</li>
+<li><strong>3D lifting</strong>——scalability 来自能把 unlabeled web data 变成可用监督；</li>
+<li><strong>scene-graph driven synthesis</strong>——diversity 来自程序化枚举 object × attribute × relation。</li>
+</ol>
+<blockquote>
+<p>❓ 第 (3) 点的 “programmatic enumeration” 在论文里没有给出 prompt 模板或具体规则，只能等 GitHub 后续放 evaluation suite + 3D lifting 模块（Roadmap 仍未完成）才能完整复现。</p>
+</blockquote>
+<hr/>
+<h2 id="2-数据-pipeline">2. 数据 Pipeline<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-数据-pipeline" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Figure 2. Data engine 全貌——左：标注 pipeline（scene-level OBB → frame-level attributes → single/multi-view QA）；右：数据源分布与任务分布统计。</strong></p>
+<p><img src="https://arxiv.org/html/2604.07296v2/datapipline_cropped_v1_compressed.png" alt/></p>
+<h3 id="21-3d-box-centric-表示">2.1 3D Box-Centric 表示<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#21-3d-box-centric-表示" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>每个物体参数化为 OBB:</p>
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">p</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span></span>
+<p><strong>符号说明</strong>：<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mclose">)</span></span></span></span> 物体在 world coordinate 的中心；<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.044em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 沿 X/Y/Z 轴的边长；<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">p</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span> Roll/Pitch/Yaw。所有 box 都在 Z-up 全局坐标系下定义。</p>
+<p><strong>含义</strong>：OBB 是<strong>最小够用</strong>的 3D 表示——比 2D box 多了 depth/extent/orientation（够支撑 metric reasoning），又比 dense 3D mesh 便宜得多（够 scale）。这个选择决定了整套 engine 能 work：太弱的表示无法支撑跨视图对应，太重的表示无法 scale。</p>
+<h3 id="22-scene-level-obb-标注两条路">2.2 Scene-level OBB 标注：两条路<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#22-scene-level-obb-标注两条路" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>模式</th><th>实现</th><th>优劣</th></tr></thead><tbody><tr><td><strong>Manual annotation</strong></td><td>沿用 EmbodiedScan 的标注协议</td><td>高精度，但慢且贵</td></tr><tr><td><strong>Automated 3D lifting</strong></td><td>per-view object recognition (Gemini) → instance mask (SAM) → 3D 空间关联与合并 → convex hull 拟合 OBB</td><td>可 scale 到 web data / 开源 asset，无需 fine-grained label</td></tr></tbody></table></div>
+<blockquote>
+<p>❓ 论文没披露 lifting pipeline 的精度（仅有 Fig. 4 的 qualitative outdoor 可视化）。Tab. 6 验证了 web-only 数据的 downstream 效果，但没有直接的 box IoU / recall 指标。这是复现时的硬骨头。</p>
+</blockquote>
+<h3 id="23-attribute-centric-objectframe-mapping">2.3 Attribute-Centric Object–Frame Mapping<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#23-attribute-centric-objectframe-mapping" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>把 scene-level box 投影到每帧后做两道过滤：</p>
+<ol>
+<li><strong>Frustum 过滤</strong>：camera frustum 外的 box 直接弃。</li>
+<li><strong>Depth-based occlusion 过滤</strong>：投影 2D box 内像素经 depth map 反投影到 world，算 3D box 内的体素占用率，低于阈值视为遮挡剔除。</li>
+</ol>
+<p>通过过滤的 box 用其反投影点云作为 coarse mask，再喂 SAM 精修得到 fine-grained 2D instance mask。每个 object 被打上 <strong>metric flag</strong>：若为 False，跳过测量类 QA 生成——这是避免 noisy supervision 的关键 trick。</p>
+<h3 id="24-scene-graph-driven-qa-synthesis">2.4 Scene-Graph Driven QA Synthesis<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#24-scene-graph-driven-qa-synthesis" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li><strong>OpenSpatial-Qwen2.5-VL-7B</strong>：3D-Average 达 59.5（+9.5），在 BLINK (+10.6)、AllAngles (+8.3)、MMSI (+13.1) 上提升显著</li>
-<li><strong>OpenSpatial-Qwen3-VL-8B</strong>：3D-Average 达 62.1，接近 Gemini-2.5-Pro 的 62.4</li>
-<li><strong>质量对比</strong>（500k 规模匹配）：OpenSpatial 子集在各 benchmark 上 mean deviation 最低 (-2.5)、standard deviation 最小 (4.4)，表现最均衡</li>
-<li><strong>Data Scaling</strong>：从 20% 到 100% 数据，3D-Average 从 57.6 提升到 59.7，但存在 diminishing returns</li>
-<li><strong>Data Source Scaling</strong>：加入 web 数据后 BLINK 从 55.3 提升到 62.2 (+6.9)，CV-3D 从 73.8 到 87.9 (+14.1)</li>
-<li><strong>Model Scaling</strong>：3B (56.1) → 7B (59.7) → 32B (61.3)，验证数据基础设施的有效性</li>
-<li><strong>Ablation</strong>：3D box-centric 优于 point-cloud-centric（BLINK 60.3 vs 57.2）；去掉遮挡过滤性能显著下降（AllAngles 47.0 vs 53.2）</li>
+<li><strong>Single-view QA</strong>：基于 per-frame scene graph，对多实例同语义场景渲染 marked image 作为视觉 anchor 防止 referential ambiguity；生成 relational / attribute comparison / context reasoning 三类 QA。</li>
+<li><strong>Multi-view QA</strong>：用 OBB 作为 viewpoint-invariant key 采样<strong>有共享 box 的视图对</strong>（既保证 overlap 又保留视角差异），合并构造 unified multi-view scene graph，生成 re-identification / camera change / consistency 类 QA。</li>
 </ul>
-<h2 id="strengths--weaknesses">Strengths &amp; Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths--weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p><strong>Strengths</strong>：</p>
+<hr/>
+<h2 id="3-openspatial-3m-dataset">3. OpenSpatial-3M Dataset<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-openspatial-3m-dataset" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Figure 3. OpenSpatial-3M 的 5 类 capability，每类附 representative QA 样例。</strong></p>
+<p><img src="https://arxiv.org/html/2604.07296v2/x2.png" alt/></p>
+<p><strong>数据源</strong>: 沿用 VST 的策略，以 EmbodiedScan 标注的 3D box 为基础（聚合 ScanNet / Matterport3D / ARKitScenes / SUN-RGBD，但<strong>剔除了 SUN-RGBD</strong>因为标注质量差），补充 ScanNet++、Hypersim 增加环境多样性，再加自采 web data。</p>
+<p><strong>Task taxonomy</strong> (5 大类 / 19 子任务):</p>
 <ul>
-<li>将空间数据生产从封闭 pipeline 转向开源基础设施，这是正确的方向——reproducibility 和 ablation 能力对领域发展至关重要</li>
-<li>3D box-centric 表征的设计选择有道理：viewpoint-invariant 且支持 metric reasoning，ablation 也验证了其优于 point cloud 方案</li>
-<li>任务覆盖面广（5 大类 19 子任务），且 scene graph 驱动的合成方式支持 difficulty balancing 和 task diversity</li>
-<li>3D lifting pipeline 将标注能力扩展到 web 数据，解决了 scale 问题</li>
+<li><strong>SM (Spatial Measurement)</strong>: length / width / height / distance 等 metric 量化</li>
+<li><strong>SR (Spatial Relationship)</strong>: 相对方位、inter-object dependency</li>
+<li><strong>CP (Camera Perception)</strong>: camera pose、object-camera 相对关系</li>
+<li><strong>MC (Multi-view Consistency)</strong>: 跨视角同物体识别、共享物体的几何一致性</li>
+<li><strong>SAR (Scene-Aware Reasoning)</strong>: 场景级布局、planning / navigation 可行性</li>
 </ul>
-<p><strong>Weaknesses</strong>：</p>
+<blockquote>
+<p>这套 taxonomy 实质上是”perception → relation → ego-aware → cross-view → scene-level”的渐进 curriculum。SAR 是其中最 ambitious 的——但 paper 里 SAR 的 QA 实例和评测占比都偏低，还像是占位。</p>
+</blockquote>
+<hr/>
+<h2 id="4-experiments">4. Experiments<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-experiments" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="41-训练设置">4.1 训练设置<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#41-训练设置" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li>室内场景偏重严重，论文承认在桌面和户外场景性能提升有限。这是一个根本性限制——real-world embodied AI 需要在开放、非结构化环境中工作</li>
-<li>Abstract 提到覆盖 8 个任务（depth estimation、surface normal、3D detection、route planning、visual localization、visual SLAM、spatial QA），但正文实际组织为 5 大类 19 子任务，存在一定的叙述不一致</li>
-<li>Data scaling 呈现 diminishing returns，这暗示可能需要质的突破（如更好的 3D 表征或更多样的数据来源）而非单纯量的增长</li>
-<li>与 <a href="../Papers/2401-SpatialVLM" class="internal alias" data-slug="Papers/2401-SpatialVLM">SpatialVLM</a> 和 <a href="../Papers/2603-HoliSpatial" class="internal alias" data-slug="Papers/2603-HoliSpatial">Holi-Spatial</a> 相比，核心思路类似（自动化空间 QA 数据生成 + VLM 微调），区别主要在于工程层面的系统化和开源承诺。方法论创新相对有限</li>
-<li>对 Gemini + SAM 的 3D lifting pipeline 的精度和 failure mode 讨论不足</li>
+<li>单 epoch SFT，32 张 NVIDIA GPU，global batch size 128，AdamW，base lr <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span></span>，vision encoder lr 解耦为 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">6</span></span></span></span></span></span></span></span></span></span></span></span>。</li>
+<li><strong>训练数据混合</strong>: OpenSpatial-3M + SenseNova-800K (补充未覆盖维度) + LLaVA-OneVision general data (1:1 ratio 与 spatial data) 防 catastrophic forgetting。</li>
 </ul>
-<h2 id="mind-map">Mind Map<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mind-map" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;mindmap\n  root((OpenSpatial))\n    Problem\n      MLLM 空间推理不足\n      现有数据 pipeline 封闭不透明\n      Spatial myopia 问题\n    Method\n      3D Box-Centric Grounding\n      3D Lifting 扩展标注\n      Scene-Graph-Driven QA 合成\n      5 大类 19 子任务\n    Results\n      3M 数据集\n      7B 模型接近 Gemini-2.5-Pro\n      Web 数据显著提升泛化\n      3D box 优于 point cloud&quot;">mindmap
-  root((OpenSpatial))
-    Problem
-      MLLM 空间推理不足
-      现有数据 pipeline 封闭不透明
-      Spatial myopia 问题
-    Method
-      3D Box-Centric Grounding
-      3D Lifting 扩展标注
-      Scene-Graph-Driven QA 合成
-      5 大类 19 子任务
-    Results
-      3M 数据集
-      7B 模型接近 Gemini-2.5-Pro
-      Web 数据显著提升泛化
-      3D box 优于 point cloud
-</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
-<h2 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote>
+<p>❓ “OpenSpatial 单独 vs OpenSpatial+SenseNova 混合” 的 ablation 没有给——主表里所有 “Ours” 的提升都是混合后的结果，无法干净归因到 OpenSpatial 自身。Tab. 2 的 “subset 500K vs SenseNova 800K” 的对比是数据质量层面的，而非 SFT 的最终效果对比。</p>
+</blockquote>
+<h3 id="42-主结果">4.2 主结果<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#42-主结果" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table 1. 主要结果（节选）——4 个 baseline + OpenSpatial SFT 后的提升幅度（带 ± 表示相对 baseline 的变化）。</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Model</th><th>3D-Avg</th><th>BLINK</th><th>AllAngles</th><th>VSI</th><th>MMSI</th><th>CV-3D</th></tr></thead><tbody><tr><td>InternVL2.5-8B (baseline)</td><td>51.6</td><td>54.9</td><td>48.9</td><td>39.3</td><td>28.6</td><td>79.9</td></tr><tr><td>OpenSpatial-InternVL2.5-8B</td><td><strong>59.3 (+7.7)</strong></td><td>63.5(+8.6)</td><td>58.3(+9.4)</td><td>56.7(+17.6)</td><td>38.7(+10.1)</td><td>93.8(+13.9)</td></tr><tr><td>InternVL3-8B (baseline)</td><td>53.2</td><td>55.7</td><td>50.5</td><td>38.7</td><td>30.9</td><td>86.0</td></tr><tr><td>OpenSpatial-InternVL3-8B</td><td><strong>59.8 (+6.6)</strong></td><td>66.0(+10.3)</td><td>58.3(+7.8)</td><td>57.4(+18.7)</td><td>38.6(+7.7)</td><td>93.7(+7.7)</td></tr><tr><td>Qwen2.5-VL-7B (baseline)</td><td>50.0</td><td>55.3</td><td>50.1</td><td>36.0</td><td>26.5</td><td>73.8</td></tr><tr><td>OpenSpatial-Qwen2.5-VL-7B</td><td><strong>59.5 (+9.5)</strong></td><td>65.9(+10.6)</td><td>58.4(+8.3)</td><td>56.7(+20.7)</td><td>39.6(+13.1)</td><td>92.5(+18.4)</td></tr><tr><td>Qwen3-VL-8B (baseline)</td><td>56.7</td><td>66.1</td><td>49.5</td><td>55.6</td><td>28.1</td><td>90.8</td></tr><tr><td>OpenSpatial-Qwen3-VL-8B</td><td><strong>62.1 (+5.4)</strong></td><td>68.2(+2.1)</td><td>59.8(+10.3)</td><td>61.6(+6.0)</td><td>41.9(+13.8)</td><td>94.0(+3.2)</td></tr></tbody></table></div>
+<p><strong>观察</strong>：</p>
 <ul>
-<li>与 <a href="../Papers/2401-SpatialVLM" class="internal alias" data-slug="Papers/2401-SpatialVLM">SpatialVLM</a>（2B scale, point cloud based）和 <a href="../Papers/2603-HoliSpatial" class="internal alias" data-slug="Papers/2603-HoliSpatial">Holi-Spatial</a>（3DGS-based pipeline）形成空间数据引擎的演化线：2D→point cloud→3D box→scene graph，表征越来越结构化</li>
-<li>对 <a href="../Ideas/SpatialToken-VLA" class="internal" data-slug="Ideas/SpatialToken-VLA">SpatialToken-VLA</a> 有参考价值：OpenSpatial 的 3D box-centric 表征和 scene graph 结构可能为 spatial token 设计提供数据基础</li>
-<li>一个值得关注的问题：当 3D box 标注本身有误差时（尤其是 3D lifting pipeline 自动生成的），训练出的模型是否会学到有偏的空间表征？论文对此缺乏讨论</li>
-</ul></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="uevi3i" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#problem--motivation" data-for="problem--motivation">Problem &amp; Motivation</a></li><li class="depth-0"><a href="#method" data-for="method">Method</a></li><li class="depth-0"><a href="#key-results" data-for="key-results">Key Results</a></li><li class="depth-0"><a href="#strengths--weaknesses" data-for="strengths--weaknesses">Strengths &amp; Weaknesses</a></li><li class="depth-0"><a href="#mind-map" data-for="mind-map">Mind Map</a></li><li class="depth-0"><a href="#notes" data-for="notes">Notes</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+<li>在 BLINK / AllAngles / MMSI 三个 benchmark 上提升最大（>10 pt），这些都是要求 cross-view consistency 与精细 spatial relation 的题。</li>
+<li>Qwen3-VL-8B 增益最小（+5.4），作者归因于其 SigLIP encoder 已经较强；但也说明 base model 越强，data engine 的边际收益越小。</li>
+<li>在 RealWorldQA 上某些模型甚至 -3.9 / -0.8——存在轻微 domain shift。</li>
+</ul>
+<h3 id="43-module-ablation哪些设计真在-work">4.3 Module Ablation：哪些设计真在 work<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#43-module-ablation哪些设计真在-work" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table 3. 把 box-centric 换成 point-cloud-centric 之后的性能下降——partial point cloud 无法表达完整几何，对 SM 任务伤害最大。同时验证了 occlusion filtering 的必要性。</strong></p>
+<p><img src="https://arxiv.org/html/2604.07296v2/module_resonable_compressed.png" alt/></p>
+<p>两个核心结论：</p>
+<ol>
+<li><strong>Box-centric > point-cloud-centric</strong>：partial point cloud 几何残缺，导致 SM 类标注噪声大。</li>
+<li><strong>Visibility filtering 必须做</strong>：不过滤会因为 occluded 物体的伪标签产生 hallucination。</li>
+</ol>
+<h3 id="44-data-comparison数据质量-vs-其他开源-spatial-数据集">4.4 Data Comparison：数据质量 vs 其他开源 spatial 数据集<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#44-data-comparison数据质量-vs-其他开源-spatial-数据集" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table 2. Scale-matched 子集对比（500K-800K，统一 Qwen2.5-VL backbone）。MAD = Mean Absolute Deviation from best, 越接近 0 越好。</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Data source</th><th>Size</th><th>MAD</th><th>Std. Dev.</th><th>BLINK</th><th>AllAngles</th><th>VSI</th><th>MMSI</th><th>CV-3D</th></tr></thead><tbody><tr><td>Cambrian-S</td><td>590k</td><td>-6.0</td><td>5.4</td><td>54.1</td><td>48.6</td><td><strong>57.0</strong></td><td>29.2</td><td>75.3</td></tr><tr><td>SenseNova-SI</td><td>800k</td><td>-6.5</td><td>7.0</td><td>59.7</td><td>47.5</td><td>55.0</td><td><strong>36.3</strong></td><td>69.0</td></tr><tr><td>VST</td><td>500k</td><td>-2.8</td><td>3.9</td><td>61.4</td><td>50.7</td><td>44.6</td><td>32.4</td><td><strong>93.2</strong></td></tr><tr><td>OpenSpatial (subset)</td><td>500k</td><td><strong>-2.5</strong></td><td>4.4</td><td><strong>64.2</strong></td><td><strong>53.9</strong></td><td>43.0</td><td>34.7</td><td>91.8</td></tr></tbody></table></div>
+<p><strong>Insight</strong>: OpenSpatial 与 VST 都是”全能型”数据集（MAD 最小），但 Cambrian-S 在 VSI、SenseNova 在 MMSI 上有 niche 优势——所以作者最终在 full SFT 里<strong>混入 SenseNova-800K</strong>来取互补。</p>
+<h3 id="45-scaling">4.5 Scaling<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#45-scaling" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table 4. Data scaling——20% → 100%，3D-Avg 单调上升但收益递减（57.6 → 59.7）。</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Data Size</th><th>3D-Avg</th><th>BLINK</th><th>AllAngles</th><th>VSI</th><th>MMSI</th></tr></thead><tbody><tr><td>20%</td><td>57.6</td><td>64.9</td><td>55.0</td><td>51.8</td><td>34.7</td></tr><tr><td>40%</td><td>58.5</td><td>66.2</td><td>56.8</td><td>52.4</td><td>35.8</td></tr><tr><td>60%</td><td>58.6</td><td>66.9</td><td>56.7</td><td>53.2</td><td>36.0</td></tr><tr><td>80%</td><td>59.2</td><td>66.2</td><td>59.7</td><td>53.5</td><td>37.6</td></tr><tr><td>Full</td><td><strong>59.7</strong></td><td>65.9</td><td>58.4</td><td>56.7</td><td><strong>39.6</strong></td></tr></tbody></table></div>
+<p><strong>Table 5. Model scaling——3B → 7B → 32B 单调改善，证明 engine 能持续转化模型容量为 spatial 能力。</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Model Size</th><th>3D-Avg</th><th>BLINK</th><th>AllAngles</th><th>VSI</th><th>MMSI</th><th>CV-3D</th></tr></thead><tbody><tr><td>Qwen2.5-VL-3B</td><td>56.1</td><td>61.0</td><td>53.0</td><td>55.2</td><td>32.0</td><td>94.0</td></tr><tr><td>Qwen2.5-VL-7B</td><td>59.7</td><td>65.9</td><td>58.4</td><td>56.7</td><td>39.6</td><td>92.5</td></tr><tr><td>Qwen2.5-VL-32B</td><td><strong>61.3</strong></td><td><strong>68.2</strong></td><td><strong>63.3</strong></td><td>57.3</td><td>39.8</td><td>93.4</td></tr></tbody></table></div>
+<h3 id="46-in-the-wild-3d-lifting">4.6 In-the-Wild 3D Lifting<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#46-in-the-wild-3d-lifting" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Figure 4. 3D lifting 在未经精选的 outdoor web video 上的可视化——能恢复点云几何 + 输出 tag 与 3D box。</strong></p>
+<p><img src="https://arxiv.org/html/2604.07296v2/x3.png" alt/></p>
+<p>Tab. 6 进一步验证了<strong>仅用 web-sourced data</strong> 走 3D lifting 走出来的 dataset 也能带来 spatial 能力提升（虽然论文里 Tab. 6 的具体数字未在主文展示完整）。</p>
+<h3 id="47-task-diversity-ablation">4.7 Task Diversity Ablation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#47-task-diversity-ablation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Figure 5. 任务多样性的影响——左：每类任务在不同 benchmark 上的贡献热力图，证明任务库非冗余；右：incremental task integration 后 3D-Avg 单调上升。</strong></p>
+<p><img src="https://arxiv.org/html/2604.07296v2/x4.png" alt/></p>
+<hr/>
+<h2 id="关联工作">关联工作<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#关联工作" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="基于">基于<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#基于" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>EmbodiedScan</strong>: 提供 manual 3D OBB 标注协议，OpenSpatial 的 ground truth box 来源</li>
+<li><strong>VST</strong>: 训练 protocol（1 epoch / 32 GPU）和数据源策略（聚合 ScanNet/Matterport3D/ARKitScenes）都直接沿用</li>
+<li><strong>SAM</strong>: instance mask 提取（automated lifting + frame-level mask 精修）</li>
+<li>Gemini-2.5: automated lifting 中 per-view object recognition</li>
+</ul>
+<h3 id="对比">对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>VST</strong>: 同样 500K spatial dataset，OpenSpatial subset 的 MAD 略好（-2.5 vs -2.8）；OpenSpatial 的卖点是开放整个 engine 而非只开放数据</li>
+<li><strong>SenseNova-SI</strong>: 800K，在 MMSI 上是 niche 强者；OpenSpatial 选择<strong>互补混合</strong>而非替代</li>
+<li><strong>Cambrian-S</strong>: 590K，VSI 上的 niche 强者；同样是互补关系</li>
+<li><a href="../Papers/2401-SpatialVLM" class="internal alias" data-slug="Papers/2401-SpatialVLM">SpatialVLM</a> / SpatialRGPT: 早期大规模 spatial VQA 合成工作，OpenSpatial 的 task taxonomy 比它们更系统</li>
+<li><strong>3DThinker / VLM-3R / Spatial-MLLM</strong>: 走”加 3D encoder”的架构路线，OpenSpatial 走纯数据路线，证明无需改架构也能拿到 SOTA</li>
+</ul>
+<h3 id="方法相关">方法相关<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#方法相关" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>EmbodiedScan-style OBB 标注</strong>: 9 维 (x,y,z,xl,yl,zl,r,p,y) Z-up world coordinate</li>
+<li><strong>Scene graph driven QA synthesis</strong>: programmatic enumeration of objects × attributes × relations</li>
+<li><strong>Marked image rendering</strong>: 解决多实例同语义场景的 referential ambiguity（在 query 物体上加 visual marker）</li>
+</ul>
+<hr/>
+<h2 id="论文点评">论文点评<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#论文点评" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="strengths">Strengths<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>Problem framing 准确</strong>：把”空间数据是黑箱”作为根因点出来，立场清晰。这是社区当下确实需要的——VST / Cambrian-S / SenseNova-SI 都只 release 数据不 release 引擎，做 controlled comparison 极难。</li>
+<li><strong>OBB 这个表示选得好</strong>：viewpoint-invariance + metric scale + canonical anchor，三件事一个 representation 全占了，是这套 pipeline 能 scale 的关键。Tab. 3 的 box vs point cloud ablation 是有说服力的支持证据。</li>
+<li><strong>5 类任务 taxonomy 比 prior work 更系统</strong>：SM/SR/CP/MC/SAR 覆盖了 perception → relation → ego → cross-view → scene 的完整 spectrum，且 task complementarity 的 heatmap 让人信服这不是事后凑分类。</li>
+<li><strong>Multi-backbone 验证</strong>：4 个不同 base model 都受益，说明改进归因于数据而非某个 model-specific trick。</li>
+</ol>
+<h3 id="weaknesses">Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>核心 ablation 缺失</strong>：主表所有 “Ours” 都是 OpenSpatial-3M + SenseNova-800K + LLaVA-OneVision 的混合 SFT，<strong>纯 OpenSpatial-3M 单独效果在主表里没有</strong>。Tab. 2 的 500K subset 对比是数据质量层面的，但 full-scale 的清洁归因被刻意省略了。</li>
+<li><strong>3D lifting pipeline 缺少定量评估</strong>：只有 Fig. 4 的 qualitative outdoor 可视化和 Tab. 6 的下游效果。box IoU / recall / scale accuracy 这些直接质量指标没给——而这恰恰是整个 scalability claim 的根基。</li>
+<li><strong>Roadmap 多数未完成</strong>：截至 release，3D lifting module、evaluation suite、trained model 都未开源（仅数据 + engine 框架）。这削弱了 “open-source data engine” 的实际可用性。</li>
+<li><strong>Outdoor / desktop 仍是 weak spot</strong>：作者自己承认 RealWorldQA 上有些 model 出现 -3.9 / -0.8 的轻微下降，归因于数据分布偏 indoor。</li>
+<li><strong>Data scaling 收益递减明显</strong>：20%→100% 只涨 2.1 pt，说明 single-engine 已接近边际。再涨需要换数据源（更多 outdoor）或换更强 backbone，纯堆量已不划算。</li>
+</ol>
+<h3 id="可信评估">可信评估<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#可信评估" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="artifact-可获取性">Artifact 可获取性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#artifact-可获取性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><strong>代码</strong>: 部分开源——core 3D data engine 已 release（2026-04-08），但 evaluation suite、3D lifting module、trained model 均在 roadmap 标记为未完成（截至 2026-04-15）</li>
+<li><strong>模型权重</strong>: 未发布（roadmap 中”Model Release”未勾选）</li>
+<li><strong>训练细节</strong>: 仅高层描述（lr / batch / GPU 数 / 数据混合比，但没有 step / warm-up / 具体 SFT 数据 schedule）</li>
+<li><strong>数据集</strong>: 部分公开——OpenSpatial-3M 的 open-source subset 已上 HF (<code>jdopensource/JoyAI-Image-OpenSpatial</code>)，是否完整 3M 不明</li>
+</ul>
+<h4 id="claim-可验证性">Claim 可验证性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#claim-可验证性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>✅ “3D-Avg 提升 14% 平均 / 19% 最大”：Tab. 1 完整数据可查，多 backbone 一致性良好</li>
+<li>✅ “Box-centric > point-cloud-centric”：Tab. 3 ablation 有 quantitative + qualitative 双重证据</li>
+<li>⚠️ “OpenSpatial-3M 是性能提升来源”：归因被混合训练（+SenseNova-800K +LLaVA-OneVision）稀释，缺少纯 OpenSpatial-3M 的清洁对照</li>
+<li>⚠️ “3D lifting 能 scale 到 in-the-wild”：只有 Fig. 4 qualitative + Tab. 6 间接下游证据，无 lifting 质量的定量评估</li>
+<li>⚠️ “Versatile / generalizable”：Outdoor / desktop / RealWorldQA 上存在 regression，“versatile” 主要适用于 indoor scene</li>
+<li>❌ “Democratize the creation of high-quality data”：在 evaluation suite 与 lifting module 都未开源前，这更像愿景而非已交付的能力</li>
+</ul>
+<h3 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>这篇 paper 在 framing 上比方法本身更有价值——“open the engine, not just the dataset” 应该成为后续 spatial data 工作的 default 立场。</li>
+<li>5 类任务 taxonomy 可作为后续 spatial benchmark 设计的 reference scaffold。</li>
+<li>关心的 follow-up:
+<ul>
+<li>3D lifting 的精度边界在哪？outdoor / cluttered / dynamic scene 的 box recall 是多少？</li>
+<li>当 SenseNova-SI 整体被 OpenSpatial 完全覆盖后（即 OpenSpatial 自己产生 MMSI 强项数据），是否还需要混合？</li>
+<li>把这套数据用于 <a href="../Papers/2604-GeminiRoboticsER16" class="internal alias" data-slug="Papers/2604-GeminiRoboticsER16">Gemini Robotics ER</a> 这类 embodied reasoning 模型，是否对真实 manipulation 决策有 transfer？目前所有验证都停留在 VLM benchmark 层面，离 embodied 还有一道桥。</li>
+</ul>
+</li>
+<li>训练 protocol 与 <a href="../Papers/2401-SpatialVLM" class="internal alias" data-slug="Papers/2401-SpatialVLM">SpatialVLM</a> 一脉相承，但 task taxonomy 更宽（SpatialVLM 主要 SM+SR，OpenSpatial 多 CP/MC/SAR 三类）。</li>
+</ul>
+<h3 id="rating">Rating<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#rating" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>分数</strong>：2 - Frontier
+<strong>理由</strong>：按 field-centric rubric，OpenSpatial 是 spatial VLM 数据工程方向当前必须参考的 Frontier 工作——OBB-centric engine + 5 类任务 taxonomy + multi-backbone 一致提升（3D-Avg +5.4~+9.5）让它成为后续 spatial data pipeline 的 default baseline；但距离 Foundation 仍差两步：(a) 核心归因 ablation 被混合训练稀释、3D lifting 缺定量质量指标，可信度未拉满；(b) evaluation suite / lifting module / model weights 都还在 roadmap，尚未成为社区 de facto 标准。若后续 roadmap 全部落地且被广泛采用，可升至 3。</p></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="ud8fg4" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#1-motivation为什么-spatial-intelligence-卡在数据上" data-for="1-motivation为什么-spatial-intelligence-卡在数据上">1. Motivation：为什么 spatial intelligence 卡在数据上</a></li><li class="depth-0"><a href="#2-数据-pipeline" data-for="2-数据-pipeline">2. 数据 Pipeline</a></li><li class="depth-1"><a href="#21-3d-box-centric-表示" data-for="21-3d-box-centric-表示">2.1 3D Box-Centric 表示</a></li><li class="depth-1"><a href="#22-scene-level-obb-标注两条路" data-for="22-scene-level-obb-标注两条路">2.2 Scene-level OBB 标注：两条路</a></li><li class="depth-1"><a href="#23-attribute-centric-objectframe-mapping" data-for="23-attribute-centric-objectframe-mapping">2.3 Attribute-Centric Object–Frame Mapping</a></li><li class="depth-1"><a href="#24-scene-graph-driven-qa-synthesis" data-for="24-scene-graph-driven-qa-synthesis">2.4 Scene-Graph Driven QA Synthesis</a></li><li class="depth-0"><a href="#3-openspatial-3m-dataset" data-for="3-openspatial-3m-dataset">3. OpenSpatial-3M Dataset</a></li><li class="depth-0"><a href="#4-experiments" data-for="4-experiments">4. Experiments</a></li><li class="depth-1"><a href="#41-训练设置" data-for="41-训练设置">4.1 训练设置</a></li><li class="depth-1"><a href="#42-主结果" data-for="42-主结果">4.2 主结果</a></li><li class="depth-1"><a href="#43-module-ablation哪些设计真在-work" data-for="43-module-ablation哪些设计真在-work">4.3 Module Ablation：哪些设计真在 work</a></li><li class="depth-1"><a href="#44-data-comparison数据质量-vs-其他开源-spatial-数据集" data-for="44-data-comparison数据质量-vs-其他开源-spatial-数据集">4.4 Data Comparison：数据质量 vs 其他开源 spatial 数据集</a></li><li class="depth-1"><a href="#45-scaling" data-for="45-scaling">4.5 Scaling</a></li><li class="depth-1"><a href="#46-in-the-wild-3d-lifting" data-for="46-in-the-wild-3d-lifting">4.6 In-the-Wild 3D Lifting</a></li><li class="depth-1"><a href="#47-task-diversity-ablation" data-for="47-task-diversity-ablation">4.7 Task Diversity Ablation</a></li><li class="depth-0"><a href="#关联工作" data-for="关联工作">关联工作</a></li><li class="depth-1"><a href="#基于" data-for="基于">基于</a></li><li class="depth-1"><a href="#对比" data-for="对比">对比</a></li><li class="depth-1"><a href="#方法相关" data-for="方法相关">方法相关</a></li><li class="depth-0"><a href="#论文点评" data-for="论文点评">论文点评</a></li><li class="depth-1"><a href="#strengths" data-for="strengths">Strengths</a></li><li class="depth-1"><a href="#weaknesses" data-for="weaknesses">Weaknesses</a></li><li class="depth-1"><a href="#可信评估" data-for="可信评估">可信评估</a></li><li class="depth-1"><a href="#notes" data-for="notes">Notes</a></li><li class="depth-1"><a href="#rating" data-for="rating">Rating</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
 </script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
 </script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>

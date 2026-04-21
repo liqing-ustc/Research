@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><title>HomeRobot: Open-Vocabulary Mobile Manipulation</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="HomeRobot: Open-Vocabulary Mobile Manipulation"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="HomeRobot: Open-Vocabulary Mobile Manipulation"/><meta name="twitter:description" content="Summary 提出 Open-Vocabulary Mobile Manipulation (OVMM) benchmark 和配套的 HomeRobot 软件栈，定义了”在未见环境中抓取任意物体并放置到指定位置”的标准化评估协议，包括基于 Habitat 的仿真环境和 Hello Robot Stretch 真机平台。Heuristic ..."/><meta property="og:description" content="Summary 提出 Open-Vocabulary Mobile Manipulation (OVMM) benchmark 和配套的 HomeRobot 软件栈，定义了”在未见环境中抓取任意物体并放置到指定位置”的标准化评估协议，包括基于 Habitat 的仿真环境和 Hello Robot Stretch 真机平台。Heuristic ..."/><meta property="og:image:alt" content="Summary 提出 Open-Vocabulary Mobile Manipulation (OVMM) benchmark 和配套的 HomeRobot 软件栈，定义了”在未见环境中抓取任意物体并放置到指定位置”的标准化评估协议，包括基于 Habitat 的仿真环境和 Hello Robot Stretch 真机平台。Heuristic ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2306-HomeRobot"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2306-HomeRobot"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary 提出 Open-Vocabulary Mobile Manipulation (OVMM) benchmark 和配套的 HomeRobot 软件栈，定义了”在未见环境中抓取任意物体并放置到指定位置”的标准化评估协议，包括基于 Habitat 的仿真环境和 Hello Robot Stretch 真机平台。Heuristic ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+<html lang="en"><head><title>HomeRobot: Open-Vocabulary Mobile Manipulation</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="HomeRobot: Open-Vocabulary Mobile Manipulation"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="HomeRobot: Open-Vocabulary Mobile Manipulation"/><meta name="twitter:description" content="Summary HomeRobot: Open-Vocabulary Mobile Manipulation 核心: 提出 Open-Vocabulary Mobile Manipulation (OVMM) 任务和首个 sim+real 双轨基准——给定语言指令 “把 object 从 start_receptacle 移到 goal_receptacle”，机器人需在未知家庭环境中找物、抓取、找目标家具、放置 ..."/><meta property="og:description" content="Summary HomeRobot: Open-Vocabulary Mobile Manipulation 核心: 提出 Open-Vocabulary Mobile Manipulation (OVMM) 任务和首个 sim+real 双轨基准——给定语言指令 “把 object 从 start_receptacle 移到 goal_receptacle”，机器人需在未知家庭环境中找物、抓取、找目标家具、放置 ..."/><meta property="og:image:alt" content="Summary HomeRobot: Open-Vocabulary Mobile Manipulation 核心: 提出 Open-Vocabulary Mobile Manipulation (OVMM) 任务和首个 sim+real 双轨基准——给定语言指令 “把 object 从 start_receptacle 移到 goal_receptacle”，机器人需在未知家庭环境中找物、抓取、找目标家具、放置 ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2306-HomeRobot"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2306-HomeRobot"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary HomeRobot: Open-Vocabulary Mobile Manipulation 核心: 提出 Open-Vocabulary Mobile Manipulation (OVMM) 任务和首个 sim+real 双轨基准——给定语言指令 “把 object 从 start_receptacle 移到 goal_receptacle”，机器人需在未知家庭环境中找物、抓取、找目标家具、放置 ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
   position: absolute;
   display: flex;
   float: right;
@@ -116,195 +116,472 @@ pre:hover > .expand-button {
   padding: 0 12px;
   font-size: 14px;
 }
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2306-HomeRobot"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="gc1ghh"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/RL" class="sidebar-tag-pill">#RL</a><a href="/mindflow/tags/web-agent" class="sidebar-tag-pill">#web-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/scene-understanding" class="sidebar-tag-pill">#scene-understanding</a><a href="/mindflow/tags/instruction-following" class="sidebar-tag-pill">#instruction-following</a><a href="/mindflow/tags/cross-embodiment" class="sidebar-tag-pill">#cross-embodiment</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2306-HomeRobot</a></div></nav><h1 class="article-title">HomeRobot: Open-Vocabulary Mobile Manipulation</h1><div class="paper-meta"><span class="paper-venue">NeurIPS 2023 Competition Track</span><span class="paper-authors"><span class="meta-sep">·</span>Sriram Yenamandra <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, Arun Ramachandran</span><span>, Karmesh Yadav</span><span>, Austin Wang</span><span>, Mukul Khanna</span><span>, Theophile Gervet</span><span>, Tsung-Yen Yang</span><span>, Vidhi Jain</span><span>, Alexander William Clegg</span><span>, John Turner</span><span>, Zsolt Kira</span><span>, Manolis Savva</span><span>, Angel Chang</span><span>, Devendra Singh Chaplot</span><span>, Dhruv Batra</span><span>, Roozbeh Mottaghi</span><span>, Yonatan Bisk</span><span>, Chris Paxton</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2023-06-01T00:00:00.000Z">Jun 01, 2023</time><span>7 min read</span></p><ul class="tags"><li><a href="../tags/mobile-manipulation" class="internal tag-link">mobile-manipulation</a></li><li><a href="../tags/scene-understanding" class="internal tag-link">scene-understanding</a></li><li><a href="../tags/navigation" class="internal tag-link">navigation</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>提出 Open-Vocabulary Mobile Manipulation (OVMM) benchmark 和配套的 HomeRobot 软件栈，定义了”在未见环境中抓取任意物体并放置到指定位置”的标准化评估协议，包括基于 Habitat 的仿真环境和 Hello Robot Stretch 真机平台。Heuristic 和 RL 两条 baseline 在真机上仅达到 15-20% 成功率，表明任务远未解决。</p>
-<h2 id="problem--motivation">Problem &amp; Motivation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#problem--motivation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>Mobile manipulation 是 embodied AI 的核心能力，但之前的工作普遍存在以下问题：(1) 使用离散动作空间简化问题；(2) 物体类别有限，无法测试 open-vocabulary 泛化；(3) 局限于单房间场景。更关键的是，<strong>各实验室之间缺乏标准化的 benchmark</strong>，导致方法之间无法公平比较。HomeRobot 试图通过统一的仿真 + 真机平台填补这一空白，使 OVMM 成为可复现、可比较的研究问题。</p>
-<h2 id="method">Method<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#method" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<h3 id="任务定义ovmm">任务定义：OVMM<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#任务定义ovmm" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p>给定自然语言指令（指定目标物体和目标 receptacle），agent 需要在未见的多房间家庭环境中完成：FindObj → Pick → FindRec → Place 四个阶段。评估使用 partial success metric，逐阶段打分。</p>
-<h3 id="软件架构client-server">软件架构：Client-Server<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#软件架构client-server" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2306-HomeRobot"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="mm0h7i"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/embodied-reasoning" class="sidebar-tag-pill">#embodied-reasoning</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/computer-use" class="sidebar-tag-pill">#computer-use</a><a href="/mindflow/tags/agentic-RL" class="sidebar-tag-pill">#agentic-RL</a><a href="/mindflow/tags/gui-agent" class="sidebar-tag-pill">#gui-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/world-model" class="sidebar-tag-pill">#world-model</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2306-HomeRobot</a></div></nav><h1 class="article-title">HomeRobot: Open-Vocabulary Mobile Manipulation</h1><div class="paper-meta"><span class="paper-venue">CoRL 2023</span><span class="paper-authors"><span class="meta-sep">·</span>Sriram Yenamandra <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, Arun Ramachandran</span><span>, Karmesh Yadav</span><span>, Austin Wang</span><span>, Mukul Khanna</span><span>, Theophile Gervet</span><span>, Tsung-Yen Yang</span><span>, Vidhi Jain</span><span>, Alexander William Clegg</span><span>, John Turner</span><span>, Zsolt Kira</span><span>, Manolis Savva</span><span>, Angel Chang</span><span>, Devendra Singh Chaplot</span><span>, Dhruv Batra</span><span>, Roozbeh Mottaghi</span><span>, Yonatan Bisk</span><span>, Chris Paxton</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2023-06-01T00:00:00.000Z">Jun 01, 2023</time><span>16 min read</span></p><ul class="tags"><li><a href="../tags/mobile-manipulation" class="internal tag-link">mobile-manipulation</a></li><li><a href="../tags/navigation" class="internal tag-link">navigation</a></li><li><a href="../tags/manipulation" class="internal tag-link">manipulation</a></li><li><a href="../tags/scene-understanding" class="internal tag-link">scene-understanding</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>HomeRobot: Open-Vocabulary Mobile Manipulation </p></div>
+                  
+                </div>
+<div class="callout-content">
 <ul>
-<li><strong>Robot 端</strong>：低层控制器 + Hector SLAM</li>
-<li><strong>桌面工作站</strong>：GPU 驱动的高层感知与规划</li>
-<li>通过 WiFi 连接，降低机器人端计算需求</li>
+<li><strong>核心</strong>: 提出 Open-Vocabulary Mobile Manipulation (OVMM) 任务和首个 sim+real 双轨基准——给定语言指令 “把 object 从 start_receptacle 移到 goal_receptacle”，机器人需在未知家庭环境中找物、抓取、找目标家具、放置</li>
+<li><strong>方法</strong>: HSSD 200 场景 + 2535 跨数据集 objects (AI2-Thor / ABO / GSO / HSSD) 构建 sim 数据；提供 Hello Robot Stretch 真实软硬件栈；OVMMAgent state machine 串联 FindObj → Gaze → Pick → FindRec → Place 五个 skill，每个 skill 提供 heuristic 和 RL (DDPPO) 两套 baseline；DETIC 提供 open-vocab 分割</li>
+<li><strong>结果</strong>: 真机 20% overall success（RL nav）/15%（heuristic）；sim 中用 GT segmentation 最高 48% partial / 14.8% overall，但换 DETIC 后骤降至 ~10-12% partial——感知是核心瓶颈</li>
+<li><strong>Sources</strong>: <a href="https://arxiv.org/abs/2306.11565" class="external">paper<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://ovmm.github.io/" class="external">website<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://github.com/facebookresearch/home-robot" class="external">github<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><strong>Rating</strong>: 2 - Frontier（OVMM task + HomeRobot stack 被 NeurIPS 2023 / CVPR 2024 OVMM Challenge 复用为 de facto 基准，但 method 贡献薄，benchmark 地位稳固而方法未成 building block）</li>
 </ul>
-<h3 id="感知模块">感知模块<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#感知模块" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<ul>
-<li><strong>DETIC</strong>：open-vocabulary object detector，基于 CLIP embedding 做物体检测与分割</li>
-<li>Depth sensor 提供 3D 信息</li>
-<li>构建 2D semantic map 用于导航和放置决策</li>
-</ul>
-<h3 id="heuristic-baseline">Heuristic Baseline<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#heuristic-baseline" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<ul>
-<li>使用 Fast Marching Method (FMM) 做 motion planning（假设 cylindrical agent）</li>
-<li>Top-down parallel gripper 的 voxelization-based grasping</li>
-<li>基于 2D semantic map 的 heuristic placement</li>
-<li>线性 state machine：FindObj → Gaze → Pick → FindRec → Place</li>
-</ul>
-<h3 id="rl-baseline">RL Baseline<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#rl-baseline" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<ul>
-<li>使用 DDPPO（Distributed Proximal Policy Optimization）分别训练四个 skill policy：navigation、gaze、pick、place</li>
-<li>输入：depth image + semantic segmentation（GT 或 DETIC）+ proprioceptive sensors</li>
-<li>各 skill 独立训练，通过 state machine 串联</li>
-</ul>
-<h3 id="仿真环境">仿真环境<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#仿真环境" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<ul>
-<li>60 个 HSSD 场景（38 train / 12 val / 10 test），多房间家庭布局</li>
-<li>2,535 个物体实例，129 个类别（聚合自 AI2-Thor、ABO、Google Scanned Objects、HSSD）</li>
-<li>21 类 receptacle（桌子、椅子、柜子、沙发、水槽等）</li>
-<li>动态物体放置 + 预计算 viewpoint + navmesh collision checking</li>
-</ul>
-<h3 id="真机平台">真机平台<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#真机平台" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<ul>
-<li>Hello Robot Stretch（~$25K，40+ 大学已部署），6-DOF arm + parallel gripper</li>
-<li>3 房间受控公寓，7 类 receptacle</li>
-<li>20 episodes/baseline，8 类物体（5 seen + 3 unseen）</li>
-</ul>
-<h2 id="key-results">Key Results<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-results" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<h3 id="仿真gt-segmentation">仿真（GT Segmentation）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#仿真gt-segmentation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="table-container"><table><thead><tr><th>Method</th><th>FindObj</th><th>Pick</th><th>FindRec</th><th>Place</th></tr></thead><tbody><tr><td>RL nav + RL skills</td><td>66.6%</td><td>61.1%</td><td>50.9%</td><td>14.8%</td></tr><tr><td>Heuristic nav + RL skills</td><td>56.5%</td><td>51.5%</td><td>42.3%</td><td>13.2%</td></tr></tbody></table></div>
-<h3 id="仿真detic-segmentation性能断崖式下降">仿真（DETIC Segmentation）——性能断崖式下降<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#仿真detic-segmentation性能断崖式下降" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="table-container"><table><thead><tr><th>Method</th><th>FindObj</th><th>Pick</th><th>FindRec</th><th>Place</th></tr></thead><tbody><tr><td>RL nav + RL skills</td><td>21.7%</td><td>10.2%</td><td>6.2%</td><td>0.4%</td></tr><tr><td>Heuristic nav + RL skills</td><td>29.4%</td><td>13.2%</td><td>5.8%</td><td>0.5%</td></tr></tbody></table></div>
-<h3 id="真机">真机<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#真机" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="table-container"><table><thead><tr><th>Method</th><th>FindObj</th><th>Pick</th><th>FindRec</th><th>Overall</th></tr></thead><tbody><tr><td>RL</td><td>70%</td><td>45%</td><td>30%</td><td><strong>20%</strong></td></tr><tr><td>Heuristic</td><td>70%</td><td>35%</td><td>30%</td><td><strong>15%</strong></td></tr></tbody></table></div>
-<p><strong>核心发现</strong>：</p>
+</div>
+</blockquote>
+<p><strong>Key Takeaways:</strong></p>
 <ol>
-<li><strong>感知是最大瓶颈</strong>——从 GT segmentation 切换到 DETIC 后性能暴跌（Place 从 ~14% 降到 &lt;1%）</li>
-<li>RL 在 gaze alignment 和 placement precision 上优于 heuristic，但 heuristic 对感知噪声更鲁棒</li>
-<li>真机 20% 的成功率说明 OVMM 仍然是极具挑战性的开放问题</li>
+<li><strong>OVMM 把碎片化的 mobile manipulation 拉到一个整合 setting</strong>：感知 + 语言 + 导航 + 操作必须串成端到端 pipeline，单独 SOTA 化某个组件意义不大。</li>
+<li><strong>Sim2Real 双轨基准</strong>：与多数纯 sim 工作不同，配套 real-world 协议 + 标准硬件 (Stretch) + 软件栈，强调跨实验室复现。</li>
+<li><strong>感知是首要瓶颈</strong>：从 GT segmentation 切到 DETIC 之后，所有 baseline 性能腰斩到 1/4——open-vocab perception 比 policy 设计更值得投入。</li>
+<li><strong>Heuristic ≈ RL</strong>：在 sim 中 RL 略胜，但都远未饱和；提示当前 mobile manipulation 的整体瓶颈不在 policy class 选择，而在感知与多 skill 衔接。</li>
 </ol>
-<h2 id="strengths--weaknesses">Strengths &amp; Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths--weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Teaser. OVMM 任务可视化——在未知 3 房间公寓中执行 “move stuffed animal from chair to sofa” 等指令。</strong></p>
+<p><video src="https://ovmm.github.io/static/videos/teaser.mp4" controls muted playsinline width="720"></video></p>
+<hr/>
+<h2 id="ovmm-任务定义">OVMM 任务定义<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#ovmm-任务定义" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>任务格式：<strong>“Move (object) from the (start_receptacle) to the (goal_receptacle)”</strong>。</p>
+<ul>
+<li><strong>object</strong>：小型可操作物体（cup、stuffed toy、box 等）</li>
+<li><strong>start_receptacle / goal_receptacle</strong>：大型家具表面（table、sofa、counter 等）</li>
+<li>机器人在未知单层 home 环境中初始化，仅给出三个语义类别名；object 已知挂在 start_receptacle 上；任意一个 valid goal_receptacle 都可作为放置点</li>
+</ul>
+<p><strong>Open-vocabulary</strong>：测试时 object 来自训练<strong>未见过</strong>的 instance，部分来自训练<strong>未见过</strong>的 category；receptacle 类别全部见过但具体实例未见过。</p>
+<p><strong>Scoring</strong>：分四阶段——FindObj → Pick → FindRec → Place，全部成功才算 episode 成功；partial success = 完成的阶段数 / 4。</p>
+<p><strong>Figure 1. OVMM 任务在 sim 和 real 中的对应实例。</strong>
+<img src="https://arxiv.org/html/2306.11565v2/x1.png" alt/></p>
+<h2 id="与已有-benchmark-的对比">与已有 benchmark 的对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#与已有-benchmark-的对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>OVMM 同时具备 (a) 200 场景规模、(b) 7892 物体实例、(c) 连续动作空间、(d) sim2real 验证、(e) 完整 robotics stack——这是同时具备所有 5 项的唯一 benchmark。</p>
+<p><strong>Table 1. OVMM 与 Room Rearrangement / Habitat ObjectNav / TDW-Transport / VirtualHome / ALFRED / Habitat 2.0 HAB / ProcTHOR / RoboTHOR / Behavior-1K / ManiSkill-2 的横向对比。</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Benchmark</th><th>Scenes</th><th>Cats</th><th>Insts</th><th>Continuous</th><th>Sim2Real</th><th>Stack</th><th>Open License</th><th>Manip</th></tr></thead><tbody><tr><td>Room Rearrangement</td><td>120</td><td>118</td><td>118</td><td>✖</td><td>✖</td><td>✖</td><td>✔</td><td>✖</td></tr><tr><td>Habitat ObjectNav</td><td>216</td><td>6</td><td>7,599</td><td>✔</td><td>✖</td><td>✖</td><td>✔</td><td>✖</td></tr><tr><td>ALFRED</td><td>120</td><td>84</td><td>84</td><td>✖</td><td>✖</td><td>✖</td><td>✔</td><td>✓</td></tr><tr><td>Habitat 2.0 HAB</td><td>105</td><td>20</td><td>20</td><td>✔</td><td>✖</td><td>✖</td><td>✔</td><td>✔</td></tr><tr><td>ProcTHOR</td><td>10000</td><td>108</td><td>1633</td><td>✖</td><td>✖</td><td>✖</td><td>✔</td><td>✔</td></tr><tr><td>RoboTHOR</td><td>75</td><td>43</td><td>731</td><td>✖</td><td>✔</td><td>✖</td><td>✔</td><td>✖</td></tr><tr><td><a href="../Papers/2403-Behavior1K" class="internal alias" data-slug="Papers/2403-Behavior1K">Behavior-1K</a></td><td>50</td><td>1265</td><td>5215</td><td>✔</td><td>✔</td><td>✖</td><td>✖</td><td>✓</td></tr><tr><td>ManiSkill-2</td><td>1</td><td>2000</td><td>2000</td><td>✔</td><td>✓</td><td>✖</td><td>✓</td><td>✔</td></tr><tr><td><strong>OVMM + HomeRobot</strong></td><td><strong>200</strong></td><td><strong>150</strong></td><td><strong>7892</strong></td><td><strong>✔</strong></td><td><strong>✔</strong></td><td><strong>✔</strong></td><td><strong>✔</strong></td><td><strong>✔</strong></td></tr></tbody></table></div>
+<blockquote>
+<p>❓ “Continuous Actions” 列：HomeRobot 的 “continuous” 实际是 teleporting agent 通过 navmesh 检查移动到 waypoint，并非真正物理连续——见 §D.6。这种近似是否影响 sim2real 还需要更多消融。</p>
+</blockquote>
+<h2 id="数据与硬件">数据与硬件<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#数据与硬件" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="仿真数据集">仿真数据集<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#仿真数据集" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>基于 <strong>Habitat Synthetic Scenes Dataset (HSSD)</strong> 构建——200+ 人工创作的 3D 家居场景，含 18k 物体模型；筛选出 60 个支持 rearrangement 的场景，按 38/12/10 划分 train/val/test。</p>
+<p><strong>物体来源</strong>：跨数据集聚合 <strong>AI2-Thor + Amazon-Berkeley Objects + Google Scanned Objects + HSSD</strong>，共 2535 个 instance / 129 个 category。</p>
+<p><strong>Table 2. 物体跨 (Seen/Unseen) Category × (Seen/Unseen) Instance 的划分。</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th></th><th>SC,SI</th><th>SC,UI</th><th>UC,UI</th><th>Total</th></tr></thead><tbody><tr><td>Cats</td><td>85</td><td>64</td><td>44</td><td>129</td></tr><tr><td>Insts</td><td>1363</td><td>748</td><td>424</td><td>2535</td></tr></tbody></table></div>
+<p>训练集只用 SC+SI；val/test 用 SC+UI 和 UC+UI——强制 open-vocabulary 评估。</p>
+<h3 id="真机平台">真机平台<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#真机平台" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Hello Robot Stretch + DexWrist</strong>：$25K 价位、6-DoF 操作、人体尺寸、低风险。Sec H.1 解释选 Stretch 是因为已在 40+ 实验室部署，跨实验室复现有基础。</p>
+<p><strong>Figure 4. HomeRobot 软件栈架构——Stretch 跑底层控制 + SLAM，工作站 GPU 跑感知 + 规划，路由器连接。</strong>
+<img src="https://arxiv.org/html/2306.11565v2/x3.png" alt/></p>
+<p>代码分三个 repo：<code>home_robot</code>（共享组件）/ <code>home_robot_sim</code>（Habitat 仿真）/ <code>home_robot_hw</code>（硬件 server + 工作站 client）。</p>
+<h3 id="真实测试环境">真实测试环境<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#真实测试环境" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>3 房间受控公寓，固定家具布局（sofa、kitchen table、counter with bar、TV stand），8 类目标物体——5 类 seen（Cup, Bowl, Stuffed Toy, Medicine Bottle, Toy Animal）+ 3 类 unseen（Rubik’s cube, Toy Drill, Lemon），7 类 receptacle（Cabinet, Chair, Couch, Counter, Sink, Stool, Table）。每个 baseline 跑 20 个 episode。</p>
+<h2 id="ovmmagent-五技能-state-machine">OVMMAgent: 五技能 state machine<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#ovmmagent-五技能-state-machine" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Figure 2. 真机和仿真中 OVMMAgent 任务执行示意。</strong>
+<img src="https://arxiv.org/html/2306.11565v2/x2.png" alt/></p>
+<p>OVMMAgent 是状态机，按固定顺序调用 5 个 skill：</p>
+<ol>
+<li><strong>FindObj</strong>：导航到 start_receptacle 并定位 object</li>
+<li><strong>Gaze</strong>：靠近物体并调整朝向以利于抓取</li>
+<li><strong>Pick</strong>：抓取（sim 中 magic snap，real 中真实抓取）</li>
+<li><strong>FindRec</strong>：导航到 goal_receptacle</li>
+<li><strong>Place</strong>：放置物体</li>
+</ol>
+<p><strong>两套 baseline</strong>：</p>
+<ul>
+<li><strong>Heuristic</strong>：基于 Gervet 2022 的语义地图 + Frontier Exploration + Fast Marching Method 路径规划；Pick/Place 是体素化 + 简单几何规则；DETIC 提供 open-vocab 分割</li>
+<li><strong>RL</strong>：用 DDPPO 训练 4 个 skill，输入 depth + 真值语义分割 + proprioception；测试时换成 DETIC 分割</li>
+</ul>
+<h3 id="heuristic-pick-策略">Heuristic Pick 策略<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#heuristic-pick-策略" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Figure 15. 简单 grasp 策略在多种 lab 环境的测试。</strong>
+<img src="https://arxiv.org/html/2306.11565v2/x8.png" alt/></p>
+<p>实现细节（§E.3）：</p>
+<ol>
+<li>把 object 点云体素化为 0.5 cm voxels</li>
+<li>选 Z 最高的 top 10% voxels</li>
+<li>投影到 2D 网格，对每个 voxel 评估三区域（夹爪两指 + 指间空间）</li>
+<li>评分：指间区域占据 + 两侧自由</li>
+<li>平滑 + 阈值过滤</li>
+</ol>
+<blockquote>
+<p>作者对比了 ContactGraspnet / 6-DoF GraspNet / GraspNet 1-Billion，发现这些预训练模型在 Stretch 的 sensor noise 下反而更不稳定——这是个有意思的负面结果，提示 SOTA grasp net 的 generalization 比 paper claim 弱。</p>
+</blockquote>
+<h3 id="heuristic-place-策略">Heuristic Place 策略<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#heuristic-place-策略" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Figure 16. 真机中 heuristic place 把 stuffed animal 放到 sofa 上的实例。</strong>
+<img src="https://arxiv.org/html/2306.11565v2/x9.png" alt/></p>
+<p>DETIC 检测 receptacle → 投影到点云 → 50 个采样点选 “最大平台” → 旋转对齐 → 必要时前进 → 重新估计 → 设置 arm 位姿 → 释放。</p>
+<h3 id="导航-planner">导航 Planner<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#导航-planner" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>基于 Gervet 2022 的语义地图 + Frontier-based exploration + Fast Marching Method (FMM)，做了关键扩展：把”找小 object 难”的问题转化为”先找 start_receptacle”——</p>
+<ol>
+<li>如果 object 和 start_receptacle 在同一 cell 共现 → 规划到 object</li>
+<li>如果只看到 start_receptacle（排除 1m 内已访问区域）→ 规划到 start_receptacle</li>
+<li>否则 → 规划到最近 frontier</li>
+</ol>
+<p><strong>语义地图</strong>：<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span> 二值矩阵，<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span></span></span></span>，每 cell 5cm × 5cm 物理空间，C 个语义类别 + 障碍物 + 已探索 + 当前位置 + 历史位置。</p>
+<h2 id="实验结果">实验结果<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#实验结果" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="sim-结果">Sim 结果<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#sim-结果" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table 3. 不同 (perception, nav, gaze, place) 组合下的 partial 和 overall success rate (%)。</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Perception</th><th>Nav</th><th>Gaze</th><th>Place</th><th>FindObj</th><th>Pick</th><th>FindRec</th><th>Overall</th><th>Avg Partial</th></tr></thead><tbody><tr><td>GT</td><td>Heuristic</td><td>None</td><td>Heuristic</td><td>54.1</td><td>48.5</td><td>31.5</td><td>5.1</td><td>34.8</td></tr><tr><td>GT</td><td>Heuristic</td><td>RL</td><td>RL</td><td>56.5</td><td>51.5</td><td>42.3</td><td>13.2</td><td>40.9</td></tr><tr><td>GT</td><td>RL</td><td>None</td><td>Heuristic</td><td>65.4</td><td>54.8</td><td>43.7</td><td>7.3</td><td>42.8</td></tr><tr><td><strong>GT</strong></td><td><strong>RL</strong></td><td><strong>RL</strong></td><td><strong>RL</strong></td><td><strong>66.6</strong></td><td><strong>61.1</strong></td><td><strong>50.9</strong></td><td><strong>14.8</strong></td><td><strong>48.3</strong></td></tr><tr><td>DETIC</td><td>Heuristic</td><td>None</td><td>Heuristic</td><td>28.7</td><td>15.2</td><td>5.3</td><td>0.4</td><td>12.4</td></tr><tr><td>DETIC</td><td>Heuristic</td><td>RL</td><td>RL</td><td>29.4</td><td>13.2</td><td>5.8</td><td>0.5</td><td>12.2</td></tr><tr><td>DETIC</td><td>RL</td><td>None</td><td>Heuristic</td><td>21.9</td><td>11.5</td><td>6.0</td><td>0.6</td><td>10.0</td></tr><tr><td>DETIC</td><td>RL</td><td>RL</td><td>RL</td><td>21.7</td><td>10.2</td><td>6.2</td><td>0.4</td><td>9.6</td></tr></tbody></table></div>
+<p><strong>关键发现</strong>：</p>
+<ol>
+<li><strong>GT → DETIC 性能崩塌</strong>：最佳组合从 48.3 → 12.4 partial avg，overall success 从 14.8% → ~0.5%。Open-vocab 感知是头号瓶颈。</li>
+<li><strong>RL > Heuristic（仅在 GT 下）</strong>：RL 各 skill 略胜 heuristic；但用 DETIC 时 heuristic FindObj <strong>反超</strong> RL——作者归因 heuristic 通过 2D 语义地图能”积累 + 平滑”噪声预测，对小物体误检更鲁棒。这是个重要 insight：<strong>model-based 方法在 noisy perception 下天然有 ensemble 效应</strong>。</li>
+<li><strong>Gaze 帮助 Pick</strong>：除了 (Heuristic nav, DETIC) 组合，加 Gaze 都提升 pick 成功。</li>
+</ol>
+<h3 id="real-结果">Real 结果<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#real-结果" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table 4. 真机 OVMM 成功率 (%)，每 baseline 20 episodes。</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Method</th><th>FindObj</th><th>Pick</th><th>FindRec</th><th>Overall</th></tr></thead><tbody><tr><td>Heuristic Only</td><td>70</td><td>35</td><td>30</td><td>15</td></tr><tr><td><strong>RL Only</strong></td><td><strong>70</strong></td><td><strong>45</strong></td><td><strong>30</strong></td><td><strong>20</strong></td></tr></tbody></table></div>
+<p>RL 比 Heuristic 多成功 1 个 episode；差距主要来自 Pick——RL Gaze skill 让对齐更准；以及 RL place 更精准让物体落得更稳。</p>
+<p><strong>真机示例视频</strong>——拣起未见 stuffed animal 放到未见 sofa：</p>
+<p><video src="https://ovmm.github.io/static/videos/ovmm_real_world_success_1_edited.mp4" controls muted playsinline width="720"></video></p>
+<blockquote>
+<p>❓ 真机只跑 20 个 episode，统计噪声很大（1 个 episode = 5%），20% vs 15% 的差距能否算显著？需要更多 trial 才能下结论。</p>
+</blockquote>
+<h2 id="appendix-中的工程细节亮点">Appendix 中的工程细节亮点<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#appendix-中的工程细节亮点" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>改进 Habitat 渲染</strong>：重写 PBR 着色器、加 HBAO，仅 3% FPS 损失（340 → 330），但 visual quality 显著提升（§D.5）。</li>
+<li><strong>Magic snap 替换</strong>：尝试用更严格的 grasp success（要求 arm 到达且不碰撞）——arm 能到达 79%，但不碰撞只有 47%。揭示 Habitat 中”无视碰撞”的 magic snap 大幅高估了真实 grasp 难度。</li>
+<li><strong>Discrete vs Continuous action</strong>：作者实现了两套 nav action space，continuous 通过 navmesh 检查 + teleport 实现；这种 “fake continuous” 在工程上简化但牺牲了真实物理。</li>
+</ul>
+<hr/>
+<h2 id="关联工作">关联工作<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#关联工作" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="基础设施--平台">基础设施 / 平台<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#基础设施--平台" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>AI Habitat / Habitat 2.0</strong>：仿真器基础，OVMM 在其上构建</li>
+<li><strong>HSSD</strong>：场景资产源</li>
+<li><strong>DDPPO</strong>：RL baseline 的训练算法</li>
+<li><strong>Hello Robot Stretch</strong>：标准化硬件平台</li>
+</ul>
+<h3 id="子任务方法借鉴">子任务方法借鉴<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#子任务方法借鉴" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>DETIC</strong>：open-vocab 检测 / 分割，所有 baseline 的感知组件</li>
+<li><strong>Gervet et al. 2022 (Frontier-based ObjectNav)</strong>：heuristic nav 的直接前作</li>
+<li><strong>Hector SLAM</strong>：真机定位</li>
+<li><strong>Fast Marching Method</strong>：路径规划</li>
+</ul>
+<h3 id="同时期-mobile-manipulation">同时期 mobile manipulation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#同时期-mobile-manipulation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><a href="../Papers/2305-TidyBot" class="internal alias" data-slug="Papers/2305-TidyBot">TidyBot</a>：同期 LLM-based 个性化整理机器人，也用 heuristic grasp / 真机 Stretch 测试，但侧重 LLM-driven 偏好学习而非 open-vocab 物体</li>
+<li><a href="../Papers/2403-Behavior1K" class="internal alias" data-slug="Papers/2403-Behavior1K">BEHAVIOR-1K</a>：另一个大规模 sim 基准，1265 类物体但无标准 robotics stack</li>
+</ul>
+<h3 id="对比-benchmark">对比 benchmark<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#对比-benchmark" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>ALFRED / VirtualHome / TDW-Transport：早期室内任务基准，object 集合小、动作离散</li>
+<li>Habitat 2.0 HAB / ProcTHOR / RoboTHOR / ManiSkill-2：覆盖 nav 或 manip 单方面，无 OVMM 这种端到端 mobile manipulation 整合</li>
+</ul>
+<hr/>
+<h2 id="论文点评">论文点评<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#论文点评" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
 <h3 id="strengths">Strengths<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<ul>
-<li><strong>标准化贡献大</strong>：统一了仿真 + 真机的 OVMM 评估协议，降低了跨实验室比较的门槛</li>
-<li><strong>Partial success metric 设计合理</strong>：逐阶段评估使 failure analysis 更透明</li>
-<li><strong>开源生态完整</strong>：代码、仿真环境、真机软件栈全部开源，选用已广泛部署的 Stretch 平台</li>
-<li><strong>诚实的 baseline</strong>：不 overclaim，明确指出 20% 成功率”promising but insufficient”</li>
-</ul>
+<ol>
+<li><strong>问题定义有价值</strong>：OVMM 真正把 mobile manipulation 的 4 个核心子问题（perception / language / navigation / manipulation）整合到同一 episode，避免了”每个 sub-skill 单独 SOTA 但端到端拉胯”的领域困境。</li>
+<li><strong>基础设施贡献远超论文方法本身</strong>：HSSD 60 场景 + 2535 物体跨 4 数据集聚合 + Stretch 端到端软件栈 + 仿真/真机对齐 API——这些 infra 后续被 NeurIPS 2023/CVPR 2024 challenge 复用，成为社区标准。</li>
+<li><strong>诚实的 negative result</strong>：明确报告 GT → DETIC 性能崩塌、heuristic 在 noisy perception 下反超 RL、SOTA grasp net 不如 simple voxel heuristic——这些 anti-conventional 发现本身就是 contribution。</li>
+<li><strong>跨实验室复现性</strong>：Stretch 已在 40+ 实验室部署，加上完整 stack，复现门槛远低于自定义机器人 benchmark（如 Behavior-1K、ManiSkill-2）。</li>
+</ol>
 <h3 id="weaknesses">Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>真机样本量过小</strong>：20 episodes per baseline，统计噪声大。20% vs 15% 的差距能否归因于 method 而非随机性，没有给出 confidence interval。</li>
+<li><strong>Continuous action 是 teleport hack</strong>：navmesh check + 直接传送，并非真物理仿真——这种近似如何影响 sim2real 没有消融。</li>
+<li><strong>任务格式偏简单</strong>：固定模板 “move A from B to C”，未涉及多步指令、自然语言模糊性、长程依赖。Conclusion 也承认这是 future work。</li>
+<li><strong>End-to-end baseline 缺失</strong>：只对比模块化 heuristic vs 模块化 RL；没有 end-to-end VLA 或 LLM-based agent 对比，使得”模块化 vs 端到端”的核心设计选择无法判断。</li>
+<li><strong>Pick 在 sim 中是 magic snap</strong>：与真机 grasp 严重脱节，sim 中 Pick partial SR (50-60%) 几乎完全不能预测真机 Pick (35-45%)。</li>
+</ol>
+<h3 id="可信评估">可信评估<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#可信评估" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="artifact-可获取性">Artifact 可获取性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#artifact-可获取性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
 <ul>
-<li><strong>仿真中 grasping 用 magic snap 而非物理模拟</strong>——这使得 sim 结果对 manipulation 能力的评估严重失真，sim-to-real 的 gap 分析因此也不完整</li>
-<li><strong>Baseline 方法本身缺乏创新</strong>：Heuristic 是经典 FMM + rule-based grasping，RL 是标准 DDPPO——作为 benchmark paper 可以接受，但方法层面贡献有限</li>
-<li><strong>DETIC 依赖固定类别列表</strong>，并非真正的 open-vocabulary；作者也承认 ConceptFusion 等方法可能更合适</li>
-<li><strong>真机实验规模极小</strong>（20 episodes/baseline），统计置信度不足</li>
-<li><strong>不支持自然语言指令</strong>，仅用结构化的 (object, receptacle) pair，与”open-vocabulary”的 framing 有一定落差</li>
-<li><strong>无 replanning / error recovery 机制</strong>——线性 state machine 一旦某阶段失败即终止</li>
+<li><strong>代码</strong>: inference + training 完整开源（github.com/facebookresearch/home-robot，MIT License）</li>
+<li><strong>模型权重</strong>: RL baseline 训练脚本开源；具体 checkpoint 与论文对应关系在 README 未明确</li>
+<li><strong>训练细节</strong>: 高层描述（DDPPO、4 个 skill 分别训练、depth + GT seg + proprio 输入），但具体超参 / 训练步数 / 数据配比需要查 config 文件</li>
+<li><strong>数据集</strong>: HSSD 子集 + 物体合集均开源；真实公寓 layout 通过文档描述但无 3D 扫描共享</li>
 </ul>
-<h2 id="mind-map">Mind Map<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mind-map" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;mindmap\n  root((HomeRobot OVMM))\n    Benchmark 设计\n      仿真: 60 HSSD 场景, 129 类物体\n      真机: Hello Robot Stretch\n      Metric: Partial success (4 阶段)\n    感知\n      DETIC open-vocab detector\n      GT vs DETIC 差距巨大\n      感知是最大瓶颈\n    Baseline\n      Heuristic\n        FMM motion planning\n        Rule-based grasping\n        对噪声更鲁棒\n      RL (DDPPO)\n        四个独立 skill policy\n        Gaze/Place 更精确\n        依赖 GT segmentation\n    关键局限\n      Magic snap grasping in sim\n      无 error recovery\n      20 episodes 统计量不足\n      非真正 open-vocabulary\n    后续工作\n      OK-Robot (2024) 达 58.5%\n      NeurIPS 2023 Competition&quot;">mindmap
-  root((HomeRobot OVMM))
-    Benchmark 设计
-      仿真: 60 HSSD 场景, 129 类物体
-      真机: Hello Robot Stretch
-      Metric: Partial success (4 阶段)
-    感知
-      DETIC open-vocab detector
-      GT vs DETIC 差距巨大
-      感知是最大瓶颈
-    Baseline
-      Heuristic
-        FMM motion planning
-        Rule-based grasping
-        对噪声更鲁棒
-      RL (DDPPO)
-        四个独立 skill policy
-        Gaze/Place 更精确
-        依赖 GT segmentation
-    关键局限
-      Magic snap grasping in sim
-      无 error recovery
-      20 episodes 统计量不足
-      非真正 open-vocabulary
-    后续工作
-      OK-Robot (2024) 达 58.5%
-      NeurIPS 2023 Competition
-</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
-<h2 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h4 id="claim-可验证性">Claim 可验证性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#claim-可验证性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
 <ul>
-<li>这篇论文的核心价值是 <strong>benchmark contribution</strong> 而非方法创新。它定义了 OVMM 问题并提供了可复现的评估基础设施，但 baseline 本身相当朴素。</li>
-<li>从 GT segmentation 到 DETIC 的性能暴跌是最有价值的 insight：<strong>在 embodied AI 中，perception 的质量决定了整个 pipeline 的上限</strong>。这与后续 OK-Robot 的经验一致——OK-Robot 通过更好的 semantic memory（VoxelMap + CLIP）显著提升了性能。</li>
-<li>对比 <a href="../Papers/2401-OKRobot" class="internal" data-slug="Papers/2401-OKRobot">2401-OKRobot</a>：OK-Robot 在相似硬件（同为 Stretch）上达到 58.5% 成功率 vs HomeRobot 的 20%，关键差异在于 (1) 更好的 semantic memory (VoxelMap vs 2D semantic map)，(2) 更强的 grasping (AnyGrasp vs heuristic/RL)，(3) 预扫描环境。这说明在 modular pipeline 中，<strong>每个模块的质量都直接影响整体性能</strong>。</li>
-<li>Magic snap grasping 是仿真结果的最大 caveat——manipulation 是 OVMM 中最难的部分之一，仿真中跳过它使得 sim 结果的参考价值大打折扣。</li>
-<li>作为 NeurIPS 2023 Competition Track 论文，其定位是激发社区参与而非提出 SOTA 方法，从这个角度评价应更宽容。Rating 3/5 反映”重要的问题定义 + 扎实的工程 + 有限的方法贡献”。</li>
-</ul></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="uevi3i" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#problem--motivation" data-for="problem--motivation">Problem &amp; Motivation</a></li><li class="depth-0"><a href="#method" data-for="method">Method</a></li><li class="depth-1"><a href="#任务定义ovmm" data-for="任务定义ovmm">任务定义：OVMM</a></li><li class="depth-1"><a href="#软件架构client-server" data-for="软件架构client-server">软件架构：Client-Server</a></li><li class="depth-1"><a href="#感知模块" data-for="感知模块">感知模块</a></li><li class="depth-1"><a href="#heuristic-baseline" data-for="heuristic-baseline">Heuristic Baseline</a></li><li class="depth-1"><a href="#rl-baseline" data-for="rl-baseline">RL Baseline</a></li><li class="depth-1"><a href="#仿真环境" data-for="仿真环境">仿真环境</a></li><li class="depth-1"><a href="#真机平台" data-for="真机平台">真机平台</a></li><li class="depth-0"><a href="#key-results" data-for="key-results">Key Results</a></li><li class="depth-1"><a href="#仿真gt-segmentation" data-for="仿真gt-segmentation">仿真（GT Segmentation）</a></li><li class="depth-1"><a href="#仿真detic-segmentation性能断崖式下降" data-for="仿真detic-segmentation性能断崖式下降">仿真（DETIC Segmentation）——性能断崖式下降</a></li><li class="depth-1"><a href="#真机" data-for="真机">真机</a></li><li class="depth-0"><a href="#strengths--weaknesses" data-for="strengths--weaknesses">Strengths &amp; Weaknesses</a></li><li class="depth-1"><a href="#strengths" data-for="strengths">Strengths</a></li><li class="depth-1"><a href="#weaknesses" data-for="weaknesses">Weaknesses</a></li><li class="depth-0"><a href="#mind-map" data-for="mind-map">Mind Map</a></li><li class="depth-0"><a href="#notes" data-for="notes">Notes</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+<li>✅ <strong>Real 20% / 15% 成功率</strong>：附带 challenge 复现协议，社区后续 challenge（NeurIPS 2023 / CVPR 2024）可独立验证</li>
+<li>✅ <strong>GT → DETIC 性能崩塌</strong>：Table 3 数据完整，可复现</li>
+<li>✅ <strong>Heuristic place 不如 RL place（sim）</strong>：Table 3 RL place +9.7 partial 相对 heuristic</li>
+<li>⚠️ <strong>“baselines achieve 20% success in real world”</strong>：仅 20 episodes，置信区间可能 ±10%；overclaim 风险有限但应该报告 CI</li>
+<li>⚠️ <strong>“sim2real transfer demonstrated”</strong>：sim 最高 14.8% overall，real 最高 20%——数字接近不代表 transfer 工作良好；可能两者都低到 noise floor</li>
+<li>⚠️ <strong>“heuristic grasp 与 SOTA grasp net comparable”</strong>：未给定量对比表，仅文字描述</li>
+</ul>
+<h3 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>核心洞见</strong>：感知（DETIC 级别的 open-vocab segmentation）才是 mobile manipulation 当前真瓶颈。改 RL 算法 / 调 reward 边际收益远不如换更好的 perception backbone。这与后续 VLA（如 RT-2、π0）把 vision-language-action 端到端训练的方向一致。</li>
+<li><strong>方法论启发</strong>：在 noisy perception 下 model-based + 显式语义地图反而比 RL 鲁棒——因为地图自然提供时序累积平滑。这对 “end-to-end vs modular” 的争论是个 nuanced 数据点。</li>
+<li><strong>基础设施投资 vs 方法新颖性</strong>：本文 method contribution 不大（heuristic + DDPPO），但 infra contribution 让它成为 NeurIPS 2023 + CVPR 2024 challenge 的基准。这是个好的 “build the road, others run on it” 案例。</li>
+<li><strong>Follow-up</strong>：NeurIPS 2023 OVMM Challenge 的总结论文（arxiv 2407.06939）值得读，看社区一年内 SOTA 推进到什么程度，验证哪些 component 的改进真正提升了 overall success。</li>
+</ul>
+<h3 id="rating">Rating<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#rating" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>分数</strong>：2 - Frontier</p>
+<p><strong>理由</strong>：OVMM task formulation 和 HomeRobot stack 被 NeurIPS 2023 / CVPR 2024 Challenge 复用为 de facto 基准，具备较强的社区采纳信号，这是 frontier 档的核心证据。但本身 method 贡献较薄（heuristic + DDPPO，见 Weaknesses #4 缺 end-to-end baseline），且随后续 VLA / end-to-end 路线兴起，它作为 benchmark 的地位稳固但作为方法并未上升为 building block——因此留在 2 而非升到 3。</p></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="ud8fg4" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#ovmm-任务定义" data-for="ovmm-任务定义">OVMM 任务定义</a></li><li class="depth-0"><a href="#与已有-benchmark-的对比" data-for="与已有-benchmark-的对比">与已有 benchmark 的对比</a></li><li class="depth-0"><a href="#数据与硬件" data-for="数据与硬件">数据与硬件</a></li><li class="depth-1"><a href="#仿真数据集" data-for="仿真数据集">仿真数据集</a></li><li class="depth-1"><a href="#真机平台" data-for="真机平台">真机平台</a></li><li class="depth-1"><a href="#真实测试环境" data-for="真实测试环境">真实测试环境</a></li><li class="depth-0"><a href="#ovmmagent-五技能-state-machine" data-for="ovmmagent-五技能-state-machine">OVMMAgent: 五技能 state machine</a></li><li class="depth-1"><a href="#heuristic-pick-策略" data-for="heuristic-pick-策略">Heuristic Pick 策略</a></li><li class="depth-1"><a href="#heuristic-place-策略" data-for="heuristic-place-策略">Heuristic Place 策略</a></li><li class="depth-1"><a href="#导航-planner" data-for="导航-planner">导航 Planner</a></li><li class="depth-0"><a href="#实验结果" data-for="实验结果">实验结果</a></li><li class="depth-1"><a href="#sim-结果" data-for="sim-结果">Sim 结果</a></li><li class="depth-1"><a href="#real-结果" data-for="real-结果">Real 结果</a></li><li class="depth-0"><a href="#appendix-中的工程细节亮点" data-for="appendix-中的工程细节亮点">Appendix 中的工程细节亮点</a></li><li class="depth-0"><a href="#关联工作" data-for="关联工作">关联工作</a></li><li class="depth-1"><a href="#基础设施--平台" data-for="基础设施--平台">基础设施 / 平台</a></li><li class="depth-1"><a href="#子任务方法借鉴" data-for="子任务方法借鉴">子任务方法借鉴</a></li><li class="depth-1"><a href="#同时期-mobile-manipulation" data-for="同时期-mobile-manipulation">同时期 mobile manipulation</a></li><li class="depth-1"><a href="#对比-benchmark" data-for="对比-benchmark">对比 benchmark</a></li><li class="depth-0"><a href="#论文点评" data-for="论文点评">论文点评</a></li><li class="depth-1"><a href="#strengths" data-for="strengths">Strengths</a></li><li class="depth-1"><a href="#weaknesses" data-for="weaknesses">Weaknesses</a></li><li class="depth-1"><a href="#可信评估" data-for="可信评估">可信评估</a></li><li class="depth-1"><a href="#notes" data-for="notes">Notes</a></li><li class="depth-1"><a href="#rating" data-for="rating">Rating</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
 </script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
 </script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>

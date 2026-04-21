@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><title>UniPlan: Vision-Language Task Planning for Mobile Manipulation with Unified PDDL Formulation</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="UniPlan: Vision-Language Task Planning for Mobile Manipulation with Unified PDDL Formulation"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="UniPlan: Vision-Language Task Planning for Mobile Manipulation with Unified PDDL Formulation"/><meta name="twitter:description" content="Summary UniPlan 将 VLM visual grounding 与 symbolic PDDL planning 结合，用于大规模室内环境的 long-horizon mobile manipulation task planning。系统通过 task-oriented map compression 从 visual-topological ..."/><meta property="og:description" content="Summary UniPlan 将 VLM visual grounding 与 symbolic PDDL planning 结合，用于大规模室内环境的 long-horizon mobile manipulation task planning。系统通过 task-oriented map compression 从 visual-topological ..."/><meta property="og:image:alt" content="Summary UniPlan 将 VLM visual grounding 与 symbolic PDDL planning 结合，用于大规模室内环境的 long-horizon mobile manipulation task planning。系统通过 task-oriented map compression 从 visual-topological ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2602-UniPlan"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2602-UniPlan"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary UniPlan 将 VLM visual grounding 与 symbolic PDDL planning 结合，用于大规模室内环境的 long-horizon mobile manipulation task planning。系统通过 task-oriented map compression 从 visual-topological ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+<html lang="en"><head><title>UniPlan: Vision-Language Task Planning for Mobile Manipulation with Unified PDDL Formulation</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="UniPlan: Vision-Language Task Planning for Mobile Manipulation with Unified PDDL Formulation"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="UniPlan: Vision-Language Task Planning for Mobile Manipulation with Unified PDDL Formulation"/><meta name="twitter:description" content="Summary UniPlan: Vision-Language Task Planning for Mobile Manipulation with Unified PDDL Formulation 核心: 把 large-scale 室内 mobile manipulation 的 task planning 统一为一个 PDDL 形式——视觉拓扑地图 ..."/><meta property="og:description" content="Summary UniPlan: Vision-Language Task Planning for Mobile Manipulation with Unified PDDL Formulation 核心: 把 large-scale 室内 mobile manipulation 的 task planning 统一为一个 PDDL 形式——视觉拓扑地图 ..."/><meta property="og:image:alt" content="Summary UniPlan: Vision-Language Task Planning for Mobile Manipulation with Unified PDDL Formulation 核心: 把 large-scale 室内 mobile manipulation 的 task planning 统一为一个 PDDL 形式——视觉拓扑地图 ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2602-UniPlan"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2602-UniPlan"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary UniPlan: Vision-Language Task Planning for Mobile Manipulation with Unified PDDL Formulation 核心: 把 large-scale 室内 mobile manipulation 的 task planning 统一为一个 PDDL 形式——视觉拓扑地图 ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
   position: absolute;
   display: flex;
   float: right;
@@ -116,202 +116,493 @@ pre:hover > .expand-button {
   padding: 0 12px;
   font-size: 14px;
 }
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2602-UniPlan"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="gc1ghh"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/RL" class="sidebar-tag-pill">#RL</a><a href="/mindflow/tags/web-agent" class="sidebar-tag-pill">#web-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/scene-understanding" class="sidebar-tag-pill">#scene-understanding</a><a href="/mindflow/tags/instruction-following" class="sidebar-tag-pill">#instruction-following</a><a href="/mindflow/tags/cross-embodiment" class="sidebar-tag-pill">#cross-embodiment</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2602-UniPlan</a></div></nav><h1 class="article-title">UniPlan: Vision-Language Task Planning for Mobile Manipulation with Unified PDDL Formulation</h1><div class="paper-meta"><span class="paper-venue">arXiv</span><span class="paper-authors"><span class="meta-sep">·</span>Haoming Ye <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, Yunxiao Xiao</span><span>, Cewu Lu</span><span>, Panpan Cai</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2026-02-01T00:00:00.000Z">Feb 01, 2026</time><span>7 min read</span></p><ul class="tags"><li><a href="../tags/task-planning" class="internal tag-link">task-planning</a></li><li><a href="../tags/mobile-manipulation" class="internal tag-link">mobile-manipulation</a></li><li><a href="../tags/VLM" class="internal tag-link">VLM</a></li><li><a href="../tags/semantic-map" class="internal tag-link">semantic-map</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>UniPlan 将 VLM visual grounding 与 symbolic PDDL planning 结合，用于大规模室内环境的 long-horizon mobile manipulation task planning。系统通过 task-oriented map compression 从 visual-topological map 中提取任务相关节点，利用 VLM 进行 object state grounding 并注入 PDDL problem，最后用 off-the-shelf solver（Fast Downward）生成 cost-optimal plan，在 50 个真实任务上达到 ~84% 成功率，大幅超越 LLM-as-Planner、SayPlan、DELTA 等 baseline。</p>
-<h2 id="problem--motivation">Problem &amp; Motivation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#problem--motivation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>现有 long-horizon mobile manipulation 的 task planning 方法存在根本性局限：（1）<strong>Language-only planners</strong> 将视觉观测转为文本描述会造成不可逆的信息损失，尤其是 spatial 和 object state 信息；（2）<strong>VLM-only planners</strong> 没有地图，仅在少量 online image 上操作，无法 scale 到多房间、有门约束的复杂场景；（3）现有 PDDL-based 方法（如 DELTA）依赖 LLM 生成 domain，容易出错且效率低。UniPlan 的核心 insight 是：<strong>VLM 应该只负责 visual semantic grounding（它擅长的），而 planning 应该交给 symbolic solver（它擅长的）</strong>，两者通过 unified PDDL formulation 连接。</p>
-<h2 id="method">Method<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#method" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<h3 id="四阶段-pipeline">四阶段 Pipeline<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#四阶段-pipeline" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p><strong>Stage 1: Task-Oriented Map Compression</strong></p>
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2602-UniPlan"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="mm0h7i"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/embodied-reasoning" class="sidebar-tag-pill">#embodied-reasoning</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/computer-use" class="sidebar-tag-pill">#computer-use</a><a href="/mindflow/tags/agentic-RL" class="sidebar-tag-pill">#agentic-RL</a><a href="/mindflow/tags/gui-agent" class="sidebar-tag-pill">#gui-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/world-model" class="sidebar-tag-pill">#world-model</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2602-UniPlan</a></div></nav><h1 class="article-title">UniPlan: Vision-Language Task Planning for Mobile Manipulation with Unified PDDL Formulation</h1><div class="paper-meta"><span class="paper-venue">arXiv</span><span class="paper-authors"><span class="meta-sep">·</span>Haoming Ye <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, Yunxiao Xiao</span><span>, Cewu Lu</span><span>, Panpan Cai</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2026-02-09T00:00:00.000Z">Feb 09, 2026</time><span>18 min read</span></p><ul class="tags"><li><a href="../tags/task-planning" class="internal tag-link">task-planning</a></li><li><a href="../tags/mobile-manipulation" class="internal tag-link">mobile-manipulation</a></li><li><a href="../tags/embodied-reasoning" class="internal tag-link">embodied-reasoning</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>UniPlan: Vision-Language Task Planning for Mobile Manipulation with Unified PDDL Formulation </p></div>
+                  
+                </div>
+<div class="callout-content">
 <ul>
-<li>输入：自然语言指令 + visual-topological map（43 pose nodes, 18 room nodes, 31 asset nodes）</li>
-<li>VLM 检索任务相关节点，重新计算压缩图上的 connectivity 和 traversal cost</li>
-<li>目的：减少 PDDL problem 规模，避免 symbolic planner 的 combinatorial explosion</li>
+<li><strong>核心</strong>: 把 large-scale 室内 mobile manipulation 的 task planning 统一为一个 PDDL 形式——视觉拓扑地图 + VLM 局部 grounding + 程序化领域扩展，用现成 PDDL solver 求解</li>
+<li><strong>方法</strong>: (1) 在 visual-topological map 上用 LLM 检索任务相关 asset 节点并压缩拓扑图；(2) 通过 AST rewrite 将学到的 tabletop PDDL 域 (UniDomain) 程序化扩展出导航/开门/双臂算子；(3) 用 factored 方式构造 PDDL problem——robot state 程序注入、object state 由 VLM grounding、topology 从压缩图直接编码；(4) Fast Downward 求解</li>
+<li><strong>结果</strong>: 50 个真实场景任务 (4 settings) 平均 SR 83.75%，相对 SayPlan/DELTA/LLM-as-Planner 大幅领先；LLM calls=2、planner time &lt;0.7s；w/o Injection 时 SR 在 with-door 设置下崩到 31%</li>
+<li><strong>Sources</strong>: <a href="https://arxiv.org/abs/2602.08537" class="external">paper<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><strong>Rating</strong>: 2 - Frontier（neuro-symbolic task planning 的代表前沿工作，factored PDDL construction 的设计原则有 transferability，但完全跳过低层执行 + 单一环境评测限制其 foundational 地位）</li>
 </ul>
-<p><strong>Stage 2: Factored PDDL Problem Formation</strong></p>
+</div>
+</blockquote>
+<p><strong>Key Takeaways:</strong></p>
+<ol>
+<li><strong>Factored PDDL Construction is the load-bearing trick</strong>：把 robot / object / environment 三类 fact 分别用合适的 channel 注入（程序、VLM、deterministic 算法），而不是让 VLM 一把生成整个 problem 文件——w/o Injection 在 Single-Arm With Door 下 SR 直接崩到 31%（vs. 84%），证明 VLM 写大规模 graph 结构是不可靠的</li>
+<li><strong>Programmatic Domain Expansion via AST Rewrite</strong>：把 PDDL 当 CFG 解析成 AST，定义一套基于 semantic anchor (<code>hand_free</code>, <code>holding</code>) 的 syntax-preserving rewrite 规则，把 tabletop 域自动扩展出 navigation / door / bimanual 能力——避免重新 collect mobile 演示数据</li>
+<li><strong>Task-Oriented Map Compression</strong>：用 LLM 按 caption 检索相关 asset 节点 + Dijkstra 算最短路压缩成稠密拓扑图，把 PDDL 搜索空间从 hundreds of nodes 压到几个，planner time 从 48s 降到 0.4s</li>
+<li><strong>VLM 只做局部 grounding</strong>：避免 cross-image 推理这一已知 VLM 弱点；同时 caption 用作离线 lightweight 索引，每任务只调 2 次 LLM</li>
+<li><strong>Building on UniDomain</strong>：UniPlan 的强度建立在前作 UniDomain 学到的 large-scale tabletop PDDL 域之上——本文的贡献是”如何把它扩展到 mobile”，而不是”如何获得 manipulation 域”</li>
+</ol>
+<p><strong>Teaser. UniPlan 系统总览：visual-topological map → 任务相关节点检索与拓扑压缩 → factored PDDL problem 构造 → 统一规划。</strong></p>
+<p><img src="https://arxiv.org/html/2602.08537v1/images/overview.png" alt/></p>
+<hr/>
+<h2 id="motivation-与-problem-setup">Motivation 与 Problem Setup<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#motivation-与-problem-setup" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Mobile manipulation 在 large-scale 室内环境的核心矛盾：</p>
 <ul>
-<li>将 planning problem 解耦为三个独立 factor：
+<li><strong>Pure LLM + scene graph 路线</strong> (<a href="../Papers/2309-ConceptGraphs" class="internal alias" data-slug="Papers/2309-ConceptGraphs">ConceptGraphs</a>、SayPlan 等)：把视觉先压成文本 scene graph 再交给 LLM 推理。但作者论证——<strong>哪些视觉属性 task-relevant 是 task-dependent 的</strong>（“取苹果吃” vs. “取苹果摆放” 关心的属性完全不同），任何 fixed scene graph 都会有 information loss。</li>
+<li><strong>Pure VLM 路线</strong>（直接拿当前 + 历史图给 VLM 推理高层动作）：mapless，只能处理少量在线图片，无法形成对大场景的 holistic understanding；且 long-horizon 下 VLM 推理脆弱。</li>
+<li><strong>PDDL + LLM 混合路线</strong> (DELTA, SayPlan 等)：依赖手工域（环境特定）或 LLM 生成域（脆弱）。</li>
+</ul>
+<p>UniPlan 的设计原则：</p>
+<ol>
+<li>维护<strong>保留完整图像信息</strong>的 visual-topological map</li>
+<li>用 VLM 做<strong>局部</strong> visual grounding，长程推理交给符号 PDDL planner</li>
+<li><strong>不做</strong> task/env-specific training，依靠 pretrained VLM + pretrained 符号域</li>
+<li><strong>只对 task-relevant</strong> 视觉上下文做推理（scalability）</li>
+</ol>
+<blockquote>
+<p>❓ 这套设计的正确性高度依赖 “tabletop PDDL 域已经被预训练好”——也就是 UniDomain 的存在。如果换一个域不够 mature 的 manipulation skill set，整个 pipeline 是否仍 work？作者只在 Generality 段说”原则上适用于其它 tabletop 域”，没实验。</p>
+</blockquote>
+<h2 id="方法">方法<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#方法" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="programmatic-domain-expansion-section-iv">Programmatic Domain Expansion (Section IV)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#programmatic-domain-expansion-section-iv" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>把 PDDL 当 CFG，用 Unified Planning framework 解析成 AST 后做确定性 rewrite——保证 (i) syntactically valid by construction、(ii) operator 间一致、(iii) 跨环境复用。</p>
+<p><strong>Semantic Anchors</strong>：统一两个 canonical predicate <code>(hand_free ?r)</code> 和 <code>(holding ?r ?o)</code>（与 UniDomain 一致），作为后续 rewrite 的稳定锚点——不依赖具体源域的命名约定。</p>
+<p><strong>Navigation &amp; Door Expansion</strong>：引入 <code>(rob_at_node ?r ?n)</code>、<code>(obj_at_node ?o ?n)</code>、<code>(connected ?n1 ?n2)</code>、<code>(has_door ?n1 ?n2)</code>，加 <code>move_robot</code> 和 <code>open_door</code> 算子。每个原 operator 自动注入：</p>
 <ul>
-<li><strong>Robot states</strong>：程序化注入（位置、arm configuration），不经过 VLM</li>
-<li><strong>Object entities &amp; states</strong>：VLM 从 anchor image 中 grounding，生成 PDDL predicates</li>
-<li><strong>Environment structure</strong>：从压缩地图编码 topology 和 cost</li>
+<li>precondition 加 <code>(rob_at_node ?r ?n)</code>，对每个非 robot 参数 <code>?o</code> 若不在 <code>(holding ?r ?o)</code> precond 中则加 <code>(obj_at_node ?o ?n)</code></li>
+<li>effect 根据 <code>(holding)</code> 状态变化推断 <code>(obj_at_node)</code> 的增删</li>
 </ul>
-</li>
-<li>关键设计：<strong>禁止 VLM 生成 robot-specific predicates</strong>，避免 hallucination</li>
-</ul>
-<p><strong>Stage 3: Programmatic Domain Expansion</strong></p>
+<p><strong>Bimanual Expansion</strong>：把 anchor 升为 hand-specific：<code>(hand_free ?r ?h)</code>、<code>(holding ?r ?h ?o)</code>，每个 operator 加 hand 参数 <code>?h</code> 并传播到所有 anchor occurrence。</p>
+<p><strong>Cost Modeling</strong>：引入 <code>(travel_cost ?n1 ?n2)</code>，<code>move_robot</code> 累加 travel cost，其它 manipulation operator 加常数 cost；problem 文件设 metric 让 solver 联合优化。</p>
+<p><strong>Figure 2. AST-based operator rewriting on <code>pick_from_bowl</code></strong>：左为原始 AST、中为原始 schema、右为扩展后 schema（蓝=arm-utility，红=topological，橙=cost）。</p>
+<p><img src="https://arxiv.org/html/2602.08537v1/images/ast_a.png" alt/></p>
+<h3 id="visual-topological-map-section-v">Visual-Topological Map (Section V)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#visual-topological-map-section-v" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>节点三类</strong>：</p>
 <ul>
-<li>基于 UniDomain（81 operators, 79 predicates）的 tabletop domain</li>
-<li>通过 AST manipulation 自动扩展为 mobile manipulation domain：
+<li><strong>Pose Nodes</strong>：导航 waypoint</li>
+<li><strong>Room Nodes</strong>：空间过渡（doorway、走廊入口）作为 topological bottleneck</li>
+<li><strong>Asset Nodes</strong>：大型静态家具（桌台、橱柜），<strong>每个 anchor 一组 high-resolution 多视角图像</strong></li>
+</ul>
+<p>地图假设<strong>离线预构建</strong>——拓扑结构借鉴 Hydra 等，anchor image 的选择借鉴 KeySG 等。</p>
+<p><strong>Task-Oriented Map Compression</strong> 是 UniPlan 实现 scalability 的关键：</p>
+<ol>
+<li><em>Offline Indexing</em>：VLM 给每个 Asset node 的图生成简单 caption（只列 visible objects/furniture），作为轻量文本索引</li>
+<li><em>Online Selection</em>：LLM 根据 instruction 在 caption 上检索相关 asset 节点</li>
+<li><em>Topology Compression</em>：在原图上跑 Dijkstra 算选中节点 + robot 当前位置之间的两两最短路；同 zone 内创建 weighted shortcut；<strong>关闭的门视为物理边界</strong>——shortcut 不能穿越关门，必须保留具体的 door traversal edge</li>
+</ol>
+<p>输出：稠密、最小但物理一致的状态空间。</p>
+<h3 id="factored-pddl-problem-formation-section-vi">Factored PDDL Problem Formation (Section VI)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#factored-pddl-problem-formation-section-vi" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>三个 factor 分别注入：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Factor</th><th>来源</th><th>注入方式</th></tr></thead><tbody><tr><td>Robot state（hand 占用、arm 配置、初始位置）</td><td>onboard perception</td><td>程序化写入 <code>(:objects)</code> / <code>(:init)</code></td></tr><tr><td>Object &amp; object state</td><td>VLM grounding（每个 task-relevant node 的图像）</td><td>VLM 生成 entity / init / goal predicate；后处理注入空间 anchor <code>(obj_at_node ...)</code></td></tr><tr><td>Topology &amp; cost</td><td>压缩后的 map</td><td>直接映射为 <code>(connected ...)</code> / <code>(= (cost ...) ...)</code> / <code>(has_door ...)</code></td></tr></tbody></table></div>
+<p><strong>关键设计</strong>：明确<strong>禁止 VLM 生成 robot-specific predicate</strong>（这些由 robot config 模块独占），且<strong>禁止 cross-image VLM 推理</strong>——全局空间关系由 deterministic 算法负责。</p>
+<p>最终用 Fast Downward 跑 <code>seq-opt-lmcut</code> 求 cost-optimal plan，然后把抽象的 <code>move_robot</code> 边展开回低层 waypoint 序列。</p>
+<h2 id="实验">实验<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#实验" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="setup">Setup<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#setup" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li><strong>Semantic Anchors</strong>：标准化 gripper 建模为 <code>(hand_free ?r)</code> 和 <code>(holding ?r ?o)</code></li>
-<li><strong>Navigation Expansion</strong>：添加 <code>(rob_at_node ?r ?n)</code>、<code>(obj_at_node ?o ?n)</code> predicates，所有 manipulation operator 加 location precondition</li>
-<li><strong>Door Expansion</strong>：<code>move_robot</code> 和 <code>open_door</code> operators</li>
-<li><strong>Bimanual Expansion</strong>：gripper predicates lift 到 hand-specific 版本</li>
-<li><strong>Cost Modeling</strong>：<code>(travel_cost ?n1 ?n2)</code> numeric functions 支持 cost-optimal planning</li>
+<li>真实大场景地图：43 pose / 18 room / 18 doors / 31 asset / 100+ objects</li>
+<li>50 个人类提出的真实任务，覆盖 17 种 primitive action（pick/place/open/close/pour/cut/stir/scoop/fold/wipe/turn_on/turn_off/hang_on/open_door/move 等）</li>
+<li>三档复杂度：Simple (1-10, 2-4 actions) / Moderate (11-40, 5-10 actions, 全 17 类 action) / Compositional (41-50, 10-20 actions)</li>
+<li>4 setting：{Single-Arm, Dual-Arm} × {No Door, With Door}</li>
+<li>LLM 统一用 GPT-5.2 (T=0, none reasoning effort)，每 setting 跑 N=4</li>
+<li>Planner: Fast Downward seq-opt-lmcut</li>
+<li>评估方式：python emulator 严格编码 precondition/effect/transition/goal——避免 human/LLM judge 的 inconsistency</li>
 </ul>
-</li>
-</ul>
-<p><strong>Stage 4: Unified PDDL Planning</strong></p>
+<h3 id="主结果-table-i">主结果 (Table I)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#主结果-table-i" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Setting</th><th>Method</th><th>SR (%)</th><th>LLM Calls</th><th>T_think / T_plan (s)</th><th>RPQG (%)</th></tr></thead><tbody><tr><td>S-A No Door</td><td>LLM as Planner</td><td>40.00 ± 4.62</td><td>2.00</td><td>19.07 / —</td><td>2.90</td></tr><tr><td></td><td>SayPlan</td><td>41.00 ± 5.29</td><td>9.13</td><td>64.18 / —</td><td>5.42</td></tr><tr><td></td><td>DELTA</td><td>26.00 ± 5.89</td><td>4.04</td><td>71.50 / 0.31</td><td>7.77</td></tr><tr><td></td><td><strong>UniPlan</strong></td><td><strong>83.50 ± 4.43</strong></td><td>2.00</td><td>21.23 / 0.43</td><td>—</td></tr><tr><td>S-A With Door</td><td>LLM as Planner</td><td>17.50</td><td>2.00</td><td>22.63 / —</td><td>5.49</td></tr><tr><td></td><td>SayPlan</td><td>33.00</td><td>9.75</td><td>71.30 / —</td><td>10.26</td></tr><tr><td></td><td>DELTA</td><td>18.50</td><td>4.09</td><td>75.12 / 0.35</td><td>16.17</td></tr><tr><td></td><td><strong>UniPlan</strong></td><td><strong>84.00 ± 2.83</strong></td><td>2.00</td><td>21.55 / 0.42</td><td>—</td></tr><tr><td>D-A No Door</td><td>LLM as Planner</td><td>40.50</td><td>2.00</td><td>18.38 / —</td><td>2.49</td></tr><tr><td></td><td>SayPlan</td><td>49.50</td><td>8.77</td><td>60.55 / —</td><td>6.12</td></tr><tr><td></td><td>DELTA</td><td>26.50</td><td>4.05</td><td>71.46 / 0.35</td><td>12.19</td></tr><tr><td></td><td><strong>UniPlan</strong></td><td><strong>82.00 ± 2.31</strong></td><td>2.00</td><td>21.73 / 0.66</td><td>—</td></tr><tr><td>D-A With Door</td><td>LLM as Planner</td><td>39.50</td><td>2.00</td><td>22.50 / —</td><td>2.74</td></tr><tr><td></td><td>SayPlan</td><td>42.50</td><td>9.09</td><td>59.64 / —</td><td>4.65</td></tr><tr><td></td><td>DELTA</td><td>21.50</td><td>4.02</td><td>72.60 / 0.33</td><td>7.25</td></tr><tr><td></td><td><strong>UniPlan</strong></td><td><strong>85.50 ± 2.52</strong></td><td>2.00</td><td>21.89 / 0.11</td><td>—</td></tr></tbody></table></div>
+<p>观察：</p>
 <ul>
-<li>Fast Downward solver（seq-opt-lmcut engine）生成 cost-optimal plan</li>
-<li>VLM 使用 GPT-5.2（temperature=0.0）</li>
+<li>UniPlan 在所有 4 个 setting 上 SR ≥ 82%，比 baseline 拉开 ~30-60 pt</li>
+<li>LLM calls 只有 2（baseline 4-10 次），thinking time 也是最低（~21s vs. 60-75s）</li>
+<li>Planner time &lt;0.7s——压缩拓扑图让符号搜索基本免费</li>
+<li>RPQG 全为正，UniPlan 的 plan 比 baseline 短 ~2-16%</li>
 </ul>
-<h3 id="visual-topological-map">Visual-Topological Map<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#visual-topological-map" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p>三种节点类型：</p>
+<blockquote>
+<p>❓ baseline 都被砍到 ~20-50% SR，部分原因是任务覆盖了 17 种 action 且包含 long-horizon——这是 LLM 直接规划的传统弱项。但 SayPlan 在 With-Door / Single-Arm 下只有 33%，DELTA 只有 18.5%，比作者自己复述 SayPlan 原文的数字差得多。这暗示作者的 task pool 比 SayPlan 原 setting 难得多，可信但需要注意 baseline 数字不是直接可比的。</p>
+</blockquote>
+<h3 id="消融-table-ii">消融 (Table II)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#消融-table-ii" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Setting</th><th>Variant</th><th>SR (%)</th><th>T_think</th><th>T_plan</th><th>RPQG vs. Full</th></tr></thead><tbody><tr><td>S-A No Door</td><td>Full</td><td>83.50</td><td>21.23</td><td>0.43</td><td>—</td></tr><tr><td></td><td>w/o Vision</td><td>70.00</td><td>13.55</td><td>0.13</td><td>0.14</td></tr><tr><td></td><td>w/o Expansion</td><td>86.50</td><td>21.53</td><td>0.09</td><td>8.76</td></tr><tr><td></td><td>w/o Injection</td><td>66.00</td><td>38.79</td><td>0.12</td><td>0.88</td></tr><tr><td></td><td>w/o Compression</td><td>82.00</td><td>21.64</td><td>4.92</td><td>0.43</td></tr><tr><td>S-A With Door</td><td>Full</td><td>84.00</td><td>21.55</td><td>0.42</td><td>—</td></tr><tr><td></td><td>w/o Vision</td><td>75.00</td><td>13.41</td><td>0.15</td><td>-0.01</td></tr><tr><td></td><td>w/o Expansion</td><td>84.50</td><td>22.07</td><td>0.09</td><td>13.37</td></tr><tr><td></td><td><strong>w/o Injection</strong></td><td><strong>31.00</strong></td><td>44.05</td><td>0.10</td><td>0.64</td></tr><tr><td></td><td>w/o Compression</td><td>72.00</td><td>22.36</td><td>48.17</td><td>0.34</td></tr><tr><td>D-A With Door</td><td>Full</td><td>85.50</td><td>21.89</td><td>0.11</td><td>—</td></tr><tr><td></td><td>w/o Vision</td><td>73.50</td><td>13.24</td><td>0.11</td><td>-0.30</td></tr><tr><td></td><td>w/o Expansion</td><td>80.50</td><td>26.98</td><td>0.08</td><td>23.60</td></tr><tr><td></td><td><strong>w/o Injection</strong></td><td><strong>31.00</strong></td><td>54.89</td><td>0.09</td><td>-0.20</td></tr><tr><td></td><td>w/o Compression</td><td>76.50</td><td>26.34</td><td>22.45</td><td>-0.13</td></tr></tbody></table></div>
+<p>四类消融的 take-away：</p>
 <ul>
-<li><strong>Pose nodes</strong>：navigation waypoints</li>
-<li><strong>Room nodes</strong>：doorway 处的空间区域转换点</li>
-<li><strong>Asset nodes</strong>：家具，附带 anchored high-resolution images</li>
+<li><strong>w/o Vision</strong>（用 VLM 生成的纯文字 scene graph 替代图）：SR 平均掉 ~10pt——证实预压缩成文字会丢 task-relevant cue</li>
+<li><strong>w/o Expansion</strong>（手动 post-hoc 加导航，符号域只管 manipulation）：SR 几乎不变，<strong>但 plan quality 大幅下降</strong>（With-Door / Dual-Arm 下 RPQG 高达 23.6%）——unified domain 的价值在于联合优化导航与操作（如把开门和导航协同）</li>
+<li><strong>w/o Injection</strong>（让 VLM 一把生成整个 PDDL problem 包括 topology）：<strong>With-Door setting 下灾难性</strong>（SR 从 84-85% 掉到 31%），thinking time 翻倍——VLM 编码大规模 graph 结构能力极差，这是整个 paper 最 load-bearing 的 ablation</li>
+<li><strong>w/o Compression</strong>（喂全图给 planner）：planner time 从 0.42s 爆到 48s（With-Door / Single-Arm），触发 300s timeout——拓扑压缩对 tractability 是必需的</li>
 </ul>
-<p>假设地图由 offline 方法预先构建。</p>
-<h2 id="key-results">Key Results<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-results" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<h3 id="main-results50-tasks-4-settings-真实室内环境">Main Results（50 tasks, 4 settings, 真实室内环境）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#main-results50-tasks-4-settings-真实室内环境" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="table-container"><table><thead><tr><th>Setting</th><th>UniPlan SR</th><th>Best Baseline SR</th><th>LLM Calls</th></tr></thead><tbody><tr><td>Single-Arm No Door</td><td><strong>83.5%</strong></td><td>41.0% (SayPlan)</td><td>2 vs 9.1</td></tr><tr><td>Single-Arm With Door</td><td><strong>84.0%</strong></td><td>33.0% (SayPlan)</td><td>2 vs 9.8</td></tr><tr><td>Dual-Arm No Door</td><td><strong>82.0%</strong></td><td>49.5% (SayPlan)</td><td>2 vs 8.8</td></tr><tr><td>Dual-Arm With Door</td><td><strong>85.5%</strong></td><td>42.5% (SayPlan)</td><td>2 vs 9.1</td></tr></tbody></table></div>
+<blockquote>
+<p>❓ “w/o Expansion” 的 SR 居然在 S-A No Door 比 Full 还高（86.5 vs 83.5），但 RPQG 8.76%——说明拆开做时容易找到 feasible 但 suboptimal 的解。这个 trade-off 值得思考：在简单场景，unified planning 反而引入了 optimal-but-fragile 的失败模式？</p>
+</blockquote>
+<h3 id="failure-analysis">Failure Analysis<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#failure-analysis" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>UniPlan 失败 ~16% 的分布：</p>
+<ol>
+<li><strong>PDDL Grounding Errors (7.49%)</strong>：VLM 识别物体正确但 misinterpret 状态（漏 init predicate），导致 unsolvable</li>
+<li><strong>Perception Errors (3.69%)</strong>：VLM 漏检物体或错认关系</li>
+<li><strong>Retrieval Errors (3.06%)</strong>：检索没召回所有相关节点</li>
+<li><strong>Instruction Misunderstanding (2.03%)</strong>：意图理解错</li>
+</ol>
+<blockquote>
+<p>主要 bottleneck 是 visual state estimation——neuro-symbolic 架构成功隔离了 planning consistency 问题，把失败模式收敛到感知。</p>
+</blockquote>
+<h2 id="关联工作">关联工作<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#关联工作" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="基于">基于<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#基于" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li>平均 SR <strong>83.75%</strong>，比最强 baseline 高出 ~40pp</li>
-<li><strong>仅需 2 次 LLM 调用</strong>（map compression + semantic grounding），baseline 需 4-9 次</li>
-<li>Planning time &lt; 0.7s vs baseline 60-75s（iterative refinement）</li>
-<li>RPQG（plan quality gain）比 baseline 提升 2-16%</li>
+<li><strong>UniDomain</strong> (NeurIPS 2025, Ye et al.)：本文同一团队的前作，预训练了 large-scale tabletop PDDL 域。UniPlan 的 81 operators / 79 predicates 的 base 域来自它，可以视为其 mobile 扩展</li>
+<li><strong>Fast Downward</strong>：用作 PDDL solver（seq-opt-lmcut engine）</li>
+<li><strong>Unified Planning framework</strong> (SoftwareX 2025)：用作 PDDL AST 操作工具</li>
 </ul>
-<h3 id="ablation">Ablation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#ablation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="table-container"><table><thead><tr><th>变体</th><th>SR 变化</th><th>洞察</th></tr></thead><tbody><tr><td>w/o Vision</td><td>83.75% → 72.5%</td><td>视觉信息关键，纯文本描述造成信息瓶颈</td></tr><tr><td>w/o Domain Expansion</td><td>SR 不变但 RPQG 下降 8-23%</td><td>Expansion 对 plan optimality 而非 feasibility 重要</td></tr><tr><td>w/o Robot State Injection</td><td>83.75% → 52.25%</td><td>让 VLM 推理 robot state 导致灾难性失败</td></tr><tr><td>w/o Map Compression</td><td>82% → 73%, T_plan 0.42s → 48.17s</td><td>Compression 对 tractability 至关重要</td></tr></tbody></table></div>
-<h3 id="failure-analysis1625-failure-rate">Failure Analysis（16.25% failure rate）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#failure-analysis1625-failure-rate" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h3 id="对比">对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li>PDDL Grounding Errors: 7.49%</li>
-<li>Perception Errors: 3.69%</li>
-<li>Retrieval Errors: 3.06%</li>
-<li>Instruction Misunderstanding: 2.03%</li>
+<li><strong>SayPlan</strong> (CoRL 2023, Rana et al.)：collapsed scene graph + LLM 迭代规划，UniPlan 的主要 baseline——证明纯 LLM-on-graph 的 implicit reasoning 不如 symbolic planner</li>
+<li><strong>DELTA</strong> (Liu et al. 2024)：5-stage pipeline 用 LLM 生成 PDDL，UniPlan 论证其 LLM-generated domain 脆弱</li>
+<li><strong>LLM as Planner</strong>：朴素 baseline，配上 UniPlan 的检索和压缩图作为 fair-share</li>
 </ul>
-<h2 id="strengths--weaknesses">Strengths &amp; Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths--weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="方法相关">方法相关<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#方法相关" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>3D Scene Graph</strong> (<a href="../Papers/2309-ConceptGraphs" class="internal alias" data-slug="Papers/2309-ConceptGraphs">ConceptGraphs</a>、Hydra、Hydra-multi、KeySG 等)：UniPlan 的 visual-topological map 是另一种环境表示——保留图像而非压成符号 graph</li>
+<li><strong>Embodied-Reasoner</strong> (Zhang et al. 2025)：纯 VLM 直接预测高层动作的 mapless 路线，UniPlan 的对立面</li>
+<li><strong>VeriGraph / LookPlanGraph</strong>：用 SG 验证 LLM-generated plan，但仍以 LLM 为核心 reasoner——UniPlan 把核心 reasoning 完全交给符号 planner</li>
+</ul>
+<hr/>
+<h2 id="论文点评">论文点评<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#论文点评" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
 <h3 id="strengths">Strengths<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ol>
-<li><strong>清晰的职责分离</strong>：VLM 只做 grounding，solver 做 planning，各司其职。这是正确的 system design 思路，避免了让 LLM 端到端生成 plan 的 brittleness</li>
-<li><strong>Programmatic domain expansion via AST</strong> 是优雅的工程方案，避免了 LLM 生成 PDDL domain 的不可靠性，且具有可扩展性</li>
-<li><strong>效率极高</strong>：2 次 LLM 调用 + &lt; 1s solver time，实际部署友好</li>
-<li><strong>Ablation 设计合理</strong>，每个组件的贡献都有清晰量化，failure analysis 也做了细分</li>
+<li><strong>Factored construction 的设计非常 clean</strong>：把”什么放给 LLM/VLM、什么交给 deterministic 算法、什么程序化注入”切得很清楚，且 ablation 数据强力支撑（w/o Injection 崩到 31% 是这一架构最有说服力的论据）。这种 neuro-symbolic 的 division of labor 是有 transferability 的设计原则</li>
+<li><strong>AST-based domain expansion 是真正”once and reusable”的工程</strong>：基于 semantic anchor 的 rewrite 不依赖具体源域命名，原则上能套用到任何 tabletop PDDL 域，比每来一个新场景手写域要 scalable</li>
+<li><strong>Map compression 把 PDDL 求解搬到了实用 latency 区间</strong>：planner_time &lt; 0.7s 让”PDDL solver 慢”这一传统反对意见不再成立，至少在 task-oriented compressed graph 上</li>
+<li><strong>RPQG metric 设计合理</strong>：作者主动论证 SPL 在 SR gap 大时被 SR 主导、平均 step count 有 selection bias——只在双方都成功的任务上比 plan 长度，metric design 是过关的</li>
 </ol>
 <h3 id="weaknesses">Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ol>
-<li><strong>Full observability 假设过强</strong>：假设 offline map 完全准确且环境静态，这在真实家庭场景中不现实。物体会移动、被遮挡、新增或移除</li>
-<li><strong>Bimanual 建模过于简化</strong>：双臂被建模为逻辑独立，无法表达需要双手协作的动作（如抬重物）。这削弱了 “bimanual expansion” 的实际价值</li>
-<li><strong>PDDL domain 依赖 UniDomain</strong>：81 operators + 79 predicates 的 domain 需要人工设计，scalability 到新任务类型（如 tool use、deformable object manipulation）存疑</li>
-<li><strong>评估规模有限</strong>：50 个任务、单一环境，generalization 证据不足。且使用 task-environment emulator 而非真实机器人执行，physical feasibility 未验证</li>
-<li><strong>No re-planning</strong>：open-loop planning，无法处理执行失败。7.49% 的 PDDL grounding error 在有 re-planning 的情况下可能可以修复</li>
+<li><strong>完全跳过低层执行</strong>：所有评估都假设”perfect low-level policy”，整套系统从未跑在真实机器人上。“task planning 解决了” 的 claim 在缺少 closed-loop 演示的情况下偏强。Failure analysis 也只覆盖 planning-side</li>
+<li><strong>单一环境 + 单一 base domain</strong>：43 pose / 18 room / 31 asset 是一个真实地图，但只有一个。Generality 段说原则上可换 base 域，但没有跨域、跨 building 的实验——“general programmatic extension” 的泛化性是 claim 而非 evidence</li>
+<li><strong>Baseline 实现细节模糊</strong>：SayPlan 和 DELTA 都做了 adaptation（比如 DELTA 的 Domain Generation 被替换为 Domain Selection——这相当于给 DELTA 借用了 UniPlan 自己扩展好的域），是否完全 fair 难判断。SayPlan 在 With-Door / Single-Arm 只有 33% 与原文 setting 差距很大</li>
+<li><strong>Bimanual 是 logically independent 的</strong>：双臂在 PDDL 里只是各自占用 hand，没有真正同步操作（如双手抬重物）的建模——作者 limitation 承认了</li>
+<li><strong>静态、完全可观环境假设</strong>：地图离线构建后假设不变，对动态/遮挡/object uncertainty 都不 robust——典型的 PDDL planning 老问题，作者承认但未解决</li>
+<li><strong>GPT-5.2、N=4 的 reproducibility</strong>：依赖闭源模型 + 小样本统计，对独立复现是阻碍</li>
 </ol>
-<h2 id="mind-map">Mind Map<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mind-map" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;mindmap\n  root((UniPlan))\n    Problem\n      Long-horizon mobile manipulation\n      Multi-room indoor environments\n      Door traversal &amp; bimanual\n    Core Insight\n      VLM does grounding\n      Solver does planning\n      PDDL as unified interface\n    Pipeline\n      Task-Oriented Map Compression\n        VLM retrieves relevant nodes\n        Recalculate connectivity\n      Factored PDDL Problem\n        Robot state injection\n        VLM semantic grounding\n        Topological cost injection\n      Programmatic Domain Expansion\n        AST manipulation\n        Navigation operators\n        Bimanual lifting\n      Fast Downward Solver\n        seq-opt-lmcut\n        Cost-optimal plans\n    Map Representation\n      Visual-topological map\n      Pose / Room / Asset nodes\n      Anchored images\n    Results\n      83.75% avg SR\n      2 LLM calls only\n      Sub-second planning\n    Limitations\n      Static environment\n      No re-planning\n      Simplified bimanual\n      Single environment eval&quot;">mindmap
-  root((UniPlan))
-    Problem
-      Long-horizon mobile manipulation
-      Multi-room indoor environments
-      Door traversal &amp; bimanual
-    Core Insight
-      VLM does grounding
-      Solver does planning
-      PDDL as unified interface
-    Pipeline
-      Task-Oriented Map Compression
-        VLM retrieves relevant nodes
-        Recalculate connectivity
-      Factored PDDL Problem
-        Robot state injection
-        VLM semantic grounding
-        Topological cost injection
-      Programmatic Domain Expansion
-        AST manipulation
-        Navigation operators
-        Bimanual lifting
-      Fast Downward Solver
-        seq-opt-lmcut
-        Cost-optimal plans
-    Map Representation
-      Visual-topological map
-      Pose / Room / Asset nodes
-      Anchored images
-    Results
-      83.75% avg SR
-      2 LLM calls only
-      Sub-second planning
-    Limitations
-      Static environment
-      No re-planning
-      Simplified bimanual
-      Single environment eval
-</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
-<h2 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="可信评估">可信评估<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#可信评估" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="artifact-可获取性">Artifact 可获取性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#artifact-可获取性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
 <ul>
-<li>与 SayPlan 的核心区别：SayPlan 用 scene graph + iterative LLM refinement，UniPlan 用 visual-topological map + one-shot PDDL formulation。UniPlan 的 efficiency 优势来自避免了 iterative refinement loop</li>
-<li><strong>Factored problem construction 是最关键的设计决策</strong>：将 robot state、object state、environment structure 解耦，让每个 factor 由最合适的模块处理。w/o Injection ablation 证明让 VLM 处理 robot state 会导致灾难性失败（SR 降至 52%）</li>
-<li>Domain expansion via AST 的思路有启发性——能否类似地将 tabletop manipulation 的 skill library 通过 programmatic transformation 扩展到 mobile setting？</li>
-<li>主要 failure mode 是 PDDL grounding error（7.49%），说明 VLM → PDDL predicate 的转换仍是瓶颈。这与其他 VLM + symbolic planning 工作的观察一致</li>
-<li>使用 GPT-5.2 且 reasoning effort 设为 “none”——暗示 grounding 任务不需要 deep reasoning，simple pattern matching 就够了</li>
-<li><strong>Open question</strong>：这种 fully symbolic planning + VLM grounding 的 paradigm 能否 scale 到 partially observable、dynamic 环境？可能需要与 belief-space planning 或 online re-planning 结合</li>
-</ul></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="uevi3i" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#problem--motivation" data-for="problem--motivation">Problem &amp; Motivation</a></li><li class="depth-0"><a href="#method" data-for="method">Method</a></li><li class="depth-1"><a href="#四阶段-pipeline" data-for="四阶段-pipeline">四阶段 Pipeline</a></li><li class="depth-1"><a href="#visual-topological-map" data-for="visual-topological-map">Visual-Topological Map</a></li><li class="depth-0"><a href="#key-results" data-for="key-results">Key Results</a></li><li class="depth-1"><a href="#main-results50-tasks-4-settings-真实室内环境" data-for="main-results50-tasks-4-settings-真实室内环境">Main Results（50 tasks, 4 settings, 真实室内环境）</a></li><li class="depth-1"><a href="#ablation" data-for="ablation">Ablation</a></li><li class="depth-1"><a href="#failure-analysis1625-failure-rate" data-for="failure-analysis1625-failure-rate">Failure Analysis（16.25% failure rate）</a></li><li class="depth-0"><a href="#strengths--weaknesses" data-for="strengths--weaknesses">Strengths &amp; Weaknesses</a></li><li class="depth-1"><a href="#strengths" data-for="strengths">Strengths</a></li><li class="depth-1"><a href="#weaknesses" data-for="weaknesses">Weaknesses</a></li><li class="depth-0"><a href="#mind-map" data-for="mind-map">Mind Map</a></li><li class="depth-0"><a href="#notes" data-for="notes">Notes</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+<li><strong>代码</strong>: 未说明</li>
+<li><strong>模型权重</strong>: 不适用（系统级方法，依赖闭源 GPT-5.2 + Fast Downward + Unified Planning framework）</li>
+<li><strong>训练细节</strong>: 不适用（无训练）</li>
+<li><strong>数据集</strong>: 50 个人类任务和地图——supplementary materials 提到完整 task list，但未说明是否公开</li>
+</ul>
+<h4 id="claim-可验证性">Claim 可验证性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#claim-可验证性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>✅ “UniPlan 在 4 settings 上平均 SR 83.75%“：emulator 自动评测、N=4 重复，标准差报告完整</li>
+<li>✅ “Factored injection 是 critical”：w/o Injection 在 With-Door 下 SR 从 84% 掉到 31%，证据强</li>
+<li>✅ “Compression 对 planner tractability 必需”：w/o Compression 下 T_plan 从 0.42s 爆到 48s</li>
+<li>⚠️ “AST rewrite 可推广到任何 tabletop PDDL 域”：仅基于 UniDomain 测试，跨域泛化是推测</li>
+<li>⚠️ “比 baseline 显著优”：baseline adaptation 后的复现细节有限，绝对数值难直接对照原 paper</li>
+<li>⚠️ “通过解决 perception 可以进一步提升”：合理猜想但未实验</li>
+<li>❌ 暂无明显 marketing 话术</li>
+</ul>
+<h3 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>“VLM 局部 grounding + 符号 planner 全局 reasoning” 的分工是这篇 paper 最有 transferability 的 idea。值得问的下一步：能否把这套 factored injection 的设计原则套到 <a href="../DomainMaps/CUA" class="internal alias" data-slug="DomainMaps/CUA">computer-use agent</a> / GUI agent 上——把 UI 状态 grounding 给 VLM、长程任务规划交给某种符号 planner，避免 VLM 长链推理的 brittleness？</li>
+<li>Programmatic AST rewrite 让 manipulation 域 → mobile manipulation 域是 syntax-level 操作，对 learned domain 几乎免费——这暴露了一个 underexploited 的方向：<strong>学到的符号域可以被程序化扩展/组合</strong>，而不必每个新场景都重学。这与 <a href="../DomainMaps/VLA" class="internal" data-slug="DomainMaps/VLA">VLA</a> 那条强调”端到端 scaling”的路线形成对比</li>
+<li>全文最弱的 claim：在没真机演示的情况下声称 “tackles long-horizon mobile manipulation”。Symbolic planning 的 sim-to-real gap 与端到端 policy 不同，但仍存在——感知误差、低层控制失败的累积都不在评估里。如果真机上 plan 执行成功率掉到 50%，“83% SR” 就是误导</li>
+<li>一个开放问题：当 base domain 不是 UniDomain 这种”覆盖广、操作干净”的域时，AST rewrite 还能那么干净吗？如果原域里 anchor predicate 命名混乱、或 effect 不是简单的 add/delete，rewrite 规则的 robustness 会怎样？这是 generality claim 的真正考验</li>
+</ul>
+<h3 id="rating">Rating<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#rating" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>分数</strong>：2 - Frontier
+<strong>理由</strong>：这篇是 2026 年 2 月的新 arXiv，neuro-symbolic task planning 方向的代表前沿工作——factored PDDL construction (w/o Injection 崩到 31% 的 ablation) 和 AST-based programmatic domain expansion 是有 transferability 的设计原则，且明确与 SayPlan / DELTA / ConceptGraphs 这条主线对话。不够 Foundation 的原因：(1) 完全跳过低层执行，在真机上未验证，SR 数字的语义比 end-to-end VLA 工作窄；(2) 单一环境 + 单一 base domain (UniDomain)，“general programmatic extension” 的 claim 还缺跨域证据；(3) 论文太新尚无社区采纳信号。不是 Archived 的原因：factored injection 的分工原则和 compressed topological map 对 PDDL latency 的改进是过硬的贡献，不是 incremental 也非 niche。</p></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="ud8fg4" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#motivation-与-problem-setup" data-for="motivation-与-problem-setup">Motivation 与 Problem Setup</a></li><li class="depth-0"><a href="#方法" data-for="方法">方法</a></li><li class="depth-1"><a href="#programmatic-domain-expansion-section-iv" data-for="programmatic-domain-expansion-section-iv">Programmatic Domain Expansion (Section IV)</a></li><li class="depth-1"><a href="#visual-topological-map-section-v" data-for="visual-topological-map-section-v">Visual-Topological Map (Section V)</a></li><li class="depth-1"><a href="#factored-pddl-problem-formation-section-vi" data-for="factored-pddl-problem-formation-section-vi">Factored PDDL Problem Formation (Section VI)</a></li><li class="depth-0"><a href="#实验" data-for="实验">实验</a></li><li class="depth-1"><a href="#setup" data-for="setup">Setup</a></li><li class="depth-1"><a href="#主结果-table-i" data-for="主结果-table-i">主结果 (Table I)</a></li><li class="depth-1"><a href="#消融-table-ii" data-for="消融-table-ii">消融 (Table II)</a></li><li class="depth-1"><a href="#failure-analysis" data-for="failure-analysis">Failure Analysis</a></li><li class="depth-0"><a href="#关联工作" data-for="关联工作">关联工作</a></li><li class="depth-1"><a href="#基于" data-for="基于">基于</a></li><li class="depth-1"><a href="#对比" data-for="对比">对比</a></li><li class="depth-1"><a href="#方法相关" data-for="方法相关">方法相关</a></li><li class="depth-0"><a href="#论文点评" data-for="论文点评">论文点评</a></li><li class="depth-1"><a href="#strengths" data-for="strengths">Strengths</a></li><li class="depth-1"><a href="#weaknesses" data-for="weaknesses">Weaknesses</a></li><li class="depth-1"><a href="#可信评估" data-for="可信评估">可信评估</a></li><li class="depth-1"><a href="#notes" data-for="notes">Notes</a></li><li class="depth-1"><a href="#rating" data-for="rating">Rating</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
 </script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
 </script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>

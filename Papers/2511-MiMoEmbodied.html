@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><title>MiMo-Embodied: X-Embodied Foundation Model Technical Report</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="MiMo-Embodied: X-Embodied Foundation Model Technical Report"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="MiMo-Embodied: X-Embodied Foundation Model Technical Report"/><meta name="twitter:description" content="速查卡片 MiMo-Embodied: X-Embodied Foundation Model 核心: 首个跨 embodiment 的统一 VLM，同时覆盖 Embodied AI 和 Autonomous Driving，通过多阶段训练实现两域正迁移 方法: 基于 MiMo-VL 的四阶段渐进训练（Embodied SFT → AD SFT ..."/><meta property="og:description" content="速查卡片 MiMo-Embodied: X-Embodied Foundation Model 核心: 首个跨 embodiment 的统一 VLM，同时覆盖 Embodied AI 和 Autonomous Driving，通过多阶段训练实现两域正迁移 方法: 基于 MiMo-VL 的四阶段渐进训练（Embodied SFT → AD SFT ..."/><meta property="og:image:alt" content="速查卡片 MiMo-Embodied: X-Embodied Foundation Model 核心: 首个跨 embodiment 的统一 VLM，同时覆盖 Embodied AI 和 Autonomous Driving，通过多阶段训练实现两域正迁移 方法: 基于 MiMo-VL 的四阶段渐进训练（Embodied SFT → AD SFT ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2511-MiMoEmbodied"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2511-MiMoEmbodied"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="速查卡片 MiMo-Embodied: X-Embodied Foundation Model 核心: 首个跨 embodiment 的统一 VLM，同时覆盖 Embodied AI 和 Autonomous Driving，通过多阶段训练实现两域正迁移 方法: 基于 MiMo-VL 的四阶段渐进训练（Embodied SFT → AD SFT ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+<html lang="en"><head><title>MiMo-Embodied: X-Embodied Foundation Model Technical Report</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="MiMo-Embodied: X-Embodied Foundation Model Technical Report"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="MiMo-Embodied: X-Embodied Foundation Model Technical Report"/><meta name="twitter:description" content="Summary MiMo-Embodied: X-Embodied Foundation Model Technical Report 核心: 一个 7B VLM 同时覆盖 Embodied AI（室内机器人）与 Autonomous Driving（户外车）两个传统上各自训练的 domain，号称”first cross-embodied ..."/><meta property="og:description" content="Summary MiMo-Embodied: X-Embodied Foundation Model Technical Report 核心: 一个 7B VLM 同时覆盖 Embodied AI（室内机器人）与 Autonomous Driving（户外车）两个传统上各自训练的 domain，号称”first cross-embodied ..."/><meta property="og:image:alt" content="Summary MiMo-Embodied: X-Embodied Foundation Model Technical Report 核心: 一个 7B VLM 同时覆盖 Embodied AI（室内机器人）与 Autonomous Driving（户外车）两个传统上各自训练的 domain，号称”first cross-embodied ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2511-MiMoEmbodied"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2511-MiMoEmbodied"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary MiMo-Embodied: X-Embodied Foundation Model Technical Report 核心: 一个 7B VLM 同时覆盖 Embodied AI（室内机器人）与 Autonomous Driving（户外车）两个传统上各自训练的 domain，号称”first cross-embodied ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
   position: absolute;
   display: flex;
   float: right;
@@ -116,73 +116,215 @@ pre:hover > .expand-button {
   padding: 0 12px;
   font-size: 14px;
 }
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2511-MiMoEmbodied"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="gc1ghh"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/RL" class="sidebar-tag-pill">#RL</a><a href="/mindflow/tags/web-agent" class="sidebar-tag-pill">#web-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/scene-understanding" class="sidebar-tag-pill">#scene-understanding</a><a href="/mindflow/tags/instruction-following" class="sidebar-tag-pill">#instruction-following</a><a href="/mindflow/tags/cross-embodiment" class="sidebar-tag-pill">#cross-embodiment</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2511-MiMoEmbodied</a></div></nav><h1 class="article-title">MiMo-Embodied: X-Embodied Foundation Model Technical Report</h1><div class="paper-meta"><span class="paper-venue">arXiv</span><span class="paper-authors"><span class="meta-sep">·</span>Xiaomi Embodied Intelligence Team</span></div><p show-comma="true" class="content-meta"><time datetime="2025-11-01T00:00:00.000Z">Nov 01, 2025</time><span>9 min read</span></p><ul class="tags"><li><a href="../tags/VLM" class="internal tag-link">VLM</a></li><li><a href="../tags/cross-embodiment" class="internal tag-link">cross-embodiment</a></li><li><a href="../tags/spatial-reasoning" class="internal tag-link">spatial-reasoning</a></li></ul></div></div><article class="popover-hint"><h2 id="速查卡片">速查卡片<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#速查卡片" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2511-MiMoEmbodied"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="mm0h7i"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/embodied-reasoning" class="sidebar-tag-pill">#embodied-reasoning</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/computer-use" class="sidebar-tag-pill">#computer-use</a><a href="/mindflow/tags/agentic-RL" class="sidebar-tag-pill">#agentic-RL</a><a href="/mindflow/tags/gui-agent" class="sidebar-tag-pill">#gui-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/world-model" class="sidebar-tag-pill">#world-model</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2511-MiMoEmbodied</a></div></nav><h1 class="article-title">MiMo-Embodied: X-Embodied Foundation Model Technical Report</h1><div class="paper-meta"><span class="paper-venue">arXiv 2511.16518</span><span class="paper-authors"><span class="meta-sep">·</span>Xiaomi Embodied Intelligence Team</span></div><p show-comma="true" class="content-meta"><time datetime="2025-11-20T00:00:00.000Z">Nov 20, 2025</time><span>13 min read</span></p><ul class="tags"><li><a href="../tags/VLM" class="internal tag-link">VLM</a></li><li><a href="../tags/embodied-reasoning" class="internal tag-link">embodied-reasoning</a></li><li><a href="../tags/cross-embodiment" class="internal tag-link">cross-embodiment</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
 <blockquote class="callout abstract" data-callout="abstract">
 <div class="callout-title">
                   <div class="callout-icon"></div>
-                  <div class="callout-title-inner"><p>MiMo-Embodied: X-Embodied Foundation Model </p></div>
+                  <div class="callout-title-inner"><p>MiMo-Embodied: X-Embodied Foundation Model Technical Report </p></div>
                   
                 </div>
 <div class="callout-content">
 <ul>
-<li><strong>核心</strong>: 首个跨 embodiment 的统一 VLM，同时覆盖 Embodied AI 和 Autonomous Driving，通过多阶段训练实现两域正迁移</li>
-<li><strong>方法</strong>: 基于 MiMo-VL 的四阶段渐进训练（Embodied SFT → AD SFT → CoT SFT → GRPO RL），配合跨域数据构建</li>
-<li><strong>结果</strong>: 17 个 Embodied AI benchmark 和 12 个 AD benchmark 上超越 open/closed-source 通用和专用 VLM</li>
+<li><strong>核心</strong>: 一个 7B VLM 同时覆盖 Embodied AI（室内机器人）与 Autonomous Driving（户外车）两个传统上各自训练的 domain，号称”first cross-embodied foundation model”，靠四阶段训练（SFT → SFT → CoT-SFT → GRPO RL）和把两个 domain 的数据 mix 进同一个模型来获得”positive transfer”</li>
+<li><strong>方法</strong>: 基于 MiMo-VL 7B 初始化（ViT + MLP projector + LLM）；Stage1 在 general + embodied SFT，Stage2 加入 autonomous driving SFT，Stage3 在子集上做 CoT SFT，Stage4 用 GRPO RL（reward = exact match / IoU / 格式校验）</li>
+<li><strong>结果</strong>: 17 个 embodied 基准（affordance / planning / spatial）+ 12 个 driving 基准（perception / prediction / planning）上声称 SOTA，超过通用 VLM（GPT-4o / Gemini / Qwen2.5-VL / InternVL3）和专用模型（<a href="../Papers/2502-RoboBrain" class="internal alias" data-slug="Papers/2502-RoboBrain">RoboBrain</a>、VeBrain、RoboTron-Drive、DriveLMM-o1）</li>
 <li><strong>Sources</strong>: <a href="https://arxiv.org/abs/2511.16518" class="external">paper<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://github.com/XiaomiMiMo/MiMo-Embodied" class="external">github<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><strong>Rating</strong>: 1 - Archived（方法无原创、核心 positive-transfer claim 缺关键消融、命名即 cross-domain mix 而非真 cross-embodiment，工程 report 性质大于方向性贡献）</li>
 </ul>
 </div>
 </blockquote>
-<hr/>
-<h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>首个开源跨 embodiment VLM，统一 Embodied AI（affordance prediction、task planning、spatial understanding）和 Autonomous Driving（perception、prediction、planning）能力。</p>
 <p><strong>Key Takeaways:</strong></p>
 <ol>
-<li><strong>Cross-embodiment positive transfer</strong>: 通过多阶段训练，Embodied AI 和 AD 两个领域产生显著正迁移，联合训练不仅不互损，反而互相增强</li>
-<li><strong>Progressive multi-stage training</strong>: 四阶段渐进策略（Embodied SFT → AD SFT → CoT SFT → GRPO RL）有效缓解跨域任务干扰，对比直接混合训练在两域均有显著提升</li>
-<li><strong>Comprehensive benchmark coverage</strong>: 在 29 个 benchmark 上全面评估，17 个 Embodied AI + 12 个 AD，建立了跨 embodiment 能力评估标准</li>
+<li><strong>“Cross-embodiment” 的具体含义</strong>：不是 cross robot embodiment（不同 form factor），而是把 indoor robot 和 outdoor self-driving car 视作”两类 embodiment”放进同一模型——更像是 multi-domain SFT 的命名包装</li>
+<li><strong>正向迁移是 claim 而非实证</strong>：Abstract 说两 domain “mutually reinforce one another”，但正文未给出 driving-only / embodied-only / mixed 的对照消融来证明这一点</li>
+<li><strong>训练流程标准化</strong>：4 stages = General+Embodied SFT → +Driving SFT → CoT SFT → GRPO RL，每阶段都 train all parameters，bs=512，lr=2e-6（前三阶段）/1e-6（RL）</li>
+<li><strong>依赖 MiMo-VL 整套底座</strong>：ViT、projector、LLM 全部从 MiMo-VL 7B 初始化，本工作核心贡献是数据 curation + 训练 recipe，不是架构创新</li>
+<li><strong>评测覆盖广</strong>：17 + 12 = 29 个公开 benchmark 上对比；evaluation suite 基于 lmms-eval 开源（mivllm wrapper）</li>
 </ol>
-<p><strong>Teaser. MiMo-Embodied 能力概览</strong>
-<img src="https://arxiv.org/html/2511.16518v1/x2.png" alt/></p>
+<p><strong>Teaser. Performance overview across 29 benchmarks.</strong></p>
+<p><img src="https://arxiv.org/html/2511.16518v1/x1.png" alt/></p>
+<p>雷达图：MiMo-Embodied 在两套 benchmark 上的 envelope 都超过 closed-source（GPT-4o、Gemini）、open-source general（Qwen2.5-VL、InternVL3）以及 specialized embodied/driving VLMs。</p>
 <hr/>
-<h2 id="architecture">Architecture<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#architecture" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>MiMo-Embodied 架构基于 MiMo-VL，包含三个核心组件：</p>
+<h2 id="1-motivation">1. Motivation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-motivation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>现有的 embodied VLM 各自专精于一个 narrow 场景：</p>
+<ul>
+<li><strong>Indoor robotics</strong>：<a href="../Papers/2502-RoboBrain" class="internal alias" data-slug="Papers/2502-RoboBrain">RoboBrain</a> / VeBrain 等，强调 task planning + spatial understanding</li>
+<li><strong>Autonomous driving</strong>：RoboTron-Drive / DriveLMM-o1 等，强调 environmental perception + status prediction + driving planning</li>
+</ul>
+<p>作者认为这种 fragmentation 导致：</p>
 <ol>
-<li><strong>Vision Transformer (ViT)</strong>：继承 MiMo-VL 的视觉编码器，支持高分辨率输入，处理单图、多图和视频</li>
-<li><strong>MLP Projector</strong>：将视觉 token 映射到 LLM 输入空间</li>
-<li><strong>LLM backbone</strong>：负责文本理解与推理</li>
+<li><strong>Lack of unified embodied VLMs</strong>：indoor 与 outdoor 之间空间推理能力不能跨域泛化</li>
+<li><strong>Lack of comprehensive cross-embodiment evaluation</strong>：没有把两个 domain 的能力放一起评</li>
 </ol>
-<p>所有组件均从 MiMo-VL（7B-SFT-2508 checkpoint）预训练权重初始化。与 InternVL3 将图像离散为 patch 不同，MiMo-Embodied 使用 3D 卷积显著减少 LLM token 数（796 vs 4096），同时保留空间上下文。</p>
-<p><strong>Figure 3. 模型架构</strong>
-<img src="https://arxiv.org/html/2511.16518v1/x3.png" alt/></p>
+<blockquote>
+<p>❓ Motivation 的”cross-embodiment”用词容易和真正意义上的 cross robot embodiment（同一 policy 跨不同 robot form factor，如 <a href="../Papers/2503-GR00TN1" class="internal alias" data-slug="Papers/2503-GR00TN1">GR00T N1</a>、<a href="../Papers/2406-OpenVLA" class="internal alias" data-slug="Papers/2406-OpenVLA">OpenVLA</a> 类语义）混淆。这里其实是 cross-domain（indoor↔outdoor），是 dataset mix 的问题，不是 morphology generalization 的问题。</p>
+</blockquote>
 <hr/>
-<h2 id="training-dataset">Training Dataset<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#training-dataset" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>数据集分三大类：General、Embodied AI、Autonomous Driving。</p>
-<p><strong>Figure 4. 训练数据概览</strong>
-<img src="https://arxiv.org/html/2511.16518v1/x4.png" alt/></p>
-<h3 id="general-dataset">General Dataset<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#general-dataset" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p>继承 MiMo-VL 训练语料，覆盖 Visual Grounding、Document/Chart Comprehension、Video Understanding、Multimodal Reasoning 四大类。</p>
-<h3 id="embodied-ai-dataset">Embodied AI Dataset<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#embodied-ai-dataset" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p>按目标能力分为三类：</p>
+<h2 id="2-architecture">2. Architecture<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-architecture" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><img src="https://arxiv.org/html/2511.16518v1/x3.png" alt/></p>
+<p><strong>Figure 3.</strong> 三件套：(1) ViT 编码视觉输入（支持 single image / multi image / video）；(2) MLP projector 把视觉 token 映射到 LLM 的 latent space；(3) LLM 做文本理解与推理。ViT、projector、LLM 全部从 MiMo-VL 7B 的对应权重初始化。</p>
+<blockquote>
+<p>架构本身没有任何创新——本工作的所有差异化都在数据与训练 recipe 上。</p>
+</blockquote>
+<hr/>
+<h2 id="3-training-dataset">3. Training Dataset<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-training-dataset" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><img src="https://arxiv.org/html/2511.16518v1/x4.png" alt/></p>
+<p><strong>Figure 4.</strong> 三大类训练数据：General Dataset（基础多模态能力）、Embodied AI Dataset（affordance / planning / spatial）、Autonomous Driving Dataset（perception / prediction / planning）。</p>
+<h3 id="31-general-dataset">3.1 General Dataset<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#31-general-dataset" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>继承 MiMo-VL 训练语料，含 visual grounding、document/chart 理解、video understanding、multimodal reasoning 四类。</p>
+<h3 id="32-embodied-ai-dataset">3.2 Embodied AI Dataset<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#32-embodied-ai-dataset" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>能力</th><th>数据源</th></tr></thead><tbody><tr><td>Affordance Prediction</td><td>PixMo-Points, RoboAfford, RoboRefIt</td></tr><tr><td>High-level Task Planning</td><td><a href="../Papers/2503-CosmosReason1" class="internal alias" data-slug="Papers/2503-CosmosReason1">Cosmos-Reason1</a>, EgoPlan-IT, RoboVQA</td></tr><tr><td>Spatial Understanding</td><td>SQA3D + 自构建 3D 数据, VLM-3R, RefSpatial, EmbSpatial-SFT</td></tr></tbody></table></div>
+<p>值得注意的两点：</p>
 <ul>
-<li><strong>Affordance Prediction</strong>: PixMo-Points（fine-grained localization）、RoboAfford（object + scene affordance）、RoboRefIt（cluttered scene referential grounding）</li>
-<li><strong>High-level Task Planning</strong>: <a href="../Papers/2503-CosmosReason1" class="internal alias" data-slug="Papers/2503-CosmosReason1">Cosmos-Reason1</a>（cross-embodiment 物理推理，含 DeepSeek-R1 生成的长链推理）、EgoPlan-IT（egocentric planning）、RoboVQA（long-horizon QA）</li>
-<li><strong>Spatial Understanding</strong>: SQA3D + 自建 3D QA、VLM-3R（时空推理 + 导航）、RefSpatial（referring spatial tasks）、EmbSpatial（egocentric spatial）</li>
+<li><strong>3D grounding 自构建</strong>：基于现有数据集生成大规模 3D bbox grounding 样本，每个样本是 “RGB image + spatial query → camera coordinate 下的 3D box”，用于 monocular 3D 理解</li>
+<li><strong>CoT 推理链来自 DeepSeek-R1</strong>：Cosmos-Reason1 的 reasoning 标注是 R1 生成的 long-chain trace，本质上是 R1 知识在 embodied domain 的蒸馏</li>
 </ul>
-<h3 id="autonomous-driving-dataset">Autonomous Driving Dataset<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#autonomous-driving-dataset" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p>按功能模块分为三类：</p>
+<h3 id="33-autonomous-driving-dataset">3.3 Autonomous Driving Dataset<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#33-autonomous-driving-dataset" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>能力</th><th>数据源（节选）</th></tr></thead><tbody><tr><td>Environmental Perception (general scene)</td><td>CODA-LM, DriveLM, nuScenes-QA, MAPLM, MME-RealWorld, IDKB</td></tr><tr><td>Environmental Perception (regional object)</td><td>CODA-LM, DriveLM, DriveAction, MME-RealWorld, nuScenes-QA, IDKB</td></tr><tr><td>Status Prediction (intent)</td><td>DriveLM, MME-RealWorld</td></tr><tr><td>Driving Planning (action decision)</td><td>DriveLM, MME-RealWorld, IDKB</td></tr><tr><td>Driving Planning (driving reasoning)</td><td>CODA-LM, NuInstruct, LingoQA, BDD-X, DriveLM, IDKB</td></tr></tbody></table></div>
+<blockquote>
+<p>❓ 数据章节几乎全部是 “X 数据集做 Y 任务” 的清单式陈述。<strong>没有给出任何数据量、配比、或采样策略的数字</strong>——这对于一份强调 “data construction” 的 technical report 是个重要 omission。</p>
+</blockquote>
+<hr/>
+<h2 id="4-training-strategy">4. Training Strategy<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-training-strategy" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>四阶段渐进式训练，每阶段在前一阶段权重上继续：</p>
+<p><strong>Table 1. Training configuration.</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Stage</th><th>1</th><th>2</th><th>3</th><th>4</th></tr></thead><tbody><tr><td>Dataset</td><td>General + Embodied AI</td><td>+ Autonomous Driving</td><td>+ CoT Data</td><td>RL Data</td></tr><tr><td>Batch Size</td><td>512</td><td>512</td><td>512</td><td>32</td></tr><tr><td>Learning Rate</td><td>2e-6</td><td>2e-6</td><td>2e-6</td><td>1e-6</td></tr><tr><td>Optimizer</td><td>AdamW</td><td>AdamW</td><td>AdamW</td><td>AdamW</td></tr><tr><td>Weight Decay</td><td>0.05</td><td>0.05</td><td>0.05</td><td>0.0</td></tr><tr><td>LR Schedule</td><td>Cosine</td><td>Cosine</td><td>Cosine</td><td>Cosine</td></tr><tr><td>Max Sequence Length</td><td>32768</td><td>32768</td><td>32768</td><td>32768</td></tr><tr><td>Trainable</td><td>All</td><td>All</td><td>All</td><td>All</td></tr></tbody></table></div>
 <ul>
-<li><strong>Environmental Perception</strong>: General Scene Understanding（CODA-LM、DriveLM、OmniDrive 等）、Regional Object Understanding（DriveAction 等）、Regional Object Localization（DRAMA）</li>
-<li><strong>Status Prediction</strong>: Intent Prediction（DriveLM、MME-RealWorld）</li>
-<li><strong>Driving Planning</strong>: Action Decision（DriveLM、IDKB）、Driving Reasoning（CODA-LM、LingoQA、NuInstruct、BDD-X）</li>
+<li><strong>Stage 1 (Embodied SFT)</strong>：建立 affordance / planning / spatial 基本能力</li>
+<li><strong>Stage 2 (Driving SFT)</strong>：加入驾驶数据，重点是 multi-view 空间推理、temporal consistency、safety-critical 感知</li>
+<li><strong>Stage 3 (CoT SFT)</strong>：在前面数据子集上加 explicit reasoning chain，把”先分析再决策”的格式教给模型</li>
+<li><strong>Stage 4 (RL with GRPO)</strong>：用 DeepSeek-R1-style GRPO，reward 设计：
+<ul>
+<li>Multi-choice：exact answer matching</li>
+<li>Spatial grounding / pointing：IoU（box）或 point-in-mask</li>
+<li>所有任务：format compliance（template check）</li>
 </ul>
+</li>
+</ul>
+<blockquote>
+<p>❓ Stage 顺序是 Embodied 先、Driving 后；Table 1 dataset 列写”Previous + …”提示是 mix 而非纯增量，但配比未公开。如果纯顺序 SFT 没有 replay，会有 catastrophic forgetting 的风险。</p>
+</blockquote>
 <hr/>
-<h2 id="training-strategy">Training Strategy<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#training-strategy" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>四阶段渐进训练，逐步引入专用领域数据：</p>
-<p><strong>Stage 1: Embodied AI SFT</strong> — 在 MiMo-VL 通用数据 + Embodied AI 数据上微调，建立 affordance 理解、task planning 和 spatial reasoning 基础能力</p>
-<p><strong>Stage 2: Autonomous Driving SFT</strong> — 在 Stage 1 基础上加入 AD 数据，专注多视图空间推理、时序一致性和安全关键感知</p>
-<p><strong>Stage 3: Chain-of-Thought SFT</strong> — 从训练数据中采样子集生成 CoT 推理链，增强多步推理的透明性和逻辑连贯性</p>
-<p><strong>Stage 4: RL Fine-tuning</strong> — 使用 GRPO 算法针对 corner case 优化。多任务混合训练中设计不同 reward signal：选择题用 exact match、空间 grounding 用 IoU/point-in-mask、格式合规用 template check</p>
-<p><strong>Table 1. 各阶段训练配置</strong></p>
+<h2 id="5-evaluation">5. Evaluation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#5-evaluation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="51-embodied-ai-benchmarks-17">5.1 Embodied AI Benchmarks (17)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#51-embodied-ai-benchmarks-17" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 
 
 
@@ -204,177 +346,96 @@ pre:hover > .expand-button {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="table-container"><table><thead><tr><th>Stages</th><th>Stage 1</th><th>Stage 2</th><th>Stage 3</th><th>Stage 4</th></tr></thead><tbody><tr><td>Dataset</td><td>General + Embodied AI</td><td>Previous + AD</td><td>Previous + CoT</td><td>RL Data</td></tr><tr><td>Batch Size</td><td>512</td><td>512</td><td>512</td><td>32</td></tr><tr><td>Learning Rate</td><td>2e-6</td><td>2e-6</td><td>2e-6</td><td>1e-6</td></tr><tr><td>Weight Decay</td><td>0.05</td><td>0.05</td><td>0.05</td><td>0.0</td></tr><tr><td>Max Seq Len</td><td>32768</td><td>32768</td><td>32768</td><td>32768</td></tr></tbody></table></div>
-<hr/>
-<h2 id="evaluation">Evaluation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#evaluation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<h3 id="embodied-ai-benchmarks">Embodied AI Benchmarks<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#embodied-ai-benchmarks" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p>在三大能力维度（Affordance、Planning、Spatial）的 17 个 benchmark 上评估。</p>
-<p><strong>Affordance Prediction</strong>：MiMo-Embodied 在全部 5 个 benchmark 上取得 SOTA，尤其在 VABench-Point、Part-Afford 和 RoboAfford-Eval 上大幅领先其他 embodied VLM。</p>
-<p><strong>Task Planning</strong>：在 RoboVQA 上超越所有模型，EgoPlan2 上高度竞争，展示了因果推理和长 horizon 规划能力。</p>
-<p><strong>Spatial Understanding</strong>：在 CV-Bench 上 SOTA（88.82），在 RoboSpatial、RefSpatial-Bench、CRPE-relation 上领先，EmbSpatial、SAT、MetaVQA 上高度竞争。</p>
-<h3 id="autonomous-driving-benchmarks">Autonomous Driving Benchmarks<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#autonomous-driving-benchmarks" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p>在 12 个 benchmark 上评估 Perception、Prediction、Planning 三大能力。</p>
-<p>MiMo-Embodied 在 NAVSIM 上的 trajectory planning 结果突出（PDMS 91.0，RL 后），使用仅 796 个 LLM token（vs InternVL3 的 4096、ReCogDrive 的 2304）。在 proprietary 数据集上相比 Qwen2.5-VL baseline 平均提升 7.7%，复杂场景（U-turn、lane change）提升更显著（+8-10%）。</p>
-<h3 id="ablation-study">Ablation Study<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#ablation-study" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p><strong>Table 7. Ablation 结果</strong></p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="table-container"><table><thead><tr><th>Model</th><th>Embodied</th><th>AD</th><th>Multi-Stage</th><th>Affordance</th><th>Spatial</th><th>Plan</th><th>Embodied Avg.</th><th>AD</th></tr></thead><tbody><tr><td>MiMo-VL (Baseline)</td><td>X</td><td>X</td><td>X</td><td>38.7</td><td>55.3</td><td>46.2</td><td>46.76</td><td>32.2</td></tr><tr><td>MiMo-VL w/ Embodied</td><td>✓</td><td>X</td><td>X</td><td>58.9</td><td>61.0</td><td>51.0</td><td>56.9</td><td>57.6</td></tr><tr><td>MiMo-VL w/ AD</td><td>X</td><td>✓</td><td>X</td><td>26.3</td><td>56.3</td><td>47.0</td><td>43.2</td><td>57.5</td></tr><tr><td>MiMo-VL w/ Embodied+AD</td><td>✓</td><td>✓</td><td>X</td><td>59.6</td><td>62.0</td><td>53.8</td><td>58.4</td><td>55.2</td></tr><tr><td>MiMo-Embodied (Ours)</td><td>✓</td><td>✓</td><td>✓</td><td>65.6</td><td>66.0</td><td>55.6</td><td>62.4</td><td>63.3</td></tr></tbody></table></div>
-<p><strong>Insights</strong>:</p>
+<div class="table-container"><table><thead><tr><th>类别</th><th>Benchmarks</th></tr></thead><tbody><tr><td>Affordance</td><td>RoboRefIt, Where2Place, VABench-Point, Part-Afford, RoboAfford-Eval</td></tr><tr><td>Planning</td><td>EgoPlan2, RoboVQA, Cosmos</td></tr><tr><td>Spatial Understanding</td><td>CV-Bench, ERQA, EmbSpatial, SAT, RoboSpatial, RefSpatial, CRPE, MetaVQA, VSI-Bench</td></tr></tbody></table></div>
+<p>声称在 affordance prediction 上对 VABench-Point / Part-Afford / RoboAfford-Eval 三项以”large margin”领先其他 embodied VLM。</p>
+<h3 id="52-autonomous-driving-benchmarks-12">5.2 Autonomous Driving Benchmarks (12)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#52-autonomous-driving-benchmarks-12" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Single-view: CODA-LM, DRAMA, MME-RealWorld, IDKB, OmniDrive, NuInstruct
+Multi-view: DriveLM, MAPLM, nuScenes-QA, LingoQA, BDD-X, DriveAction</p>
+<p>部分 reported 数字（vs. specialist / Gemini 等）：</p>
 <ul>
-<li>单独训练 AD 数据（w/ AD）在 embodied 任务上甚至低于 baseline，但 AD 成绩好——说明单域训练不足以跨域泛化</li>
-<li>直接混合训练（w/ Embodied+AD）改善了 embodied 但 AD 略降（55.2 vs 57.5）——跨域 task interference</li>
-<li>多阶段训练（Ours）在两域同时取得最优（Embodied 62.4 +4.0 vs 混合、AD 63.3 +8.1 vs 混合）——渐进策略有效缓解干扰</li>
-<li>有趣发现：Embodied 训练意外提升 AD（57.6 vs baseline 32.2），暗示 embodied 的空间推理对 driving 理解有正迁移</li>
+<li>CODA-LM: 58.55（vs. RoboTron-Drive 58.10）</li>
+<li>DRAMA: 76.14（vs. specialist 68.40）</li>
+<li>MME-RealWorld: 60.25（vs. Gemini 67.00）</li>
+<li>IDKB: 43.42（vs. specialist 23.21）</li>
+<li>DriveLM: 57.85（vs. RoboTron-Drive 61.30，落后）</li>
+<li>MAPLM: 74.52（vs. RoboTron-Drive 74.34，持平）</li>
+<li>nuScenes-QA: 56.71（vs. specialist 53.40）</li>
+<li>NuInstruct: 83.58（vs. RoboTron-Drive 83.00）</li>
+</ul>
+<blockquote>
+<p>❓ DriveLM 和 MME-RealWorld 上落后于 specialist/Gemini，但这些是 driving 领域的”招牌” benchmark。“SOTA on 12 benchmarks” 的说法值得保留——是 average win 而非 universal win。</p>
+</blockquote>
+<h3 id="53-qualitative-evaluation">5.3 Qualitative Evaluation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#53-qualitative-evaluation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Embodied navigation</strong>：在 global / egocentric 视图上预测 keypoints</li>
+<li><strong>Embodied manipulation</strong>：估计 functionally-grounded 的 interaction point（即 affordance point）</li>
+</ul>
+<h3 id="54-ablation">5.4 Ablation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#54-ablation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>论文 Section 5.3 标题为 Ablation Study，但 defuddle 与 webfetch 都未能取到该段正文。从 outline 看应该有，但具体消融了什么（4 stages 各自贡献？driving / embodied 数据剥离？）无法核实。</p>
+</blockquote>
+<hr/>
+<h2 id="关联工作">关联工作<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#关联工作" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="基于">基于<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#基于" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>MiMo-VL (arXiv 2506.03569): 完全继承 ViT + projector + LLM 三件套权重；本工作可视为 MiMo-VL 在 embodied + driving domain 的 SFT/RL 续训</li>
+<li><a href="../Papers/2503-CosmosReason1" class="internal alias" data-slug="Papers/2503-CosmosReason1">Cosmos-Reason1</a>: 提供 task planning 训练数据（含 R1 生成的 reasoning trace）</li>
+<li>DeepSeek-R1: GRPO 算法源头；CoT 数据生成的 teacher</li>
+</ul>
+<h3 id="对比">对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><a href="../Papers/2502-RoboBrain" class="internal alias" data-slug="Papers/2502-RoboBrain">RoboBrain</a> / <a href="../Papers/2507-RoboBrain2" class="internal alias" data-slug="Papers/2507-RoboBrain2">RoboBrain 2.0</a> / <a href="../Papers/2601-RoboBrain25" class="internal alias" data-slug="Papers/2601-RoboBrain25">RoboBrain 2.5</a>: 室内 embodied 专用 VLM 的代表线</li>
+<li>VeBrain (arXiv 2506.00123): 另一条 embodied VLM 路线</li>
+<li>RoboTron-Drive / DriveLMM-o1: 自动驾驶 VLM 的代表线</li>
+<li><a href="../Papers/2503-GeminiRobotics" class="internal alias" data-slug="Papers/2503-GeminiRobotics">Gemini Robotics</a> / <a href="../Papers/2510-GeminiRobotics15" class="internal alias" data-slug="Papers/2510-GeminiRobotics15">Gemini Robotics 1.5</a>: Closed-source 跨形态 robotics VLM 对照</li>
+</ul>
+<h3 id="方法相关">方法相关<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#方法相关" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>GRPO + rule-based reward (IoU / exact match / format check): 与 <a href="../Papers/2506-VLNR1" class="internal alias" data-slug="Papers/2506-VLNR1">VLN-R1</a>、<a href="../Papers/2604-OpenSpatial" class="internal alias" data-slug="Papers/2604-OpenSpatial">OpenSpatial</a> 等 spatial RL 工作的 reward design 思路一致</li>
+<li>多阶段 SFT → CoT → RL pipeline: 与 <a href="../Papers/2506-VLNR1" class="internal alias" data-slug="Papers/2506-VLNR1">VLN-R1</a>、近期 reasoning VLM 的 standard recipe 同构</li>
 </ul>
 <hr/>
 <h2 id="论文点评">论文点评<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#论文点评" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
 <h3 id="strengths">Strengths<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ol>
-<li><strong>清晰验证跨域正迁移假说</strong>：Ablation 设计合理，多阶段 vs 单阶段 vs 单域对比完整，正迁移的证据充分</li>
-<li><strong>全面的 benchmark 覆盖</strong>：29 个 benchmark 提供了可信的能力全景，是 embodied VLM 领域最全面的评估之一</li>
-<li><strong>实用的工程启示</strong>：token 效率（796 vs 4096）、多阶段训练策略、多任务 reward 设计等具有工程参考价值</li>
-<li><strong>Qualitative demo 有说服力</strong>：导航和操作的实际部署展示了从 benchmark 到实际应用的闭环</li>
+<li><strong>完整的 evaluation suite 开源</strong>：基于 lmms-eval 的 mivllm wrapper 与 29 个 benchmark 的配置文件全部开源，是”reproducible eval”的实质性贡献</li>
+<li><strong>覆盖度真的广</strong>：17 + 12 = 29 个 benchmark 在一份 report 里同时跑通本身就是工程量，对后续工作的对比有 reference 价值</li>
+<li><strong>Recipe 透明</strong>：四阶段训练的超参表完整披露（bs / lr / wd / schedule），是少数把 RL stage 的 lr 和 batch size 都报全的 technical report</li>
 </ol>
 <h3 id="weaknesses">Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ol>
-<li><strong>Method novelty 有限</strong>：架构直接继承 MiMo-VL，训练策略是 SFT→CoT→RL 的 standard pipeline，核心贡献更多是数据工程和训练顺序</li>
-<li><strong>跨域正迁移的机制解释不足</strong>：只知道多阶段训练 work，但为什么 embodied 训练能提升 AD、正迁移的具体信号通路（spatial reasoning? scene understanding?）没有深入分析</li>
-<li><strong>无端到端 action 能力</strong>：MiMo-Embodied 本质是 VLM（输出文本/坐标），不直接输出 low-level action，需要下游 policy 配合</li>
-<li><strong>数据构成不透明</strong>：General 数据继承 MiMo-VL 但规模和比例未披露，各阶段数据量未明确，reproducibility 受限</li>
-<li><strong>Autonomous driving 部分 benchmark 选择偏 QA-based</strong>：大多数 AD benchmark 是 VQA 形式，与实际 driving 能力有 gap</li>
+<li><strong>核心 claim “positive transfer between embodied &amp; driving” 缺证据</strong>：abstract 与 introduction 都强调两个 domain 互相增强，但正文（至少 webfetch 可见的部分）没有给出 (a) embodied-only 训练的模型在 driving benchmark 的表现，(b) driving-only 训练的模型在 embodied benchmark 的表现。这个 ablation 是 paper 立论的关键，缺失非常显眼</li>
+<li><strong>“Cross-embodied” 命名误导</strong>：cross-embodiment 在文献里通常指跨机器人形态（arm vs. humanoid vs. mobile base 等，参见 <a href="../Papers/2503-GR00TN1" class="internal alias" data-slug="Papers/2503-GR00TN1">GR00T N1</a>、<a href="../Papers/2406-OpenVLA" class="internal alias" data-slug="Papers/2406-OpenVLA">OpenVLA</a>），这里实际是 cross-domain。命名 inflation</li>
+<li><strong>数据细节不透明</strong>：每个 sub-dataset 的样本数、四阶段的 mixing ratio、RL 样本量全都未披露</li>
+<li><strong>VSI-Bench 等高难空间基准的具体数字</strong>未在易获取部分给出</li>
+<li><strong>没有真机部署</strong>：qualitative 部分只是输出 keypoint / interaction point 的 visualization，没有接到 policy / 控制器后的成功率数字。“embodied” claim 停留在 perception+reasoning 层</li>
+<li><strong>RL stage 的边际收益未单独报告</strong>：GRPO 的 reward 设计写得很清楚，但没说 +RL 比 +CoT-SFT 的 delta 是多少</li>
 </ol>
 <h3 id="可信评估">可信评估<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#可信评估" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <h4 id="artifact-可获取性">Artifact 可获取性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#artifact-可获取性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
 <ul>
-<li><strong>代码</strong>: inference-only（评估 pipeline 基于 lmms-eval）</li>
-<li><strong>模型权重</strong>: MiMo-Embodied-7B（HuggingFace 发布）</li>
-<li><strong>训练细节</strong>: 仅高层描述，超参已披露（Table 1），但数据规模和比例未公开</li>
-<li><strong>数据集</strong>: 使用公开数据集组合 + MiMo-VL 私有语料，整体不可完全复现</li>
+<li><strong>代码</strong>: inference + evaluation only（明确说明 “does <strong>not</strong> contain model training code”）</li>
+<li><strong>模型权重</strong>: <code>XiaomiMiMo/MiMo-Embodied-7B</code> 在 HuggingFace 已发布</li>
+<li><strong>训练细节</strong>: 仅高层超参（Table 1），数据配比与样本量未披露</li>
+<li><strong>数据集</strong>: 全部为已开源的 benchmark 数据组合（PixMo-Points / RoboAfford / Cosmos-Reason1 / DriveLM / nuScenes-QA / … 共 ~20+ 数据源），但作者新增的 “self-curated 3D grounding data” 未公开</li>
 </ul>
 <h4 id="claim-可验证性">Claim 可验证性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#claim-可验证性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
 <ul>
-<li>✅ 29 benchmark SOTA：评估代码已开源，可独立复现</li>
-<li>✅ 多阶段训练优于直接混合：Ablation 设计合理，数据点充分</li>
-<li>⚠️ “strong positive transfer”：ablation 支持跨域训练有益，但 transfer 的 mechanism 缺乏分析</li>
-<li>⚠️ “first cross-embodied foundation model”：取决于 “cross-embodied” 的定义范围——如果只指 embodied AI + AD 的统一 VLM 确实是首个</li>
+<li>✅ “29 个 benchmark 上的 reported 数字”：lmms-eval 框架 + 开源 checkpoint 可独立复现</li>
+<li>⚠️ “achieves SOTA on 17 embodied + 12 driving benchmarks”：average / per-task 都赢? 表格里 DriveLM、MME-RealWorld driving 部分有落后 specialist 的项</li>
+<li>⚠️ “positive transfer between embodied and driving”：缺关键消融，目前只是 plausible 假说而非 evidence-based claim</li>
+<li>⚠️ “first cross-embodied foundation model”：取决于”cross-embodied”的定义；按论文自己的 indoor↔outdoor 定义，可能算 first，但同一个 VLM 同时跑两个 domain 在工程上并不新颖</li>
+<li>❌ “Sets a new standard for integrating diverse competencies, paving the way for more intelligent and adaptable systems”——marketing 修辞，不是技术 claim</li>
 </ul>
-<hr/>
-<h2 id="关联工作">关联工作<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#关联工作" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<h3 id="基于">基于<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#基于" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h3 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li>MiMo-VL: 架构和通用数据全部继承自 MiMo-VL（7B-SFT-2508），是直接的上游 base model</li>
+<li><strong>这篇 paper 的真正信号</strong>：Xiaomi 在 push 一个统一 mobile/auto/robotics VLM 底座的 narrative。MiMo-VL → MiMo-Embodied 这条线说明他们在尝试 vertical 整合：一个 7B VLM 同时给手机端 agent、家居 robot、车端 cockpit 用</li>
+<li><strong>对我研究兴趣的相关性</strong>：方法上没有原创性（都是 standard SFT+RL recipe），但<strong>作为一个 multi-domain mixing 的 data point</strong> 有参考价值——如果未来要论证 “single-VLM for embodied + driving” 是否 viable，这是一个可引用的开源对照</li>
+<li><strong>缺失的 ablation 是真问题</strong>：positive transfer 是这篇 paper 的核心 selling point，没有 ablation 就没法知道是 transfer 真的发生了还是只是 capacity 大了/数据多了带来的提升。<strong>如果未来要做类似 multi-domain VLM 训练，positive transfer 这一 claim 必须做 leave-one-domain-out 消融</strong></li>
+<li><strong>“Cross-embodied” 命名值得警惕</strong>：未来读到带 “cross-embodiment” 字样的论文要先看其定义，避免被术语 inflation 误导</li>
 </ul>
-<h3 id="对比">对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<ul>
-<li><a href="../Papers/2507-RoboBrain2" class="internal alias" data-slug="Papers/2507-RoboBrain2">RoboBrain 2.0</a>: Embodied VLM baseline，7B 参数，在 affordance 和 spatial 上被超越</li>
-<li><a href="../Papers/2506-VeBrain" class="internal alias" data-slug="Papers/2506-VeBrain">VeBrain</a>: Embodied VLM，8B 参数，专注 spatial understanding</li>
-<li>RoboTron-Drive: AD 专用 VLM，8B 参数</li>
-<li>DriveLMM-o1: AD 专用 VLM，8B 参数，step-by-step reasoning</li>
-<li>GPT-4o / Claude Sonnet 4 / Gemini 2.5 Pro: Closed-source general VLM baselines</li>
-<li>InternVL3.5 / Qwen2.5-VL: Open-source general VLM baselines</li>
-</ul>
-<h3 id="方法相关">方法相关<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#方法相关" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<ul>
-<li>GRPO: Stage 4 RL fine-tuning 使用的 policy optimization 算法（来自 DeepSeek-R1）</li>
-<li><a href="../Papers/2503-CosmosReason1" class="internal alias" data-slug="Papers/2503-CosmosReason1">Cosmos-Reason1</a>: 提供跨 embodiment 物理推理数据，含 DeepSeek-R1 生成的长链推理 trace</li>
-</ul>
-<hr/>
-<h2 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="uevi3i" class="overflow"><li class="depth-0"><a href="#速查卡片" data-for="速查卡片">速查卡片</a></li><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#architecture" data-for="architecture">Architecture</a></li><li class="depth-0"><a href="#training-dataset" data-for="training-dataset">Training Dataset</a></li><li class="depth-1"><a href="#general-dataset" data-for="general-dataset">General Dataset</a></li><li class="depth-1"><a href="#embodied-ai-dataset" data-for="embodied-ai-dataset">Embodied AI Dataset</a></li><li class="depth-1"><a href="#autonomous-driving-dataset" data-for="autonomous-driving-dataset">Autonomous Driving Dataset</a></li><li class="depth-0"><a href="#training-strategy" data-for="training-strategy">Training Strategy</a></li><li class="depth-0"><a href="#evaluation" data-for="evaluation">Evaluation</a></li><li class="depth-1"><a href="#embodied-ai-benchmarks" data-for="embodied-ai-benchmarks">Embodied AI Benchmarks</a></li><li class="depth-1"><a href="#autonomous-driving-benchmarks" data-for="autonomous-driving-benchmarks">Autonomous Driving Benchmarks</a></li><li class="depth-1"><a href="#ablation-study" data-for="ablation-study">Ablation Study</a></li><li class="depth-0"><a href="#论文点评" data-for="论文点评">论文点评</a></li><li class="depth-1"><a href="#strengths" data-for="strengths">Strengths</a></li><li class="depth-1"><a href="#weaknesses" data-for="weaknesses">Weaknesses</a></li><li class="depth-1"><a href="#可信评估" data-for="可信评估">可信评估</a></li><li class="depth-0"><a href="#关联工作" data-for="关联工作">关联工作</a></li><li class="depth-1"><a href="#基于" data-for="基于">基于</a></li><li class="depth-1"><a href="#对比" data-for="对比">对比</a></li><li class="depth-1"><a href="#方法相关" data-for="方法相关">方法相关</a></li><li class="depth-0"><a href="#notes" data-for="notes">Notes</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+<h3 id="rating">Rating<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#rating" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>分数</strong>：1 - Archived
+<strong>理由</strong>：方法层面无原创（架构全继承 MiMo-VL、训练是标准的 SFT→CoT-SFT→GRPO pipeline，与 <a href="../Papers/2506-VLNR1" class="internal alias" data-slug="Papers/2506-VLNR1">VLN-R1</a> 等同构），核心 selling point “positive transfer across embodied &amp; driving” 缺 leave-one-domain-out 消融，连 Ablation 章节都抓不到正文——构不成方法级贡献。Benchmark 维度也不是新评测标准，而是 lmms-eval 上 17+12 个已有 benchmark 的打包；值得作为”multi-domain VLM mixing 的开源对照”引用，但不是 Frontier 档方向参考，不会主动追更相关后续。相较 <a href="../Papers/2502-RoboBrain" class="internal alias" data-slug="Papers/2502-RoboBrain">RoboBrain</a> 线 / <a href="../Papers/2503-GeminiRobotics" class="internal alias" data-slug="Papers/2503-GeminiRobotics">Gemini Robotics</a> 这种定义方向的工作，本文更像是 Xiaomi 把 MiMo-VL 往 embodied+driving 方向延展的 technical report，归为 Archived。</p></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="ud8fg4" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#1-motivation" data-for="1-motivation">1. Motivation</a></li><li class="depth-0"><a href="#2-architecture" data-for="2-architecture">2. Architecture</a></li><li class="depth-0"><a href="#3-training-dataset" data-for="3-training-dataset">3. Training Dataset</a></li><li class="depth-1"><a href="#31-general-dataset" data-for="31-general-dataset">3.1 General Dataset</a></li><li class="depth-1"><a href="#32-embodied-ai-dataset" data-for="32-embodied-ai-dataset">3.2 Embodied AI Dataset</a></li><li class="depth-1"><a href="#33-autonomous-driving-dataset" data-for="33-autonomous-driving-dataset">3.3 Autonomous Driving Dataset</a></li><li class="depth-0"><a href="#4-training-strategy" data-for="4-training-strategy">4. Training Strategy</a></li><li class="depth-0"><a href="#5-evaluation" data-for="5-evaluation">5. Evaluation</a></li><li class="depth-1"><a href="#51-embodied-ai-benchmarks-17" data-for="51-embodied-ai-benchmarks-17">5.1 Embodied AI Benchmarks (17)</a></li><li class="depth-1"><a href="#52-autonomous-driving-benchmarks-12" data-for="52-autonomous-driving-benchmarks-12">5.2 Autonomous Driving Benchmarks (12)</a></li><li class="depth-1"><a href="#53-qualitative-evaluation" data-for="53-qualitative-evaluation">5.3 Qualitative Evaluation</a></li><li class="depth-1"><a href="#54-ablation" data-for="54-ablation">5.4 Ablation</a></li><li class="depth-0"><a href="#关联工作" data-for="关联工作">关联工作</a></li><li class="depth-1"><a href="#基于" data-for="基于">基于</a></li><li class="depth-1"><a href="#对比" data-for="对比">对比</a></li><li class="depth-1"><a href="#方法相关" data-for="方法相关">方法相关</a></li><li class="depth-0"><a href="#论文点评" data-for="论文点评">论文点评</a></li><li class="depth-1"><a href="#strengths" data-for="strengths">Strengths</a></li><li class="depth-1"><a href="#weaknesses" data-for="weaknesses">Weaknesses</a></li><li class="depth-1"><a href="#可信评估" data-for="可信评估">可信评估</a></li><li class="depth-1"><a href="#notes" data-for="notes">Notes</a></li><li class="depth-1"><a href="#rating" data-for="rating">Rating</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
 </script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
 </script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>

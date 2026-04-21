@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><title>SeeClick: Harnessing GUI Grounding for Advanced Visual GUI Agents</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="SeeClick: Harnessing GUI Grounding for Advanced Visual GUI Agents"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="SeeClick: Harnessing GUI Grounding for Advanced Visual GUI Agents"/><meta name="twitter:description" content="Summary 提出 GUI grounding 是 visual GUI agent 的核心能力瓶颈，通过对 Qwen-VL 进行 GUI grounding 数据的 continual pre-training 构建 SeeClick，并创建首个跨平台 GUI grounding benchmark ScreenSpot，验证 grounding ..."/><meta property="og:description" content="Summary 提出 GUI grounding 是 visual GUI agent 的核心能力瓶颈，通过对 Qwen-VL 进行 GUI grounding 数据的 continual pre-training 构建 SeeClick，并创建首个跨平台 GUI grounding benchmark ScreenSpot，验证 grounding ..."/><meta property="og:image:alt" content="Summary 提出 GUI grounding 是 visual GUI agent 的核心能力瓶颈，通过对 Qwen-VL 进行 GUI grounding 数据的 continual pre-training 构建 SeeClick，并创建首个跨平台 GUI grounding benchmark ScreenSpot，验证 grounding ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2401-SeeClick"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2401-SeeClick"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary 提出 GUI grounding 是 visual GUI agent 的核心能力瓶颈，通过对 Qwen-VL 进行 GUI grounding 数据的 continual pre-training 构建 SeeClick，并创建首个跨平台 GUI grounding benchmark ScreenSpot，验证 grounding ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+<html lang="en"><head><title>SeeClick: Harnessing GUI Grounding for Advanced Visual GUI Agents</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="SeeClick: Harnessing GUI Grounding for Advanced Visual GUI Agents"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="SeeClick: Harnessing GUI Grounding for Advanced Visual GUI Agents"/><meta name="twitter:description" content="Summary SeeClick: Harnessing GUI Grounding for Advanced Visual GUI Agents 核心: 提出”GUI grounding 是 visual GUI agent 的核心瓶颈”这一论断，并通过 grounding 预训练系统验证：grounding 提升 → 下游 agent 任务性能提升 ..."/><meta property="og:description" content="Summary SeeClick: Harnessing GUI Grounding for Advanced Visual GUI Agents 核心: 提出”GUI grounding 是 visual GUI agent 的核心瓶颈”这一论断，并通过 grounding 预训练系统验证：grounding 提升 → 下游 agent 任务性能提升 ..."/><meta property="og:image:alt" content="Summary SeeClick: Harnessing GUI Grounding for Advanced Visual GUI Agents 核心: 提出”GUI grounding 是 visual GUI agent 的核心瓶颈”这一论断，并通过 grounding 预训练系统验证：grounding 提升 → 下游 agent 任务性能提升 ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2401-SeeClick"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2401-SeeClick"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary SeeClick: Harnessing GUI Grounding for Advanced Visual GUI Agents 核心: 提出”GUI grounding 是 visual GUI agent 的核心瓶颈”这一论断，并通过 grounding 预训练系统验证：grounding 提升 → 下游 agent 任务性能提升 ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
   position: absolute;
   display: flex;
   float: right;
@@ -116,65 +116,551 @@ pre:hover > .expand-button {
   padding: 0 12px;
   font-size: 14px;
 }
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2401-SeeClick"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="gc1ghh"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/RL" class="sidebar-tag-pill">#RL</a><a href="/mindflow/tags/web-agent" class="sidebar-tag-pill">#web-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/scene-understanding" class="sidebar-tag-pill">#scene-understanding</a><a href="/mindflow/tags/instruction-following" class="sidebar-tag-pill">#instruction-following</a><a href="/mindflow/tags/cross-embodiment" class="sidebar-tag-pill">#cross-embodiment</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2401-SeeClick</a></div></nav><h1 class="article-title">SeeClick: Harnessing GUI Grounding for Advanced Visual GUI Agents</h1><div class="paper-meta"><span class="paper-venue">ACL 2024</span><span class="paper-authors"><span class="meta-sep">·</span>Kanzhi Cheng <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, Qiushi Sun</span><span>, Yougang Chu</span><span>, Fangzhi Xu</span><span>, Yantao Li</span><span>, Jianbing Zhang</span><span>, Zhiyong Wu</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2024-01-17T00:00:00.000Z">Jan 17, 2024</time><span>5 min read</span></p><ul class="tags"><li><a href="../tags/web-agent" class="internal tag-link">web-agent</a></li><li><a href="../tags/VLM" class="internal tag-link">VLM</a></li><li><a href="../tags/instruction-following" class="internal tag-link">instruction-following</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>提出 GUI grounding 是 visual GUI agent 的核心能力瓶颈，通过对 Qwen-VL 进行 GUI grounding 数据的 continual pre-training 构建 SeeClick，并创建首个跨平台 GUI grounding benchmark ScreenSpot，验证 grounding 能力与下游 agent 任务性能的强相关性。</p>
-<h2 id="problem--motivation">Problem &amp; Motivation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#problem--motivation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>现有 GUI agent 依赖结构化数据（HTML/DOM），存在三大问题：(1) 部分平台（iOS、桌面应用）无法获取结构化表示；(2) DOM 信息冗长且丢失视觉信息（布局、图标）；(3) 不同平台需要不同的观测/动作空间。Visual GUI agent 可以统一这些问题，但其核心挑战在于 GUI grounding——根据指令精确定位屏幕元素。现有 LVLM 在自然图像上有一定 grounding 能力，但 GUI 截图中密集的文字、图标、控件带来本质不同的挑战。</p>
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2401-SeeClick"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="mm0h7i"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/embodied-reasoning" class="sidebar-tag-pill">#embodied-reasoning</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/computer-use" class="sidebar-tag-pill">#computer-use</a><a href="/mindflow/tags/agentic-RL" class="sidebar-tag-pill">#agentic-RL</a><a href="/mindflow/tags/gui-agent" class="sidebar-tag-pill">#gui-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/world-model" class="sidebar-tag-pill">#world-model</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2401-SeeClick</a></div></nav><h1 class="article-title">SeeClick: Harnessing GUI Grounding for Advanced Visual GUI Agents</h1><div class="paper-meta"><span class="paper-venue">ACL 2024</span><span class="paper-authors"><span class="meta-sep">·</span>Kanzhi Cheng <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, Qiushi Sun</span><span>, Yougang Chu</span><span>, Fangzhi Xu</span><span>, Yantao Li</span><span>, Jianbing Zhang</span><span>, Zhiyong Wu</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2024-01-19T00:00:00.000Z">Jan 19, 2024</time><span>16 min read</span></p><ul class="tags"><li><a href="../tags/gui-agent" class="internal tag-link">gui-agent</a></li><li><a href="../tags/computer-use" class="internal tag-link">computer-use</a></li><li><a href="../tags/VLM" class="internal tag-link">VLM</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>SeeClick: Harnessing GUI Grounding for Advanced Visual GUI Agents </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><strong>核心</strong>: 提出”GUI grounding 是 visual GUI agent 的核心瓶颈”这一论断，并通过 grounding 预训练系统验证：grounding 提升 → 下游 agent 任务性能提升</li>
+<li><strong>方法</strong>: 在 Qwen-VL 上做 GUI grounding continual pre-training（1M 样本：自动爬取的 web UI + 重组 mobile UI + LLaVA general），把坐标当成自然语言数字直接生成</li>
+<li><strong>结果</strong>: ScreenSpot 平均 53.4%（>CogAgent 18B 47.4%，参数减半）；MiniWob 67% 仅用 0.3% Pix2Act 数据；AITW/Mind2Web 都比 Qwen-VL baseline 显著提升</li>
+<li><strong>Sources</strong>: <a href="https://arxiv.org/abs/2401.10935" class="external">paper<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://github.com/njucckevin/SeeClick" class="external">github<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><strong>Rating</strong>: 3 - Foundation（确立”GUI grounding 是 visual CUA 核心瓶颈”这一 reframing，并产出 ScreenSpot 这一事实标准评测，后续整个 visual CUA 流派都在 build on this insight）</li>
+</ul>
+</div>
+</blockquote>
+<p><strong>Key Takeaways:</strong></p>
+<ol>
+<li><strong>GUI grounding bottleneck 论点</strong>：把 “visual GUI agent 性能不行” 重新 frame 为 “LVLM 不会精确点击”，这是后续整个 visual CUA 流派（<a href="../Papers/2504-ScreenSpotPro" class="internal alias" data-slug="Papers/2504-ScreenSpotPro">ScreenSpot-Pro</a>、OS-Atlas、SeeClick 之后大量 follow-up）的起点。</li>
+<li><strong>ScreenSpot 基准</strong>：第一个跨 mobile/desktop/web 五平台的真实 GUI grounding 评测集（600+ 截图、1200+ 指令），区分 text vs icon/widget——后续成为 CUA 领域的事实标准。</li>
+<li><strong>坐标即语言</strong>：抛弃 1000-bin 词表方案，直接让 LVLM 生成 <code>(0.49, 0.40)</code> 这种归一化两位小数。简洁，且实验上点预测略优于 bbox 预测。</li>
+<li><strong>数据 recipe 可复现</strong>：Common Crawl 自动抽取 visible-text 元素 + <code>title</code> 属性元素得到 ~300K web 页面、约 380K web 样本；mobile 来自 widget captioning + RICO + UI summarization。整个 1M 数据 pipeline 可在 8×A100 24h 内完成 LoRA 持续预训练。</li>
+<li><strong>Grounding-agent 强相关</strong>：单独追踪 SeeClick 不同 checkpoint，ScreenSpot 分数与 MiniWob/AITW/Mind2Web 三个下游任务呈一致正相关——这是论文的灵魂图。</li>
+</ol>
+<p><strong>Teaser. SeeClick 总览：grounding 预训练 → ScreenSpot 评测 → 下游 web agent 应用三件套</strong></p>
+<p><img src="https://arxiv.org/html/2401.10935v2/x3.png" alt/></p>
+<hr/>
+<h2 id="background--motivation">Background &amp; Motivation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#background--motivation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>现有 GUI agent 主流路线是把 HTML/DOM/Android view hierarchy 之类的 structured text 喂给 LLM。论文指出三条根本限制：</p>
+<ol>
+<li><strong>结构化文本不是总能拿到</strong>：iOS 和桌面应用尤其难</li>
+<li><strong>冗长且丢信息</strong>：HTML 又长又缺图标/布局</li>
+<li><strong>每个平台一套观察空间</strong>：HTML / DOM / Android VH 各异，不通用</li>
+</ol>
+<p>→ 直接看截图、生成 click 坐标的 visual agent 是更通用的解。但实验发现 LVLM（包括 GPT-4V、Qwen-VL）在 GUI 上根本点不准——<strong>GUI grounding 是核心瓶颈</strong>。</p>
+<p><strong>Figure 1. Text-based agent vs visual SeeClick 的对比</strong></p>
+<p><img src="https://arxiv.org/html/2401.10935v2/x2.png" alt/></p>
+<hr/>
 <h2 id="method">Method<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#method" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p><strong>架构</strong>：基于 Qwen-VL (9.6B) 进行 continual pre-training。将坐标预测建模为语言生成任务，输出归一化坐标（如 “click (0.49, 0.40)”），无需额外 tokenization。</p>
-<p><strong>训练数据构建</strong>（约 100 万样本）：</p>
+<h3 id="31-gui-grounding-形式化">3.1 GUI Grounding 形式化<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#31-gui-grounding-形式化" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>给定截图 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">s</span></span></span></span> 和元素集合 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)}</span></span></span></span>，<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 是文本描述、<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 是位置（点或 bbox）。LVLM 学习 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span>。</p>
+<p><strong>坐标表示的关键设计</strong>：之前工作（Pix2Struct 等）把图像分 1000 bin 加 1000 个新 token <code>&lt;p0>...&lt;p999></code>。SeeClick 选择更简洁的方案——<strong>把数字当自然语言直接生成</strong>，沿用 Qwen-VL / Shikra 的传统。Prompt 形如 “In the UI, where should I click if I want to <instruction>?”，target 形如 <code>click (0.49, 0.40)</code>，标准 cross-entropy。</instruction></p>
+<blockquote>
+<p>这个选择的代价是数字 token 化效率低、长 sequence 容易飘；好处是不需要词表扩展、跟通用 LVLM pipeline 完全兼容。从结果看是值得的。</p>
+</blockquote>
+<h3 id="32-数据构造">3.2 数据构造<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#32-数据构造" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Domain</th><th>Task</th><th>Sample Num</th></tr></thead><tbody><tr><td>Web</td><td>text_2_point</td><td>271K</td></tr><tr><td>Web</td><td>text_2_bbox</td><td>54K</td></tr><tr><td>Web</td><td>point_2_text</td><td>54K</td></tr><tr><td>Web</td><td>bbox_2_text</td><td>54K</td></tr><tr><td>Mobile</td><td>text_2_point</td><td>274K</td></tr><tr><td>Mobile</td><td>text_2_bbox</td><td>56K</td></tr><tr><td>Mobile</td><td>UI summarization</td><td>48K</td></tr><tr><td>Mobile</td><td>widget captioning</td><td>42K</td></tr><tr><td>General</td><td>LLaVA</td><td>145K</td></tr><tr><td><strong>Total</strong></td><td></td><td><strong>1M</strong></td></tr></tbody></table></div>
+<p><strong>Web data</strong>：从 Common Crawl 抓 ~300K 网页，自动抽两类元素：(1) 有可见文本的元素；(2) 带 <code>title</code> 属性的元素（hover 时显示提示文本）。后者是关键——它能把 icon 元素的语义抽出来，而不仅是 text。除 grounding 任务外还加了反向的 web OCR 任务 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mord">∣</span><span class="mord mathnormal">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span>。</p>
+<p><strong>Mobile data</strong>：widget captioning（Li et al. 数据，20K 截图 / 40K widgets / 100K descriptions）+ RICO + mobile UI summarization。grounding 数据通过 reverse widget captioning 得到。</p>
+<p><strong>General data</strong>：LLaVA 的 vision-language instruction following 数据，防止 GUI 训练把通用能力洗掉。</p>
+<p><strong>Figure 3. Web 元素自动收集示例（visible text + title 属性两类）</strong></p>
+<p><img src="https://arxiv.org/html/2401.10935v2/x4.png" alt/></p>
+<h3 id="33-训练">3.3 训练<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#33-训练" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li><strong>Web 数据</strong>：约 30 万网页（Common Crawl），提取可见文本和带 title 属性的元素，包含 grounding 和 reverse OCR 两种任务</li>
-<li><strong>Mobile 数据</strong>：widget captioning（2 万截图、10 万描述）、UI grounding（反转 captioning）、UI summarization</li>
-<li><strong>通用数据</strong>：LLaVA instruction-following 数据保持自然图像能力</li>
+<li>Base：Qwen-VL（9.6B，448×448 输入，自带 grounding 能力）</li>
+<li>持续预训练 ~10K steps（约 1 epoch）</li>
+<li>LoRA fine-tune 视觉编码器 + LLM</li>
+<li>AdamW + cosine schedule，lr=3e-5，global batch=64</li>
+<li>8×A100 跑约 24h</li>
 </ul>
-<p><strong>训练细节</strong>：LoRA 微调视觉编码器和 LLM，AdamW + cosine annealing，lr=3e-5，batch=64，8xA100 训练约 24 小时。</p>
-<p><strong>ScreenSpot Benchmark</strong>：首个 GUI grounding 基准，600+ 截图、1200+ 指令，覆盖 iOS/Android/macOS/Windows/Web，区分 text 元素和 icon/widget 元素。</p>
-<h2 id="key-results">Key Results<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-results" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote>
+<p>一个有意思的细节：他们偏向用 <strong>point 而非 bbox</strong> 作为输出格式。原因是 UI 元素尺寸差异极大，bbox 学起来更难。最终评测也用 point。</p>
+</blockquote>
+<hr/>
+<h2 id="experiments">Experiments<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#experiments" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="51-screenspot-grounding-结果">5.1 ScreenSpot Grounding 结果<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#51-screenspot-grounding-结果" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>ScreenSpot：>600 截图、1200+ 指令，覆盖 iOS/Android/macOS/Windows/Web，区分 text 和 icon/widget。Web 部分故意从 <a href="../Papers/2307-WebArena" class="internal alias" data-slug="Papers/2307-WebArena">WebArena</a> 选不同类型网站（development, shopping, forum, tools）。Metric 是 click accuracy（预测点落在 GT bbox 内）。</p>
+<p><strong>Table 1. ScreenSpot 评测结果</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>LVLMs</th><th>Size</th><th>GUI</th><th>Mobile-Text</th><th>Mobile-Icon</th><th>Desktop-Text</th><th>Desktop-Icon</th><th>Web-Text</th><th>Web-Icon</th><th>Avg</th></tr></thead><tbody><tr><td>MiniGPT-v2</td><td>7B</td><td>✗</td><td>8.4</td><td>6.6</td><td>6.2</td><td>2.9</td><td>6.5</td><td>3.4</td><td>5.7</td></tr><tr><td>Qwen-VL</td><td>9.6B</td><td>✗</td><td>9.5</td><td>4.8</td><td>5.7</td><td>5.0</td><td>3.5</td><td>2.4</td><td>5.2</td></tr><tr><td>GPT-4V</td><td>-</td><td>✗</td><td>22.6</td><td>24.5</td><td>20.2</td><td>11.8</td><td>9.2</td><td>8.8</td><td>16.2</td></tr><tr><td>Fuyu</td><td>8B</td><td>✓</td><td>41.0</td><td>1.3</td><td>33.0</td><td>3.6</td><td>33.9</td><td>4.4</td><td>19.5</td></tr><tr><td><a href="../Papers/2312-CogAgent" class="internal alias" data-slug="Papers/2312-CogAgent">CogAgent</a></td><td>18B</td><td>✓</td><td>67.0</td><td>24.0</td><td><strong>74.2</strong></td><td>20.0</td><td><strong>70.4</strong></td><td>28.6</td><td>47.4</td></tr><tr><td><strong>SeeClick</strong></td><td>9.6B</td><td>✓</td><td><strong>78.0</strong></td><td><strong>52.0</strong></td><td>72.2</td><td><strong>30.0</strong></td><td>55.7</td><td><strong>32.5</strong></td><td><strong>53.4</strong></td></tr></tbody></table></div>
+<p>关键观察：</p>
 <ul>
-<li><strong>ScreenSpot</strong>：平均 53.4% accuracy，在 mobile icon（78.0% vs CogAgent 67.0% text / 52.0% vs 24.0% icon）和 web icon 上显著优于更大的 CogAgent (18B)</li>
-<li><strong>MiniWob</strong>：67.0% 成功率，用不到 Pix2Act 0.3% 的训练数据超越其 64.6% 的结果</li>
-<li><strong>AITW</strong>：59.3% overall，click accuracy 66.4%，比 Qwen-VL 基线提升约 9%</li>
-<li><strong>Mind2Web</strong>：Cross-Task step SR 25.5%（Qwen-VL 13.3%），但仍落后于 HTML-based 方法</li>
-<li>Grounding 能力与 agent 下游任务性能呈强正相关</li>
+<li>通用 LVLM（含 GPT-4V）在 GUI 上 grounding 严重不行——GPT-4V 仅 16.2%</li>
+<li>SeeClick 平均超 <a href="../Papers/2312-CogAgent" class="internal alias" data-slug="Papers/2312-CogAgent">CogAgent</a>（18B → 9.6B），尤其 mobile 大幅领先</li>
+<li><strong>所有模型在 icon/widget 上都很挣扎</strong>——这是论文遗留的 open problem，也是后续 <a href="../Papers/2504-ScreenSpotPro" class="internal alias" data-slug="Papers/2504-ScreenSpotPro">ScreenSpot-Pro</a> 揭示专业软件 icon 仅 4% 的伏笔</li>
+<li>SeeClick 在 Desktop-Text / Web-Text 落后 CogAgent，作者归因于分辨率较低（448 vs CogAgent 的 1120）和训练数据更少</li>
 </ul>
-<h2 id="strengths--weaknesses">Strengths &amp; Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths--weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p><strong>Strengths</strong>：</p>
+<h3 id="52-下游-agent-任务">5.2 下游 Agent 任务<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#52-下游-agent-任务" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="miniwob">MiniWob<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#miniwob" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>仅用 2.8K 训练集（每 task 50 successful episodes）：</p>
+<p><strong>Table 2. MiniWob 平均成功率</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Methods</th><th>Modality</th><th>Dataset</th><th>Score</th></tr></thead><tbody><tr><td>WebGUM</td><td>HTML+Image</td><td>2.8K</td><td>65.5</td></tr><tr><td>WebGUM</td><td>HTML+Image</td><td>347K</td><td>86.1</td></tr><tr><td><strong>SeeClick</strong></td><td>Image</td><td>2.8K</td><td><strong>73.6</strong> (45 tasks)</td></tr><tr><td>Pix2Act</td><td>Image</td><td>1.3M</td><td>64.6</td></tr><tr><td>Qwen-VL</td><td>Image</td><td>2.8K</td><td>48.4</td></tr><tr><td><strong>SeeClick</strong></td><td>Image</td><td>2.8K</td><td><strong>67.0</strong> (35 tasks)</td></tr></tbody></table></div>
 <ul>
-<li>明确指出 GUI grounding 是 visual agent 的核心瓶颈，并用实验证实 grounding-performance 相关性，insight 清晰</li>
-<li>ScreenSpot 是有价值的 benchmark 贡献，覆盖多平台且区分 text/icon 元素</li>
-<li>方法简洁——continual pre-training + LoRA，无需复杂架构设计，符合 scalable 原则</li>
-<li>训练数据构建策略巧妙，利用已有数据反转生成 grounding 数据</li>
+<li>用同样 2.8K 数据下击败 HTML+Image 的 WebGUM</li>
+<li>用 0.3% 的数据（2.8K vs 1.3M）击败 vision-only 的 Pix2Act</li>
+<li>比同 base 模型（Qwen-VL）高 ~20pp，<strong>直接证明 grounding 预训练的价值</strong></li>
 </ul>
-<p><strong>Weaknesses</strong>：</p>
+<h4 id="aitwandroid-in-the-wild">AITW（Android in the Wild）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#aitwandroid-in-the-wild" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>作者特意指出原 split 有 train/test 严重重叠的过拟合风险（同一 instruction 的多条相似轨迹被分到 train/test），改用 <strong>instruction-wise split</strong>。</p>
+<p><strong>Table 3. AITW 平均分</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Methods</th><th>Modality</th><th>General</th><th>Install</th><th>GoogleApps</th><th>Single</th><th>WebShop</th><th>Overall</th><th>ClickAcc</th></tr></thead><tbody><tr><td>ChatGPT-CoT</td><td>Text</td><td>5.9</td><td>4.4</td><td>10.5</td><td>9.4</td><td>8.4</td><td>7.7</td><td>-</td></tr><tr><td>GPT-4V</td><td>Image</td><td>41.7</td><td>42.6</td><td>49.8</td><td>72.8</td><td>45.7</td><td>50.5</td><td>-</td></tr><tr><td>Qwen-VL</td><td>Image</td><td>49.5</td><td>59.9</td><td>46.9</td><td>64.7</td><td>50.7</td><td>54.3</td><td>57.4</td></tr><tr><td><strong>SeeClick</strong></td><td>Image</td><td><strong>54.0</strong></td><td><strong>66.4</strong></td><td><strong>54.9</strong></td><td>63.5</td><td><strong>57.6</strong></td><td><strong>59.3</strong></td><td><strong>66.4</strong></td></tr></tbody></table></div>
+<p>ClickAcc 指标涨 9 pp，再次印证 grounding → click 精度 → 任务成功率链条。</p>
+<h4 id="mind2web">Mind2Web<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mind2web" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>把原本设计给 HTML agent 的 Mind2Web 改造成 vision-only 任务（解析 raw dump 拿到截图和 GT bbox）。</p>
+<p><strong>Table 4. Mind2Web Cross-Task / Cross-Website / Cross-Domain（Step SR）</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Methods</th><th>w/o HTML</th><th>Ele.Acc</th><th>Op.F1</th><th>Step SR (Cross-Task)</th><th>(Cross-Web)</th><th>(Cross-Domain)</th></tr></thead><tbody><tr><td>MindAct (HTML-based)</td><td>✗</td><td>55.1</td><td>75.7</td><td>52.0</td><td>38.9</td><td>39.6</td></tr><tr><td>GPT-4 (HTML)</td><td>✗</td><td>41.6</td><td>60.6</td><td>36.2</td><td>30.1</td><td>26.4</td></tr><tr><td>Qwen-VL</td><td>✓</td><td>15.9</td><td>86.7</td><td>13.3</td><td>9.2</td><td>12.0</td></tr><tr><td><strong>SeeClick</strong></td><td>✓</td><td><strong>28.3</strong></td><td>87.0</td><td><strong>25.5</strong></td><td><strong>16.4</strong></td><td><strong>20.8</strong></td></tr></tbody></table></div>
 <ul>
-<li>Action space 过度简化，仅支持 click 和 type，不支持 drag、double-click 等操作</li>
-<li>分辨率限制（448x448）在桌面和 web 场景下制约精细定位</li>
-<li>Mind2Web 上仍大幅落后 HTML-based 方法，说明纯视觉路线在复杂 web 场景仍有差距</li>
-<li>统一训练实验（Table 5）显示跨平台联合训练反而降性能，暗示不同 GUI 类型间迁移有限</li>
+<li><strong>vision-only Step SR 几乎翻倍</strong>（13.3 → 25.5）</li>
+<li>但仍显著低于 HTML-based MindAct（52.0），作者诚实承认：从截图预测精确点击坐标比从候选 HTML 元素中选要难得多。这条 gap 是后续 visual CUA 整个流派要解决的问题。</li>
 </ul>
-<h2 id="mind-map">Mind Map<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mind-map" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;mindmap\n  root((SeeClick))\n    Problem\n      GUI agent 依赖 HTML/DOM\n      LVLM 缺乏 GUI grounding\n      跨平台统一方案缺失\n    Method\n      Qwen-VL continual pre-training\n      坐标作为语言生成\n      Web + Mobile grounding 数据\n      ScreenSpot benchmark\n    Results\n      ScreenSpot 53.4% avg\n      MiniWob 67.0%\n      Grounding-performance 强相关&quot;">mindmap
-  root((SeeClick))
-    Problem
-      GUI agent 依赖 HTML/DOM
-      LVLM 缺乏 GUI grounding
-      跨平台统一方案缺失
-    Method
-      Qwen-VL continual pre-training
-      坐标作为语言生成
-      Web + Mobile grounding 数据
-      ScreenSpot benchmark
-    Results
-      ScreenSpot 53.4% avg
-      MiniWob 67.0%
-      Grounding-performance 强相关
-</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
-<h2 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="524-grounding--agent-performance论文灵魂图">5.2.4 Grounding ↔ Agent Performance（论文灵魂图）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#524-grounding--agent-performance论文灵魂图" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Figure 6. Grounding 能力与下游任务性能的相关性</strong></p>
+<p><img src="https://arxiv.org/html/2401.10935v2/extracted/5426719/figures/grounding2agent.png" alt/></p>
+<p>把 SeeClick 训练过程中不同 checkpoint 拿出来同时评 ScreenSpot 和三个下游 agent 任务，得到强一致的正相关——这是支撑论文核心 claim 的关键证据。</p>
+<h3 id="525-统一-vs-分别训练">5.2.5 统一 vs 分别训练<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#525-统一-vs-分别训练" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table 5. SeeClick separate vs unified</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th></th><th>MiniWob</th><th>AITW</th><th>Mind2Web</th></tr></thead><tbody><tr><td>Qwen-VL (separate)</td><td>48.4</td><td>54.3</td><td>11.5</td></tr><tr><td>SeeClick (separate)</td><td>67.0</td><td>59.3</td><td>20.9</td></tr><tr><td>SeeClick (unified)</td><td>64.1</td><td>57.1</td><td>19.5</td></tr></tbody></table></div>
+<p>统一训练有轻微下降——三个平台的接口形态差异太大，joint training 暂时还没甜头。</p>
+<h3 id="action-space">Action Space<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#action-space" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>为了统一，SeeClick 用一个混合 action space（来自 AITW + Mind2Web）：</p>
 <ul>
-<li>GUI grounding 作为 visual agent 的基础能力这个定位很有价值，后续 Agent S2 等工作中 grounding 仍是核心模块</li>
-<li>ScreenSpot 中 icon/widget 的 grounding 显著难于 text，这个 gap 在所有模型上都存在，值得深入研究</li>
-<li>纯视觉路线 vs 结构化信息路线的 trade-off 仍未解决，可能最优方案是两者结合</li>
-</ul></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="uevi3i" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#problem--motivation" data-for="problem--motivation">Problem &amp; Motivation</a></li><li class="depth-0"><a href="#method" data-for="method">Method</a></li><li class="depth-0"><a href="#key-results" data-for="key-results">Key Results</a></li><li class="depth-0"><a href="#strengths--weaknesses" data-for="strengths--weaknesses">Strengths &amp; Weaknesses</a></li><li class="depth-0"><a href="#mind-map" data-for="mind-map">Mind Map</a></li><li class="depth-0"><a href="#notes" data-for="notes">Notes</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+<li><code>click(x,y)</code>：归一化坐标</li>
+<li><code>type(&quot;text&quot;)</code></li>
+<li><code>select(&quot;value&quot;)</code>：下拉菜单（Mind2Web 风格）</li>
+<li><code>swipe(direction)</code>：上下左右</li>
+<li><code>PRESS BACK / HOME / ENTER</code></li>
+<li><code>TASK COMPLETE / TASK IMPOSSIBLE</code></li>
+</ul>
+<p>每步输入：instruction + 当前截图 + 前 k=4 步 action 历史。</p>
+<hr/>
+<h2 id="limitations论文自述">Limitations（论文自述）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#limitations论文自述" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>Action 空间简化到 click + type，缺 drag、double-click 等</li>
+<li>还需要在每个下游任务上做 task-specific fine-tune 才能多步执行（不是 zero-shot agent）</li>
+</ul>
+<hr/>
+<h2 id="关联工作">关联工作<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#关联工作" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="基于">基于<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#基于" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Qwen-VL</strong>: SeeClick 的 base LVLM，自带 bbox grounding 能力和 448 分辨率</li>
+<li><strong>LLaVA</strong>: 通用 vision-language instruction data，防止 GUI 训练洗掉通用能力</li>
+<li><strong>Common Crawl</strong>: web 截图和 HTML 数据来源</li>
+<li><strong>RICO</strong> (Deka et al.): mobile UI 数据集，提供 mobile grounding 的扩充</li>
+<li><strong>widget captioning</strong> (Li et al.): mobile UI 元素描述数据</li>
+</ul>
+<h3 id="对比">对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong><a href="../Papers/2312-CogAgent" class="internal alias" data-slug="Papers/2312-CogAgent">CogAgent</a></strong> (18B, 1120 分辨率): 同期 GUI-specific LVLM，主要对比对象。SeeClick 用一半参数 + 较低分辨率仍取得更高平均分</li>
+<li><strong>Fuyu</strong>: GUI-specific LVLM，但 icon grounding 极差（1.3-4.4%）</li>
+<li><strong>GPT-4V</strong>: 通用 LVLM 代表，验证”通用 LVLM 在 GUI grounding 上严重不行”</li>
+<li><strong>WebGUM</strong>: HTML+Image baseline，证明 vision-only 在同等数据量下能赢</li>
+<li><strong>Pix2Act</strong>: vision-only baseline，证明 grounding pretrain 能用 0.3% 数据击败大规模 SL</li>
+</ul>
+<h3 id="方法相关">方法相关<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#方法相关" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Pix2Struct / Shikra / Kosmos-2</strong>: 坐标作为语言生成的传统，SeeClick 沿用并简化（直接两位小数，不用 bin token）</li>
+<li><strong>Set-of-Mark prompting</strong>: prompt-only 的视觉 grounding 路线，不需要训练但依赖 GPT-4V</li>
+</ul>
+<h3 id="后续工作截至-2026-04">后续工作（截至 2026-04）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#后续工作截至-2026-04" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>OS-Atlas</strong> (2410.23218): 更大规模 grounding 数据 + 多 GUI 平台</li>
+<li><strong>OS-Genesis</strong> (2412.19723): reverse task synthesis，自动合成 GUI agent 训练 trajectory</li>
+<li><strong><a href="../Papers/2504-ScreenSpotPro" class="internal alias" data-slug="Papers/2504-ScreenSpotPro">ScreenSpot-Pro</a></strong>: 把 ScreenSpot 扩展到专业软件，揭示 icon grounding 仅 4%</li>
+<li><strong>UGround / ShowUI / UI-TARS</strong>: 都把 SeeClick 列为关键 baseline / 起点</li>
+</ul>
+<hr/>
+<h2 id="论文点评">论文点评<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#论文点评" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="strengths">Strengths<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>Problem framing 清晰且影响深远</strong>：把”visual GUI agent 不行”重新归因为”GUI grounding 不行”，这个 reframing 本身就是 contribution。后续整个 visual CUA 流派都在沿着这个方向走（OS-Atlas、UGround、ShowUI、ScreenSpot-Pro 等）。属于 <a href="../DomainMaps/CUA" class="internal alias" data-slug="DomainMaps/CUA">CUA</a> DomainMap 中明确认定的 building block。</li>
+<li><strong>证据链完整</strong>：不是”我训了个模型 SOTA”，而是”我提出 grounding bottleneck → 建 ScreenSpot benchmark 量化它 → 训 SeeClick 在 benchmark 上验证 → 在三个下游 agent 任务上验证 grounding-agent 强相关”。这种 problem→benchmark→method→correlation 的论证结构值得学习。</li>
+<li><strong>方法 simple, scalable, generalizable</strong>：坐标即语言、Common Crawl 自动抽取 web grounding 数据。没有花哨的架构改动，是典型的 data-centric 路线。1M 数据 + LoRA + 24h × 8 A100，复现门槛低。</li>
+<li><strong>诚实 Mind2Web 评测</strong>：vision-only Step SR 25.5 远低于 HTML-based MindAct 52.0，作者没有掩饰，明确指出”choosing from HTML candidates 比 predicting click coordinates 容易得多”。</li>
+<li><strong>AITW split 修正</strong>：发现并指出原 split 的过拟合风险，提出 instruction-wise split——这是 healthy benchmarking 的范例。</li>
+</ol>
+<h3 id="weaknesses">Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>分辨率 448×448 是硬伤</strong>：CogAgent 1120 在 desktop-text / web-text 上反超就是证据。Web 和 desktop 上小字、密集 UI 元素需要高分辨率，这点后续 work（OS-Atlas、UI-TARS）都用更高分辨率/多分辨率方案解决。</li>
+<li><strong>Icon/widget grounding 仍然差</strong>：即使 SeeClick 在 icon 上也只到 30-50%。后续 <a href="../Papers/2504-ScreenSpotPro" class="internal alias" data-slug="Papers/2504-ScreenSpotPro">ScreenSpot-Pro</a> 揭示专业软件 icon 仅 4%——SeeClick 的训练数据（Common Crawl + RICO）覆盖的主要是消费级 web/mobile，专业软件几乎没碰。</li>
+<li><strong>Action space 简化</strong>：drag、scroll-to-element、long-press、double-click、keyboard shortcuts 都没有。真正的 desktop computer-use 需要这些。</li>
+<li><strong>下游任务仍需 task-specific fine-tune</strong>：不是 zero-shot agent，每个 benchmark 都要训一遍。这跟”unified visual GUI agent”的 narrative 有 tension。Table 5 也显示 unified 训练有性能下降。</li>
+<li><strong>Web 数据自动抽取的 noise 没有讨论</strong>：<code>title</code> 属性元素的描述质量参差不齐，开发者写的 alt-text/title 经常是 “image123.png” 之类。论文没有 ablation 数据质量过滤的影响。</li>
+<li><strong>基线略弱</strong>：CogAgent 是同期工作，但没有跟 Set-of-Mark prompting + GPT-4V 这种 prompt-only 方案严格对比（虽然报了 GPT-4V 的 raw grounding 数字）。SoM-style 方案在工程上是真实 baseline。</li>
+</ol>
+<h3 id="可信评估">可信评估<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#可信评估" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="artifact-可获取性">Artifact 可获取性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#artifact-可获取性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><strong>代码</strong>: inference + training（pre-training 数据处理、SFT、ScreenSpot evaluation 都开源）</li>
+<li><strong>模型权重</strong>: SeeClick checkpoint 发布在 HuggingFace <code>cckevinn/SeeClick</code></li>
+<li><strong>训练细节</strong>: 完整——超参（lr=3e-5, batch=64, ~10K steps）、数据配比（Table 6 的 1M 拆解）、硬件（8×A100 24h）、LoRA 配置代码可见</li>
+<li><strong>数据集</strong>: 完全开源——ScreenSpot benchmark（box.nju.edu.cn 和 Google Drive 双链接）、SeeClick web grounding pre-training data、爬虫脚本（独立 repo <code>seeclick-crawler</code>）</li>
+</ul>
+<h4 id="claim-可验证性">Claim 可验证性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#claim-可验证性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>✅ <strong>SeeClick 在 ScreenSpot 平均 53.4%，超 CogAgent 47.4%</strong>：表格数字齐全，ScreenSpot 已开源，第三方可独立复现</li>
+<li>✅ <strong>GUI grounding 与下游任务性能正相关</strong>：Figure 6 的 checkpoint-wise 同步评测是直接证据，AITW ClickAcc 9pp 提升、Mind2Web Step SR 翻倍也支持这一点</li>
+<li>✅ <strong>0.3% 数据击败 Pix2Act</strong>：2.8K vs 1.3M 数据集大小是公开事实，MiniWob 评测协议标准</li>
+<li>⚠️ <strong>“unified visual GUI agent”</strong>：Table 5 显示 unified 训练有性能下降，“unified” 的 claim 比 narrative 暗示的弱</li>
+<li>⚠️ <strong>AITW instruction-wise split 公平性</strong>：作者修了 split，但和原 split 的 Auto-UI / CogAgent baseline 数字不能直接比；Table 7 的原 split 数字 SeeClick 只是中等水平</li>
+<li>⚠️ <strong>数据质量贡献的归因</strong>：1M 数据 vs 1M 通用数据 vs 不同 task mix 的 ablation 缺失，无法判断哪部分数据最重要</li>
+</ul>
+<h3 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>这篇是 <a href="../DomainMaps/CUA" class="internal alias" data-slug="DomainMaps/CUA">CUA</a> DomainMap 的核心 building block，“GUI grounding bottleneck” 论点直接来自这里</li>
+<li>SeeClick → ScreenSpot-Pro → GroundCUA 是 grounding 这条线的主轴。从 SeeClick 53.4% → ScreenSpot-Pro 揭示 icon 4% → GroundCUA 700K 人工标注解决 → GroundNext-3B agentic 任务超越 72B</li>
+<li>
+<blockquote>
+<p>❓ 论文的”坐标即语言”方案和”bin token” 方案的实验对比只在脚注/preliminary 提了一句，没有正式 ablation。这两种 tokenization 哪个更 scaling-friendly 至今缺系统研究——后续 UI-TARS 用 1000-bin、UGround 用归一化坐标，结论分歧</p>
+</blockquote>
+</li>
+<li>
+<blockquote>
+<p>❓ Common Crawl 的 <code>title</code> 属性数据噪声很大（开发者经常写垃圾 alt-text），SeeClick 没有 quality filter ablation。如果做了，可能能进一步压缩数据需求</p>
+</blockquote>
+</li>
+<li>复用价值高的工程细节：(1) Web 元素自动抽取的 visible-text + title 双策略；(2) instruction-wise split 修复 AITW 过拟合；(3) point vs bbox 的实证选择</li>
+<li>历史地位：在 2024 年初确立了”grounding 是 visual CUA 的核心问题”这一共识，后续整个 CUA 流派都在 build on this insight</li>
+</ul>
+<h3 id="rating">Rating<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#rating" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>分数</strong>：3 - Foundation
+<strong>理由</strong>：problem reframing（GUI grounding 是 visual CUA 的核心瓶颈）+ ScreenSpot benchmark 两项产出都成为方向的 building block，Strengths 第 1-2 条即指出后续 OS-Atlas / UGround / ShowUI / UI-TARS / ScreenSpot-Pro 都沿着此路线 build on 或扩展。外部信号上 SeeClick 已被 visual CUA 主流工作作为事实 baseline、ScreenSpot 已是 de facto grounding 评测。这不是 2 档 Frontier——方法本身虽然在分辨率和 action space 上已被超越（Weaknesses 第 1、3 条），但作为 reframing 和基准的奠基地位稳固，符合”只读 rating=3 就能理解方向主脉络”的准入门槛。</p></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="ud8fg4" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#background--motivation" data-for="background--motivation">Background &amp; Motivation</a></li><li class="depth-0"><a href="#method" data-for="method">Method</a></li><li class="depth-1"><a href="#31-gui-grounding-形式化" data-for="31-gui-grounding-形式化">3.1 GUI Grounding 形式化</a></li><li class="depth-1"><a href="#32-数据构造" data-for="32-数据构造">3.2 数据构造</a></li><li class="depth-1"><a href="#33-训练" data-for="33-训练">3.3 训练</a></li><li class="depth-0"><a href="#experiments" data-for="experiments">Experiments</a></li><li class="depth-1"><a href="#51-screenspot-grounding-结果" data-for="51-screenspot-grounding-结果">5.1 ScreenSpot Grounding 结果</a></li><li class="depth-1"><a href="#52-下游-agent-任务" data-for="52-下游-agent-任务">5.2 下游 Agent 任务</a></li><li class="depth-1"><a href="#524-grounding--agent-performance论文灵魂图" data-for="524-grounding--agent-performance论文灵魂图">5.2.4 Grounding ↔ Agent Performance（论文灵魂图）</a></li><li class="depth-1"><a href="#525-统一-vs-分别训练" data-for="525-统一-vs-分别训练">5.2.5 统一 vs 分别训练</a></li><li class="depth-1"><a href="#action-space" data-for="action-space">Action Space</a></li><li class="depth-0"><a href="#limitations论文自述" data-for="limitations论文自述">Limitations（论文自述）</a></li><li class="depth-0"><a href="#关联工作" data-for="关联工作">关联工作</a></li><li class="depth-1"><a href="#基于" data-for="基于">基于</a></li><li class="depth-1"><a href="#对比" data-for="对比">对比</a></li><li class="depth-1"><a href="#方法相关" data-for="方法相关">方法相关</a></li><li class="depth-1"><a href="#后续工作截至-2026-04" data-for="后续工作截至-2026-04">后续工作（截至 2026-04）</a></li><li class="depth-0"><a href="#论文点评" data-for="论文点评">论文点评</a></li><li class="depth-1"><a href="#strengths" data-for="strengths">Strengths</a></li><li class="depth-1"><a href="#weaknesses" data-for="weaknesses">Weaknesses</a></li><li class="depth-1"><a href="#可信评估" data-for="可信评估">可信评估</a></li><li class="depth-1"><a href="#notes" data-for="notes">Notes</a></li><li class="depth-1"><a href="#rating" data-for="rating">Rating</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
 </script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
 </script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>

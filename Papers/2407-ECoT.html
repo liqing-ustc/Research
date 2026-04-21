@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><title>Robotic Control via Embodied Chain-of-Thought Reasoning</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="Robotic Control via Embodied Chain-of-Thought Reasoning"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Robotic Control via Embodied Chain-of-Thought Reasoning"/><meta name="twitter:description" content="Summary ECoT 在 VLA 模型（OpenVLA）的 action 预测前插入多步 embodied reasoning chain（包含 plan、subtask、movement、gripper position、object bounding box），通过合成数据训练，使模型在不增加 robot 数据的情况下将泛化任务成功率绝对提升 ..."/><meta property="og:description" content="Summary ECoT 在 VLA 模型（OpenVLA）的 action 预测前插入多步 embodied reasoning chain（包含 plan、subtask、movement、gripper position、object bounding box），通过合成数据训练，使模型在不增加 robot 数据的情况下将泛化任务成功率绝对提升 ..."/><meta property="og:image:alt" content="Summary ECoT 在 VLA 模型（OpenVLA）的 action 预测前插入多步 embodied reasoning chain（包含 plan、subtask、movement、gripper position、object bounding box），通过合成数据训练，使模型在不增加 robot 数据的情况下将泛化任务成功率绝对提升 ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2407-ECoT"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2407-ECoT"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary ECoT 在 VLA 模型（OpenVLA）的 action 预测前插入多步 embodied reasoning chain（包含 plan、subtask、movement、gripper position、object bounding box），通过合成数据训练，使模型在不增加 robot 数据的情况下将泛化任务成功率绝对提升 ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+<html lang="en"><head><title>Robotic Control via Embodied Chain-of-Thought Reasoning</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="Robotic Control via Embodied Chain-of-Thought Reasoning"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Robotic Control via Embodied Chain-of-Thought Reasoning"/><meta name="twitter:description" content="Summary Robotic Control via Embodied Chain-of-Thought Reasoning 核心: 在 VLA 输出 action 前显式生成 grounded reasoning chain（task → plan → subtask → move → gripper pixel → object bboxes），把”语义 ..."/><meta property="og:description" content="Summary Robotic Control via Embodied Chain-of-Thought Reasoning 核心: 在 VLA 输出 action 前显式生成 grounded reasoning chain（task → plan → subtask → move → gripper pixel → object bboxes），把”语义 ..."/><meta property="og:image:alt" content="Summary Robotic Control via Embodied Chain-of-Thought Reasoning 核心: 在 VLA 输出 action 前显式生成 grounded reasoning chain（task → plan → subtask → move → gripper pixel → object bboxes），把”语义 ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2407-ECoT"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2407-ECoT"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary Robotic Control via Embodied Chain-of-Thought Reasoning 核心: 在 VLA 输出 action 前显式生成 grounded reasoning chain（task → plan → subtask → move → gripper pixel → object bboxes），把”语义 ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
   position: absolute;
   display: flex;
   float: right;
@@ -116,101 +116,333 @@ pre:hover > .expand-button {
   padding: 0 12px;
   font-size: 14px;
 }
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2407-ECoT"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="gc1ghh"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/RL" class="sidebar-tag-pill">#RL</a><a href="/mindflow/tags/web-agent" class="sidebar-tag-pill">#web-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/scene-understanding" class="sidebar-tag-pill">#scene-understanding</a><a href="/mindflow/tags/instruction-following" class="sidebar-tag-pill">#instruction-following</a><a href="/mindflow/tags/cross-embodiment" class="sidebar-tag-pill">#cross-embodiment</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2407-ECoT</a></div></nav><h1 class="article-title">Robotic Control via Embodied Chain-of-Thought Reasoning</h1><div class="paper-meta"><span class="paper-venue">arXiv</span><span class="paper-authors"><span class="meta-sep">·</span>Michał Zawalski <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, William Chen</span><span>, Karl Pertsch</span><span>, Oier Mees</span><span>, Chelsea Finn</span><span>, Sergey Levine</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2024-07-01T00:00:00.000Z">Jul 01, 2024</time><span>6 min read</span></p><ul class="tags"><li><a href="../tags/VLA" class="internal tag-link">VLA</a></li><li><a href="../tags/manipulation" class="internal tag-link">manipulation</a></li><li><a href="../tags/cross-embodiment" class="internal tag-link">cross-embodiment</a></li><li><a href="../tags/task-planning" class="internal tag-link">task-planning</a></li><li><a href="../tags/scene-understanding" class="internal tag-link">scene-understanding</a></li><li><a href="../tags/instruction-following" class="internal tag-link">instruction-following</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>ECoT 在 VLA 模型（OpenVLA）的 action 预测前插入多步 embodied reasoning chain（包含 plan、subtask、movement、gripper position、object bounding box），通过合成数据训练，使模型在不增加 robot 数据的情况下将泛化任务成功率绝对提升 28%，同时增强了可解释性和人类纠错能力。</p>
-<h2 id="problem--motivation">Problem &amp; Motivation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#problem--motivation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>现有 VLA 模型（如 OpenVLA）直接从视觉观察映射到 action，缺乏推理能力，在 out-of-distribution 场景下泛化较差。虽然大语言模型中 chain-of-thought 推理已经证明有效，但 naive CoT 在 robotics 领域效果有限——因为纯语义推理无法 ground 到具体的视觉观察和 robot 状态。作者提出需要一种 embodied 的 CoT，将推理 ground 到空间特征（gripper 位置、object bounding box），从而让 VLA 在行动前”看清楚、想明白”。</p>
-<h2 id="method">Method<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#method" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p><strong>1. Embodied Chain-of-Thought 推理链</strong>
-ECoT 在 action 预测前依次生成六个推理步骤：</p>
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2407-ECoT"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="mm0h7i"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/embodied-reasoning" class="sidebar-tag-pill">#embodied-reasoning</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/computer-use" class="sidebar-tag-pill">#computer-use</a><a href="/mindflow/tags/agentic-RL" class="sidebar-tag-pill">#agentic-RL</a><a href="/mindflow/tags/gui-agent" class="sidebar-tag-pill">#gui-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/world-model" class="sidebar-tag-pill">#world-model</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2407-ECoT</a></div></nav><h1 class="article-title">Robotic Control via Embodied Chain-of-Thought Reasoning</h1><div class="paper-meta"><span class="paper-venue">CoRL 2024</span><span class="paper-authors"><span class="meta-sep">·</span>Michał Zawalski <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, William Chen</span><span>, Karl Pertsch</span><span>, Oier Mees</span><span>, Chelsea Finn</span><span>, Sergey Levine</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2024-07-11T00:00:00.000Z">Jul 11, 2024</time><span>18 min read</span></p><ul class="tags"><li><a href="../tags/VLA" class="internal tag-link">VLA</a></li><li><a href="../tags/embodied-reasoning" class="internal tag-link">embodied-reasoning</a></li><li><a href="../tags/manipulation" class="internal tag-link">manipulation</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Robotic Control via Embodied Chain-of-Thought Reasoning </p></div>
+                  
+                </div>
+<div class="callout-content">
 <ul>
-<li><strong>TASK</strong>：重新表述当前指令</li>
-<li><strong>PLAN</strong>：生成高层任务分解</li>
-<li><strong>SUBTASK</strong>：识别当前需执行的子步骤</li>
-<li><strong>MOVE</strong>：预测低层运动命令（如”向左移动”）</li>
-<li><strong>GRIPPER</strong>：预测 end-effector 的像素位置</li>
-<li><strong>OBJECTS</strong>：检测场景中物体的 bounding box 和名称</li>
+<li><strong>核心</strong>: 在 VLA 输出 action 前显式生成 grounded reasoning chain（task → plan → subtask → move → gripper pixel → object bboxes），把”语义 plan”和”视觉/状态 grounding”绑在一条自回归序列里</li>
+<li><strong>方法</strong>: 用 Prismatic VLM + Grounding DINO + OWLv2/SAM + Gemini 1.0 在 Bridge V2 (2.5M transitions) 上离线合成 reasoning 标注，再 SFT OpenVLA 让它先 think、再 act；推理时通过 N-step freeze 或 async 双实例摊销 reasoning token 开销</li>
+<li><strong>结果</strong>: 相比同数据训练的 OpenVLA 在 generalization 套件上 +28% 绝对成功率（66% vs 44% in-dist view，64% vs 30% OOD view），且超过 7× 大、训练数据更多的 RT-2-X；只用语义 CoT (Naïve CoT) 仅 48%，证明 grounded steps 是关键</li>
+<li><strong>Sources</strong>: <a href="https://arxiv.org/abs/2407.08693" class="external">paper<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://embodied-cot.github.io/" class="external">website<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://github.com/MichalZawalski/embodied-CoT" class="external">github<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><strong>Rating</strong>: 2 - Frontier（reasoning-VLA 范式的代表性 baseline，grounded CoT ablation 是后续工作必引的因果证据，但方法已被 hierarchical VLA 与更大规模的 reasoning recipe 逐步取代，未达到 de facto standard 的 Foundation 级别）</li>
 </ul>
-<p>关键区别在于 embodied grounding：模型必须预测精确的空间特征（gripper position + object bounding box），迫使其在生成 action 前关注视觉细节。</p>
-<p><strong>2. 合成数据生成 pipeline</strong></p>
+</div>
+</blockquote>
+<p><strong>Key Takeaways:</strong></p>
+<ol>
+<li><strong>Grounded > semantic CoT for VLAs</strong>: 在 VLA 上单纯做 task→subtask 拆分（Naïve CoT）几乎不涨点（48% vs OpenVLA 44%），加上 bbox + gripper pixel + low-level move primitive 才把 ECoT 拉到 66%。“think carefully” 必须配上 “look carefully”。</li>
+<li><strong>Reasoning 可以全部合成</strong>：用现成 VLM/detector/LLM 流水线就能在 2.5M transition 数据集上自动打标，不需要人写 CoT。这是把 CoT 从 LM domain 搬进 robotics 的关键工程贡献。</li>
+<li><strong>Reasoning chain 是天然的人机协作接口</strong>：让人改一句话 → ChatGPT rewrite reasoning → policy 沿用 corrected chain，使在最难任务上 +48%；vanilla OpenVLA / RT-2-X 同样的 language correction 几乎吃不上。</li>
+<li><strong>Cross-embodiment 泛化（弱版）</strong>：只在 WidowX 上提供 reasoning 标注，OXE-finetune 后模型能在没见过 reasoning 的 robot 上生成 plausible reasoning（包括端 effector 位置），暗示 reasoning skill 主要来自 VLM 先验而非 robot data。</li>
+<li><strong>Inference 成本是真问题</strong>：reasoning 把每步 token 从 7 → 350，N-step freeze (5-step) / async 双实例可摊销，但仍是 high-frequency control 的瓶颈。</li>
+</ol>
+<p><strong>Teaser. ECoT 把 VLA 的 “instruction → action” 改成 “instruction → TASK → PLAN → SUBTASK → MOVE → GRIPPER → OBJECTS → action” 的自回归链。</strong></p>
+<p><img src="https://arxiv.org/html/2407.08693v3/x1.png" alt/></p>
+<hr/>
+<h2 id="background为什么-vla-上-naive-cot-不行">Background：为什么 VLA 上 “naive CoT” 不行<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#background为什么-vla-上-naive-cot-不行" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>OpenVLA / RT-2 这一类 VLA 的标准 recipe 是：把 continuous action per-dim 离散化成 256 个 bin，复用 LLM tokenizer，然后 SFT 让 VLM 直接吐 action token。每步只预测 7 个 token（6-DoF + gripper），observation→action 之间没有任何中间表示。</p>
+<p>把 LM 的 CoT 直接搬过来会撞两个 wall：</p>
+<ol>
+<li><strong>Backbone 太弱</strong>：OpenVLA 用的是 Llama 2 7B，prompt 一句 “think step by step” 不会自动出现 emergent reasoning（Wei et al. 2022 已经显示这是 model size 阈值现象）。</li>
+<li><strong>纯 semantic CoT 不够</strong>：Robotics 的 plan 必须 ground 到当前 frame 里 “盘子在哪、夹爪在哪、下一步往哪走”。LM-style 的 “first pick up X, then place at Y” 拆分对动作选择的信息增益很小。</li>
+</ol>
+<blockquote>
+<p>❓ 这里有个隐含假设：reasoning 必须和 action 在同一个自回归序列里输出，不能 decoupled。论文没正面比较 “另开一个推理模型 + freezed 控制 head” 这种 ensemble。后续 hierarchical VLA（如 Helix、π0.5）实际上在挑战这个假设。</p>
+</blockquote>
+<hr/>
+<h2 id="方法ecot-的-reasoning-结构">方法：ECoT 的 reasoning 结构<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#方法ecot-的-reasoning-结构" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>ECoT 把 VLA 的输出序列扩展成 7 段 token：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>段</th><th>类型</th><th>内容</th><th>监督来源</th></tr></thead><tbody><tr><td>TASK</td><td>语义</td><td>rephrased instruction</td><td>Gemini 1.0</td></tr><tr><td>PLAN</td><td>语义</td><td>高层 sub-task 序列</td><td>Gemini 1.0</td></tr><tr><td>SUBTASK</td><td>语义+grounded</td><td>当前应执行哪个 sub-task</td><td>Gemini 1.0（基于 motion primitive）</td></tr><tr><td>MOVE</td><td>low-level grounded</td><td>”move left” / “move up” 等 729 种模板原语</td><td>proprioception → 模板分类</td></tr><tr><td>GRIPPER</td><td>spatial grounded</td><td>end-effector 在像素坐标</td><td>OWLv2 + SAM + RANSAC 投影矩阵</td></tr><tr><td>OBJECTS</td><td>spatial grounded</td><td>物体名 + bbox</td><td>Grounding DINO</td></tr><tr><td>ACTION</td><td>action</td><td>7 个离散 action token</td><td>原 demo</td></tr></tbody></table></div>
+<p><strong>Figure 3. Reasoning steps 的可视化</strong>：绿色为 “linguistic CoT”（task / plan / subtask），紫色为 “embodied CoT”（move / gripper / objects）。论文的 ablation 说明紫色这部分是性能提升的关键。</p>
+<p><img src="https://arxiv.org/html/2407.08693v3/x3.png" alt/></p>
+<h3 id="数据合成-pipeline">数据合成 pipeline<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#数据合成-pipeline" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Figure 4. ECoT 训练数据合成流水线。</strong></p>
+<p><img src="https://arxiv.org/html/2407.08693v3/x4.png" alt/></p>
+<p>具体步骤：</p>
+<ol>
+<li><strong>Scene description</strong>：Prismatic-7B VLM 给 image-instruction pair 生成场景描述。</li>
+<li><strong>Object bboxes</strong>：把 instruction + scene description 喂 Grounding DINO，过滤 box-conf > 0.3 / text-conf > 0.2。</li>
+<li><strong>Move primitives</strong>：用 robot proprioception 算未来 4 步的运动方向，分类到 729 个模板（“move left + open gripper” 之类）。</li>
+<li><strong>Gripper pixel position</strong>：OWLv2 + SAM 检测 2D end-effector 像素 → 配对 3D state → RANSAC 拟合 projection matrix → 拿 2D 投影做 GRIPPER 监督。<strong>关键点</strong>：每条轨迹独立拟合 projection matrix，不假设固定相机。</li>
+<li><strong>Reasoning chain</strong>：把 task instruction、scene description、per-step move primitives 整段喂给 Gemini 1.0，让它生成 plan + per-step subtask + 简短解释。</li>
+</ol>
+<p>整个 pipeline 在 Bridge V2（60k demos / 2.5M transitions）上跑了 7 天。</p>
+<blockquote>
+<p>❓ 监督信号的 noise upper bound 没有被报道。Grounding DINO miss / Gemini hallucinate 的频率在论文里只提了 “Appendix A 有例子”。如果合成 reasoning 与真实 sub-task 的对齐率只有 70-80%，模型其实是在拟合 noisy label，那 reasoning chain 的 “可解释性” claim 就要打折——它解释的是合成器的偏好，而不是 ground-truth task structure。</p>
+</blockquote>
+<h3 id="inference-加速">Inference 加速<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#inference-加速" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Reasoning 把每步 token 从 OpenVLA 的 7 → 350，朴素跑会把控制频率压到接近不可用。论文给了两种摊销：</p>
 <ul>
-<li>使用 Prismatic VLM 生成场景描述</li>
-<li>使用 Grounding DINO 和 OWLv2 检测物体 bounding box</li>
-<li>使用 SAM 检测 gripper 位置</li>
-<li>使用 Gemini 1.0 生成推理链文本</li>
-<li>在 Bridge V2 数据集（60k demonstrations）上自动生成训练数据，无需额外人工标注</li>
+<li><strong>Synchronous N-step freeze</strong>：每 N 步重新生成高层 reasoning（task/plan/subtask/objects），中间步只 re-encode 缓存的 reasoning + 重新生成 move/gripper/action。利用 Transformer prefill 比 decode 快得多的事实。</li>
+<li><strong>Asynchronous</strong>：开两个 policy 实例，A 持续刷新 reasoning，B 用最新 reasoning 输出 action。</li>
 </ul>
-<p><strong>3. 推理加速策略</strong></p>
+<p><strong>Table 2. 加速效果（25 trials, 3 个 task）</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>方法</th><th>Success</th><th>Speed-Up</th></tr></thead><tbody><tr><td>Naïve</td><td>63%</td><td>–</td></tr><tr><td>5-step freeze</td><td>72%</td><td>+24%</td></tr><tr><td>Async</td><td>65%</td><td>+40%</td></tr></tbody></table></div>
+<p>5-step 的 success 反而更高，论文归因为 “高层 reasoning 短期内本应保持稳定”。Async 加速更大但要双倍算力。</p>
+<blockquote>
+<p>❓ “5-step freeze 反而涨点” 在 25 trial / 3 task 的尺度上很可能是噪声。Async vs 5-step 的对比也没控制 wall-clock 下的等效 throughput。我会把这张表当 “至少不掉点” 的存在性证据，而不是 “freeze 更好” 的因果结论。</p>
+</blockquote>
+<hr/>
+<h2 id="实验">实验<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#实验" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="主结果generalization-suite">主结果：generalization suite<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#主结果generalization-suite" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table 1（精简版）</strong>：14 个 task，每方法 314 trials，分 in-dist view 和 OOD view。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>方法</th><th>ID View Aggregate</th><th>OOD View Aggregate</th><th>备注</th></tr></thead><tbody><tr><td>Octo</td><td>21% ± 3.3%</td><td>16% ± 2.9%</td><td>非 VLA baseline</td></tr><tr><td>OpenVLA (Bridge)</td><td>44% ± 3.9%</td><td>30% ± 3.6%</td><td>同数据 base policy</td></tr><tr><td>RT-2-X (55B)</td><td>47% ± 4.0%</td><td>48% ± 4.0%</td><td>7× 大 + 多 dataset</td></tr><tr><td>Naïve CoT (only semantic)</td><td>48% ± 4.0%</td><td>48% ± 4.0%</td><td>关键 ablation</td></tr><tr><td><strong>ECoT</strong></td><td><strong>66% ± 3.8%</strong></td><td><strong>64% ± 3.9%</strong></td><td></td></tr></tbody></table></div>
+<p>几个值得注意的对比：</p>
 <ul>
-<li><strong>5-step freeze</strong>：冻结部分推理步骤，复用前帧结果，加速 24%</li>
-<li><strong>Asynchronous execution</strong>：异步执行推理和控制，加速 40%</li>
+<li><strong>ECoT vs OpenVLA (Bridge)</strong>：同 base、同数据，纯靠 reasoning supervision 涨 22% / 34%。这是论文最强的因果证据。</li>
+<li><strong>ECoT vs RT-2-X</strong>：ECoT 用了更小的模型 + 更少 robot data，但 generalization tasks 上反而更高。说明 inference-time reasoning 在数据效率上 dominate scaling parameters/data。</li>
+<li><strong>ECoT vs Naïve CoT</strong>：Naïve CoT（仅 semantic plan/subtask）只比 OpenVLA 涨一点点，到 ECoT 的 +18% 几乎完全来自 grounded steps（move + gripper + objects）。<strong>这是这篇论文最想 land 的 insight</strong>。</li>
 </ul>
-<h2 id="key-results">Key Results<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-results" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Figure 5. Qualitative reasoning examples（左/中成功，右失败）。</strong> 失败例子里 ECoT 把 hammer 错认成 screwdriver，导致下游动作错误——但 reasoning chain 让这个错误可以被人看见、被人修。</p>
+<p><img src="https://arxiv.org/html/2407.08693v3/x5.png" alt/></p>
+<h3 id="人类语言-correction">人类语言 correction<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#人类语言-correction" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>在最难的 3 个 task subset（put mushroom in cup / pick up OOD object / pick up non-yellow object）上，ECoT 不带 intervention 只有 32%。流程：人在 episode 中插一句 NL 提示（“the cup is tall”）→ ChatGPT 把这句话整合进 reasoning chain → policy 用 corrected chain 继续跑 5 步。</p>
+<p><strong>Figure 6. NL intervention 让 ECoT 在最难 task 上 +48%；OpenVLA 和 RT-2-X 同样给 NL hint 几乎吃不上。</strong></p>
+<p><img src="https://arxiv.org/html/2407.08693v3/x6.png" alt/></p>
+<p>这个能力是 “免费” 的——没专门训 correction，纯粹是 reasoning chain 的副产品。和后来 <a href="../Papers/2502-OpenVLA-OFT" class="internal alias" data-slug="Papers/2502-OpenVLA-OFT">OpenVLA-OFT</a> 去掉 reasoning 换 throughput 形成有意思的张力：reasoning 既是性能负担也是 affordance。</p>
+<h3 id="ablationdesign-choices">Ablation：design choices<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#ablationdesign-choices" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table 3（OOD view subset, 106 trials）</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>设计</th><th>Aggregate</th></tr></thead><tbody><tr><td>Base ECoT</td><td>69%</td></tr><tr><td>Frozen Bbox（bbox 提到 plan 之后，可 freeze）</td><td>60%</td></tr><tr><td>Co-trained（+ Prismatic VL data, 3:1）</td><td>56%</td></tr><tr><td>Fine-tuned（OXE checkpoint warm-start）</td><td>54%</td></tr><tr><td>OpenVLA (Bridge)</td><td>29%</td></tr><tr><td>RT-2-X</td><td>46%</td></tr></tbody></table></div>
+<p>几个观察：</p>
 <ul>
-<li><strong>vs OpenVLA baseline</strong>：泛化任务绝对成功率 +28%（66% vs 44% in-distribution，64% vs 30% out-of-distribution）</li>
-<li><strong>vs RT-2-X（55B）</strong>：以 7B 参数超越 55B 模型</li>
-<li><strong>vs Octo</strong>：绝对提升 +45%</li>
-<li><strong>Naive CoT vs ECoT</strong>：48% vs 66%，证明 embodied grounding 是关键</li>
-<li><strong>Spatial relation tasks</strong>：相比 OpenVLA 提升 45%</li>
-<li><strong>Interactive correction</strong>：通过自然语言纠错，challenging tasks 成功率提升 48%</li>
-<li><strong>Cross-embodiment transfer</strong>：在 OXE 数据集的 27 种 robot 上训练后，ECoT reasoning 可迁移到训练时未见过的 embodiment</li>
-<li><strong>Fine-tuning 效率</strong>：从 OXE checkpoint fine-tune 仅需 1/4 步数（20k vs 80k），compute 降低 30x</li>
+<li>所有 4 个 ECoT 变体都 > RT-2-X / OpenVLA。</li>
+<li><strong>Co-training 没涨点</strong>，但定性上保留了 conversational 能力（“bring coke can to Taylor Swift” 4/4）。</li>
+<li><strong>Fine-tune from OXE 只用 20k step 就匹配 from-scratch 80k step 的性能</strong>——4× compute reduction，定性上 2.5k step 就能用，30× reduction。意味着 reasoning supervision 是 “post-training 性质” 的能力，可以增量加到现成 VLA 上。</li>
 </ul>
-<h2 id="strengths--weaknesses">Strengths &amp; Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths--weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p><strong>Strengths</strong>:</p>
+<h3 id="cross-embodiment-转移">Cross-embodiment 转移<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#cross-embodiment-转移" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Figure 7. OXE fine-tuned ECoT 在没见过 reasoning 标注的 robot 上生成合理 reasoning（识别新 gripper、bbox、未来 gripper 轨迹）。</strong></p>
+<p><img src="https://arxiv.org/html/2407.08693v3/x7.png" alt/></p>
+<p>只在 WidowX 上有 reasoning 标注，但 OXE-finetune 后模型能在其他 embodiment 上”凭空”生成 reasoning。论文给出的解释：VLM 先验把 “end-effector”、“bbox”、“object identity” 这些概念跨 robot 泛化了。</p>
+<p><strong>SIMPLER caveat</strong>：在 SIMPLER real-to-sim 上跑 Google Robot 任务，real-to-sim 的 domain gap 让 reasoning chain 出错率变高，整体 success 没超过 OpenVLA baseline。这是论文比较诚实的 negative result。</p>
+<hr/>
+<h2 id="关联工作">关联工作<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#关联工作" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="基于">基于<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#基于" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li>将 chain-of-thought 推理成功引入 robotics，且关键创新在于 embodied grounding（gripper + bbox 预测），而非简单文本推理</li>
-<li>合成数据 pipeline 完全自动化，不需要额外 robot 数据采集，可扩展性强</li>
-<li>28% 绝对提升非常显著，且在多种 OOD 场景下一致有效</li>
-<li>推理链天然提供可解释性，支持人类通过自然语言纠正 policy 行为</li>
-<li>开源基础（基于 OpenVLA），社区可复现</li>
+<li><a href="../Papers/2406-OpenVLA" class="internal alias" data-slug="Papers/2406-OpenVLA">OpenVLA</a>: ECoT 的 base policy 和训练 codebase。所有实验都是 OpenVLA + reasoning supervision 的对比。</li>
+<li>Prismatic VLM: OpenVLA 的视觉 backbone（SigLIP + DINOv2 + Llama 2 7B）；同时也是 ECoT 数据合成的 scene description 生成器</li>
+<li>Bridge V2 dataset: ECoT reasoning 标注完全建在这个 dataset 上（60k demos / 2.5M transitions）</li>
 </ul>
-<p><strong>Weaknesses</strong>:</p>
+<h3 id="对比">对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li>推理结构固定（六步顺序执行），未能根据场景复杂度自适应选择推理步骤</li>
-<li>推理链引入额外 inference latency，即使有加速策略仍限制高频控制场景</li>
-<li>仅在 WidowX 机器人上生成训练数据，cross-embodiment 的 ECoT 数据扩展有待验证</li>
-<li>Real-to-sim transfer（SIMPLER 环境）中推理链质量下降，domain gap 问题未解决</li>
-<li>依赖多个外部模型（Gemini、Grounding DINO、SAM）生成训练数据，pipeline 复杂度高</li>
+<li><a href="../Papers/2307-RT2" class="internal alias" data-slug="Papers/2307-RT2">RT-2</a> / RT-2-X: 同期最强 closed VLA，55B + OXE 全集训练；ECoT 用 7B + 单 dataset 反超</li>
+<li><a href="../Papers/2405-Octo" class="internal alias" data-slug="Papers/2405-Octo">Octo</a>: 非 VLA generalist policy，作为 baseline</li>
+<li>Naïve CoT (论文自己的 ablation): 只有 semantic plan/subtask，没有 grounded steps</li>
 </ul>
-<h2 id="mind-map">Mind Map<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mind-map" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;mindmap\n  root((ECoT))\n    Problem\n      VLA 缺乏推理能力\n      Naive CoT 无法 ground 到视觉\n      OOD 泛化能力不足\n    Method\n      六步 embodied reasoning chain\n        Task → Plan → Subtask\n        Move → Gripper → Objects\n      Embodied grounding\n        Gripper pixel position\n        Object bounding boxes\n      合成数据 pipeline\n        Prismatic VLM\n        Grounding DINO + SAM\n        Gemini 1.0\n      推理加速\n        5-step freeze\n        Async execution\n    Results\n      成功率 +28% over OpenVLA\n      超越 RT-2-X 55B\n      Spatial tasks +45%\n      Cross-embodiment transfer\n      Human correction +48%\n    Limitations\n      固定推理结构\n      Inference latency\n      仅 WidowX 训练数据&quot;">mindmap
-  root((ECoT))
-    Problem
-      VLA 缺乏推理能力
-      Naive CoT 无法 ground 到视觉
-      OOD 泛化能力不足
-    Method
-      六步 embodied reasoning chain
-        Task → Plan → Subtask
-        Move → Gripper → Objects
-      Embodied grounding
-        Gripper pixel position
-        Object bounding boxes
-      合成数据 pipeline
-        Prismatic VLM
-        Grounding DINO + SAM
-        Gemini 1.0
-      推理加速
-        5-step freeze
-        Async execution
-    Results
-      成功率 +28% over OpenVLA
-      超越 RT-2-X 55B
-      Spatial tasks +45%
-      Cross-embodiment transfer
-      Human correction +48%
-    Limitations
-      固定推理结构
-      Inference latency
-      仅 WidowX 训练数据
-</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
-<h2 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="方法相关">方法相关<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#方法相关" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li>ECoT 的核心洞察：robot 领域的 CoT 不能只是语义推理，必须 ground 到视觉空间特征——这一点通过 naive CoT（48%）vs ECoT（66%）的对比得到验证</li>
-<li>合成数据 pipeline 的设计思路值得借鉴：利用现有 foundation models（VLM + detection + LLM）自动生成 reasoning annotation，避免昂贵的人工标注</li>
-<li>推理链的可解释性和人类纠错能力是一个重要的附加价值——这在实际 robot 部署中非常实用</li>
-<li>未来方向：自适应推理步骤选择、更大规模 cross-embodiment ECoT 数据生成、与 flow matching action head 结合</li>
-</ul></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="uevi3i" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#problem--motivation" data-for="problem--motivation">Problem &amp; Motivation</a></li><li class="depth-0"><a href="#method" data-for="method">Method</a></li><li class="depth-0"><a href="#key-results" data-for="key-results">Key Results</a></li><li class="depth-0"><a href="#strengths--weaknesses" data-for="strengths--weaknesses">Strengths &amp; Weaknesses</a></li><li class="depth-0"><a href="#mind-map" data-for="mind-map">Mind Map</a></li><li class="depth-0"><a href="#notes" data-for="notes">Notes</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+<li>Grounding DINO: 数据合成中的开放词表 detector，用于 OBJECTS bbox</li>
+<li>OWLv2 + SAM: 用于检测 end-effector 像素位置（GRIPPER 监督）</li>
+<li>Gemini 1.0: 把 motion primitives + scene description 整合成自然语言 reasoning chain 的 LM</li>
+<li>Chain-of-Thought (Wei et al. 2022): 概念上的祖先，但 ECoT 论证了纯 LM-style CoT 不够</li>
+</ul>
+<h3 id="后续--受影响">后续 / 受影响<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#后续--受影响" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Fast ECoT (arxiv 2506.07639): 通过 thoughts reuse 进一步加速 ECoT inference</li>
+<li>后续 reasoning VLA 系列（CoT-VLA、PhysVLM 等）大量复用本文的合成 pipeline 思路</li>
+</ul>
+<hr/>
+<h2 id="论文点评">论文点评<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#论文点评" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="strengths">Strengths<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>关键 ablation 设计干净</strong>：Naïve CoT vs ECoT 的对比直接锁定 “embodied/grounded steps” 是性能来源，而不是 “reasoning 这个动作本身” 或 “训练数据更多”。比很多 CoT 论文（“加了就涨，不知道为啥涨”）严谨。</li>
+<li><strong>数据合成 pipeline 是真贡献</strong>：把 VLM + open-vocab detector + LLM 拼成自动标注器，2.5M transitions 全标。这套流水线后续直接被多个 reasoning VLA / world model paper 复用（Fast ECoT、CoT-VLA 等）。</li>
+<li><strong>同 base + 同数据的 controlled comparison</strong>：ECoT vs OpenVLA (Bridge) 把所有变量控住，唯一区别是 reasoning supervision，因果归因比 RT-2-X 类对比清晰得多。</li>
+<li><strong>Inference 加速预案</strong>：N-step freeze / async 这两招很朴素但有效，承认了 reasoning 不是 free lunch，没把 throughput 问题藏起来。</li>
+<li><strong>Negative result 诚实</strong>：SIMPLER 上 cross-embodiment 失败被明写出来。</li>
+</ol>
+<h3 id="weaknesses">Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>Reasoning structure 是 hardcoded 的 7 段</strong>。论文自己也承认 “always performs all steps in fixed order”。task 简单时纯属浪费 token；task 复杂时这 7 段又未必够。后续的 adaptive reasoning（按需出 plan）是显然的下一步。</li>
+<li><strong>合成 reasoning 的质量没有量化</strong>。Grounding DINO miss rate、Gemini hallucination rate 只字未提。如果 supervision 本身有 20% noise，那 “ECoT chain 可解释性” 这个 claim 实际上是 “可解释合成器的行为”。</li>
+<li><strong>314 trial / task suite 仍偏小</strong>。每 task 8-10 个 trial，主表里很多单元格的 ±10-20% 波动可能纯噪声，应该看 aggregate 而不是单 task 排名。</li>
+<li><strong>没和 hierarchical VLA 对比</strong>。同时期 / 后续的 hierarchical 方案（high-level VLM planner + low-level policy）在功能上和 ECoT 高度重合，但 ECoT 是 single-stream autoregressive，hierarchical 是 decoupled。两者 trade-off 没在论文里讨论。</li>
+<li><strong>Inference 成本仍然是阻塞性的</strong>：350 token/step + 5-step freeze 大约对应 ~1-2 Hz 控制频率，对 dexterous manipulation 远不够。论文承认了，但没给 path forward 数据。</li>
+</ol>
+<h3 id="可信评估">可信评估<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#可信评估" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="artifact-可获取性">Artifact 可获取性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#artifact-可获取性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><strong>代码</strong>: inference + training（github 提供 train 脚本和 eval 脚本）</li>
+<li><strong>模型权重</strong>: <code>Embodied-CoT/ecot-openvla-7b-bridge</code>（Bridge 80k step 主模型）和 <code>Embodied-CoT/ecot-openvla-7b-oxe</code>（OXE 20k fine-tuned）已发布到 HuggingFace</li>
+<li><strong>训练细节</strong>: 高层细节齐全（80k steps, 8-GPU, prism-dinosiglip-224px+mx-bridge config），具体超参在 OpenVLA repo 里继承</li>
+<li><strong>数据集</strong>: 开源——<code>Embodied-CoT/embodied_features_bridge</code>（reasoning 标注 dataset）+ Bridge V2（已开源）</li>
+</ul>
+<h4 id="claim-可验证性">Claim 可验证性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#claim-可验证性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>✅ ECoT vs OpenVLA(Bridge) +28% 绝对：Table 1 同 base 同数据对比，因果干净</li>
+<li>✅ Naïve CoT 仅 +4% vs OpenVLA：直接证明 grounded reasoning 是关键，ablation 设计合理</li>
+<li>✅ Reasoning 标注全自动 + 公开：可以独立复现 pipeline</li>
+<li>✅ Cross-embodiment reasoning（图 7）：模型权重公开，可以自己 prompt 测</li>
+<li>⚠️ “ECoT 超过 RT-2-X”：confound 较多——ECoT 只在 Bridge 上 fine-tune 而 RT-2-X 用 OXE 全集，但 ECoT eval task 又恰好和 Bridge task 分布更接近，难以判断是 reasoning 的胜利还是 task-data 匹配的胜利</li>
+<li>⚠️ “Reasoning chain 提供可解释性”：依赖于合成 supervision 的可信度，论文没量化 reasoning 与执行的对齐率</li>
+<li>⚠️ “5-step freeze > Naïve（72% vs 63%）“：25 trial 量级，差异在噪声范围内，应理解为 “至少不掉” 而不是 “更优”</li>
+</ul>
+<h3 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>核心 insight crystallization</strong>：reasoning 要 work 必须 grounded。Naïve semantic CoT (+4%) vs ECoT (+22%) 这个对比是过去几年 robot reasoning 论文里最干净的因果证据之一。任何后续做 “reasoning for control” 的 paper 都应该把 grounded vs semantic ablation 作为标配。</li>
+<li><strong>Single-stream vs hierarchical 的 long-term 张力</strong>：ECoT 把 reasoning 和 action 塞进同一个自回归序列，好处是端到端可训、reasoning chain 直接影响 action distribution；坏处是 inference 成本和 reasoning structure 都被锁死。后来 <a href="../Papers/2510-GeminiRobotics15" class="internal alias" data-slug="Papers/2510-GeminiRobotics15">Gemini Robotics 1.5</a> 之类的 hierarchical 方案正面挑战了这个 design choice。两者各自的 sweet spot 还没有定论，值得跟进。</li>
+<li><strong>数据合成 pipeline 的可推广性</strong>：这套 “VLM + detector + LLM” 的 pseudo-label pipeline 可以直接迁移到任何 image-action dataset 上生成 reasoning supervision。对自己以后做 VLA / spatial reasoning 数据集时是直接可复用的 template。</li>
+<li><strong>Human correction 这条线被低估了</strong>：论文当成附属实验，但这其实是 ECoT 区别于其他 VLA 的最强 affordance——reasoning chain 让 NL 人机协作在 zero-shot 下就 work。值得单独深挖。</li>
+<li><strong>可改进方向</strong>：(1) Adaptive reasoning structure（task-dependent，省 token）；(2) RL on reasoning quality（比如 GRPO + verifier）；(3) reasoning chain 与 action 的 alignment 量化（多少比例的 plan 真的指导了 action？）。</li>
+</ul>
+<h3 id="rating">Rating<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#rating" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>分数</strong>：2 - Frontier
+<strong>理由</strong>：ECoT 是 “reasoning VLA” 范式的代表性 baseline，Naïve CoT vs ECoT 的 grounded-reasoning ablation（+4% vs +22%）被后续 reasoning-for-control 工作反复引用为标准因果证据，Fast ECoT / CoT-VLA / PhysVLM 等后续论文直接复用其数据合成 pipeline——这些是 Frontier 级别的社区影响。但它尚未达到 Foundation：方法本身（hardcoded 7 段 + single-stream autoregressive + 1-2 Hz 控制频率）已被 hierarchical VLA（Helix、π0.5、Gemini Robotics 1.5）和更大规模 reasoning recipe 部分取代，不是必读的奠基工作；作为 benchmark 也未成为 de facto standard。在 “SOTA 必比较 baseline + 方法范式代表” 的 Frontier 档更贴切。</p></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="ud8fg4" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#background为什么-vla-上-naive-cot-不行" data-for="background为什么-vla-上-naive-cot-不行">Background：为什么 VLA 上 “naive CoT” 不行</a></li><li class="depth-0"><a href="#方法ecot-的-reasoning-结构" data-for="方法ecot-的-reasoning-结构">方法：ECoT 的 reasoning 结构</a></li><li class="depth-1"><a href="#数据合成-pipeline" data-for="数据合成-pipeline">数据合成 pipeline</a></li><li class="depth-1"><a href="#inference-加速" data-for="inference-加速">Inference 加速</a></li><li class="depth-0"><a href="#实验" data-for="实验">实验</a></li><li class="depth-1"><a href="#主结果generalization-suite" data-for="主结果generalization-suite">主结果：generalization suite</a></li><li class="depth-1"><a href="#人类语言-correction" data-for="人类语言-correction">人类语言 correction</a></li><li class="depth-1"><a href="#ablationdesign-choices" data-for="ablationdesign-choices">Ablation：design choices</a></li><li class="depth-1"><a href="#cross-embodiment-转移" data-for="cross-embodiment-转移">Cross-embodiment 转移</a></li><li class="depth-0"><a href="#关联工作" data-for="关联工作">关联工作</a></li><li class="depth-1"><a href="#基于" data-for="基于">基于</a></li><li class="depth-1"><a href="#对比" data-for="对比">对比</a></li><li class="depth-1"><a href="#方法相关" data-for="方法相关">方法相关</a></li><li class="depth-1"><a href="#后续--受影响" data-for="后续--受影响">后续 / 受影响</a></li><li class="depth-0"><a href="#论文点评" data-for="论文点评">论文点评</a></li><li class="depth-1"><a href="#strengths" data-for="strengths">Strengths</a></li><li class="depth-1"><a href="#weaknesses" data-for="weaknesses">Weaknesses</a></li><li class="depth-1"><a href="#可信评估" data-for="可信评估">可信评估</a></li><li class="depth-1"><a href="#notes" data-for="notes">Notes</a></li><li class="depth-1"><a href="#rating" data-for="rating">Rating</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
 </script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
 </script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>

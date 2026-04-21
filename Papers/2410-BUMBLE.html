@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><title>BUMBLE: Unifying Reasoning and Acting with Vision-Language Models for Building-wide Mobile Manipulation</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="BUMBLE: Unifying Reasoning and Acting with Vision-Language Models for Building-wide Mobile Manipulation"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="BUMBLE: Unifying Reasoning and Acting with Vision-Language Models for Building-wide Mobile Manipulation"/><meta name="twitter:description" content="Summary BUMBLE 是一个基于 VLM 的 building-scale mobile manipulation 框架，通过整合 open-world perception（Grounded-SAM）、参数化 skill library、dual-layered memory（短期执行历史 + 长期失败经验）和 VLM reasoning，实现跨楼层、跨房间的长 ..."/><meta property="og:description" content="Summary BUMBLE 是一个基于 VLM 的 building-scale mobile manipulation 框架，通过整合 open-world perception（Grounded-SAM）、参数化 skill library、dual-layered memory（短期执行历史 + 长期失败经验）和 VLM reasoning，实现跨楼层、跨房间的长 ..."/><meta property="og:image:alt" content="Summary BUMBLE 是一个基于 VLM 的 building-scale mobile manipulation 框架，通过整合 open-world perception（Grounded-SAM）、参数化 skill library、dual-layered memory（短期执行历史 + 长期失败经验）和 VLM reasoning，实现跨楼层、跨房间的长 ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2410-BUMBLE"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2410-BUMBLE"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary BUMBLE 是一个基于 VLM 的 building-scale mobile manipulation 框架，通过整合 open-world perception（Grounded-SAM）、参数化 skill library、dual-layered memory（短期执行历史 + 长期失败经验）和 VLM reasoning，实现跨楼层、跨房间的长 ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+<html lang="en"><head><title>BUMBLE: Unifying Reasoning and Acting with Vision-Language Models for Building-wide Mobile Manipulation</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="BUMBLE: Unifying Reasoning and Acting with Vision-Language Models for Building-wide Mobile Manipulation"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="BUMBLE: Unifying Reasoning and Acting with Vision-Language Models for Building-wide Mobile Manipulation"/><meta name="twitter:description" content="Summary BUMBLE: Unifying Reasoning and Acting with VLMs for Building-wide Mobile Manipulation 核心: 用单一 VLM 作为中央 reasoner，统一感知 / 技能 / 记忆，端到端解决 building-scale 的 mobile manipulation——跨楼层、跨房间、长达 ..."/><meta property="og:description" content="Summary BUMBLE: Unifying Reasoning and Acting with VLMs for Building-wide Mobile Manipulation 核心: 用单一 VLM 作为中央 reasoner，统一感知 / 技能 / 记忆，端到端解决 building-scale 的 mobile manipulation——跨楼层、跨房间、长达 ..."/><meta property="og:image:alt" content="Summary BUMBLE: Unifying Reasoning and Acting with VLMs for Building-wide Mobile Manipulation 核心: 用单一 VLM 作为中央 reasoner，统一感知 / 技能 / 记忆，端到端解决 building-scale 的 mobile manipulation——跨楼层、跨房间、长达 ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2410-BUMBLE"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2410-BUMBLE"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary BUMBLE: Unifying Reasoning and Acting with VLMs for Building-wide Mobile Manipulation 核心: 用单一 VLM 作为中央 reasoner，统一感知 / 技能 / 记忆，端到端解决 building-scale 的 mobile manipulation——跨楼层、跨房间、长达 ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
   position: absolute;
   display: flex;
   float: right;
@@ -116,168 +116,349 @@ pre:hover > .expand-button {
   padding: 0 12px;
   font-size: 14px;
 }
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2410-BUMBLE"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="gc1ghh"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/RL" class="sidebar-tag-pill">#RL</a><a href="/mindflow/tags/web-agent" class="sidebar-tag-pill">#web-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/scene-understanding" class="sidebar-tag-pill">#scene-understanding</a><a href="/mindflow/tags/instruction-following" class="sidebar-tag-pill">#instruction-following</a><a href="/mindflow/tags/cross-embodiment" class="sidebar-tag-pill">#cross-embodiment</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2410-BUMBLE</a></div></nav><h1 class="article-title">BUMBLE: Unifying Reasoning and Acting with Vision-Language Models for Building-wide Mobile Manipulation</h1><div class="paper-meta"><span class="paper-venue">arXiv</span><span class="paper-authors"><span class="meta-sep">·</span>Rutav Shah <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, Albert Yu</span><span>, Yifeng Zhu</span><span>, Yuke Zhu</span><span>, Roberto Martín-Martín</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2024-10-01T00:00:00.000Z">Oct 01, 2024</time><span>8 min read</span></p><ul class="tags"><li><a href="../tags/mobile-manipulation" class="internal tag-link">mobile-manipulation</a></li><li><a href="../tags/VLM" class="internal tag-link">VLM</a></li><li><a href="../tags/task-planning" class="internal tag-link">task-planning</a></li><li><a href="../tags/navigation" class="internal tag-link">navigation</a></li><li><a href="../tags/spatial-memory" class="internal tag-link">spatial-memory</a></li><li><a href="../tags/instruction-following" class="internal tag-link">instruction-following</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>BUMBLE 是一个基于 VLM 的 building-scale mobile manipulation 框架，通过整合 open-world perception（Grounded-SAM）、参数化 skill library、dual-layered memory（短期执行历史 + 长期失败经验）和 VLM reasoning，实现跨楼层、跨房间的长 horizon 服务机器人任务。在 3 栋建筑 70 次试验中达到 47.1% 成功率，比 COME baseline 高 12.1 个百分点。</p>
-<h2 id="problem--motivation">Problem &amp; Motivation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#problem--motivation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>Building-wide mobile manipulation 要求机器人在建筑尺度上完成长 horizon 任务：跨楼层导航（使用电梯）、与未见过的多样物体交互、处理随机障碍物。现有方法各有短板：</p>
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2410-BUMBLE"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="mm0h7i"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/embodied-reasoning" class="sidebar-tag-pill">#embodied-reasoning</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/computer-use" class="sidebar-tag-pill">#computer-use</a><a href="/mindflow/tags/agentic-RL" class="sidebar-tag-pill">#agentic-RL</a><a href="/mindflow/tags/gui-agent" class="sidebar-tag-pill">#gui-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/world-model" class="sidebar-tag-pill">#world-model</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2410-BUMBLE</a></div></nav><h1 class="article-title">BUMBLE: Unifying Reasoning and Acting with Vision-Language Models for Building-wide Mobile Manipulation</h1><div class="paper-meta"><span class="paper-venue">ICRA 2025</span><span class="paper-authors"><span class="meta-sep">·</span>Rutav Shah <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, Albert Yu</span><span>, Yifeng Zhu</span><span>, Yuke Zhu</span><span>, Roberto Martín-Martín</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2024-10-08T00:00:00.000Z">Oct 08, 2024</time><span>18 min read</span></p><ul class="tags"><li><a href="../tags/mobile-manipulation" class="internal tag-link">mobile-manipulation</a></li><li><a href="../tags/embodied-reasoning" class="internal tag-link">embodied-reasoning</a></li><li><a href="../tags/task-planning" class="internal tag-link">task-planning</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>BUMBLE: Unifying Reasoning and Acting with VLMs for Building-wide Mobile Manipulation </p></div>
+                  
+                </div>
+<div class="callout-content">
 <ul>
-<li><strong>TAMP</strong> 依赖预定义 symbolic abstraction，无法处理 open-world 场景</li>
-<li><strong>LLM-based</strong> 方法缺乏 grounded visual reasoning</li>
-<li><strong>已有 VLM 方法</strong>（如 COME）缺少多样化运动技能和长期记忆能力</li>
+<li><strong>核心</strong>: 用单一 VLM 作为中央 reasoner，统一感知 / 技能 / 记忆，端到端解决 building-scale 的 mobile manipulation——跨楼层、跨房间、长达 12 步、15 分钟的长程任务</li>
+<li><strong>方法</strong>: VLM (GPT-4o) + GSAM 开放词汇感知 + 8 个参数化技能（GoToLandmark / UseElevator / Pickup / PushObjOnGround / OpenDoor / …）+ 双层记忆（短期：当前 trial 的 state-action history；长期：跨 trial 的失败案例）+ Set-of-Mark + CoT 提示</li>
+<li><strong>结果</strong>: 70 trials × 3 buildings × 3 tasks，47.1% 成功率；OfflineSkillDataset 上 80.2%（vs COME 72.6% / Inner-Monologue 61.7%）；用户研究 Likert 3.7/5.0（COME 2.6）</li>
+<li><strong>Sources</strong>: <a href="https://arxiv.org/abs/2410.06237" class="external">paper<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://robin-lab.cs.utexas.edu/BUMBLE/" class="external">website<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://github.com/UT-Austin-RobIn/BUMBLE" class="external">github<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><strong>Rating</strong>: 2 - Frontier（building-wide MoMa 是有价值的 problem formulation 扩展 + 真机大规模评估；但 47.1% SR、依赖大量人工先验、任务模板有限，属重要参考而非 de facto 基础）</li>
 </ul>
-<p>作者的核心论点是：VLM 可以作为统一的 reasoning 和 acting 模块，但需要配合恰当的 perception、skill library 和 memory 机制才能在 building scale 工作。</p>
-<h2 id="method">Method<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#method" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<h3 id="1-open-world-perception">1. Open-World Perception<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-open-world-perception" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p>使用 <strong>Grounded-SAM</strong>（GroundingDINO + SAM-HQ）进行 pixel-level object segmentation：</p>
+</div>
+</blockquote>
+<p><strong>Key Takeaways:</strong></p>
+<ol>
+<li><strong>Building-wide MoMa as a benchmark</strong>: 把 mobile manipulation 的范围从单个房间扩到整栋楼（多楼层、电梯、走廊、未知房间），并通过 12-step / 15-min 的 long-horizon 任务暴露出现有 VLM-based 方法的 memory &amp; skill library 短板</li>
+<li><strong>双层记忆是关键 trick</strong>: 短期记忆维护 trial 内 state-action 链供 VLM 反思失败；长期记忆跨 trial 累积人工标注的失败案例，本质是把 in-context lesson 当作离线”经验池”</li>
+<li><strong>SoM + CoT 是必需的接口</strong>: Ablation 显示去掉 CoT 掉 19.5pt，去掉 SoM 掉 31pt——直接让 VLM 描述目标对象再交给 GSAM 分割效果差很多（“diet Dr. Pepper” 类细粒度失败）</li>
+<li><strong>能 scale 到更强的 VLM</strong>: 在 Claude/Gemini/GPT 三个系列、共 8 个 checkpoint 上验证，技能参数预测随 VLM 能力上升单调改善——框架本身随基座增益自动受惠</li>
+</ol>
+<p><strong>Teaser. Building-wide MoMa 的任务示例与 BUMBLE 的执行轨迹。</strong>
+<video src="https://robin-lab.cs.utexas.edu/BUMBLE/static/videos/BUMBLE_header_small.mp4" controls muted playsinline width="720"></video></p>
+<hr/>
+<h2 id="building-wide-mobile-manipulation问题定义">Building-wide Mobile Manipulation：问题定义<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#building-wide-mobile-manipulation问题定义" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>作者把”楼栋级 mobile manipulation”作为 first-class 问题提出来：机器人需要</p>
 <ul>
-<li>从 RGB 分割前景可交互物体</li>
-<li>反投影 depth 信息计算物体点云和距离</li>
-<li>为 manipulation 决策提供精确的空间信息</li>
+<li>跨楼层（坐电梯）、跨房间（穿门）、长走廊导航</li>
+<li>处理走廊里的随机障碍（椅子、湿滑警示牌、纸箱）→ 不只是绕开，常需要主动 push / open</li>
+<li>在杂乱场景里识别开放词汇目标（“diet soda”、“green marker”）</li>
+<li>串联 ≤ 12 个 ground-truth skill、单次执行 15 分钟（不计 VLM 查询时间）</li>
 </ul>
-<h3 id="2-parameterized-skill-library">2. Parameterized Skill Library<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-parameterized-skill-library" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p>分为三类共 7+ 个 skill：</p>
-<p><strong>导航类</strong>：</p>
+<p><strong>Figure 1. Building-wide MoMa 的典型场景。</strong>
+<img src="https://arxiv.org/html/2410.06237v1/x1.png" alt/></p>
+<blockquote>
+<p>❓ 12-step / 15-min 这个 horizon 在 mobile manipulation 文献里算长，但相比 Habitat / OVMM 这些离线 benchmark 还是手工设定的 3 个任务模板，并没有 task generator。“building-wide” 更像是规模上的扩展，而非任务多样性的扩展。</p>
+</blockquote>
+<hr/>
+<h2 id="方法bumble-架构">方法：BUMBLE 架构<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#方法bumble-架构" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>整体架构如 Figure 3 所示：VLM 作为中心 controller，每一步迭代地 (1) 接收 RGBD 观察 + 任务指令 + 长短期记忆，(2) 预测下一个 subtask + skill，(3) 预测 skill 的参数，(4) 执行并把结果写回短期记忆。</p>
+<p><strong>Figure 3. BUMBLE 架构。</strong> Skill library（左上）+ 短/长期记忆（中下/左下）+ RGBD 感知（左上）→ 参数化技能预测（右上）→ 执行 → 写入短期记忆（右下）。</p>
+<p><img src="https://arxiv.org/html/2410.06237v1/x3.png" alt/></p>
+<p><video src="https://robin-lab.cs.utexas.edu/BUMBLE/static/videos/BUMBLE_method_video.mp4" controls muted playsinline width="720"></video></p>
+<h3 id="感知系统gsam--rgbd-back-projection">感知系统：GSAM + RGBD back-projection<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#感知系统gsam--rgbd-back-projection" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>不直接把 RGB 喂给 VLM 做 grounding，而是先用 <strong>Grounded-SAM</strong>（GroundingDINO + SAM-HQ）做开放词汇分割，再用深度图反投影出物体点云、计算物体到机器人的距离。理由是：分割模型在像素级精度上比 VLM 强，且 VLM 不会读 depth/point cloud。</p>
+<blockquote>
+<p>❓ 这等于把 “VLM 直接看图说话” 退化为 “VLM 在 SoM 标注的 RGB 上做选择”——简化了 VLM 的任务，但也把感知瓶颈外包给 GSAM。后面 ablation 证实”去掉 SoM 让 VLM 自由描述”会差 31pt，说明 GSAM 在 fine-grained 分割上仍是短板。</p>
+</blockquote>
+<h3 id="skill-library8-个参数化技能">Skill Library：8 个参数化技能<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#skill-library8-个参数化技能" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>技能列表（按粒度从粗到细）：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Skill</th><th>参数</th><th>描述</th></tr></thead><tbody><tr><td><code>GoToLandmark</code></td><td>landmark image</td><td>用 topological map（landmark 图为节点） + 2D occupancy map 做跨房间导航</td></tr><tr><td><code>NavigateNearObj</code></td><td>object segmentation</td><td>走到可见 object 附近</td></tr><tr><td><code>MoveBase</code></td><td>direction (F/B/L/R)</td><td>30 cm 微调，仅在最后 few meters 用</td></tr><tr><td><code>Pickup</code></td><td>object segmentation</td><td>左臂抓取</td></tr><tr><td><code>PushObjOnGround</code></td><td>object seg, direction</td><td>推开障碍 / 重排</td></tr><tr><td><code>OpenDoor</code></td><td>left/right</td><td>用对应胳膊推门</td></tr><tr><td><code>CallElevator</code></td><td>button segmentation</td><td>在当前楼层呼叫电梯</td></tr><tr><td><code>UseElevator</code></td><td>button segmentation</td><td>进电梯后选目标楼层按钮</td></tr></tbody></table></div>
+<p>每个 skill 有：a) 参数到 low-level 控制的映射（用 ROS gmapping/amcl/move_base + tracikpy 做 IK），b) 给 VLM 的描述 prompt，c) 失败检测（depth NaN、IK 无解、路径阻塞）。<code>GoToLandmark</code> 依赖人工预先采集的 landmark image-to-pose 映射。</p>
+<h3 id="双层记忆">双层记忆<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#双层记忆" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>短期记忆</strong>：当前 trial 内每一步存 <code>(scene image, subtask, skill name, parameter, success/failure)</code>，让 VLM 在下一次决策时能看到完整执行历史，从失败步恢复（如抓取失败后用 <code>MoveBase</code> 重新对位）。</p>
+<p><strong>长期记忆</strong>：跨 trial 持久化的”错题本”。离线收集每个技能 5 个示例 → 与 ground truth 比较 → 只保留预测错的，附上 VLM 自己生成的”为什么错”分析。最终 MoveBase / UseElevator / PushObjOnGround / 技能选择各拿到 1-3 个错题。<strong>评估期间不更新长期记忆。</strong></p>
+<blockquote>
+<p>❓ “长期记忆” 实际上是 1-3 个 in-context few-shot 错例，量级很小、不在线更新。说”long-term memory” 略 over-claim——这更像 prompt-level few-shot prior，而非真正的持续学习。论文末尾 limitations 也承认存储增长会变 intractable，未来要做 retrieval 或参数化压缩。</p>
+</blockquote>
+<h3 id="vlm-决策两步分解">VLM 决策：两步分解<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#vlm-决策两步分解" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>每个决策步分两次 VLM 调用：</p>
+<ol>
+<li><strong>Subtask + skill selection</strong>：输入 = 任务指令 + skill 描述 + 当前 RGB（带 SoM 标注）+ 物体距离 + 短期记忆 + 长期记忆。CoT 给出”下一个 subtask 是什么、应该用哪个 skill”。</li>
+<li><strong>Skill parameter estimation</strong>：输入 = 预测的 subtask + 该技能的失败错题本 + 候选参数的 SoM 可视化（如 MoveBase 的四个方向箭头、PushObj 的候选 GSAM mask + 推后位置）。CoT 给出最终参数选择。</li>
+</ol>
+<p><strong>Set-of-Mark (SoM)</strong>：把候选物体 / 候选方向用数字 ID 在 RGB 上叠加，让 VLM 通过”选 ID”而不是”描述自然语言”来 grounding——避免 VLM 输出 ambiguous 描述后 GSAM 再次失败的双重不确定性。</p>
+<p><strong>Figure 4. 一次执行轨迹的 trace。</strong> 每步显示 SoM 标注的图像、所选 skill (蓝)、所选参数、文字 rationale；红色为失败后 VLM 自适应换 skill 的步骤。</p>
+<p><img src="https://arxiv.org/html/2410.06237v1/x4.png" alt/></p>
+<hr/>
+<h2 id="实验">实验<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#实验" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="任务设置">任务设置<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#任务设置" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>3 个 long-horizon 任务，每个 3 种自然语言改写：</p>
 <ul>
-<li><code>GoToLandmark[GoalImage]</code>：基于 topological visual map + 2D occupancy map</li>
-<li><code>NavigateNearObj[ObjSegmentation]</code>：导航到可见物体附近</li>
-<li><code>MoveBase[Direction]</code>：四方向各 30cm 微调</li>
+<li><strong>Retrieve diet soda can</strong>：如 “Could you grab me a drink that is low in calories?”</li>
+<li><strong>Retrieve colored marker</strong>：如 “I want to color the sky in my drawing. Can you get me a marker?”</li>
+<li><strong>Rearrange chairs</strong>：如 “Could you make the seating chairs in the reception area more orderly?”</li>
 </ul>
-<p><strong>交互类</strong>：</p>
+<p>跨 3 栋大学建筑（不同楼层 / 房间布局 / 视觉外观），10 trials/building/task，总计 90+ 小时。机器人随机初始化在不同楼层、走廊放随机障碍（关闭的门 / 椅子 / 湿滑警示牌 / 纸箱）。干扰物 5-25 个（含未见过的 diet soda 品牌、marker 品牌）。</p>
+<h3 id="主结果">主结果<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#主结果" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table I. Building-wide tasks 上的成功率（%, 10 trials each）。</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Method</th><th>Marker B1</th><th>Marker B2</th><th>Marker B3</th><th>Soda B1</th><th>Soda B2</th><th>Soda B3</th><th>Chairs B1</th><th>Avg</th></tr></thead><tbody><tr><td>Inner-Monologue</td><td>10</td><td>–</td><td>–</td><td>0</td><td>–</td><td>–</td><td>10</td><td>6.7</td></tr><tr><td>COME</td><td>40</td><td>30</td><td>40</td><td>40</td><td>30</td><td>30</td><td>40</td><td>35.7</td></tr><tr><td><strong>BUMBLE</strong></td><td><strong>60</strong></td><td><strong>40</strong></td><td><strong>50</strong></td><td><strong>40</strong></td><td><strong>50</strong></td><td><strong>40</strong></td><td><strong>50</strong></td><td><strong>47.1</strong></td></tr></tbody></table></div>
+<p>Baseline 解释：</p>
 <ul>
-<li><code>Pickup[Object]</code>、<code>PushObjOnGround[Obj, Direction]</code>、<code>OpenDoor[Left/Right]</code></li>
+<li><strong>Inner-Monologue (IM)</strong>：只用语言场景描述，无 RGB、无长期记忆 → 6.7%，太差所以只测了 B1</li>
+<li><strong>COME</strong>：用 RGB（像 BUMBLE）但无长期记忆 → 35.7%</li>
 </ul>
-<p><strong>建筑特定类</strong>：</p>
+<p>BUMBLE 比 COME 平均高 12.1pt，作者归因为长期记忆里的”错题本”。</p>
+<h3 id="skill-parameter-准确率offlineskilldataset-120-张图">Skill parameter 准确率（OfflineSkillDataset, ~120 张图）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#skill-parameter-准确率offlineskilldataset-120-张图" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table II. 单步 skill parameter 预测成功率（%）。</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Skill Parameter</th><th>BUMBLE</th><th>COME</th><th>IM</th><th>w/o CoT</th><th>w/o SoM</th></tr></thead><tbody><tr><td>Pickup (5-10 distractors)</td><td>80.0</td><td>80.0</td><td>65.0</td><td>80.0</td><td>50.0</td></tr><tr><td>Pickup (20-25 distractors)</td><td>65.0</td><td>65.0</td><td>65.0</td><td>60.0</td><td>40.0</td></tr><tr><td>PushObjectOnGround</td><td>81.0</td><td>70.4</td><td>56.8</td><td>64.3</td><td>81.8</td></tr><tr><td>CallElevator (Button)</td><td>95.0</td><td>75.0</td><td>60.0</td><td>40.0</td><td>25.0</td></tr><tr><td><strong>Average</strong></td><td><strong>80.2</strong></td><td>72.6</td><td>61.7</td><td>60.7</td><td>49.2</td></tr></tbody></table></div>
+<p><strong>Ablation 关键观察</strong>：</p>
 <ul>
-<li><code>CallElevator[Button]</code>、<code>UseElevator[Button]</code></li>
+<li><strong>去掉 CoT</strong>：80.2 → 60.7（–19.5pt）。<code>CallElevator</code> 上从 95 暴跌到 40——细粒度按钮选择需要逐步推理</li>
+<li><strong>去掉 SoM</strong>：80.2 → 49.2（–31pt）。<code>Pickup</code> 在干扰多时受冲击大；让 VLM 自由描述对象再让 GSAM 分割效果远不如直接选 SoM ID。有趣的是 <code>PushObjectOnGround</code> 反而略涨（81.0 → 81.8），可能是因为推动方向不依赖细粒度物体描述</li>
+<li><strong>干扰物影响</strong>：5-10 → 20-25 时 Pickup 从 80 掉到 65；论文里失败分析也指出 distractor 多时 VLM 错误率从 10% 升到 38.9%</li>
 </ul>
-<p>底层使用 gmapping、amcl、move_base（A* global + TEB local planner）实现运动规划。</p>
-<h3 id="3-dual-layered-memory">3. Dual-Layered Memory<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-dual-layered-memory" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p><strong>短期记忆</strong>：当前 trial 的执行历史（场景图像、subtask、skill 及参数、执行结果），支持失败后 recovery reasoning。</p>
-<p><strong>长期记忆</strong>：跨 trial 的失败经验库：</p>
+<h3 id="scaling-with-vlm-capability">Scaling with VLM capability<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#scaling-with-vlm-capability" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Figure 5. 8 个 VLM checkpoint 上 BUMBLE 的 skill parameter 准确率。</strong>
+<img src="https://arxiv.org/html/2410.06237v1/x5.png" alt/></p>
+<p>测试了 Claude (Haiku-3 / Sonnet-3 / Opus-3 / Sonnet-3.5)、Gemini (Flash-1.5 / Pro-1.5)、GPT (4o-mini / 4o) 三个系列。同一系列内随能力上升单调改善——支持作者”框架不被 VLM 锁死”的论点。</p>
+<h3 id="失败模式分析">失败模式分析<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#失败模式分析" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Figure 6. 70 trials 的成功 / 失败分类。</strong>
+<img src="https://arxiv.org/html/2410.06237v1/x6.png" alt/></p>
+<p>失败构成：</p>
 <ul>
-<li>离线收集由人工标注的 VLM 错误预测</li>
-<li>每个 skill 收集 ~5 个错误实例，过滤后保留 1-3 个</li>
-<li>包含 VLM 生成的失败原因文本分析</li>
-<li><strong>评测时静态不更新</strong>（这是一个重要限制）</li>
+<li><strong>VLM reasoning 错</strong>（多数）：选错对象（尤其是 distractor 多时）、push 时引发碰撞、按错电梯按钮</li>
+<li><strong>Sensor 错</strong>：10/38 由 depth NaN 或 lidar 失败导致</li>
+<li><strong>GSAM 分割错</strong>：尤其是细粒度品牌（“diet Dr. Pepper” vs 普通 Dr. Pepper）</li>
 </ul>
-<h3 id="4-vlm-based-decision-making">4. VLM-Based Decision Making<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-vlm-based-decision-making" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p>将决策分解为两步：</p>
-<p><strong>Step 1: Subtask Prediction + Skill Selection</strong></p>
+<p><strong>涌现行为</strong>：BUMBLE 学会用 <code>MoveBase</code> 在 sensor failure 后重新对位（如 depth NaN 时往电梯按钮 / 椅子方向挪一步再试）。这是短期记忆 + 通用 skill library 的副产物，不是显式编程的。</p>
+<h3 id="用户研究">用户研究<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#用户研究" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Figure 7. 5-point Likert 用户评分（n=10）。</strong>
+<img src="https://arxiv.org/html/2410.06237v1/x7.png" alt/></p>
+<p>在两个<strong>未见过</strong>的任务（“打翻水了，找点东西清理”、“手机进水了，找东西吸湿气”，需进入新的 shower room）上对比 BUMBLE vs COME。</p>
 <ul>
-<li>输入：自然语言指令 + skill 描述 + 当前 RGB（带 Set-of-Mark 标注）+ 机器人状态 + 短期/长期记忆</li>
-<li>使用 <strong>Set-of-Mark (SoM)</strong> 策略将 depth 信息编码为 RGB 图上的物体 ID + 文本距离，避免直接输入 VLM 未训练过的 depth/point cloud 模态</li>
-<li>Chain-of-Thought prompting</li>
+<li>BUMBLE Likert avg = <strong>3.7</strong>，COME = 2.6</li>
+<li>BUMBLE 比 COME 减少 22pt 不可恢复失败、12pt 可恢复失败</li>
+<li>但 33% 的 BUMBLE rollout 被评为 sub-optimal——常见问题是”抓了能用的，但不是最佳的”（VLM 倾向 greedy 选最近 / 最显眼的物体）</li>
 </ul>
-<p><strong>Step 2: Skill Parameter Estimation</strong></p>
+<p><strong>Robot execution 视频集锦：不同初始状态。</strong>
+<video src="https://robin-lab.cs.utexas.edu/BUMBLE/static/videos/BUMBLE_diff_start_small.mp4" controls muted playsinline width="720"></video></p>
+<p><strong>不同任务（重排椅子、取 diet soda、取 marker）。</strong>
+<video src="https://robin-lab.cs.utexas.edu/BUMBLE/static/videos/BUMBLE_diff_task_small.mp4" controls muted playsinline width="720"></video></p>
+<p><strong>不同建筑。</strong>
+<video src="https://robin-lab.cs.utexas.edu/BUMBLE/static/videos/BUMBLE_diff_buildings_small.mp4" controls muted playsinline width="720"></video></p>
+<hr/>
+<h2 id="关联工作">关联工作<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#关联工作" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="基于">基于<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#基于" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li>根据预测的 subtask 和场景生成具体参数</li>
-<li>通过 GSAM + skill-specific prompt 实现 object-centric 参数生成</li>
-<li>MoveBase 参数通过箭头叠加在 RGB 上可视化</li>
+<li><strong>Grounded-SAM (GroundingDINO + SAM-HQ)</strong>：开放词汇分割模型，BUMBLE 的感知前端</li>
+<li><strong>Set-of-Mark prompting (SoM)</strong>：在图像上叠加数字 ID 让 VLM 选择</li>
+<li><strong>Chain-of-Thought (CoT)</strong>：中间推理步</li>
+<li><strong>TeleMoMa (Dass et al. 2024)</strong>：作者实验室的 Tiago robot ROS 基础设施</li>
 </ul>
-<h2 id="key-results">Key Results<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-results" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p><strong>主任务成功率（70 trials，3 栋建筑）</strong>：</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="table-container"><table><thead><tr><th>方法</th><th>平均成功率</th></tr></thead><tbody><tr><td>BUMBLE</td><td><strong>47.1%</strong></td></tr><tr><td>COME</td><td>35.7%</td></tr><tr><td>Inner-Monologue</td><td>6.7%</td></tr></tbody></table></div>
-<p><strong>离线 skill parameter 准确率（120 标注图像）</strong>：BUMBLE 80.2% vs COME 72.6% vs IM 61.7%</p>
-<p><strong>Ablation</strong>：</p>
+<h3 id="对比">对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li>去掉 CoT：80.2% → 60.7%（-19.5pp）</li>
-<li>去掉 SoM：80.2% → 49.2%（-31.0pp），SoM 是最关键组件</li>
+<li><strong>Inner-Monologue (Huang et al. 2022)</strong>：纯 LLM 用语言场景描述做规划，BUMBLE 把它扩到带 RGB 后仍弱很多</li>
+<li><strong>COME (Zhi et al. 2024)</strong>：closed-loop VLM-based MoMa，有 RGB 但无长期记忆，是 BUMBLE 最强 baseline</li>
+<li><strong>OK-Robot (Liu et al. 2024)</strong>, <strong>HomeRobot</strong>, <strong>Stone et al. 2023</strong>：simple MoMa 的 VLM 方法，缺乏 building-scale 的 skill library 和 memory</li>
 </ul>
-<p><strong>失败分析</strong>（38 次失败）：</p>
+<h3 id="方法相关">方法相关<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#方法相关" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li>传感器故障：26.3%（depth NaN、lidar 故障）</li>
-<li>VLM 推理错误：73.7%（物体选错、电梯按钮空间理解差、碰撞预测失败）</li>
-<li>Distractor 数量影响大：20-25 个干扰物时抓错率 38.9%，5-10 个时仅 10.0%</li>
+<li><strong>TAMP / Neuro-symbolic planning</strong>：经典 long-horizon 方法，受限于 closed-set 物体</li>
+<li><strong>Interactive navigation (Stilman, HRL4IN, CAMP)</strong>：处理”路径上有障碍需要操作”的设定，但只用几何信息；BUMBLE 加入语义推理</li>
+<li><strong>VLM for tabletop (MOKA, CoPa)</strong>：方法论近亲，但场景小一个量级</li>
 </ul>
-<p><strong>人类评估</strong>：BUMBLE 3.7/5.0 vs COME 2.6/5.0（Likert 量表）</p>
-<h2 id="strengths--weaknesses">Strengths &amp; Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths--weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<hr/>
+<h2 id="论文点评">论文点评<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#论文点评" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
 <h3 id="strengths">Strengths<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ol>
-<li><strong>系统完整性</strong>：将 perception、skill、memory、reasoning 整合为一个可在真实建筑中部署的端到端系统，这是 embodied AI 领域少有的 building-scale 真机实验</li>
-<li><strong>SoM prompting 设计巧妙</strong>：将 depth 信息转化为 VLM 可理解的文本+视觉标注形式，ablation 证明了其 31pp 的贡献，是全文最有价值的 insight</li>
-<li><strong>VLM scaling 验证</strong>：展示了框架性能随 VLM 能力提升而提升的趋势（Claude 系列、Gemini 系列），暗示方法可 benefit from future model improvements</li>
-<li><strong>详细的失败分析</strong>：对 38 次失败的分类和 distractor 数量的影响分析提供了有价值的工程 insight</li>
+<li><strong>Building-wide MoMa 是有价值的扩展</strong>：把 mobile manipulation 推到楼栋尺度（含电梯、跨楼层）暴露了纯 tabletop / 单房间 baseline 在 long-horizon、interactive navigation 上的 limitation</li>
+<li><strong>真机大规模评估</strong>：90+ 小时、3 栋楼、70 trials 是 mobile manipulation 论文里少见的工程量；user study 也比纯定量 SR 更能说明问题</li>
+<li><strong>Ablation 很到位</strong>：CoT (-19.5pt) 与 SoM (-31pt) 的拆解清晰量化了 prompting 接口的价值；不同 VLM 上的 scaling curve 支持框架的 future-proof claim</li>
+<li><strong>失败分析诚实</strong>：明确给出 sensor / GSAM / VLM reasoning 的归因比例，并承认 greedy plan / 多干扰物 / 细粒度识别的局限</li>
 </ol>
 <h3 id="weaknesses">Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ol>
-<li><strong>47.1% 成功率在工程上不可用</strong>：即使是最好的结果也不到一半成功，离实际部署有巨大差距。论文回避讨论这个核心问题</li>
-<li><strong>长期记忆是手工策划的</strong>：离线由人工标注错误、VLM 生成分析、评测时静态不更新——这不是真正的 “learning from experience”，更像是 prompt engineering with curated examples</li>
-<li><strong>Skill library 是硬编码的</strong>：每个 skill 的实现（IK、轨迹规划参数）都是手工设计的，泛化到新 skill 需要重新工程化。这与当前 end-to-end VLA 的趋势相悖</li>
-<li><strong>GoToLandmark 需要人工采集 goal image</strong>：严重限制了部署的 scalability，作者承认但未解决</li>
-<li><strong>Baseline 选择偏弱</strong>：Inner-Monologue 只有 6.7%（几乎不 work），COME 也是较早期的方法。缺少与 SayCan、Code-as-Policies 等更强 baseline 的对比</li>
-<li><strong>Greedy planning</strong>：VLM 倾向于选择最近的物体而非最优目标，33% 的 sub-optimal completion 源于此。没有任何 lookahead 或 re-planning 机制</li>
-<li><strong>隐含假设</strong>：假设所有任务都可以分解为顺序 skill 调用，不支持并行或条件分支的复杂任务结构</li>
+<li><strong>“长期记忆” 与名字不符</strong>：实际只是 1-3 个 hand-curated few-shot 错例，且 evaluation 期间不更新。这更像精心调过的 prompt prior，而非真正的 lifelong memory</li>
+<li><strong>任务覆盖偏窄</strong>：3 个任务模板（marker / soda / chairs）+ 2 个 unseen 任务。说”unseen” 但仍是 retrieve / arrange 套路，没有真正测试 task family 的开放性</li>
+<li><strong>依赖大量人工先验</strong>：landmark images 需人工采集并预先 mapping 到 2D 占据图；skill 列表手工设计；长期记忆错题人工标注。可扩展性受限</li>
+<li><strong>47.1% 成功率离 deployable 还很远</strong>：作者把它定位为 “stepping stone” 是诚实的，但用户研究里 33% 的 sub-optimal + ~50% 失败率说明离消费级服务机器人有量级差距</li>
+<li><strong>VLM 推理时间不计入 15 min</strong>：对实际部署而言这是关键瓶颈，论文回避了</li>
 </ol>
-<h2 id="mind-map">Mind Map<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#mind-map" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<pre><button class="expand-button" aria-label="Expand mermaid diagram" data-view-component="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 1.06L2.56 7h10.88l-2.22-2.22a.75.75 0 011.06-1.06l3.5 3.5a.75.75 0 010 1.06l-3.5 3.5a.75.75 0 11-1.06-1.06l2.22-2.22H2.56l2.22 2.22a.75.75 0 11-1.06 1.06l-3.5-3.5a.75.75 0 010-1.06l3.5-3.5z"></path></svg></button><code class="mermaid" data-clipboard="&quot;mindmap\n  root((BUMBLE))\n    Perception\n      Grounded-SAM\n        GroundingDINO\n        SAM-HQ\n      Depth back-projection\n      Object distance\n    Skill Library\n      Navigation\n        GoToLandmark\n        NavigateNearObj\n        MoveBase\n      Interaction\n        Pickup\n        PushObjOnGround\n        OpenDoor\n      Building-specific\n        CallElevator\n        UseElevator\n    Dual Memory\n      Short-term\n        执行历史\n        失败检测\n        Recovery reasoning\n      Long-term\n        人工标注错误\n        VLM 失败分析\n        静态不更新\n    VLM Reasoning\n      Step1 Subtask+Skill\n        Set-of-Mark\n        Chain-of-Thought\n      Step2 Parameter\n        SoM visual grounding\n        GSAM query\n    Results\n      47.1% 成功率\n      80.2% 参数准确率\n      SoM 贡献最大&quot;">mindmap
-  root((BUMBLE))
-    Perception
-      Grounded-SAM
-        GroundingDINO
-        SAM-HQ
-      Depth back-projection
-      Object distance
-    Skill Library
-      Navigation
-        GoToLandmark
-        NavigateNearObj
-        MoveBase
-      Interaction
-        Pickup
-        PushObjOnGround
-        OpenDoor
-      Building-specific
-        CallElevator
-        UseElevator
-    Dual Memory
-      Short-term
-        执行历史
-        失败检测
-        Recovery reasoning
-      Long-term
-        人工标注错误
-        VLM 失败分析
-        静态不更新
-    VLM Reasoning
-      Step1 Subtask+Skill
-        Set-of-Mark
-        Chain-of-Thought
-      Step2 Parameter
-        SoM visual grounding
-        GSAM query
-    Results
-      47.1% 成功率
-      80.2% 参数准确率
-      SoM 贡献最大
-</code><div id="mermaid-container" role="dialog"><div id="mermaid-space"><div class="mermaid-content"></div></div></div></pre>
-<h2 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="可信评估">可信评估<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#可信评估" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="artifact-可获取性">Artifact 可获取性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#artifact-可获取性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
 <ul>
-<li>这篇工作的价值更多在 <strong>systems contribution</strong> 而非 algorithmic insight。它展示了 VLM 在 building-scale 任务中的可行性和瓶颈，但没有提出根本性的新方法</li>
-<li>SoM prompting 将 depth 编码为 VLM 可理解形式的思路值得借鉴，这是一个 practical 但 effective 的 bridging 策略</li>
-<li>长期记忆的实现方式（静态、人工策划）暴露了一个 open problem：如何让 VLM agent 真正从部署经验中在线学习？RAG-based memory retrieval 可能是一个方向</li>
-<li>47.1% 的成功率 + 73.7% 的失败来自 VLM reasoning error，说明当前 VLM 的 spatial reasoning 和 grounded decision-making 仍是核心瓶颈</li>
-<li>与 VLA 趋势的对比：BUMBLE 代表 “VLM as planner + classical skills” 路线，而 π₀ 等代表 end-to-end VLA 路线。前者可解释性强但 skill 泛化差，后者泛化性强但需要大量数据。两条路线的融合（VLM reasoning + learned low-level policy）可能是更有前景的方向</li>
-</ul></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="uevi3i" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#problem--motivation" data-for="problem--motivation">Problem &amp; Motivation</a></li><li class="depth-0"><a href="#method" data-for="method">Method</a></li><li class="depth-1"><a href="#1-open-world-perception" data-for="1-open-world-perception">1. Open-World Perception</a></li><li class="depth-1"><a href="#2-parameterized-skill-library" data-for="2-parameterized-skill-library">2. Parameterized Skill Library</a></li><li class="depth-1"><a href="#3-dual-layered-memory" data-for="3-dual-layered-memory">3. Dual-Layered Memory</a></li><li class="depth-1"><a href="#4-vlm-based-decision-making" data-for="4-vlm-based-decision-making">4. VLM-Based Decision Making</a></li><li class="depth-0"><a href="#key-results" data-for="key-results">Key Results</a></li><li class="depth-0"><a href="#strengths--weaknesses" data-for="strengths--weaknesses">Strengths &amp; Weaknesses</a></li><li class="depth-1"><a href="#strengths" data-for="strengths">Strengths</a></li><li class="depth-1"><a href="#weaknesses" data-for="weaknesses">Weaknesses</a></li><li class="depth-0"><a href="#mind-map" data-for="mind-map">Mind Map</a></li><li class="depth-0"><a href="#notes" data-for="notes">Notes</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+<li><strong>代码</strong>：开源，inference-only（rw_eval.py 主入口）</li>
+<li><strong>模型权重</strong>：未训练新权重；依赖 GPT-4o API + 公开的 GroundingDINO (<code>groundingdino_swinb_cogcoor</code>) + SAM-HQ (<code>sam_hq_vit_b</code>)</li>
+<li><strong>训练细节</strong>：N/A（无训练）。Prompt 模板写在论文 Appendix VII-A</li>
+<li><strong>数据集</strong>：OfflineSkillDataset（~120 张人工标注图）未在 GitHub README 中明确开源；landmark 图通过 box.com 链接提供（限作者实验楼）</li>
+</ul>
+<h4 id="claim-可验证性">Claim 可验证性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#claim-可验证性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>✅ <strong>47.1% SR / 80.2% offline acc</strong>：70 trials + Table II 数据，可在公开 dataset 上复现</li>
+<li>✅ <strong>VLM scaling</strong>：Fig 5 跨 8 个 checkpoint 给出曲线</li>
+<li>⚠️ <strong>22% 用户满意度提升</strong>：n=10 participants，样本量小；trajectory 是事后图片标注而非 live operation；统计显著性未报告</li>
+<li>⚠️ <strong>“长期记忆” 带来 12.1pt 提升</strong>：归因不严——COME baseline 没有长期记忆，但也可能 BUMBLE 的其他 prompt 差异（e.g., CoT 模板）共同贡献</li>
+<li>⚠️ <strong>跨建筑泛化</strong>：3 栋都是 UT Austin 的大学建筑，可能 visual / layout 同构度高</li>
+<li>无明显的 marketing 话术</li>
+</ul>
+<h3 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>“Building-wide” 这个 framing 比方法本身更有 contribution——把 horizon 从单房间推到楼栋是一个清晰的 problem formulation 升级，未来 mobile manipulation 论文可能会沿用这个 benchmark 视角</li>
+<li>短期 + 长期 memory 的组合很自然但实现很轻量，本质是 “in-context history + in-context error library”。值得思考：当 task / building 规模继续扩大，这个 memory 怎么 scale？dynamic retrieval (RAG over 经验) 或者参数化（fine-tune VLM on errors）是论文 limitations 提到的方向</li>
+<li>VLM-based 系统普遍的 greedy 倾向（user study 里 33% sub-optimal）说明 single-step CoT 不够，未来需要 multi-step lookahead / Monte-Carlo rollout 等更结构化的 planning over VLM</li>
+<li>与端到端 VLA 路线对比：BUMBLE 走的是 hierarchical—— VLM 做 high-level reasoning + 经典 motion planner 做 low-level，避免了端到端 VLA 在 long-horizon 上的累积误差，但代价是技能库的人工设计与失败模式的拼接复杂度</li>
+</ul>
+<h3 id="rating">Rating<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#rating" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>分数</strong>：2 - Frontier
+<strong>理由</strong>：Strengths 显示它把 mobile manipulation 推到了 building-scale，并以 70 trials / 3 栋楼的真机规模 + 细致 ablation 论证了 VLM + memory + SoM 框架，是当前 VLM-based MoMa 方向的重要参考与必比 baseline；但 Weaknesses 中”长期记忆其实只是 1-3 条 few-shot 错例”、3 个手工任务模板、47.1% SR 与大量人工先验，使它并未像 OK-Robot / HomeRobot 那样成为方向的 de facto 奠基，达不到 3 - Foundation；相较”一次性参考”，它的 problem formulation（building-wide MoMa）和系统设计仍具明显 frontier 价值，不属于 1 - Archived。</p></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="ud8fg4" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#building-wide-mobile-manipulation问题定义" data-for="building-wide-mobile-manipulation问题定义">Building-wide Mobile Manipulation：问题定义</a></li><li class="depth-0"><a href="#方法bumble-架构" data-for="方法bumble-架构">方法：BUMBLE 架构</a></li><li class="depth-1"><a href="#感知系统gsam--rgbd-back-projection" data-for="感知系统gsam--rgbd-back-projection">感知系统：GSAM + RGBD back-projection</a></li><li class="depth-1"><a href="#skill-library8-个参数化技能" data-for="skill-library8-个参数化技能">Skill Library：8 个参数化技能</a></li><li class="depth-1"><a href="#双层记忆" data-for="双层记忆">双层记忆</a></li><li class="depth-1"><a href="#vlm-决策两步分解" data-for="vlm-决策两步分解">VLM 决策：两步分解</a></li><li class="depth-0"><a href="#实验" data-for="实验">实验</a></li><li class="depth-1"><a href="#任务设置" data-for="任务设置">任务设置</a></li><li class="depth-1"><a href="#主结果" data-for="主结果">主结果</a></li><li class="depth-1"><a href="#skill-parameter-准确率offlineskilldataset-120-张图" data-for="skill-parameter-准确率offlineskilldataset-120-张图">Skill parameter 准确率（OfflineSkillDataset, ~120 张图）</a></li><li class="depth-1"><a href="#scaling-with-vlm-capability" data-for="scaling-with-vlm-capability">Scaling with VLM capability</a></li><li class="depth-1"><a href="#失败模式分析" data-for="失败模式分析">失败模式分析</a></li><li class="depth-1"><a href="#用户研究" data-for="用户研究">用户研究</a></li><li class="depth-0"><a href="#关联工作" data-for="关联工作">关联工作</a></li><li class="depth-1"><a href="#基于" data-for="基于">基于</a></li><li class="depth-1"><a href="#对比" data-for="对比">对比</a></li><li class="depth-1"><a href="#方法相关" data-for="方法相关">方法相关</a></li><li class="depth-0"><a href="#论文点评" data-for="论文点评">论文点评</a></li><li class="depth-1"><a href="#strengths" data-for="strengths">Strengths</a></li><li class="depth-1"><a href="#weaknesses" data-for="weaknesses">Weaknesses</a></li><li class="depth-1"><a href="#可信评估" data-for="可信评估">可信评估</a></li><li class="depth-1"><a href="#notes" data-for="notes">Notes</a></li><li class="depth-1"><a href="#rating" data-for="rating">Rating</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
 </script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
 </script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>
