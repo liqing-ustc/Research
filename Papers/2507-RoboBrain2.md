@@ -11,18 +11,15 @@ github: https://github.com/FlagOpen/RoboBrain2.5
 rating: 2
 date_added: 2026-04-16
 ---
-## 速查卡片
+
+## Summary
 
 > [!summary] RoboBrain 2.0 Technical Report
 > - **核心**: 统一 perception、reasoning、planning 的 embodied VLM，在空间和时序推理 benchmark 上取得领先结果
 > - **方法**: 异构 ViT + LLM 架构（基于 Qwen2.5-VL），三阶段渐进训练（基础时空学习 → embodied 增强 → CoT 推理 + RLVR）
 > - **结果**: 32B 变体在 12+ benchmark 中 6 个 SOTA，超越 GPT-4o、Gemini-2.5-Pro 等闭源模型
 > - **Sources**: [paper](https://arxiv.org/abs/2507.02029) | [website](https://superrobobrain.github.io/) | [github](https://github.com/FlagOpen/RoboBrain2.5)
-
----
-## Summary
-
-RoboBrain 2.0 是 BAAI 推出的 embodied vision-language foundation model，通过统一架构处理视觉观测和语言指令，支持空间理解（affordance prediction、spatial referring、trajectory forecasting）和时序决策（closed-loop interaction、multi-agent planning、scene graph updating）。
+> - **Rating**: 2 - Frontier（当前 embodied VLM 方向的重要 open-weight baseline，3B/7B/32B 全量开源且已被 awesome-list 与后续工作收录；但架构贴合 Qwen2.5-VL 微调、缺 real-robot 定量评估，尚未形成 de facto 基座）
 
 **Key Takeaways:**
 1. **三阶段渐进训练**: 从基础时空感知到 embodied 增强再到 CoT 推理 + GRPO 强化，逐步提升模型的 embodied reasoning 能力
@@ -169,6 +166,26 @@ Decoder 支持三种输出：
 ![](https://www.youtube.com/watch?v=t7R_Jy430eI)
 
 ---
+## 关联工作
+
+### 基于
+- Qwen2.5-VL: LLM backbone 初始化来源
+- Reason-RFT: Stage 3 CoT+RFT 两阶段框架的核心训练策略
+- RoboOS: Multi-robot coordination 系统，用于生成 multi-robot planning 训练数据
+- [[2502-RoboBrain|RoboBrain 1.0]]: 前身，CVPR 2025
+
+### 对比
+- Cosmos-Reason1-7B: embodied baseline
+- [[2506-VeBrain|VeBrain-8B]]: embodied baseline
+- Magma-8B: embodied baseline
+
+### 方法相关
+- GRPO: Stage 3 RFT 的优化算法
+- FlagScale: 开源训练框架，支持 hybrid parallelism
+- RefSpatial: 空间数据构建 pipeline
+- RoboPoint: Object pointing 和 spatial affordance 数据来源
+
+---
 ## 论文点评
 
 ### Strengths
@@ -188,37 +205,20 @@ Decoder 支持三种输出：
 ### 可信评估
 
 #### Artifact 可获取性
-- **代码**: inference+training（通过 FlagScale 框架）
-- **模型权重**: RoboBrain2.0-3B、RoboBrain2.0-7B、RoboBrain2.0-32B（均在 HuggingFace 发布）
+- **代码**: inference+training（通过 FlagScale 框架开源）
+- **模型权重**: RoboBrain2.0-3B、RoboBrain2.0-7B、RoboBrain2.0-32B（均在 HuggingFace BAAI 组织下发布）
 - **训练细节**: 超参 + 数据配比 + 训练阶段完整披露（Table 1）
-- **数据集**: 部分公开——基于多个公开数据集（LVIS、Pixmo-Points、PACO-LVIS、EgoPlan-IT 等）构建，但合成数据和处理后的数据集未明确是否开源
+- **数据集**: 部分公开——基于多个公开数据集（LVIS、Pixmo-Points、PACO-LVIS、EgoPlan-IT 等）构建，但合成数据（44K multi-robot、CoT rationale、OTA 轨迹）是否开源未说明
 
 #### Claim 可验证性
-- ✅ Spatial benchmark SOTA（BLINK、CV-Bench、RoboSpatial 等）：有完整的对比实验和评估框架 FlagEvalMM
-- ✅ Temporal benchmark 领先：Multi-Robot Planning、RoboBench 结果可通过开源 checkpoint 复现
+- ✅ Spatial benchmark SOTA（BLINK、CV-Bench、RoboSpatial 等）：有完整的对比实验和评估框架 FlagEvalMM，开源权重可复现
+- ✅ Temporal benchmark 领先（Multi-Robot Planning、RoboBench）：结果可通过开源 checkpoint 复现
 - ⚠️ "unify perception, reasoning, and planning"：模型确实支持多种任务，但"统一"更多是 multi-task SFT 而非真正的 unified representation
 - ⚠️ "practical step toward building generalist embodied agents"：缺乏 real-robot 定量评估，从 vision-language benchmark 到实际部署的 gap 未量化
 
----
-## 关联工作
+### Notes
 
-### 基于
-- Qwen2.5-VL: LLM backbone 初始化来源
-- Reason-RFT: Stage 3 CoT+RFT 两阶段框架的核心训练策略
-- RoboOS: Multi-robot coordination 系统，用于生成 multi-robot planning 训练数据
-- [[2502-RoboBrain|RoboBrain 1.0]]: 前身，CVPR 2025
+### Rating
 
-### 对比
-- Cosmos-Reason1-7B: embodied baseline
-- VeBrain-8B: embodied baseline
-- Magma-8B: embodied baseline
-
-### 方法相关
-- GRPO: Stage 3 RFT 的优化算法
-- FlagScale: 开源训练框架，支持 hybrid parallelism
-- RefSpatial: 空间数据构建 pipeline
-- RoboPoint: Object pointing 和 spatial affordance 数据来源
-
----
-## Notes
-
+**分数**：2 - Frontier
+**理由**：从 Strengths 看，3B/7B/32B 全量开源 + 12+ benchmark 系统评估 + 31 类空间概念数据 pipeline，使其成为 embodied VLM 方向当前必引的 open-weight baseline（已被 awesome-embodied-vla 等列入代表工作，与 [[2506-VeBrain|VeBrain]]、Cosmos-Reason1 形成同期对比）。但从 Weaknesses 看，架构只是 Qwen2.5-VL 的 embodied 微调，没有 real-robot 定量评估，也未形成 de facto benchmark 或被多数后续工作作为核心比较基座，不足以升 3；同时其完整的 artifact 开放度和紧凑模型打赢闭源的结果明显高于一次性参考，不应降 1。

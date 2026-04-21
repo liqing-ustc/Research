@@ -18,6 +18,7 @@ date_added: "2026-04-20"
 > - **方法**: Deterministic Geometric Environment (DGE) 把 16 类 spatial reasoning task 编码成原子几何验证规则；单个 policy 参数共享地交替扮演 questioner（看多视角图生成 physically valid 的空间问题）和 solver（基于图像与问题作答、对齐 DGE 计算的 GT）；task-adaptive scheduler 按历史准确率上调弱任务采样权重，形成 endogenous curriculum。
 > - **结果**: 以 Qwen2.5-VL-3B/7B 为 backbone，在 9 个 benchmark 平均分取得 51.1 / 54.7，超过 SpatialLadder、SpaceR、ViLaSR、Spatial-SSRL；VSI-Bench 7B 达 46.1；MMStar/RealWorldQA 几乎不掉，证明空间专精不损伤通用能力。关键 ablation：用 majority-vote 替换 DGE ground truth 会让 VSI-Bench 从 46.1 崩到 18.8。
 > - **Sources**: [paper](https://arxiv.org/abs/2604.14144) | [github](https://github.com/ZJU-REAL/SpatialEvo)
+> - **Rating**: 2 - Frontier（spatial reasoning 领域当前最前沿的 self-evolving RL 方案，DGE 这一 primitive 有方法论价值，但 scope 被静态室内 3D asset 和手工选定的 16 类 task 卡死，未到 foundation 量级）
 
 **Key Takeaways:**
 1. **Spatial reasoning 天然逃过 self-evolving 的 pseudo-label 陷阱**：答案是几何的确定性函数，从 point cloud + camera pose 可程序化精确算出，不需要 model consensus 当 noisy proxy。
@@ -186,6 +187,24 @@ $$
 3. **Sensitivity to point cloud quality**：重建 artifact、点云 sparsity、occlusion 会降低 bbox fitting、depth estimation 这类 operator 的精度，对 continuous-valued task（absolute distance、object size）影响最大。虽然 reward 端引入了相对误差 tolerance band，但上限被数据质量卡死。
 
 ---
+## 关联工作
+
+### 基于
+- [[2401-SpatialVLM|SpatialVLM]]：把 2D → metric 3D point cloud 做 spatial VQA 数据合成的奠基工作；SpatialEvo 把其"离线批量生成"升级为"online 动态生成 + 几何 verification"。
+- GRPO (DeepSeek-Math)：RL 训练骨架，group-relative advantage 标准化。
+
+### 对比
+- SpatialLadder：静态 RL（固定标注+GRPO），同类最强 baseline；SpatialEvo 声称 distribution 能随 solver 能力动态迁移。
+- SpaceR-SFT / ViLaSR：静态 RL 或 SFT，牺牲通用能力换空间指标。
+- Spatial-SSRL：self-supervised RL，直接从 RGB 派生信号，无需几何 GT；SpatialEvo 用 DGE geometric GT 在平均分上胜出。
+- VisPlay / EvolMM / V-Zero / Vision-Zero / MM-Zero：multimodal self-play / self-evolving；仍依赖 model consensus，SpatialEvo 把 consensus 换成 deterministic geometric oracle。
+
+### 方法相关
+- [[2604-OpenSpatial|OpenSpatial]]：同期 spatial intelligence data engine，路线是 principled offline data 生成，不走 online self-evolution——可以作为"离线 DGE-like pipeline"的对照。
+- ScanNet / ScanNet++ / ARKitScenes：3D 场景数据源；DGE 的 GT 合成完全建立在这些 dense reconstruction 上。
+- VSI-Bench：主要评测基准，32-frame 多视角 spatial reasoning。
+
+---
 ## 论文点评
 
 ### Strengths
@@ -222,27 +241,13 @@ $$
 - ⚠️ **"zero-noise supervisory signal"**：conditional on parsing success + point cloud fidelity；实际噪声量级作者自己在 limitation 里承认非零。说"low-noise"更准确。
 - ❌ 无明显营销话术，整体 claim 克制。
 
----
-## 关联工作
-
-### 基于
-- [[2401-SpatialVLM|SpatialVLM]]：把 2D → metric 3D point cloud 做 spatial VQA 数据合成的奠基工作；SpatialEvo 把其"离线批量生成"升级为"online 动态生成 + 几何 verification"。
-- GRPO (DeepSeek-Math)：RL 训练骨架，group-relative advantage 标准化。
-
-### 对比
-- SpatialLadder：静态 RL（固定标注+GRPO），同类最强 baseline；SpatialEvo 声称 distribution 能随 solver 能力动态迁移。
-- SpaceR-SFT / ViLaSR：静态 RL 或 SFT，牺牲通用能力换空间指标。
-- Spatial-SSRL：self-supervised RL，直接从 RGB 派生信号，无需几何 GT；SpatialEvo 用 DGE geometric GT 在平均分上胜出。
-- VisPlay / EvolMM / V-Zero / Vision-Zero / MM-Zero：multimodal self-play / self-evolving；仍依赖 model consensus，SpatialEvo 把 consensus 换成 deterministic geometric oracle。
-
-### 方法相关
-- [[2604-OpenSpatial|OpenSpatial]]：同期 spatial intelligence data engine，路线是 principled offline data 生成，不走 online self-evolution——可以作为"离线 DGE-like pipeline"的对照。
-- ScanNet / ScanNet++ / ARKitScenes：3D 场景数据源；DGE 的 GT 合成完全建立在这些 dense reconstruction 上。
-- VSI-Bench：主要评测基准，32-frame 多视角 spatial reasoning。
-
----
-## Notes
+### Notes
 
 - **Implication for embodied AI**：这篇方法的核心 primitive——"用 deterministic simulator 作为 online verifiable reward source"——其实和 robot manipulation 里的 sim-based RL 同构。区别是本文的 simulator 是"静态场景 + 几何规则"，manipulation 里是"动力学模拟器"。顺着这条路走，**VLA 的在线 self-improvement 可以借鉴 DGE 的 thinking**：不是让模型互相打分，而是让物理仿真器当 judge。值得跟进。
 - **一个可 pivot 的方向**：把 DGE 从 ScanNet static asset 延展到 Gaussian Splatting 重建的 dynamic scene，或 Omniverse / Isaac Sim 之类的 simulator。如果能把 oracle 的 scope 从"室内静态"拓到"动态仿真"，这个方法的天花板会高很多。
 - **疑问**：parsing failure rate 到底多高？作者没给。如果 parsing 失败率 >5%，"zero-noise"的 framing 就需要大打折扣。值得 reverse-engineer 他们的 SpatialEvo-160K 数据看一下 error distribution。
+
+### Rating
+
+**分数**：2 - Frontier
+**理由**：DGE 这个 primitive（把 3D asset 当 deterministic oracle 替换 majority-vote pseudo-label）是 observation-driven 的真 insight，且 `w/o Physical Grounding` VSI-Bench 46.1→18.8 的 ablation 把 thesis 证得很干净，在 spatial reasoning 这一 field 是当前明确的 SOTA + must-compare baseline。但没到 Foundation 档——scope 被 ScanNet 族静态室内 3D asset 死死卡住（outdoor / dynamic / embodied execution 直接 not applicable，作者自承认），16 类 task 是 methodology-shaped 的手工精选子集而非 capability-shaped 的覆盖，且 online RL 相对 offline SFT (46.3 vs 43.9) 的 delta 只有 2.4 点，不足以论证"self-evolving 范式本身"的奠基性价值。

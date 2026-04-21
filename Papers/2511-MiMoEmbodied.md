@@ -2,181 +2,228 @@
 title: "MiMo-Embodied: X-Embodied Foundation Model Technical Report"
 authors: [Xiaomi Embodied Intelligence Team]
 institutes: [Xiaomi]
-date_publish: 2025-11
-venue: arXiv
-tags: [VLM, cross-embodiment, spatial-reasoning]
+date_publish: 2025-11-20
+venue: arXiv 2511.16518
+tags: [VLM, embodied-reasoning, cross-embodiment]
 paper: https://arxiv.org/abs/2511.16518
-website: 
+website:
 github: https://github.com/XiaomiMiMo/MiMo-Embodied
 rating: 1
-date_added: 2026-04-16
+date_added: 2026-04-21
 ---
-## 速查卡片
 
-> [!summary] MiMo-Embodied: X-Embodied Foundation Model
-> - **核心**: 首个跨 embodiment 的统一 VLM，同时覆盖 Embodied AI 和 Autonomous Driving，通过多阶段训练实现两域正迁移
-> - **方法**: 基于 MiMo-VL 的四阶段渐进训练（Embodied SFT → AD SFT → CoT SFT → GRPO RL），配合跨域数据构建
-> - **结果**: 17 个 Embodied AI benchmark 和 12 个 AD benchmark 上超越 open/closed-source 通用和专用 VLM
-> - **Sources**: [paper](https://arxiv.org/abs/2511.16518) | [github](https://github.com/XiaomiMiMo/MiMo-Embodied)
-
----
 ## Summary
 
-首个开源跨 embodiment VLM，统一 Embodied AI（affordance prediction、task planning、spatial understanding）和 Autonomous Driving（perception、prediction、planning）能力。
+> [!summary] MiMo-Embodied: X-Embodied Foundation Model Technical Report
+> - **核心**: 一个 7B VLM 同时覆盖 Embodied AI（室内机器人）与 Autonomous Driving（户外车）两个传统上各自训练的 domain，号称"first cross-embodied foundation model"，靠四阶段训练（SFT → SFT → CoT-SFT → GRPO RL）和把两个 domain 的数据 mix 进同一个模型来获得"positive transfer"
+> - **方法**: 基于 MiMo-VL 7B 初始化（ViT + MLP projector + LLM）；Stage1 在 general + embodied SFT，Stage2 加入 autonomous driving SFT，Stage3 在子集上做 CoT SFT，Stage4 用 GRPO RL（reward = exact match / IoU / 格式校验）
+> - **结果**: 17 个 embodied 基准（affordance / planning / spatial）+ 12 个 driving 基准（perception / prediction / planning）上声称 SOTA，超过通用 VLM（GPT-4o / Gemini / Qwen2.5-VL / InternVL3）和专用模型（[[2502-RoboBrain|RoboBrain]]、VeBrain、RoboTron-Drive、DriveLMM-o1）
+> - **Sources**: [paper](https://arxiv.org/abs/2511.16518) | [github](https://github.com/XiaomiMiMo/MiMo-Embodied)
+> - **Rating**: 1 - Archived（方法无原创、核心 positive-transfer claim 缺关键消融、命名即 cross-domain mix 而非真 cross-embodiment，工程 report 性质大于方向性贡献）
 
 **Key Takeaways:**
-1. **Cross-embodiment positive transfer**: 通过多阶段训练，Embodied AI 和 AD 两个领域产生显著正迁移，联合训练不仅不互损，反而互相增强
-2. **Progressive multi-stage training**: 四阶段渐进策略（Embodied SFT → AD SFT → CoT SFT → GRPO RL）有效缓解跨域任务干扰，对比直接混合训练在两域均有显著提升
-3. **Comprehensive benchmark coverage**: 在 29 个 benchmark 上全面评估，17 个 Embodied AI + 12 个 AD，建立了跨 embodiment 能力评估标准
+1. **"Cross-embodiment" 的具体含义**：不是 cross robot embodiment（不同 form factor），而是把 indoor robot 和 outdoor self-driving car 视作"两类 embodiment"放进同一模型——更像是 multi-domain SFT 的命名包装
+2. **正向迁移是 claim 而非实证**：Abstract 说两 domain "mutually reinforce one another"，但正文未给出 driving-only / embodied-only / mixed 的对照消融来证明这一点
+3. **训练流程标准化**：4 stages = General+Embodied SFT → +Driving SFT → CoT SFT → GRPO RL，每阶段都 train all parameters，bs=512，lr=2e-6（前三阶段）/1e-6（RL）
+4. **依赖 MiMo-VL 整套底座**：ViT、projector、LLM 全部从 MiMo-VL 7B 初始化，本工作核心贡献是数据 curation + 训练 recipe，不是架构创新
+5. **评测覆盖广**：17 + 12 = 29 个公开 benchmark 上对比；evaluation suite 基于 lmms-eval 开源（mivllm wrapper）
 
-**Teaser. MiMo-Embodied 能力概览**
-![](https://arxiv.org/html/2511.16518v1/x2.png)
+**Teaser. Performance overview across 29 benchmarks.**
+
+![](https://arxiv.org/html/2511.16518v1/x1.png)
+
+雷达图：MiMo-Embodied 在两套 benchmark 上的 envelope 都超过 closed-source（GPT-4o、Gemini）、open-source general（Qwen2.5-VL、InternVL3）以及 specialized embodied/driving VLMs。
 
 ---
-## Architecture
 
-MiMo-Embodied 架构基于 MiMo-VL，包含三个核心组件：
-1. **Vision Transformer (ViT)**：继承 MiMo-VL 的视觉编码器，支持高分辨率输入，处理单图、多图和视频
-2. **MLP Projector**：将视觉 token 映射到 LLM 输入空间
-3. **LLM backbone**：负责文本理解与推理
+## 1. Motivation
 
-所有组件均从 MiMo-VL（7B-SFT-2508 checkpoint）预训练权重初始化。与 InternVL3 将图像离散为 patch 不同，MiMo-Embodied 使用 3D 卷积显著减少 LLM token 数（796 vs 4096），同时保留空间上下文。
+现有的 embodied VLM 各自专精于一个 narrow 场景：
+- **Indoor robotics**：[[2502-RoboBrain|RoboBrain]] / VeBrain 等，强调 task planning + spatial understanding
+- **Autonomous driving**：RoboTron-Drive / DriveLMM-o1 等，强调 environmental perception + status prediction + driving planning
 
-**Figure 3. 模型架构**
+作者认为这种 fragmentation 导致：
+1. **Lack of unified embodied VLMs**：indoor 与 outdoor 之间空间推理能力不能跨域泛化
+2. **Lack of comprehensive cross-embodiment evaluation**：没有把两个 domain 的能力放一起评
+
+> ❓ Motivation 的"cross-embodiment"用词容易和真正意义上的 cross robot embodiment（同一 policy 跨不同 robot form factor，如 [[2503-GR00TN1|GR00T N1]]、[[2406-OpenVLA|OpenVLA]] 类语义）混淆。这里其实是 cross-domain（indoor↔outdoor），是 dataset mix 的问题，不是 morphology generalization 的问题。
+
+---
+
+## 2. Architecture
+
 ![](https://arxiv.org/html/2511.16518v1/x3.png)
 
+**Figure 3.** 三件套：(1) ViT 编码视觉输入（支持 single image / multi image / video）；(2) MLP projector 把视觉 token 映射到 LLM 的 latent space；(3) LLM 做文本理解与推理。ViT、projector、LLM 全部从 MiMo-VL 7B 的对应权重初始化。
+
+> 架构本身没有任何创新——本工作的所有差异化都在数据与训练 recipe 上。
+
 ---
-## Training Dataset
 
-数据集分三大类：General、Embodied AI、Autonomous Driving。
+## 3. Training Dataset
 
-**Figure 4. 训练数据概览**
 ![](https://arxiv.org/html/2511.16518v1/x4.png)
 
-### General Dataset
-继承 MiMo-VL 训练语料，覆盖 Visual Grounding、Document/Chart Comprehension、Video Understanding、Multimodal Reasoning 四大类。
+**Figure 4.** 三大类训练数据：General Dataset（基础多模态能力）、Embodied AI Dataset（affordance / planning / spatial）、Autonomous Driving Dataset（perception / prediction / planning）。
 
-### Embodied AI Dataset
-按目标能力分为三类：
-- **Affordance Prediction**: PixMo-Points（fine-grained localization）、RoboAfford（object + scene affordance）、RoboRefIt（cluttered scene referential grounding）
-- **High-level Task Planning**: [[2503-CosmosReason1|Cosmos-Reason1]]（cross-embodiment 物理推理，含 DeepSeek-R1 生成的长链推理）、EgoPlan-IT（egocentric planning）、RoboVQA（long-horizon QA）
-- **Spatial Understanding**: SQA3D + 自建 3D QA、VLM-3R（时空推理 + 导航）、RefSpatial（referring spatial tasks）、EmbSpatial（egocentric spatial）
+### 3.1 General Dataset
 
-### Autonomous Driving Dataset
-按功能模块分为三类：
-- **Environmental Perception**: General Scene Understanding（CODA-LM、DriveLM、OmniDrive 等）、Regional Object Understanding（DriveAction 等）、Regional Object Localization（DRAMA）
-- **Status Prediction**: Intent Prediction（DriveLM、MME-RealWorld）
-- **Driving Planning**: Action Decision（DriveLM、IDKB）、Driving Reasoning（CODA-LM、LingoQA、NuInstruct、BDD-X）
+继承 MiMo-VL 训练语料，含 visual grounding、document/chart 理解、video understanding、multimodal reasoning 四类。
+
+### 3.2 Embodied AI Dataset
+
+| 能力 | 数据源 |
+|---|---|
+| Affordance Prediction | PixMo-Points, RoboAfford, RoboRefIt |
+| High-level Task Planning | [[2503-CosmosReason1\|Cosmos-Reason1]], EgoPlan-IT, RoboVQA |
+| Spatial Understanding | SQA3D + 自构建 3D 数据, VLM-3R, RefSpatial, EmbSpatial-SFT |
+
+值得注意的两点：
+- **3D grounding 自构建**：基于现有数据集生成大规模 3D bbox grounding 样本，每个样本是 "RGB image + spatial query → camera coordinate 下的 3D box"，用于 monocular 3D 理解
+- **CoT 推理链来自 DeepSeek-R1**：Cosmos-Reason1 的 reasoning 标注是 R1 生成的 long-chain trace，本质上是 R1 知识在 embodied domain 的蒸馏
+
+### 3.3 Autonomous Driving Dataset
+
+| 能力 | 数据源（节选） |
+|---|---|
+| Environmental Perception (general scene) | CODA-LM, DriveLM, nuScenes-QA, MAPLM, MME-RealWorld, IDKB |
+| Environmental Perception (regional object) | CODA-LM, DriveLM, DriveAction, MME-RealWorld, nuScenes-QA, IDKB |
+| Status Prediction (intent) | DriveLM, MME-RealWorld |
+| Driving Planning (action decision) | DriveLM, MME-RealWorld, IDKB |
+| Driving Planning (driving reasoning) | CODA-LM, NuInstruct, LingoQA, BDD-X, DriveLM, IDKB |
+
+> ❓ 数据章节几乎全部是 "X 数据集做 Y 任务" 的清单式陈述。**没有给出任何数据量、配比、或采样策略的数字**——这对于一份强调 "data construction" 的 technical report 是个重要 omission。
 
 ---
-## Training Strategy
 
-四阶段渐进训练，逐步引入专用领域数据：
+## 4. Training Strategy
 
-**Stage 1: Embodied AI SFT** — 在 MiMo-VL 通用数据 + Embodied AI 数据上微调，建立 affordance 理解、task planning 和 spatial reasoning 基础能力
+四阶段渐进式训练，每阶段在前一阶段权重上继续：
 
-**Stage 2: Autonomous Driving SFT** — 在 Stage 1 基础上加入 AD 数据，专注多视图空间推理、时序一致性和安全关键感知
+**Table 1. Training configuration.**
 
-**Stage 3: Chain-of-Thought SFT** — 从训练数据中采样子集生成 CoT 推理链，增强多步推理的透明性和逻辑连贯性
-
-**Stage 4: RL Fine-tuning** — 使用 GRPO 算法针对 corner case 优化。多任务混合训练中设计不同 reward signal：选择题用 exact match、空间 grounding 用 IoU/point-in-mask、格式合规用 template check
-
-**Table 1. 各阶段训练配置**
-
-| Stages | Stage 1 | Stage 2 | Stage 3 | Stage 4 |
+| Stage | 1 | 2 | 3 | 4 |
 |---|---|---|---|---|
-| Dataset | General + Embodied AI | Previous + AD | Previous + CoT | RL Data |
+| Dataset | General + Embodied AI | + Autonomous Driving | + CoT Data | RL Data |
 | Batch Size | 512 | 512 | 512 | 32 |
 | Learning Rate | 2e-6 | 2e-6 | 2e-6 | 1e-6 |
+| Optimizer | AdamW | AdamW | AdamW | AdamW |
 | Weight Decay | 0.05 | 0.05 | 0.05 | 0.0 |
-| Max Seq Len | 32768 | 32768 | 32768 | 32768 |
+| LR Schedule | Cosine | Cosine | Cosine | Cosine |
+| Max Sequence Length | 32768 | 32768 | 32768 | 32768 |
+| Trainable | All | All | All | All |
+
+- **Stage 1 (Embodied SFT)**：建立 affordance / planning / spatial 基本能力
+- **Stage 2 (Driving SFT)**：加入驾驶数据，重点是 multi-view 空间推理、temporal consistency、safety-critical 感知
+- **Stage 3 (CoT SFT)**：在前面数据子集上加 explicit reasoning chain，把"先分析再决策"的格式教给模型
+- **Stage 4 (RL with GRPO)**：用 DeepSeek-R1-style GRPO，reward 设计：
+  - Multi-choice：exact answer matching
+  - Spatial grounding / pointing：IoU（box）或 point-in-mask
+  - 所有任务：format compliance（template check）
+
+> ❓ Stage 顺序是 Embodied 先、Driving 后；Table 1 dataset 列写"Previous + ..."提示是 mix 而非纯增量，但配比未公开。如果纯顺序 SFT 没有 replay，会有 catastrophic forgetting 的风险。
 
 ---
-## Evaluation
 
-### Embodied AI Benchmarks
+## 5. Evaluation
 
-在三大能力维度（Affordance、Planning、Spatial）的 17 个 benchmark 上评估。
+### 5.1 Embodied AI Benchmarks (17)
 
-**Affordance Prediction**：MiMo-Embodied 在全部 5 个 benchmark 上取得 SOTA，尤其在 VABench-Point、Part-Afford 和 RoboAfford-Eval 上大幅领先其他 embodied VLM。
+| 类别 | Benchmarks |
+|---|---|
+| Affordance | RoboRefIt, Where2Place, VABench-Point, Part-Afford, RoboAfford-Eval |
+| Planning | EgoPlan2, RoboVQA, Cosmos |
+| Spatial Understanding | CV-Bench, ERQA, EmbSpatial, SAT, RoboSpatial, RefSpatial, CRPE, MetaVQA, VSI-Bench |
 
-**Task Planning**：在 RoboVQA 上超越所有模型，EgoPlan2 上高度竞争，展示了因果推理和长 horizon 规划能力。
+声称在 affordance prediction 上对 VABench-Point / Part-Afford / RoboAfford-Eval 三项以"large margin"领先其他 embodied VLM。
 
-**Spatial Understanding**：在 CV-Bench 上 SOTA（88.82），在 RoboSpatial、RefSpatial-Bench、CRPE-relation 上领先，EmbSpatial、SAT、MetaVQA 上高度竞争。
+### 5.2 Autonomous Driving Benchmarks (12)
 
-### Autonomous Driving Benchmarks
+Single-view: CODA-LM, DRAMA, MME-RealWorld, IDKB, OmniDrive, NuInstruct
+Multi-view: DriveLM, MAPLM, nuScenes-QA, LingoQA, BDD-X, DriveAction
 
-在 12 个 benchmark 上评估 Perception、Prediction、Planning 三大能力。
+部分 reported 数字（vs. specialist / Gemini 等）：
+- CODA-LM: 58.55（vs. RoboTron-Drive 58.10）
+- DRAMA: 76.14（vs. specialist 68.40）
+- MME-RealWorld: 60.25（vs. Gemini 67.00）
+- IDKB: 43.42（vs. specialist 23.21）
+- DriveLM: 57.85（vs. RoboTron-Drive 61.30，落后）
+- MAPLM: 74.52（vs. RoboTron-Drive 74.34，持平）
+- nuScenes-QA: 56.71（vs. specialist 53.40）
+- NuInstruct: 83.58（vs. RoboTron-Drive 83.00）
 
-MiMo-Embodied 在 NAVSIM 上的 trajectory planning 结果突出（PDMS 91.0，RL 后），使用仅 796 个 LLM token（vs InternVL3 的 4096、ReCogDrive 的 2304）。在 proprietary 数据集上相比 Qwen2.5-VL baseline 平均提升 7.7%，复杂场景（U-turn、lane change）提升更显著（+8-10%）。
+> ❓ DriveLM 和 MME-RealWorld 上落后于 specialist/Gemini，但这些是 driving 领域的"招牌" benchmark。"SOTA on 12 benchmarks" 的说法值得保留——是 average win 而非 universal win。
 
-### Ablation Study
+### 5.3 Qualitative Evaluation
 
-**Table 7. Ablation 结果**
+- **Embodied navigation**：在 global / egocentric 视图上预测 keypoints
+- **Embodied manipulation**：估计 functionally-grounded 的 interaction point（即 affordance point）
 
-| Model | Embodied | AD | Multi-Stage | Affordance | Spatial | Plan | Embodied Avg. | AD |
-|---|---|---|---|---|---|---|---|---|
-| MiMo-VL (Baseline) | X | X | X | 38.7 | 55.3 | 46.2 | 46.76 | 32.2 |
-| MiMo-VL w/ Embodied | ✓ | X | X | 58.9 | 61.0 | 51.0 | 56.9 | 57.6 |
-| MiMo-VL w/ AD | X | ✓ | X | 26.3 | 56.3 | 47.0 | 43.2 | 57.5 |
-| MiMo-VL w/ Embodied+AD | ✓ | ✓ | X | 59.6 | 62.0 | 53.8 | 58.4 | 55.2 |
-| MiMo-Embodied (Ours) | ✓ | ✓ | ✓ | 65.6 | 66.0 | 55.6 | 62.4 | 63.3 |
+### 5.4 Ablation
 
-**Insights**:
-- 单独训练 AD 数据（w/ AD）在 embodied 任务上甚至低于 baseline，但 AD 成绩好——说明单域训练不足以跨域泛化
-- 直接混合训练（w/ Embodied+AD）改善了 embodied 但 AD 略降（55.2 vs 57.5）——跨域 task interference
-- 多阶段训练（Ours）在两域同时取得最优（Embodied 62.4 +4.0 vs 混合、AD 63.3 +8.1 vs 混合）——渐进策略有效缓解干扰
-- 有趣发现：Embodied 训练意外提升 AD（57.6 vs baseline 32.2），暗示 embodied 的空间推理对 driving 理解有正迁移
+> 论文 Section 5.3 标题为 Ablation Study，但 defuddle 与 webfetch 都未能取到该段正文。从 outline 看应该有，但具体消融了什么（4 stages 各自贡献？driving / embodied 数据剥离？）无法核实。
 
 ---
+
+## 关联工作
+
+### 基于
+- MiMo-VL (arXiv 2506.03569): 完全继承 ViT + projector + LLM 三件套权重；本工作可视为 MiMo-VL 在 embodied + driving domain 的 SFT/RL 续训
+- [[2503-CosmosReason1|Cosmos-Reason1]]: 提供 task planning 训练数据（含 R1 生成的 reasoning trace）
+- DeepSeek-R1: GRPO 算法源头；CoT 数据生成的 teacher
+
+### 对比
+- [[2502-RoboBrain|RoboBrain]] / [[2507-RoboBrain2|RoboBrain 2.0]] / [[2601-RoboBrain25|RoboBrain 2.5]]: 室内 embodied 专用 VLM 的代表线
+- VeBrain (arXiv 2506.00123): 另一条 embodied VLM 路线
+- RoboTron-Drive / DriveLMM-o1: 自动驾驶 VLM 的代表线
+- [[2503-GeminiRobotics|Gemini Robotics]] / [[2510-GeminiRobotics15|Gemini Robotics 1.5]]: Closed-source 跨形态 robotics VLM 对照
+
+### 方法相关
+- GRPO + rule-based reward (IoU / exact match / format check): 与 [[2506-VLNR1|VLN-R1]]、[[2604-OpenSpatial|OpenSpatial]] 等 spatial RL 工作的 reward design 思路一致
+- 多阶段 SFT → CoT → RL pipeline: 与 [[2506-VLNR1|VLN-R1]]、近期 reasoning VLM 的 standard recipe 同构
+
+---
+
 ## 论文点评
 
 ### Strengths
 
-1. **清晰验证跨域正迁移假说**：Ablation 设计合理，多阶段 vs 单阶段 vs 单域对比完整，正迁移的证据充分
-2. **全面的 benchmark 覆盖**：29 个 benchmark 提供了可信的能力全景，是 embodied VLM 领域最全面的评估之一
-3. **实用的工程启示**：token 效率（796 vs 4096）、多阶段训练策略、多任务 reward 设计等具有工程参考价值
-4. **Qualitative demo 有说服力**：导航和操作的实际部署展示了从 benchmark 到实际应用的闭环
+1. **完整的 evaluation suite 开源**：基于 lmms-eval 的 mivllm wrapper 与 29 个 benchmark 的配置文件全部开源，是"reproducible eval"的实质性贡献
+2. **覆盖度真的广**：17 + 12 = 29 个 benchmark 在一份 report 里同时跑通本身就是工程量，对后续工作的对比有 reference 价值
+3. **Recipe 透明**：四阶段训练的超参表完整披露（bs / lr / wd / schedule），是少数把 RL stage 的 lr 和 batch size 都报全的 technical report
 
 ### Weaknesses
 
-1. **Method novelty 有限**：架构直接继承 MiMo-VL，训练策略是 SFT→CoT→RL 的 standard pipeline，核心贡献更多是数据工程和训练顺序
-2. **跨域正迁移的机制解释不足**：只知道多阶段训练 work，但为什么 embodied 训练能提升 AD、正迁移的具体信号通路（spatial reasoning? scene understanding?）没有深入分析
-3. **无端到端 action 能力**：MiMo-Embodied 本质是 VLM（输出文本/坐标），不直接输出 low-level action，需要下游 policy 配合
-4. **数据构成不透明**：General 数据继承 MiMo-VL 但规模和比例未披露，各阶段数据量未明确，reproducibility 受限
-5. **Autonomous driving 部分 benchmark 选择偏 QA-based**：大多数 AD benchmark 是 VQA 形式，与实际 driving 能力有 gap
+1. **核心 claim "positive transfer between embodied & driving" 缺证据**：abstract 与 introduction 都强调两个 domain 互相增强，但正文（至少 webfetch 可见的部分）没有给出 (a) embodied-only 训练的模型在 driving benchmark 的表现，(b) driving-only 训练的模型在 embodied benchmark 的表现。这个 ablation 是 paper 立论的关键，缺失非常显眼
+2. **"Cross-embodied" 命名误导**：cross-embodiment 在文献里通常指跨机器人形态（arm vs. humanoid vs. mobile base 等，参见 [[2503-GR00TN1|GR00T N1]]、[[2406-OpenVLA|OpenVLA]]），这里实际是 cross-domain。命名 inflation
+3. **数据细节不透明**：每个 sub-dataset 的样本数、四阶段的 mixing ratio、RL 样本量全都未披露
+4. **VSI-Bench 等高难空间基准的具体数字**未在易获取部分给出
+5. **没有真机部署**：qualitative 部分只是输出 keypoint / interaction point 的 visualization，没有接到 policy / 控制器后的成功率数字。"embodied" claim 停留在 perception+reasoning 层
+6. **RL stage 的边际收益未单独报告**：GRPO 的 reward 设计写得很清楚，但没说 +RL 比 +CoT-SFT 的 delta 是多少
 
 ### 可信评估
 
 #### Artifact 可获取性
-- **代码**: inference-only（评估 pipeline 基于 lmms-eval）
-- **模型权重**: MiMo-Embodied-7B（HuggingFace 发布）
-- **训练细节**: 仅高层描述，超参已披露（Table 1），但数据规模和比例未公开
-- **数据集**: 使用公开数据集组合 + MiMo-VL 私有语料，整体不可完全复现
+- **代码**: inference + evaluation only（明确说明 "does **not** contain model training code"）
+- **模型权重**: `XiaomiMiMo/MiMo-Embodied-7B` 在 HuggingFace 已发布
+- **训练细节**: 仅高层超参（Table 1），数据配比与样本量未披露
+- **数据集**: 全部为已开源的 benchmark 数据组合（PixMo-Points / RoboAfford / Cosmos-Reason1 / DriveLM / nuScenes-QA / ... 共 ~20+ 数据源），但作者新增的 "self-curated 3D grounding data" 未公开
 
 #### Claim 可验证性
-- ✅ 29 benchmark SOTA：评估代码已开源，可独立复现
-- ✅ 多阶段训练优于直接混合：Ablation 设计合理，数据点充分
-- ⚠️ "strong positive transfer"：ablation 支持跨域训练有益，但 transfer 的 mechanism 缺乏分析
-- ⚠️ "first cross-embodied foundation model"：取决于 "cross-embodied" 的定义范围——如果只指 embodied AI + AD 的统一 VLM 确实是首个
+- ✅ "29 个 benchmark 上的 reported 数字"：lmms-eval 框架 + 开源 checkpoint 可独立复现
+- ⚠️ "achieves SOTA on 17 embodied + 12 driving benchmarks"：average / per-task 都赢? 表格里 DriveLM、MME-RealWorld driving 部分有落后 specialist 的项
+- ⚠️ "positive transfer between embodied and driving"：缺关键消融，目前只是 plausible 假说而非 evidence-based claim
+- ⚠️ "first cross-embodied foundation model"：取决于"cross-embodied"的定义；按论文自己的 indoor↔outdoor 定义，可能算 first，但同一个 VLM 同时跑两个 domain 在工程上并不新颖
+- ❌ "Sets a new standard for integrating diverse competencies, paving the way for more intelligent and adaptable systems"——marketing 修辞，不是技术 claim
 
----
-## 关联工作
-### 基于
-- MiMo-VL: 架构和通用数据全部继承自 MiMo-VL（7B-SFT-2508），是直接的上游 base model
+### Notes
 
-### 对比
-- [[2507-RoboBrain2|RoboBrain 2.0]]: Embodied VLM baseline，7B 参数，在 affordance 和 spatial 上被超越
-- [[2506-VeBrain|VeBrain]]: Embodied VLM，8B 参数，专注 spatial understanding
-- RoboTron-Drive: AD 专用 VLM，8B 参数
-- DriveLMM-o1: AD 专用 VLM，8B 参数，step-by-step reasoning
-- GPT-4o / Claude Sonnet 4 / Gemini 2.5 Pro: Closed-source general VLM baselines
-- InternVL3.5 / Qwen2.5-VL: Open-source general VLM baselines
+- **这篇 paper 的真正信号**：Xiaomi 在 push 一个统一 mobile/auto/robotics VLM 底座的 narrative。MiMo-VL → MiMo-Embodied 这条线说明他们在尝试 vertical 整合：一个 7B VLM 同时给手机端 agent、家居 robot、车端 cockpit 用
+- **对我研究兴趣的相关性**：方法上没有原创性（都是 standard SFT+RL recipe），但**作为一个 multi-domain mixing 的 data point** 有参考价值——如果未来要论证 "single-VLM for embodied + driving" 是否 viable，这是一个可引用的开源对照
+- **缺失的 ablation 是真问题**：positive transfer 是这篇 paper 的核心 selling point，没有 ablation 就没法知道是 transfer 真的发生了还是只是 capacity 大了/数据多了带来的提升。**如果未来要做类似 multi-domain VLM 训练，positive transfer 这一 claim 必须做 leave-one-domain-out 消融**
+- **"Cross-embodied" 命名值得警惕**：未来读到带 "cross-embodiment" 字样的论文要先看其定义，避免被术语 inflation 误导
 
-### 方法相关
-- GRPO: Stage 4 RL fine-tuning 使用的 policy optimization 算法（来自 DeepSeek-R1）
-- [[2503-CosmosReason1|Cosmos-Reason1]]: 提供跨 embodiment 物理推理数据，含 DeepSeek-R1 生成的长链推理 trace
+### Rating
 
----
-## Notes
-
+**分数**：1 - Archived
+**理由**：方法层面无原创（架构全继承 MiMo-VL、训练是标准的 SFT→CoT-SFT→GRPO pipeline，与 [[2506-VLNR1|VLN-R1]] 等同构），核心 selling point "positive transfer across embodied & driving" 缺 leave-one-domain-out 消融，连 Ablation 章节都抓不到正文——构不成方法级贡献。Benchmark 维度也不是新评测标准，而是 lmms-eval 上 17+12 个已有 benchmark 的打包；值得作为"multi-domain VLM mixing 的开源对照"引用，但不是 Frontier 档方向参考，不会主动追更相关后续。相较 [[2502-RoboBrain|RoboBrain]] 线 / [[2503-GeminiRobotics|Gemini Robotics]] 这种定义方向的工作，本文更像是 Xiaomi 把 MiMo-VL 往 embodied+driving 方向延展的 technical report，归为 Archived。

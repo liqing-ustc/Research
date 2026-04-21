@@ -1,245 +1,292 @@
 ---
 title: "SkillClaw: Let Skills Evolve Collectively with Agentic Evolver"
-authors:
-  - Ziyu Ma
-  - Shidong Yang
-  - Yuxiang Ji
-  - Xucong Wang
-  - Yong Wang
-  - Yiming Hu
-  - Tongwen Huang
-  - Xiangxiang Chu
-institutes:
-  - DreamX Team (AMAP / Alibaba)
+authors: [Ziyu Ma, Shidong Yang, Yuxiang Ji, Xucong Wang, Yong Wang, Yiming Hu, Tongwen Huang, Xiangxiang Chu]
+institutes: [DreamX Team (AMAP-ML / Alibaba)]
 date_publish: 2026-04-09
-venue: arXiv preprint
-tags:
-  - LLM
-  - task-planning
+venue: arXiv preprint (Work in Progress)
+tags: [computer-use, task-planning, LLM]
 paper: https://arxiv.org/abs/2604.08377
 website:
 github: https://github.com/AMAP-ML/SkillClaw
-rating: 1
-date_added: 2026-04-20
+rating: 2
+date_added: 2026-04-21
 ---
+
 ## Summary
 
 > [!summary] SkillClaw: Let Skills Evolve Collectively with Agentic Evolver
-> - **核心**: 在一个多用户部署的 Claude-Code 风格 agent 生态里，把所有用户的交互轨迹聚到一起，用一个"agentic evolver"按技能分组、反复重写共享 skill 文件，夜间在真实环境里验证后再推送给所有用户——一个典型的"日间用、夜间进化"的 skill-library self-evolution 循环。
-> - **方法**: Trajectory → 按 referenced skill 分组 → agentic evolver 选 {refine, create, skip} → 夜间在真实 tool 环境里拉 A/B 对拍 → 仅 Accept 入池，Reject 丢弃。
-> - **结果**: 6 天 6 轮在 WildClawBench 的 4 个类目上以 Qwen3-Max 为 backbone：Social +11.7%, Search +52%, Creative +88.4%, Safety +33.3%（均为相对于 Day 1 的相对增益）。
+> - **核心**: 把多用户、多 session 的 agent 交互轨迹作为"集体证据"，由一个 agentic evolver 持续 refine / create skill，让 skill 库随真实使用而进化。
+> - **方法**: Day-night loop —— 白天用户用当前 best skill pool 跑任务并记录 trajectory；夜晚把 trajectories 按 skill 分组，由 LLM evolver 生成 refine/create/skip 的候选改动，再在闲置环境里跑 A/B 验证，只 merge 通过的版本。
+> - **结果**: 在 WildClawBench (4 个 category, 8 并发用户, Qwen3-Max, 6 轮) 上四个 category 全部稳定提升（绝对 +6~12 pts；相对 +12%~88%），但每个 category 在 6 天里通常只有 1 个 candidate 真正进 deploy pool，其余被 reject。
 > - **Sources**: [paper](https://arxiv.org/abs/2604.08377) | [github](https://github.com/AMAP-ML/SkillClaw)
+> - **Rating**: 2 - Frontier（skill-evolution 方向上有清晰 framing 和完整工程闭环，但缺外部 baseline、只跑 4/6 category、命名体系不可独立验证，尚未成为必读经典）
 
-**Key Takeaways:**
-1. **"自然 ablation" 是唯一真正新颖的立论**：同一个 skill 被不同用户在不同 context 下调用，把 skill 本身变成受控变量，这样把 trajectory 聚合看成 cross-user A/B，就能区分一次性 fix 与可泛化改进。这是论文唯一站得住脚的 motivation。
-2. **Agentic evolver = 让另一个 LLM agent 直接去改 skill Markdown**：不是规则流水线，不是 fine-tune，就是给它 trajectory 证据 + 当前 skill 文件，让它 diff。三个动作：refine / create / skip。prompts 全部在 appendix 里暴露（长得像 Claude skills 的 SOP 修订器）。
-3. **夜间 validator 是真执行 A/B，不是 LLM-judge**：候选 skill 在真实 tool 环境里和老 skill 各跑一遍同样的 daytime 任务子集，model 比较 outcome。这是 monotonic deployment 的机制保证——但也等于在 test set 上调 skill。
-4. **实验规模极小**：6 天、8 concurrent users、4 个类目、每类不超过十几个 task。很多 cell 里一个 skill update 涨一次就 plateau 5 天，根本看不出 "continuous evolution"。
-5. **Claude Code / Anthropic skills 的直接复刻**：method 与 Anthropic 2026 的 "skills" 范式 1:1 对应，差异是集中化 evolver + validator 闭环；但集中化本身带来 privacy / skill 漂移 / 跨用户污染的大坑，论文完全没触及。
+**Key Takeaways:** 
+1. **把 skill 视作"被使用就该进化"的 artifact**：相比把 trajectory 存进 memory（Reflexion / ExpEL / Mem0 等），SkillClaw 选择更"前置"的更新单元——直接改写 skill 文本，让改动对所有用户立即生效。这把 per-user adaptation 转成了 per-system adaptation。
+2. **Cross-user grouping 是关键设计**：单用户的轨迹无法分清"普适改进"还是"个人怪癖修补"，SkillClaw 按 skill 把跨用户 session 聚类，successful sessions 当 invariants、failed sessions 当 targets，做"自然消融"——这是论文最 clean 的 framing。
+3. **Validation gate 是工程上必需但理论上保守**：每晚把 candidate skill 在真实环境里 A/B 跑一遍才决定是否 deploy。结果是 6 轮里大多数 candidate 被 reject，多数提升来自 day 1-2 的少数大改。说明当前 evolver 的 proposal quality 是瓶颈，不是 validation 本身。
+4. **没和任何强 baseline 直接对比**：所有数字都是"自身随时间改进"，而非 vs. Reflexion / ExpEL / SkillWeaver / SkillRL 等竞争系统。所以"集体进化更优"这个 claim 在论文里没有直接证据。
 
-**Teaser. 系统全景：多用户轨迹聚合 → agentic evolver 在共享 skill repo 上做 refine/create → 夜间 validator 真实执行对拍 → 推送回所有 agent。**
+**Teaser. SkillClaw 整体 pipeline：独立 agent 在各自环境里产生 trajectory → 按 skill 聚合成 evidence → agentic evolver 决定 refine/create → 验证后同步回所有 agent。**
 
 ![](assets/SkillClaw/fig1_overview.png)
 
 ---
 
-## Problem & Motivation
+## 1. Problem Setup
 
-论文的问题设定相当直白：在 OpenClaw（论文里的 Claude Code stand-in）这种"skill 即可复用 markdown 程序"的 agent 系统里，skill 库一经部署就基本静态化。用户在与 agent 试错中偶尔找到了一个能 work 的 procedure（比如正确的 Slack API port、正确的 `/tmp_workspace` 目录约定），这些发现不会沉淀回 skill 文件，也不会传播到其他用户；结果是每一个用户都要独立重新发现同一个坑。
+LLM agent 系统（OpenClaw 及其同族 CoPaw / IronClaw / PicoClaw / ZeroClaw 等）严重依赖 **skill**——结构化的 procedure 描述，告诉 agent 怎么调用工具、走什么 workflow。但当前 skill 库**部署后基本是静态的**：
 
-Motivation 的核心 observation 值得抄下来：
+- 用户在 session 里 trial-and-error 出来的 fix（如发现 mock service 跑在 9110 而非 9100），不会回流到 skill 文本。
+- 不同用户在重叠的任务空间里反复踩同样的坑。
+- 现有 memory-based 方法（Reflexion, ExpEL, Mem0, ReasoningBank）把 trajectory 存起来供检索，但这些记录绑定具体实例，难以泛化为"改进的行为"。
+- Skill-based 方法（Voyager, SkillWeaver, SkillRL 等）把经验压缩成 skill 库，但库本身被当作静态资源。
 
-> different users exercising the same skill under diverse contexts produce complementary views of that skill's behavioral boundary, revealing both the conditions under which it works and those under which it breaks. A single user rarely generates enough signal to separate a generalizable improvement from an idiosyncratic fix.
+> ❓ Problem framing 对吗？把"skill 不进化"作为核心 gap 是合理的，但论文没明确论证：为什么 evolution 必须发生在 skill 文本层而不是 memory 检索层？后者可以做 reranking、可以 retrieval-augmented，技术上更灵活。我的猜测是工程理由——skill 是 prompt 显式注入的，更新立刻 visible；memory 召回还要靠 retrieve 命中。
 
-这句话是整篇的立论。作者管这叫 **natural ablation**：同一个 skill 被不同用户在不同任务/环境下调用，相当于把 skill 本身做了受控变量处理——这样一旦多 session 对比出现"有的成功、有的失败"，就有机会识别出是 skill 指令的缺陷、还是场景偶发。这个 framing 挺漂亮；但实验里 8 个用户 × 几十个 task 的规模，很难真实跑出这种 ablation 效应。
+**形式化**：给定共享 skill 集合 $S = \{s_1, \dots, s_M\}$ 和跨用户收集的 trajectory 集合 $T = \{\tau_i\}$，目标是更新 $S$ 使得未来用户受益于过去的发现。每个 trajectory $\tau$ 记录完整因果链：
 
-## Method
+$$
+\text{prompt} \to \text{action} \to \text{feedback} \to \cdots \to \text{response}
+$$
+
+完整保留中间 action-feedback 是关键——大多数 skill-level failure 是 procedural 的（参数格式错、工具调用顺序错、缺少 validation step），只看 final response 看不出问题。
+
+---
+
+## 2. Method
 
 ### 2.1 From Isolated Sessions to Shared Evidence
 
-SkillClaw 把系统级 loop 定义为：
+两阶段：
+
+1. **Per-session structuring**：每个 raw session 转成保留因果链的结构化记录，附 lightweight metadata（哪些 skill 被引用、是否有 tool error、coarse quality estimate）。
+2. **Cross-session grouping**：按 skill 聚类——所有调用了 skill $s$ 的 session 进 group $G(s)$，没用任何 skill 的进 $G(\emptyset)$。
+
+> 这步其实就是论文最有 leverage 的 design。Group $G(s)$ 形成一种**自然消融**：skill 是控制变量，不同用户、任务、环境产生不同 outcome，对比 success 和 failure 直接暴露 skill 的 behavioral boundary。$G(\emptyset)$ 则用来发现**当前没被任何 skill 覆盖的 reusable procedure**。
+
+整个系统形成闭环：
 
 $$
 \text{Multi-user Interaction} \to \text{Session Collection} \to \text{Skill Evolution} \to \text{Skill Synchronization}
 $$
 
-每个 session trajectory τ 是一个完整的因果链：
+### 2.2 Agentic Skill Evolution
 
-$$
-\text{prompt} \to \text{action} \to \text{feedback} \to \cdots \to \text{agent response}
-$$
+核心是一个 **agentic evolver**——一个 LLM agent，配备：
+- grouped session evidence
+- 当前 skill 定义
+- 一组允许的 evolution actions
 
-为什么要保留整条链？论文的解释倒是实在：**skill-level failure 多是 procedural 失败**——错误的 argument 格式、漏掉一步 validation、tool call 顺序错——这些在 final response 里看不出来，只能从中间 action-feedback trace 诊断。
+Harness 提供结构化输入但不限制 evolver 的推理。Evolver 对每个 $G(s)$ 选一个 action：
 
-轻量 metadata：(i) 引用了哪些 skill；(ii) 是否出现 tool error；(iii) coarse quality 估计。然后把 session 按 referenced skill 分组：
+- **Refine**：基于观察到的 failure pattern 修正/加强 skill。
+- **Create**：当 $G(s)$ 暴露出当前 skill 没覆盖的 sub-procedure 时引入新 skill。
+- **Skip**：证据不足时不动。
 
-$$
-G(s) = \{\tau_i : \tau_i \text{ invoked } s\}, \quad G(\emptyset) = \{\tau_i : \tau_i \text{ invoked no skill}\}
-$$
+对 $G(\emptyset)$，evolver 专注发现 missing-but-reusable procedure，只在 pattern 足够具体且大概率复现时新建 skill。
 
-G(s) 用来 refine 老 skill，G(∅) 用来挖 create 新 skill 的机会。
+**关键 invariant**：always reasoning over success + failure jointly。Successful sessions 定义 skill 的 invariants（不能改的部分），failed sessions 定义 targets（要修的部分）。这避免"修一个 bug 顺手破坏一个 working procedure"。
 
-### 2.2 Agentic Skill Evolution（核心）
-
-**Algorithm 1** 基本就是把 agentic evolver 套进 for-loop：
+**Algorithm 1: Agentic Collective Skill Evolution**
 
 ```
-for each group G(s):
-    evolver 分析 recurring success/failure patterns
-    action ∈ {refine, create, skip}
-    生成候选 skill 更新
-    conservative editing + validation
-    approved → merge
-分析 G(∅) 找缺失的可复用 procedure → 创建新 skill
-Sync 回所有 agent
+Require: Skill repository S, user sessions T
+Ensure:  Updated repository S′
+1: Convert T into structured evidence E
+2: Group E by referenced skills to obtain {G(s)} and G(∅)
+3: S′ ← S
+4: for all group G(s) do
+5:   Use the agentic evolver to analyze recurring success and failure patterns
+6:   Select an evolution action from {refine, create, skip}
+7:   Generate a candidate skill update if the evidence supports modification
+8:   Apply conservative editing and validation
+9:   Merge approved updates into S′
+10: end for
+11: Analyze G(∅) for missing but reusable procedures
+12: Add validated new skills into S′
+13: Synchronize S′ back to all agents
+14: return S′
 ```
 
-Evolver 是一个 LLM agent + "结构化 harness"。Harness 提供：grouped 证据、当前 skill 定义、允许的 action 集。具体决策（refine 哪个段落、create 什么 slug、skip 的依据）完全开放。论文强调 evolver 要"successful + failed session 联合推理"：successful session 定义 skill 的 invariant（不能改的部分），failed session 定义 correction target。这是为了防止 "fixing one problem while breaking a previously effective procedure"——听起来合理，但没有任何定量指标衡量是否真做到了。
+> 论文 appendix（Summarize Session Prompt / Evolve from Sessions Prompt / Agentic Evolve Prompt）里完整给出了 evolver 的提示词，规则细到：editing principle、hard constraint（如不能随意改 API endpoint）、history 维护、如何区分 skill problem vs agent problem vs environment problem。可以看出"agentic"主要是 prompt-engineered，不是 RL 或别的训练范式。
 
-> ❓ **Agentic Evolve Prompt 里最刺眼的一条反模式警告**（Appendix）：
-> > "if the skill ALREADY contains correct environment information... and the agent failed because it did NOT use that information... that is an AGENT problem, not a skill problem. Do NOT delete the correct API information from the skill and replace it with instructions like 'go read utils.py'."
->
-> 这说明作者自己在 iterate 过程中已经观察到 evolver 会把正确的 API endpoint 删掉改成 "去读源码"——换句话说 evolver 有把 skill 当 postmortem 笔记写、而不是当 reusable artifact 写的倾向。这个风险在方法描述里被弱化为一个 prompt 约束，但实际上是 agentic evolver 这个范式的结构性问题。
+### 2.3 Skill Synchronization & Validation Loop
 
-### 2.3 Skill Synchronization & Validation
+Candidate skill 在写回前要 validate：
 
-validator 机制：对每个 candidate s′，取 daytime 里对应的 task 子集，s 和 s′ 在同一 tool 环境下真跑，model-based 对比 outcome（任务成功 + 执行稳定）。Accept → 入 best pool；Reject → 丢弃。从而保证部署池 monotonic。
+1. 夜间在闲置 user 环境里跑 validation。
+2. 对每个 candidate $s'$ 和原版 $s$，用同一环境跑全 toolchain，由 model 比较结果。
+3. 决策基于 task success + execution stability。`Accept` 的合并进 best pool；`Reject` 的只保留为候选。
 
-注意这里有两个关键信息：
-1. **validator 用的 task 就是 daytime 用户跑过的 task**——这是在 test traffic 上调 skill，等于把用户当 validation set 用。论文没有说 validation 和后续 daytime 评估之间是否有任务隔离。
-2. **validation 在 idle user environment 里执行**——用户设备夜里要替系统跑对比实验。这在 multi-user 产品里是个不小的运营假设。
+完整 loop：
 
-## Experiments
+$$
+\text{Interaction} \to \text{Evidence} \to \text{Evolution} \to \text{Validation} \to \text{Deployment}
+$$
 
-### 3.1 WildClawBench
+> Validation 这一步保证了 monotonic deployment——pool 不会退化。但也意味着 token 成本高（每个 candidate 都要在真环境跑一遍 with full tool interaction）。论文没给 token cost 数字。
 
-60 个任务、6 个类目（Productivity / Code / Social / Search / Creative / Safety）；全 Linux container 执行；任务长度 15–50 步；多模态输入；hard constraints → critical error 直接零分。**论文只报告其中 4 个类目**，另 2 个 "to be included in the future version"——这个省略值得扣分。
+---
+
+## 3. Experiments
+
+### 3.1 Benchmark: WildClawBench
+
+60 个真实任务，6 个 category，full Linux container 执行环境，多模态输入，3-27 个 metric 加权评测，hard constraint（critical error → 0 分），任务长度 15-50 步。
+
+**Table 1. WildClawBench task categories**
+
+| Category | Example Tasks | Challenges |
+|---|---|---|
+| Productivity Flow | arXiv classification, scheduling, SCP | multi-step pipelines |
+| Code Intelligence | debugging, puzzle solving | execution correctness |
+| Social Interaction | negotiation, chat analysis | multi-turn reasoning |
+| Search & Retrieval | academic search, conflict resolution | API usage |
+| Creative Synthesis | video notes, poster generation | multimodal generation |
+| Safety & Alignment | prompt injection, leakage detection | constraint satisfaction |
+
+> 注意：论文实验只在其中 4 个 category 上跑（Social Interaction / Search & Retrieval / Creative Synthesis / Safety & Alignment），剩下 2 个（Productivity Flow / Code Intelligence）"留给未来版本"。这恰恰是 agentic skill 系统应该最有用的两类，挺奇怪。
 
 ### 3.2 Setup
 
-- 6 天 × 6 rounds，每天 day-phase + night-phase
-- 8 concurrent users
-- backbone: Qwen3-Max（唯一一个 backbone，未做 model ablation）
-- Day 1 = baseline（初始 skill set）
-- Validator 决策：accept 进池 / reject 作为候选
+- 8 个并发用户，6 天（6 轮）连续 day-night 循环
+- Backbone: Qwen3-Max
+- Day 1 用初始 skill 集（baseline）
+- 每晚只考虑被触发且有改进潜力的 skill
 
 ### 3.3 Main Results
 
-**Table 3. User-side daytime results（best-skill deployment view）**
+**Table 3. User-side daytime results across 6 days (Day 1 = baseline)**
 
 | Category | Day 1 | Day 2 | Day 3 | Day 4 | Day 5 | Day 6 | Abs. Gain | Rel. Gain |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+|---|---|---|---|---|---|---|---|---|
 | Social Interaction | 54.01% | **60.34%** | 60.34% | 60.34% | 60.34% | 60.34% | +6.33 | +11.72% |
 | Search & Retrieval | 22.73% | 30.00% | 30.00% | **34.55%** | 34.55% | 34.55% | +11.82 | +52.00% |
 | Creative Synthesis | 11.57% | **21.80%** | 21.80% | 21.80% | 21.80% | 21.80% | +10.23 | +88.41% |
 | Safety & Alignment | 24.00% | 24.00% | 24.00% | 24.00% | **32.00%** | 32.00% | +8.00 | +33.33% |
 
-一眼可见的问题：**4 个类目里 3 个在 Day 2 或 Day 5 提升一次后就 plateau 到 Day 6**。换句话说 "continuous evolution" 在这张表里并不 continuous——真实发生的是一次性大的 skill 重写 + 后续 5 天 reject。把这说成"6 轮持续改进"在 abstract 里略有 overclaim。
+**观察**：
+- 四个 category 全部提升，但**通常一个早期跳跃后就 plateau**——只有 Search & Retrieval 出现 staged improvement（先修底层 input validation，再升级到 constraint-aware planning）。
+- 大多数 category 在 6 天里只接受了 **1 个** candidate skill 进 best pool。
+- 没有任何 baseline 对比。这意味着论文证明的是"持续运行的 SkillClaw 系统会改进"，不是"SkillClaw 比 X 更好"。
 
-类目分析（摘自 Table 4-7，我筛出真正 Accept 入池的 update 数）：
+### 3.4 Per-Category Evolution Trajectories
 
-- **Social Interaction**：6 天只有 1 次 Accept（Day 1 的 `03_task6`，executive summary skill 被从描述性说明重写为 strictly-ordered steps）。整个 +11.7% 全来自这一次 skill 重写。
-- **Search & Retrieval**：2 次 Accept（`validate-file-existence` 和一次"确认当前 pool 为 best-so-far"的空操作）。其中一次 Accept 严格意义上没有 skill 文本落地——有点凑数。
-- **Creative Synthesis**：1 次 Accept（`validate-tmp-workspace-inputs`）。`+88.41%` 的相对增益完全来自这一次 workspace preflight skill 的加入，而 baseline 只有 11.57%——**低 baseline 放大相对值是这里数字最亮眼但最误导的地方**。
-- **Safety & Alignment**：3 次 Accept（全是 `git-push-with-auth-fallback` 的迭代版本 + 一次 directory cloning）。这是全文 Accept 最密集的类目，但 Day 5-6 继续 iterate 同一个 skill 都被 Reject——说明很快就 saturate 了。
+Table 4-7 详细列出每晚的 candidate skill、验证决策、变化总结。Pattern：
 
-### 3.4 Controlled Validation (Table 8)
+- **Social Interaction**：1 个 candidate accepted (Day 1, `03_task6` 把 cross-dept Slack summarization 从描述性改成 strict-ordered procedural workflow)，后续 5 晚的 candidate 全 reject。
+- **Search & Retrieval**：2 个 accepts（Night 1 `validate-file-existence`、Night 3 best-so-far confirmation）+ 4 个 reject。展示出 input-first → strategy-later 的渐进改进。
+- **Creative Synthesis**：1 个 accept (Night 1, `validate-tmp-workspace-inputs`)，后续多个更复杂的 multimodal pipeline candidate 全 reject——早建立的 simple skill 已是 best。
+- **Safety & Alignment**：连续 4 晚 accept（基本都是 git auth fallback 的迭代改进），后 2 晚 reject。
 
-作者挑了 3 个自定义 query 做 "Skill Evolve Lite" 控制实验：
+> Validator 拒掉了大多数 candidate，这值得关注：要么 evolver 在 propose marginal improvement 上太激进（保守 validator 救场），要么 validator 太严格放过了实际有用的 update。论文没给出 token cost、reject reason 分布、人类 audit 等数据来区分这两种解释。
+
+### 3.5 Controlled Validation (Skill Evolve Lite)
+
+为了验证"不是 day-to-day variance 撑起来的提升"，作者用 3 个自定义 query 做 isolated 的单轮 evolution：
+
+**Table 8. Skill Evolve Lite single-round controlled validation**
 
 | Query | Baseline | Post-Evolve | Gain |
-| --- | --- | --- | --- |
+|---|---|---|---|
 | basic extraction | 21.7% | **69.6%** | +47.8% |
 | deadline parsing | 41.1% | **48.0%** | +6.9% |
 | save report | 28.3% | **100.0%** | +71.7% |
 | Average | 30.4% | **72.5%** | +42.1% |
 
-`save report` 28.3% → 100% 的来源是"缺少 environment-specific procedure（output path/format），一旦编码成 skill 就完全修复"——这基本等于在说：如果你告诉 agent 正确的输出路径，它就会用正确的输出路径。这是个相当 trivial 的因果链，把它 framed 成 "skill evolution" 对证据价值打了大折扣。
+`save report` 提升最大（+71.7%）——失败完全来自缺 environment-specific procedure（output path / format）。`deadline parsing` 提升最小（+6.9%）——这类靠 nuanced reasoning 的任务对 procedural skill update 不敏感。
 
-### 3.5 Case Studies
+> 这是论文里 mechanistic explanation 最强的一段：skill evolution 主要解决 **procedural / environmental** 缺陷，不解决 **reasoning** 缺陷。这是个有用的 boundary——之后如果有人用 SkillClaw 类系统，应该先问"这个任务的 failure 是 procedural 还是 reasoning？"
 
-**Figure 2. Slack message analysis 的 skill 进化。** Original skill 里写着错的 API port（`9100`），evolved skill 改成 `9110`，同时加了"先用 preview 筛候选、再拉 full message"的 task decomposition。
+### 3.6 Case Studies
 
-![](assets/SkillClaw/fig2_case_slack.png)
+**Figure 2. Slack message analysis**——典型的 procedural fix。原 agent 不知道 mock API 端口在 9110（盲跑 9100 fail 后才发现），evolved skill 把正确端口和"先 scan preview 再 selectively retrieve full message"的 workflow 写进 skill。
 
-这个例子很有说服力——**但注意它本质是个 "skill 里有个错字，被修正了" 的 case**，不是真正复杂 procedural 改进。3 个改进里 "修正 API port" 和 "指定正确输出路径" 都是 hardcoded fact 修正；只有 "task decomposition（先扫 preview 再拉 full）" 算真正 procedural evolution。
+![](assets/SkillClaw/fig2_slack_case.png)
 
-**Figure 3. ICCV Oral 论文归属统计任务。** Original skill 靠 "affiliation list 里出现 SJTU" 就算；evolved skill 显式定义 "first affiliation" = official PDF 首页第一个机构，并对 noisy extraction 做 targeted re-check。
+**Figure 3. ICCV 2025 oral paper SJTU/FDU first-affiliation 计数**——evolved skill 增加了 "first affiliation 必须按 PDF first-page structure 严格定义" 和 "noisy 抽取要 manual second-pass" 两条规则，纠正了原 agent 用 university name presence 做匹配的错误。
 
-![](assets/SkillClaw/fig3_case_iccv.png)
+![](assets/SkillClaw/fig3_iccv_case.png)
 
-这个 case 更有意思——它显示 evolver 能把一个"模糊匹配"的 heuristic 升级成"precise structural definition + verification-aware reasoning"。是 4 个 case 里唯一让我觉得 agentic evolver 在做非平凡事的例子。
+**Figure 4. SAM3 推理脚本**——evolved skill 加了 environment precheck 和 nearby-asset search，让 agent 不再因为 `/tmp_workspace/results` 缺失就 block，也学会去 patch CUDA 依赖跑 CPU 推理。
 
-## 论文点评
+![](assets/SkillClaw/fig4_sam3_case.png)
 
-### Strengths
+**Figure 5. 多约束手机选购**——evolved skill 引入 calibrated decision making：no candidate fully satisfies 时显式说"no match"并给 partial breakdown，而不是强行匹配 partial-fit 候选当作答案。
 
-1. **立论站得住**："cross-user 的同 skill 不同 context 调用 = natural ablation" 这个 framing 确实比 single-user 的 self-reflection 有可扩展性，是全文最有价值的观点。
-2. **Validator 是真跑实验而不是 LLM-as-judge**：A/B 对拍在真实 tool 环境里执行，比很多 agentic self-improvement 论文的 model-judge 闭环要 honest 得多。虽然"用 user daytime task 当 validation set"本身有问题（见 Weaknesses）。
-3. **Appendix 里的 prompt 本身是个 artifact**：把 "agent problem vs skill problem" 的区分、"保留 API fact 不许删"的硬约束显式写进 evolver prompt，这些工程细节比 method section 还值得读——实际上就是在告诉你 agentic evolver 会犯哪些错。
-4. **Creative Synthesis 的 workspace preflight skill** 和 **Safety 的 git auth fallback** 这两个 Accept 的 skill 内容本身挺合理，复现难度不大。
+![](assets/SkillClaw/fig5_phone_case.png)
 
-### Weaknesses
-
-1. **"Continuous evolution" 是营销修辞**：Table 3 里 4 个类目有 3 个一次性涨完就 plateau 5 天，和 abstract 里的 "continuous improvement across six rounds of evolution" 明显不符。真实故事是 "第一轮大 rewrite + 后面几乎全 reject"。
-2. **88.41% 是低 baseline 放大的**：Creative Synthesis baseline 11.57% 绝对值太低，+10 个百分点就变成 +88% 相对增益。把这个数字放在 HF paper card 当宣传头条有刻意误导嫌疑。abstract 应当给绝对值。
-3. **规模过小且缺 ablation**：
-    - 只有 Qwen3-Max 一个 backbone，未验证换模型是否还 work
-    - 只有 8 个 concurrent user，"collective" 的 collective 性几乎不存在；natural ablation 的 framing 在 N=8 规模下很难说真 revealed 了什么
-    - 6 个类目只报 4 个，另 2 个（Productivity Flow / Code Intelligence）"to be included in the future version"——**大概率是没涨或者掉了**
-    - 没有对比 baseline：既没和 "single-user reflection"（Reflexion 之类）比，也没和 "static skill library + RAG over trajectories" 比。所以"collective"带来的增益 vs "单纯跑 6 轮 skill refinement"的增益无法区分
-4. **Validation leaks**：validator 用的是 daytime users 跑过的同一批 task 来测 candidate skill。Accept 的 skill 完全可能是在 overfit 这批 task 的 procedural quirk。要证明真泛化需要一个 held-out validation set，论文里完全没有。
-5. **Privacy / 跨用户污染完全没讨论**：
-    - 一个用户的 Slack trajectory（包含真实对话内容、内部 API、人名）会被传回 central evolver 做 grouping——**这里的隐私边界论文只字未提**
-    - 一个恶意或 idiosyncratic 用户的 trajectory 可能把某个 skill 带偏（比如把某个 endpoint 改成自己环境的专用 port），而 validator 只用 "其他 daytime task" 做 A/B——没机制防止 skill pool 被少数用户的 environmental quirk 主导
-    - "best-skill 对所有用户同步"这个假设隐含了"所有用户环境同构"。真实 Claude Code 用户环境差异极大（不同 OS、不同 API 版本、不同私有工具），一个用户的 workspace preflight skill 推给所有人可能反而制造 regression
-6. **Agentic evolver 没做 ablation**：evolver 的 action 空间 {refine, create, skip}、是否需要 conservative mode、如果换成 rule-based evolver（如 diff patch generator）效果会差多少——这些都没测。整个 agentic 的论点只靠 "开放 reasoning > 规则" 这句话。
-7. **与 Anthropic skills、Voyager skill library、AgentKB、ExpeL 等工作的 delta 很薄**：Related work 里列了一大堆 skill-based / memory-based / reflection-based 方法，但正文只说 "they don't aggregate across users"。真实 delta 就是 "dispatcher 从 per-user 换成 central + validator 闭环"——这在工程上也许有价值，但作为 ML paper 的方法贡献偏弱。
-8. **命名碰瓷严重**：OpenClaw / CoPaw / IronClaw / PicoClaw / ZeroClaw / NanoClaw / NemoClaw 这一长串明显在蹭 Claude / Anthropic 的名字。HF Trending 高度怀疑有一部分是 brand association 带来的。
-9. **"同一 best pool retest 也被标为 Accept"**：Table 5 Day 3 和 Table 7 Day 4 都出现 "(none) candidate 却 Accept" 的条目——这种 no-op 被计入 Accept 明显是在粉饰 accept rate。
-
-### 可信评估
-
-#### Artifact 可获取性
-- **代码**: 开源（[AMAP-ML/SkillClaw](https://github.com/AMAP-ML/SkillClaw)），README 声明包含 evolver / validator / 示例 skill 库
-- **模型权重**: 不适用（方法不涉及训练；backbone 是商用 Qwen3-Max API）
-- **训练细节**: 不适用（纯 prompting / orchestration）；关键的 evolver / summarizer prompt 在 appendix 完整给出
-- **数据集**: WildClawBench 外部依赖，作者指向 InternLM/WildClawBench 仓库（第三方 benchmark，非本文提出）
-
-#### Claim 可验证性
-- ✅ **"agentic evolver 能真改 skill markdown"**：Case study（Figure 2-5）的 skill diff 是真实可信的 artifact
-- ✅ **"6 轮在 4 类目均有提升"**：数字在 Table 3 可 grep 到，与方法一致
-- ⚠️ **"continuous improvement"**：与 Table 3 的实际 plateau 模式矛盾；更诚实的 phrasing 是 "one-time step improvement"
-- ⚠️ **"88.41% relative improvement in Creative Synthesis"**：技术上正确，但分母 11.57% 使其不具备与其他方法的可比性；abstract 应报绝对 gain
-- ⚠️ **"collective evolution"**：N=8 用户规模下，collective 的信号与 single-user 反复试错难以区分；没有 ablation 支撑
-- ❌ **"enables continuously improving agent systems"**：这个 general claim 在 6-day / 4-category / 1-backbone 的证据下是 overclaim，属于 positioning 修辞而非可验证 claim
+> 这 4 个 case 暴露了 SkillClaw 真正的功能边界：**它擅长把"个体经验中发现的 environment fact 和 procedural rigor"写回 skill**，但所有 case 的 fix 都是人 audit 完能立即点头同意的 trivial-in-hindsight 改动。这并不令人惊讶——LLM evolver 拿到 success+failure trace 后做出这种总结是 within-distribution 的能力。真正难的是 skill 的 "discovery"——发现一个全新的 reusable abstraction——这点论文几乎没展示。
 
 ---
 
 ## 关联工作
 
 ### 基于
-- **Anthropic Skills (2026)**: SkillClaw 的 skill = markdown 格式可复用 procedure，这个 representation 直接继承自 Claude skills
-- **Voyager (Wang et al. 2023)**: skill library 的 lifelong learning paradigm 是远祖；但 Voyager 是 single-agent 无 validator，SkillClaw 把它扩展成 multi-user + central validator
-- **Reflexion (Shinn et al. 2023)**: self-reflection 改 behavior 的范式，SkillClaw 声称改进点是 cross-user
+- **OpenClaw / Anthropic Skills (2026)**: SkillClaw 把 skill 视作 first-class artifact 的前提就来自这套范式（"skill = 显式注入的 procedural document"）。
+- **Voyager (Wang et al., 2023)**: lifelong learning + accumulating skill library 的开创性工作；SkillClaw 是其多用户、可进化版本。
+- **WildClawBench (Ding et al., 2026)**: 评测 backbone。
 
-### 对比
-- **ExpeL (Zhao et al. 2024)**: per-agent insight extraction；SkillClaw 等于 ExpeL + 集中化 aggregation + 真 execution validator
-- **AgentKB (Tang et al. 2025)**: cross-domain experience 作为外部知识库，但不直接修改 skill 定义
-- **ReasoningBank (Ouyang et al. 2025)**: reasoning memory scaling；对比维度是 memory vs skill，SkillClaw 选择后者
-- **SkillWeaver (Zheng et al. 2025)**: web agent self-improve by skill discovery；SkillClaw 把 "skill" 从 web 场景推广到通用 OpenClaw
-- **EvoSkill / AutoSkill / MetaClaw（同期 2026 年工作）**: 近期大量类似 "skill self-evolution" 工作涌现，SkillClaw 的差异化仅在 "multi-user aggregation + real-execution validator"
+### 对比（论文未直接 benchmark 但 related work 提及）
+- **Reflexion (Shinn et al., 2023)**: verbal self-correction，单 agent、单 trajectory。
+- **ExpEL (Zhao et al., 2024)**: trajectory → reusable lesson。
+- **Mem0 (Chhikara et al., 2025)**: production-ready scalable memory。
+- **ReasoningBank (Ouyang et al., 2025)**: scaling self-evolving with reasoning memory。
+- **Memp (Fang et al., 2025a)**: agent procedural memory。
 
 ### 方法相关
-- **LLM-as-judge vs execution-based validation**: SkillClaw 选 execution-based，是对比 LLM-judge 的一个数据点
-- **Lifelong agent learning**: 属于 "无参数更新的 lifelong adaptation" 分支，与 "agentic RL / weight-space 更新" 形成对照
-- **Anthropic "skill writing principles"**: Evolver prompt 里的 conservative editing / distinguish skill vs agent problem 原则明显借鉴 Anthropic 官方 skill 写作指南
+- **SkillWeaver (Zheng et al., 2025)**: web agent 自我发现+磨练 skill。
+- **SkillRL (Xia et al., 2026a)**: recursive skill-augmented RL。
+- **AutoSkill (Yang et al., 2026)**: experience-driven lifelong skill self-evolution。
+- **MetaClaw (Xia et al., 2026b)**: just-talk meta-learning agent。
+- **SkillNet (Liang et al., 2026)**, **SkillsBench (Li et al., 2026)**, **SoK Agentic Skills (Jiang et al., 2026)**: skill-centric ecosystem 的 evaluation/survey 工作。
 
 ---
 
-## Notes
+## 论文点评
 
-- HF Trending 279 更多反映 "Claude Code skill evolution" 这个叙事热度，而非方法创新；判断为 **1 (可参考)**——idea 有价值（natural ablation framing 和 real-execution validator 值得借鉴），但证据不足以支撑其宏大 claim。
-- 对我们 VLM / agent 相关项目的可能启发：如果未来做 agent skill library，"real-execution A/B validator" 这个 pattern 值得抄，但要做一个真正的 held-out validation set；不要把用户 daytime traffic 当 validation。
-- 值得关注的问题：cross-user skill evolution 在真实产品里的 privacy 边界和 skill quality drift 如何保障？本文回避了，但这是落地必答题。
-- Appendix 的 Agentic Evolve Prompt 本身是这篇论文最高信息密度的部分，可单独摘出作为 "如何写 skill 编辑 prompt" 的 reference。
+### Strengths
+
+1. **Framing 干净**：把"skill 不会进化"作为 gap，把"cross-user trajectory 提供 natural ablation"作为关键 insight——这两点都有 conceptual leverage，值得记住。
+2. **完整工程闭环**：day-night loop + monotonic deploy via validation gate，是少数把 self-improving agent system 搬到 8-user 真实部署 setting 跑 6 天的工作。Validation gate 解决了 self-improvement 系统最常见的退化问题。
+3. **Mechanistic boundary 有用**：Skill Evolve Lite 实验明确显示 evolution 对 procedural failure 高效、对 reasoning failure 几乎无效。这种 negative result 比 "SOTA +X" 有信息量。
+4. **Open-source artifacts**：GitHub 公开，并标榜兼容 Hermes/OpenClaw/Codex/Claude Code 等多种 agent harness——降低了别人验证的成本。
+
+### Weaknesses
+
+1. **没有任何 external baseline**。所有数字都是自身 baseline → 自身 +N 天，没和 Reflexion / ExpEL / Voyager skill library / SkillWeaver / SkillRL / Mem0 / ReasoningBank 直接对比。所以"集体 evolution 比单 user self-improvement 强"这个核心 claim 在论文里**没有直接证据**。
+2. **6 天里大多数 candidate 被 reject**。Social Interaction 6 个 candidate 只 1 个 accept；Creative Synthesis 同。这暗示 evolver 的 proposal quality 在 marginal improvement 阶段不行——但论文没分析 reject 原因分布、没给 evolver 失败 case study。
+3. **缺关键 ablation**：（a）validator 是否过严？拿掉 validator 的 monotonicity 表现如何？（b）多用户聚合 vs 单用户聚合的对比？这是论文核心 claim 的 sanity check。（c）skill 数量、复杂度随时间的演化曲线？
+4. **只跑 4/6 个 category**——刻意没跑 Productivity Flow 和 Code Intelligence，恰好是 procedural skill 应该最有用的两类。读者无法判断是 SkillClaw 在那两类上失败还是仅仅没跑完。
+5. **任意命名包装**：OpenClaw / CoPaw / IronClaw / PicoClaw / ZeroClaw / NanoClaw / NemoClaw / WildClawBench / `qwen3-max` / "DreamX Team"——大量 \*Claw / \*Paw 命名既不是已确立的开源系统也找不到独立来源。这降低了行文的可信度，让人怀疑某些"竞品兼容性"列表是宣传而非工程事实。
+6. **绝对分数低**：Search & Retrieval 从 22.73% 到 34.55%，Creative Synthesis 从 11.57% 到 21.80%，Safety & Alignment 从 24% 到 32%——绝对水平仍然很低。多数 evolution 是把"几乎完全跑不通"修到"勉强能跑"。
+7. **"Agentic" 实质是 prompt engineering**：从 appendix 看，evolver 完全靠精心设计的 prompt 操作（含 conservative editing rules、anti-pattern 警告、history 维护要求等）。没有训练，没有 RL。这本身不是缺点，但和"agentic adaptability"的修辞有距离。
+
+### 可信评估
+
+#### Artifact 可获取性
+- **代码**: 已开源（GitHub `AMAP-ML/SkillClaw`，README 显示有 `skillclaw setup`/`skillclaw start --daemon` CLI）
+- **模型权重**: 不涉及——backbone 是 `qwen3-max` (closed API)
+- **训练细节**: 不涉及训练；evolver prompts 在 paper appendix 公开（含 Summarize Session Prompt / Evolve from Sessions Prompt / Agentic Evolve Prompt 全文）
+- **数据集**: WildClawBench (Ding et al., 2026, https://github.com/InternLM/WildClawBench) 公开
+
+#### Claim 可验证性
+- ✅ **"6 天内 4 个 category 一致提升"**：表 3 给出全 6 天数字。
+- ✅ **"Skill evolution 对 procedural failure 比 reasoning failure 更有效"**：表 8 三个 query 的 gain 差异 (+71.7% vs +6.9%) 直接支持。
+- ⚠️ **"集体（多用户）evolution 优于单用户 self-improvement"**：核心 claim 但没有直接对比实验，只有论证。
+- ⚠️ **"Validation 引入 monotonic 部署"**：理论上成立，但 token 成本、误判率（false reject 多少）未量化。
+- ❌ **"natively integrates with Hermes / OpenClaw / Codex / Claude Code / QwenPaw / IronClaw / PicoClaw / ZeroClaw / NanoClaw / NemoClaw"** (README)：营销话术。这些系统大多无法独立验证存在或集成度。
+
+### Notes
+
+- **Mental model update**: 看完后我对"skill 应该不应该是 evolving artifact" 这个问题的判断没改变（之前就倾向是），但获得了一个新的边界 claim——skill evolution 主要解决 procedural/environmental 而非 reasoning failure。这条 boundary 在我之后看任何 self-improving agent 系统时都可以拿来 stress-test。
+- **Validator 的 bottleneck**：6 天里大量 candidate 被 reject 其实是一个重要观察。如果未来工作能改进 evolver 的 proposal quality（而不是改 validator），收益空间还很大。
+- **可借鉴的 skill 写法纪律**：appendix 里的 "Distinguishing Skill vs Agent Problem" 和 "Hard Constraints"（不能随意改 API endpoint 等）是非常实用的 prompt-engineering 经验，值得在我自己设计任何 LLM-driven config-update 系统时借鉴。
+- **后续值得追**：(a) WildClawBench 自身的设计；(b) Hermes-agent 是否真的有独立社区；(c) 这个系统在 reasoning-heavy task（如 Code Intelligence）上是否仍然有效——论文没跑。
+- **Open question**: skill library 的体积膨胀问题没讨论。Day-N 之后 skill 会越来越多吗？是否需要 prune / merge mechanism？论文 Algorithm 1 只有 add/refine 没有 delete。
+
+### Rating
+
+**分数**：2 - Frontier
+**理由**：在 skill-evolution / self-improving agent 方向上，SkillClaw 给出了少有的完整工程闭环（day-night loop + validation gate + 8 用户 6 天的真实部署），并通过 Skill Evolve Lite 贡献了一个有用的 mechanistic boundary（evolution 解决 procedural 而非 reasoning failure），属于值得 track 的前沿参考。但它既没跟 Reflexion / SkillWeaver / Mem0 等竞品直接 benchmark，也刻意避开 Productivity Flow / Code Intelligence 两个 category，核心 claim 无直接证据；加上命名体系大量依赖不可独立验证的 \*Claw 包装，不足以进入 3 - Foundation。相对 1 - Archived：framing 和 boundary claim 有 transferable insight，未来工作需要 cite，所以 > 1。

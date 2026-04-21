@@ -11,18 +11,15 @@ github: https://github.com/nvidia-cosmos/cosmos-reason1
 rating: 2
 date_added: 2026-04-16
 ---
-## 速查卡片
+
+## Summary
 
 > [!summary] Cosmos-Reason1: From Physical Common Sense To Embodied Reasoning
 > - **核心**: 面向 Physical AI 的推理 VLM，通过 physical common sense 和 embodied reasoning 两类能力定义 + 专用 SFT/RL 训练，让多模态 LLM 具备物理世界理解与具身决策能力
 > - **方法**: 定义 physical common sense（Space/Time/Physics 三类 16 子类）和 embodied reasoning（4 能力 × 5 agent 类型）两套 ontology；基于 Qwen2.5-VL-7B 和 Nemotron-H-56B 做 Physical AI SFT + GRPO RL，用 MCQ 形式的 rule-based verifiable reward
 > - **结果**: SFT 阶段 embodied reasoning 提升 10%+，RL 阶段在 intuitive physics（arrow of time, spatial puzzle, object permanence）上从近随机提升至 81.5%
 > - **Sources**: [paper](https://arxiv.org/abs/2503.15558) | [website](https://research.nvidia.com/labs/cosmos-lab/cosmos-reason1/) | [github](https://github.com/nvidia-cosmos/cosmos-reason1)
-
----
-## Summary
-
-Cosmos-Reason1 为 Physical AI 定义了结构化的能力 ontology，并通过 SFT + RL 两阶段训练让 VLM 获得物理常识推理和具身决策能力。
+> - **Rating**: 2 - Frontier（NVIDIA 推出的 Physical AI reasoning VLM，ontology + MCQ-RL 是有价值的范式，但 benchmark 自建自评、RL 规模有限、未成为领域 de facto 标准）
 
 **Key Takeaways:**
 1. **Ontology-driven 能力定义**: 提出 physical common sense（3 大类 16 子类）和 embodied reasoning（4 能力 × 5 agent 类型）两套 ontology，为 Physical AI 评估建立了结构化框架
@@ -228,6 +225,25 @@ RL 设置：batch size 128，每 prompt 采样 9 个 output，max length 6144 to
 **Insights**: 最striking的结果——现有 SOTA VLM（GPT-4o, o1, Gemini）在 arrow of time 和 object permanence 上几乎等于随机猜测。Cosmos-Reason1 通过专门的 intuitive physics 数据显著提升，RL 进一步强化。RoboFail 表现停滞，作者归因于训练数据覆盖不足（需要 highly observant perception 和 complex affordance reasoning）。
 
 ---
+## 关联工作
+### 基于
+- Qwen2.5-VL: 7B 模型的 backbone VLM
+- Nemotron-H: 56B 模型的 hybrid Mamba-MLP-Transformer backbone
+- DeepSeek-R1: reasoning trace 蒸馏来源 + GRPO 算法来源
+- InternViT-300M-V2.5: 56B 模型的 vision encoder
+
+### 对比
+- GPT-4o, OpenAI o1, Gemini 2.0 Flash: 通用 VLM baseline
+- Qwen2.5-VL-7B: 7B backbone 的 before/after 对比
+- Nemotron-H-56B: 56B backbone 的 before/after 对比
+
+### 方法相关
+- GRPO: RL 算法（group-relative advantage，无 critic model）
+- LLaVA / NVLM-D: decoder-only 多模态架构
+- BridgeData V2 / RoboVQA / AgiBot / HoloAssist: embodied reasoning 训练数据来源
+- Libero: object permanence 仿真数据来源
+
+---
 ## 论文点评
 
 ### Strengths
@@ -260,24 +276,9 @@ RL 设置：batch size 128，每 prompt 采样 9 个 output，max length 6144 to
 - ⚠️ "160% RL 训练效率提升": 仅声明，未给出具体 wall-clock 对比数据
 - ⚠️ Cosmos-Reason1-56B "略优于 OpenAI o1": 差距极小（60.2 vs 59.9），且 benchmark 自建，统计显著性存疑
 
----
-## 关联工作
-### 基于
-- Qwen2.5-VL: 7B 模型的 backbone VLM
-- Nemotron-H: 56B 模型的 hybrid Mamba-MLP-Transformer backbone
-- DeepSeek-R1: reasoning trace 蒸馏来源 + GRPO 算法来源
-- InternViT-300M-V2.5: 56B 模型的 vision encoder
+### Notes
 
-### 对比
-- GPT-4o, OpenAI o1, Gemini 2.0 Flash: 通用 VLM baseline
-- Qwen2.5-VL-7B: 7B backbone 的 before/after 对比
-- Nemotron-H-56B: 56B backbone 的 before/after 对比
+### Rating
 
-### 方法相关
-- GRPO: RL 算法（group-relative advantage，无 critic model）
-- LLaVA / NVLM-D: decoder-only 多模态架构
-- BridgeData V2 / RoboVQA / AgiBot / HoloAssist: embodied reasoning 训练数据来源
-- Libero: object permanence 仿真数据来源
-
----
-## Notes
+**分数**：2 - Frontier
+**理由**：属于 Physical AI reasoning VLM 的代表工作之一——NVIDIA 品牌效应 + 开源 7B 权重 + ontology 框架让它成为该方向的重要参考，Strengths 指出的 intuitive physics 发现和 MCQ-RL 范式有方法论贡献。但未达到 Foundation 档：benchmark 自建自评、RL 数据仅 3 万条难以 scale（Weaknesses 2）、56B 没 RL 结果（Weaknesses 3）、输出停留语言层没有闭环到 action（Weaknesses 4），整体更像一个能力探索而非 de facto 标准。高于 Archived 档的理由是方法并未过气，社区仍在引用其 ontology 和 MCQ-reward 设计作为 Physical AI reasoning 的参考点。

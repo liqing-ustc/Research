@@ -18,6 +18,7 @@ date_added: 2026-04-20
 > - **方法**: HY-Pano 2.0（MMDiT panorama）+ WorldNav（5 种 heuristic trajectory）+ WorldStereo 2.0（keyframe-latent VDM + GGM/SSM++ memory + DMD 4-step 蒸馏）+ WorldMirror 2.0（feed-forward 几何预测，normalized RoPE + depth-to-normal）+ 3DGS with MaskGaussian
 > - **结果**: 开源 SOTA，一张场景端到端 ~10 分钟（712s on H20）；claim 和闭源 Marble 相当；WorldMirror 2.0 在 7-Scenes/NRGBD/DTU 全面超 VGGT / π³；单场景 ~1.38M Gaussian
 > - **Sources**: [paper](https://arxiv.org/abs/2604.14268) | [website](https://3d-models.hunyuan.tencent.com/world/) | [github](https://github.com/Tencent-Hunyuan/HY-World-2.0)
+> - **Rating**: 2 - Frontier（open-source 社区里首个把 panorama 生成 + keyframe-latent VDM + feed-forward reconstruction 串成端到端 3DGS pipeline 的代表工作，Frontier 级 engineering consolidation，但不是奠基性 science contribution）
 
 **Key Takeaways:**
 1. **"生成"和"重建"的统一靠 WorldMirror 2.0 这座桥**: 生成 pipeline 在最后一步用重建模型把生成的 keyframes 转回 3D 点云来初始化 3DGS，两个任务共享一个 feed-forward 几何 backbone
@@ -300,6 +301,31 @@ Photometric (L1 + SSIM + LPIPS) + Depth L1 (稀疏) + Normal cosine (密集，Mo
 
 ---
 
+## 关联工作
+
+### 基于
+- **HY-World 1.0**: 前置 offline 3D world model 基线，HY-Pano 2.0、WorldNav 的 scene parsing 都继承 1.0 的工作
+- **WorldStereo 1.0 / Uni3C**: camera-conditioned VDM 和 memory 机制的前身；WorldStereo 2.0 的 GGM + SSM 思想来自此
+- **WorldMirror 1.0**: feed-forward 3D 重建 foundation，Any-Modal Tokenization
+- **3DGS [Kerbl et al. 2023]**: 场景表示
+- **MoGe2**: panoramic point cloud 初始化和 normal supervision 都靠它
+
+### 对比
+- **Marble (World Labs)**: 唯一的闭源标杆，但对比纯定性
+- **SEVA / Gen3C / Lyra / FlashWorld**: open-source 生成类 baseline（Tab 5/6）
+- **[[2402-Genie|Genie]] 3 / WorldLabs Marble**: 同期 world model，但范式不同（Genie 3 是 online video，这里是 offline 3DGS）
+- **VGGT / π³ / DepthAnything3 / MapAnything / CUT3R / Fast3R / FLARE**: WorldMirror 2.0 的 reconstruction baseline
+
+### 方法相关
+- **DMD (Distribution Matching Distillation)**: 4-step diffusion 蒸馏
+- **DINOv3**: normalized RoPE 的灵感来源
+- **MaskGaussian**: 概率 mask 的 3DGS pruning
+- **Recast Navigation**: NavMesh 构建
+- **SAM3 / Qwen3-VL**: 语义 grounding
+- **[[2411-WorldModelSurvey|World Model Survey]]**: 本文定位背景
+
+---
+
 ## 论文点评
 
 ### Strengths
@@ -339,34 +365,7 @@ Photometric (L1 + SSIM + LPIPS) + Depth L1 (稀疏) + Normal cosine (密集，Mo
 - ❌ **"Simulating 3D Worlds"**：title 里的 "Simulating" 在论文中对应的是 mesh-based collision detection + character locomotion（WorldLens）——这是 real-time rendering + physics primitive，不是任何意义上的 dynamics simulation。严重的 marketing overreach
 - ❌ **"World Model" 的定位**：完整 pipeline 没有任何 temporal dynamics 或 action-conditioned prediction，不符合 Ha & Schmidhuber 意义上的 world model 定义。属于 "3D scene generator" 蹭 world model 概念的热度
 
----
-
-## 关联工作
-
-### 基于
-- **HY-World 1.0**: 前置 offline 3D world model 基线，HY-Pano 2.0、WorldNav 的 scene parsing 都继承 1.0 的工作
-- **WorldStereo 1.0 / Uni3C**: camera-conditioned VDM 和 memory 机制的前身；WorldStereo 2.0 的 GGM + SSM 思想来自此
-- **WorldMirror 1.0**: feed-forward 3D 重建 foundation，Any-Modal Tokenization
-- **3DGS [Kerbl et al. 2023]**: 场景表示
-- **MoGe2**: panoramic point cloud 初始化和 normal supervision 都靠它
-
-### 对比
-- **Marble (World Labs)**: 唯一的闭源标杆，但对比纯定性
-- **SEVA / Gen3C / Lyra / FlashWorld**: open-source 生成类 baseline（Tab 5/6）
-- **[[2402-Genie|Genie]] 3 / WorldLabs Marble**: 同期 world model，但范式不同（Genie 3 是 online video，这里是 offline 3DGS）
-- **VGGT / π³ / DepthAnything3 / MapAnything / CUT3R / Fast3R / FLARE**: WorldMirror 2.0 的 reconstruction baseline
-
-### 方法相关
-- **DMD (Distribution Matching Distillation)**: 4-step diffusion 蒸馏
-- **DINOv3**: normalized RoPE 的灵感来源
-- **MaskGaussian**: 概率 mask 的 3DGS pruning
-- **Recast Navigation**: NavMesh 构建
-- **SAM3 / Qwen3-VL**: 语义 grounding
-- **[[2411-WorldModelSurvey|World Model Survey]]**: 本文定位背景
-
----
-
-## Notes
+### Notes
 
 - **核心方法论判断**：HY-World 2.0 的真正贡献是**证明了 open-source 社区可以通过 competent 的工程整合逼近闭源 world generation 效果**——这本身有价值。但它没有 push 科学边界。真正的 insight 是 keyframe-latent VDM；其余是该做的 integration
 - **对我研究的启发**：
@@ -375,3 +374,8 @@ Photometric (L1 + SSIM + LPIPS) + Depth L1 (稀疏) + Normal cosine (密集，Mo
     3. Memory 机制的 spatial concatenation vs temporal concatenation——SSM++ 用 retrieval-stitched target-reference 对的设计，对 long-horizon video prediction 里的 memory bank 很有启发
 - **要追问**：为什么 "offline 3DGS" 路线和 "online video world model" 路线在 2026 年仍然平行发展？本质是 **static scene generation** vs **dynamic event simulation** 的根本分野。HY-World 2.0 选前者，因为可以对接 CG pipeline、支持 standard rendering；Genie / Marble 选后者，因为更接近"真正的 world model"定义。对 Embodied AI 来说，前者用于 perception/nav prior，后者用于 policy rollout——**需要的是后者**
 - **可能的 follow-up 攻击面**：把 WorldNav 替换成 learned planner（with uncertainty-driven active view selection）；在 WorldStereo 2.0 上加入动作条件（从 camera-conditioned → action-conditioned），让它变成真正的 interactive world model；针对长轨迹 error accumulation 设计 benchmark
+
+### Rating
+
+**分数**：2 - Frontier
+**理由**：在 open-source 3D world generation 的当前前沿里具有代表性——WorldMirror 2.0 在 7-Scenes/NRGBD/DTU/ScanNet 多个 reconstruction benchmark 刷新 open-source SOTA（Tab 11/12/13），WorldStereo 2.0 在 T&T/MipNeRF360 上显著超 SEVA/Gen3C/Lyra/FlashWorld（Tab 5），系统级完整度和端到端 712s 的 practical runtime 让它成为开源社区必参考的 baseline。但不到 Foundation：keyframe-latent VDM 是唯一清晰的 scientific insight，其余是 HY-World 1.0/1.5 + Uni3C + WorldMirror 1.0 + FlashWorld 的 competent integration；title 里的 "world model / simulating" 定位虚胖（无 dynamics、无 action-conditioning），不具备 Genie 3 / Marble 那种 interactive world model 的 paradigm 奠基地位。

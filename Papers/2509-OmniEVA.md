@@ -11,18 +11,15 @@ github:
 rating: 2
 date_added: 2026-04-16
 ---
-## 速查卡片
+
+## Summary
 
 > [!summary] OmniEVA: Embodied Versatile PlAnner
 > - **核心**: 通过 Task-Adaptive 3D Grounding 和 Embodiment-Aware Reasoning 实现跨 2D/3D 的通用具身推理与可执行规划
 > - **方法**: Gated Router 动态注入 3D positional encoding + TE-GRPO 强化学习引入物理约束奖励
 > - **结果**: 8 个 embodied reasoning benchmark 中 7 个 SOTA，mobile manipulation 实机部署成功率显著提升
 > - **Sources**: [paper](https://arxiv.org/abs/2509.09332) | [website](https://omnieva.github.io/)
-
----
-## Summary
-
-OmniEVA 提出了一种能够同时处理 2D 和 3D 输入的具身推理与规划框架，核心解决两个 gap：模型缺乏自适应 3D 几何推理能力（Geometric Adaptability Gap），以及规划忽视真实机器人物理约束（Embodiment Constraint Gap）。
+> - **Rating**: 2 - Frontier（在 embodied reasoning + planning 方向给出清晰的 TAGR + TE-GRPO 范式，benchmark 覆盖广且 8B 规模超过 32B baseline，具备作为参考方法的地位；但代码/数据未开源，自定义 benchmark 无法独立验证，尚未成为社区标准）
 
 **Key Takeaways:**
 1. **Task-Adaptive Gated Router (TAGR)**：用 Gumbel-Softmax 硬门控动态决定是否注入 3D positional encoding，避免了 hard-coded 3D 融合在不需要几何推理时引入噪声的问题
@@ -189,6 +186,22 @@ TE-GRPO 训练的 OmniEVA-ER 相比 OmniEVA-Base：
 <video src="https://omnieva.github.io/videos/make_coffee_v2.mp4" controls muted playsinline width="720"></video>
 
 ---
+## 关联工作
+
+### 基于
+- InternVL3-8B: 作为 backbone MLLM，提供视觉语言基础能力
+- GRPO: TE-GRPO 的 RL 优化算法基础，在此之上增加 task 和 embodiment 奖励
+
+### 对比
+- [[2507-RoboBrain2|RoboBrain2.0]]: 2D embodied reasoning 的主要对比对象，OmniEVA-Base 在所有 2D benchmark 上超过其 32B 版本
+- 3DRS: 3D reasoning 的主要对比对象，采用 hard-coded 3D 注入策略
+- UniNavid: Object Navigation SOTA 对比，OmniEVA 在 SPL 上提升 +5.4
+
+### 方法相关
+- Gumbel-Softmax: TAGR 模块的核心门控机制，实现可微分的离散采样
+- Mixture-of-Experts (MoE): TAGR 的概念等价——在纯 2D token 和 2D+3D 融合 token 之间选择
+
+---
 ## 论文点评
 
 ### Strengths
@@ -220,22 +233,9 @@ TE-GRPO 训练的 OmniEVA-ER 相比 OmniEVA-Base：
 - ⚠️ 跨 embodiment 泛化能力：仅在臂长这一个维度上测试，且训练和测试的构型差异有限（72cm-110cm），难以断言对任意物理构型的泛化性
 - ⚠️ 真实机器人实验：每个配置仅 10 次试验，样本量偏小
 
----
-## 关联工作
+### Notes
 
-### 基于
-- InternVL3-8B: 作为 backbone MLLM，提供视觉语言基础能力
-- GRPO: TE-GRPO 的 RL 优化算法基础，在此之上增加 task 和 embodiment 奖励
+### Rating
 
-### 对比
-- [[2507-RoboBrain2|RoboBrain2.0]]: 2D embodied reasoning 的主要对比对象，OmniEVA-Base 在所有 2D benchmark 上超过其 32B 版本
-- 3DRS: 3D reasoning 的主要对比对象，采用 hard-coded 3D 注入策略
-- UniNavid: Object Navigation SOTA 对比，OmniEVA 在 SPL 上提升 +5.4
-
-### 方法相关
-- Gumbel-Softmax: TAGR 模块的核心门控机制，实现可微分的离散采样
-- Mixture-of-Experts (MoE): TAGR 的概念等价——在纯 2D token 和 2D+3D 融合 token 之间选择
-
----
-## Notes
-
+**分数**：2 - Frontier
+**理由**：Strengths 显示该工作在 embodied reasoning + planning 方向给出了清晰的方法范式（TAGR + TE-GRPO），且在 8 个公开 benchmark 中 7 个 SOTA、8B 规模超过 [[2507-RoboBrain2|RoboBrain2.0]]-32B，具备"必须比较的 baseline"的前沿性；但 Weaknesses 指出代码/模型/自定义 benchmark 均未开源，核心 claim 中跨 embodiment 泛化与 TE-GRPO 增益仅在私有 benchmark 上验证，社区尚未广泛采纳或复现，因此达不到 Foundation 档；又明显强于 incremental/niche 的 Archived 档。

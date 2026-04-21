@@ -11,18 +11,15 @@ github: https://github.com/OpenGVLab/VeBrain
 rating: 2
 date_added: 2026-04-16
 ---
-## 速查卡片
+
+## Summary
 
 > [!summary] Visual Embodied Brain (VeBrain)
 > - **核心**: 将机器人控制重新表述为 2D 视觉空间中的文本 MLLM 任务（keypoint detection + skill recognition），统一多模态理解、空间推理和机器人控制
 > - **方法**: 基于 Qwen2.5-VL-7B，通过 robotic adapter（point tracker + movement controller + skill executor + dynamic takeover）将 MLLM 文本信号转换为运动策略；构建 VeBrain-600k 指令数据集
 > - **结果**: 在 13 个多模态 benchmark 上平均超越 Qwen2.5-VL（MMVet +5.6%），在足式机器人任务上平均成功率 86.4%（+50% vs Qwen2.5-VL），在机械臂任务上成功率 74.3%（+42.9% vs π0）
 > - **Sources**: [paper](https://arxiv.org/abs/2506.00123) | [website](https://internvl.github.io/blog/2025-05-26-VeBrain/) | [github](https://github.com/OpenGVLab/VeBrain)
-
----
-## Summary
-
-VeBrain 提出将机器人控制分解为 MLLM 原生的 2D 视觉任务（keypoint detection + embodied skill recognition），配合 robotic adapter 实现闭环控制，首次在统一模型中同时超越现有 MLLM 的多模态理解能力并具备强机器人控制能力。
+> - **Rating**: 2 - Frontier（统一 MLLM+VLA 的代表方法，keypoint reformulation 设计简洁有效，但自建 eval、控制数据私有且代码未开源，尚未成为 de facto 标准）
 
 **Key Takeaways:**
 1. **统一目标空间**: 将机器人控制重新表述为 2D 视觉空间中的文本任务，避免 VLA 直接输出 action policy 导致的多模态能力遗忘问题
@@ -156,6 +153,24 @@ MLLM 的 2D keypoint 预测与真实世界部署之间存在三个 gap：2D→3D
 VeBrain 通过组合能力处理复杂机器人任务：例如寻找隐藏的辣椒时，能正确推测可能位置并逐步执行；在搬运任务中能判断货物是否已送达目的地。
 
 ---
+## 关联工作
+
+### 基于
+- Qwen2.5-VL: 作为 MLLM backbone，冻结 vision encoder 和 projector 进行 SFT
+- LocoTrack: 用于 robotic adapter 中的 point tracking 模块
+
+### 对比
+- [[2406-OpenVLA|OpenVLA]]: 端到端 VLA baseline，训练后完全丧失多模态理解能力
+- [[2410-Pi0|π0]]: VLA baseline，在 long-horizon 机械臂任务上成功率为 0%
+- [[2502-RoboBrain|RoboBrain]]: 同样尝试统一多模态和机器人控制的 VLA，但在 OCR/Chart benchmark 上明显落后
+- ChatVLA: 保留部分多模态能力的 VLA，但整体性能仍低于 VeBrain
+- GPT4Scene-HDM: 3D 空间推理专家模型，VeBrain 作为通用模型仍超越
+
+### 方法相关
+- VLM-PC: MLLM 直接通过文本描述控制机器人的 baseline 方法
+- GPT4Scene: 提供空间推理训练数据的来源
+
+---
 ## 论文点评
 
 ### Strengths
@@ -186,23 +201,9 @@ VeBrain 通过组合能力处理复杂机器人任务：例如寻找隐藏的辣
 - ⚠️ 机器人控制成功率（86.4% 足式、74.3% 机械臂）：仅 10 次试验、自建场景，统计置信度有限
 - ⚠️ "首次在多模态任务上超越 SOTA MLLM 同时保留机器人控制能力"：依赖于比较范围和指标选择（normalized average）
 
----
-## 关联工作
+### Notes
 
-### 基于
-- Qwen2.5-VL: 作为 MLLM backbone，冻结 vision encoder 和 projector 进行 SFT
-- LocoTrack: 用于 robotic adapter 中的 point tracking 模块
+### Rating
 
-### 对比
-- [[2406-OpenVLA|OpenVLA]]: 端到端 VLA baseline，训练后完全丧失多模态理解能力
-- [[2410-Pi0|π0]]: VLA baseline，在 long-horizon 机械臂任务上成功率为 0%
-- [[2502-RoboBrain|RoboBrain]]: 同样尝试统一多模态和机器人控制的 VLA，但在 OCR/Chart benchmark 上明显落后
-- ChatVLA: 保留部分多模态能力的 VLA，但整体性能仍低于 VeBrain
-- GPT4Scene-HDM: 3D 空间推理专家模型，VeBrain 作为通用模型仍超越
-
-### 方法相关
-- VLM-PC: MLLM 直接通过文本描述控制机器人的 baseline 方法
-- GPT4Scene: 提供空间推理训练数据的来源
-
----
-## Notes
+**分数**：2 - Frontier
+**理由**: VeBrain 以 keypoint+skill 文本化的 reformulation 提供了一个简洁有效的统一 MLLM 与 VLA 的范式，实验覆盖 13+ 多模态 benchmark 与双平台真机任务，是同期 unified embodied MLLM 方向的代表工作之一（与 [[2502-RoboBrain|RoboBrain]]、ChatVLA 形成直接对比）。但不够格升 3：代码未开源、VeBrain-600k 中 88k 控制数据私有、机器人评估自建且仅 10 次试验，未形成 de facto benchmark 或被后续主要工作广泛作为基准；也不应降 1：来自 Shanghai AI Lab/OpenGVLab 的高质量执行、问题定义清晰、消融完整，仍是该方向必须参考的 frontier 工作。

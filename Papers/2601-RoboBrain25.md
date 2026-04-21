@@ -11,18 +11,14 @@ github: https://github.com/FlagOpen/RoboBrain2.5
 rating: 2
 date_added: 2026-04-16
 ---
-## 速查卡片
+## Summary
 
 > [!summary] RoboBrain 2.5: Depth in Sight, Time in Mind
 > - **核心**: Embodied AI 基座模型，在 [[2507-RoboBrain2|RoboBrain 2.0]] 基础上新增 Precise 3D Spatial Reasoning 和 Dense Temporal Value Estimation 两大能力
 > - **方法**: 采用 decoupled $(u,v,d)$ 表示做 3D spatial trace generation；hop-normalized temporal transition labels + multi-perspective fusion 做 dense value estimation；基于 Qwen3-VL 8B 架构两阶段训练 12.4M 样本
 > - **结果**: 2D/3D spatial reasoning benchmarks SOTA；temporal value estimation VOC 远超 GPT-5.2 和 Gemini-3-Pro-Preview，尤其 reverse VOC 差距极大；RL 训练 20min 实现 95%+ 成功率
 > - **Sources**: [paper](https://arxiv.org/abs/2601.14352) | [website](https://superrobobrain.github.io/) | [github](https://github.com/FlagOpen/RoboBrain2.5)
-
----
-## Summary
-
-RoboBrain 2.5 是 BAAI 推出的下一代 embodied AI 基座模型，在 [[2507-RoboBrain2|RoboBrain 2.0]] 基础上解决了两个根本性限制——"metric blindness"（空间维度缺乏绝对深度和尺度信息）和 "open-loop prediction"（时间维度缺乏执行进度监控），通过大规模高质量时空监督训练实现了从 semantic reasoner 到 physically-grounded agent 的范式转变。
+> - **Rating**: 2 - Frontier（RoboBrain 系列最新迭代，将 metric 3D spatial 与 dense temporal value 引入 embodied foundation model，方法新颖且在多 benchmark SOTA，但尚未成为方向必引的奠基工作）
 
 **Key Takeaways:**
 1. **Precise 3D Spatial Reasoning**: 从 2D pixel grounding 升级到 depth-aware $(u,v,d)$ 坐标预测，支持 3D spatial referring、measuring 和 trace generation，能生成满足物理约束的完整操作轨迹
@@ -33,6 +29,12 @@ RoboBrain 2.5 是 BAAI 推出的下一代 embodied AI 基座模型，在 [[2507-
 ![](https://superrobobrain.github.io/images/teaser.jpg)
 
 <video src="https://superrobobrain.github.io/images/robobrain2.5.mp4" controls muted playsinline width="720"></video>
+
+---
+
+## Overview
+
+RoboBrain 2.5 是 BAAI 推出的下一代 embodied AI 基座模型，在 [[2507-RoboBrain2|RoboBrain 2.0]] 基础上解决了两个根本性限制——"metric blindness"（空间维度缺乏绝对深度和尺度信息）和 "open-loop prediction"（时间维度缺乏执行进度监控），通过大规模高质量时空监督训练实现了从 semantic reasoner 到 physically-grounded agent 的范式转变。
 
 ---
 ## New Feature
@@ -153,6 +155,24 @@ $$
 ![](https://arxiv.org/html/2601.14352v1/x10.png)
 
 ---
+## 关联工作
+
+### 基于
+- [[2507-RoboBrain2|RoboBrain 2.0]]: 前代模型，RoboBrain 2.5 在其 general perception 和 reasoning 基础上新增 3D spatial reasoning 和 temporal value estimation
+- Qwen3-VL: 底座架构，8B 参数
+- TraceSpatial / RoboTracer: 3D Spatial Reasoning 的方法来源和 benchmark
+- Robo-Dopamine: Dense Temporal Value Estimation 的方法来源和评估范式
+
+### 对比
+- Gemini-3-Pro-Preview: 通用 VLM baseline，spatial reasoning 部分指标接近但 temporal 远弱
+- GPT-5.2: 通用 VLM baseline，forward VOC 尚可但 reverse VOC 极低
+- Mimo-Embodied (7B): Embodied baseline
+
+### 方法相关
+- FlagScale: BAAI 自研分布式训练框架，支持 cross-accelerator training
+- Hop-based labeling: 来自 Dopamine-Reward pipeline 的时间进度标注方法
+
+---
 ## 论文点评
 
 ### Strengths
@@ -184,24 +204,9 @@ $$
 - ⚠️ "physically grounded and execution-aware intelligence"：没有对 physical grounding 质量的系统量化，spatial trace success rate 44% 说明仍有很大提升空间
 - ⚠️ Cross-accelerator "loss 收敛差距 0.62%"：数字精确但缺乏具体 loss curve 对比图
 
----
-## 关联工作
+### Notes
 
-### 基于
-- [[2507-RoboBrain2|RoboBrain 2.0]]: 前代模型，RoboBrain 2.5 在其 general perception 和 reasoning 基础上新增 3D spatial reasoning 和 temporal value estimation
-- Qwen3-VL: 底座架构，8B 参数
-- TraceSpatial / RoboTracer: 3D Spatial Reasoning 的方法来源和 benchmark
-- Robo-Dopamine: Dense Temporal Value Estimation 的方法来源和评估范式
+### Rating
 
-### 对比
-- Gemini-3-Pro-Preview: 通用 VLM baseline，spatial reasoning 部分指标接近但 temporal 远弱
-- GPT-5.2: 通用 VLM baseline，forward VOC 尚可但 reverse VOC 极低
-- Mimo-Embodied (7B): Embodied baseline
-
-### 方法相关
-- FlagScale: BAAI 自研分布式训练框架，支持 cross-accelerator training
-- Hop-based labeling: 来自 Dopamine-Reward pipeline 的时间进度标注方法
-
----
-## Notes
-
+**分数**：2 - Frontier
+**理由**：作为 RoboBrain 系列最新迭代，在多 spatial/temporal benchmark 上取得 SOTA（CrossPoint、TraceSpatial、Reverse VOC 等，尤其 TraceSpatial Success 44 vs 7 的巨大差距），并提出 hop-normalized value estimation 和 reverse VOC 评估这类值得推广的设计，因此高于 Archived；但尚未达到 Foundation 档——缺乏 end-to-end manipulation 评估、RL 应用仅有 qualitative demo、核心新增数据独立贡献不明，社区采纳度也需时间验证是否会成为 de facto embodied foundation。

@@ -11,18 +11,14 @@ github: https://github.com/alibaba-damo-academy/RynnBrain
 rating: 2
 date_added: 2026-04-16
 ---
-## 速查卡片
+## Summary
 
 > [!summary] RynnBrain: Open Embodied Foundation Models
 > - **核心**: 统一 egocentric understanding、spatio-temporal localization、physically grounded reasoning 和 physics-aware planning 的开源 embodied foundation model
 > - **方法**: 基于 Qwen3-VL 做 physics-aware spatio-temporal pretraining（20M 样本），引入 Chain-of-Point (CoP) interleaved reasoning + GRPO RL
 > - **结果**: 在 20 个 embodied benchmarks 上大幅超越同等规模 embodied brain 模型；post-trained 变体在 VLN、manipulation planning、VLA 任务上均取得 SOTA
 > - **Sources**: [paper](https://arxiv.org/abs/2602.14979) | [website](https://alibaba-damo-academy.github.io/RynnBrain.github.io) | [github](https://github.com/alibaba-damo-academy/RynnBrain)
-
----
-## Summary
-
-RynnBrain 是阿里达摩院推出的开源 embodied foundation model，基于 Qwen3-VL 构建，通过大规模 physics-aware spatio-temporal pretraining 统一了感知、推理和规划能力，并发布 2B/4B/8B/30B-A3B 四个 scale 及多个下游任务 post-trained 变体。
+> - **Rating**: 2 - Frontier（大规模开源 embodied foundation model 系列，在当前 embodied brain model 前沿占据重要位置，但尚未被社区定型为 de facto baseline）
 
 **Key Takeaways:**
 1. **统一四大能力**: Egocentric understanding + spatio-temporal localization + physically grounded reasoning + physics-aware planning 在同一模型中实现，解决了现有 VLM 缺乏物理 grounding、embodied model 缺乏语义泛化的割裂问题
@@ -206,6 +202,25 @@ RynnBrain-8B 在几乎所有 embodied cognition 和 location benchmark 上大幅
 CoP reasoning（SFT + RL）在 trajectory prediction 任务上提升约 7%。RynnBrain-Nav 在 R2R 和 RxR benchmark 上一致超越基于 Qwen3-VL 的对应模型。
 
 ---
+## 关联工作
+
+### 基于
+- Qwen3-VL: RynnBrain 的 base model，继承 vision encoder + LLM 架构
+- [[2410-Pi0|π0]]: RynnBrain-VLA 借鉴其 flow matching action chunk 预测框架
+- GRPO: CoP reinforcement learning 的优化算法
+
+### 对比
+- [[2507-RoboBrain2|RoboBrain 2.0]]: 同类 embodied brain model，RynnBrain 在几乎所有 benchmark 上大幅超越
+- MiMo-Embodied: 7B 规模 embodied model，RynnBrain-2B 即可超越
+- Pelican-VL: embodied VLM baseline
+- Cosmos-reason2: NVIDIA 的 embodied reasoning model
+
+### 方法相关
+- Chain-of-Thought reasoning: CoP 是 CoT 在物理空间的自然延伸
+- [[2507-StreamVLN|StreamVLN]]: RynnBrain-Nav 借鉴其 multi-turn conversational VLN format
+- MASt3R-SLAM: 用于构建 spatial understanding 训练数据
+
+---
 ## 论文点评
 
 ### Strengths
@@ -239,25 +254,9 @@ CoP reasoning（SFT + RL）在 trajectory prediction 任务上提升约 7%。Ryn
 - ⚠️ RynnBrain-VLA 优于 [[2504-Pi05|π0.5]] fine-tuned models：仅在 6 个自定义 task 上验证，规模太小
 - ⚠️ RynnBrain-Bench 的评估公正性：自建 benchmark 的 data distribution 可能有利于自家模型
 
----
-## 关联工作
+### Notes
 
-### 基于
-- Qwen3-VL: RynnBrain 的 base model，继承 vision encoder + LLM 架构
-- [[2410-Pi0|π0]]: RynnBrain-VLA 借鉴其 flow matching action chunk 预测框架
-- GRPO: CoP reinforcement learning 的优化算法
+### Rating
 
-### 对比
-- [[2507-RoboBrain2|RoboBrain 2.0]]: 同类 embodied brain model，RynnBrain 在几乎所有 benchmark 上大幅超越
-- MiMo-Embodied: 7B 规模 embodied model，RynnBrain-2B 即可超越
-- Pelican-VL: embodied VLM baseline
-- Cosmos-reason2: NVIDIA 的 embodied reasoning model
-
-### 方法相关
-- Chain-of-Thought reasoning: CoP 是 CoT 在物理空间的自然延伸
-- [[2507-StreamVLN|StreamVLN]]: RynnBrain-Nav 借鉴其 multi-turn conversational VLN format
-- MASt3R-SLAM: 用于构建 spatial understanding 训练数据
-
----
-## Notes
-
+**分数**：2 - Frontier
+**理由**：RynnBrain 是当前 embodied brain model 前沿的大规模系统工程，在 20 个 benchmark 上大幅超越 [[2507-RoboBrain2|RoboBrain 2.0]]、MiMo-Embodied、Pelican-VL、Cosmos-reason2 等同规模对手（参见 Strengths 1/4 和主要实验结果），具备必须比较的 baseline 价值；CoP reasoning 与 physically grounded output space 的设计代表方法范式的前沿尝试。但尚未达到 Foundation 档——方法范式（coordinate token 化、embodied 多任务 pretraining）并非开创性，VLA 验证规模过小（Weaknesses 1），作为新开源工作社区采纳度尚在形成中，不像 Qwen3-VL / π0 那样已成为 de facto backbone。

@@ -11,18 +11,14 @@ github: https://github.com/Tencent-Hunyuan/HY-Embodied
 rating: 2
 date_added: 2026-04-16
 ---
-## 速查卡片
+## Summary
 
 > [!summary] HY-Embodied-0.5: Embodied Foundation Models for Real-World Agents
 > - **核心**: 面向 embodied agent 的 VLM 基座，用 MoT 架构 + 大规模 embodied 数据 + 迭代 RL/RFT 后训练打造 2B/32B 两档模型
 > - **方法**: Mixture-of-Transformers (MoT) 架构实现模态自适应计算 + visual latent tokens + 100M+ embodied 数据预训练 + GRPO-based RL + on-policy distillation
 > - **结果**: MoT-2B 在 22 个 embodied benchmark 中 16 个 SOTA；32B 超越 Gemini 3.0 Pro；VLA 下游 real-world 操作超越 [[2410-Pi0|π0]]/[[2504-Pi05|π0.5]]
 > - **Sources**: [paper](https://arxiv.org/abs/2604.07430) | [github](https://github.com/Tencent-Hunyuan/HY-Embodied)
-
----
-## Summary
-
-面向 real-world embodied agent 的 VLM 基座模型族，通过 MoT 架构增强视觉建模、大规模 embodied 数据预训练、以及迭代式 RL + RFT 后训练，实现小模型（2B activated）在 embodied/spatial 任务上的 SOTA 性能。
+> - **Rating**: 2 - Frontier（embodied VLM 前沿 SOTA + 开源 2B，方法范式（MoT + 迭代 RL/RFT + OPD）是当下必须比较的 baseline，但 32B/数据闭源、尚未沉淀为 de facto 标准）
 
 **Key Takeaways:**
 1. **MoT 架构是小模型增强视觉能力的高效方案**: 通过复制 FFN/QKV 参数为视觉分支专用，4B total 参数但仅 2.2B activated，推理开销接近 Dense-2B 但视觉建模能力显著提升
@@ -268,6 +264,27 @@ Visual attention 精确定位显著物体和关键空间区域，language attent
 **Insights**: Mug Hanging 任务上大幅超越 [[2410-Pi0|π0]] (+30%) 和 [[2504-Pi05|π0.5]] (+25%)，说明 5K 小时 UMI 预训练 + MoT 架构建立了有效的 generalizable representations。
 
 ---
+## 关联工作
+
+### 基于
+- Hunyuan-1.8B: 底座 LLM
+- Mixture-of-Transformers (MoT): 模态自适应计算架构
+- GRPO (DeepSeekMath): RL 训练的核心算法
+
+### 对比
+- Qwen3-VL 2B/4B: 通用 VLM baseline
+- [[2601-RoboBrain25|RoboBrain 2.5]] 4B: embodied specialist VLM
+- MiMo-Embodied 7B: embodied specialist VLM
+- Gemini 3.0 Pro / Seed 2.0 / [[2602-KimiK25|Kimi K2.5]]: frontier VLM（32B 对比组）
+- [[2410-Pi0|π0]] / [[2504-Pi05|π0.5]]: VLA baseline（robot control 实验）
+
+### 方法相关
+- On-policy distillation: 从大模型到小模型的知识迁移
+- Visual latent tokens / Vision registers: 增强视觉-语言连接
+- CoTracker3: 从视频中提取运动轨迹
+- PaliGemma: segmentation mask 的 tokenization 方法
+
+---
 ## 论文点评
 
 ### Strengths
@@ -290,9 +307,9 @@ Visual attention 精确定位显著物体和关键空间区域，language attent
 
 #### Artifact 可获取性
 - **代码**: inference-only（已开源推理代码，vLLM 和 fine-tuning 代码待发布）
-- **模型权重**: HY-Embodied-0.5 MoT-2B（4B total / 2.2B activated，HuggingFace 发布，8GB）
+- **模型权重**: HY-Embodied-0.5 MoT-2B（4B total / 2.2B activated，HuggingFace 发布，8GB）；MoE-A32B 未开源
 - **训练细节**: 超参完整（LR、batch size、context length 等均已披露），数据配比已说明，但训练步数和迭代轮数部分缺失
-- **数据集**: 部分公开（引用了多个开源数据集），但大量 in-house 数据和 reasoning 数据未开源
+- **数据集**: 部分公开（引用了 SA-1B、ScanNet、ScanNet++、ARKitScenes 等），大量 in-house 和 reasoning 数据未开源
 
 #### Claim 可验证性
 - ✅ MoT-2B 在 16/22 benchmark 上 SOTA：benchmark 均为公开数据集，可独立复现评估
@@ -301,27 +318,9 @@ Visual attention 精确定位显著物体和关键空间区域，language attent
 - ⚠️ 迭代 RL+RFT 的必要性：缺少 ablation 证明每轮迭代的边际收益
 - ⚠️ Robot control 实验：仅 3 个任务、评估次数未说明、无标准化 benchmark
 
----
-## 关联工作
+### Notes
 
-### 基于
-- Hunyuan-1.8B: 底座 LLM
-- Mixture-of-Transformers (MoT): 模态自适应计算架构
-- GRPO (DeepSeekMath): RL 训练的核心算法
+### Rating
 
-### 对比
-- Qwen3-VL 2B/4B: 通用 VLM baseline
-- [[2601-RoboBrain25|RoboBrain 2.5]] 4B: embodied specialist VLM
-- MiMo-Embodied 7B: embodied specialist VLM
-- Gemini 3.0 Pro / Seed 2.0 / [[2602-KimiK25|Kimi K2.5]]: frontier VLM（32B 对比组）
-- [[2410-Pi0|π0]] / [[2504-Pi05|π0.5]]: VLA baseline（robot control 实验）
-
-### 方法相关
-- On-policy distillation: 从大模型到小模型的知识迁移
-- Visual latent tokens / Vision registers: 增强视觉-语言连接
-- CoTracker3: 从视频中提取运动轨迹
-- PaliGemma: segmentation mask 的 tokenization 方法
-
----
-## Notes
-
+**分数**：2 - Frontier
+**理由**：Field-centric 看，这是 embodied VLM 方向当下必须比较的前沿 baseline——2B 模型在 22 个 embodied/spatial benchmark 中拿下 16 个 SOTA，MoT + 迭代 RL/RFT + OPD 是方法范式的代表组合。但距离 Foundation 档（如 π0、ImageNet 级 de facto 标准）仍有距离：32B teacher 和 100M+ 数据闭源、robot control 仅 3 个任务缺乏标准化 benchmark 背书、发布时间尚短未经社区广泛采纳验证，未来可能升 3 也可能被快速迭代的同档工作取代。

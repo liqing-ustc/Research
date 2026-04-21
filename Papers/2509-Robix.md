@@ -11,18 +11,14 @@ github:
 rating: 2
 date_added: 2026-04-16
 ---
-## 速查卡片
+## Summary
 
 > [!summary] Robix: A Unified Model for Robot Interaction, Reasoning and Planning
 > - **核心**: 将 robot reasoning、task planning、human-robot interaction 统一到单个 VLM 中，作为层级式机器人系统的高层认知模块
 > - **方法**: 三阶段训练（continued pretraining → SFT with synthesized interaction data → RL with GRPO + thought-action consistency reward）
 > - **结果**: 在 offline/online 评测中超越 GPT-4o 和 Gemini-2.5-Pro，OOD 泛化能力突出
 > - **Sources**: [paper](https://arxiv.org/abs/2509.01106) | [website](https://robix-seed.github.io/robix/)
-
----
-## Summary
-
-Robix 是一个统一的 VLM，将机器人推理、任务规划和自然语言交互整合进单一端到端架构，充当层级式机器人系统的"大脑"，在 interactive task execution 上全面超越商业和开源 baseline。
+> - **Rating**: 2 - Frontier（统一 reasoning/planning/interaction 的高层 VLM 设计 + thought-action consistency reward 是近期层级式机器人系统的代表工作之一，但代码/权重未开源、评测集私有，尚未成为 de facto 基础）
 
 **Key Takeaways:**
 1. **统一架构替代模块化 pipeline**: Robix 不再拼接 planning + interaction + reasoning 的独立模块，而是用单个 VLM 在每个 iteration 同时输出 thought、action command 和 verbal response，实现 proactive dialogue、interruption handling、dynamic replanning 等交互能力
@@ -182,6 +178,27 @@ $$
 **GR-3 设置结果**: Robix-32B 平均 task progress 92.5%，超越 Gemini-2.5-Pro 4.3 个百分点，超越 GPT-4o 28.1 个百分点。Baseline 方法（尤其 GPT-4o）会生成语义正确但 VLA 无法识别的 action（如 "put the biscuit box into the shopping basket" vs. VLA 只识别 "put the Oreo into the shopping basket"），VLM-VLA misalignment 是主要失败原因。
 
 ---
+## 关联工作
+
+### 基于
+- Qwen2.5-VL-7B/32B: 作为 backbone VLM 进行 continual training
+- Seed-1.5-VL / Seed-1.5-VL-Think: 提供 3D spatial understanding 训练数据和 CoT thought trace 生成
+- GR-3: ByteDance 内部 VLA 模型，作为低层控制器
+- GRPO (DeepSeek-R1): RL 训练算法
+- ActRe + Thought Bootstrapping ([[2501-UITARS|UI-TARS]]): CoT reasoning trace 合成方法
+
+### 对比
+- GPT-4o: 商业 VLM baseline，在 offline/online 评测中全面落后于 Robix-32B
+- Gemini-2.5-Pro: 最强 baseline，offline 评测中在多数 baseline 方法中排名第一，online 评测与 Robix-32B 接近
+- [[2507-RoboBrain2|RoboBrain-2.0]]: 开源 embodied reasoning 模型，在所有评测中落后
+- [[2503-CosmosReason1|Cosmos-Reason1]]: NVIDIA 的 embodied reasoning 模型，在 task-centric reasoning 上落后明显
+
+### 方法相关
+- [[2502-HiRobot|Hi Robot]]: 层级式 VLM-VLA 系统，支持 open-ended instruction following，但依赖更复杂的框架
+- RACER: VLM supervisor + physics simulation 用于 failure recovery
+- [[2403-RTH|RT-H]]: 支持 language-based intervention 的层级架构
+
+---
 ## 论文点评
 
 ### Strengths
@@ -212,27 +229,9 @@ $$
 - ⚠️ "outperforms GPT-4o and Gemini-2.5-Pro"：offline 评测基于内部设计的 benchmark（Internal OOD/ID），评测集未公开，难以独立复现；online 评测每个 task-model pair 仅重复 4 次，样本量有限
 - ⚠️ 92.6% average task progress in online evaluation：task progress 由 human annotators 主观评估，评估标准和 inter-annotator agreement 未报告
 
----
-## 关联工作
+### Notes
 
-### 基于
-- Qwen2.5-VL-7B/32B: 作为 backbone VLM 进行 continual training
-- Seed-1.5-VL / Seed-1.5-VL-Think: 提供 3D spatial understanding 训练数据和 CoT thought trace 生成
-- GR-3: ByteDance 内部 VLA 模型，作为低层控制器
-- GRPO (DeepSeek-R1): RL 训练算法
-- ActRe + Thought Bootstrapping ([[2501-UITARS|UI-TARS]]): CoT reasoning trace 合成方法
+### Rating
 
-### 对比
-- GPT-4o: 商业 VLM baseline，在 offline/online 评测中全面落后于 Robix-32B
-- Gemini-2.5-Pro: 最强 baseline，offline 评测中在多数 baseline 方法中排名第一，online 评测与 Robix-32B 接近
-- [[2507-RoboBrain2|RoboBrain-2.0]]: 开源 embodied reasoning 模型，在所有评测中落后
-- [[2503-CosmosReason1|Cosmos-Reason1]]: NVIDIA 的 embodied reasoning 模型，在 task-centric reasoning 上落后明显
-
-### 方法相关
-- [[2502-HiRobot|Hi Robot]]: 层级式 VLM-VLA 系统，支持 open-ended instruction following，但依赖更复杂的框架
-- RACER: VLM supervisor + physics simulation 用于 failure recovery
-- [[2403-RTH|RT-H]]: 支持 language-based intervention 的层级架构
-
----
-## Notes
-
+**分数**：2 - Frontier
+**理由**：按 Strengths 所述，Robix 将 reasoning/planning/interaction 统一到单 VLM + thought-action consistency reward 是层级式机器人系统的一个代表性设计范式，offline/online 评测均超过 GPT-4o 与 Gemini-2.5-Pro，具备作为 baseline 被后续工作对比的价值；但 Weaknesses 和可信评估显示代码、权重、评测集均未公开，训练细节不完整，复现门槛高，且方法本身没有突破范式层面的新认知（仍是 high-level VLM + low-level VLA 的标准层级架构），还不具备 Foundation 档所要求的"只读这篇就能理解方向脉络"的奠基性。

@@ -1,13 +1,13 @@
 ---
 name: daily-papers
-description: 每日论文推荐。抓取 HuggingFace Daily/Trending + arXiv 最新论文，按研究方向打分筛选， 生成论文笔记后基于深度阅读写出有态度的推荐锐评，保存到 Workbench/daily/。 触发词："今日论文推荐""过去3天论文推荐""过去一周论文推荐""看看最近有什么论文"
+description: 每日论文总结。抓取 HuggingFace Daily/Trending + arXiv 最新论文，按研究方向打分筛选， 生成论文笔记后基于深度阅读写出有态度的总结锐评。 触发词："今日论文总结""过去3天论文总结""过去一周论文总结""看看最近有什么论文"
 argument-hint: "[今日 / 过去N天 / 过去一周]"
 allowed-tools: Bash, Read, Write, Edit, Glob, Grep
 ---
 
 ## Purpose
 
-自动发现与研究方向相关的最新论文，生成推荐列表。分三步：
+自动发现与研究方向相关的最新论文，生成候选列表。分三步：
 
 1. **Python 脚本**抓取 + 打分（零 token）
 2. **快速分流** → 确定必读论文
@@ -20,7 +20,7 @@ allowed-tools: Bash, Read, Write, Edit, Glob, Grep
 ### Step 0：解析时间范围
 
 从用户输入中解析天数：
-- "今日论文推荐"、"今日论文"、"每日推荐" → 当天（`--days 1`）
+- "今日论文总结"、"今日论文"、"每日总结" → 当天（`--days 1`）
 - "过去3天"、"最近三天" → `--days 3`
 - "过去一周"、"最近7天" → `--days 7`
 - "过去两周" → `--days 14`
@@ -40,7 +40,7 @@ python3 skills/1-literature/daily-papers/fetch_and_score.py \
 
 **检查输出**：确认文件存在且包含有效 JSON 数组。如果为空数组，检查 stderr 诊断问题（可能是周末 arXiv 无更新、网络问题等），告知用户原因后停止。
 
-**历史去重**：脚本在 output 同目录维护 `.history.json`，单天模式自动过滤已推荐过的论文（30 天窗口），多天模式跳过去重。每次运行后自动更新历史。
+**历史去重**：脚本在 output 同目录维护 `.history.json`，单天模式自动过滤已总结过的论文（30 天窗口），多天模式跳过去重。每次运行后自动更新历史。
 
 ### Step 2：快速分流
 
@@ -78,7 +78,7 @@ python3 skills/1-literature/daily-papers/fetch_and_score.py \
 - **核心**: 3-5 句，核心 idea + 主要结果，避免黑话
 - **锐评**: 方法有没有硬伤？claim 和证据匹配吗？跟已有工作本质区别在哪？哪些数字亮眼、哪些
   暴露问题？
-- **评分**: 对应笔记 frontmatter 里的 rating: 3 → 🔥 必读 / 2 → 👀 重要 / 1 → 💤 可参考
+- **Rating**: `3` 🔥 / `2` 👀 / `1` 💤 ，{一句话理由}
 ```
 
 #### 点评原则
@@ -93,11 +93,11 @@ python3 skills/1-literature/daily-papers/fetch_and_score.py \
 
 > **重要‼️**：Subagent prompt 必须包含以上完整的`点评模板` 和 `点评原则`，**不要省略**
 
-### Step 4：汇总点评 + 生成推荐文件
+### Step 4：汇总点评 + 生成总结文件
 
-汇总论文点评，生成推荐文件，保存到 `Workbench/daily/YYYY-MM-DD.md`（日期为目标日期）。若文件已存在，覆盖写入。
+汇总论文点评，生成总结文件，保存到 `Workbench/daily/YYYY-MM-DD.md`（日期为目标日期）。若文件已存在，覆盖写入。
 
-**推荐文件模版：**
+**总结文件模版：**
 
 ```markdown
 ---
@@ -110,11 +110,11 @@ tags: [daily-papers, tag1, tag2, ...]
 
 ## 评分表
 
-| 等级 | 论文 |
-|------|------|
-| 🔥 必读 | [[#{短标题}]]（理由）· [[#{短标题}]]（理由） |
-| 👀 重要 | [[#{短标题}]]（理由）· ... |
-| 💤 可参考 | [[#{短标题}]]（理由） |
+| Rating | 论文 |
+|--------|------|
+| 🔥 `3 - Foundation` | [[#{短标题}]]（理由）· [[#{短标题}]]（理由） |
+| 👀 `2 - Frontier` | [[#{短标题}]]（理由）· ... |
+| 💤 `1 - Archived` | [[#{短标题}]]（理由） |
 
 ## 论文点评
 
@@ -137,22 +137,17 @@ tags: [daily-papers, tag1, tag2, ...]
 ### [HH:MM] daily-papers
 - **input**: {DAYS} 天
 - **output**: [[Workbench/daily/YYYY-MM-DD]]
-- **observation**: 要精读 N 篇 [必读 X / 重要 Y / 可参考 Z]，跳过 M 篇
+- **observation**: 抓取 K 篇，精读 N 篇（rating 3: X / 2: Y / 1: Z），跳过 M 篇
 ```
 
 若日志文件不存在，先创建文件（包含一级标题 `# YYYY-MM-DD`），再追加 entry。
 
-### Step 6：输出摘要
-
-告知用户：
-- 抓取了多少篇候选论文
-- 推荐了多少篇（🔥 必读 / 👀 重要 / 💤 可参考 各多少）
-- 已为 N 篇要精读论文生成笔记
+**告知用户**：抓取 K 篇，精读 N 篇（rating 3: X / 2: Y / 1: Z），跳过 M 篇
 
 ## Verify
 
 - [ ] `Workbench/daily/.candidates.json` 存在且非空
 - [ ] `Workbench/daily/YYYY-MM-DD.md` 已创建
-- [ ] 分流表中的 `[[#{短标题}]]` 链接与论文点评的 `### {短标题}` 完全匹配
+- [ ] 评分表中的 `[[#{短标题}]]` 链接与论文点评的 `### {短标题}` 完全匹配
 - [ ] 要精读论文笔记已生成，论文点评基于笔记内容
 - [ ] 日志已追加到 `Workbench/logs/YYYY-MM-DD.md`

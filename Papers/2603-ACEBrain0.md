@@ -11,18 +11,15 @@ github: https://github.com/ACE-Brain-Team/ACE-Brain-0
 rating: 2
 date_added: 2026-04-16
 ---
-## 速查卡片
+
+## Summary
 
 > [!summary] ACE-Brain-0: Spatial Intelligence as a Shared Scaffold for Universal Embodiments
 > - **核心**: 以 spatial intelligence 为共享 scaffold，通过 Scaffold-Specialize-Reconcile (SSR) 范式训练统一跨 embodiment 的 generalist brain
 > - **方法**: 先训 Spatial Expert 作为 scaffold，再分支训练 AD/UAV domain expert，data-free model merging 合并，最后 Embodied SFT + GRPO
 > - **结果**: 8B 模型在 24 个 benchmark（Spatial / AD / UAV / Embodied）上取得 competitive 或 SOTA 性能
 > - **Sources**: [paper](https://arxiv.org/abs/2603.03198) | [website](https://ACE-Brain-Team.github.io/ACE-Brain-0/) | [github](https://github.com/ACE-Brain-Team/ACE-Brain-0)
-
----
-## Summary
-
-ACE-Brain-0 提出 spatial intelligence 是连接异构 embodiment（自动驾驶、无人机、机器人）的共同基础，通过 SSR 训练范式解决 joint training 的 gradient interference 和 sequential training 的 catastrophic forgetting 问题，在 24 个跨领域 benchmark 上实现 SOTA 或 competitive 表现。
+> - **Rating**: 2 - Frontier（最新的 cross-embodiment MLLM 代表作，SSR 范式与 24-benchmark 综合评测是 frontier 级别，但尚未被社区广泛采用为 de facto baseline）
 
 **Key Takeaways:**
 1. **Spatial intelligence as universal scaffold**: 不同 embodiment（车辆、机器人、UAV）虽然 morphology 不同，但都依赖 3D spatial understanding，spatial cognition 是天然的 domain-agnostic foundation
@@ -215,6 +212,27 @@ SSR vs. Joint Training vs. Sequential Training 的对比：
 - **SSR**: Spatial +6.0, AD -0.6, UAV -3.2, Embodied +1.6（综合最优，+GRPO 进一步提升到 Spatial +6.6, Embodied +1.9）
 
 ---
+## 关联工作
+### 基于
+- Qwen3-VL: ACE-Brain-0 的 base model 和 vision encoder 架构
+- Cambrain-737K: Stage 1 general data 来源
+- GRPO: Stage 5 的 reinforcement learning 方法
+- FusionBench: model merging 的实现框架
+
+### 对比
+- [[2506-VeBrain|VeBrain]]-7B: 7B embodied brain baseline
+- [[2511-PelicanVL|Pelican-VL]]-7B: 7B embodied brain baseline
+- MiMo-Embodied-7B: Xiaomi 的 embodied MLLM
+- [[2601-RoboBrain25|RoboBrain2.5]]-8B: 8B embodied brain baseline
+- Vlaser-8B: 8B embodied brain with spatial reasoning
+- GPT-4o / Gemini-2.5-Pro / Claude-4-Sonnet: closed-source MLLM baselines
+
+### 方法相关
+- AdaMerging: 首个将 adaptive merging 引入 multi-task model merging 的工作
+- WUDI: optimization-based model merging（TSVM 的改进版）
+- TSVM: SVD-based Task Singular Vector Merging
+
+---
 ## 论文点评
 
 ### Strengths
@@ -246,26 +264,9 @@ SSR vs. Joint Training vs. Sequential Training 的对比：
 - ⚠️ WUDI merging 的 "super-additive composition": 仅在 3-expert 场景验证，是否 scale 到更多 expert 未知
 - ⚠️ "Generalist foundation brain": 仅限 QA/reasoning 输出，不具备 continuous action generation 能力，作为 "brain" 的完整性有待商榷
 
----
-## 关联工作
-### 基于
-- Qwen3-VL: ACE-Brain-0 的 base model 和 vision encoder 架构
-- Cambrain-737K: Stage 1 general data 来源
-- GRPO: Stage 5 的 reinforcement learning 方法
-- FusionBench: model merging 的实现框架
+### Notes
 
-### 对比
-- [[2506-VeBrain|VeBrain]]-7B: 7B embodied brain baseline
-- [[2511-PelicanVL|Pelican-VL]]-7B: 7B embodied brain baseline
-- MiMo-Embodied-7B: Xiaomi 的 embodied MLLM
-- [[2601-RoboBrain25|RoboBrain2.5]]-8B: 8B embodied brain baseline
-- Vlaser-8B: 8B embodied brain with spatial reasoning
-- GPT-4o / Gemini-2.5-Pro / Claude-4-Sonnet: closed-source MLLM baselines
+### Rating
 
-### 方法相关
-- AdaMerging: 首个将 adaptive merging 引入 multi-task model merging 的工作
-- WUDI: optimization-based model merging（TSVM 的改进版）
-- TSVM: SVD-based Task Singular Vector Merging
-
----
-## Notes
+**分数**：2 - Frontier
+**理由**：SSR 范式（scaffold / specialize / reconcile）与 24-benchmark 的 cross-domain SOTA 验证使其成为当前 cross-embodiment MLLM 的重要参考——Strengths 里的 "清晰 insight" 与 "消融闭环" 支持它作为 frontier 代表作。但正如 Weaknesses 所指出，它不是 VLA（无 action generation），且 evaluation 局限于 QA/reasoning；方法组合（model merging + GRPO + staged SFT）也更像 engineering 整合而非开创性贡献，加之 2026-03 新发布、尚未被社区广泛采纳为 baseline，因此落在 Frontier 而非 Foundation。

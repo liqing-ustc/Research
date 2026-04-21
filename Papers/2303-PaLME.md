@@ -11,18 +11,15 @@ github:
 rating: 3
 date_added: 2026-04-16
 ---
-## 速查卡片
+
+## Summary
 
 > [!summary] PaLM-E: An Embodied Multimodal Language Model
 > - **核心**: 将连续传感器信号直接注入 LLM embedding 空间，构建统一的 embodied multimodal 模型
 > - **方法**: 多模态 token 与文本 token 交错形成 multi-modal sentences，端到端训练 encoder + PaLM LLM
 > - **结果**: 单一 562B 模型同时完成机器人规划、VQA、captioning，OK-VQA SOTA，且跨任务 positive transfer
 > - **Sources**: [paper](https://arxiv.org/abs/2303.03378) | [website](https://palm-e.github.io/)
-
----
-## Summary
-
-PaLM-E 提出将图像、状态估计等连续传感器模态直接编码为 token 序列注入预训练 LLM（PaLM）的 embedding 空间，构建 embodied multimodal language model，用一个模型同时解决机器人任务规划、VQA 和 captioning。
+> - **Rating**: 3 - Foundation（将连续感知直接注入 LLM token 空间的开创性工作，定义了 VLM→VLA 的范式，是后续 RT-2 / OpenVLA 等的必引祖师爷）
 
 **Key Takeaways:**
 1. **Multi-modal sentences**: 将视觉/状态/文本 token 交错形成统一输入序列，LLM 以完全相同的方式处理连续和离散 token
@@ -185,6 +182,25 @@ Scaling 对保持语言能力至关重要：
 **Emergent capabilities**: PaLM-E-562B 涌现了 zero-shot multimodal chain-of-thought reasoning、OCR-free math reasoning、multi-image reasoning 等能力，尽管仅在 single-image 数据上训练。
 
 ---
+## 关联工作
+### 基于
+- PaLM: 540B 参数的 decoder-only LLM，PaLM-E 的语言模型 backbone
+- ViT: Vision Transformer 作为视觉 encoder（ViT-4B 和 ViT-22B 两种规模）
+- OSRT: Object Scene Representation Transformer，提供 3D-aware neural scene representation
+- RT-1: Mobile manipulation 实验中使用的 low-level policy
+
+### 对比
+- [[2204-SayCan|SayCan]]: 通过 affordance function 间接 grounding LLM，PaLM-E 证明直接注入感知信号更优
+- PaLI: 通用 VLM baseline，在机器人规划任务上零样本完全失败
+- Flamingo: VLM baseline，OK-VQA 和 COCO 上与 PaLM-E 对比
+- Frozen (Tsimpoukelli et al., 2021): 最接近的前期工作——freeze LLM 训练视觉 encoder，PaLM-E 在 VQAv2 上超越其 45%
+
+### 方法相关
+- VIMA: 使用 multimodal prompt 进行机器人操作，与 PaLM-E 的 multi-modal sentence 思路相似
+- Gato: 同为 generalist multi-embodiment agent，但 PaLM-E 展示了更强的 positive transfer
+- [[2307-RT2|RT-2]]: 直接继承 PaLM-E 的 "感知注入 LLM" 思路，进一步让 LLM 直接输出 action token，成为 VLA 范式的正式起点
+
+---
 ## 论文点评
 
 ### Strengths
@@ -206,7 +222,7 @@ Scaling 对保持语言能力至关重要：
 #### Artifact 可获取性
 - **代码**: 未开源
 - **模型权重**: 未发布
-- **训练细节**: 高层描述（loss function、data mixture 比例、model size 配置有详细说明；具体训练步数、learning rate 等超参部分缺失）
+- **训练细节**: 仅高层描述（loss function、data mixture 比例、model size 配置有详细说明；具体训练步数、learning rate 等超参部分缺失）
 - **数据集**: 部分公开（Language-Table 数据集公开，TAMP 环境可复现；mobile manipulation 数据来自内部；vision-language 数据主要使用公开数据集）
 
 #### Claim 可验证性
@@ -216,23 +232,9 @@ Scaling 对保持语言能力至关重要：
 - ⚠️ **562B 灾难性遗忘仅 3.9%**: 仅有 PaLM-E-562B 一个数据点验证，且 NLU/NLG 分别表现不同（NLU 仅 +0.4%，NLG -3.8%），未报告 confidence interval
 - ⚠️ **Mobile manipulation real robot 能力**: 主要以视频定性展示，无大规模统计定量数据支持
 
----
-## 关联工作
-### 基于
-- PaLM: 540B 参数的 decoder-only LLM，PaLM-E 的语言模型 backbone
-- ViT: Vision Transformer 作为视觉 encoder（ViT-4B 和 ViT-22B 两种规模）
-- OSRT: Object Scene Representation Transformer，提供 3D-aware neural scene representation
-- RT-1: Mobile manipulation 实验中使用的 low-level policy
+### Notes
 
-### 对比
-- [[2204-SayCan|SayCan]]: 通过 affordance function 间接 grounding LLM，PaLM-E 证明直接注入感知信号更优
-- PaLI: 通用 VLM baseline，在机器人规划任务上零样本完全失败
-- Flamingo: VLM baseline，OK-VQA 和 COCO 上与 PaLM-E 对比
-- Frozen (Tsimpoukelli et al., 2021): 最接近的前期工作——freeze LLM 训练视觉 encoder，PaLM-E 在 VQAv2 上超越其 45%
+### Rating
 
-### 方法相关
-- VIMA: 使用 multimodal prompt 进行机器人操作，与 PaLM-E 的 multi-modal sentence 思路相似
-- Gato: 同为 generalist multi-embodiment agent，但 PaLM-E 展示了更强的 positive transfer
-
----
-## Notes
+**分数**：3 - Foundation
+**理由**：PaLM-E 是 "把连续感知直接注入 LLM token 空间" 的奠基工作，在 embodied AI / VLA 方向是无可绕过的必读——它定义的 multi-modal sentence 范式被 [[2307-RT2|RT-2]]、[[2406-OpenVLA|OpenVLA]]、[[2504-Pi05|π0.5]] 等后续 VLA 工作直接继承，positive transfer 与 scaling 减轻灾难性遗忘两个发现被反复在后续工作中引用。相比 rating=2，它的方法范式并未过气反而被行业标准化（区别于一次性 SOTA），且作为 [[2204-SayCan|SayCan]] 之后、VLA 出现之前的关键过渡，理解这个方向历史的 pipeline 绕不开它。

@@ -11,18 +11,14 @@ github: https://github.com/Embodied-Web-Agent/Embodied-Web-Agent
 rating: 2
 date_added: 2026-04-16
 ---
-## 速查卡片
+## Summary
 
 > [!summary] Embodied Web Agents
 > - **核心**: 提出跨物理-数字域的 AI agent 范式，构建统一仿真平台和 ~1.5k 任务 benchmark
 > - **方法**: 集成 AI2-THOR (indoor) + Google Earth (outdoor) + 5 个功能性 web 界面，覆盖 cooking/navigation/shopping/traveling/geolocation
 > - **结果**: 最佳模型 overall accuracy 远低于人类（cooking 6.4% vs 77%），66.6% 错误是 cross-domain integration failure
 > - **Sources**: [paper](https://arxiv.org/abs/2506.15677) | [website](https://embodied-web-agent.github.io/) | [github](https://github.com/Embodied-Web-Agent/Embodied-Web-Agent)
-
----
-## Summary
-
-提出 Embodied Web Agents 范式，构建统一仿真平台和 ~1.5k 任务的 benchmark，系统评估 AI agent 在物理-数字跨域任务中的能力。
+> - **Rating**: 2 - Frontier（首次系统化将 web + embodied 统一为 cross-domain benchmark，NeurIPS 2025 Spotlight，但尚未成为方向 de facto 标准）
 
 **Key Takeaways:**
 1. **跨域集成是瓶颈**: 当前 LLM agent 在 web-only 和 embodied-only 子任务上表现尚可，但跨域整合时 overall accuracy 骤降（cooking 最佳模型仅 6.4% vs 人类 77%），66.6% 的 cooking 错误属于 cross-domain errors
@@ -153,6 +149,24 @@ Benchmark 包含约 **1.5k 任务**，覆盖 5 个领域：
 
 ---
 
+## 关联工作
+
+### 基于
+- [[2307-WebArena|WebArena]]: 提供了部分 web 环境（OpenStreetMap、Wikipedia）的基础，web observation 也遵循 VisualWebArena 设置
+- AI2-THOR: 室内 embodied 环境的仿真基础
+- FairLocator: geolocation 任务的 baseline 和数据来源
+
+### 对比
+- MiniWoB / WebShop / Mind2Web: 纯 web agent benchmark，不涉及 embodied interaction
+- ALFRED / BEHAVIOR: 纯 embodied benchmark，不涉及 web interaction
+- GPT-4o / Gemini 2.0 Flash / Qwen-VL-Plus / InternVL2.5: 作为 baseline 模型评估
+
+### 方法相关
+- VisualWebArena: web observation 的 Set-of-Marks (SoM) annotation 方法
+- Google Street View API: outdoor environment 的视觉数据来源
+
+---
+
 ## 论文点评
 
 ### Strengths
@@ -183,24 +197,9 @@ Benchmark 包含约 **1.5k 任务**，覆盖 5 个领域：
 - ⚠️ "novel paradigm" 的 claim：虽然统一 web+embodied 确实较新，但 ALFRED 等之前的工作已经涉及 instruction following + embodied action，novelty 主要在于 web interaction 的加入而非全新范式
 - ⚠️ 人类基线的具体评估方式未充分说明（如人类测试者数量、training 程度、inter-rater agreement）
 
----
+### Notes
 
-## 关联工作
+### Rating
 
-### 基于
-- [[2307-WebArena|WebArena]]: 提供了部分 web 环境（OpenStreetMap、Wikipedia）的基础，web observation 也遵循 VisualWebArena 设置
-- AI2-THOR: 室内 embodied 环境的仿真基础
-- FairLocator: geolocation 任务的 baseline 和数据来源
-
-### 对比
-- MiniWoB / WebShop / Mind2Web: 纯 web agent benchmark，不涉及 embodied interaction
-- ALFRED / BEHAVIOR: 纯 embodied benchmark，不涉及 web interaction
-- GPT-4o / Gemini 2.0 Flash / Qwen-VL-Plus / InternVL2.5: 作为 baseline 模型评估
-
-### 方法相关
-- VisualWebArena: web observation 的 Set-of-Marks (SoM) annotation 方法
-- Google Street View API: outdoor environment 的视觉数据来源
-
----
-## Notes
-
+**分数**：2 - Frontier
+**理由**：这是第一个系统将 web agent + embodied agent 统一到同一 benchmark 的工作，NeurIPS 2025 D&B Spotlight，benchmark 设计系统、error analysis（66.6% 跨域错误）揭示了 LLM agent 的核心短板，具备作为 cross-domain agent 评测前沿的条件；但它本身是 benchmark contribution 无方法创新（见 Weaknesses 3），环境仍是受控仿真（Weaknesses 1-2），方向尚新也未形成 ALFRED / WebArena 级的 de facto 地位，所以不到 3 - Foundation。

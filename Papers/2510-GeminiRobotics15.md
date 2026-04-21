@@ -8,21 +8,18 @@ tags: [VLA, cross-embodiment, embodied-reasoning]
 paper: https://arxiv.org/abs/2510.03342
 website: https://deepmind.google/blog/gemini-robotics-15-brings-ai-agents-into-the-physical-world/
 github: https://github.com/google-deepmind/gemini-robotics-sdk
-rating: 3
+rating: 2
 date_added: "2026-04-16"
 ---
-## 速查卡片
+
+## Summary
 
 > [!summary] Gemini Robotics 1.5
 > - **核心**: 多 embodiment VLA + embodied reasoning VLM 组成 agentic robot 系统，引入 Motion Transfer 和 Thinking VLA
 > - **方法**: Motion Transfer (MT) 训练范式实现跨 embodiment 技能迁移；VLA 生成多层级 thinking traces 后再出动作；GR-ER 1.5 作为 orchestrator 配合 GR 1.5 作为 action model
 > - **结果**: 跨 3 种机器人 (ALOHA, Bi-arm Franka, Apollo) 零样本技能迁移；Thinking VLA 在多步任务上大幅提升；GR-ER 1.5 在 15 个 embodied reasoning benchmark 上 SOTA
 > - **Sources**: [paper](https://arxiv.org/abs/2510.03342) | [website](https://deepmind.google/blog/gemini-robotics-15-brings-ai-agents-into-the-physical-world/) | [github](https://github.com/google-deepmind/gemini-robotics-sdk)
-
----
-## Summary
-
-Gemini Robotics 1.5 通过 Motion Transfer 训练范式、Thinking VLA 和 SOTA embodied reasoning VLM 三大创新，构建了一个能跨 embodiment 泛化、能推理后行动、能处理长周期复杂任务的 agentic robot 系统。
+> - **Rating**: 2 - Frontier（VLA cross-embodiment + thinking 的 SOTA 代表工作之一，但 MT 机制不透明且 VLA 权重不开放，限制其作为 Foundation 的社区影响力）
 
 **Key Takeaways:**
 1. **Motion Transfer (MT)**: 新的模型架构和训练范式使 VLA 能从异构多 embodiment 数据中学习，实现跨机器人形态的零样本技能迁移（ALOHA/Franka/Apollo 之间互相迁移）
@@ -159,6 +156,20 @@ Thinking 对 embodied reasoning 的效果：
 - **Auto-Red-Teaming (ART)**: 三模型博弈框架（Attacker + Target + AutoRater），自动发现 ER 模型的幻觉和安全漏洞。验证了 (1) Thinking 增强鲁棒性 (2) AutoRater 可靠纠错 (3) ART 数据可缓解幻觉
 
 ---
+## 关联工作
+### 基于
+- [[2503-GeminiRobotics|Gemini Robotics]]: GR 1.5 的前代，建立了 VLA + embodied reasoning 的基础框架
+- Gemini 2.5: GR 1.5 family 构建在最新一代 Gemini 之上
+
+### 对比
+- Gemini Robotics On-Device (GRoD): 前代 on-device VLA，作为 Franka 和 Apollo 上的 baseline
+- Gemini 2.5 Flash: 作为通用 VLM orchestrator baseline，证明专门化 ER 模型的必要性
+- GPT-5 / GPT-5-mini: 在 embodied reasoning benchmark 上的 frontier 对比
+
+### 方法相关
+- ASIMOV benchmark: 机器人语义安全评估，GR 1.5 同步发布 ASIMOV-2.0 升级版
+
+---
 ## 论文点评
 
 ### Strengths
@@ -190,20 +201,9 @@ Thinking 对 embodied reasoning 的效果：
 - ⚠️ "Thinking" 带来的性能提升：bar chart 显示明确提升，但具体 thinking trace 内容的质量和 failure cases 未系统分析
 - ❌ "A milestone towards solving AGI in the physical world"：营销话术，无可操作定义
 
----
-## 关联工作
-### 基于
-- [[2503-GeminiRobotics|Gemini Robotics]]: GR 1.5 的前代，建立了 VLA + embodied reasoning 的基础框架
-- Gemini 2.5: GR 1.5 family 构建在最新一代 Gemini 之上
+### Notes
 
-### 对比
-- Gemini Robotics On-Device (GRoD): 前代 on-device VLA，作为 Franka 和 Apollo 上的 baseline
-- Gemini 2.5 Flash: 作为通用 VLM orchestrator baseline，证明专门化 ER 模型的必要性
-- GPT-5 / GPT-5-mini: 在 embodied reasoning benchmark 上的 frontier 对比
+### Rating
 
-### 方法相关
-- ASIMOV benchmark: 机器人语义安全评估，GR 1.5 同步发布 ASIMOV-2.0 升级版
-
----
-## Notes
-
+**分数**：2 - Frontier
+**理由**：GR 1.5 是当前 cross-embodiment VLA + embodied-thinking 方向的 SOTA 代表工作之一，GR-ER 1.5 在 15 个 embodied reasoning benchmark 上刷新纪录，是后续工作必须比较的 baseline（符合 Frontier 标准）。但未能升为 Foundation：MT 机制未披露细节（见 Weakness 2）、VLA 权重仅限 Trusted Tester（见 Weakness 3），社区无法独立复现或在其基础上迭代；与开源且已被广泛采纳的 Pi0 / OpenVLA 等 Foundation 级工作相比，其对社区知识生产的贡献受限。

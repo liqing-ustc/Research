@@ -18,6 +18,7 @@ date_added: 2026-04-19
 > - **方法**: pre-train 两步（Choice Policies + VL co-train 1:6 防遗忘 → 冻结 VLM 训 DiT 用 flow matching）；post-train RoPE offset + Λ-mask + L1-error 动态 loss reweight 解决 prefix shortcut
 > - **结果**: LIBERO 98.7%，CALVIN ABCD→D 4.80 / ABC→D 4.75，SimplerEnv VM 85.5% / VA 74.7% / WidowX 79.2%；real-robot Towel Folding 1.2 vs [[2504-Pi05|π0.5]] 1.0 pcs/min；ERQA 40.8 略超基座 Qwen3-VL-4B 的 40.0
 > - **Sources**: [paper](https://arxiv.org/abs/2602.12684) | [website](https://xiaomi-robotics-0.github.io) | [github](https://github.com/XiaomiRobotics/Xiaomi-Robotics-0)
+> - **Rating**: 2 - Frontier（Λ-mask 针对 training RTC 的 prefix shortcut 给出 first-principles fix，三个 sim benchmark SOTA，但方法承袭 π0/π0.5 范式且只开源 inference，关键超参未放出，复现门槛高，属 Frontier baseline）
 
 **Key Takeaways:**
 1. **Λ-shape attention mask 治 action-prefix shortcut**：training-time RTC 把 committed prefix 拼到 noisy action 前，但 later-timestep 的 noisy action 会走捷径直接 copy prefix 而忽略视觉/语言条件，导致 reactive 能力下降。Λ-mask 让后段 token 无法 attend prefix，强制它们 attend VLM KV cache。
@@ -276,6 +277,35 @@ $$
 > ❓ [[2504-Pi05|π0.5]] 的 VL 分数为什么是"非零但离谱低"的状态（如 SEED 21.5、MMMU 19.9）？值得和 [[2504-Pi05|π0.5]] 原论文对比其 VL 训练配比。
 
 ---
+## 关联工作
+
+### 基于
+
+- [[2410-Pi0|π0]]：flow-matching VLA 的直接先驱，MoT 架构思路来源；本文用 Qwen3-VL-4B 替代 PaliGemma，并新增 Λ-mask。
+- [[2504-Pi05|π0.5]]：training-time RTC 的出处，本文 async 训练范式的起点；同时是 real-robot 主 baseline。
+- **Choice Policies**（Qi et al. 2512.25072）：pre-training Step 1 的 multi-candidate + winner-takes-all 范式。
+- **DiT / adaLN**（Peebles & Xie）：Diffusion Transformer 架构基础。
+- **Flow matching**（Lipman et al. / Liu et al.）：action generation 的目标函数来源。
+- **Qwen3-VL-4B-Instruct**：VLM 基座。
+
+### 对比
+
+- **LIBERO**: [[2406-OpenVLA|OpenVLA]]、[[2502-OpenVLA-OFT|OpenVLA-OFT]]、[[2410-Pi0|π0]]、π0-FAST、[[2504-Pi05|π0.5]]、[[2503-GR00TN1|GR00T-N1]]、UniVLA、Discrete Diffusion VLA、MemoryVLA、FLOWER、EO-1。
+- **CALVIN**: RoboFlamingo、GR-1、MoDE、[[2412-RoboVLMs|RoboVLMs]]、MDT、UniVLA、FLOWER、SuSIE、3DDA、GR-MG、Seer-Large、VPP。
+- **SimplerEnv**: [[2405-Octo|Octo]]、[[2406-OpenVLA|OpenVLA]]、RT-1、[[2307-RT2|RT-2]]-X、Magma、[[2412-RoboVLMs|RoboVLMs]]、[[2410-Pi0|π0]]、π0-FAST、SpatialVLA、ThinkAct、EO-1、MolmoAct。
+- **Real-robot**: [[2504-Pi05|π0.5]]（主 SOTA baseline）+ 自己的 Sync / Training RTC 变体。
+- **VL preservation**: [[2410-Pi0|π0]]、[[2504-Pi05|π0.5]]、MolmoAct、Qwen3-VL-4B base。
+
+### 方法相关
+
+- **Training RTC / Real-Time Chunking**（Black et al. 2506.07339 / 2512.05964）：action chunk prefix conditioning + async execution 的基础 protocol。本文方法是对它的 fix。
+- **Λ-shape attention mask**：原用于 multimodal / streaming generation（MInference、LM-Infinite、StreamingLLM），本文首次应用到 VLA action generation 中。
+- **Action Chunking**（Zhao et al. ALOHA 的 action chunk 范式）。
+- **Attention sink token**（Xiao et al. StreamingLLM）：DiT 训练稳定化。
+- **Grounded SAM / Grounding DINO 1.5 / LLMDet**：VL 数据 grounding 标注的三方共识机制。
+- **Knowledge Insulating VLA**（Driess et al. 2505.23705）：防 VLM 被破坏的另一条思路（detach 梯度）——本文选择的是 freeze + co-train 路线。
+
+---
 ## 论文点评
 
 ### Strengths
@@ -312,40 +342,15 @@ $$
 - ⚠️ **"pre-training recipe 泛化"**：只在两个 in-house 任务 post-train 验证；mobile manipulation、non-bimanual、contact-rich 之外的迁移能力未知。
 - ⚠️ **Real-robot throughput（Towel 1.2 pcs/min）**：依赖 evaluation protocol 的实现细节（2 分钟超时、30 分钟 rollout），无独立复现时不易 cross-check。
 
----
-## 关联工作
-
-### 基于
-
-- [[2410-Pi0|π0]]：flow-matching VLA 的直接先驱，MoT 架构思路来源；本文用 Qwen3-VL-4B 替代 PaliGemma，并新增 Λ-mask。
-- [[2504-Pi05|π0.5]]：training-time RTC 的出处，本文 async 训练范式的起点；同时是 real-robot 主 baseline。
-- **Choice Policies**（Qi et al. 2512.25072）：pre-training Step 1 的 multi-candidate + winner-takes-all 范式。
-- **DiT / adaLN**（Peebles & Xie）：Diffusion Transformer 架构基础。
-- **Flow matching**（Lipman et al. / Liu et al.）：action generation 的目标函数来源。
-- **Qwen3-VL-4B-Instruct**：VLM 基座。
-
-### 对比
-
-- **LIBERO**: [[2406-OpenVLA|OpenVLA]]、[[2502-OpenVLA-OFT|OpenVLA-OFT]]、[[2410-Pi0|π0]]、π0-FAST、[[2504-Pi05|π0.5]]、[[2503-GR00TN1|GR00T-N1]]、UniVLA、Discrete Diffusion VLA、MemoryVLA、FLOWER、EO-1。
-- **CALVIN**: RoboFlamingo、GR-1、MoDE、[[2412-RoboVLMs|RoboVLMs]]、MDT、UniVLA、FLOWER、SuSIE、3DDA、GR-MG、Seer-Large、VPP。
-- **SimplerEnv**: [[2405-Octo|Octo]]、[[2406-OpenVLA|OpenVLA]]、RT-1、[[2307-RT2|RT-2]]-X、Magma、[[2412-RoboVLMs|RoboVLMs]]、[[2410-Pi0|π0]]、π0-FAST、SpatialVLA、ThinkAct、EO-1、MolmoAct。
-- **Real-robot**: [[2504-Pi05|π0.5]]（主 SOTA baseline）+ 自己的 Sync / Training RTC 变体。
-- **VL preservation**: [[2410-Pi0|π0]]、[[2504-Pi05|π0.5]]、MolmoAct、Qwen3-VL-4B base。
-
-### 方法相关
-
-- **Training RTC / Real-Time Chunking**（Black et al. 2506.07339 / 2512.05964）：action chunk prefix conditioning + async execution 的基础 protocol。本文方法是对它的 fix。
-- **Λ-shape attention mask**：原用于 multimodal / streaming generation（MInference、LM-Infinite、StreamingLLM），本文首次应用到 VLA action generation 中。
-- **Action Chunking**（Zhao et al. ALOHA 的 action chunk 范式）。
-- **Attention sink token**（Xiao et al. StreamingLLM）：DiT 训练稳定化。
-- **Grounded SAM / Grounding DINO 1.5 / LLMDet**：VL 数据 grounding 标注的三方共识机制。
-- **Knowledge Insulating VLA**（Driess et al. 2505.23705）：防 VLM 被破坏的另一条思路（detach 梯度）——本文选择的是 freeze + co-train 路线。
-
----
-## Notes
+### Notes
 
 - **1:6 比例是拍脑袋还是 sweep？** 这是最想知道的 recipe 参数。如果没 sweep，那"只要 VL 数据比例非零就不会 forget"是更强的结论——一个 ratio sweep 能区分这两个假设。
 - **Λ-mask 窗口 $w$ 没 ablation**。直觉上 $w$ 太小 → transition jerky，$w$ 太大 → 退化回 training-time RTC。这是一个小而有意思的 follow-up 实验，也是本文 fix 的潜在 trade-off 空间。
 - **为什么 [[2410-Pi0|π0]] 全 0 而 [[2504-Pi05|π0.5]] 有零星残留？** Table 5 里 [[2504-Pi05|π0.5]] 的数字（SEED 21.5、AI2D 14.4、MMBench 22.1、MMMU 19.9、SciQA 28.0）处于一种"非零但离谱低"的状态，可能反映 [[2504-Pi05|π0.5]] 的训练配方已经部分包含 VL 数据——比对原论文可能揭示其 recipe。
 - **命名暗示**："Xiaomi-Robotics-0" 是 version 0，对应 [[2410-Pi0|π0]] → [[2504-Pi05|π0.5]] → [[2604-Pi07|π0.7]] 的命名节奏。可以期待后续 iteration（Λ-mask 参数优化、VL 数据 scaling、mobile manipulation extension）。
 - **与 [[2604-Pi07|π0.7]] 的对比**：π0.7 走的是"diverse prompts + heterogeneous data + compositional generalization"的路线，Xiaomi-Robotics-0 走的是"工程 recipe + real-time async + VL preservation"路线。两者关心的维度不同，前者是 generality，后者是 deployability；长期看二者需要合并。
+
+### Rating
+
+**分数**：2 - Frontier
+**理由**：方法层面不是 VLA 的奠基工作——MoT、flow-matching、training RTC 都是继承 [[2410-Pi0|π0]] / [[2504-Pi05|π0.5]] 的既有范式，Λ-mask 本身源自 streaming LLM 领域的迁移应用；但它在 real-time async execution + VL preservation 两条正交维度上给出了可复用的 deployment recipe，并在三个主流 sim benchmark（LIBERO/CALVIN/SimplerEnv）上当前 SOTA 且已发布 6 个 fine-tuned checkpoint，是 VLA 方向近期必须对比的 frontier baseline。不升 Foundation 是因为只开源 inference、关键超参（Λ-mask 窗口、Beta 分布、1:6 ratio、reweight 公式）未放，复现门槛高，尚未被后续工作作为 de facto baseline；不降 Archived 是因为 Λ-mask fix 是 training RTC shortcut 问题的 first-principles 解决方案，即使方法被替代，"prefix shortcut 存在且需要显式 fix" 这一 insight 有持久价值。

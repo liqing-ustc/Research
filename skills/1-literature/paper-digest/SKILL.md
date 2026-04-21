@@ -65,9 +65,16 @@ allowed-tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 
 #### 笔记结构
 
-`## Summary`→ **Body**（内容解读） →`## 论文点评` → `## 关联工作` → `## Notes`
+**模版顺序**：Frontmatter → `## Summary` → **Body**（内容解读） → `## 关联工作` → `## 论文点评`
 
-**撰写顺序**：先写 Body 等其他内容，最后回头写 `## Summary`——它是对全文的压缩，依赖对内容的完整理解。
+**撰写顺序**：Body → 关联工作 → 论文点评 → Summary → Frontmatter
+
+**撰写逻辑**：每一步的产出都依赖前面已写的内容，倒序写以保证每个判断都 grounded 在已有内容上，而不是凭印象先填。
+- **Body**：论文本身的解读，不依赖其他段落。
+- **关联工作**：论文在 landscape 中的位置，需先理解论文本身。
+- **论文点评**：价值判断，依赖对论文本身的解读，以及和关联工作之间的关系。
+- **Summary**：笔记全文总结，依赖对论文本身的理解以及其点评。
+- **Frontmatter**：根据笔记内容的简单回填。
 
 **Body**（内容解读）：
 - **批判性阅读**：综合源文件内容和你自己的理解，生成笔记，不要机械翻译
@@ -162,6 +169,7 @@ Glob DomainMaps/*<TermCamelCase>*.md   # 若目录存在
 - [ ] 未嵌入 OG image / social card / banner 等装饰性图片
 - [ ] **每个嵌入元素都有紧邻的描述**，说明这张图/表/视频在展示什么，而不是光秃秃嵌入或重复 section 标题
 - [ ] **每个元素的嵌入位置与其描述在语境上一致**：元素不应被放在会误导读者的上下文（例：一段讲 "zero-shot 失败" 的文字下方不能紧接一个展示成功的视频）。若描述和周围文字冲突，更换嵌入的位置
+- [ ] **Rating 三处一致**：Summary 里的 Rating、frontmatter 的 `rating` 字段、`### Rating` 段的分数完全对应
 
 ### Step 4 (Wikilink 注入) 自检 
 

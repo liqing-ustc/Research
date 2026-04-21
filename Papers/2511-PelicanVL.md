@@ -11,18 +11,15 @@ github: https://github.com/Open-X-Humanoid/pelican-vl
 rating: 2
 date_added: 2026-04-16
 ---
-## 速查卡片
+
+## Summary
 
 > [!summary] Pelican-VL 1.0: A Foundation Brain Model for Embodied Intelligence
 > - **核心**: 提出 DPPO（Deliberate Practice Policy Optimization）训练框架，通过 RL-SFT metaloop 迭代训练最大规模开源 embodied VLM（7B-72B）
 > - **方法**: DPPO metaloop = RL 探索弱项 → 难样本发现 → SFT 巩固，统一于 preference learning 框架；从 4B+ token 中蒸馏高质量数据
 > - **结果**: 72B 模型在 embodied benchmark 上平均 63.8%，超越 Qwen2.5-VL-72B 基座 20.3%，比肩 GPT-5 等闭源系统
 > - **Sources**: [paper](https://arxiv.org/abs/2511.00108) | [website](https://pelican-vl.github.io/) | [github](https://github.com/Open-X-Humanoid/pelican-vl)
-
----
-## Summary
-
-Pelican-VL 1.0 是北京人形机器人创新中心（X-Humanoid）推出的开源 embodied brain 模型系列（7B/72B），通过 DPPO 训练框架实现 RL 与 SFT 的迭代协同，在 embodied benchmark 上达到 SOTA。
+> - **Rating**: 2 - Frontier（开源最大规模 embodied VLM + 新颖 DPPO 训练框架，但基座依赖和 clean ablation 缺失使其尚未达到 Foundation 级别）
 
 **Key Takeaways:**
 1. **DPPO Metaloop 框架**: 受 deliberate practice 启发，交替执行 RL（探索弱项 + skill refinement）和 SFT（巩固 + competence expansion），形成自进化闭环。RL 和 SFT 被统一为 preference learning 的两个特例
@@ -221,6 +218,24 @@ Pelican-VL 72B 仅用 1M 轨迹和 100K 对象训练，即在 embodied benchmark
 在真实家居环境中，模型接收自然语言指令（"把鞋放到鞋架上，把桌上的垃圾扔进垃圾桶，把沙发上的脏衣服放进洗衣机"），自主完成多阶段感知、空间推理和动态任务排序，跨越多个空间区域执行操作。
 
 ---
+## 关联工作
+
+### 基于
+- Qwen2.5-VL: Pelican-VL 的基座模型
+- GRPO (DeepSeek): RL 阶段的优化算法
+- Swift: 训练和部署框架
+
+### 对比
+- [[2503-GeminiRobotics|Gemini Robotics]]: Google 的 embodied AI，数据规模化策略代表
+- [[2504-Pi05|π0.5]]: Physical Intelligence 的 flow-based VLA，数据规模化策略代表
+- [[2503-GR00TN1|GR00T N1]]: NVIDIA 的 humanoid 控制模型
+- InternVL3.5: Benchmark 对比的主要 baseline
+
+### 方法相关
+- MCP (Model Context Protocol): 多机器人协作中用于工具注册和功能缓存
+- Deliberate Practice (Ericsson): DPPO 的认知科学灵感来源
+
+---
 ## 论文点评
 
 ### Strengths
@@ -254,24 +269,9 @@ Pelican-VL 72B 仅用 1M 轨迹和 100K 对象训练，即在 embodied benchmark
 - ⚠️ "on par with leading proprietary systems": 在 embodied benchmark 上确实接近 GPT-5，但在通用 benchmark（MVBench 69.7 vs 73.1）上仍有差距
 - ❌ "currently the largest-scale open-source embodied multimodal brain model": 模糊的 marketing claim，"largest-scale" 的标准未定义
 
----
-## 关联工作
+### Notes
 
-### 基于
-- Qwen2.5-VL: Pelican-VL 的基座模型
-- GRPO (DeepSeek): RL 阶段的优化算法
-- Swift: 训练和部署框架
+### Rating
 
-### 对比
-- [[2503-GeminiRobotics|Gemini Robotics]]: Google 的 embodied AI，数据规模化策略代表
-- [[2504-Pi05|π0.5]]: Physical Intelligence 的 flow-based VLA，数据规模化策略代表
-- [[2503-GR00TN1|GR00T N1]]: NVIDIA 的 humanoid 控制模型
-- InternVL3.5: Benchmark 对比的主要 baseline
-
-### 方法相关
-- MCP (Model Context Protocol): 多机器人协作中用于工具注册和功能缓存
-- Deliberate Practice (Ericsson): DPPO 的认知科学灵感来源
-
----
-## Notes
-
+**分数**：2 - Frontier
+**理由**：方法层面 DPPO metaloop 虽有 systematicness（Strengths #1），但理论统一偏事后解释（Weaknesses #5），clean ablation 缺失（Weaknesses #1）使其难以被后续工作作为必引奠基；作为 artifact，开源 72B embodied VLM + 全栈 downstream 验证（Strengths #2、#4）使其成为当前 embodied VLM 方向的重要参考 baseline，符合 Frontier 定义。论文发布时间较近（2025-11），尚未沉淀出"de facto"级别的社区采纳证据，因此不到 Foundation 档。
