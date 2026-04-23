@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en"><head><title>VLNVerse: A Benchmark for Vision-Language Navigation with Versatile, Embodied, Realistic Simulation and Evaluation</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="VLNVerse: A Benchmark for Vision-Language Navigation with Versatile, Embodied, Realistic Simulation and Evaluation"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="VLNVerse: A Benchmark for Vision-Language Navigation with Versatile, Embodied, Realistic Simulation and Evaluation"/><meta name="twitter:description" content="Summary VLNVerse: A Benchmark for VLN with Versatile, Embodied, Realistic Simulation and Evaluation 核心: 在 Isaac Sim 之上构建 263 个手工制作的可交互 USD 3D 场景（首次真正意义上的”new scenes”），把 VLN 从静态 ..."/><meta property="og:description" content="Summary VLNVerse: A Benchmark for VLN with Versatile, Embodied, Realistic Simulation and Evaluation 核心: 在 Isaac Sim 之上构建 263 个手工制作的可交互 USD 3D 场景（首次真正意义上的”new scenes”），把 VLN 从静态 ..."/><meta property="og:image:alt" content="Summary VLNVerse: A Benchmark for VLN with Versatile, Embodied, Realistic Simulation and Evaluation 核心: 在 Isaac Sim 之上构建 263 个手工制作的可交互 USD 3D 场景（首次真正意义上的”new scenes”），把 VLN 从静态 ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2512-VLNVerse"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2512-VLNVerse"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary VLNVerse: A Benchmark for VLN with Versatile, Embodied, Realistic Simulation and Evaluation 核心: 在 Isaac Sim 之上构建 263 个手工制作的可交互 USD 3D 场景（首次真正意义上的”new scenes”），把 VLN 从静态 ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  padding: 2rem;
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2512-VLNVerse"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="rb21rw"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/embodied-reasoning" class="sidebar-tag-pill">#embodied-reasoning</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/computer-use" class="sidebar-tag-pill">#computer-use</a><a href="/mindflow/tags/agentic-RL" class="sidebar-tag-pill">#agentic-RL</a><a href="/mindflow/tags/VLN" class="sidebar-tag-pill">#VLN</a><a href="/mindflow/tags/world-model" class="sidebar-tag-pill">#world-model</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2512-VLNVerse</a></div></nav><h1 class="article-title">VLNVerse: A Benchmark for Vision-Language Navigation with Versatile, Embodied, Realistic Simulation and Evaluation</h1><div class="paper-meta"><span class="paper-venue">arXiv</span><span class="paper-authors"><span class="meta-sep">·</span>Sihao Lin <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, Zerui Li</span><span>, Xunyi Zhao</span><span>, Gengze Zhou</span><span>, Liuyi Wang</span><span>, Rong Wei</span><span>, Rui Tang</span><span>, Juncheng Li</span><span>, Hanqing Wang</span><span>, Jiangmiao Pang</span><span>, Anton van den Hengel</span><span>, Jiajun Liu</span><span>, Qi Wu</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2025-12-22T00:00:00.000Z">Dec 22, 2025</time><span>20 min read</span></p><ul class="tags"><li><a href="../tags/VLN" class="internal tag-link">VLN</a></li><li><a href="../tags/navigation" class="internal tag-link">navigation</a></li><li><a href="../tags/embodied-reasoning" class="internal tag-link">embodied-reasoning</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>VLNVerse: A Benchmark for VLN with Versatile, Embodied, Realistic Simulation and Evaluation </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><strong>核心</strong>: 在 Isaac Sim 之上构建 263 个手工制作的可交互 USD 3D 场景（首次真正意义上的”new scenes”），把 VLN 从静态 MP3D 图搜索扩展成全物理、连续控制、多任务统一的 embodied benchmark</li>
+<li><strong>方法</strong>: 三层解耦架构（Simulator / Environment / Task&amp;Dataset）+ 五任务统一分类（fine-grained / coarse-grained / visual-reference / long-horizon / dialogue）+ MoE-based unified baseline GAMA（基于 SAME 的 state-adaptive routing）</li>
+<li><strong>结果</strong>: 现有 MLLM 代理在 Strict 物理设置下 SR 相比 Tel-Hop 下降 ~10pp（25.5→16.7），CR（Collision Rate）暴露了所有依赖 waypoint 预测的方法对物理 embodiment 的脆弱性；foundation model 在新场景下泛化明显退化（InternNav-N1 仅 17.5% coarse SR）</li>
+<li><strong>Sources</strong>: <a href="https://arxiv.org/abs/2512.19021" class="external">paper<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://sihaoevery.github.io/vlnverse/" class="external">website<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://github.com/william13077/IAmGoodNavigator" class="external">github<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><strong>Rating</strong>: 2 - Frontier（显著推进 VLN 仿真维度——场景多样性 + 物理约束 + 任务统一是过去 5 年 VLN 停滞的真正瓶颈；但能否成为 de facto 标准取决于社区采纳）</li>
+</ul>
+</div>
+</blockquote>
+<p><strong>Key Takeaways:</strong></p>
+<ol>
+<li><strong>Scene diversity 瓶颈终于被打破</strong>：Table 1 揭示了过去几乎所有”新 VLN benchmark”贡献 0 个 new scenes——一直在 90 个 MP3D 场景上反复重标注；VLNVerse 一次给出 263 个全新手工可交互 USD 场景</li>
+<li><strong>“Ghost agent” 幻觉被揭穿</strong>：MLLM 代理在 Tel-Hop 下看似合理的 reasoning，到 Strict 物理设置就因为 collision 直接失败——表明当前 “waypoint + 大模型推理” 范式严重 under-specify 了 embodiment</li>
+<li><strong>Online fine-tuning 的复权</strong>：VLN-BERT 从零 shot SR 3.4% → 10 epochs 在线 fine-tune 到 25.7%，验证了 benchmark 支持 online training 的实用价值，也意味着纯 offline 训练的 VLN 模型对新环境的迁移性比过去认为的更差</li>
+<li><strong>统一 task taxonomy 的务实选择</strong>：五任务覆盖 granularity / modality / horizon / interaction 四个轴，但本质上都建在同一套 trajectory pool 上（coarse/visual-reference/dialogue 共享轨迹），实现上比 claim 的 “unified” 更 lightweight</li>
+</ol>
+<hr/>
+<h2 id="background--motivation">Background &amp; Motivation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#background--motivation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>作者诊断了 VLN 领域的四重耦合失败</strong>：</p>
+<ol>
+<li><strong>Simulator 瓶颈</strong>：MP3D 把空间离散成 navigation graph，agent “teleport” 在 nodes 间跳跃；Habitat / Gibson 引入物理但用简化引擎，不支持 realistic robot kinematics；AI2-THOR 强交互但空间窄小，不适合长距离导航</li>
+<li><strong>场景多样性停滞</strong>：Table 1 的 “New Scenes #” 列是全文最有力的证据——R4R、RxR、REVERIE、SOON、VNLA、HANNA、CVDN、VLN-CE、Robo-VLN 全部贡献 0 个新场景，都在 90 个 MP3D 场景上反复重标注。VLN-PE 号称 101 scenes，但实际是 90 MP3D + 10 GRScene + 1 自定义扫描，前 90 个只是格式转成 USD，拓扑结构完全相同</li>
+<li><strong>Task fragmentation</strong>：R2R（fine-grained）、REVERIE（coarse）、HANNA（dialogue）、LH-VLN（long-horizon）各自为政，模型在一个 dataset 上开发后很难迁移到另一个</li>
+<li><strong>数据规模与现代训练范式脱节</strong>：静态、固定大小的数据集，绑死在 discrete environment + fixed modality（RGBD），无法服务 MLLM 式的大规模预训练</li>
+</ol>
+<blockquote>
+<p>❓ 作者把”new scene”定义得很严（“distinct geometry and visual appearance, file format conversion doesn’t count”）。这个定义本身是否公平？MP3D 的 90 个场景都是真实公寓扫描，而 VLNVerse 的 263 个是 hand-crafted USD——后者的视觉/布局分布是否充分反映真实世界？论文没有正面回答这一点。</p>
+</blockquote>
+<hr/>
+<h2 id="the-vlnverse-architecture">The VLNVerse Architecture<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#the-vlnverse-architecture" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>三层解耦设计：Simulator Layer（embodiment + control + perception APIs）/ Environment Layer（3D assets + scene graph）/ Task &amp; Dataset Layer（task definition + data pipeline + eval）。</p>
+<p><strong>Figure 1. VLNVerse 的三层架构总览</strong>
+<img src="https://arxiv.org/html/2512.19021v1/x1.png" alt/></p>
+<h3 id="simulation-layer">Simulation Layer<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#simulation-layer" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>核心贡献不是 engine 本身（用 Isaac Sim），而是<strong>针对 VLN 的高层 API 抽象</strong>：</p>
+<ul>
+<li><strong>Parameterizable Agent Embodiment</strong>：agent 是有 physical footprint 的实体（可配 cylinder 高度/直径），不再是 floating camera</li>
+<li><strong>Physics-aware Controller</strong>：统一的 controller 接口，支持连续控制和 camera articulation，底层走 physics 而非 grid teleport</li>
+<li><strong>Modular Perception Rig</strong>：可 attach/detach RGB、Depth、LiDAR；所有参数（采样频率、分辨率、FoV）暴露给用户</li>
+</ul>
+<p>这里的 contribution 是 engineering——把 Isaac Sim 的原生 robotics API 包装成研究者易用的 VLN workflow。相比 VLN-PE（同样基于 Isaac）的差异，论文强调 “first to harness Isaac Sim specifically for full-stack embodied navigation”，而 BEHAVIOR-1K / Arnold / GRUtopia 等 Isaac-based 工作聚焦 manipulation。</p>
+<h3 id="environment-layer-263-interactive-usd-scenes">Environment Layer: 263 Interactive USD Scenes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#environment-layer-263-interactive-usd-scenes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>263 个<strong>hand-crafted</strong> USD 场景是本工作最硬的贡献：</p>
+<ul>
+<li>每个 object 都是 physics-aware 资产：带 mass、friction、reflectivity</li>
+<li>镜子真实反射、碰撞非二值（agent 会基于 mass/velocity 被 deflected）</li>
+<li>每个场景生成 2D occupancy map（导航地面）+ spatial-semantic scene graph（object 带坐标+semantic label + “on/in/near” 关系）</li>
+</ul>
+<p>scene graph 的存在是 data pipeline 的关键：它提供了 ground truth prior，让后续的 instruction generation 可以 verify against。</p>
+<p><strong>Figure 2. Navigable area / room count / trajectory length 分布</strong>
+<img src="https://arxiv.org/html/2512.19021v1/x2.png" alt/></p>
+<p>场景规模和复杂度分布广，不是简单的 uniform spread——面积越大、房间越多，path 越长的直观关系被 scatter plot 印证。</p>
+<h3 id="task--dataset-layer">Task &amp; Dataset Layer<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#task--dataset-layer" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>5 个任务涵盖 4 个维度</strong>：</p>
+<ul>
+<li><strong>Granularity</strong>：fine-grained（R2R-style 步骤指令）+ coarse-grained（REVERIE-style goal-oriented）</li>
+<li><strong>Modality</strong>：visual-reference navigation（给 agent 一张 target object 的照片）</li>
+<li><strong>Horizon</strong>：long-horizon（连接 2-3 个 sub-task）</li>
+<li><strong>Interactivity</strong>：dialogue-based（可向 oracle LLM 查询）</li>
+</ul>
+<p><strong>数据生成 pipeline 是两阶段</strong>：</p>
+<ol>
+<li><strong>Physics-aware path sampling</strong>：在 occupancy map 上 A* 搜索，但根据 agent 物理尺寸 <strong>dilate</strong> occupancy map，保证 sampled path 对物理 agent 可达</li>
+<li><strong>3-stage instruction generation</strong>：
+<ul>
+<li><em>Prior-based init</em>：scene graph 给出 factually-grounded 描述种子（如 “the mirror on the sink”）</li>
+<li><em>Collaborative AI</em>：三 agent 分工——Describer（看视觉描述环境）/ Verifier（对照 scene graph 查 hallucination）/ Synthesizer（按 task 类型 + 风格合成最终指令）</li>
+<li><em>Human verification</em>：志愿者打分 clarity / naturalness / accuracy</li>
+</ul>
+</li>
+</ol>
+<p><strong>Table 2. Data volume（episodes per task, scenes in brackets）</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Taxonomy</th><th>Train</th><th>Seen val</th><th>Unseen val</th><th>Test</th></tr></thead><tbody><tr><td>Fine-grained</td><td>3963(177)</td><td>423(157)</td><td>825(33)</td><td>1325(53)</td></tr><tr><td>Coarse-grained</td><td>11895(177)</td><td>1269(162)</td><td>2505(33)</td><td>3975(53)</td></tr><tr><td>Visual reference</td><td>11895(177)</td><td>1269(162)</td><td>2505(33)</td><td>3975(53)</td></tr><tr><td>Long horizon</td><td>11946(177)</td><td>1329(177)</td><td>2475(33)</td><td>3975(53)</td></tr><tr><td>Dialogue</td><td>11895(177)</td><td>1269(162)</td><td>2505(33)</td><td>3975(53)</td></tr></tbody></table></div>
+<p>注意：coarse-grained / visual-reference / dialogue <strong>共享同一套轨迹</strong>（visual-reference 额外加目标图，dialogue 额外加 LLM oracle）；coarse-grained 每条轨迹生成 formal / natural / casual 三种风格指令。fine-grained 数据量显著小（因为步骤指令生成更昂贵）。</p>
+<h3 id="新-metric-collision-rate-cr">新 Metric: Collision Rate (CR)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#新-metric-collision-rate-cr" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>在标准 SR / OSR / SPL / NE / TL / nDTW 之上，<strong>引入 Collision Rate 量化 embodiment 违反</strong>。这是论文实证部分最有用的工具——后文揭示 CR 是当前所有 “waypoint + LLM reasoning” 方法的最大 bottleneck。</p>
+<p>对 long-horizon 任务引入 SR_n（到达第 n 个目标的条件成功率）+ SR_All（全程完成）。</p>
+<hr/>
+<h2 id="gama-unified-multi-task-baseline">GAMA: Unified Multi-task Baseline<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#gama-unified-multi-task-baseline" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>作者提出的统一 baseline GAMA（General-purpose Agent for Multi-task Navigation），基于 <strong>SAME (State-Adaptive MoE)</strong> 路由机制。</p>
+<p><strong>Figure 5. GAMA framework</strong>
+<img src="https://arxiv.org/html/2512.19021v1/fig/GAMA-Horizontal.png" alt/></p>
+<p><strong>架构要点</strong>：</p>
+<ul>
+<li><strong>Unified Transformer Backbone</strong>：冻结的预训练 VLM（LXMERT / LLaMA-VID 等）编码 RGB/Depth frames 和 instruction，trainable fusion module Ψ 融合</li>
+<li><strong>Unified Action Decoder</strong>：把 discrete action 视作连续空间中的 Dirac δ 先验——<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord mathnormal">a</span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.03588em;">ψ</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">))</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0497em;vertical-align:-0.2997em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1864em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2997em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0037em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03785em;">δ</span><span class="mopen">(</span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>，<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 是 4 个 action primitives（含 stop），<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0037em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 是 MLP 输出概率；连续控制下再回归一个 residual <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">Δ</span><span class="mord mathnormal">a</span></span></span></span> 加在最可能的 primitive 上</li>
+<li><strong>State-Adaptive MoE（SAME, Zhou et al. 2024a）</strong>：在<strong>时间维度</strong>路由而非 token 维度——每次 agent 进入新位置才重新选 experts，降低 token-wise routing 的开销，同时适配 navigation 的 sequential 结构</li>
+</ul>
+<p>这个设计的核心 insight：navigation 是 multi-step rollout，linguistic cues 和 visual observation 在不同时间步的相关性不同，传统 token-wise / task-wise MoE 都与 temporal structure 不对齐。SAME 在 state level 路由，既压低计算又契合任务结构。</p>
+<blockquote>
+<p>❓ GAMA 里”unified” 的程度存疑。它能 handle 多种 action space 和 observation 是因为有 unified decoder + fusion，但真正在 5 个任务上<strong>同时</strong>训练还是<strong>按任务分开</strong>训练？论文正文没有明确说明 joint training 协议，需读 Appendix 确认。</p>
+</blockquote>
+<hr/>
+<h2 id="experiments">Experiments<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#experiments" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="offline-training-baselines-table-3">Offline Training Baselines (Table 3)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#offline-training-baselines-table-3" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>对比 CMA / RDP / Seq2Seq / HNR / GAMA。在 fine-grained test split，GAMA 拿到 <strong>SR 37.72 / SPL 33.85</strong>（最高），RDP 紧随（36.38 / 32.29），CMA 和 Seq2Seq 落在 28-30%。在 coarse-grained test split GAMA SR 37.20，RDP 36.60。</p>
+<p><strong>人类 baseline 为 86% SR</strong>，机器最好 37.7%——差距巨大，benchmark 确实有挑战性。</p>
+<h3 id="foundation-model-zero-shot-table-4">Foundation Model Zero-shot (Table 4)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#foundation-model-zero-shot-table-4" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>测试 InternNav-N1 / NFM / UniNavid 的 zero-shot 迁移能力：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Model</th><th>Fine SR</th><th>Coarse SR</th><th>CR (coarse)</th></tr></thead><tbody><tr><td>InternNav-N1</td><td>28.95</td><td>17.51</td><td>-</td></tr><tr><td>NFM</td><td>51.59</td><td>38.02</td><td>24.22</td></tr><tr><td>UniNavid</td><td>45.74</td><td>29.68</td><td>15.59</td></tr></tbody></table></div>
+<p>NFM 表现最好，但 CR 24.22%——每 4 次导航就有 1 次严重碰撞。SPL 也显著下降（InternNav-N1 coarse 16.54、UniNavid 13.47），说明即使找到目标，路径效率也崩溃。</p>
+<h3 id="zero-shot-mllm-agents-under-physics-table-5--论文最重要的发现">Zero-shot MLLM Agents under Physics (Table 5) — <strong>论文最重要的发现</strong><a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#zero-shot-mllm-agents-under-physics-table-5--论文最重要的发现" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>QwenVL3-4B 作 LLM backbone，对比 text-history (NavGPT-style) 和 map-history (MapGPT-style) agent，在两个 setting 下：</p>
+<ul>
+<li><strong>Tel-Hop</strong>：agent 可以 teleport between waypoints，只在目标点检查 collision</li>
+<li><strong>Strict</strong>：完全物理约束，agent 被碰撞 > 0.1m displacement 即失败</li>
+</ul>
+<p>Map-history agent 在 fine-grained 任务上：Tel-Hop SR <strong>25.53% → Strict 16.67%</strong>，下降 ~9pp，CR 飙升到 43%+。</p>
+<p>加 CoT 后 Tel-Hop 进一步提升到 42.19%，但 Strict 几乎没改善（16.67%）——<strong>物理碰撞才是真正的 bottleneck，而不是 reasoning</strong>。CoT 只能在 idealized 世界里帮助，遇到 embodiment 就失效。</p>
+<p>这是对当前 VLN + MLLM 研究范式的<strong>直接打脸</strong>：过去几年”waypoint + LLM reasoning”的成功大多建立在 discrete graph 的 teleport 假设上，一旦加上物理约束就暴露出”这些 agent 根本没学 embodiment”。</p>
+<h3 id="dialogue--long-horizon-table-6">Dialogue &amp; Long-horizon (Table 6)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#dialogue--long-horizon-table-6" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Dialogue 极有效</strong>：map-history agent 在 coarse-grained 的 SR 从 42.2% 跃升到 67.0%——oracle LLM 提供的环境信息大幅降低歧义。这也侧面验证了 VLNVerse 场景的高质量渲染足以让 LLM 理解并提供有效指引。</p>
+<p><strong>Long-horizon 严重衰减</strong>：SR_1 = 77.1%（到第一个目标），SR_2 = 46.3%，SR_3 = 10.6%。累积误差和 state tracking 失败让多阶段规划崩盘。</p>
+<h3 id="online-fine-tuning-table-7">Online Fine-tuning (Table 7)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#online-fine-tuning-table-7" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>取 VLN-BERT（在 VLN-CE/Habitat 预训练）zero-shot 测试：SR 3.4%（近乎随机）。</p>
+<p>在 VLNVerse 的 30 个场景上 online fine-tune：</p>
+<ul>
+<li>1 epoch → SR 11.1%</li>
+<li>10 epochs → SR 25.7%, CR 从 52.9% 降到 19.5%</li>
+</ul>
+<p>验证了 benchmark 对 online training 的原生支持，也说明<strong>纯 offline 预训练的 VLN 模型对新物理环境的迁移性远不如过去认为的那样好</strong>。</p>
+<hr/>
+<h2 id="关联工作">关联工作<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#关联工作" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="基于">基于<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#基于" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Isaac Sim (NVIDIA, 2021)</strong>：底层物理 + 渲染引擎</li>
+<li><strong>SAME (Zhou et al., 2024a)</strong>：state-adaptive MoE 路由机制，GAMA 的核心</li>
+<li><strong>HNR (Wang et al., 2024b)</strong>：GAMA backbone 用的 hierarchical neural radiance representation（用于 lookahead exploration）</li>
+<li><strong>Universal Scene Description (Pixar, 2021)</strong>：263 场景的资产格式</li>
+</ul>
+<h3 id="对比同用-isaac-sim-的-benchmark">对比（同用 Isaac Sim 的 benchmark）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#对比同用-isaac-sim-的-benchmark" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong><a href="../Papers/2507-VLNPE" class="internal alias" data-slug="Papers/2507-VLNPE">VLN-PE</a> (Wang et al., 2025)</strong>：最直接的对手，同样基于 Isaac + “Full” physics，但只有 1 个真正新场景（剩下的是 MP3D 格式转换）；VLNVerse 的 263 vs VLN-PE 的 ~1 是本工作最硬的差异化</li>
+<li><strong><a href="../Papers/2403-Behavior1K" class="internal alias" data-slug="Papers/2403-Behavior1K">BEHAVIOR-1K</a> / Arnold / GRUtopia</strong>：Isaac-based，但聚焦 manipulation，VLNVerse 首个聚焦 full-stack navigation</li>
+</ul>
+<h3 id="对比前-isaac-时代的-vln-benchmark">对比（前 Isaac 时代的 VLN benchmark）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#对比前-isaac-时代的-vln-benchmark" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>R2R / R4R / RxR / REVERIE / SOON / VNLA / HANNA / CVDN</strong>：全部 0 new scenes，在 90 MP3D 场景上重标注</li>
+<li><strong>VLN-CE / Robo-VLN</strong>：Habitat-based 引入连续控制，但 “Specialized” 物理 + 0 new scenes</li>
+<li><strong>ALFRED / TEACh / DialFRED</strong>：AI2-THOR-based 强交互但空间窄</li>
+<li><strong><a href="../Papers/2412-LHVLN" class="internal alias" data-slug="Papers/2412-LHVLN">LH-VLN</a> (Song et al., 2025)</strong>：long-horizon 单任务专用 benchmark，216 scenes 但仍是 Habitat + graph action</li>
+</ul>
+<h3 id="方法相关">方法相关<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#方法相关" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong><a href="../Papers/2305-NavGPT" class="internal alias" data-slug="Papers/2305-NavGPT">NavGPT</a> / MapGPT / NavGPT-2</strong>：被测的 MLLM-based agents，text-history / map-history 的代表</li>
+<li><strong><a href="../Papers/2509-NavFoM" class="internal alias" data-slug="Papers/2509-NavFoM">NFM</a> / UniNavid / InternNav-N1</strong>：被测的 navigation foundation models</li>
+<li><strong>VLN-BERT (Hong et al., 2022)</strong>：online fine-tuning 实验的受试模型</li>
+<li><strong>Scheduled Sampling (Bengio et al., 2015)</strong>：online training 时混合 oracle/prediction action 的策略</li>
+</ul>
+<hr/>
+<h2 id="论文点评">论文点评<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#论文点评" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="strengths">Strengths<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>真正解决了 scene diversity 瓶颈</strong>：Table 1 把整个 VLN 领域的数据贡献摊开看，暴露了多年”benchmark 论文”其实都在原地打转的事实。263 个 hand-crafted USD 场景（且都是 physics-aware interactive assets）是过去 5 年未见的真实增量</li>
+<li><strong>Strict vs Tel-Hop 的对照设计非常有说服力</strong>：把”idealized reasoning”和”physical embodiment”在同一模型上切开比较，干净地 diagnose 出 MLLM agent 的真正瓶颈。这是比单纯报告 SR 数字更有研究价值的做法</li>
+<li><strong>CR metric 的引入务实</strong>：给 embodiment 给了可量化的维度，让 “sim-to-real gap” 不再是 hand-wavy 的叙事</li>
+<li><strong>Online fine-tuning 支持 + scalable data pipeline</strong>：不只是 static dataset，而是把 “任意规模的 on-demand 数据生成 + online training” 作为一等公民。这种架构对现代 LLM 预训练思路友好</li>
+<li><strong>三 agent 协作 + human verification 的 instruction pipeline 质量控制严格</strong>：Describer / Verifier / Synthesizer 分工 + 对照 scene graph 查 hallucination，比纯 GPT 生成 + 人工抽检 更可信</li>
+</ol>
+<h3 id="weaknesses">Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>Hand-crafted USD 场景的真实性存疑</strong>：相比 MP3D 的真实公寓扫描，263 个手工场景的视觉和布局分布可能有系统性偏差。论文没有做 sim-to-real 的真机实验来验证这一点</li>
+<li><strong>GAMA 的”unified”程度不够清晰</strong>：论文没有正面说明是 5 个任务 joint training 还是分开训练。如果是分开，那”统一”主要是 architectural，不是训练上的</li>
+<li><strong>GAMA 相对 RDP 的提升边际</strong>：fine-grained test SR 37.72 vs 36.38 的差距很小，GAMA 的架构贡献（SAME）在数值上没有展现出对 RDP (diffusion policy) 的清晰优势</li>
+<li><strong>Long-horizon 的 sub-task 构造太简单</strong>：只是 random sampling 2-3 个 coarse-grained 目标拼接，没有 “需要先做 A 才能 B” 的依赖结构——这与真实 lifelong learning 场景的差距较大</li>
+<li><strong>Dialogue-based 的 oracle 是 LLM，而不是人</strong>：oracle 的 “correct answer” 由 LLM 基于 scene graph 生成，本质是 scene graph 查询的代理。agent 学会的是”问对问题”而不是”跟人对话”——对真实 human-robot interaction 的覆盖有限</li>
+<li><strong>没测 MLLM 的参数规模敏感度</strong>：QwenVL3-4B 是小模型，更大的 MLLM（72B+）在 Strict 设置下的表现如何？论文没有跑 ablation</li>
+</ol>
+<h3 id="可信评估">可信评估<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#可信评估" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="artifact-可获取性">Artifact 可获取性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#artifact-可获取性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><strong>代码</strong>：部分公开——<code>william13077/IAmGoodNavigator</code> 是一个”Interactive Playground”demo 仓库（10 episodes 用于交互体验），提到 generation pipeline 在 <code>william13077/VLNTube</code>。主 benchmark 代码和完整评估框架是否开源未在正文明确（正文说 “All implementations, datasets, and evaluation protocols will be made publicly available” 但是 future tense）</li>
+<li><strong>模型权重</strong>：未说明 GAMA 权重是否发布</li>
+<li><strong>训练细节</strong>：部分公开——AdamW lr=1e-4, 4×RTX4090 GPUs, DataParallel, batch 4, 2 天收敛；但具体模型超参（layers, dim, MoE expert count 等）未在正文披露</li>
+<li><strong>数据集</strong>：部分公开——Hugging Face datasets <code>Eyz/TataServices</code>（scenes）、<code>Eyz/TataMeta</code>（meta）、<code>Eyz/SceneSummary</code>（scene graph）已发布</li>
+</ul>
+<h4 id="claim-可验证性">Claim 可验证性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#claim-可验证性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>✅ <strong>“263 new scenes, all hand-crafted USD with full physics”</strong>：数据集已在 HF 公开，可独立核验场景数和资产属性</li>
+<li>✅ <strong>“MLLM agent Strict vs Tel-Hop drop”</strong>：Table 5 有对齐的 baseline 对照，CR 指标提供额外证据</li>
+<li>✅ <strong>“Online fine-tuning from 3.4% → 25.7%“</strong>：Table 7 设置清晰，可复现</li>
+<li>⚠️ <strong>“First to unify all 4 taxonomies”</strong>：严格说 coarse / visual-ref / dialogue 共享同一套 trajectory，实际是<strong>一套数据配三种任务头</strong>——“unification” 的程度比 claim 显得浅</li>
+<li>⚠️ <strong>“263 unique scenes with unique geometry and visual appearance”</strong>：作者自己定义了 “new scene” 的严格标准，但 263 个 hand-crafted scenes 彼此之间的多样性（是否只是同一模板的参数化变体？）没有量化分析</li>
+<li>⚠️ <strong>“GAMA is the best unified baseline”</strong>：和 RDP 的差距（37.72 vs 36.38）处在统计噪声范围内，没有 multiple seeds / error bars</li>
+<li>❌ <strong>“Narrows sim-to-real gap”</strong>：论文没有任何真机部署实验支撑这个 claim，仅靠”用 Isaac Sim 物理引擎”这个前提推断</li>
+</ul>
+<h3 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>对自己研究的关联</strong>：如果做 VLN 或 embodied navigation，这个 benchmark 值得关注并跟踪其被社区采纳的程度；特别是 Strict vs Tel-Hop 的对照设计可以移植到其他 embodied 任务的评估中</li>
+<li><strong>核心 insight 值得记住</strong>：“waypoint + LLM reasoning” 在 discrete graph 上的成功可能是一种 evaluation artifact——物理约束加上后，当前 agent 的性能 drop 在 10pp 级别。这对 VLA / embodied foundation model 的训练数据构造有启示：<strong>纯 offline / 纯 discrete 数据可能系统性低估 embodiment 挑战</strong></li>
+<li><strong>开放问题</strong>：VLNVerse 的 263 个 hand-crafted 场景的 visual realism 是否足够缩小到真实环境的 gap？这本质上是 “手工 USD 场景 vs 真实 3D 扫描” 的 trade-off——前者 physics 完整但视觉可能偏 cartoonish，后者视觉真实但物理贫瘠。未来工作应该融合两者</li>
+</ul>
+<h3 id="rating">Rating<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#rating" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Metrics</strong> (as of 2026-04-23): citation=1, influential=0 (0%), velocity=0.25/mo; HF upvotes=N/A（论文尚未被任何 HF model/dataset/Space README 引用）; github 88⭐ / forks=2 / 90d commits=2 / pushed 13d ago</p>
+<p><strong>分数</strong>：2 - Frontier</p>
+<p><strong>理由</strong>：</p>
+<ul>
+<li><strong>为什么不是 1</strong>：论文不是 incremental——Table 1 清晰展示了 VLN 领域过去多年 0 个新场景的贡献停滞，263 个 hand-crafted USD + 五任务统一 + Strict/Tel-Hop 对照 + CR metric 同时推进了多个维度；Strict 设置下 MLLM 的暴露是真正的 research insight 而非 benchmark puffery</li>
+<li><strong>为什么还不是 3</strong>：发布才 4 个月（2025-12-22），citation=1 + HF 未收录 + github 88⭐（对一个 Isaac-based benchmark 算中等），属于 early signal 阶段尚不足以判断是否会成为 de facto 标准；VLN-PE 等同类工作刚出来一年就进入了大家的讨论，VLNVerse 能否取代尚待观察；且目前主代码尚未完全开源（只放了 playground demo），完整 adoption 还需等待</li>
+</ul></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="pva9ak" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#background--motivation" data-for="background--motivation">Background &amp; Motivation</a></li><li class="depth-0"><a href="#the-vlnverse-architecture" data-for="the-vlnverse-architecture">The VLNVerse Architecture</a></li><li class="depth-1"><a href="#simulation-layer" data-for="simulation-layer">Simulation Layer</a></li><li class="depth-1"><a href="#environment-layer-263-interactive-usd-scenes" data-for="environment-layer-263-interactive-usd-scenes">Environment Layer: 263 Interactive USD Scenes</a></li><li class="depth-1"><a href="#task--dataset-layer" data-for="task--dataset-layer">Task &amp; Dataset Layer</a></li><li class="depth-1"><a href="#新-metric-collision-rate-cr" data-for="新-metric-collision-rate-cr">新 Metric: Collision Rate (CR)</a></li><li class="depth-0"><a href="#gama-unified-multi-task-baseline" data-for="gama-unified-multi-task-baseline">GAMA: Unified Multi-task Baseline</a></li><li class="depth-0"><a href="#experiments" data-for="experiments">Experiments</a></li><li class="depth-1"><a href="#offline-training-baselines-table-3" data-for="offline-training-baselines-table-3">Offline Training Baselines (Table 3)</a></li><li class="depth-1"><a href="#foundation-model-zero-shot-table-4" data-for="foundation-model-zero-shot-table-4">Foundation Model Zero-shot (Table 4)</a></li><li class="depth-1"><a href="#zero-shot-mllm-agents-under-physics-table-5--论文最重要的发现" data-for="zero-shot-mllm-agents-under-physics-table-5--论文最重要的发现">Zero-shot MLLM Agents under Physics (Table 5) — 论文最重要的发现</a></li><li class="depth-1"><a href="#dialogue--long-horizon-table-6" data-for="dialogue--long-horizon-table-6">Dialogue &amp; Long-horizon (Table 6)</a></li><li class="depth-1"><a href="#online-fine-tuning-table-7" data-for="online-fine-tuning-table-7">Online Fine-tuning (Table 7)</a></li><li class="depth-0"><a href="#关联工作" data-for="关联工作">关联工作</a></li><li class="depth-1"><a href="#基于" data-for="基于">基于</a></li><li class="depth-1"><a href="#对比同用-isaac-sim-的-benchmark" data-for="对比同用-isaac-sim-的-benchmark">对比（同用 Isaac Sim 的 benchmark）</a></li><li class="depth-1"><a href="#对比前-isaac-时代的-vln-benchmark" data-for="对比前-isaac-时代的-vln-benchmark">对比（前 Isaac 时代的 VLN benchmark）</a></li><li class="depth-1"><a href="#方法相关" data-for="方法相关">方法相关</a></li><li class="depth-0"><a href="#论文点评" data-for="论文点评">论文点评</a></li><li class="depth-1"><a href="#strengths" data-for="strengths">Strengths</a></li><li class="depth-1"><a href="#weaknesses" data-for="weaknesses">Weaknesses</a></li><li class="depth-1"><a href="#可信评估" data-for="可信评估">可信评估</a></li><li class="depth-1"><a href="#notes" data-for="notes">Notes</a></li><li class="depth-1"><a href="#rating" data-for="rating">Rating</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+</script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>

@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en"><head><title>Vision-and-Language Navigation Today and Tomorrow: A Survey in the Era of Foundation Models</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="Vision-and-Language Navigation Today and Tomorrow: A Survey in the Era of Foundation Models"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Vision-and-Language Navigation Today and Tomorrow: A Survey in the Era of Foundation Models"/><meta name="twitter:description" content="Summary Vision-and-Language Navigation Today and Tomorrow: A Survey in the Era of Foundation Models 核心: 用 LAW（Language-Agent-World）框架把 VLN 研究切成 World Model / Human Model / VLN ..."/><meta property="og:description" content="Summary Vision-and-Language Navigation Today and Tomorrow: A Survey in the Era of Foundation Models 核心: 用 LAW（Language-Agent-World）框架把 VLN 研究切成 World Model / Human Model / VLN ..."/><meta property="og:image:alt" content="Summary Vision-and-Language Navigation Today and Tomorrow: A Survey in the Era of Foundation Models 核心: 用 LAW（Language-Agent-World）框架把 VLN 研究切成 World Model / Human Model / VLN ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2407-VLNFoundationSurvey"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2407-VLNFoundationSurvey"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary Vision-and-Language Navigation Today and Tomorrow: A Survey in the Era of Foundation Models 核心: 用 LAW（Language-Agent-World）框架把 VLN 研究切成 World Model / Human Model / VLN ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  padding: 2rem;
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2407-VLNFoundationSurvey"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="rb21rw"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/embodied-reasoning" class="sidebar-tag-pill">#embodied-reasoning</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/computer-use" class="sidebar-tag-pill">#computer-use</a><a href="/mindflow/tags/agentic-RL" class="sidebar-tag-pill">#agentic-RL</a><a href="/mindflow/tags/VLN" class="sidebar-tag-pill">#VLN</a><a href="/mindflow/tags/world-model" class="sidebar-tag-pill">#world-model</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2407-VLNFoundationSurvey</a></div></nav><h1 class="article-title">Vision-and-Language Navigation Today and Tomorrow: A Survey in the Era of Foundation Models</h1><div class="paper-meta"><span class="paper-venue">TMLR 2024</span><span class="paper-authors"><span class="meta-sep">·</span>Yue Zhang <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, Ziqiao Ma</span><span>, Jialu Li</span><span>, Yanyuan Qiao</span><span>, Zun Wang</span><span>, Joyce Chai</span><span>, Qi Wu</span><span>, Mohit Bansal</span><span>, Parisa Kordjamshidi</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2024-07-09T00:00:00.000Z">Jul 09, 2024</time><span>20 min read</span></p><ul class="tags"><li><a href="../tags/VLN" class="internal tag-link">VLN</a></li><li><a href="../tags/navigation" class="internal tag-link">navigation</a></li><li><a href="../tags/VLM" class="internal tag-link">VLM</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Vision-and-Language Navigation Today and Tomorrow: A Survey in the Era of Foundation Models </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><strong>核心</strong>: 用 LAW（Language-Agent-World）框架把 VLN 研究切成 World Model / Human Model / VLN Agent 三个子问题，系统梳理 foundation model 时代的 VLN 方法与 benchmark。</li>
+<li><strong>方法</strong>: Top-down 综述——不按 benchmark 或模型时间线组织，而是按”foundation model 在 VLN 里扮演什么角色”来归类（history encoder / pre-trained repr / instruction synthesizer / planner / agent backbone）。</li>
+<li><strong>结果</strong>: 覆盖 24 个 VLN benchmark（indoor R2R/RxR/REVERIE 系到 outdoor TouchDown/CARLA/AerialVLN，按 world×human×agent×dataset 4 维分类），识别出 4 种 FM 角色，给出 5 条未来方向（2D→3D、instruction→dialogue、sim→real、embodied FM、hallucination）。</li>
+<li><strong>Sources</strong>: <a href="https://arxiv.org/abs/2407.07035" class="external">paper<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://github.com/zhangyuejoslin/VLN-Survey-with-Foundation-Models" class="external">github<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><strong>Rating</strong>: 2 - Frontier （作为 LLM 时代 VLN 的第一本系统 survey，taxonomy 清晰，但一年多后 streaming VLA、VLN-R1、3D EWR 等新路线已出现，结构性覆盖度开始老化，不到 foundation 级）</li>
+</ul>
+</div>
+</blockquote>
+<p><strong>Key Takeaways:</strong></p>
+<ol>
+<li><strong>LAW 三分法是全篇骨架</strong>：World model（环境表征与记忆）+ Human model（指令解释与对话）+ VLN Agent（grounding / planning / 端到端 policy），是从 Hu &amp; Shu 2023 借来的通用 agent 框架，用来把 VLN 的异质挑战标准化。</li>
+<li><strong>Benchmark 四维分类</strong>：world（domain × environment）× human（turn × format × granularity）× agent（embodiment × action space × extra task）× dataset collection（text × route）。这张表（Table 1）比 taxonomy 本身更有信息量，可以直接用来挑对标 benchmark。</li>
+<li><strong>FM 有 4 种角色</strong>：(a) 作为 visual/text encoder（CLIP、BERT、VLM pre-training）；(b) 作为 instruction synthesizer / oracle（Marky、GPT-3 分解指令）；(c) 作为 planner（LLM-Planner、SayCan、VL-Map 的 code-as-policy）；(d) 作为 agent 本体（NavGPT、MapGPT zero-shot；NavCoT 监督微调）。</li>
+<li><strong>R2R + Matterport3D 是 de facto 起点</strong>，但 VLN-CE（continuous）、REVERIE（object grounding）、CVDN / TEACh（dialogue）、ALFRED（manipulation）、TouchDown / AerialVLN（outdoor / aerial）分别暴露了该起点的不同盲区。</li>
+<li><strong>Taxonomy 暴露 gap</strong>：Human Model 章节远薄于 World / Agent——对话式 VLN、information seeking、oracle 机制都还是规则驱动而非 FM 驱动，是 survey 隐含的 under-explored 方向。</li>
+</ol>
+<p><strong>Teaser. LAW 框架把 VLN 拆成 World Model / Human Model / VLN Agent</strong></p>
+<p><img src="https://arxiv.org/html/2407.07035v2/x1.png" alt/></p>
+<p>Figure 1 把 VLN agent 建模为：环境侧的 world model（理解 3D 场景 + action→state 的动力学）、人侧的 human model（解读语言指令、维护说话人 goal），两者作为输入共同喂给 agent 的 reasoning &amp; planning 模块输出动作。这张图是理解整篇 survey 章节编排的 key。</p>
+<hr/>
+<h2 id="1-taxonomy--分类框架">1. Taxonomy &amp; 分类框架<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-taxonomy--分类框架" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Figure 2. VLN challenges &amp; solutions within the LAW framework</strong></p>
+<p><img src="https://arxiv.org/html/2407.07035v2/x2.png" alt/></p>
+<p>Survey 把每个模块进一步拆成具体挑战：</p>
+<ul>
+<li><strong>World model</strong> → history &amp; memory（encoding / graph-based）+ generalization（pre-trained visual repr / environment augmentation）</li>
+<li><strong>Human model</strong> → ambiguous instructions（perceptual context / information seeking）+ generalization of grounded instructions（pre-trained text repr / instruction synthesis）</li>
+<li><strong>VLN agent</strong> → grounding &amp; reasoning（explicit semantic / VLN pre-training）+ planning（graph-based / LLM-based）+ FM as agent（VLM / LLM）</li>
+</ul>
+<p><strong>方法在 foundation model 里扮演的角色</strong> 也被显式分 4 类（见 Figure 2 右下）：backbone encoder、data / oracle generator、planner、agent policy。这条正交轴是本 survey 对过往 VLN survey（Gu et al. 2022 / Park &amp; Kim 2023 / Wu et al. 2024）的主要差异化——它们按 benchmark × method 组织，这篇按 FM 角色组织。</p>
+<blockquote>
+<p>❓ LAW 框架把 Human model 抬到和 World model 平级，这在 VLN 里 OK（指令是核心输入），但迁移到 VLA / manipulation 就不自然——那里没有专门的 “human model”。这个框架的适用边界没有被讨论。</p>
+</blockquote>
+<h2 id="2-benchmarks--task-formulations">2. Benchmarks &amp; Task Formulations<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-benchmarks--task-formulations" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="21-vln-任务定义">2.1 VLN 任务定义<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#21-vln-任务定义" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Agent 接收语言指令序列、以 egocentric 视角感知 3D 环境，输出离散 view 序列或 low-level control（如 FORWARD 0.25m），距离目标 ≤3m 判定成功。可选扩展：多轮对话、manipulation（<a href="../Papers/2204-SayCan" class="internal alias" data-slug="Papers/2204-SayCan">SayCan</a>-style）、object detection。</p>
+<h3 id="22-benchmark-总览">2.2 Benchmark 总览<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#22-benchmark-总览" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table 1（浓缩版）</strong>：24 个 VLN benchmark 按 4 维分类。全表太宽，这里挑 highlight：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Benchmark</th><th>Domain</th><th>Env</th><th>Turn</th><th>Lang Format</th><th>Action Space</th><th>Embodiment</th></tr></thead><tbody><tr><td><strong>R2R</strong> (Anderson 2018)</td><td>Indoor</td><td>Matterport3D</td><td>Single</td><td>Multi Instr</td><td>Graph</td><td>Robot</td></tr><tr><td><strong>R4R</strong> (Jain 2019)</td><td>Indoor</td><td>Matterport3D</td><td>Single</td><td>Multi Instr</td><td>Graph</td><td>Robot</td></tr><tr><td><strong>RxR</strong> (Ku 2020)</td><td>Indoor</td><td>Matterport3D</td><td>Single</td><td>Multi Instr (multilingual)</td><td>Graph</td><td>Robot</td></tr><tr><td><strong>REVERIE</strong> (Qi 2020)</td><td>Indoor</td><td>Matterport3D</td><td>Single</td><td>Multi Instr (goal-oriented)</td><td>Graph</td><td>Robot + Detect</td></tr><tr><td><strong>SOON</strong> (Zhu 2021)</td><td>Indoor</td><td>Matterport3D</td><td>Single</td><td>Multi Instr (goal)</td><td>Graph</td><td>Robot</td></tr><tr><td><strong>VLN-CE</strong> (Krantz 2020)</td><td>Indoor</td><td>Habitat + MP3D</td><td>Single</td><td>Multi Instr</td><td>Discrete</td><td>Robot</td></tr><tr><td><strong>Robo-VLN</strong> (Irshad 2021)</td><td>Indoor</td><td>Habitat + MP3D</td><td>Single</td><td>Multi Instr</td><td>Continuous</td><td>Robot</td></tr><tr><td><strong>CVDN</strong> (Thomason 2020)</td><td>Indoor</td><td>MP3D</td><td>Multi</td><td>Restricted dialogue</td><td>Graph</td><td>Robot</td></tr><tr><td><strong>HANNA</strong> (Nguyen 2019)</td><td>Indoor</td><td>MP3D</td><td>Multi</td><td>Multi Instr</td><td>Graph</td><td>Robot</td></tr><tr><td><strong>ALFRED</strong> (Shridhar 2020)</td><td>Indoor</td><td>AI2-THOR</td><td>Single</td><td>Multi Instr</td><td>Discrete</td><td>Robot + Manipulation</td></tr><tr><td><strong>TEACh</strong> (Padmakumar 2022)</td><td>Indoor</td><td>AI2-THOR</td><td>Multi</td><td>Freeform</td><td>Discrete</td><td>Robot + Manipulation</td></tr><tr><td><strong>DialFRED</strong> (Gao 2022)</td><td>Indoor</td><td>AI2-THOR</td><td>Multi</td><td>Restricted</td><td>Discrete</td><td>Robot + Manipulation</td></tr><tr><td><strong>TouchDown</strong> (Chen 2019)</td><td>Outdoor</td><td>Google Street View</td><td>Single</td><td>Multi Instr</td><td>Graph</td><td>—</td></tr><tr><td><strong>LCSD / CDNLI / SDN</strong></td><td>Outdoor</td><td>CARLA</td><td>Single/Multi</td><td>Multi Instr / Freeform</td><td>Discrete / Cont</td><td>Driving</td></tr><tr><td><strong>AerialVLN</strong> (Liu 2023)</td><td>Outdoor</td><td>AirSim</td><td>Single</td><td>Multi Instr</td><td>Discrete</td><td>Aerial</td></tr><tr><td><strong>ANDH</strong> (Fan 2023)</td><td>Outdoor</td><td>xView</td><td>Multi</td><td>Freeform</td><td>Discrete</td><td>Aerial</td></tr><tr><td><strong>RobotSlang</strong> (Banerjee 2021)</td><td>Indoor</td><td><strong>Real</strong></td><td>Multi</td><td>Freeform</td><td>Discrete</td><td>Robot</td></tr></tbody></table></div>
+<p><strong>四维分类提纲</strong>（survey 原文 §2.3）：</p>
+<ul>
+<li><strong>World</strong>：domain（indoor / outdoor）+ environment（MP3D / Habitat / AI2-THOR / Street View / CARLA / AirSim / Real）</li>
+<li><strong>Human</strong>：turn（single / multi）+ format（freeform / restricted dialogue / multi-instruction）+ granularity（action-directed “A” / goal-directed “G”）</li>
+<li><strong>VLN Agent</strong>：type（household robot / driving / aerial）+ action space（graph / discrete / continuous）+ extra task（manipulation / detection）</li>
+<li><strong>Dataset</strong>：text collection（Human “H” / Templated “T”）+ route（Human “H” / Planner “P”）</li>
+</ul>
+<h3 id="23-evaluation-metrics">2.3 Evaluation Metrics<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#23-evaluation-metrics" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>NE</strong>（Navigation Error）：终点到 goal 的测地距离均值。</li>
+<li><strong>SR</strong>（Success Rate）：到目标 ≤3m 的比例。</li>
+<li><strong>SPL</strong>（Success weighted by Path Length）：SR 用轨迹长度归一，平衡成功率和路径效率。</li>
+<li><strong>CLS</strong>（Coverage weighted by Length Score, Jain 2019）：度量对参考路径的覆盖。</li>
+<li><strong>nDTW</strong>（Normalized Dynamic Time Warping, Ilharco 2019）：惩罚对 ground-truth 轨迹的偏离。</li>
+<li><strong>sDTW</strong>：nDTW × SR，同时考虑 fidelity 和 success。</li>
+</ol>
+<h2 id="3-world-model--学习与表达视觉环境">3. World Model — 学习与表达视觉环境<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-world-model--学习与表达视觉环境" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="31-history--memory">3.1 History &amp; Memory<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#31-history--memory" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>History Encoding 的演进</strong>：</p>
+<ul>
+<li><strong>LSTM 隐状态 + attention + auxiliary task</strong>（pre-FM 时代：Tan 2019、Wang 2019、Ma 2019、Zhu 2020）</li>
+<li><strong>Recurrent state token</strong>：Hong 2021（RecBERT，单个 [CLS] token 作为 history state）、Lin 2022a（variable-length memory bank）。限制：step-by-step 更新，难任意步取用。</li>
+<li><strong>Sequential multi-modal Transformer</strong>：Pashevich 2021（单视图/步）、<strong>HAMT</strong>（Chen 2021b, panorama encoder + history encoder 的分层结构，支持大规模 instruction-path pre-training）。后续简化：Kamath 2023 用 mean pooling、Qiao 2022 用前视图编码。</li>
+<li><strong>Text-as-history</strong>：LLM agent 时代，视觉 → textual description，history 变成 image description 序列 + heading/elevation/distance（Zhou 2024b NavGPT-family）。HELPER（Sarch 2023）用 language-program pair 外部记忆 + retrieval-augmented prompting。</li>
+</ul>
+<h3 id="32-graph-based-history">3.2 Graph-based History<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#32-graph-based-history" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>用 topological / grid / semantic / metric map 作为额外 history 结构：</p>
+<ul>
+<li><strong>Topological</strong>：<a href="../Papers/2202-DUET" class="internal alias" data-slug="Papers/2202-DUET">DUET</a> (Chen 2022c)、Deng 2020、Wang 2023b、SOON (Zhu 2021a)</li>
+<li><strong>Grid map</strong>：Wang 2023g、Liu 2023a</li>
+<li><strong>Semantic map</strong>：Hong 2023a、Huang 2023a (VL-Map)、Georgakis 2022 (CM2)、Anderson 2019、Irshad 2022</li>
+<li><strong>Local metric map</strong>：An 2023</li>
+<li><strong>LLM + map memory</strong>：MapGPT（Chen 2024a，linguistic-formed map 存 topological graph）、MC-GPT（Zhan 2024b，topological map 存 viewpoint/object/spatial relation）</li>
+</ul>
+<h3 id="33-generalization-across-environments">3.3 Generalization across Environments<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#33-generalization-across-environments" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Pre-trained visual repr</strong>：ResNet → CLIP encoder（Shen 2022 显示 CLIP 对 VLN 涨点）→ video-pretrained encoder（Wang 2022b，时序信息对导航关键）。</p>
+<p><strong>Environment augmentation</strong>：</p>
+<ul>
+<li><strong>Mixup-style</strong>：EnvEdit（Li 2022b 改外观）、EnvMix（Liu 2021 混房间）、KED（Zhu 2023）、FDA（He 2024a 插值高频特征）</li>
+<li><strong>Synthesized future views</strong>：Pathdreamer（Koh 2021）、SE3DS（Koh 2023）</li>
+<li><strong>从 fine-tune 到 pre-training</strong>：LSTM 时代直接 fine-tune 在增强环境上；FM 时代已把增强环境吸收进 pre-training stage（Li &amp; Bansal 2024、Kamath 2023、Chen 2022b、Wang 2023h、Lin 2023b、Guhur 2021a）。核心发现：in-domain pre-trained multi-modal Transformer > 从 Oscar / LXMERT 初始化。</li>
+</ul>
+<h2 id="4-human-model--解读与沟通">4. Human Model — 解读与沟通<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-human-model--解读与沟通" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="41-ambiguous-instructions">4.1 Ambiguous Instructions<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#41-ambiguous-instructions" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>问题</strong>：单轮指令里 landmark 可能不可见或多视图重复（VLN-Trans, Zhang &amp; Kordjamshidi 2023）。</p>
+<p><strong>Perceptual context + commonsense 路线</strong>：</p>
+<ul>
+<li><strong>CLIP-based visual matching</strong>：VLN-Trans（翻译为 sub-instruction）、LANA+（Wang 2023f，CLIP 匹配 landmark tag）、KERM（Li 2023a，retrieval-augmented navigation view knowledge）、NavHint（Zhang 2024b，详细视觉描述 hint dataset）</li>
+<li><strong>LLM commonsense</strong>：Lin 2024b（开放世界 landmark 共现）、<a href="../Papers/2204-SayCan" class="internal alias" data-slug="Papers/2204-SayCan">SayCan</a>（把指令分解成 pre-defined actions + affordance weighting）</li>
+</ul>
+<p><strong>Information Seeking 路线</strong>（三个子问题）：</p>
+<ol>
+<li><strong>何时问</strong>（Chi 2020）；</li>
+<li><strong>问什么</strong>：下一个 action / object / direction（Roman 2020、Singh 2022）；</li>
+<li><strong>谁来答</strong>：真人 / 规则 / 神经 oracle（Nguyen &amp; Daumé III 2019 HANNA）</li>
+</ol>
+<p>FM 在这三步都可以插入：</p>
+<ul>
+<li>VLN-Copilot（Qiao 2024）：LLM 作 copilot 提供协助；</li>
+<li>Ren 2023：conformal prediction 判断 ask-or-not；</li>
+<li>Chen 2023c：in-context learning；</li>
+<li>Fan 2023b：GPT-3 分解 ground-truth 响应训练 oracle（SwinBert video-LM）；</li>
+<li>mPLUG-Owl 作为 zero-shot oracle（Fan 2023b）；</li>
+<li>Zhu 2021c：self-motivated agent，学 oracle confidence 实现推理时移除 oracle。</li>
+</ul>
+<h3 id="42-generalization-of-grounded-instructions">4.2 Generalization of Grounded Instructions<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#42-generalization-of-grounded-instructions" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Pre-trained text repr</strong>：LSTM → BERT (PRESS, Li 2019b) → VL Transformer (VLN-BERT Majumdar 2020, PREVALENT Hao 2020) → Airbert (Guhur 2021b image-caption pre-train) → CLEAR (Li 2022a cross-lingual) → ProbES (Liang 2022, prompt tuning) → <strong>NavGPT-2</strong> (Zhou 2025, InstructBLIP + Flan-T5 / Vicuna)。</p>
+<p><strong>Instruction synthesis</strong>：</p>
+<ul>
+<li><strong>Speaker-Follower 时代</strong>：Fried 2018、Tan 2019、Kurita 2020 —— 质量差（Zhao 2021 验证）</li>
+<li><strong>Marky</strong>（Wang 2022a / Kamath 2023）：multilingual T5 + visual landmark alignment，在 R2R 路径上达到近人类质量</li>
+<li><strong>PASTS</strong>（Wang 2023c）：progress-aware spatiotemporal speaker</li>
+<li><strong>SAS</strong>（Gopinathan 2024）：语义 + 结构线索生成富含空间信息的指令</li>
+<li><strong>SRDF</strong>（Wang 2024c）：iterative self-training 生成器</li>
+<li><strong>导航中合成</strong>：LANA（Wang 2023e，边导航边描述）、VLN-Trans、Magassouba 2021</li>
+</ul>
+<h2 id="5-vln-agent--推理与规划">5. VLN Agent — 推理与规划<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#5-vln-agent--推理与规划" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="51-grounding--reasoning">5.1 Grounding &amp; Reasoning<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#51-grounding--reasoning" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Explicit semantic grounding</strong>（大多是 pre-FM 时代的）：motion/landmark 建模、syntactic 信息、spatial relation。FM 时代很少做显式 grounding，Lin 2023a 的 atomic-concept learning 是少数例外。</p>
+<p><strong>Pre-training VLN foundation models</strong>：</p>
+<ul>
+<li>Scene / object grounding pre-training（Lin 2021）</li>
+<li>LOViS（Zhang &amp; Kordjamshidi 2022a）：orientation + visual 双任务</li>
+<li>HOP（Qiao 2022 / 2023a）：history-and-order aware</li>
+<li>Future view prediction（Li &amp; Bansal 2023）：对长路径有效</li>
+<li>Masked path modeling（Dou 2023）</li>
+<li>Entity-aware pre-training（Cui 2023）</li>
+</ul>
+<h3 id="52-planning">5.2 Planning<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#52-planning" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Graph-based planner</strong>：</p>
+<ul>
+<li>全局图扩展局部动作空间：Wang 2021、<a href="../Papers/2202-DUET" class="internal alias" data-slug="Papers/2202-DUET">DUET</a> (Chen 2022c)、Deng 2020、Zheng 2024b</li>
+<li>高/低层分层：Gao 2023 (zone → node)、Liu 2023a (grid-level action)</li>
+<li>VLN-CE waypoint predictor：Krantz 2021、Hong 2022、Anderson 2021</li>
+<li>Map-based global planning：CM2 (Georgakis 2022)、An 2024 / 2023、Wang 2023g、Chang 2024、Wang 2022c</li>
+<li>Future waypoint prediction：Wang 2023a / 2024a（视频预测 / 神经辐射场）</li>
+</ul>
+<p><strong>LLM-based planner</strong>：</p>
+<ul>
+<li><strong>LLM-Planner</strong>（Song 2023）：动态 sub-goal 拆解</li>
+<li><strong>Mic</strong>（Qiao 2023b）：static + dynamic step-by-step 指令</li>
+<li><strong>A²Nav</strong>（Chen 2023b）：GPT-3 解析 sub-task</li>
+<li><strong>ThinkBot</strong>（Lu 2023）：CoT 补全缺失动作</li>
+<li><strong>VL-Map</strong>（Huang 2023a）：Code-as-Policy style（Liang 2023）+ queryable map</li>
+<li><strong>SayNav</strong>（Rajvanshi 2024）：3D scene graph → LLM → 高层规划</li>
+</ul>
+<h3 id="53-foundation-models-as-vln-agents">5.3 Foundation Models as VLN Agents<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#53-foundation-models-as-vln-agents" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>VLMs as agents</strong>：single-stream VLM 同时吃 text + vision + history token，self-attention 统一建模。代表：Hong 2021、Qi 2021、Moudgil 2021、Zhao 2022；zero-shot：CLIP-NAV（Dorbala 2022）。<strong>VLN-CE 的 waypoint predictor</strong> 是把 DE 方法搬到 CE 的通用桥梁（Krantz 2021、Hong 2022、Anderson 2021、An 2022、Zhang &amp; Kordjamshidi 2024）。</p>
+<p><strong>LLMs as agents</strong>：</p>
+<ul>
+<li><strong>Zero-shot</strong>：<a href="../Papers/2305-NavGPT" class="internal alias" data-slug="Papers/2305-NavGPT">NavGPT</a>（Zhou 2024a，GPT-4 自主行动）、<strong>MapGPT</strong>（Chen 2024a，topological map → global exploration hint）、<strong>DiscussNav</strong>（Long 2024b，Instruction Analysis / Vision Perception / Completion Estimation / Decision Testing 多专家）、MC-GPT（Zhan 2024b）、InstructNav（Long 2024a，多源 value map）</li>
+<li><strong>Fine-tuned</strong>：Zheng 2024a、Zhang 2024a、Pan 2024</li>
+<li><strong>CoT-based</strong>：NavCoT（Lin 2024a，把 LLM 变成 world model + reasoning agent，模拟未来环境来决策）</li>
+</ul>
+<h2 id="6-challenges--future-directions">6. Challenges &amp; Future Directions<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#6-challenges--future-directions" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ol>
+<li><strong>Benchmarks</strong>：
+<ul>
+<li>需要 sim-to-real 统一平台（OVMM Yenamandra 2023）和面向真实人类需求的任务（BEHAVIOR-1K Li 2024a）</li>
+<li>动态环境：HAZARD、Habitat 3.0、HA-VLN</li>
+<li>从室内到室外：autonomous driving / aerial 正起势</li>
+</ul>
+</li>
+<li><strong>World Model: 2D → 3D</strong>：目前主流是 2D repr，但 VLN 本质是 3D 任务。显式 3D 方向：semantic SLAM、volumetric、BEV grid、CLIP feature 投到 voxel（ConceptFusion）或 top-down map（VL-Map）、scene graph。3D foundation models（3D-LLM Hong 2023b、Huang 2024a、LRM、3D multimodal）是可能的下一步。</li>
+<li><strong>Human Model: Instruction → Dialogue</strong>：开放式对话 benchmark 已出现（TtW、RobotSlang、TEACh、SDN、ANDH），但方法仍靠规则模板，situated task-oriented dialogue 和 FM 还没真正结合。</li>
+<li><strong>Agent Model: Adapting FM for VLN</strong>：
+<ul>
+<li>Lack of embodied experience：embodiment foundation model 方向（EmbodiedGPT、<a href="../Papers/2303-PaLME" class="internal alias" data-slug="Papers/2303-PaLME">PaLM-E</a>、Octopus）</li>
+<li><strong>Hallucination</strong>：LLM 可能生成不存在的 object（“在沙发那里左转” 但房间里没沙发）</li>
+<li>LLM in planning：PlanBench / CogEval 显示 LLM 在复杂规划上有限；VLN 动作空间受限，LLM 更适合做 coarse-grained 指令分解而非主决策者</li>
+</ul>
+</li>
+<li><strong>Deployment: Sim → Real</strong>：perception gap（Wang 2024b 用 semantic map + 3D feature field 让 monocular robot 获得 panoramic perception）+ embodiment gap + data scarcity（robot teleoperation 是规模化数据收集方案，He 2024b）</li>
+</ol>
+<h2 id="7-高频引用的-canonical-vln-工作">7. 高频引用的 canonical VLN 工作<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#7-高频引用的-canonical-vln-工作" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>按 §3–5 中被多次引用的程度，survey 反复强调的 canonical 工作：</p>
+<ul>
+<li><strong>R2R / Anderson 2018</strong>：VLN 的起点 benchmark，全篇几乎每节都引。</li>
+<li><strong><a href="../Papers/2202-DUET" class="internal alias" data-slug="Papers/2202-DUET">DUET</a> / Chen 2022c</strong>：graph-based history + planning 的代表。</li>
+<li><strong>HAMT / Chen 2021b</strong>：panorama + history encoder 的 hierarchical Transformer，多次作为 FM 时代 VLN 的里程碑。</li>
+<li><strong>PREVALENT / Hao 2020</strong> + <strong>VLN-BERT / Majumdar 2020</strong>：in-domain VL pre-training 起点。</li>
+<li><strong>RecBERT / Hong 2021</strong>：recurrent state token + single-stream VLM as agent。</li>
+<li><strong><a href="../Papers/2204-SayCan" class="internal alias" data-slug="Papers/2204-SayCan">SayCan</a> / Ahn 2022</strong>：LLM + affordance 的 instruction decomposition。</li>
+<li><strong><a href="../Papers/2305-NavGPT" class="internal alias" data-slug="Papers/2305-NavGPT">NavGPT</a> / Zhou 2024a</strong> + <strong>MapGPT / Chen 2024a</strong>：LLM-as-agent zero-shot VLN。</li>
+<li><strong>Marky / Wang 2022a + Kamath 2023</strong>：instruction synthesis 的 SOTA speaker。</li>
+<li><strong>VLN-CE / Krantz 2020</strong> + <strong>Robo-VLN / Irshad 2021</strong>：从 DE 到 CE 到 continuous control 的三步。</li>
+<li><strong>Matterport3D / Chang 2018</strong> + <strong>Habitat / Savva 2019</strong>：两大 indoor 3D simulator。</li>
+</ul>
+<hr/>
+<h2 id="关联工作">关联工作<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#关联工作" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="同类-survey被本篇显式超越的">同类 survey（被本篇显式超越的）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#同类-survey被本篇显式超越的" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Gu et al. 2022 (ACL)</strong>：pre-FM 时代 VLN survey，bottom-up（benchmark + method），本篇显式批评其没覆盖 FM。</li>
+<li><strong>Park &amp; Kim 2023</strong>：类似视角的 VLN survey。</li>
+<li><strong>Wu et al. 2024</strong>：较新的 VLN 综述但仍以 benchmark 为主。</li>
+<li><strong>Zhu et al. 2021b / 2022、Zhang 2022a</strong>：visual navigation / mobile robot navigation 综述，语言讨论少。</li>
+</ul>
+<h3 id="对齐的-framework--motivation">对齐的 framework / motivation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#对齐的-framework--motivation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Hu &amp; Shu 2023 (LAW framework)</strong>：World model + Agent model 的双模型视角，本 survey 直接借用并扩展为 World / Human / Agent 三分。</li>
+<li><strong>Andreas 2022</strong>：把 instruction 理解为”建立对说话人的 latent model”，被本篇作为 human model 的 motivation。</li>
+<li><strong>Ha &amp; Schmidhuber 2018</strong>：World Model 原始论文，作为 world model 定义来源。</li>
+</ul>
+<h3 id="已在-vault-的-canonical-vln--embodied-fm-工作">已在 vault 的 canonical VLN / embodied FM 工作<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#已在-vault-的-canonical-vln--embodied-fm-工作" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><a href="../Papers/2202-DUET" class="internal" data-slug="Papers/2202-DUET">2202-DUET</a>：graph-based VLN，survey §3.1 / §5.2 多次点名</li>
+<li><a href="../Papers/2305-NavGPT" class="internal" data-slug="Papers/2305-NavGPT">2305-NavGPT</a>：LLM-as-agent zero-shot，§5.3 的代表</li>
+<li><a href="../Papers/2204-SayCan" class="internal" data-slug="Papers/2204-SayCan">2204-SayCan</a>：LLM + affordance 的指令分解，§4.1 的代表</li>
+<li><a href="../Papers/2303-PaLME" class="internal" data-slug="Papers/2303-PaLME">2303-PaLME</a>：embodied FM，§6 Agent Model 讨论的代表</li>
+</ul>
+<h3 id="与-domainmapsvln-的关系">与 <a href="../DomainMaps/VLN" class="internal" data-slug="DomainMaps/VLN">VLN</a> 的关系<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#与-domainmapsvln-的关系" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>本 survey 写于 2024-07，截至 2026-04 的发展在 DomainMap 已更新：R2R-CE SOTA 从 survey 写作时的 ~55%（HAMT/DUET）被新一代（ETPNav 57%、NaVILA、PROSPECT 60.3%、Efficient-VLN 64.2%、GTA zero-shot 48.8%）超越；streaming VLA 路线和 VLN-R1 的 GRPO 训练在 survey 里完全没出现。所以本 survey 的”未来方向”部分（2D→3D、embodied FM）基本被验证，但它没预见到 <strong>VLN → VLA unification</strong> 这条路径。</li>
+</ul>
+<hr/>
+<h2 id="论文点评">论文点评<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#论文点评" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="strengths">Strengths<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>Taxonomy 真正 principled</strong>：LAW 三分法 + FM 4 角色的正交轴给异质的 VLN 工作一个统一坐标系。不是”按时间列 benchmark”，而是”这个工作在解哪个子问题、FM 扮演什么角色”——对 reader 想定位某类方法非常有用。</li>
+<li><strong>Benchmark Table 1 是整篇最实用的 artifact</strong>：24 个 benchmark × 4 维属性，是挑对比 benchmark 和理解任务变体的实用 cheat sheet。没有这张表，整个 VLN 子领域的异质性很难迅速把握。</li>
+<li><strong>跨 dimension 的 coverage 均衡</strong>：outdoor（TouchDown、CARLA、AerialVLN）、dialogue（CVDN、TEACh）、manipulation（ALFRED）、continuous（VLN-CE）、real-world（RobotSlang）都覆盖，不是只讲 R2R。</li>
+<li><strong>作者组合强</strong>：Joyce Chai、Mohit Bansal、Qi Wu、Parisa Kordjamshidi 全是 VLN / embodied 的一线组，引用选择可信。</li>
+<li><strong>Challenges §6 清晰区分”benchmark”与”方法”两条 axis</strong>：Benchmark 缺 dynamic environment / sim-to-real / outdoor；方法缺 3D world model / dialogue human model / embodied LLM / hallucination 缓解——未来方向可操作性强。</li>
+</ol>
+<h3 id="weaknesses">Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>Human model 章节偏薄</strong>：§4 篇幅显著小于 §3 / §5，且大部分 FM 应用还停留在 CLIP 匹配 + GPT 分解指令，缺少对 situated dialogue、theory-of-mind、speaker intent modeling 的深入讨论。这恰好是框架里最有潜力 under-explored 的部分。</li>
+<li><strong>没覆盖 2024 Q3 之后的 breakthrough</strong>：streaming VLA（NaVILA、StreamVLN、PROSPECT）把 VLN 重构为连续视觉流 + 端到端控制的方向，本 survey 完全没预见；GRPO-based RL（VLN-R1）和 explicit world representation（GTA）也是后续发展。这是综述时点的自然限制，但意味着到 2026 年它已无法作为唯一入门材料。</li>
+<li><strong>缺对 sim-to-real gap 的定量讨论</strong>：§6 讨论了 deployment 挑战但没给出具体数字（sim 和 real 之间 SR / SPL 的 gap 是多少？哪些方法 close 了这个 gap？）。</li>
+<li><strong>“VLN Agent 的 4 种 FM 角色” 分类有交叠</strong>：backbone encoder / data generator / planner / agent policy 在实际论文里经常同时出现（e.g., <a href="../Papers/2305-NavGPT" class="internal alias" data-slug="Papers/2305-NavGPT">NavGPT</a> 既是 planner 又是 agent policy），survey 没讨论这种交叠。</li>
+<li><strong>评测方法学的讨论缺失</strong>：SR / SPL / nDTW 在 dialogue / manipulation 混合任务上是否仍合适？如何评测 information seeking 的”问题质量”？这些 evaluation 层面的 open question 没被系统讨论。</li>
+<li><strong>没讨论 VLN ↔ VLA 的结构同构</strong>：VLN 的 hierarchical planner + waypoint predictor，和 VLA 的 high-level planner + low-level action decoder 在架构上高度对应，但 survey 完全没跨出 VLN 的边界。</li>
+</ol>
+<h3 id="可信评估">可信评估<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#可信评估" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="artifact-可获取性">Artifact 可获取性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#artifact-可获取性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><strong>代码</strong>：github.com/zhangyuejoslin/VLN-Survey-with-Foundation-Models 作为 reading list 仓库，持续更新（90d 内 3 次 commit，262⭐）；survey 本身不含代码。</li>
+<li><strong>模型权重</strong>：N/A（survey）</li>
+<li><strong>训练细节</strong>：N/A（survey）</li>
+<li><strong>数据集</strong>：未在 survey 中发布新 dataset；所有引用 benchmark 的链接列在 GitHub。</li>
+</ul>
+<h4 id="claim-可验证性">Claim 可验证性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#claim-可验证性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>✅ “LAW 框架可以统一组织 VLN 工作”：可通过阅读全文和 Table 1 验证——24 个 benchmark 确实可映射到 world × human × agent 三维。</li>
+<li>✅ “R2R / Matterport3D 是 VLN 的 de facto 起点”：通过引用分布可验证。</li>
+<li>⚠️ “foundation model 时代的 VLN 有 4 种 FM 角色”：分类本身合理，但边界模糊（见 Weakness 4），不是严格的 partition。</li>
+<li>⚠️ “in-domain pre-trained multi-modal Transformer > 通用 VLM 初始化（如 LXMERT / Oscar）“：是 survey 引用 HAMT / DUET 等结果得出，但没给出在 Matterport3D vs 非 Matterport3D 环境下的详细对比。</li>
+<li>⚠️ “LLM 在 VLN 里更适合做 coarse-grained 指令分解而非主决策”：survey 的直觉正确但缺数据支撑，仅引 PlanBench / CogEval 做泛化论证。</li>
+</ul>
+<h3 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Survey 的 <strong>LAW 框架在 VLN 里很自然，但不直接迁移到 manipulation / VLA</strong>——那里没有独立的 “human model”（指令通常更短、对话更少）。如果要用类似三分法组织 VLA survey，需要重新定义第二个模块——可能是 “Task Model” 或 “Skill Model”？可以作为 VLA-Survey 重构时的参考。</li>
+<li>Survey 没有给出 VLN-CE 下 SOTA 在 sim vs real 的 gap 表，但 DomainMap/VLN.md 里已补充：NaVILA 54% sim → 88% real（不同 setup），GTA 48.8% zero-shot sim。可以把这部分作为 VLN DomainMap “sim-to-real” section 的 seed。</li>
+<li>Survey 提到 <strong>VLN-CE → Robo-VLN → waypoint predictor</strong> 的三步演进，这正是现在 streaming VLA 取代 waypoint 路线的前置——survey 写作时 waypoint 还是 default，但 2025-26 streaming VLA 已尝试 skip 这一层。</li>
+<li><strong>连接到 <a href="../Topics/VLN-VLA-Unification" class="internal" data-slug="Topics/VLN-VLA-Unification">VLN-VLA-Unification</a></strong>：survey 把 VLN 作为孤立任务，没有预见 VLN-VLA 结构收敛；这正是该 topic 的切入点。</li>
+</ul>
+<h3 id="rating">Rating<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#rating" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Metrics</strong> (as of 2026-04-23): citation=79, influential=5 (6.3%), velocity=3.59/mo (22 months since publish); HF upvotes=0; github 262⭐ / forks=13 / 90d commits=3 / pushed 6d ago.</p>
+<p><strong>分数</strong>：2 - Frontier</p>
+<p><strong>理由</strong>：作为 LLM 时代 VLN 的第一本系统 survey，LAW taxonomy 和 Table 1 benchmark 分类是有结构性贡献的参考资料（不只是 reading list），在 VLN 子社区是相对核心的引用源（22 个月 79 引、3.6/mo velocity 对于 survey 是健康的，但 influential 比例只有 6.3% 偏低，反映被当 landmark reference 引而非技术继承）。但不到 Foundation 级：(a) influential citation 绝对数仅 5，说明没有成为新工作的结构性基础；(b) taxonomy 覆盖到 2024-07 为止，streaming VLA / VLN-R1 / 3D EWR 等 2025-26 关键路线未覆盖，结构性框架开始老化；(c) Human model 章节偏薄、与 VLA 的结构联动未讨论，作为 VLN 入门 reader 会有遗漏。高于 Archived 因它仍是理解 FM-era VLN benchmark 异质性和 pre-2024 方法脉络的最高效入口。</p></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="pva9ak" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#1-taxonomy--分类框架" data-for="1-taxonomy--分类框架">1. Taxonomy &amp; 分类框架</a></li><li class="depth-0"><a href="#2-benchmarks--task-formulations" data-for="2-benchmarks--task-formulations">2. Benchmarks &amp; Task Formulations</a></li><li class="depth-1"><a href="#21-vln-任务定义" data-for="21-vln-任务定义">2.1 VLN 任务定义</a></li><li class="depth-1"><a href="#22-benchmark-总览" data-for="22-benchmark-总览">2.2 Benchmark 总览</a></li><li class="depth-1"><a href="#23-evaluation-metrics" data-for="23-evaluation-metrics">2.3 Evaluation Metrics</a></li><li class="depth-0"><a href="#3-world-model--学习与表达视觉环境" data-for="3-world-model--学习与表达视觉环境">3. World Model — 学习与表达视觉环境</a></li><li class="depth-1"><a href="#31-history--memory" data-for="31-history--memory">3.1 History &amp; Memory</a></li><li class="depth-1"><a href="#32-graph-based-history" data-for="32-graph-based-history">3.2 Graph-based History</a></li><li class="depth-1"><a href="#33-generalization-across-environments" data-for="33-generalization-across-environments">3.3 Generalization across Environments</a></li><li class="depth-0"><a href="#4-human-model--解读与沟通" data-for="4-human-model--解读与沟通">4. Human Model — 解读与沟通</a></li><li class="depth-1"><a href="#41-ambiguous-instructions" data-for="41-ambiguous-instructions">4.1 Ambiguous Instructions</a></li><li class="depth-1"><a href="#42-generalization-of-grounded-instructions" data-for="42-generalization-of-grounded-instructions">4.2 Generalization of Grounded Instructions</a></li><li class="depth-0"><a href="#5-vln-agent--推理与规划" data-for="5-vln-agent--推理与规划">5. VLN Agent — 推理与规划</a></li><li class="depth-1"><a href="#51-grounding--reasoning" data-for="51-grounding--reasoning">5.1 Grounding &amp; Reasoning</a></li><li class="depth-1"><a href="#52-planning" data-for="52-planning">5.2 Planning</a></li><li class="depth-1"><a href="#53-foundation-models-as-vln-agents" data-for="53-foundation-models-as-vln-agents">5.3 Foundation Models as VLN Agents</a></li><li class="depth-0"><a href="#6-challenges--future-directions" data-for="6-challenges--future-directions">6. Challenges &amp; Future Directions</a></li><li class="depth-0"><a href="#7-高频引用的-canonical-vln-工作" data-for="7-高频引用的-canonical-vln-工作">7. 高频引用的 canonical VLN 工作</a></li><li class="depth-0"><a href="#关联工作" data-for="关联工作">关联工作</a></li><li class="depth-1"><a href="#同类-survey被本篇显式超越的" data-for="同类-survey被本篇显式超越的">同类 survey（被本篇显式超越的）</a></li><li class="depth-1"><a href="#对齐的-framework--motivation" data-for="对齐的-framework--motivation">对齐的 framework / motivation</a></li><li class="depth-1"><a href="#已在-vault-的-canonical-vln--embodied-fm-工作" data-for="已在-vault-的-canonical-vln--embodied-fm-工作">已在 vault 的 canonical VLN / embodied FM 工作</a></li><li class="depth-1"><a href="#与-domainmapsvln-的关系" data-for="与-domainmapsvln-的关系">与 DomainMaps/VLN 的关系</a></li><li class="depth-0"><a href="#论文点评" data-for="论文点评">论文点评</a></li><li class="depth-1"><a href="#strengths" data-for="strengths">Strengths</a></li><li class="depth-1"><a href="#weaknesses" data-for="weaknesses">Weaknesses</a></li><li class="depth-1"><a href="#可信评估" data-for="可信评估">可信评估</a></li><li class="depth-1"><a href="#notes" data-for="notes">Notes</a></li><li class="depth-1"><a href="#rating" data-for="rating">Rating</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+</script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en"><head><title>NaviTrace: Evaluating Embodied Navigation of Vision-Language Models</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="NaviTrace: Evaluating Embodied Navigation of Vision-Language Models"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="NaviTrace: Evaluating Embodied Navigation of Vision-Language Models"/><meta name="twitter:description" content="Summary NaviTrace: Evaluating Embodied Navigation of Vision-Language Models 核心: 提出一个 VQA-style 的 embodied navigation benchmark——给定一张真实图像、一条自然语言指令、一个 embodiment 类型，模型需输出 ..."/><meta property="og:description" content="Summary NaviTrace: Evaluating Embodied Navigation of Vision-Language Models 核心: 提出一个 VQA-style 的 embodied navigation benchmark——给定一张真实图像、一条自然语言指令、一个 embodiment 类型，模型需输出 ..."/><meta property="og:image:alt" content="Summary NaviTrace: Evaluating Embodied Navigation of Vision-Language Models 核心: 提出一个 VQA-style 的 embodied navigation benchmark——给定一张真实图像、一条自然语言指令、一个 embodiment 类型，模型需输出 ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2510-NaviTrace"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2510-NaviTrace"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary NaviTrace: Evaluating Embodied Navigation of Vision-Language Models 核心: 提出一个 VQA-style 的 embodied navigation benchmark——给定一张真实图像、一条自然语言指令、一个 embodiment 类型，模型需输出 ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  padding: 2rem;
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2510-NaviTrace"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="rb21rw"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/embodied-reasoning" class="sidebar-tag-pill">#embodied-reasoning</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/computer-use" class="sidebar-tag-pill">#computer-use</a><a href="/mindflow/tags/agentic-RL" class="sidebar-tag-pill">#agentic-RL</a><a href="/mindflow/tags/VLN" class="sidebar-tag-pill">#VLN</a><a href="/mindflow/tags/world-model" class="sidebar-tag-pill">#world-model</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2510-NaviTrace</a></div></nav><h1 class="article-title">NaviTrace: Evaluating Embodied Navigation of Vision-Language Models</h1><div class="paper-meta"><span class="paper-venue">arXiv preprint</span><span class="paper-authors"><span class="meta-sep">·</span>Tim Windecker <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, Manthan Patel</span><span>, Moritz Reuss</span><span>, Richard Schwarzkopf</span><span>, Cesar Cadena</span><span>, Rudolf Lioutikov</span><span>, Marco Hutter</span><span>, Jonas Frey</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2025-10-30T00:00:00.000Z">Oct 30, 2025</time><span>17 min read</span></p><ul class="tags"><li><a href="../tags/navigation" class="internal tag-link">navigation</a></li><li><a href="../tags/VLM" class="internal tag-link">VLM</a></li><li><a href="../tags/embodied-reasoning" class="internal tag-link">embodied-reasoning</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>NaviTrace: Evaluating Embodied Navigation of Vision-Language Models </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><strong>核心</strong>: 提出一个 VQA-style 的 embodied navigation benchmark——给定一张真实图像、一条自然语言指令、一个 embodiment 类型，模型需输出 image-space 的 2D 轨迹 (trace)，用 semantic-aware trace score 与人类标注对齐。</li>
+<li><strong>方法</strong>: 1000 张手工采集图像 + 3000+ 专家 trace，4 种 embodiment（human/legged/wheeled/bicycle）；score = DTW + FDE + Mask2Former 语义惩罚，Spearman 相关性 0.87 与 human pairwise ranking 对齐。</li>
+<li><strong>结果</strong>: 评估 8 个 SOTA VLM（Gemini 2.5 Pro / GPT-5 / o3 / Claude Sonnet 4 / Mistral Medium 3.1 / Qwen3-VL-235B / Qwen2.5-VL-72B / Gemma-3-27B）。最好的 Gemini 2.5 Pro 仅得 34.4（人类 75.4），主要失败模式是 <strong>goal localization</strong>——即便给定 goal，path shaping 仍输给人类。</li>
+<li><strong>Sources</strong>: <a href="https://arxiv.org/abs/2510.26909" class="external">paper<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://leggedrobotics.github.io/navitrace_webpage/" class="external">website<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://github.com/leggedrobotics/navitrace_evaluation" class="external">github<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><strong>Rating</strong>: 2 - Frontier（首个把 embodiment-aware 2D trace 预测作为 navigation VLM 评测协议的 benchmark，填补了 VLN 和 social-nav VQA 之间的空白，但范式能否成为 de facto 标准仍待观察）</li>
+</ul>
+</div>
+</blockquote>
+<p><strong>Key Takeaways:</strong></p>
+<ol>
+<li><strong>Trace as VLM-native navigation output</strong>: 把 navigation answer 表达成 image-space 的 2D 点序列——这是 pointing 任务（VLM 已相对擅长）的自然延伸，比 “Forward/Left/Right” 这类离散动作更表达性强，且避开了 VLN 那种需要在特殊 action space 预测的限制。</li>
+<li><strong>Goal localization 才是主要瓶颈</strong>: 把 Gemini 2.5 Pro 的任务拆成 “只预测 goal” vs “只预测 path”，前者 29.65 / 完整 34.38 / Oracle-Goal Straight-Line 51.89——goal 预测的 gap 远大于 path shaping 的 gap。</li>
+<li><strong>Embodiment awareness 未被现有 VLM 内化</strong>: 不同 embodiment（人/四足/轮式/自行车）间的 aggregate 分差极小，说明模型并没有根据 embodiment 调整策略，而是在做 embodiment-agnostic 的大致轨迹预测。</li>
+<li><strong>Semantic-aware score 与人类偏好对齐</strong>: DTW(0.84) → +FDE(0.87) → +Mask2Former penalty(0.87) 的 Spearman 相关性。且 Mask2Former 自动分割与 manual segmentation 差距很小，说明 automated semantics 足够支撑一个 scalable metric。</li>
+<li><strong>Straight Forward baseline 尴尬地接近 o3</strong>: 一条画穿图像中央的直线作为 “zero-information” 基线就能逼近 o3 的表现，揭示当前 reasoning VLM 的 spatial grounding 远未达到可用状态。</li>
+</ol>
+<p><strong>Teaser. NaviTrace 概览视频</strong>：展示 benchmark 的任务设定——模型拿到一张真实世界的 first-person 图像、一个 embodiment 标签和一个自然语言指令，输出一条 2D trace；不同 embodiment 应给出不同的 trace（例如楼梯对轮式不可行）。</p>
+<p><video src="https://leggedrobotics.github.io/navitrace_webpage/static/videos/teaser.mp4" controls muted playsinline width="720"></video></p>
+<hr/>
+<h2 id="motivation">Motivation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#motivation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>评估 VLM 的导航能力目前有三条路，各有硬伤：</p>
+<ul>
+<li><strong>Real-world closed-loop rollout</strong>：贵、慢、不可复现、难覆盖多样场景。</li>
+<li><strong>Simulation</strong>：可复现性好，但场景多样性受限于仿真构建，语义、地形、社会规范这些难建模；还有 sim-to-real gap。</li>
+<li><strong>VQA benchmark</strong>：现有的 social-nav VQA（SocialNav-SUB、Social-LLaVA）用文本回答、只覆盖单一 embodiment。</li>
+</ul>
+<p>NaviTrace 选了第三条路并做了两个关键扩展：(1) 输出从 text answer 升级成 image-space trace（保留 2D 空间结构）；(2) 覆盖 4 种 embodiment 以评测 embodiment-conditioned navigation。</p>
+<blockquote>
+<p>❓ 用 2D image-space trace 代替 3D 路径是有损的——距离远处的微小像素偏差对应现实中的大位移误差，benchmark 里 FDE 是像素距离，无法直接映射到 3D 里的 “到没到目标”。这是刻意换取 “VLM 可直接输出 + 人类可直接标注” 的 trade-off，作者在 Limitations 里也承认了这一点。</p>
+</blockquote>
+<p><strong>Figure 2. 数据多样性</strong>。左：图像来源的地理分布（瑞士为主，辅以多国样本）；右：场景按 urban/rural、natural/structured、光照、天气分布。</p>
+<p><img src="https://arxiv.org/html/2510.26909v3/x1.png" alt/></p>
+<hr/>
+<h2 id="benchmark-设计">Benchmark 设计<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#benchmark-设计" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="data">Data<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#data" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>1000 scenarios + 3000+ traces</strong>，validation/test 各 50%，test annotation 隐藏用于 public leaderboard。</li>
+<li><strong>Image</strong>：众包采集（手机/GoPro），另加 164 张来自 GrandTour dataset；用 EgoBlur 脱敏人脸和车牌。</li>
+<li><strong>Instruction</strong>：手写，可以是 goal-based（“Go to the red car”）或 directional（“Go forward, then turn left at the traffic light”）。</li>
+<li><strong>Trace</strong>：每个适用 embodiment 至少 1 条，若有等价替代方案（绕障碍物从左/右）则多条 ground-truth。</li>
+<li><strong>7 类 task category</strong> tag 标注：Geometric Terrain / Semantic Terrain / Accessibility / Visibility / Social Norms / Dynamic Obstacle / Stationary Obstacle。</li>
+<li><strong>4 种 embodiment</strong>：Human、Legged Robot（ANYmal 类）、Wheeled Robot（wheelchair-like delivery bot，无法走楼梯）、Bicycle（遵守交规，偏好 bike lane）。<strong>刻意排除汽车</strong>（视角差别过大）。</li>
+</ul>
+<h3 id="score-函数">Score 函数<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#score-函数" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>把三个因素线性叠加：</p>
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">Score</span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathcal" style="margin-right:0.0593em;">G</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.6143em;vertical-align:-0.8124em;"></span><span class="mord"><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6679em;"><span style="top:-2.3557em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6828em;"><span style="top:-2.786em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mrel mtight">∈</span><span class="mord mathcal mtight" style="margin-right:0.0593em;">G</span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop"><span class="mop">min</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8124em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">DTW</span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8019em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0519em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">FDE</span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8019em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">Penalty</span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mclose">)</span></span></span></span></span>
+<p><strong>符号说明</strong>：</p>
+<ul>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span></span></span>：预测的 trace；<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7805em;vertical-align:-0.0972em;"></span><span class="mord mathcal" style="margin-right:0.0593em;">G</span></span></span></span>：该 scenario 的所有等价 ground-truth traces。</li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord">DTW</span></span></span></span></span>：Dynamic Time Warping 距离，衡量轨迹形状相似度。</li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord">FDE</span></span></span></span></span>：Final Displacement Error，衡量是否到达目标。</li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">Penalty</span></span></span></span></span>：基于 Mask2Former + Mapillary Vistas 的 per-pixel 语义成本，按 embodiment 调整权重（见 Appendix Table IV，如轮式机器人在 “楼梯”/“楼梯类斜面” 上惩罚更大，自行车在 bike lane 惩罚为 0、在 sidewalk 上反而有惩罚）。</li>
+</ul>
+<p><strong>可解释 scaling</strong>：把原始 score 映射到 0–100，<code>Straight Forward</code>（画穿图像中央的竖直线）对应 0，ground-truth 对应 100（允许负分，若某些模型比 Straight Forward 还差）。</p>
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1733em;vertical-align:-0.25em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9233em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord text"><span class="mord">Score</span></span></span><span class="svg-align" style="top:-3.6833em;"><span class="pstrut" style="height:3em;"></span><span style="height:0.24em;"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="0.24em" viewBox="0 0 1062 239" preserveAspectRatio="none"><path d="M529 0h5l519 115c5 1 9 5 9 10 0 1-1 2-1 3l-4 22
+c-1 5-5 9-11 9h-2L532 67 19 159h-2c-5 0-9-4-11-9l-5-22c-1-6 2-12 8-13z"></path></svg></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathcal" style="margin-right:0.0593em;">G</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.113em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">3234.75</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">3234.75</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">Score</span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathcal" style="margin-right:0.0593em;">G</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">100</span></span></span></span></span>
+<p><strong>Figure 3. Score 与人类偏好对齐实验</strong>。左：penalty 的两种来源——Mask2Former 自动分割 vs manual segmentation，对比；右：score 和 human pairwise ranking 做 Spearman 相关性。</p>
+<p><img src="https://arxiv.org/html/2510.26909v3/x2.png" alt/></p>
+<h3 id="score-消融与-human-preference-对齐">Score 消融（与 human preference 对齐）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#score-消融与-human-preference-对齐" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table II. Spearman correlation between score variants and human ranking.</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Score Variant</th><th>Spearman ↑</th></tr></thead><tbody><tr><td>RMSE</td><td>0.8167</td></tr><tr><td>Fréchet</td><td>0.8310</td></tr><tr><td>DTW</td><td>0.8417</td></tr><tr><td>DTW + FDE</td><td>0.8656</td></tr><tr><td>DTW + FDE + Manual Penalty</td><td>0.8723</td></tr><tr><td>DTW + FDE + Mask2Former (ours)</td><td>0.8707</td></tr></tbody></table></div>
+<p>几个值得注意的点：</p>
+<ul>
+<li>DTW 单项就比 RMSE、Fréchet 好；说明轨迹相似度本身不是简单 pointwise 距离问题。</li>
+<li>加 FDE（goal term）是最大的 jump（+0.024）。说明 “到没到目标” 是人类评判轨迹好坏的关键维度。</li>
+<li>加语义惩罚再提升 ~0.005，manual vs automatic 只差 0.0016。<strong>automated semantic penalty 几乎白嫖到了 manual segmentation 的全部收益</strong>——对 scalable benchmark 关键。</li>
+</ul>
+<hr/>
+<h2 id="实验">实验<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#实验" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="baselines">Baselines<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#baselines" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Human</strong>: 多人合作解 test split，提供上界。</li>
+<li><strong>Straight Forward</strong>: 图像中心竖直线（naïve baseline，作为 0 分锚点）。</li>
+<li><strong>Oracle-Goal Straight Line</strong>: 知道真实 start/goal，直接连直线。</li>
+<li><strong>Only predict goal (Gemini 2.5 Pro)</strong>: 只让模型预测 goal 点，再和 start 用直线连。</li>
+<li><strong>Only predict path (Gemini 2.5 Pro)</strong>: 给 start 和 goal，让模型预测中间 path shape。</li>
+</ul>
+<h3 id="models">Models<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#models" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>8 个 SOTA VLM——5 个 proprietary：<strong>Gemini 2.5 Pro</strong>、<strong>GPT-5</strong>、<strong>o3</strong>、<strong>Claude Sonnet 4</strong>、<strong>Mistral Medium 3.1</strong>；3 个 open-weight：<strong>Qwen3-VL-235B-A22B Thinking</strong>、<strong>Qwen2.5-VL-72B</strong>、<strong>Gemma-3-27B</strong>。其中 Gemini 2.5 Pro / GPT-5 / o3 / Qwen3-VL 是 reasoning 模型（会自动产生推理步骤）。均通过 API 调用，temperature=1.0、max_tokens=5000。输出格式约束为 normalized coordinates 的 JSON list。</p>
+<h3 id="主实验结果">主实验结果<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#主实验结果" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Figure 4. 排序 &amp; per-category 拆解</strong>。左：各 VLM、Straight Forward、Human 在 4 种 embodiment 下的 score；右：按 task category 拆。核心观察是 <strong>VLM 之间的序 Gemini 2.5 Pro > GPT-5 > Qwen3-VL > o3 ≈ Straight Forward</strong>，而人类远远甩开所有模型。</p>
+<p><img src="https://arxiv.org/html/2510.26909v3/x3.png" alt/></p>
+<p>几个关键观察：</p>
+<ol>
+<li><strong>Human ≫ all VLMs</strong>：即使最好的 Gemini 2.5 Pro 也远离 human 表现。</li>
+<li><strong>o3 ≈ Straight Forward</strong>：reasoning 模型 o3 竟然被画穿图像中央的竖直线逼平——“zero-information” 的空间 prior 就够它吃了。</li>
+<li><strong>Embodiment 几乎无差</strong>：4 种 embodiment 下的分布形状类似，说明 VLM 没真正根据 embodiment 调策略（否则 wheeled robot 在含楼梯的场景里应该显著更差）。</li>
+<li><strong>Category 几乎无差</strong>：同理，模型在 geometric / semantic / social 等不同 category 上表现相近——并非均衡，而是整体都差，差到 category 特异性被噪声淹没。</li>
+</ol>
+<p><strong>Figure 5. 定性对比四个 top 模型的预测</strong>。</p>
+<p><img src="https://arxiv.org/html/2510.26909v3/x4.png" alt/></p>
+<h3 id="任务分解goal-vs-path">任务分解：goal vs path<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#任务分解goal-vs-path" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table III. 在 Gemini 2.5 Pro 上分解 goal / path 难度</strong>。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Model</th><th>Score ↑</th></tr></thead><tbody><tr><td>Only goal point with Gemini 2.5 Pro</td><td>29.65</td></tr><tr><td>Gemini 2.5 Pro (full trace)</td><td>34.38</td></tr><tr><td>Oracle-Goal Straight Line</td><td>51.89</td></tr><tr><td>Only path with Gemini 2.5 Pro</td><td>56.55</td></tr><tr><td>Human Expert</td><td>75.40</td></tr></tbody></table></div>
+<p>解读：</p>
+<ul>
+<li><strong>Only-goal 29.65 vs full-trace 34.38</strong>——只差 4.7 分，说明 goal 预测错了，path 再好也救不回来；<strong>goal localization 是 dominant failure mode</strong>。</li>
+<li><strong>Only-path 56.55 > Oracle-Goal Straight Line 51.89</strong>：给 Gemini 正确的 goal，它画的 path 比直线好——说明模型有 basic path shaping 能力。</li>
+<li>但 only-path 的 56.55 仍 &lt; Human 75.40——即便拿到 goal，path shape 也差于人类。</li>
+<li>结论是 <strong>dual difficulty</strong>：goal localization 是主瓶颈，path shaping 是次瓶颈。</li>
+</ul>
+<h3 id="reasoning-和-grounding-脱节">Reasoning 和 grounding 脱节<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#reasoning-和-grounding-脱节" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Figure 6. o3 的 reasoning vs prediction</strong>。任务是 “go to the red car”。o3 的文字推理能正确分析 path 选项并识别出正确方向，但最终 trace 预测不 align——reasoning 是对的，trace 是错的。这反映了 <strong>linguistic reasoning 和 spatial grounding 之间存在 gap</strong>，尤其在定位可通行结构时。</p>
+<p><img src="https://arxiv.org/html/2510.26909v3/x5.png" alt/></p>
+<blockquote>
+<p>❓ 这个 gap 是根本性的吗？reasoning 模型理解 scene 语义但无法把 reasoning 结论投射回 2D pixel space。可能是 action head（coordinate generation）没有经过 grounding 监督训练——从 SFT 数据的角度看 CoT output 和 coordinate output 的联合训练稀少。如果 NaviTrace validation split 被用于 SFT/DPO，这个 gap 会收窄到多少？是 benchmark 设计的自然下一步问题。</p>
+</blockquote>
+<hr/>
+<h2 id="关联工作">关联工作<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#关联工作" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="基于">基于<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#基于" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Dynamic Time Warping (DTW)</strong>（Senin, 2008）：trace 相似度主度量，benchmark 分数的核心组件。</li>
+<li><strong>Mask2Former</strong>（Cheng et al., 2022）+ <strong>Mapillary Vistas</strong>（Neuhold et al., 2017）：per-pixel semantic penalty 的基础，决定了哪些语义类对哪个 embodiment 是”hazardous / irrelevant / 可通行”。</li>
+<li><strong>GrandTour dataset</strong>（Frey et al., RSS 2025）：提供 164 张 legged robot 视角图像。</li>
+</ul>
+<h3 id="对比">对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>VLN benchmarks</strong>（R2R / REVERIE / RxR / OctoNav-Bench）：都依赖 MP3D/Habitat 仿真，action space 对 VLM 不友好，只评估 human 或单一 embodiment。NaviTrace 用 real images + VLM-native 2D trace + 多 embodiment。</li>
+<li><strong>Real-world nav datasets</strong>（EgoWalk / CityWalker）：从真实 ego 视频自动提取轨迹，但没有 language-conditioned 任务（CityWalker）或指令质量受限（自动提取）。</li>
+<li><strong>Social-nav VQA</strong>（SocialNav-SUB / Social-LLaVA）：text-based answers，单 embodiment；NaviTrace 换成 2D trace 并覆盖 4 embodiment。</li>
+<li><strong>VLM 通用 benchmark</strong>（BLINK / Cambrian-1 / EmbSpatial-Bench / PointArena）：测 perception / spatial / pointing 但不测 sequential navigation plan。</li>
+</ul>
+<h3 id="方法相关">方法相关<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#方法相关" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Pointing</strong> 作为 grounding 评测（Molmo / PointArena / Magma）：NaviTrace 把 pointing “延伸” 成 sequential 2D trace——goal + path。</li>
+<li><strong>Trace for manipulation</strong>（LLaRVA / Scaffolding DexManip / TraceVLA）：先例——2D trace 能帮机械臂 policy 习得 spatial-temporal awareness，NaviTrace 把 “trace as VLM I/O” 的思路从 manipulation 搬到 navigation。</li>
+<li><strong>VLA for navigation</strong>（NaViLA / Uni-NaViD / Gemini Robotics）：应用侧工作，NaviTrace 提供的是评估而非方法。</li>
+</ul>
+<hr/>
+<h2 id="论文点评">论文点评<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#论文点评" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="strengths">Strengths<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>Problem formulation 清晰</strong>：把 “VLM 能不能导航” 的模糊问题精确化为 “能不能预测合理的 image-space 2D trace”，既避开了 closed-loop 和 sim-to-real 的复杂性，又保留了 embodiment-aware navigation 的核心挑战。</li>
+<li><strong>Metric 设计经过 human-preference 对齐</strong>：Spearman 0.87 的相关性不低，且 Mask2Former automated 版本几乎追平 manual segmentation——意味着 benchmark 可以 scale，不需要每张图都做 dense 人工分割。</li>
+<li><strong>Ablation 诚实且信息量大</strong>：goal vs path 分解明确揭示了 dominant failure mode；o3 的 reasoning-trace gap 例子是 reasoning VLM 社区应该警惕的信号（CoT 正确 ≠ grounding 正确）。</li>
+<li><strong>Leaderboard + validation/test split 分离</strong>：避免了 test set 泄漏，支持 fine-tuning experiments 用 validation split——这是 scalable benchmark 的必要基础设施。</li>
+</ol>
+<h3 id="weaknesses">Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>单 image, single-step</strong>：作者在 Limitations 明确——不能评估 temporal reasoning 和 multi-step planning，而真实 navigation 恰好需要这两个。</li>
+<li><strong>地理偏倚</strong>：集中在瑞士，对 infrastructure 和 social norm 差异大的地区（比如东南亚城市、发展中国家农村）泛化性未验证。</li>
+<li><strong>2D image-space 与 3D 现实的 gap</strong>：FDE 和 DTW 用像素单位，远处像素小偏差对应实际大位移；score 不直接映射到 “任务是否完成”。</li>
+<li><strong>Score 的 goal 定义偏硬</strong>：ground-truth 是点而不是区域（例如 doorway），导致某些场景下 FDE 惩罚过严或过松。</li>
+<li><strong>Reasoning 模型里 o3 的排名异常低</strong>：Gemini 2.5 Pro / GPT-5 / Qwen3-VL 都是 reasoning 模型且表现好，o3 却接近 Straight Forward。这可能提示 o3 对坐标输出的训练或 prompt adherence 有问题，作者没深入探究是否 prompt-sensitive。</li>
+<li><strong>没做 fine-tuning 实验</strong>：有 validation split 却未展示在 validation 上 SFT/DPO 能把分数推多高——这会决定 benchmark 作为 “推动技术进步” 而非 “测 frozen model” 的价值。</li>
+</ol>
+<h3 id="可信评估">可信评估<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#可信评估" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="artifact-可获取性">Artifact 可获取性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#artifact-可获取性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><strong>代码</strong>：inference + scoring（<a href="https://github.com/leggedrobotics/navitrace_evaluation" class="external">leggedrobotics/navitrace_evaluation<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>，MIT license）</li>
+<li><strong>模型权重</strong>：N/A（不提出新模型，只评估现有 VLM）</li>
+<li><strong>训练细节</strong>：N/A（无训练）；推理细节：temperature=1.0, max_tokens=5000, 默认 hyperparameters</li>
+<li><strong>数据集</strong>：<a href="https://huggingface.co/datasets/leggedrobotics/navitrace" class="external">HuggingFace leggedrobotics/navitrace<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>，validation split 完整公开，test split ground-truth 隐藏（通过 leaderboard 评测）</li>
+</ul>
+<h4 id="claim-可验证性">Claim 可验证性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#claim-可验证性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>✅ <strong>Score 与 human preference 对齐（Spearman 0.87）</strong>：Table II 有完整消融，manual vs automatic 对比也做了。</li>
+<li>✅ <strong>VLM &lt;&lt; Human</strong>：Figure 4 + Table III 数据充分，模型间排序由 public leaderboard 支持。</li>
+<li>✅ <strong>Goal localization 是 dominant failure mode</strong>：Table III 的 29.65 / 34.38 / 51.89 / 56.55 数字差异足以支撑这一结论。</li>
+<li>⚠️ <strong>“Embodiment 间差别小 = 模型没有 embodiment-specific blind spot”</strong>：作者自己承认另一种可能——模型整体太差导致 embodiment 差异被噪声淹没。这是并存解释，需要更强模型或 per-category per-embodiment 的细拆才能区分。</li>
+<li>⚠️ <strong>o3 的 reasoning-trace gap 是 systematic</strong>：只展示了一个例子（Figure 6）作为 qualitative evidence，没有量化 “多少比例的 o3 样本具备正确 reasoning 但错误 trace”。</li>
+</ul>
+<h3 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>对我的 spatial-reasoning / embodied reasoning 研究兴趣，这个 benchmark 最有意思的地方是 <strong>Figure 6 揭示的 “reasoning 正确但 grounding 错误” 现象</strong>。如果能系统量化这个现象（例如用 GPT-4o 审核 reasoning step 的正确性，再看对应 trace 误差），可能是一个 “reasoning 和 grounding 之间存在什么结构 gap” 的切入点。</li>
+<li>Benchmark 的一个天然扩展：给定当前的 single-image formulation 太弱，下一步要么变 multi-frame（temporal reasoning），要么变 3D-aware（从 image-space trace → BEV trace）。NaviTrace 的 trace representation 可以自然迁移到 BEV。</li>
+<li>值得留意 leaderboard 的后续更新——如果 Gemini 2.5 Pro → Gemini 3 的代际更新能把 score 从 34 推到 50+，说明 benchmark 对模型能力提升敏感；如果停滞，说明存在天花板。</li>
+</ul>
+<h3 id="rating">Rating<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#rating" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Metrics</strong> (as of 2026-04-23): citation=8, influential=0 (0%), velocity=1.4/mo; HF upvotes=14; github 29⭐ / forks=1 / 90d commits=0 / pushed 108d ago</p>
+<p><strong>分数</strong>：2 - Frontier</p>
+<p><strong>理由</strong>：发表 &lt; 6 个月，8 citation / 0 influential 的绝对量不能作为定档依据，需看 early signal。HF 14 upvotes、github 29⭐ 属中等热度；benchmark 方向上它填补了 “VLM-native + embodiment-aware + real-world image” 的空白，<strong>范式上（把 navigation answer 表达为 2D trace）是社区迟早要做的事</strong>。但能否从 Frontier 升到 Foundation 取决于：(1) 主要 VLM/VLA 团队是否在模型报告中把它当作 navigation 能力标准评测；(2) validation split 能否促成显著的 fine-tuning 收益证明 benchmark 推动了技术进步。目前两点都未定型，所以是 2 而非 3；而评测 8 个主流 VLM 的系统性、human-aligned metric 的扎实性又远高于 Archived 级别的 niche benchmark，所以不是 1。</p></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="pva9ak" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#motivation" data-for="motivation">Motivation</a></li><li class="depth-0"><a href="#benchmark-设计" data-for="benchmark-设计">Benchmark 设计</a></li><li class="depth-1"><a href="#data" data-for="data">Data</a></li><li class="depth-1"><a href="#score-函数" data-for="score-函数">Score 函数</a></li><li class="depth-1"><a href="#score-消融与-human-preference-对齐" data-for="score-消融与-human-preference-对齐">Score 消融（与 human preference 对齐）</a></li><li class="depth-0"><a href="#实验" data-for="实验">实验</a></li><li class="depth-1"><a href="#baselines" data-for="baselines">Baselines</a></li><li class="depth-1"><a href="#models" data-for="models">Models</a></li><li class="depth-1"><a href="#主实验结果" data-for="主实验结果">主实验结果</a></li><li class="depth-1"><a href="#任务分解goal-vs-path" data-for="任务分解goal-vs-path">任务分解：goal vs path</a></li><li class="depth-1"><a href="#reasoning-和-grounding-脱节" data-for="reasoning-和-grounding-脱节">Reasoning 和 grounding 脱节</a></li><li class="depth-0"><a href="#关联工作" data-for="关联工作">关联工作</a></li><li class="depth-1"><a href="#基于" data-for="基于">基于</a></li><li class="depth-1"><a href="#对比" data-for="对比">对比</a></li><li class="depth-1"><a href="#方法相关" data-for="方法相关">方法相关</a></li><li class="depth-0"><a href="#论文点评" data-for="论文点评">论文点评</a></li><li class="depth-1"><a href="#strengths" data-for="strengths">Strengths</a></li><li class="depth-1"><a href="#weaknesses" data-for="weaknesses">Weaknesses</a></li><li class="depth-1"><a href="#可信评估" data-for="可信评估">可信评估</a></li><li class="depth-1"><a href="#notes" data-for="notes">Notes</a></li><li class="depth-1"><a href="#rating" data-for="rating">Rating</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+</script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>

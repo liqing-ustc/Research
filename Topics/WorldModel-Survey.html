@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><title>World Model Survey</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="World Model Survey"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="World Model Survey"/><meta name="twitter:description" content="Overview World model 是 AI 系统中用于理解环境动态并预测未来状态的内部模拟器。这一概念源于 Kenneth Craik (1943) 的 mental model 理论，在深度学习时代获得了全新的技术内涵。如 2411-WorldModelSurvey 所总结，world model 的核心功能可分为两大类：implicit ..."/><meta property="og:description" content="Overview World model 是 AI 系统中用于理解环境动态并预测未来状态的内部模拟器。这一概念源于 Kenneth Craik (1943) 的 mental model 理论，在深度学习时代获得了全新的技术内涵。如 2411-WorldModelSurvey 所总结，world model 的核心功能可分为两大类：implicit ..."/><meta property="og:image:alt" content="Overview World model 是 AI 系统中用于理解环境动态并预测未来状态的内部模拟器。这一概念源于 Kenneth Craik (1943) 的 mental model 理论，在深度学习时代获得了全新的技术内涵。如 2411-WorldModelSurvey 所总结，world model 的核心功能可分为两大类：implicit ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Topics/WorldModel-Survey"/><meta property="twitter:url" content="https://liqing.io/mindflow/Topics/WorldModel-Survey"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Overview World model 是 AI 系统中用于理解环境动态并预测未来状态的内部模拟器。这一概念源于 Kenneth Craik (1943) 的 mental model 理论，在深度学习时代获得了全新的技术内涵。如 2411-WorldModelSurvey 所总结，world model 的核心功能可分为两大类：implicit ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+<html lang="en"><head><title>World Model — A 2024–2026 Survey</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="World Model — A 2024–2026 Survey"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="World Model — A 2024–2026 Survey"/><meta name="twitter:description" content="从 Ha &amp; Schmidhuber 的 MBRL world model 到 Sora/Genie 浪潮后的 video world foundation model，系统梳理当前 implicit latent WM、pixel-space video WM、3D/4D WM、unified VLA+WM、WM-as-RL-simulator 五条技术路线，聚焦 Embodied AI 场景的关键证据与 open problems"/><meta property="og:description" content="从 Ha &amp; Schmidhuber 的 MBRL world model 到 Sora/Genie 浪潮后的 video world foundation model，系统梳理当前 implicit latent WM、pixel-space video WM、3D/4D WM、unified VLA+WM、WM-as-RL-simulator 五条技术路线，聚焦 Embodied AI 场景的关键证据与 open problems"/><meta property="og:image:alt" content="从 Ha &amp; Schmidhuber 的 MBRL world model 到 Sora/Genie 浪潮后的 video world foundation model，系统梳理当前 implicit latent WM、pixel-space video WM、3D/4D WM、unified VLA+WM、WM-as-RL-simulator 五条技术路线，聚焦 Embodied AI 场景的关键证据与 open problems"/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Topics/WorldModel-Survey"/><meta property="twitter:url" content="https://liqing.io/mindflow/Topics/WorldModel-Survey"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="从 Ha &amp; Schmidhuber 的 MBRL world model 到 Sora/Genie 浪潮后的 video world foundation model，系统梳理当前 implicit latent WM、pixel-space video WM、3D/4D WM、unified VLA+WM、WM-as-RL-simulator 五条技术路线，聚焦 Embodied AI 场景的关键证据与 open problems"/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
   position: absolute;
   display: flex;
   float: right;
@@ -116,214 +116,452 @@ pre:hover > .expand-button {
   padding: 0 12px;
   font-size: 14px;
 }
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Topics/WorldModel-Survey"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="zuf0s6"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/embodied-reasoning" class="sidebar-tag-pill">#embodied-reasoning</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/computer-use" class="sidebar-tag-pill">#computer-use</a><a href="/mindflow/tags/agentic-RL" class="sidebar-tag-pill">#agentic-RL</a><a href="/mindflow/tags/world-model" class="sidebar-tag-pill">#world-model</a><a href="/mindflow/tags/gui-agent" class="sidebar-tag-pill">#gui-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Topics/">Topics</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>WorldModel-Survey</a></div></nav><h1 class="article-title">World Model Survey</h1><p show-comma="true" class="content-meta"><time datetime="2026-04-23T07:02:34.964Z">Apr 23, 2026</time><span>14 min read</span></p><ul class="tags"><li><a href="../tags/world-model" class="internal tag-link">world-model</a></li><li><a href="../tags/RL" class="internal tag-link">RL</a></li><li><a href="../tags/VLA" class="internal tag-link">VLA</a></li><li><a href="../tags/diffusion-policy" class="internal tag-link">diffusion-policy</a></li><li><a href="../tags/task-planning" class="internal tag-link">task-planning</a></li><li><a href="../tags/3D-representation" class="internal tag-link">3D-representation</a></li><li><a href="../tags/cross-embodiment" class="internal tag-link">cross-embodiment</a></li></ul></div></div><article class="popover-hint"><h2 id="overview">Overview<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#overview" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>World model 是 AI 系统中用于理解环境动态并预测未来状态的内部模拟器。这一概念源于 Kenneth Craik (1943) 的 mental model 理论，在深度学习时代获得了全新的技术内涵。如 <a href="../Papers/2411-WorldModelSurvey" class="internal" data-slug="Papers/2411-WorldModelSurvey">2411-WorldModelSurvey</a> 所总结，world model 的核心功能可分为两大类：<strong>implicit representation</strong>（将外部现实转化为内部表征以支持决策）和 <strong>future prediction</strong>（生成环境演化的仿真）。</p>
-<p>近三年（2023-2026）world model 领域经历了爆发式增长，呈现出多线并进的格局。<strong>在 reinforcement learning 中</strong>，<a href="../Papers/2405-DIAMOND" class="internal" data-slug="Papers/2405-DIAMOND">2405-DIAMOND</a> 等工作证明 diffusion-based world model 能以更高 visual fidelity 训练出超越人类的 agent。<strong>在游戏/交互模拟中</strong>，<a href="../Papers/2402-Genie" class="internal" data-slug="Papers/2402-Genie">2402-Genie</a> 和 <a href="../Papers/2408-GameNGen" class="internal" data-slug="Papers/2408-GameNGen">2408-GameNGen</a> 开创了从无标注视频生成可交互环境的新范式，DeepMind 的 Genie 系列已从 2D platformer 演进到实时 3D world generation（Genie 3, 2025）。<strong>在自动驾驶中</strong>，<a href="../Papers/2405-Vista" class="internal" data-slug="Papers/2405-Vista">2405-Vista</a> 和 <a href="../Papers/2405-OccSora" class="internal" data-slug="Papers/2405-OccSora">2405-OccSora</a> 分别从 video prediction 和 4D occupancy 两个表征空间推进了 driving world model 的能力边界。<strong>在机器人领域</strong>，<a href="../Papers/2602-DreamZero" class="internal" data-slug="Papers/2602-DreamZero">2602-DreamZero</a>、<a href="../Papers/2504-UWM" class="internal" data-slug="Papers/2504-UWM">2504-UWM</a>、<a href="../Papers/2512-Motus" class="internal" data-slug="Papers/2512-Motus">2512-Motus</a> 等工作将 world model 与 action prediction 统一，催生了 World Action Model (WAM) 这一新范式（详见 <a href="../Topics/WorldActionModel-Survey" class="internal" data-slug="Topics/WorldActionModel-Survey">WorldActionModel-Survey</a>）。<strong>在 LLM 推理中</strong>，<a href="../Papers/2305-RAP" class="internal" data-slug="Papers/2305-RAP">2305-RAP</a> 率先将 LLM 本身视为 world model，用 MCTS 进行 deliberate reasoning。<strong>在自监督学习路线上</strong>，Meta 的 <a href="../Papers/2506-VJEPA2" class="internal" data-slug="Papers/2506-VJEPA2">2506-VJEPA2</a> 通过纯 self-supervised pretraining 在 representation space 实现了理解、预测和规划的统一。</p>
-<p>研究活跃度方面，NVIDIA、Google DeepMind、Meta FAIR、OpenAI、Tsinghua 等顶级机构全面布局。2024-2025 年至少发表了 5 篇系统性综述（ACM CSUR, arXiv），GitHub 上多个 awesome list 持续更新。World model 正在从一个分散的研究方向汇聚为 physical AI 的核心基础设施。</p>
-<h2 id="技术路线">技术路线<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#技术路线" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<h3 id="路线-1生成式视频世界模型-generative-video-world-models">路线 1：生成式视频世界模型 (Generative Video World Models)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#路线-1生成式视频世界模型-generative-video-world-models" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p><strong>核心思路</strong>：以 video generation 为核心，将未来视觉观测的生成作为环境动态建模的基本手段。分为 action-conditioned（可控）和 unconditional（自由生成）两种模式。</p>
-<p><strong>代表论文</strong>：</p>
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Topics/WorldModel-Survey"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="rb21rw"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/embodied-reasoning" class="sidebar-tag-pill">#embodied-reasoning</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/computer-use" class="sidebar-tag-pill">#computer-use</a><a href="/mindflow/tags/agentic-RL" class="sidebar-tag-pill">#agentic-RL</a><a href="/mindflow/tags/VLN" class="sidebar-tag-pill">#VLN</a><a href="/mindflow/tags/world-model" class="sidebar-tag-pill">#world-model</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Topics/">Topics</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>WorldModel-Survey</a></div></nav><h1 class="article-title">World Model — A 2024–2026 Survey</h1><p show-comma="true" class="content-meta"><time datetime="2026-04-23T12:17:36.872Z">Apr 23, 2026</time><span>26 min read</span></p><ul class="tags"><li><a href="../tags/world-model" class="internal tag-link">world-model</a></li><li><a href="../tags/VLA" class="internal tag-link">VLA</a></li><li><a href="../tags/RL" class="internal tag-link">RL</a></li></ul></div></div><article class="popover-hint"><h2 id="overview">Overview<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#overview" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>一句话定位</strong>：<strong>World Model (WM)</strong> 指”用感知构建内部表示、能基于 action 条件模拟未来动态、并服务于决策/规划”的 model 或 framework（<a href="../Papers/2411-WorldModelSurvey" class="internal alias" data-slug="Papers/2411-WorldModelSurvey">CSUR</a> 的二元定义 + <a href="../Papers/2604-OpenWorldLib" class="internal alias" data-slug="Papers/2604-OpenWorldLib">OpenWorldLib 2026</a> 对 core-objective 的可操作收敛）。在 2024–2026 这轮叙事里，它不再等同于经典 Ha &amp; Schmidhuber 的 latent MBRL，而是成为连接 video generation、VLA 政策学习、自动驾驶仿真、3D 场景生成的<strong>枢纽概念</strong>。</p>
+<p><strong>领域活跃度</strong>（基于 vault 本地可追溯 ~20 篇 rating ≥ 2 的代表工作）：</p>
 <ul>
-<li><a href="../Papers/2501-Cosmos" class="internal alias" data-slug="Papers/2501-Cosmos">Cosmos</a>：NVIDIA 的 World Foundation Model 平台，2000 万小时视频训练，提供 diffusion/AR 两种 backbone，开源 video tokenizer 和预训练模型，成为下游工作的基础设施。</li>
-<li><a href="../Papers/2405-Vista" class="internal alias" data-slug="Papers/2405-Vista">Vista</a>：基于 Stable Video Diffusion 的自动驾驶 world model，创新 dynamics enhancement loss + structure preservation loss，支持 4 种 action modality 的统一控制，FID 6.9 on nuScenes。</li>
-<li><a href="../Papers/2406-IRASim" class="internal alias" data-slug="Papers/2406-IRASim">IRASim</a>：frame-level action conditioning 实现精确的 action-video 对齐，policy evaluation 与 ground-truth simulator 相关度达 0.99。</li>
+<li><strong>时间线</strong>：2024-02 <a href="../Papers/2402-Genie" class="internal alias" data-slug="Papers/2402-Genie">Genie</a> 打开 unsupervised frame-level-controllable video 象限 → 2024-05 <a href="../Papers/2405-DIAMOND" class="internal alias" data-slug="Papers/2405-DIAMOND">DIAMOND</a> 证 pixel-diffusion MBRL → 2024-08 <a href="../Papers/2408-GameNGen" class="internal alias" data-slug="Papers/2408-GameNGen">GameNGen</a> 跑通 20 FPS 实时 DOOM → 2025-01 <a href="../Papers/2501-Cosmos" class="internal alias" data-slug="Papers/2501-Cosmos">Cosmos</a> 给出 100M clip 级 World Foundation Model platform → 2025-04 <a href="../Papers/2504-UWM" class="internal alias" data-slug="Papers/2504-UWM">UWM</a> 用 timestep-as-mask 统一 policy/dynamics/IDM/video → 2025-06 <a href="../Papers/2506-VJEPA2" class="internal alias" data-slug="Papers/2506-VJEPA2">V-JEPA 2</a> 在 latent 空间打通 understanding/prediction/planning → 2025-05 <a href="../Papers/2505-DreamGen" class="internal alias" data-slug="Papers/2505-DreamGen">DreamGen</a> 明确把 video WM 定位为 offline data engine → 2025-12/2026-02 <a href="../Papers/2512-Motus" class="internal alias" data-slug="Papers/2512-Motus">Motus</a> / <a href="../Papers/2602-DreamZero" class="internal alias" data-slug="Papers/2602-DreamZero">DreamZero</a> 把 video diffusion 做成 VLA backbone → 2026-02 <a href="../Papers/2602-WorldVLALoop" class="internal alias" data-slug="Papers/2602-WorldVLALoop">World-VLA-Loop</a> / <a href="../Papers/2602-GigaBrain05M" class="internal alias" data-slug="Papers/2602-GigaBrain05M">GigaBrain-0.5M*</a> 把 WM 嵌入 VLA RL 闭环 → 2026-04 <a href="../Papers/2604-HYWorld2" class="internal alias" data-slug="Papers/2604-HYWorld2">HY-World 2.0</a> / <a href="../Papers/2604-OpenWorldLib" class="internal alias" data-slug="Papers/2604-OpenWorldLib">OpenWorldLib</a> 标志开源生态成型。</li>
+<li><strong>参与格局</strong>：工业主力 NVIDIA（Cosmos/CosmosReason/DreamGen/DreamZero，GEAR team）、Google DeepMind（Genie 系）、Meta FAIR（V-JEPA 系）；中国工业主力 Tencent Hunyuan（HY-World）、GigaAI（GigaBrain）、AgiBot（GenieReasoner）；驾驶主力 OpenDriveLab/Wayve 系（Vista、GAIA-1、Drive-WM）；学术 ETH（RWM legged）、HKUST/ByteDance（IRASim）、UW/TRI（UWM）。Open-source 代码/权重密度在 2025 下半年后显著上升（Cosmos、V-JEPA 2、DreamGen/GR00T-Dreams、HY-World 2.0、UWM 均 open-weight）。</li>
+<li><strong>整体趋势</strong>（2024 → 2026）：(1) <strong>video generation ↔ world model 的边界被激活后又被 OpenWorldLib 重新收紧</strong>，text-to-video（Sora）被显式排除；(2) <strong>WM 的目标从”逼真视频”迁移到”可控、可作 agent backend 的动力学”</strong>——DreamGen Bench / WorldSimBench / Physics-IQ 的出现使 video community 第一次拿到”对 robotics 有用”的 proxy metric；(3) <strong>WM × VLA 的五种耦合方式</strong>（offline data engine → inference-time latent conditioning → joint model → RL simulator → evaluator）全部被实证验证，成为 Embodied AI 上 WM 研究的主战场；(4) <strong>latent vs pixel 的路线之争</strong>首次进入可比较阶段（V-JEPA 2 给出 15× 计算优势 + success rate 反超 Cosmos 的 zero-shot 对比）。</li>
 </ul>
-<p><strong>优势</strong>：视觉表达力强，可直接生成人类可理解的预测；可利用海量 internet-scale video data 进行预训练。
-<strong>劣势</strong>：pixel-space generation 计算开销大；长时序一致性难以保证；缺乏显式 3D 几何信息。</p>
-<h3 id="路线-2联合世界-动作模型-joint-world-action-models--wam">路线 2：联合世界-动作模型 (Joint World-Action Models / WAM)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#路线-2联合世界-动作模型-joint-world-action-models--wam" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p><strong>核心思路</strong>：在同一 generative model 中联合建模 video prediction 和 action prediction，使 world understanding 与 motor control 深度耦合。“World model 即 policy”。</p>
-<p><strong>代表论文</strong>：</p>
-<ul>
-<li><a href="../Papers/2602-DreamZero" class="internal alias" data-slug="Papers/2602-DreamZero">DreamZero</a>：14B autoregressive diffusion transformer，定义了 WAM 概念，seen tasks 62.2%（baseline 27.4%），unseen tasks 39.5%（baseline &lt;1%）。</li>
-<li><a href="../Papers/2504-UWM" class="internal alias" data-slug="Papers/2504-UWM">UWM</a>：decoupled diffusion timesteps 统一 video + action diffusion，单模型支持 4 种推理模式。RSS 2025。</li>
-<li><a href="../Papers/2512-Motus" class="internal alias" data-slug="Papers/2512-Motus">Motus</a>：Mixture-of-Transformers + optical flow latent action，RoboTwin 87.02%。</li>
-<li><a href="../Papers/2505-DreamGen" class="internal alias" data-slug="Papers/2505-DreamGen">DreamGen</a>：4 阶段 pipeline，video world model 作为 synthetic data generator，从单任务泛化到 22 种新行为。</li>
-<li><a href="../Papers/2602-WorldVLALoop" class="internal alias" data-slug="Papers/2602-WorldVLALoop">World-VLA-Loop</a>：world model 作为 RL post-training 环境，与 VLA 闭环迭代优化。</li>
-</ul>
-<p><strong>优势</strong>：泛化能力远超纯 action prediction（VLA）；自然利用 action-free video data。
-<strong>劣势</strong>：计算开销极大（DreamZero 需 2×GB200 实现 7Hz）；long-horizon 能力有限。</p>
-<blockquote>
-<p>该路线的详细分析见 <a href="../Topics/WorldActionModel-Survey" class="internal" data-slug="Topics/WorldActionModel-Survey">WorldActionModel-Survey</a>。</p>
-</blockquote>
-<h3 id="路线-3交互式环境生成-interactive-environment-generation">路线 3：交互式环境生成 (Interactive Environment Generation)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#路线-3交互式环境生成-interactive-environment-generation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p><strong>核心思路</strong>：从数据中学习生成可交互的虚拟环境，用户可通过 action 实时与生成内容交互。目标是用 neural model 替代传统 game engine 或 simulator。</p>
-<p><strong>代表论文</strong>：</p>
-<ul>
-<li><a href="../Papers/2402-Genie" class="internal alias" data-slug="Papers/2402-Genie">Genie</a>：11B 参数 foundation world model，核心创新是通过 VQ-VAE 从无标注视频中无监督发现 latent action space（8 个 discrete code），支持从文本/图片/草图生成可交互的 2D 世界。ICML 2024。</li>
-<li><a href="../Papers/2408-GameNGen" class="internal alias" data-slug="Papers/2408-GameNGen">GameNGen</a>：基于 fine-tuned Stable Diffusion 在 DOOM 上实现 20 FPS 实时交互，noise augmentation 技术有效解决 auto-regressive drift。人类评估者区分真实/生成画面准确率仅 58-60%。ICLR 2025。</li>
-<li><strong>Genie 2/3</strong>（DeepMind, 2024-2025）：从 2D 扩展到 quasi-3D 再到实时 720p 3D world generation，分钟级连贯交互。</li>
-</ul>
-<p><strong>优势</strong>：开辟了”从视频学习可交互世界”的全新范式；Genie 的 unsupervised latent action discovery 不依赖 action label。
-<strong>劣势</strong>：分辨率和 context window 有限；计算成本高；生成环境的物理一致性难以保证。</p>
-<h3 id="路线-4latent-dynamics--model-based-rl">路线 4：Latent Dynamics / Model-Based RL<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#路线-4latent-dynamics--model-based-rl" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p><strong>核心思路</strong>：在低维 latent space 或 state space 建模环境动力学，用于 imagination-based planning 或 policy optimization。经典的 model-based RL 路线。</p>
-<p><strong>代表论文</strong>：</p>
-<ul>
-<li><a href="../Papers/2405-DIAMOND" class="internal alias" data-slug="Papers/2405-DIAMOND">DIAMOND</a>：diffusion-based world model 用于 Atari 100k，证明保留 visual details 对 RL 至关重要。3 步 denoising 实现高效推理，mean HNS 1.46（超越 DreamerV3、IRIS、STORM）。NeurIPS 2024 Spotlight。</li>
-<li><a href="../Papers/2501-RoboticWorldModel" class="internal alias" data-slug="Papers/2501-RoboticWorldModel">Robotic World Model</a>：dual-autoregressive GRU 在低维 state space 建模，MBPO-PPO 实现 zero-shot sim-to-real，inference 仅 1ms/step。</li>
-<li><a href="../Papers/2506-VJEPA2" class="internal alias" data-slug="Papers/2506-VJEPA2">V-JEPA 2</a>：Meta 的 self-supervised approach，在 representation space（非 pixel space）做 prediction 和 planning，62 小时无标签机器人视频即可训练 action-conditioned world model，latent planning 比 pixel-space generation 快 15×。</li>
-</ul>
-<p><strong>优势</strong>：计算高效（latent space 远小于 pixel space）；DIAMOND 证明 diffusion 比 discrete tokenization 更适合保留 RL 关键信息；V-JEPA 2 展示了 self-supervised 路线的数据效率。
-<strong>劣势</strong>：latent space 的可解释性有限；从 latent 到 pixel 的 reconstruction 存在信息损失。</p>
-<h3 id="路线-5llm-作为世界模型-llm-as-world-model">路线 5：LLM 作为世界模型 (LLM as World Model)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#路线-5llm-作为世界模型-llm-as-world-model" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p><strong>核心思路</strong>：利用 LLM 在大规模文本预训练中获得的 world knowledge，将 LLM 本身视为 implicit world model，用于 reasoning 和 planning。</p>
-<p><strong>代表论文</strong>：</p>
-<ul>
-<li><a href="../Papers/2305-RAP" class="internal alias" data-slug="Papers/2305-RAP">RAP</a>：将 LLM 同时用作 world model（state transition prediction）和 reasoning agent，结合 MCTS 进行 deliberate reasoning。LLaMA-33B + RAP 在 Blocksworld 上超越 GPT-4 + CoT。EMNLP 2023。</li>
-<li><a href="../2602-GigaBrain" class="internal alias" data-slug="2602-GigaBrain">GigaBrain</a>：VLA 结合 world model-based RL，将语言模型的 reasoning 能力与物理世界的 dynamics modeling 结合。</li>
-</ul>
-<p><strong>优势</strong>：不需要额外训练独立的 dynamics model；框架通用，可应用于多种推理任务；inference-time scaling 的先驱思路。
-<strong>劣势</strong>：LLM 的 world model 能力依赖 in-context learning，对复杂物理环境可能不够准确；MCTS 推理开销大。</p>
-<h3 id="路线-63d4d-结构化世界模型-structured-3d4d-world-models">路线 6：3D/4D 结构化世界模型 (Structured 3D/4D World Models)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#路线-63d4d-结构化世界模型-structured-3d4d-world-models" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p><strong>核心思路</strong>：在显式 3D 或 4D 空间中建模世界状态，保留几何结构信息，用于需要空间理解的任务（如自动驾驶、导航）。</p>
-<p><strong>代表论文</strong>：</p>
-<ul>
-<li><a href="../Papers/2405-OccSora" class="internal alias" data-slug="Papers/2405-OccSora">OccSora</a>：diffusion-based 4D occupancy 生成，FID 8.348 优于 image-based 方法，支持 trajectory-conditioned 16 秒场景生成。ICLR 2025。</li>
-<li><a href="../Papers/2602-GTA" class="internal alias" data-slug="Papers/2602-GTA">GTA</a>：显式 world representation 用于 VLN，证明结构化空间表征对导航推理的重要性。</li>
-</ul>
-<p><strong>优势</strong>：保留了 3D 几何信息，对需要空间推理的任务更友好；不受 2D video generation 的视角限制。
-<strong>劣势</strong>：3D reconstruction 质量是核心瓶颈（OccSora mIoU 仅 27.4%）；训练数据获取困难。</p>
-<h2 id="datasets--benchmarks">Datasets &amp; Benchmarks<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#datasets--benchmarks" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="table-container"><table><thead><tr><th style="text-align:left;">Dataset/Benchmark</th><th style="text-align:left;">领域</th><th style="text-align:left;">规模</th><th style="text-align:left;">评估指标</th><th style="text-align:left;">SOTA</th><th style="text-align:left;">特点</th></tr></thead><tbody><tr><td style="text-align:left;">Atari 100k</td><td style="text-align:left;">RL/Game</td><td style="text-align:left;">26 games, 100K env steps</td><td style="text-align:left;">Human Normalized Score (HNS)</td><td style="text-align:left;">1.46 (DIAMOND)</td><td style="text-align:left;">经典 world model RL benchmark</td></tr><tr><td style="text-align:left;">nuScenes</td><td style="text-align:left;">自动驾驶</td><td style="text-align:left;">1000 scenes, 1.4M frames</td><td style="text-align:left;">FID, FVD, mIoU</td><td style="text-align:left;">FID 6.9 (Vista)</td><td style="text-align:left;">标准驾驶数据集</td></tr><tr><td style="text-align:left;">LIBERO</td><td style="text-align:left;">机器人</td><td style="text-align:left;">130 tasks, 5 suites</td><td style="text-align:left;">Success Rate</td><td style="text-align:left;">0.79 (UWM)</td><td style="text-align:left;">多任务桌面操作</td></tr><tr><td style="text-align:left;">RoboTwin</td><td style="text-align:left;">机器人</td><td style="text-align:left;">多 embodiment</td><td style="text-align:left;">Success Rate</td><td style="text-align:left;">87.02% (Motus)</td><td style="text-align:left;">双臂操作 benchmark</td></tr><tr><td style="text-align:left;">Push-T</td><td style="text-align:left;">机器人</td><td style="text-align:left;">推块任务</td><td style="text-align:left;">IoU</td><td style="text-align:left;">0.961 (IRASim)</td><td style="text-align:left;">简单 planar manipulation</td></tr><tr><td style="text-align:left;">Something-Something v2</td><td style="text-align:left;">视频理解</td><td style="text-align:left;">220K videos</td><td style="text-align:left;">Top-1 Accuracy</td><td style="text-align:left;">77.3% (V-JEPA 2)</td><td style="text-align:left;">动作/物体交互理解</td></tr><tr><td style="text-align:left;">Epic-Kitchens-100</td><td style="text-align:left;">视频预测</td><td style="text-align:left;">100 hours</td><td style="text-align:left;">Recall@5</td><td style="text-align:left;">—</td><td style="text-align:left;">长时序厨房活动</td></tr><tr><td style="text-align:left;">WorldModelBench</td><td style="text-align:left;">通用</td><td style="text-align:left;">多 domain</td><td style="text-align:left;">Physics adherence, instruction following</td><td style="text-align:left;">—</td><td style="text-align:left;">NeurIPS 2025，首个系统化 WM 评测</td></tr><tr><td style="text-align:left;">Blocksworld</td><td style="text-align:left;">推理</td><td style="text-align:left;">逻辑规划</td><td style="text-align:left;">Success Rate</td><td style="text-align:left;">超 GPT-4+CoT (RAP)</td><td style="text-align:left;">经典 planning domain</td></tr></tbody></table></div>
-<h2 id="key-takeaways">Key Takeaways<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-takeaways" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<hr/>
+<h2 id="problem--motivation">Problem &amp; Motivation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#problem--motivation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>核心问题</strong>：给定高维感知流与可选 action，学一个能”内化世界动态”的模型，使 agent 能在 imagination 中进行决策、评估或数据生成，而不必每次都真机交互。</p>
+<p><strong>为什么重要</strong>：</p>
 <ol>
-<li>
-<p><strong>World model 正在从分散研究汇聚为统一范式</strong>。从 model-based RL (DIAMOND) 到 video generation (Cosmos, Vista) 到 interactive simulation (Genie, GameNGen) 到 robotics (DreamZero, UWM) 到 LLM reasoning (RAP)，所有方向都在向”构建环境内部模拟器”这一共同目标收敛。<a href="../Papers/2411-WorldModelSurvey" class="internal" data-slug="Papers/2411-WorldModelSurvey">2411-WorldModelSurvey</a> 的 implicit representation vs. future prediction 分类体系提供了统一理解框架。</p>
-</li>
-<li>
-<p><strong>Diffusion model 成为 world modeling 的主导技术</strong>。无论是 game simulation (GameNGen)、RL training (DIAMOND)、autonomous driving (Vista, OccSora) 还是 robotics (DreamZero, UWM)，diffusion 都是核心 generation backbone。DIAMOND 证明 diffusion 比 discrete tokenization 更适合保留 RL 关键信息，这一 insight 具有广泛适用性。</p>
-</li>
-<li>
-<p><strong>Self-supervised 路线是值得关注的替代范式</strong>。V-JEPA 2 证明纯 self-supervised pretraining（无语言监督）可以同时赋能理解、预测和规划，仅 62 小时无标签机器人视频即可实现 zero-shot manipulation。在 representation space 而非 pixel space 做 planning 带来 15× 速度提升，对 real-time robot control 有重要实践意义。<strong>建议加入 DomainMaps</strong>：world-model 作为新 domain。</p>
-</li>
-<li>
-<p><strong>Unsupervised action discovery 打开了数据飞轮</strong>。Genie 的 latent action model 证明可以从无 action label 的视频中发现可控的 action space，UWM/DreamGen/Motus 进一步验证了利用 action-free video data 的多种路径。这是 world model 相比纯 VLA 的核心数据优势。</p>
-</li>
-<li>
-<p><strong>计算成本是全领域共性瓶颈</strong>。从 DreamZero 的 2×GB200 到 Cosmos 的 10K H100，从 DIAMOND 的 1 GPU-year 到 V-JEPA 2 的 22M 视频训练，world model 的计算需求远超常规 supervised learning。Model distillation、efficient architecture、latent-space planning 是缓解这一瓶颈的三个主要方向。</p>
-</li>
+<li><strong>数据/安全/成本</strong>：真实 embodied 数据采集成本极高（<a href="../Papers/2501-Cosmos" class="internal alias" data-slug="Papers/2501-Cosmos">Cosmos</a> 提到 exploratory action 会损坏硬件）；<a href="../Papers/2501-RoboticWorldModel" class="internal alias" data-slug="Papers/2501-RoboticWorldModel">RWM</a> 显示 6M state transition pretraining + imagination-PPO 可换 250M transitions 的 model-free 水平。</li>
+<li><strong>Generalization 瓶颈</strong>：<a href="../Papers/2602-DreamZero" class="internal alias" data-slug="Papers/2602-DreamZero">DreamZero</a> 的核心诊断——VLA 从 VLM 继承了 <em>semantic</em> prior 但缺 <em>spatiotemporal/dynamics</em> prior；“untie shoelaces” 这类 motion-level novel task，VLA 在 baseline 零成功，DreamZero 的 video-prior-first 路线直接拉到 39.5%。</li>
+<li><strong>Sim-to-real 与合成数据</strong>：<a href="../Papers/2505-DreamGen" class="internal alias" data-slug="Papers/2505-DreamGen">DreamGen</a> 从单一 pick-and-place teleop 数据 + neural trajectory 解锁 22 个新动词 / 10 个新环境，把 “video model as data engine” 明确成可 scale 的新 sub-paradigm。</li>
+<li><strong>VLA RL 的仿真器缺口</strong>：真实环境做 RL prohibitive，手工 digital twin 缺 photorealism，3D 重建泛化差；video WM 是当前最有希望的”通用可交互仿真器”，但 <a href="../Papers/2602-WorldVLALoop" class="internal alias" data-slug="Papers/2602-WorldVLALoop">World-VLA-Loop</a> 把它的硬伤（action-following 差、对错 action 仍 hallucinate 成功）摆到桌面上。</li>
 </ol>
+<p><strong>为什么适合现在做</strong>：</p>
+<ul>
+<li><strong>技术栈成熟</strong>：大规模 video diffusion（Sora/Wan/Cosmos 级）+ 高保真 latent tokenizer（Cosmos causal wavelet、SDXL VAE）+ flow matching/rectified flow 已经同时可用，工程门槛从 2023 年”学术 toy”级降到”NVIDIA stack 可复用”级。</li>
+<li><strong>VLA 主流范式已成熟</strong>：π0/GR00T/OpenVLA/π0.5 等 VLA baseline 建立了明确的对比基准，“WM 对 VLA 有没有用”从叙事变成可量化问题（如 <a href="../Papers/2602-DreamZero" class="internal alias" data-slug="Papers/2602-DreamZero">DreamZero</a> 的 62.2% vs 27.4%、<a href="../Papers/2512-Motus" class="internal alias" data-slug="Papers/2512-Motus">Motus</a> 的 +43% over π0.5）。</li>
+<li><strong>开源生态就位</strong>：<a href="../Papers/2501-Cosmos" class="internal alias" data-slug="Papers/2501-Cosmos">Cosmos</a> 放 7 tokenizer + 8 WFM checkpoint、<a href="../Papers/2506-VJEPA2" class="internal alias" data-slug="Papers/2506-VJEPA2">V-JEPA 2</a> 放完整 ckpt、<a href="../Papers/2505-DreamGen" class="internal alias" data-slug="Papers/2505-DreamGen">DreamGen</a> 放 GR00T-Dreams、<a href="../Papers/2604-HYWorld2" class="internal alias" data-slug="Papers/2604-HYWorld2">HY-World 2.0</a> 全套开源——“stable-diffusion moment for video WM”已经开始。</li>
+<li><strong>对齐 AGI 议程</strong>：LeCun 对 JEPA 路线的长期倡导（latent prediction as world model）、Ha &amp; Schmidhuber 思路的 Sora-era 再激活，把 WM 作为”通向 AGI 的基础设施”这个叙事重新带回学术主流。</li>
+</ul>
+<hr/>
+<h2 id="技术路线对比">技术路线对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#技术路线对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>下列五条路线按”技术架构 + 使用目标”切分；每条路线的代表工作、核心 insight、优缺点与 open gap 如下。</p>
+<h3 id="1-pixel-space-video-diffusion-wmfuture-prediction-主脉">1. Pixel-space Video Diffusion WM（future prediction 主脉）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-pixel-space-video-diffusion-wmfuture-prediction-主脉" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>核心思路</strong>：直接在 RGB（或其 VAE latent）空间用 diffusion/flow matching 建 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">o</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mbin mtight">+</span><span class="mord mtight">1</span><span class="mrel mtight">:</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">o</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2952em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mrel mtight">≤</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2452em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">c</span><span class="mclose">)</span></span></span></span>，<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span></span></span></span> 可以是 text / action / trajectory / camera / goal。backbone 迅速从 U-Net 迁向 DiT/MMDiT。</p>
+<p><strong>代表工作与证据</strong>：</p>
+<ul>
+<li><a href="../Papers/2408-GameNGen" class="internal alias" data-slug="Papers/2408-GameNGen">GameNGen</a>（ICLR 2025）：fine-tune SD 1.4，20 FPS 实时模拟 DOOM，<strong>noise augmentation 解决 auto-regressive drift</strong> 成为此后 AR video WM 的标配 trick；4 步 DDIM ≈ 64 步的工程证据启发 robot WM 不必堆 sampling steps。</li>
+<li><a href="../Papers/2405-DIAMOND" class="internal alias" data-slug="Papers/2405-DIAMOND">DIAMOND</a>（NeurIPS 2024 Spotlight）：EDM-flavored 像素空间 diffusion WM 在 Atari 100k 拿 mean HNS 1.46（agents-trained-in-WM 新 SOTA），<strong>EDM vs DDPM 的 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">skip</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> 稳定性分析</strong>对所有长时序自回归生成（video gen / VLA imagined rollout）都 transferable；并 scale 到 CS:GO Dust II 的 10 Hz neural game engine。</li>
+<li><a href="../Papers/2501-Cosmos" class="internal alias" data-slug="Papers/2501-Cosmos">Cosmos</a>（NVIDIA, 2025-01）：<strong>20M hour 视频 → 100M clips 的 industrial data curation + causal wavelet tokenizer（DAVIS PSNR +4dB, 12× 加速）+ 7B/14B diffusion &amp; 4B/12B AR 双路线</strong>。在 3D consistency（SfM 成功率 43%→82%）和 camera-conditioned generation 上拿出硬数据；但<strong>物理对齐（Isaac Sim 8 rigid-body scenes）大小模型基本不变</strong>，首次给出 “scale 不能 alone 解决 physics” 的 negative evidence。</li>
+<li><a href="../Papers/2405-Vista" class="internal alias" data-slug="Papers/2405-Vista">Vista</a> / <a href="../Papers/2405-OccSora" class="internal alias" data-slug="Papers/2405-OccSora">OccSora</a>：自动驾驶 WM 的 video vs occupancy 两端。Vista（NeurIPS 2024）基于 SVD + <strong>latent replacement + dynamics enhancement loss + structure preservation loss</strong> 把 nuScenes FVD 从 GenAD 184 压到 89.4；OccSora 把 DiT 搬到 4D 占据生成，但 512× 压缩导致 bicycle=0、motorcycle=8.7 的 VRU 重建崩塌——driving WM 的”几何-语义精度权衡”还远未解。</li>
+<li><a href="../Papers/2406-IRASim" class="internal alias" data-slug="Papers/2406-IRASim">IRASim</a>（ICCV 2025）：<strong>Frame-level AdaLN conditioning</strong>——把 text-to-video 的 video-level embedding 改为 per-frame action embedding modulate spatial block——成为 trajectory-to-video 方向的 reference 设计。与 LIBERO Mujoco 在 policy evaluation 上 Pearson 0.99；但 A100 30 s/16 帧的推理开销决定它短期内无法替代 Mujoco。</li>
+</ul>
+<p><strong>实际效果与优点</strong>：视觉保真度天花板高（GameNGen 人类辨真伪仅 58–60%）；天然吸收 internet video prior；和成熟 video diffusion 工程栈复用。</p>
+<p><strong>缺点与未解 gap</strong>：</p>
+<ul>
+<li><strong>Action-following 不可靠</strong>：<a href="../Papers/2602-WorldVLALoop" class="internal alias" data-slug="Papers/2602-WorldVLALoop">World-VLA-Loop</a> 展示 <a href="../Papers/2501-Cosmos" class="internal alias" data-slug="Papers/2501-Cosmos">Cosmos-Predict 2</a> 在错 action 下仍 hallucinate 成功——policy 在此类 WM 上做 RL 会 reward-hack。</li>
+<li><strong>长时序 drift</strong>：<a href="../Papers/2408-GameNGen" class="internal alias" data-slug="Papers/2408-GameNGen">GameNGen</a> 的 3 秒 context + frame-stacking、<a href="../Papers/2405-DIAMOND" class="internal alias" data-slug="Papers/2405-DIAMOND">DIAMOND</a> 的 memory bottleneck、<a href="../Papers/2602-WorldVLALoop" class="internal alias" data-slug="Papers/2602-WorldVLALoop">World-VLA-Loop</a> 主动放弃 LIBERO-Long——>200 帧后视觉/几何普遍漂移。</li>
+<li><strong>物理对齐不随 scale 解决</strong>（Cosmos Tab. 20）：需 data curation 或 hybrid physics inductive bias，尚无公认方案。</li>
+<li><strong>推理成本高</strong>：典型 14B DiT naive 5.7 s/chunk（DreamZero 的 baseline），即使 38× 工程栈加速后仍需 2×GB200 才能 7 Hz 闭环。</li>
+</ul>
+<h3 id="2-latent-space--jepa-style-wmimplicit-representation">2. Latent-space / JEPA-style WM（implicit representation）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-latent-space--jepa-style-wmimplicit-representation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>核心思路</strong>：不重建像素，只在 representation 空间做 mask-denoising / next-state prediction，让 predictor 学 “latent dynamics”，下游用 CEM / MPC 做 planning。</p>
+<p><strong>代表工作</strong>：</p>
+<ul>
+<li><a href="../Papers/2506-VJEPA2" class="internal alias" data-slug="Papers/2506-VJEPA2">V-JEPA 2</a>（FAIR, 2025-06）：1M+ 小时视频 mask-denoising 预训练 1B 参数 encoder → 冻结 + 62 小时 unlabeled Droid 视频训 300M 参数 action-conditioned predictor → CEM 在 latent 上 receding-horizon planning。在 Franka pick-and-place 上 zero-shot 65–80% vs Octo 0–15%；<strong>关键对比：V-JEPA 2-AC 16 s/action vs Cosmos 4 min/action 且 success rate 反超</strong>。</li>
+<li><a href="../Papers/2501-RoboticWorldModel" class="internal alias" data-slug="Papers/2501-RoboticWorldModel">RWM</a>（ETH, NeurIPS 2025 Workshop Outstanding Paper）：GRU + 多步 autoregressive 训练 + privileged head（contact 等）学 legged robot dynamics；<strong>architecture 不是关键，autoregressive training 才是</strong>——ablation 显示 RSSM 用同样训练 scheme ≈ RWM，Transformer 因多步梯度显存爆炸不 work。在 ANYmal D / Unitree G1 上 zero-shot 硬件部署，reward 打平 250M-step model-free PPO 但只用 6M transitions。</li>
+</ul>
+<p><strong>优点</strong>：</p>
+<ul>
+<li><strong>计算高效</strong>：latent 无需像素重建，V-JEPA 2 对 Cosmos 的 15× 推理优势是 actionable 工程信号。</li>
+<li><strong>数据效率极高</strong>：V-JEPA 2-AC 62 小时无标签视频即可 cross-lab 部署；RWM 6M transitions 就撑起 PPO。</li>
+<li><strong>与 MPC/CEM 天然兼容</strong>：latent energy minimization 就是老的 sampling-based 控制范式。</li>
+</ul>
+<p><strong>缺点</strong>：</p>
+<ul>
+<li><strong>像素生成能力弱</strong>：latent WM 不能直接做”数据 engine”或”可视化调试”，在 data flywheel 场景不如 pixel WM。</li>
+<li><strong>Goal specification 受限</strong>：V-JEPA 2-AC 靠 goal image；换成 language goal 仍是 open problem。</li>
+<li><strong>Cross-embodiment 验证薄</strong>：V-JEPA 2 只在 Franka 同平台跨 lab 验证，“cross-embodiment” 措辞偏乐观；Camera position 仍需 manual tune。</li>
+<li><strong>Latent 不可解释</strong>：在 RL 里 exploit latent 的 drift 难以诊断。</li>
+</ul>
+<h3 id="3-3d--4d-generative-wm空间侧">3. 3D / 4D Generative WM（空间侧）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-3d--4d-generative-wm空间侧" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>核心思路</strong>：把 WM 绑到显式 3D 表示（occupancy grid、3DGS、point cloud）上，用 diffusion 在 4D 体素/pointcloud latent 空间做未来生成或 navigable scene 合成。</p>
+<p><strong>代表工作</strong>：</p>
+<ul>
+<li><a href="../Papers/2405-OccSora" class="internal alias" data-slug="Papers/2405-OccSora">OccSora</a>：nuScenes 上 DiT + 4D VQVAE 生成 16 s 驾驶 occupancy video，trajectory-conditioned；是 occupancy WM 从 autoregressive（OccWorld）迁向 diffusion 的代表，但小物体（VRU）重建崩塌与 trajectory 控制有效性存疑（去 trajectory FID 仅 8→17.5 vs 去 timestep 是 10×恶化）。</li>
+<li><a href="../Papers/2604-HYWorld2" class="internal alias" data-slug="Papers/2604-HYWorld2">HY-World 2.0</a>（Tencent Hunyuan, 2026-04）：四阶段 pipeline <strong>panorama → WorldNav trajectory → WorldStereo 2.0 keyframe-latent VDM → WorldMirror 2.0 feed-forward reconstruction → 3DGS</strong>，端到端 712 s 生成一张可交互 navigable 3D 场景；WorldMirror 2.0 在 7-Scenes / NRGBD / DTU 全面超 VGGT / π³。<strong>核心 insight 是 keyframe-latent VDM</strong>（放弃时空压缩的 Video-VAE，改 spatial-only + 稀疏 keyframe）。但严格地说，它是 navigable 3D scene generator 而非 world model（无 dynamics、无 action-conditioning）。</li>
+<li><a href="../Papers/2604-GenWorldRenderer" class="internal alias" data-slug="Papers/2604-GenWorldRenderer">Generative World Renderer</a>（Alaya Studio, 2026-04）：ReShade + RenderDoc 从 AAA 游戏（Cyberpunk 2077、Black Myth: Wukong）“非侵入式”截取 4M 帧 G-buffer，fine-tune Cosmos-DiffusionRenderer，metallic RMSE –55%。把 “AAA 游戏 = photorealistic supervision 工厂” 变可行。</li>
+</ul>
+<p><strong>优点</strong>：显式 3D 可验证几何；直接对接 CG 渲染 / 物理引擎；cross-scene reuse 便利。</p>
+<p><strong>缺点</strong>：</p>
+<ul>
+<li><strong>Temporal dynamics / action 缺失</strong>（HY-World 2.0、GenWorldRenderer）：场景冻结后只能 camera control，无事件级 intervention，本质不是”world model”而是”scene generator”。</li>
+<li><strong>数据稀缺</strong>：占据序列、G-buffer 都依赖模拟器/游戏侧抽取，实拍数据几乎不可得。</li>
+<li><strong>精度-压缩权衡</strong>：OccSora 的 VRU 崩塌是典型代价。</li>
+</ul>
+<h3 id="4-unified-video-action--vlawm-joint-models">4. Unified Video-Action / VLA+WM Joint Models<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-unified-video-action--vlawm-joint-models" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>核心思路</strong>：把 VLA（policy）、forward dynamics（WM）、inverse dynamics、video generation 统一进一个模型的若干”推理 mode”，通过 timestep / mask 切换。</p>
+<p><strong>代表工作</strong>：</p>
+<ul>
+<li><a href="../Papers/2504-UWM" class="internal alias" data-slug="Papers/2504-UWM">UWM</a>（RSS 2025, UW &amp; TRI）：<strong>“diffusion timestep ≡ soft mask”</strong>——给 action 和 future obs 独立采样 timestep，推理时固定 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8095em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.328em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight">o</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6828em;"><span style="top:-2.786em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mclose">}</span></span></span></span> 切换 policy / forward dynamics / inverse dynamics / video prediction 四个条件分布。在 DROID 2K 预训练 + 5 个 Franka 任务 fine-tune 全面超 DP/PAD/GR1，<strong>GR1 共训 3/5 降点而 UWM 5/5 都涨</strong>——是”video 作为预训练信号”的最干净架构方案。规模偏小（180M params, 2K trajectories）、forward dynamics 质量仍有 artifact。</li>
+<li><a href="../Papers/2512-Motus" class="internal alias" data-slug="Papers/2512-Motus">Motus</a>（Tsinghua, 2025-12）：<strong>Mixture-of-Transformers + Tri-modal Joint Attention + UniDiffuser-style scheduler</strong>，把 5-mode（VLA/WM/IDM/VGM/Joint）真正跑通。Optical-flow latent action via DC-AE 对齐 14-dim 典型机器人 action 空间。RoboTwin 2.0 randomized +43% over π0.5 / +14% over X-VLA；real-world AC-One coffee/grinder/towel 任务从 0/8% → 62/92%。但评测全是 Aloha 类平台，“cross-embodiment”卖点未 directly 验证。</li>
+<li><a href="../Papers/2602-DreamZero" class="internal alias" data-slug="Papers/2602-DreamZero">DreamZero</a>（NVIDIA GEAR, 2026-02）：14B <strong>World Action Model</strong> 从 Wan2.1-I2V-14B 初始化，joint 预测 video + action；<strong>38× 工程加速 + DreamZero-Flash（decoupled video/action noise schedule）</strong> 做到 7 Hz 闭环。AgiBot G1 unseen-env+unseen-object 上 62.2% vs best pretrained VLA 27.4%（>2×）；<strong>20 分钟人类 egocentric video 或 robot video 即可 cross-embodiment transfer +16pp</strong>，为”用人类视频喂机器人 foundation model”给出早期证据；同 5B VLA 在 diverse data 上 0%，14B VLA 仍 0%，而 WAM 5B→14B 从 21%→50%，<strong>显示了 VLA 未显现的 model scaling 信号</strong>。</li>
+<li><a href="../Papers/2512-GenieReasoner" class="internal alias" data-slug="Papers/2512-GenieReasoner">GenieReasoner</a>（AgiBot, 2025-12）：<strong>FACT (Flow-matching Action Tokenizer)</strong>——VQ-encoder 把动作压成离散 code，flow-matching decoder 重建高保真连续轨迹，解决 “discrete 精度差 / continuous 梯度冲突” 的 reasoning-precision trade-off。ERIQ 82.72% 超同量级 baseline。与 VLA+WM 的交叉点在于”统一 reasoning + action in one autoregressive AR 框架”。</li>
+</ul>
+<p><strong>优点</strong>：参数共享 / 部署简化；<strong>video prior 显式注入 action learning</strong> 的最自然方式；unified model 在未来潜在 world model rollout 时不需要跨模型对接。</p>
+<p><strong>缺点</strong>：</p>
+<ul>
+<li><strong>算力门槛极高</strong>：Motus 18 000 GPU-hours + Stage 3 400 GPU-hours、DreamZero 需 2×GB200 才 7 Hz——对学术界基本不可复现。</li>
+<li><strong>边际收益不一定大</strong>：Motus 的 Joint mode 比 VLA mode 只 +3pp，多数增益来自预训+架构本身而非”五种 mode 协同推理”——<strong>“unify 是否必要”的证据仍弱</strong>。</li>
+<li><strong>高精度任务不 hold</strong>：DreamZero 承认 sub-cm 精度任务 video token 信息密度不够。</li>
+</ul>
+<h3 id="5-wm-as-rl-simulator--wm-conditioned-vla-loop-路线">5. WM-as-RL-Simulator / WM-Conditioned VLA (Loop 路线)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#5-wm-as-rl-simulator--wm-conditioned-vla-loop-路线" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>核心思路</strong>：用 video WM 替代物理仿真器跑 GRPO / PPO，或把 WM 预测的 future latent + value 作为 VLA policy 的 inference-time condition；policy 与 WM 迭代 co-evolve。</p>
+<p><strong>代表工作</strong>：</p>
+<ul>
+<li><a href="../Papers/2602-WorldVLALoop" class="internal alias" data-slug="Papers/2602-WorldVLALoop">World-VLA-Loop</a>（Show Lab NUS, 2026-02）：<strong>SANS dataset（success + near-success trajectories） + DiT reward head + co-evolving loop</strong>。核心诊断：video WM 的 action-following 偏差让它对错 action 也生成成功 → policy reward-hack。SANS 强迫模型学 fine-grained 失败模式；reward head 与视频生成联合监督起到<strong>双向 regularizer</strong>（去掉 reward head，visual alignment 也掉 30%）。LIBERO 三 suite +12.7% SR；real-world 13.3% → 36.7% → 50.0% 两轮迭代。主动放弃 LIBERO-Long（AR drift）。</li>
+<li><a href="../Papers/2602-GigaBrain05M" class="internal alias" data-slug="Papers/2602-GigaBrain05M">GigaBrain-0.5M*</a>（GigaAI, 2026-02）：<strong>RAMP</strong> 把 <a href="../Papers/2511-PiStar06" class="internal alias" data-slug="Papers/2511-PiStar06">π*₀.₆</a> 的 RECAP 从 advantage-only 条件化推广为 (future latent, advantage) 联合条件化；概率上证明 RECAP 是 RAMP 在 z 上 marginalize 的特例。4-stage iterative HIL rollout pipeline 在 Box Packing / Espresso Preparation 长程任务 +30%；WM 联合预测 future state + value 比 only-value 精度更好（MAE 0.062 vs 0.084）；<strong>stochastic attention masking (p=0.2)</strong> 让 WM 条件在推理时可选，直接产出 fast / standard 双模式部署。</li>
+<li><a href="../Papers/2501-RoboticWorldModel" class="internal alias" data-slug="Papers/2501-RoboticWorldModel">RWM + MBPO-PPO</a>：legged 场景证明 “long-horizon PPO + learned model” 可行；是 manipulation 领域尚未复现的 hardware-grounded 基线。</li>
+</ul>
+<p><strong>优点</strong>：把 WM 从”能生成什么视频”转向”能否闭环训 policy”的 actionable metric；<strong>co-evolving loop 给出 reward hacking 的实证 narrative</strong>（World-VLA-Loop），证明单次训练的 WM 必然有 policy 利用的盲区。</p>
+<p><strong>缺点</strong>：</p>
+<ul>
+<li><strong>仿真器质量瓶颈</strong>：WM 必须真正建模 action-outcome causality 才能撑 RL，而当前 video WM 仍主要靠视觉 prior，action-following 普遍弱。</li>
+<li><strong>Long-horizon 死穴</strong>：AR video drift 决定 >200 帧任务（真实长 horizon 操作）暂无解。</li>
+<li><strong>评估样本量小</strong>：WorldVLALoop 30 rollouts、GigaBrain 真机只比 π0.5 中间版——<strong>30% 提升的置信区间很宽</strong>。</li>
+</ul>
+<p><strong>路线间对比小结</strong>：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>路线</th><th>代表</th><th>主要 use case</th><th>推理代价</th><th>主要 open gap</th></tr></thead><tbody><tr><td>Pixel video diffusion</td><td><a href="../Papers/2501-Cosmos" class="internal alias" data-slug="Papers/2501-Cosmos">Cosmos</a> / <a href="../Papers/2505-DreamGen" class="internal alias" data-slug="Papers/2505-DreamGen">DreamGen</a> / <a href="../Papers/2406-IRASim" class="internal alias" data-slug="Papers/2406-IRASim">IRASim</a></td><td>Data engine / Evaluator</td><td>14B × 多步 → 秒级</td><td>Action-following / physics / AR drift</td></tr><tr><td>Latent JEPA</td><td><a href="../Papers/2506-VJEPA2" class="internal alias" data-slug="Papers/2506-VJEPA2">V-JEPA 2</a> / <a href="../Papers/2501-RoboticWorldModel" class="internal alias" data-slug="Papers/2501-RoboticWorldModel">RWM</a></td><td>Agent brain / MPC</td><td>16s → ms 级</td><td>Goal spec / cross-embodiment / 不生成像素</td></tr><tr><td>3D/4D generative</td><td><a href="../Papers/2604-HYWorld2" class="internal alias" data-slug="Papers/2604-HYWorld2">HY-World 2.0</a> / <a href="../Papers/2405-OccSora" class="internal alias" data-slug="Papers/2405-OccSora">OccSora</a></td><td>Scene generation / driving sim</td><td>分钟级/场景</td><td>无 dynamics / 小物体精度</td></tr><tr><td>Unified VLA+WM</td><td><a href="../Papers/2504-UWM" class="internal alias" data-slug="Papers/2504-UWM">UWM</a> / <a href="../Papers/2512-Motus" class="internal alias" data-slug="Papers/2512-Motus">Motus</a> / <a href="../Papers/2602-DreamZero" class="internal alias" data-slug="Papers/2602-DreamZero">DreamZero</a></td><td>VLA policy backbone</td><td>百 ms 级（工程后）</td><td>算力门槛 / unify 必要性</td></tr><tr><td>WM-as-RL-simulator</td><td><a href="../Papers/2602-WorldVLALoop" class="internal alias" data-slug="Papers/2602-WorldVLALoop">World-VLA-Loop</a> / <a href="../Papers/2602-GigaBrain05M" class="internal alias" data-slug="Papers/2602-GigaBrain05M">GigaBrain-0.5M*</a></td><td>VLA RL post-train</td><td>30 h / 任务级</td><td>Action-following / 样本量</td></tr></tbody></table></div>
+<hr/>
+<h2 id="datasets--benchmarks">Datasets &amp; Benchmarks<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#datasets--benchmarks" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Training Datasets（按规模/用途排序）：</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Dataset</th><th>Scale</th><th>内容</th><th>主要使用方</th></tr></thead><tbody><tr><td>Internal 20 M hours → 100 M clips</td><td>20 M hour</td><td>Physical AI-balanced video curation (driving 11% / manipulation 16% / human 10% / first-person 8% / nature 20% / dynamic camera 8% / synthetic 4%)</td><td><a href="../Papers/2501-Cosmos" class="internal alias" data-slug="Papers/2501-Cosmos">Cosmos</a> WFM pretraining</td></tr><tr><td>VideoMix22M</td><td>22 M videos</td><td>SSv2 / Kinetics / HowTo100M / YT-Temporal-1B / ImageNet</td><td><a href="../Papers/2506-VJEPA2" class="internal alias" data-slug="Papers/2506-VJEPA2">V-JEPA 2</a></td></tr><tr><td>OpenDV-YouTube</td><td>最大公开驾驶视频集</td><td>驾驶第一视角</td><td><a href="../Papers/2405-Vista" class="internal alias" data-slug="Papers/2405-Vista">Vista</a> / GenAD</td></tr><tr><td>Internet 200K+ hours</td><td>200K hours</td><td>2D platformer</td><td><a href="../Papers/2402-Genie" class="internal alias" data-slug="Papers/2402-Genie">Genie</a></td></tr><tr><td>DROID</td><td>76K trajectories</td><td>Franka manipulation (Teleop + GT video)</td><td><a href="../Papers/2504-UWM" class="internal alias" data-slug="Papers/2504-UWM">UWM</a> / <a href="../Papers/2506-VJEPA2" class="internal alias" data-slug="Papers/2506-VJEPA2">V-JEPA 2</a> / <a href="../Papers/2602-DreamZero" class="internal alias" data-slug="Papers/2602-DreamZero">DreamZero</a></td></tr><tr><td>AgiBot World</td><td>728K episodes</td><td>Genie-1 humanoid teleop</td><td><a href="../Papers/2512-Motus" class="internal alias" data-slug="Papers/2512-Motus">Motus</a> / <a href="../Papers/2512-GenieReasoner" class="internal alias" data-slug="Papers/2512-GenieReasoner">GenieReasoner</a> / <a href="../Papers/2602-DreamZero" class="internal alias" data-slug="Papers/2602-DreamZero">DreamZero</a></td></tr><tr><td>Open X-Embodiment / Bridge / RT-1</td><td>100K–1M trajectories</td><td>Cross-embodiment robot manipulation</td><td>广泛使用</td></tr><tr><td>Cosmos-1X</td><td>200 h egocentric humanoid</td><td>具身人形第一视角</td><td><a href="../Papers/2501-Cosmos" class="internal alias" data-slug="Papers/2501-Cosmos">Cosmos</a> instruction post-train</td></tr><tr><td>nuScenes + Occ3D</td><td>1000 scenes / 6 cam</td><td>驾驶 RGB + 4D occupancy</td><td><a href="../Papers/2405-Vista" class="internal alias" data-slug="Papers/2405-Vista">Vista</a> / <a href="../Papers/2405-OccSora" class="internal alias" data-slug="Papers/2405-OccSora">OccSora</a></td></tr><tr><td>Dust II 5.5 M frames</td><td>87 h</td><td>CS:GO human gameplay</td><td><a href="../Papers/2405-DIAMOND" class="internal alias" data-slug="Papers/2405-DIAMOND">DIAMOND</a> neural game engine</td></tr><tr><td>SANS</td><td>~100 K trajectories</td><td>success + near-success + failure robot rollouts</td><td><a href="../Papers/2602-WorldVLALoop" class="internal alias" data-slug="Papers/2602-WorldVLALoop">World-VLA-Loop</a></td></tr><tr><td>AAA-Game G-buffer 4 M frames</td><td>40 h</td><td>Cyberpunk 2077 + Black Myth 的 RGB + depth + normal + albedo + metallic + roughness</td><td><a href="../Papers/2604-GenWorldRenderer" class="internal alias" data-slug="Papers/2604-GenWorldRenderer">Generative World Renderer</a></td></tr></tbody></table></div>
+<p><strong>Benchmarks（按 WM 能力维度归类）：</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>能力</th><th>Benchmark</th><th>代表方法 &amp; 关键分数</th></tr></thead><tbody><tr><td><strong>Video simulation quality</strong></td><td>WorldSimBench</td><td>human preference ↔ action-level consistency 挂钩；<a href="../Papers/2411-WorldModelSurvey" class="internal alias" data-slug="Papers/2411-WorldModelSurvey">survey Sec 6.3</a> cheatsheet</td></tr><tr><td></td><td>WorldScore</td><td>3000 camera-spec 场景；controllability/quality/dynamics</td></tr><tr><td></td><td>VBench / VBench-2.0</td><td>通用 T2V；VBench-2.0 强调 intrinsic faithfulness (physics, commonsense)</td></tr><tr><td></td><td>T2V-CompBench</td><td>compositional T2V，attribute/action/relation binding</td></tr><tr><td><strong>Physical / spatial reasoning</strong></td><td>PhysBench</td><td>10 k video-image-text triplet，VLM 物理 gap</td></tr><tr><td></td><td>Physics-IQ</td><td>5 个物理域，law adherence vs realism</td></tr><tr><td></td><td>T2VPhysBench</td><td>12 条 first-principle laws</td></tr><tr><td></td><td>VideoPhy</td><td>action-centric prompts，semantic + commonsense</td></tr><tr><td></td><td>Cosmos rigid-body (Isaac Sim)</td><td>Avg IoU 0.59 @ 9-frame cond；scale-不敏感</td></tr><tr><td></td><td>Cosmos-Reason Intuitive Physics</td><td>Arrow of Time / Spatial Puzzle / Object Permanence；SOTA VLM ≈ 随机，<a href="../Papers/2503-CosmosReason1" class="internal alias" data-slug="Papers/2503-CosmosReason1">Cosmos-Reason1</a> SFT+RL 到 81.5%</td></tr><tr><td><strong>Robot policy via WM</strong></td><td>DreamGen Bench (RoboCasa / GR1)</td><td>Instruction Following + Physics Alignment，与 policy success rate 正相关；fine-tuned Cosmos/WAN2.1 进入 60–95 区间</td></tr><tr><td></td><td>LIBERO (Obj / Goal / Spatial / Long)</td><td><a href="../Papers/2504-UWM" class="internal alias" data-slug="Papers/2504-UWM">UWM</a> / <a href="../Papers/2602-WorldVLALoop" class="internal alias" data-slug="Papers/2602-WorldVLALoop">World-VLA-Loop</a> / <a href="../Papers/2512-Motus" class="internal alias" data-slug="Papers/2512-Motus">Motus</a>（97.6 持平 X-VLA）；Long suite 多数 AR WM 放弃</td></tr><tr><td></td><td>RoboTwin 2.0 randomized</td><td><a href="../Papers/2512-Motus" class="internal alias" data-slug="Papers/2512-Motus">Motus</a> 87.02% +14% over X-VLA / +43% over π0.5</td></tr><tr><td></td><td>RoboChallenge (30 任务, 4 平台)</td><td><a href="../Papers/2602-GigaBrain05M" class="internal alias" data-slug="Papers/2602-GigaBrain05M">GigaBrain-0.5</a> 51.67% > π0.5 42.67%</td></tr><tr><td></td><td>ERIQ (embodied reasoning IQ)</td><td>6052 QA; <a href="../Papers/2512-GenieReasoner" class="internal alias" data-slug="Papers/2512-GenieReasoner">GenieReasoner</a>-3B 82.72%</td></tr><tr><td><strong>Planning via latent WM</strong></td><td>Franka grasp / reach / P&amp;P (V-JEPA 2-AC)</td><td>65–80% zero-shot vs Cosmos 0–20%</td></tr><tr><td></td><td>ANYmal D / Unitree G1 velocity tracking</td><td><a href="../Papers/2501-RoboticWorldModel" class="internal alias" data-slug="Papers/2501-RoboticWorldModel">RWM</a>+MBPO-PPO 0.90 vs 250M-step PPO 0.90</td></tr><tr><td></td><td>Push-T (IRASim ranking planner)</td><td>IoU 0.637 → 0.961 at <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord"><span class="mrel">=</span></span><span class="mord">1000</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mord"><span class="mrel">=</span></span><span class="mord">50</span></span></span></span></td></tr><tr><td><strong>3D reconstruction / scene gen</strong></td><td>7-Scenes / NRGBD / DTU / ScanNet</td><td><a href="../Papers/2604-HYWorld2" class="internal alias" data-slug="Papers/2604-HYWorld2">WorldMirror 2.0</a> 全面超 VGGT / π³</td></tr><tr><td></td><td>Tanks-and-Temples / MipNeRF360</td><td><a href="../Papers/2604-HYWorld2" class="internal alias" data-slug="Papers/2604-HYWorld2">WorldStereo 2.0-DMD</a> F1 43.16 / AUC 60.09，显著超 SEVA / Gen3C / Lyra / FlashWorld</td></tr><tr><td></td><td>RealEstate10K 3D consistency</td><td><a href="../Papers/2501-Cosmos" class="internal alias" data-slug="Papers/2501-Cosmos">Cosmos</a> Sampson 0.355 接近 real video 0.431；camera-cond SfM 43%→82%</td></tr><tr><td><strong>Driving WM</strong></td><td>nuScenes val FID/FVD</td><td><a href="../Papers/2405-Vista" class="internal alias" data-slug="Papers/2405-Vista">Vista</a> 6.9/89.4，GenAD 15.4/184</td></tr><tr><td></td><td>nuScenes-Occ3D</td><td><a href="../Papers/2405-OccSora" class="internal alias" data-slug="Papers/2405-OccSora">OccSora</a> FID 8.35 / mIoU 27.4 (512× 压缩) vs OccWorld mIoU 65.7 (16× 压缩)</td></tr><tr><td><strong>Inverse rendering</strong></td><td>Black Myth held-out / Sintel</td><td><a href="../Papers/2604-GenWorldRenderer" class="internal alias" data-slug="Papers/2604-GenWorldRenderer">GenWorldRenderer</a> metallic RMSE 0.104 vs DR 0.230 (–55%)</td></tr><tr><td></td><td>VLM judge (metallic/roughness)</td><td>Gemini 3 Pro ↔ 25 CG experts 60–85% agreement</td></tr></tbody></table></div>
+<p><strong>Benchmark 使用的 caveat</strong>：</p>
+<ol>
+<li><strong>FID/FVD 偏视觉保真度</strong>，对 latent WM (如 V-JEPA 2) 几乎无法公平比较——<a href="../Papers/2411-WorldModelSurvey" class="internal alias" data-slug="Papers/2411-WorldModelSurvey">WMSurvey</a> 承认这是现在最没 settle 的问题。</li>
+<li><strong>DreamGen Bench</strong> 把 video-model quality 连到 downstream robot policy success，是 2025 以来最有 actionable value 的新 proxy，但评分用 VideoCon-Physics + Qwen-VL-2.5，评分器可靠性本身循环依赖。</li>
+<li><strong>LIBERO-Long 被主流 video-AR WM 主动放弃</strong>（<a href="../Papers/2602-WorldVLALoop" class="internal alias" data-slug="Papers/2602-WorldVLALoop">World-VLA-Loop</a> 明示），这是 long-horizon 评测目前的硬伤。</li>
+<li><strong>Pearson 0.99 的 policy-evaluation correlation</strong>（<a href="../Papers/2406-IRASim" class="internal alias" data-slug="Papers/2406-IRASim">IRASim</a> vs LIBERO Mujoco）只有 4 个数据点，不能外推。</li>
+</ol>
+<hr/>
 <h2 id="open-problems">Open Problems<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#open-problems" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
 <ol>
 <li>
-<p><strong>Long-horizon reasoning 缺失</strong>：当前 world model 本质上是 short-horizon reactive model——DreamZero 6.6s context，World-VLA-Loop ~20s，GameNGen 3s memory。如何引入 hierarchical planning、explicit memory 或 multi-scale temporal modeling 来支持分钟级 long-horizon 任务，是核心未解难题。</p>
+<p><strong>Action-following faithfulness</strong>：<a href="../Papers/2602-WorldVLALoop" class="internal alias" data-slug="Papers/2602-WorldVLALoop">World-VLA-Loop</a> 把 “video WM 对错 action 也生成成功” 这个此前被回避的痛点摆上桌面。当前最先进的 Cosmos-Predict 2 / Wan / Genie 系都依赖视觉 prior 而非显式物理动力学——policy 一定能找到 WM 盲区做 reward hacking。SANS 式的 near-success 数据 + reward head 是初步答案，但是否 scale 到 long-horizon / multi-agent / deformable 尚未验证。<strong>真正的开放子问题：什么样的训练信号可以稳定 identify 物理失败模式？</strong></p>
 </li>
 <li>
-<p><strong>物理一致性不足</strong>：即使 Sora 级别的 video model 也”难以一致性地复现正确物理定律”（<a href="../Papers/2411-WorldModelSurvey" class="internal" data-slug="Papers/2411-WorldModelSurvey">2411-WorldModelSurvey</a>）。OccSora 的 mIoU 仅 27.4%，移动物体细节不一致。如何在 world model 中注入 causal reasoning 和 physics prior，是从”看起来像”到”真正理解”的关键跨越。</p>
+<p><strong>Physics alignment 不随 scale 解决</strong>：<a href="../Papers/2501-Cosmos" class="internal alias" data-slug="Papers/2501-Cosmos">Cosmos</a> 的 7B vs 14B 在 rigid-body benchmark 上 IoU 基本不变（0.59 vs 0.60）；<a href="../Papers/2411-WorldModelSurvey" class="internal alias" data-slug="Papers/2411-WorldModelSurvey">WMSurvey Sec 6.1</a> 总结 Sora 在 gravity/fluid/thermal 上的普遍失败。候选方向：(a) Genesis / PhysGen / physics-informed diffusion 的 hybrid physics；(b) <a href="../Papers/2503-CosmosReason1" class="internal alias" data-slug="Papers/2503-CosmosReason1">Cosmos-Reason1</a> 式的 RL on intuitive physics MCQ——但第二条目前只涨 VLM-level reasoning，不直接 carry over 到 video generation。</p>
 </li>
 <li>
-<p><strong>统一评测框架缺失</strong>：现有 benchmark 分散在各 domain（Atari 100k for RL, nuScenes for driving, LIBERO for robotics），缺乏跨领域的统一 world model 评测标准。WorldModelBench (NeurIPS 2025) 是初步尝试，但远未形成共识。需要评估 physical consistency、temporal coherence、action-video alignment、causal reasoning 等维度。</p>
+<p><strong>Long-horizon drift</strong>：所有 autoregressive video WM 超过训练 horizon 都退化——<a href="../Papers/2408-GameNGen" class="internal alias" data-slug="Papers/2408-GameNGen">GameNGen</a> 3 秒、<a href="../Papers/2405-DIAMOND" class="internal alias" data-slug="Papers/2405-DIAMOND">DIAMOND</a> frame-stacking、<a href="../Papers/2602-WorldVLALoop" class="internal alias" data-slug="Papers/2602-WorldVLALoop">World-VLA-Loop</a> 200 帧、<a href="../Papers/2405-OccSora" class="internal alias" data-slug="Papers/2405-OccSora">OccSora</a> 离开 32 帧 FID 飙 200+。Explicit compressed memory (learned latent state)、retrieval-based context、LLM-style KV cache + streaming 都是候选，但没有任何一种在 robot-relevant setting 上 demonstrated。</p>
 </li>
 <li>
-<p><strong>Scaling laws 未知</strong>：DreamGen 展示了 log-linear scaling 趋势，但 world model 是否存在类似 LLM 的 power-law scaling？Optimal compute allocation 在 video vs. action vs. representation 之间如何分配？World model 的 emergent ability 在什么 scale 出现？均无明确结论。</p>
+<p><strong>Latent vs pixel 的路线之争</strong>：<a href="../Papers/2506-VJEPA2" class="internal alias" data-slug="Papers/2506-VJEPA2">V-JEPA 2</a> 给出 15× 计算优势 + success rate 反超 <a href="../Papers/2501-Cosmos" class="internal alias" data-slug="Papers/2501-Cosmos">Cosmos</a> 的工程事实，但其 “cross-lab” 评测只跨 Franka。<a href="../Papers/2602-DreamZero" class="internal alias" data-slug="Papers/2602-DreamZero">DreamZero</a> 反过来用 14B pixel WAM 达到 62.2% task progress + 5B→14B scaling 信号。<strong>真正的 open question</strong>：long-term 哪一条路径 scale 更好？或两者互补（cloud-side pixel WM 做 data engine / policy evaluator，edge-side latent WM 做 on-device MPC）？这是 <a href="../Papers/2411-WorldModelSurvey" class="internal alias" data-slug="Papers/2411-WorldModelSurvey">WMSurvey Sec 5.5</a> 的 cloud/edge 切分未完全 settled 的部分。</p>
 </li>
 <li>
-<p><strong>Real-time inference gap</strong>：联合 video+action generation 的计算开销远超纯 action prediction。DreamZero 的 7Hz on 2×GB200 vs. VLA 的 20Hz+ on consumer GPU。V-JEPA 2 的 latent planning 提供了 15× 加速，但 robot control 需要的 real-time 性能仍是挑战。</p>
+<p><strong>Cross-embodiment transfer 真能靠 video 做到吗？</strong>：<a href="../Papers/2602-DreamZero" class="internal alias" data-slug="Papers/2602-DreamZero">DreamZero</a> 的 12 min 人类 egocentric / 20 min YAM robot video → unseen task +16pp 是至今最强信号；<a href="../Papers/2512-Motus" class="internal alias" data-slug="Papers/2512-Motus">Motus</a> 的 optical-flow latent action 是工程层 bridge。但两者下游 eval 都主要集中在同 morphology family 内。humanoid 五指手 vs bimanual gripper 级的 morphology gap 尚未被 video WM 路线 attack。</p>
 </li>
 <li>
-<p><strong>Implicit vs. Explicit representation 的最优平衡</strong>：pixel-space video (Vista, GameNGen) 表达力强但计算昂贵，latent space (DIAMOND, V-JEPA 2) 高效但信息有损，3D/4D (OccSora) 结构化但重建困难。如何在不同表征空间之间找到最优 trade-off，或设计能自适应切换的 multi-scale representation，是架构层面的开放问题。</p>
+<p><strong>Benchmark metric 的 unresolved confound</strong>：video fidelity (FID/FVD) ↔ physical faithfulness (VBench-2.0, PhysBench) ↔ policy success (DreamGen Bench / LIBERO SR) 三者相关但不等价。<a href="../Papers/2505-DreamGen" class="internal alias" data-slug="Papers/2505-DreamGen">DreamGen</a> Bench 把 IF+PA 连到 downstream RoboCasa 成功率——<strong>但这只在 Cosmos/WAN2.1 fine-tuned 后的区间内正相关</strong>，zero-shot 下很多模型 IF/PA 极低但下游不一定归零。系统化的”哪个 metric 评 WM 公平” 的框架尚未建立。</p>
 </li>
 <li>
-<p><strong>Cross-domain transfer</strong>：能否训练一个跨 game/driving/robotics/reasoning 的 universal world model？Cosmos 和 Genie 系列在 foundation model 方向的探索初见端倪，但真正的 cross-domain generalization 尚未实现。</p>
+<p><strong>WM × VLA 耦合方式的 trade-off space</strong>：当前 5 种耦合方式（offline data engine / inference-time condition / joint model / RL simulator / evaluator）都有代表工作，但没有 head-to-head 比较。一个开放的经验问题：<strong>在同等 compute / data 预算下，哪种耦合方式对 sample efficiency 最敏感？</strong><a href="../Papers/2504-UWM" class="internal alias" data-slug="Papers/2504-UWM">UWM</a> 与 <a href="../Papers/2505-DreamGen" class="internal alias" data-slug="Papers/2505-DreamGen">DreamGen</a> / <a href="../Papers/2602-DreamZero" class="internal alias" data-slug="Papers/2602-DreamZero">DreamZero</a> 甚至在 mental model 上有冲突（前者把 WM 降格为 policy 的 auxiliary，后者把它当 policy 主体）。</p>
+</li>
+<li>
+<p><strong>开源 vs 工业化：可复现性断层</strong>：<a href="../Papers/2501-Cosmos" class="internal alias" data-slug="Papers/2501-Cosmos">Cosmos</a> 10 000 H100 × 3 个月、<a href="../Papers/2512-Motus" class="internal alias" data-slug="Papers/2512-Motus">Motus</a> 18 000 GPU-hours、<a href="../Papers/2602-DreamZero" class="internal alias" data-slug="Papers/2602-DreamZero">DreamZero</a> 2×GB200 的 baseline——任何”主脉络” WM 都远超学术实验室预算。后果是 open-source 社区的 Hunyuan/Wan/Cosmos fine-tuning 路线（<a href="../Papers/2604-HYWorld2" class="internal alias" data-slug="Papers/2604-HYWorld2">HY-World 2.0</a>、<a href="../Papers/2604-OpenWorldLib" class="internal alias" data-slug="Papers/2604-OpenWorldLib">OpenWorldLib</a>）只能做 integration，不能 push scientific frontier。这是结构性问题，短期无解。</p>
+</li>
+<li>
+<p><strong>Agent memory 与 World Model 的边界</strong>：<a href="../Papers/2604-OpenWorldLib" class="internal alias" data-slug="Papers/2604-OpenWorldLib">OpenWorldLib</a> 把 long-term memory 写进 world model 定义，但其 Memory 接口 (<code>record/select/compress/manage</code>) 留空没有 reference implementation。在 LLM agent 社区（CUA、VLA）已经成熟的 memory 机制（retrieval-based、episodic、semantic）如何与 video WM 的 latent space 交互——是 2026 之后的下一个大空白。</p>
 </li>
 </ol>
+<hr/>
+<h2 id="domainmap-更新建议">DomainMap 更新建议<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#domainmap-更新建议" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>当前 <code>DomainMaps/_index.md</code> 的 “Cross-Domain Insights” 提到 “World Model 正在成为 VLA 的 foundation”（引 DreamZero / Motus / World-VLA-Loop）并注明应有 <code>DomainMaps/WorldModel.md</code>，<strong>但该文件实际不存在</strong>。建议新建 <code>DomainMaps/WorldModel.md</code>，以本 Survey 为初始填充，并纳入以下关键 takeaway：</p>
+<ol>
+<li><strong><a href="../Papers/2411-WorldModelSurvey" class="internal alias" data-slug="Papers/2411-WorldModelSurvey">Ding et al. 2024</a> 的 implicit/predictive 二分</strong> 和 <strong><a href="../Papers/2411-WorldModelSurvey" class="internal alias" data-slug="Papers/2411-WorldModelSurvey">WMSurvey Sec 5.5</a> 的 cloud-side / edge-side 切分</strong> 并列作为分类基线。</li>
+<li><strong><a href="../Papers/2506-VJEPA2" class="internal alias" data-slug="Papers/2506-VJEPA2">V-JEPA 2</a> 的 latent-space MPC 与 <a href="../Papers/2501-Cosmos" class="internal alias" data-slug="Papers/2501-Cosmos">Cosmos</a> 的 video-foundation model 作为 edge 与 cloud 的两个典型 instantiation</strong>。</li>
+<li><strong>WM × VLA 耦合的 5 种方式</strong>（data engine / inference-time condition / joint model / RL simulator / evaluator），每一条挂一个代表工作。</li>
+<li><strong>Established Knowledge</strong>：AR video WM >200 帧 drift 是通病；EDM c_skip 稳定性对低 NFE 自回归生成必要；Frame-level conditioning（IRASim）优于 video-level；scale 不单独解决 physics。</li>
+<li><strong>Open Problems</strong>：上 9 条。</li>
+</ol>
+<hr/>
 <h2 id="调研日志">调研日志<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#调研日志" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<h3 id="第二轮更新2026-04-01">第二轮更新（2026-04-01）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#第二轮更新2026-04-01" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li><strong>调研日期</strong>: 2026-04-01</li>
-<li><strong>论文统计</strong>: 无新增论文，日期更新</li>
-</ul>
-<h3 id="第一轮2026-03-30">第一轮（2026-03-30）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#第一轮2026-03-30" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<ul>
-<li><strong>调研日期</strong>: 2026-03-30</li>
-<li><strong>论文统计</strong>: vault 已有 12 篇 + 新 digest 8 篇 + 跳过 0 篇 + 失败 0 篇</li>
-<li><strong>未能获取</strong>: 无</li>
-</ul></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="dts0pv" class="overflow"><li class="depth-0"><a href="#overview" data-for="overview">Overview</a></li><li class="depth-0"><a href="#技术路线" data-for="技术路线">技术路线</a></li><li class="depth-1"><a href="#路线-1生成式视频世界模型-generative-video-world-models" data-for="路线-1生成式视频世界模型-generative-video-world-models">路线 1：生成式视频世界模型 (Generative Video World Models)</a></li><li class="depth-1"><a href="#路线-2联合世界-动作模型-joint-world-action-models--wam" data-for="路线-2联合世界-动作模型-joint-world-action-models--wam">路线 2：联合世界-动作模型 (Joint World-Action Models / WAM)</a></li><li class="depth-1"><a href="#路线-3交互式环境生成-interactive-environment-generation" data-for="路线-3交互式环境生成-interactive-environment-generation">路线 3：交互式环境生成 (Interactive Environment Generation)</a></li><li class="depth-1"><a href="#路线-4latent-dynamics--model-based-rl" data-for="路线-4latent-dynamics--model-based-rl">路线 4：Latent Dynamics / Model-Based RL</a></li><li class="depth-1"><a href="#路线-5llm-作为世界模型-llm-as-world-model" data-for="路线-5llm-作为世界模型-llm-as-world-model">路线 5：LLM 作为世界模型 (LLM as World Model)</a></li><li class="depth-1"><a href="#路线-63d4d-结构化世界模型-structured-3d4d-world-models" data-for="路线-63d4d-结构化世界模型-structured-3d4d-world-models">路线 6：3D/4D 结构化世界模型 (Structured 3D/4D World Models)</a></li><li class="depth-0"><a href="#datasets--benchmarks" data-for="datasets--benchmarks">Datasets &amp; Benchmarks</a></li><li class="depth-0"><a href="#key-takeaways" data-for="key-takeaways">Key Takeaways</a></li><li class="depth-0"><a href="#open-problems" data-for="open-problems">Open Problems</a></li><li class="depth-0"><a href="#调研日志" data-for="调研日志">调研日志</a></li><li class="depth-1"><a href="#第二轮更新2026-04-01" data-for="第二轮更新2026-04-01">第二轮更新（2026-04-01）</a></li><li class="depth-1"><a href="#第一轮2026-03-30" data-for="第一轮2026-03-30">第一轮（2026-03-30）</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+<li><strong>调研日期</strong>：2026-04-23</li>
+<li><strong>Topic Survey 性质</strong>：新建（vault 此前无 <code>Topics/WorldModel-Survey.md</code>，也无 <code>DomainMaps/WorldModel.md</code>；本次为完整展开而非 delta 报告）</li>
+<li><strong>认知基线</strong>：<code>DomainMaps/_index.md</code> 的 Cross-Domain Insights 段 + <a href="../Papers/2411-WorldModelSurvey" class="internal alias" data-slug="Papers/2411-WorldModelSurvey">CSUR</a> 作为唯一结构化 anchor survey（v1 2024-11 → v4 2025-12）</li>
+<li><strong>侦察 survey 数</strong>：1（<a href="../Papers/2411-WorldModelSurvey" class="internal" data-slug="Papers/2411-WorldModelSurvey">2411-WorldModelSurvey</a>，本 vault 已有 digest）；额外无新的 WM 主题 survey paper 被纳入——2024 年 11 月之后社区主要发生在 method paper（非 survey）层</li>
+<li><strong>候选论文清单（vault 已有 rating ≥ 2）</strong>：共 21 篇——<br/>
+<strong>Foundation (3)</strong>：<a href="../Papers/2402-Genie" class="internal" data-slug="Papers/2402-Genie">2402-Genie</a>、<a href="../Papers/2405-DIAMOND" class="internal" data-slug="Papers/2405-DIAMOND">2405-DIAMOND</a>、<a href="../Papers/2408-GameNGen" class="internal" data-slug="Papers/2408-GameNGen">2408-GameNGen</a>、<a href="../Papers/2501-Cosmos" class="internal" data-slug="Papers/2501-Cosmos">2501-Cosmos</a>、<a href="../Papers/2505-DreamGen" class="internal" data-slug="Papers/2505-DreamGen">2505-DreamGen</a>、<a href="../Papers/2506-VJEPA2" class="internal" data-slug="Papers/2506-VJEPA2">2506-VJEPA2</a>、<a href="../Papers/2602-DreamZero" class="internal" data-slug="Papers/2602-DreamZero">2602-DreamZero</a><br/>
+<strong>Frontier (2)</strong>：<a href="../Papers/2411-WorldModelSurvey" class="internal" data-slug="Papers/2411-WorldModelSurvey">2411-WorldModelSurvey</a>、<a href="../Papers/2405-OccSora" class="internal" data-slug="Papers/2405-OccSora">2405-OccSora</a>、<a href="../Papers/2405-Vista" class="internal" data-slug="Papers/2405-Vista">2405-Vista</a>、<a href="../Papers/2406-IRASim" class="internal" data-slug="Papers/2406-IRASim">2406-IRASim</a>、<a href="../Papers/2501-RoboticWorldModel" class="internal" data-slug="Papers/2501-RoboticWorldModel">2501-RoboticWorldModel</a>、<a href="../Papers/2503-CosmosReason1" class="internal" data-slug="Papers/2503-CosmosReason1">2503-CosmosReason1</a>、<a href="../Papers/2504-UWM" class="internal" data-slug="Papers/2504-UWM">2504-UWM</a>、<a href="../Papers/2512-GenieReasoner" class="internal" data-slug="Papers/2512-GenieReasoner">2512-GenieReasoner</a>、<a href="../Papers/2512-Motus" class="internal" data-slug="Papers/2512-Motus">2512-Motus</a>、<a href="../Papers/2602-GigaBrain05M" class="internal" data-slug="Papers/2602-GigaBrain05M">2602-GigaBrain05M</a>、<a href="../Papers/2602-WorldVLALoop" class="internal" data-slug="Papers/2602-WorldVLALoop">2602-WorldVLALoop</a>、<a href="../Papers/2604-GenWorldRenderer" class="internal" data-slug="Papers/2604-GenWorldRenderer">2604-GenWorldRenderer</a>、<a href="../Papers/2604-HYWorld2" class="internal" data-slug="Papers/2604-HYWorld2">2604-HYWorld2</a>、<a href="../Papers/2604-OpenWorldLib" class="internal" data-slug="Papers/2604-OpenWorldLib">2604-OpenWorldLib</a></li>
+<li><strong>未 digest 新论文</strong>：本次未启动新 paper-digest（vault 覆盖充分，新增 canonical 论文的 marginal gain 低于时间成本）。若后续要深化，优先补：(1) Ha &amp; Schmidhuber 2018 (World Models, 奠基)；(2) Dreamer v3；(3) Sora technical report；(4) WHAM（Microsoft gameplay WM）；(5) 1X World Model；(6) UniSim (Yilun Du)；(7) Matrix-Game / YUME / FlashWorld（被 OpenWorldLib 引用的 open-source baseline）</li>
+<li><strong>observation</strong>：2024–2026 这轮 WM 研究从”能否生成逼真视频”迁到”能否作为 VLA agent 的 backend”——5 条技术路线（pixel video / latent JEPA / 3D-4D / unified VLA+WM / WM-as-RL-simulator）同时成熟，但 Action-following、Long-horizon drift、Physics alignment 三大 open problem 都还未被任何单一方法解决</li>
+<li><strong>issues</strong>：none（所有引用论文 vault 已有笔记，无 paper-digest 失败）</li>
+</ul></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="pva9ak" class="overflow"><li class="depth-0"><a href="#overview" data-for="overview">Overview</a></li><li class="depth-0"><a href="#problem--motivation" data-for="problem--motivation">Problem &amp; Motivation</a></li><li class="depth-0"><a href="#技术路线对比" data-for="技术路线对比">技术路线对比</a></li><li class="depth-1"><a href="#1-pixel-space-video-diffusion-wmfuture-prediction-主脉" data-for="1-pixel-space-video-diffusion-wmfuture-prediction-主脉">1. Pixel-space Video Diffusion WM（future prediction 主脉）</a></li><li class="depth-1"><a href="#2-latent-space--jepa-style-wmimplicit-representation" data-for="2-latent-space--jepa-style-wmimplicit-representation">2. Latent-space / JEPA-style WM（implicit representation）</a></li><li class="depth-1"><a href="#3-3d--4d-generative-wm空间侧" data-for="3-3d--4d-generative-wm空间侧">3. 3D / 4D Generative WM（空间侧）</a></li><li class="depth-1"><a href="#4-unified-video-action--vlawm-joint-models" data-for="4-unified-video-action--vlawm-joint-models">4. Unified Video-Action / VLA+WM Joint Models</a></li><li class="depth-1"><a href="#5-wm-as-rl-simulator--wm-conditioned-vla-loop-路线" data-for="5-wm-as-rl-simulator--wm-conditioned-vla-loop-路线">5. WM-as-RL-Simulator / WM-Conditioned VLA (Loop 路线)</a></li><li class="depth-0"><a href="#datasets--benchmarks" data-for="datasets--benchmarks">Datasets &amp; Benchmarks</a></li><li class="depth-0"><a href="#open-problems" data-for="open-problems">Open Problems</a></li><li class="depth-0"><a href="#domainmap-更新建议" data-for="domainmap-更新建议">DomainMap 更新建议</a></li><li class="depth-0"><a href="#调研日志" data-for="调研日志">调研日志</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
 </script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
 </script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>
