@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en"><head><title>A Survey on Efficient Vision-Language-Action Models</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="A Survey on Efficient Vision-Language-Action Models"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="A Survey on Efficient Vision-Language-Action Models"/><meta name="twitter:description" content="Summary A Survey on Efficient Vision-Language-Action Models 核心: 首个系统性综述围绕「Efficient VLA」主题，沿 model-training-data 三支柱组织近两年 ~100+ 方法，试图把碎片化的加速/压缩/数据节约工作收进一个统一分类。 方法: 三支柱 ..."/><meta property="og:description" content="Summary A Survey on Efficient Vision-Language-Action Models 核心: 首个系统性综述围绕「Efficient VLA」主题，沿 model-training-data 三支柱组织近两年 ~100+ 方法，试图把碎片化的加速/压缩/数据节约工作收进一个统一分类。 方法: 三支柱 ..."/><meta property="og:image:alt" content="Summary A Survey on Efficient Vision-Language-Action Models 核心: 首个系统性综述围绕「Efficient VLA」主题，沿 model-training-data 三支柱组织近两年 ~100+ 方法，试图把碎片化的加速/压缩/数据节约工作收进一个统一分类。 方法: 三支柱 ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2510-EfficientVLASurvey"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2510-EfficientVLASurvey"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary A Survey on Efficient Vision-Language-Action Models 核心: 首个系统性综述围绕「Efficient VLA」主题，沿 model-training-data 三支柱组织近两年 ~100+ 方法，试图把碎片化的加速/压缩/数据节约工作收进一个统一分类。 方法: 三支柱 ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  padding: 2rem;
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2510-EfficientVLASurvey"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="zuf0s6"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/embodied-reasoning" class="sidebar-tag-pill">#embodied-reasoning</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/computer-use" class="sidebar-tag-pill">#computer-use</a><a href="/mindflow/tags/agentic-RL" class="sidebar-tag-pill">#agentic-RL</a><a href="/mindflow/tags/world-model" class="sidebar-tag-pill">#world-model</a><a href="/mindflow/tags/gui-agent" class="sidebar-tag-pill">#gui-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2510-EfficientVLASurvey</a></div></nav><h1 class="article-title">A Survey on Efficient Vision-Language-Action Models</h1><div class="paper-meta"><span class="paper-venue">arXiv</span><span class="paper-authors"><span class="meta-sep">·</span>Zhaoshu Yu <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, Bo Wang</span><span>, Pengpeng Zeng</span><span>, Haonan Zhang</span><span>, Ji Zhang</span><span>, Zheng Wang</span><span>, Lianli Gao</span><span>, Jingkuan Song</span><span>, Nicu Sebe</span><span>, Heng Tao Shen</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2025-10-27T00:00:00.000Z">Oct 27, 2025</time><span>21 min read</span></p><ul class="tags"><li><a href="../tags/VLA" class="internal tag-link">VLA</a></li><li><a href="../tags/manipulation" class="internal tag-link">manipulation</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>A Survey on Efficient Vision-Language-Action Models </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><strong>核心</strong>: 首个系统性综述围绕「Efficient VLA」主题，沿 model-training-data 三支柱组织近两年 ~100+ 方法，试图把碎片化的加速/压缩/数据节约工作收进一个统一分类。</li>
+<li><strong>方法</strong>: 三支柱 taxonomy——(1) Efficient Model Design（efficient architecture + model compression）；(2) Efficient Training（efficient pre-training + efficient post-training）；(3) Efficient Data Collection（human-in-the-loop / simulation / internet-scale / self-exploration / augmentation）。每支柱配 Discussion 小节讨论 innovation &amp; limitation。</li>
+<li><strong>结果</strong>: 把 SARA-RT、OpenVLA-OFT、RoboMamba、FAST、TinyVLA、SmolVLA、pi0、LAPA、SimpleVLA-RL、VLA-RFT 等典型方法归到细粒度子类，并附四张表格汇总 representative works。</li>
+<li><strong>Sources</strong>: <a href="https://arxiv.org/abs/2510.24795" class="external">paper<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://evla-survey.github.io/" class="external">website<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://github.com/YuZhaoshu/Efficient-VLAs-Survey" class="external">github<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><strong>Rating</strong>: 1 - Archived（6 个月 14 citations / 0 influential / 149 stars / 仓库 107 天未推进；作为 efficient VLA 入门 reading list 有价值，但 taxonomy 深度和批判性不足，很快会被同主题后来者取代）</li>
+</ul>
+</div>
+</blockquote>
+<p><strong>Key Takeaways:</strong></p>
+<ol>
+<li><strong>三支柱 taxonomy 是本综述的主要结构贡献</strong>：Model / Training / Data 对应 VLA 部署的三大成本瓶颈（参数 &amp; latency / 算力 &amp; 样本 / 数据采集）。</li>
+<li><strong>VLA 特有 efficiency 痛点</strong>：VLM backbone 量级（RT-2-PaLI-X 55B / OpenVLA 7B）导致控制频率只有 1-6 Hz，远低于机械臂实时控制所需的 20-50 Hz；pi0 / GR00T N1 的 2-3B 参数规模+并行解码把频率推到 20-50 Hz，是当前 efficient VLA 的主流目标区间（见 Tab. I）。</li>
+<li><strong>Efficient Architecture 的六个子类</strong>：efficient attention、transformer alternatives（Mamba 系）、efficient action decoding（parallel / generative）、lightweight components、MoE、hierarchical systems（System-1/2 解耦）。</li>
+<li><strong>Model Compression 三板斧</strong>：layer pruning、quantization、token optimization——后者（token pruning / caching / merging）在 VLA 语境下最活跃，因为 visual token 是序列长度的主要贡献者。</li>
+<li><strong>Efficient Pre-training 的核心主线是压缩 action 空间</strong>：LAPA / RynnVLA / LAWM 用 autoencoder 蒸 latent action；FAST 用 DCT+BPE 直接在序列域压缩；这和 data-efficient 的 egocentric video pretraining 是互补的两条路径。</li>
+<li><strong>关于作者对”pre-training vs post-training”的重定义</strong>：综述把”从 VLM 迁移到 action-capable policy”全部叫 pre-training（包含 LoRA 等通常被叫做 post-training 的方法），把”对具体任务做 specialization”叫 post-training——这个切分 VLA-centric 但在和主流 LLM 文献对话时会混淆。</li>
+</ol>
+<p><strong>Teaser. 三支柱 taxonomy 鸟瞰图。</strong> 作者把 efficient VLA 的所有方法折叠进 3 个顶级支柱、10+ 二级子类，是全文的主线图。</p>
+<p><strong>Figure 1. Taxonomy overview（三支柱 + 示意图标）</strong>
+<img src="../assets/EfficientVLASurvey/fig1_taxonomy.png" alt/></p>
+<p><strong>Figure 2. 完整 taxonomy 树（方法-子类对应关系）</strong>
+<img src="../assets/EfficientVLASurvey/fig2_taxonomy_tree.png" alt/></p>
+<hr/>
+<h2 id="2-vision-language-action-models-背景">2 Vision-Language-Action Models 背景<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-vision-language-action-models-背景" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="21-vla-foundational-pipeline">2.1 VLA Foundational Pipeline<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#21-vla-foundational-pipeline" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>VLA 的标准架构可拆成三个模块：vision encoder → LLM backbone → action decoder。</p>
+<p><strong>Figure 3. VLA 三段式管线：Vision Encoder / LLM Backbone / Action Decoder</strong>
+<img src="../assets/EfficientVLASurvey/fig3_vla_overview.png" alt/></p>
+<p><strong>Equation 1. Vision Encoding</strong></p>
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4444em;"></span><span class="mord mathbf" style="margin-right:0.01597em;">v</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">im</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">g</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">im</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">g</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span>
+<p><strong>Equation 2. LLM Backbone 融合</strong></p>
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathbf">h</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathrm">LLM</span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathbf" style="margin-right:0.01597em;">v</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathbf">l</span><span class="mclose">)</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">LL</span><span class="mord mathnormal mtight" style="margin-right:0.10903em;">M</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span>
+<p><strong>Equation 3. Action Decoding</strong></p>
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5944em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathbf">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mrel mtight">:</span><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight">c</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathbf">h</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">a</span><span class="mord mathnormal mtight">c</span><span class="mord mathnormal mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span>
+<p>Vision encoder 常用 ViT / SigLIP / DINOv2 / CLIP；LLM backbone 跨 Qwen / PaLM / Gemma / Llama / Mamba / Vicuna；action decoder 三种流派：diffusion/flow matching、autoregressive token decoding、MLP head。</p>
+<h3 id="22-为什么需要-efficient-vla">2.2 为什么需要 Efficient VLA<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#22-为什么需要-efficient-vla" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>作者用 Tab. I 把问题讲清楚——主流 VLA 的参数量和控制频率严重不匹配实时 robotics：</p>
+<p><strong>Table 1. 代表 VLA 的效率指标</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Model</th><th>Params (↓)</th><th>Infer. Latency (ms) (↓)</th><th>Freq. (Hz) (↑)</th></tr></thead><tbody><tr><td>RT-2-PaLI-X</td><td>55B</td><td>330–1000</td><td>1–3</td></tr><tr><td>RT-2-PaLI-X</td><td>5B</td><td>200</td><td>5</td></tr><tr><td>OpenVLA</td><td>7B</td><td>166</td><td>6</td></tr><tr><td>π0</td><td>3.3B</td><td>73</td><td>20/50</td></tr><tr><td>HiRobot</td><td>3B</td><td>73</td><td>10/50</td></tr><tr><td>GR00T N1</td><td>2.2B</td><td>63.9</td><td>-</td></tr></tbody></table></div>
+<blockquote>
+<p>❓ 表格引用的是论文自报频率，没统一硬件口径（π0 的 50 Hz 是 chunk-level 而不是 token-level），这是行业普遍问题但综述没拆明白。</p>
+</blockquote>
+<p><strong>Figure 4. Foundational VLA vs Efficient VLA timeline</strong>：2023-2025 两条并行发展曲线，Efficient VLA 自 2024 下半年起进入爆发期。
+<img src="../assets/EfficientVLASurvey/fig4_timeline.png" alt/></p>
+<h3 id="23-与其它-vla-survey-的差异">2.3 与其它 VLA Survey 的差异<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#23-与其它-vla-survey-的差异" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>作者列了 6 篇已有 VLA survey（Ma et al., Shao et al., Xiang et al., Zhong et al. 等），声称已有 survey 只是顺带提及 efficiency，而没有以 efficiency 为主轴做统一 taxonomy。这个 claim 在 2025-10 时大体成立，但 2510.17111（Efficient VLA for Embodied Manipulation: A Systematic Survey）和本文几乎同时发布，是直接竞争。</p>
+<hr/>
+<h2 id="3-efficient-model-design">3 Efficient Model Design<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-efficient-model-design" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Figure 5. Efficient Architecture 六子类</strong>：(a) efficient attention；(b) transformer alternatives；(c) efficient action decoding；(d) lightweight component；(e) MoE；(f) hierarchical systems。
+<img src="../assets/EfficientVLASurvey/fig5_efficient_arch.png" alt/></p>
+<h3 id="31-efficient-architectures">3.1 Efficient Architectures<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#31-efficient-architectures" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>3.1.1 Efficient Attention.</strong> 三轴优化：linear-time attention（SARA-RT 用 up-training 把 quadratic transformer 转成 linear-attention）、efficient masking（Long-VLA 的 phase-aware masking、dVLA 的 prefix attention + KV cache）、KV-cache optimization（RetoVLA 用 register token 复用，KV-Efficient VLA 用 RNN-gated chunked KV）。</p>
+<p><strong>3.1.2 Transformer Alternatives.</strong> 以 Mamba 为代表的 SSM：RoboMamba 首次把 Mamba 作为 VLA language backbone；FlowRAM 把 region-aware Mamba 耦合 conditional flow matching。</p>
+<p><strong>3.1.3 Efficient Action Decoding.</strong> 当前最活跃的子方向，两条路线：</p>
+<ul>
+<li><strong>Parallel Decoding</strong>：<a href="../Papers/2502-OpenVLA-OFT" class="internal alias" data-slug="Papers/2502-OpenVLA-OFT">OpenVLA-OFT</a> 用 bidirectional attention 取代 causal mask，单前向预测 K 长度 action chunk；PD-VLA 把 AR decoding 改写为 Jacobi 迭代的 fixed-point 方程；CEED-VLA 在 PD-VLA 基础上做 early-exit 和 consistency distillation；Spec-VLA 引入 speculative decoding 并放宽 acceptance。</li>
+<li><strong>Generative Decoding</strong>：TinyVLA 把 Diffusion Policy 作为专用 decoder；HybridVLA 把 diffusion 和 AR 合并到单个 transformer，DDIM 压到 4 步；FreqPolicy 用频域一致性做 flow-based policy；FlowRAM / NinA 用 flow matching / normalizing flow 做单步生成；VQ-VLA / Discrete Diffusion VLA 在 discrete token 空间内做 diffusion refinement。</li>
+</ul>
+<p><strong>3.1.4 Lightweight Component.</strong> 直接减参数量：RoboMamba 的 3.7M MLP head（占总参数 0.1%）；TinyVLA 的 &lt;1.4B VLM；EdgeVLA / MiniVLA 用 Qwen2-0.5B + SigLIP + DINOv2 组出 1B 模型；CLIP-RT 用冻结 CLIP 做 unified encoder，参数是 OpenVLA 的 1/7 却超过 24% 成功率；<a href="../Papers/2506-SmolVLA" class="internal alias" data-slug="Papers/2506-SmolVLA">SmolVLA</a> 主打单卡训练；NORA 用 Qwen2.5-VL-3B + FAST+ tokenizer。</p>
+<p><strong>3.1.5 Mixture-of-Experts.</strong> GeRM 首次把 sparse MoE 用到 quadruped RL；FedVLA 提出 Dual Gating MoE（DGMoE）的双向 token-expert affinity；TAVP 用 Task-Aware MoE 把任务-task routing 解耦。</p>
+<p><strong>3.1.6 Hierarchical Systems.</strong> 借用 dual-process theory（System 1/2）：HiRT、DP-VLA、<a href="../Papers/2506-SmolVLA" class="internal alias" data-slug="Papers/2506-SmolVLA">SmolVLA</a> 用低频 VLM 指导高频 policy；RoboDual 把 <a href="../Papers/2406-OpenVLA" class="internal alias" data-slug="Papers/2406-OpenVLA">OpenVLA</a> 作为 high-level planner，加轻量 DiT specialist 做 latency-aware 协同；HAMSTER 用 2D trajectory sketch 桥接 high-level VLM 和 low-level policy；FiS 用参数共享融合 System 1/2；MinD 用低频 world model + 高频 diffusion policy。</p>
+<h3 id="32-model-compression">3.2 Model Compression<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#32-model-compression" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Figure 6. Model Compression 三子类</strong>：layer pruning / quantization / token optimization（compression / pruning / caching）。
+<img src="../assets/EfficientVLASurvey/fig6_model_compression.png" alt/></p>
+<p><strong>3.2.1 Layer Pruning.</strong> DeeR-VLA 的 multi-exit dynamic early termination；MoLe-VLA 的 spatial-temporal layer skipping；<a href="../Papers/2506-SmolVLA" class="internal alias" data-slug="Papers/2506-SmolVLA">SmolVLA</a> 直接砍 L/2 层；EfficientVLA 做 training-free 跨层 redundancy 分析；RLRC 用 RL 在 pruning 之后恢复性能；FLOWER 用 modality fusion 腾出 50% LLM 层给 diffusion head。</p>
+<p><strong>3.2.2 Quantization.</strong> <a href="../Papers/2406-OpenVLA" class="internal alias" data-slug="Papers/2406-OpenVLA">OpenVLA</a> 证明 7B VLA 可直接 int8 量化不掉点；QAIL 做 quantization-aware imitation learning；FAST 用 DCT-based tokenization 让 high-frequency action 更易量化；BitVLA 把 vision encoder 蒸到 1-bit ternary；SQAP-VLA 把 quantization 和 token pruning 联合设计。</p>
+<p><strong>3.2.3 Token Optimization.</strong> 本综述认为是 VLA 压缩的最活跃子方向：</p>
+<ul>
+<li><strong>Pruning</strong>：FlashVLA / LightVLA（Gumbel-softmax 可微分 token selection）/ SpecPrune-VLA / CogVLA（FiLM-routed instruction-driven pruning）/ ADP / Oat-VLA（object-centric + gripper-guided）。</li>
+<li><strong>Caching</strong>：VLA-Cache 做 task-aware static visual token caching；HybridVLA 在 diffusion 前缓存 KV；Fast ECoT 在多 timestep 缓存 high-level reasoning tokens；CronusVLA 用 FIFO motion feature queue。</li>
+<li><strong>Compression</strong>：<a href="../Papers/2506-SmolVLA" class="internal alias" data-slug="Papers/2506-SmolVLA">SmolVLA</a> 用 pixel shuffle 把每帧 visual token 压到 64；VOTE 用单个 <code>&lt;ACT></code> token 取代 action chunk。</li>
+</ul>
+<h3 id="33-discussion综述作者的观点">3.3 Discussion（综述作者的观点）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#33-discussion综述作者的观点" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Innovation</strong>：从 scaling-centric 转向 adaptive 架构，compression + 蒸馏保 perceptual-motor invariant。</p>
+<p><strong>Limitation</strong>：aggressive compression 易造成 semantic drift；hierarchical/parallel 框架有 spatiotemporal coherence 问题；依赖 static importance metric 限制环境适应性——需要 hardware-algorithm 协同设计。</p>
+<blockquote>
+<p>❓ Discussion 写得比较 high-level，没有具体方法的失败案例；例如 “semantic drift 在哪个任务 / 哪个模型上被实证出来过？” 没有 ground。</p>
+</blockquote>
+<hr/>
+<h2 id="4-efficient-training">4 Efficient Training<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-efficient-training" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Figure 7. Efficient Training 两阶段</strong>：(a) Efficient Pre-Training（data-efficient / action representation / 其它）；(b) Efficient Post-Training（SFT / RL）。
+<img src="../assets/EfficientVLASurvey/fig7_training.png" alt/></p>
+<h3 id="41-efficient-pre-training">4.1 Efficient Pre-Training<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#41-efficient-pre-training" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>作者对 pre-training / post-training 的切分是 VLA-centric——<strong>“把 general VLM 迁移成 action-capable policy” 都叫 pre-training</strong>，不管用的是 LoRA 还是 full FT；“对具体任务做 specialization” 才叫 post-training。这个切分在 VLA 语境下合理，但和主流 LLM literature 冲突。</p>
+<p><strong>4.1.1 Data-Efficient Pre-training.</strong> 两类：self-supervised training（从 expert trajectory 或 egocentric video 提信号）和 mixed-data co-training。</p>
+<p><strong>4.1.2 Efficient Action Representation.</strong> 是本综述的一条重要主线——</p>
+<ul>
+<li><strong>Action space compression</strong>：LAPA / Bu et al. / RynnVLA-001 / LAWM 都基于 autoencoder 蒸 latent action（前二用 VQ-VAE，RynnVLA 用 VAE，LAWM 从 DreamerV3 world model 提 latent）；FAST 用 DCT+BPE 做序列域压缩（5× 预训练时间缩减）。</li>
+<li><strong>Innovative action modeling</strong>：EgoVLA 用 MANO 参数做 human-robot 共享 action space；VLA-Adapter 用 Bridge Attention；cVLA 在 image coordinate 而非 robot base frame 做 action encoding；ReSET 把 action state distribution 压成 anchor state set。</li>
+</ul>
+<p><strong>4.1.3 其它 Pre-training Strategies.</strong> Multi-stage training（RoboMamba / DexVLA 等）；RL-based pre-training（GeRM 的 CQL / TAVP 的伪环境）；LoRA adapter 注入。</p>
+<h3 id="42-efficient-post-training">4.2 Efficient Post-Training<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#42-efficient-post-training" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>4.2.1 Supervised Fine-tuning.</strong> <a href="../Papers/2406-OpenVLA" class="internal alias" data-slug="Papers/2406-OpenVLA">OpenVLA</a> 系统比较 5 种策略证明 LoRA 最平衡；<a href="../Papers/2502-OpenVLA-OFT" class="internal alias" data-slug="Papers/2502-OpenVLA-OFT">OpenVLA-OFT</a> 进一步把 parallel decoding + action chunking + L1 regression 整合；InstructVLA 把 LoRA adapter 和 MoE-adaptation head 合并；MoManipVLA 用 50 条 real demo 做 bi-level trajectory optimization 迁移到移动操作；ControlVLA 用 ControlNet-style zero-init projection 做 10-20 shot 适配；OpenHelix 只训练一个 <code>&lt;ACT></code> token embedding 冻结 MLLM；RICL 把 In-Context Learning 引入 VLA post-training。</p>
+<p><strong>4.2.2 RL-Based Methods.</strong></p>
+<ul>
+<li><strong>Online RL</strong>：RIPT-VLA 用 sparse binary reward + rejection-sampled PPO，15 iter 把成功率从 4%（SFT）拉到 97%；VLA-RL 把 trajectory 当多轮对话，用 VLM-derived dense reward；SimpleVLA-RL 基于 OpenVLA-OFT + GRPO，1 traj/task 从 17.3% → 91.7%；RPD 用 MSE-aligned PPO 把 teacher VLA 蒸到小 policy。</li>
+<li><strong>Offline RL</strong>：ConRFT / CO-RFT 用 Cal-QL 抑制 OOD value overestimation；ARFM 在 flow matching loss 上自适应 scaling，相对 <a href="../Papers/2410-Pi0" class="internal alias" data-slug="Papers/2410-Pi0">π0</a> baseline +4.5% 多任务 + 11.4% 扰动鲁棒性。</li>
+</ul>
+<h3 id="43-discussion">4.3 Discussion<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#43-discussion" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Innovation</strong>：data-thrifty 迁移成主流，latent action + spectral compression 压缩 policy search space，pre-train 和 task specialization 解耦通过 RL 实现精细化。</p>
+<p><strong>Limitation</strong>：human video 和 robot 的 kinematic 差异引入噪声；PEFT 在 multi-stage manipulation 中 representational flexibility 不够；RL 受 reward misspecification + distribution shift 困扰。</p>
+<hr/>
+<h2 id="5-efficient-data-collection">5 Efficient Data Collection<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#5-efficient-data-collection" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Figure 8. Efficient Data Collection 五类</strong>：human-in-the-loop / simulation / internet-scale &amp; cross-domain / self-exploration / augmentation。
+<img src="../assets/EfficientVLASurvey/fig8_data.png" alt/></p>
+<h3 id="51-human-in-the-loop">5.1 Human-in-the-Loop<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#51-human-in-the-loop" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>CLIP-RT 用自然语言 interface 替代 expert teleop；GCENT 把人定位成「只在失败时 rewind-and-refine 的 guardian」，实现 one-operator–multiple-robots。</p>
+<h3 id="52-simulation-data-collection">5.2 Simulation Data Collection<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#52-simulation-data-collection" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>GraspVLA 的 SynGrasp-1B（billion-frame 合成抓取）；GeRM 的 QUARD-Auto（Isaac Gym 四足）；cVLA 用 ManiSkill；RoboTwin 2.0 用 code-agent 闭环生成双臂数据；ReBot 提出 real-to-sim-to-real（真轨迹 + 多仿真场景 + 真背景 inpainting）；R2R2R 从手机扫描 + 单条 human video 合成大规模数据（不用物理仿真）；RealMirror 用 WebXR 做低延迟 teleop-sim 混合框架。</p>
+<h3 id="53-internet-scale--cross-domain">5.3 Internet-Scale &amp; Cross-Domain<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#53-internet-scale--cross-domain" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><a href="../Papers/2506-SmolVLA" class="internal alias" data-slug="Papers/2506-SmolVLA">SmolVLA</a>：策展 HuggingFace 上零散社区数据，用 VLM 自动生成标签；证明数据量小一个数量级也能 SOTA，关键是质量+多样性。</li>
+<li><strong>Egocentric video 路径</strong>：EgoVLA 提出”把人当机器人”；RynnVLA-001 用 pose estimation 做自动化 egocentric video curation；EgoScaler 从 egocentric video 抽 6-DoF object trajectory（无需标注）；Being-H0 把粒度提升到精细 hand pose。</li>
+<li><strong>Video diffusion 桥接 embodiment</strong>：MimicDreamer 用 video diffusion 把人类 demonstration video 转成机械臂视觉；DreamTransfer 用 diffusion transformer 做 multi-view 一致的 robot video generation。</li>
+<li><strong>第三人称视频</strong>：Humanoid-VLA 从 third-person human-motion video 提结构化信号，扩展可用数据范围。</li>
+</ul>
+<h3 id="54-self-exploration">5.4 Self-Exploration<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#54-self-exploration" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Task-agnostic exploration</strong>：AnyPos（ATARA）用 RL 驱动均匀覆盖 end-effector workspace，建立”机器人能做什么”的 kinematic prior。</li>
+<li><strong>Online RL as data collector</strong>：SimpleVLA-RL 的 generate-evaluate-optimize 循环；DiffusionRLVLA 用 diffusion policy 生成 multi-modal 轨迹（质量超过人类 demo）。</li>
+<li><strong>World model as virtual environment</strong>：World-Env 用 LIBERO 做 VLM-guided reward RL；VLA-RFT 直接学 data-driven world model 取代高保真物理仿真器。</li>
+</ul>
+<h3 id="55-data-augmentation">5.5 Data Augmentation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#55-data-augmentation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Linguistic/semantic</strong>：LLaRA 把 BC dataset 转成 conversational instruction-response；InstructVLA 用 GPT-4o 生成多层级 annotation；RoboChemist 注入 failure-retry scenario。</li>
+<li><strong>Trajectory/state</strong>：CLIP-RT 的 Stochastic Trajectory Augmentation；ReconVLA 用 Grounding DINO 自动分割 gaze region 做 visual reconstruction 预训练。</li>
+<li><strong>Visual modality</strong>：ERMV 用 Epipolar Motion-Aware Attention 跨视角/时间一致地编辑 4D 数据。</li>
+</ul>
+<h3 id="56-discussion">5.6 Discussion<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#56-discussion" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Innovation：从 teleop 转向 compute-driven，跨域 manifold alignment 把 internet-scale human video 当 kinematic proxy。Limitation：sim-to-real 和 embodiment gap 没解决；internet-scale data 缺 precise action label，对高精度任务仍需 in-domain expert supervision。</p>
+<hr/>
+<h2 id="6-applications">6 Applications<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#6-applications" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>四大应用场景：Autonomous Driving（AdaThinkDrive / IRL-VLA / AutoVLA / DiffVLA）、Family Robotics（on-device 隐私）、Industrial Manufacturing（CIPHER 在 3D 打印业做多角色切换）、Medical Assistive（on-premise 数据保密 + 个体化）。内容偏愿景性，方法上未引入新信息。</p>
+<hr/>
+<h2 id="7-challenges--future-works">7 Challenges &amp; Future Works<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#7-challenges--future-works" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>沿着 Model / Training / Data 三支柱对应写：</p>
+<ul>
+<li><strong>Model</strong>：compactness vs expressivity 张力；hierarchical 路由开销；sub-billion 参数下的 long-horizon 退化。</li>
+<li><strong>Training</strong>：PE-FT 的计算节省 vs representational flexibility 损失；RL 的 high-variance gradient &amp; reward sparsity；action representation compression 扭曲 kinematics。</li>
+<li><strong>Data</strong>：human collection 贵，synthetic 缺真实感，augmentation 注入 bias，self-exploration 需要 curation。</li>
+</ul>
+<p><strong>Future</strong>：context-aware dynamic token pruning、modality-agnostic backbone、hardware-software co-design；federated + differential privacy、physics-informed pre-training、meta-learning/curriculum；diffusion-guided synthesis、curiosity-driven multi-agent exploration、自我进化的生成式数据生态。</p>
+<hr/>
+<h2 id="关联工作">关联工作<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#关联工作" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="基于--串起的代表-vla">基于 / 串起的代表 VLA<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#基于--串起的代表-vla" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><a href="../Papers/2307-RT2" class="internal alias" data-slug="Papers/2307-RT2">RT-2</a>：VLA 范式开端，被综述作为效率基准（55B 参数 / 1-3 Hz）。</li>
+<li><a href="../Papers/2406-OpenVLA" class="internal alias" data-slug="Papers/2406-OpenVLA">OpenVLA</a>：open-source VLA 基线，FT 策略对比、int8 量化示范都绑定在 OpenVLA 上。</li>
+<li><a href="../Papers/2502-OpenVLA-OFT" class="internal alias" data-slug="Papers/2502-OpenVLA-OFT">OpenVLA-OFT</a>：efficient action decoding 代表作，parallel decoding + action chunking + L1 regression 的组合范式。</li>
+<li><a href="../Papers/2410-Pi0" class="internal alias" data-slug="Papers/2410-Pi0">π0</a> / <a href="../Papers/2504-Pi05" class="internal alias" data-slug="Papers/2504-Pi05">π0.5</a>：flow-matching 派系的代表，综述用作 latency baseline。</li>
+<li><a href="../Papers/2503-GR00TN1" class="internal alias" data-slug="Papers/2503-GR00TN1">GR00T N1</a>：2.2B 参数大型 humanoid VLA，综述里是效率-能力平衡的正面例子。</li>
+<li><a href="../Papers/2506-SmolVLA" class="internal alias" data-slug="Papers/2506-SmolVLA">SmolVLA</a>：几乎每一节都出现——lightweight component / layer pruning / visual token compression / internet-scale 数据策展。</li>
+<li><a href="../Papers/2502-HiRobot" class="internal alias" data-slug="Papers/2502-HiRobot">Hi Robot</a>：hierarchical 系统的代表（与 HAMSTER 同一思路）。</li>
+</ul>
+<h3 id="对比--同主题-survey">对比 / 同主题 survey<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#对比--同主题-survey" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Ma et al. 2024 VLA Survey：更广义的 VLA 综述，作者指出其未以 efficiency 为主轴。</li>
+<li><strong>2510.17111</strong>（Efficient VLA for Embodied Manipulation: A Systematic Survey）：与本综述几乎同时发布、高度重叠，缺乏互相比较和 positioning 是本文的一个弱点。</li>
+<li><a href="../Papers/2507-VLATokenizationSurvey" class="internal alias" data-slug="Papers/2507-VLATokenizationSurvey">VLA Tokenization Survey (2507.01925)</a>：从 action tokenizer 角度切分 VLA，和本综述 Section 4.1.2 的 “efficient action representation” 高度相关但视角更聚焦。</li>
+</ul>
+<h3 id="方法相关综述中核心技术的原始出处">方法相关（综述中核心技术的原始出处）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#方法相关综述中核心技术的原始出处" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Mamba / SSM：RoboMamba / FlowRAM 的骨干。</li>
+<li>VQ-VAE：LAPA、VQ-VLA 的 action tokenizer 原型。</li>
+<li><strong>Diffusion Policy</strong>：TinyVLA / HybridVLA / FlowRAM 生成式解码的基础。</li>
+<li><strong>LoRA</strong>：几乎所有 PEFT 路线的核心。</li>
+<li><strong>FAST action tokenizer</strong>：频域 + BPE 的 action 压缩，综述同时归入 action representation 和 quantization。</li>
+</ul>
+<hr/>
+<h2 id="论文点评">论文点评<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#论文点评" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="strengths">Strengths<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>Timing 合适</strong>：2024H2 起 efficient VLA 工作爆发，综述为社区提供一个及时的 reading list 和 taxonomy 骨架。附带 GitHub 维护 paper list（149⭐）比综述本身的延伸价值更高。</li>
+<li><strong>三支柱 taxonomy 涵盖面够全</strong>：model / training / data 的切分对应 VLA 部署的实际成本结构，比”按算法类型”切分更有工程导向性。每个支柱下的二/三级子类划分合理，能帮读者快速定位方法。</li>
+<li><strong>Efficient Action Decoding 子章节是亮点</strong>：把 parallel decoding（Jacobi、speculative、bidirectional attention）和 generative decoding（diffusion、flow matching、VQ、normalizing flow）对齐讨论，揭示”action 生成速度”这条主线。</li>
+<li><strong>Table I 直接对比 VLA 的 params / latency / freq</strong>：给读者 grounded 的数量级参考（而不是抽象的 “efficient”），这是很多综述缺的。</li>
+</ol>
+<h3 id="weaknesses">Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>写作风格过度修辞</strong>（“herald”、“ethos”、“thrift”、“curtail”、“transmute” 充斥全文），信息密度被稀释；中文读者和非母语作者阅读成本高。更糟的是这种风格掩盖了对方法的具体分析——很多段落读完记不住技术要点，只记得形容词。</li>
+<li><strong>Critical depth 不足</strong>：Discussion 小节虽然每章都有 Innovation / Limitation，但都是泛泛而谈（“semantic drift”、“reward misspecification”），没有引用具体论文的 failure case、没有横向定量对比（例如同一 benchmark 上不同 compression 方法的 success rate vs speedup 曲线）。</li>
+<li><strong>与并行综述的 positioning 缺失</strong>：2510.17111（几乎同时）、2507.01925（action tokenization 视角）、2502.06851 都在同主题，作者在 Related Surveys 仅列名未对比差异。对读者选哪本看缺乏引导。</li>
+<li><strong>Pre-training / Post-training 的重定义引入新的混淆</strong>：VLA-centric 的切分把 LoRA 归入 pre-training，读者在和通用 LLM 文献对话时会绊倒。与其重定义术语，不如在现有术语下新增一个维度（如 “VLM→VLA migration” vs “task specialization”）。</li>
+<li><strong>Rating 指标弱</strong>：发布 6 个月 / 14 citation / 0 influential / github 149⭐ / 仓库 107 天未推进（pushed_at 2026-01-05）/ 90d commits=0，说明社区在用它的 reading list 而不在引用分类学本身；综述的核心贡献（taxonomy）很难被量化继承。</li>
+</ol>
+<h3 id="可信评估">可信评估<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#可信评估" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="artifact-可获取性">Artifact 可获取性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#artifact-可获取性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><strong>代码</strong>：仓库 <a href="https://github.com/YuZhaoshu/Efficient-VLAs-Survey" class="external">YuZhaoshu/Efficient-VLAs-Survey<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> 是 paper list（markdown）；综述本身不涉及代码实验。</li>
+<li><strong>模型权重</strong>：N/A（综述类）。</li>
+<li><strong>训练细节</strong>：N/A（综述类）。</li>
+<li><strong>数据集</strong>：N/A（综述类）。</li>
+</ul>
+<h4 id="claim-可验证性">Claim 可验证性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#claim-可验证性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>✅ <strong>“是第一个聚焦 efficient VLA 的 survey”</strong>：在 2025-10 发布时间点大体成立；并行 survey 2510.17111 仅早 10 天，重合度高但 scope 不同（manipulation-only vs 全 VLA）。</li>
+<li>⚠️ <strong>“三支柱 taxonomy 是 unified framework”</strong>：分类本身合理，但”统一”略 overclaim——多数方法同时触及 2-3 个支柱（如 FAST 同时是 action representation、quantization、token compression），综述用重复列举处理，taxonomy 的正交性不强。</li>
+<li>⚠️ <strong>Tab. I 的 latency / frequency 数字</strong>：来自各自原论文自报，硬件和 chunk-level vs token-level 的口径不一，直接对比有误导性。</li>
+<li>❌ <strong>“establishes a foundational reference for the community”</strong>：abstract 中的自评，属于 marketing 修辞。是否 foundational 由引用模式决定，当前 metrics 还不支持。</li>
+</ul>
+<h3 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>这篇综述对我的价值：作为 efficient VLA 方向的 “paper index”——我可以用它的 Tab. II/III/IV/V/VI 快速定位某类方法的代表作。但要理解具体方法还是要看原论文。</li>
+<li>Efficient action decoding（尤其 parallel + generative 的融合）是我关心的 VLA 方向中 ROI 最高的加速路线，值得单独开 topic 深挖。</li>
+<li><strong>Pattern</strong>：综述里反复出现的一个信号是 “3B 参数 + 20-50 Hz” 正在成为 deployable VLA 的新工程基线（π0、GR00T N1、SmolVLA），7B+ 在实时控制场景已显偏大——后续挑选论文可以这个阈值做 filter。</li>
+</ul>
+<h3 id="rating">Rating<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#rating" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Metrics</strong> (as of 2026-04-22): citation=14, influential=0 (0%), velocity=2.3/mo; HF upvotes=6; github 149⭐ / forks=6 / 90d commits=0 / pushed 107d ago</p>
+<p><strong>分数</strong>：1 - Archived</p>
+<p><strong>理由</strong>：发布 6 个月 14 citation / 0 influential / velocity 2.3/mo 对一篇综述偏低；149 GitHub stars 说明社区在用它的 reading list 而非引用 taxonomy 本身，且仓库 90d 无 commit（pushed 107 天前）显示作者维护动力已衰减。同方向的并行综述（2510.17111、2507.01925）也压缩了它成为 de facto reference 的窗口。之所以还不是”完全无价值”——作为 efficient VLA 2024-2025 这个时间切片的分类 index 有即时查询价值，值得升到 Frontier 档；但作为知识结构本身，taxonomy 的正交性、critical depth、positioning 都撑不起 Frontier 或 Foundation。综合上述：<strong>1 - Archived</strong>——作为 Paper index 查阅时拿出来用，不在主脉络中。</p></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="dts0pv" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#2-vision-language-action-models-背景" data-for="2-vision-language-action-models-背景">2 Vision-Language-Action Models 背景</a></li><li class="depth-1"><a href="#21-vla-foundational-pipeline" data-for="21-vla-foundational-pipeline">2.1 VLA Foundational Pipeline</a></li><li class="depth-1"><a href="#22-为什么需要-efficient-vla" data-for="22-为什么需要-efficient-vla">2.2 为什么需要 Efficient VLA</a></li><li class="depth-1"><a href="#23-与其它-vla-survey-的差异" data-for="23-与其它-vla-survey-的差异">2.3 与其它 VLA Survey 的差异</a></li><li class="depth-0"><a href="#3-efficient-model-design" data-for="3-efficient-model-design">3 Efficient Model Design</a></li><li class="depth-1"><a href="#31-efficient-architectures" data-for="31-efficient-architectures">3.1 Efficient Architectures</a></li><li class="depth-1"><a href="#32-model-compression" data-for="32-model-compression">3.2 Model Compression</a></li><li class="depth-1"><a href="#33-discussion综述作者的观点" data-for="33-discussion综述作者的观点">3.3 Discussion（综述作者的观点）</a></li><li class="depth-0"><a href="#4-efficient-training" data-for="4-efficient-training">4 Efficient Training</a></li><li class="depth-1"><a href="#41-efficient-pre-training" data-for="41-efficient-pre-training">4.1 Efficient Pre-Training</a></li><li class="depth-1"><a href="#42-efficient-post-training" data-for="42-efficient-post-training">4.2 Efficient Post-Training</a></li><li class="depth-1"><a href="#43-discussion" data-for="43-discussion">4.3 Discussion</a></li><li class="depth-0"><a href="#5-efficient-data-collection" data-for="5-efficient-data-collection">5 Efficient Data Collection</a></li><li class="depth-1"><a href="#51-human-in-the-loop" data-for="51-human-in-the-loop">5.1 Human-in-the-Loop</a></li><li class="depth-1"><a href="#52-simulation-data-collection" data-for="52-simulation-data-collection">5.2 Simulation Data Collection</a></li><li class="depth-1"><a href="#53-internet-scale--cross-domain" data-for="53-internet-scale--cross-domain">5.3 Internet-Scale &amp; Cross-Domain</a></li><li class="depth-1"><a href="#54-self-exploration" data-for="54-self-exploration">5.4 Self-Exploration</a></li><li class="depth-1"><a href="#55-data-augmentation" data-for="55-data-augmentation">5.5 Data Augmentation</a></li><li class="depth-1"><a href="#56-discussion" data-for="56-discussion">5.6 Discussion</a></li><li class="depth-0"><a href="#6-applications" data-for="6-applications">6 Applications</a></li><li class="depth-0"><a href="#7-challenges--future-works" data-for="7-challenges--future-works">7 Challenges &amp; Future Works</a></li><li class="depth-0"><a href="#关联工作" data-for="关联工作">关联工作</a></li><li class="depth-1"><a href="#基于--串起的代表-vla" data-for="基于--串起的代表-vla">基于 / 串起的代表 VLA</a></li><li class="depth-1"><a href="#对比--同主题-survey" data-for="对比--同主题-survey">对比 / 同主题 survey</a></li><li class="depth-1"><a href="#方法相关综述中核心技术的原始出处" data-for="方法相关综述中核心技术的原始出处">方法相关（综述中核心技术的原始出处）</a></li><li class="depth-0"><a href="#论文点评" data-for="论文点评">论文点评</a></li><li class="depth-1"><a href="#strengths" data-for="strengths">Strengths</a></li><li class="depth-1"><a href="#weaknesses" data-for="weaknesses">Weaknesses</a></li><li class="depth-1"><a href="#可信评估" data-for="可信评估">可信评估</a></li><li class="depth-1"><a href="#notes" data-for="notes">Notes</a></li><li class="depth-1"><a href="#rating" data-for="rating">Rating</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+</script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>

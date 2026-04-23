@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en"><head><title>HAMSTER: Hierarchical Action Models For Open-World Robot Manipulation</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="HAMSTER: Hierarchical Action Models For Open-World Robot Manipulation"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="HAMSTER: Hierarchical Action Models For Open-World Robot Manipulation"/><meta name="twitter:description" content="Summary HAMSTER: Hierarchical Action Models For Open-World Robot Manipulation 核心: 把 VLA 拆成两层——高层 VLM 预测端执行器在图像平面的 2D 路径，低层 3D policy 以该路径为条件执行精细动作；关键收益是高层可以用 action-free 的 ..."/><meta property="og:description" content="Summary HAMSTER: Hierarchical Action Models For Open-World Robot Manipulation 核心: 把 VLA 拆成两层——高层 VLM 预测端执行器在图像平面的 2D 路径，低层 3D policy 以该路径为条件执行精细动作；关键收益是高层可以用 action-free 的 ..."/><meta property="og:image:alt" content="Summary HAMSTER: Hierarchical Action Models For Open-World Robot Manipulation 核心: 把 VLA 拆成两层——高层 VLM 预测端执行器在图像平面的 2D 路径，低层 3D policy 以该路径为条件执行精细动作；关键收益是高层可以用 action-free 的 ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2502-HAMSTER"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2502-HAMSTER"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary HAMSTER: Hierarchical Action Models For Open-World Robot Manipulation 核心: 把 VLA 拆成两层——高层 VLM 预测端执行器在图像平面的 2D 路径，低层 3D policy 以该路径为条件执行精细动作；关键收益是高层可以用 action-free 的 ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  padding: 2rem;
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2502-HAMSTER"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="zuf0s6"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/embodied-reasoning" class="sidebar-tag-pill">#embodied-reasoning</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/computer-use" class="sidebar-tag-pill">#computer-use</a><a href="/mindflow/tags/agentic-RL" class="sidebar-tag-pill">#agentic-RL</a><a href="/mindflow/tags/world-model" class="sidebar-tag-pill">#world-model</a><a href="/mindflow/tags/gui-agent" class="sidebar-tag-pill">#gui-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2502-HAMSTER</a></div></nav><h1 class="article-title">HAMSTER: Hierarchical Action Models For Open-World Robot Manipulation</h1><div class="paper-meta"><span class="paper-venue">ICLR 2025</span><span class="paper-authors"><span class="meta-sep">·</span>Yi Li <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, Yuquan Deng</span><span>, Jesse Zhang</span><span>, Joel Jang</span><span>, Marius Memmel</span><span>, Raymond Yu</span><span>, Caelan Garrett</span><span>, Fabio Ramos</span><span>, Dieter Fox</span><span>, Anqi Li</span><span>, Abhishek Gupta</span><span>, Ankit Goyal</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2025-02-08T00:00:00.000Z">Feb 08, 2025</time><span>18 min read</span></p><ul class="tags"><li><a href="../tags/VLA" class="internal tag-link">VLA</a></li><li><a href="../tags/manipulation" class="internal tag-link">manipulation</a></li><li><a href="../tags/task-planning" class="internal tag-link">task-planning</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>HAMSTER: Hierarchical Action Models For Open-World Robot Manipulation </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><strong>核心</strong>: 把 VLA 拆成两层——高层 VLM 预测端执行器在图像平面的 2D 路径，低层 3D policy 以该路径为条件执行精细动作；关键收益是高层可以用 action-free 的 off-domain 数据（sim / 异构机器人 / 视频）训练。</li>
+<li><strong>方法</strong>: 微调 VILA-1.5-13B 在 RoboPoint (770k) + RLBench sim (320k) + Bridge/DROID (110k) 上预测 <code>[(x_t, y_t, gripper_open_t)]</code> 路径（RDP 简化）；低层 RVT-2 / 3D Diffuser Actor 通过把路径叠画到 RGB 或拼接通道消费该路径；高层只在 episode 开头推理一次。</li>
+<li><strong>结果</strong>: 真机 74 任务 222 次评估，HAMSTER 平均比 OpenVLA 高 20 pp 成功率（~50% 相对提升），比 3D policy baseline 高 ~3x；Colosseum 上用 50% 数据达到 2x 3D-DA 的成绩；VQA benchmark 基本保持 VILA-1.5-13B 水平没被 catastrophic forgetting。</li>
+<li><strong>Sources</strong>: <a href="https://arxiv.org/abs/2502.05485" class="external">paper<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://hamster-robot.github.io/" class="external">website<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://github.com/liyi14/HAMSTER_beta" class="external">github<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><strong>Rating</strong>: 2 - Frontier（把”2D 轨迹作 VLM/policy 接口”这条路线做成完整的 off-domain pretrain 配方，引用 96、influential 3、方向代表作，但 repo 标 “beta” 且 1 年无更新，未成标准 checkpoint）</li>
+</ul>
+</div>
+</blockquote>
+<p><strong>Key Takeaways:</strong></p>
+<ol>
+<li><strong>2D path 是高带宽但 embodiment-agnostic 的接口</strong>: 比 keypoint affordance（MOKA、RoboPoint）信息更丰富，比直接 action token（OpenVLA、RT-2）更好从 off-domain 数据学习；能同时用前向运动学 / 点追踪 / 人手视频生成监督。</li>
+<li><strong>Hierarchy 的真正价值是数据来源解耦，不是分工</strong>: RT-Trajectory、MOKA 已证明轨迹条件化有用；HAMSTER 新增 claim 是 <em>fine-tune</em> VLM 生成轨迹（而不是 prompt 通用 VLM）能显著提升准确度，关键前提是轨迹监督能从便宜数据得到。</li>
+<li><strong>Path-conditioning 实现细节不 trivial</strong>: 把路径叠在 RGB 上会被 RVT-2 的 virtual reprojection 碎片化；改成 6-channel 拼接（RGB + path-only RGB）success 从 0.83 升到 1.00，novel camera 从 0.73 升到 0.98——说明”如何注入路径”的设计空间未被充分探索。</li>
+<li><strong>共训练 VQA 保住了通用能力</strong>: 加入 660k LLaVA VQA 数据后，14 个 VQA benchmark 上 HAMSTER 与 VILA-1.5-13B 打平，证明 co-training 能缓解 robot-specific fine-tuning 的灾难遗忘。</li>
+<li><strong>Asynchronous 推理是 underappreciated 的工程红利</strong>: 高层 VLM 每 episode 只跑 1 次，低层 policy 高频运行；OpenVLA 13B 端到端在 4090 只有 6Hz，HAMSTER 的 VLM 规模不再受频率约束。</li>
+</ol>
+<p><strong>Teaser. Hierarchical VLA 概览——VLM 输出 2D 轨迹，3D policy 按轨迹执行。</strong></p>
+<p><img src="../assets/HAMSTER/fig1_overview.png" alt/></p>
+<hr/>
+<h2 id="body">Body<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#body" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="1-motivation-monolithic-vla-的数据瓶颈">1. Motivation: Monolithic VLA 的数据瓶颈<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-motivation-monolithic-vla-的数据瓶颈" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>核心问题：<a href="../Papers/2406-OpenVLA" class="internal alias" data-slug="Papers/2406-OpenVLA">OpenVLA</a>、<a href="../Papers/2307-RT2" class="internal alias" data-slug="Papers/2307-RT2">RT-2</a>、<a href="../Papers/2410-Pi0" class="internal alias" data-slug="Papers/2410-Pi0">π0</a> 这类 monolithic VLA 把 VLM 直接微调成 action 预测器，必须吃 on-robot（image, proprio, action）三元组。这种数据只能靠遥操采，即便有 <a href="../Papers/2307-RT2" class="internal alias" data-slug="Papers/2307-RT2">Open-X</a>、DROID 这种社区协同努力，规模仍远低于 web-scale 语言/视觉数据。</p>
+<p>另一头，小的 3D policy（RVT-2、3D Diffuser Actor、<a href="../Papers/2303-DiffusionPolicy" class="internal alias" data-slug="Papers/2303-DiffusionPolicy">Diffusion Policy</a>）精度高、局部鲁棒，但对 distractor、光照、新语义极脆弱。</p>
+<p>作者提出：<strong>把 VLM 和 policy 用一个”便宜监督能得到的”中间表征连起来</strong>，让高层生成语义层的 guidance，低层专注几何执行。候选表征要满足：</p>
+<ol>
+<li>从图像序列易提取（点追踪 / 前向运动学即可）；</li>
+<li>跨 embodiment（人手、不同机械臂都能产出）；</li>
+<li>对 dynamics 细节鲁棒。</li>
+</ol>
+<p>选定：<strong>end-effector 在图像平面的 2D 轨迹 <code>p = [(x_t, y_t, gripper_open_t)]</code>，归一化像素坐标 + gripper 开关状态</strong>。</p>
+<h3 id="2-method">2. Method<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-method" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Figure 2. HAMSTER 执行流程：VLM 单次推理生成 2D 路径，低层 policy 按路径与环境交互。</strong></p>
+<p><img src="../assets/HAMSTER/fig2_execution.png" alt/></p>
+<h4 id="21-高层vlm-路径生成">2.1 高层：VLM 路径生成<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#21-高层vlm-路径生成" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p><strong>Base model</strong>: VILA-1.5-13B（interleaved image-text + video caption 预训练）。</p>
+<p><strong>Prompt 形式</strong>（取自 website source）：</p>
+<blockquote>
+<p>In the image, please execute the command described in <code>&lt;quest>...&lt;/quest></code>. Provide a sequence of points denoting the trajectory of a robot gripper… <code>&lt;ans>[(0.25, 0.32), ..., &lt;action>Open Gripper&lt;/action>, ...]&lt;/ans></code></p>
+</blockquote>
+<p><strong>Off-domain 训练数据 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathcal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">off</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></strong>（三类混合 + VQA 共训练）：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>数据源</th><th>规模</th><th>作用</th></tr></thead><tbody><tr><td>RoboPoint（点预测 VQA）</td><td>770k</td><td>教 VLM “what”：像素空间物体/空区定位</td></tr><tr><td>RLBench sim（Franka, 81 tasks × ~1000 ep × ~4 语言）</td><td>~320k</td><td>教 VLM “what &amp; how”，sim 数据</td></tr><tr><td>Bridge (WidowX) + DROID</td><td>~10k + ~45k → ~110k 2D paths</td><td>教 VLM 在真实机器人场景下推理</td></tr><tr><td>LLaVA-style VQA co-train</td><td>660k</td><td>保留 world knowledge</td></tr></tbody></table></div>
+<p><strong>关键点</strong>：</p>
+<ul>
+<li>2D 路径从 proprio + camera intrinsics 前向投影得到——<em>本质上把 robot 数据当成视频数据使用</em>，不需要 action label（人手视频同理）。</li>
+<li>用 <strong>Ramer-Douglas-Peucker</strong> 算法把上百点的原始轨迹稀疏化成几个关键点，让 VLM 在”高层”粒度推理。</li>
+<li>所有数据统一为 VQA 格式，联合均匀采样微调；监督为标准 next-token 负对数似然。</li>
+</ul>
+<p><strong>Figure 3. 三类 off-domain 数据的输入/输出示例。</strong></p>
+<p><img src="../assets/HAMSTER/fig3_data.png" alt/></p>
+<h4 id="22-低层path-conditioned-3d-policy">2.2 低层：Path-conditioned 3D Policy<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#22-低层path-conditioned-3d-policy" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>策略形式 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">π</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">o</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">p</span><span class="mclose">)</span></span></span></span>，其中 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">s</span></span></span></span> 是 proprio，<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">o</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord text"><span class="mord">img</span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord text"><span class="mord">pointcloud</span></span><span class="mclose">)</span></span></span></span>，<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span></span></span></span> 语言指令，<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span></span></span></span> 是高层给出的 2D 路径。</p>
+<p>架构候选：</p>
+<ul>
+<li><strong>RVT-2</strong>（[Goyal+ 2024]）：Robot View Transformer，多视角虚拟相机。</li>
+<li><strong>3D Diffuser Actor (3D-DA)</strong>（[Ke+ 2024]）：diffusion 策略，输入 3D scene representation。</li>
+</ul>
+<p><strong>路径注入方式</strong>（两种）：</p>
+<ol>
+<li><strong>Overlay</strong>：把 <code>(x_t, y_t)</code> 画成颜色渐变的折线直接叠在 RGB 图像上，gripper 变化用不同颜色圆圈标记。通用——任何 policy 架构都能吃。</li>
+<li><strong>Concat</strong>：把 path 单独渲染一张 RGB 图，与原图拼成 6-channel。需要 policy 接受多通道，但性能更好（见 §3）。</li>
+</ol>
+<p><strong>训练</strong>：收集 ~320 条真机遥操 episode 作为 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathcal" style="margin-right:0.02778em;">D</span></span></span></span>；训练时用 <em>oracle</em> 2D 路径（proprio 投影）作为 ground truth path；推理时用 VLM 预测的路径。</p>
+<p><strong>推理频率</strong>：VLM 每 episode 只调 1-few 次；低层策略高频运行。对比 OpenVLA 7B 在 RTX 4090 上端到端 6Hz，这一设计让 VLM backbone 可以任意放大。</p>
+<blockquote>
+<p>❓ “episode 开头单次推理” 对真正长程/动态场景显然不够——文中说 “one or few times”，具体重新触发 VLM 的条件没给定义。这应是 open problem。</p>
+</blockquote>
+<h3 id="3-experiments">3. Experiments<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-experiments" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="31-真机-tabletop-manipulation74-tasks-222-evals">3.1 真机 Tabletop Manipulation（74 tasks, 222 evals）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#31-真机-tabletop-manipulation74-tasks-222-evals" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p><strong>Figure 4. 跨 7 条泛化轴的 success score（对比 OpenVLA / RVT-2 / 3D-DA）。</strong></p>
+<p><img src="../assets/HAMSTER/fig4_results.png" alt/></p>
+<p>泛化轴：object/goal 组合、visual（纹理、灯光、distractor）、language（candy→sweet object）、spatial（位置关系）、novel object、multiple（组合）。</p>
+<p><strong>结论</strong>：</p>
+<ul>
+<li>HAMSTER 平均比 OpenVLA 高 ~2x，比非 VLM 的 3D policy baseline 高 ~3x。</li>
+<li>跨 prehensile + non-prehensile（press button, knock down）都成立。</li>
+<li>为公平起见，OpenVLA 也用 RLBench 做额外微调——几乎无提升（0.54 vs 0.58），说明 monolithic 架构难以从 sim 数据受益，而 HAMSTER 的 hierarchy 能。</li>
+</ul>
+<p><strong>Camera view invariance</strong>（Table 2）：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Method</th><th>Original Success / Complete</th><th>Novel Camera Success / Complete</th></tr></thead><tbody><tr><td>OpenVLA</td><td>0.60 / 0.30</td><td>0.23 / 0.00</td></tr><tr><td>HAMSTER+RVT-2 (overlay)</td><td>0.83 / 0.70</td><td>0.73 / 0.40</td></tr><tr><td>HAMSTER+RVT-2 (concat)</td><td><strong>1.00 / 1.00</strong></td><td><strong>0.98 / 0.90</strong></td></tr></tbody></table></div>
+<p>Concat 显著优于 overlay——文中归因：RVT-2 的虚拟视角投影会把叠加在 RGB 上的路径几何撕碎，独立通道保留完整路径信号。</p>
+<h4 id="32-colosseum-simulation">3.2 Colosseum Simulation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#32-colosseum-simulation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>Table 1: 在 5 tasks Colosseum 子集上，+3D-DA 用 <strong>50% 数据</strong> 就达到 vanilla 3D-DA 100% 数据 2x 的成功率，<strong>100% 数据</strong> 达到 2.4x——<strong>demonstration efficiency</strong> 由 path conditioning 带来。</p>
+<p>Table 3（跨 15 种视觉变化轴 full Colosseum）：</p>
+<ul>
+<li>3D-DA 平均 0.35 ± 0.04</li>
+<li>HAMSTER+3D-DA 平均 <strong>0.46 ± 0.04</strong>（+31%）
+在 background texture、manipulation object texture、table texture 等 visual-heavy 轴上提升最大；在 camera pos / manipulation obj size 这类几何轴提升有限——符合直觉：path 提供的主要是语义/视觉对齐信息。</li>
+</ul>
+<h4 id="33-vlm-本身的泛化">3.3 VLM 本身的泛化<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#33-vlm-本身的泛化" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p><strong>Figure 7. VLM 在未见场景下的 path 生成：world-knowledge 任务、手绘 sketch 输入、sim → real 迁移。</strong></p>
+<p><img src="../assets/HAMSTER/fig7_vlm_gen.png" alt/></p>
+<p>Appendix D.1 ablation（未嵌图）：</p>
+<ul>
+<li>HAMSTER VLM 在 path 任务上显著优于 zero-shot prompting 闭源 VLM（对应 RT-Trajectory、Code-as-Policies 的设定）。</li>
+<li>去掉 RLBench sim 数据 → 真机性能降，说明 sim 数据确实在 cross-domain transfer。</li>
+</ul>
+<p><strong>Table 4（VQA benchmark 保持）</strong>：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Method</th><th>VQA-v2</th><th>GQA</th><th>VizWiz</th><th>POPE</th><th>MME</th><th>MMB</th><th>SEED</th><th>LLaVA-W</th><th>MM-Vet</th><th>MMMU</th></tr></thead><tbody><tr><td>VILA-1.5-13B</td><td>82.8</td><td>64.3</td><td>62.6</td><td>86.3</td><td>1569.6</td><td>74.9</td><td>65.1</td><td>80.8</td><td>44.3</td><td>37.9</td></tr><tr><td>HAMSTER</td><td>82.9</td><td>64.9</td><td>63.4</td><td>85.8</td><td><strong>1588.4</strong></td><td><strong>75.3</strong></td><td>64.2</td><td><strong>81.2</strong></td><td><strong>44.4</strong></td><td>37.8</td></tr></tbody></table></div>
+<p>结论：co-training 防住了 catastrophic forgetting，VLM 没退化成 narrow path-predictor。</p>
+<h3 id="4-limitations作者自述--我的观察">4. Limitations（作者自述 + 我的观察）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-limitations作者自述--我的观察" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>作者：</p>
+<ol>
+<li>只预测 2D 点，没有真实 3D 空间理解——VLM 不知道深度。</li>
+<li>2D path 是窄带宽接口，无法传达力 / 旋转 / 接触模式。</li>
+</ol>
+<p>我补充：</p>
+<ul>
+<li>真机 training set 只有 320 条，所有”泛化”evals 实际上测的是同一个物理平台下的 visual/language 变化；跨 embodiment 泛化只在 VLM 那层被证明，低层 policy 仍然是 task-specific。</li>
+<li>“Episode 开头单次 VLM 推理”模型天然不适合动态/contact-rich 任务；论文没有 recovery 机制。</li>
+<li>Concat > overlay 的差距大（0.83 → 1.00）提示 overlay 这个”通用”接口其实是 HAMSTER 主推方式的次优实现；但 concat 不兼容 pretrained image encoder 的 3 通道输入，这是个真实的工程 trade-off。</li>
+</ul>
+<hr/>
+<h2 id="关联工作">关联工作<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#关联工作" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="基于">基于<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#基于" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>VILA-1.5-13B</strong>（[Lin+ 2024]）: 提供 interleaved image-text + video 预训练基座。</li>
+<li><strong>RoboPoint</strong>（[Yuan+ 2024b]）: 770k 像素点预测 VQA 数据的直接来源；HAMSTER 显式感谢 Wentao Yuan 提供。</li>
+<li><strong>RLBench</strong>（[James+ 2020]）: 81 任务模拟数据来源；用内置 planner 自动合成 320k 轨迹。</li>
+<li><strong>Bridge + DROID</strong>: 真实机器人 off-domain 视频源。</li>
+<li><strong>RVT-2</strong> / <strong>3D Diffuser Actor</strong>: 低层 3D policy 骨架。</li>
+<li><strong>Ramer-Douglas-Peucker</strong>: 路径稀疏化算法。</li>
+</ul>
+<h3 id="对比">对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><a href="../Papers/2406-OpenVLA" class="internal alias" data-slug="Papers/2406-OpenVLA">OpenVLA</a>: 核心 monolithic VLA baseline；HAMSTER 相对其提升 ~50%（7 轴平均 20pp）。</li>
+<li><strong>RT-Trajectory</strong>（Gu+ 2023）: 最直接的 prior——也用轨迹 sketch 条件化。HAMSTER 的 delta 是：(1) <em>fine-tune</em> VLM 生成轨迹而非 prompt；(2) 低层 policy 接受 3D 输入；(3) 论证 off-domain 数据能驱动 VLM 微调。</li>
+<li><a href="../Papers/2307-RT2" class="internal alias" data-slug="Papers/2307-RT2">RT-2</a> / <a href="../Papers/2410-Pi0" class="internal alias" data-slug="Papers/2410-Pi0">π0</a>: monolithic VLA 范式，共同竞争者。</li>
+<li><strong>LLARVA</strong>: 也预测 end-effector trajectory，但只作 auxiliary task 给 monolithic 模型。</li>
+</ul>
+<h3 id="方法相关">方法相关<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#方法相关" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>MOKA</strong>（Liu+ 2024b）: mark-based visual prompting + 固定数量 waypoint 预测——关键点而非完整路径。</li>
+<li><strong>RoboPoint / PIVOT / VoxPoser</strong>: 用 VLM 预测 keypoint affordance 或 value map 作为 policy 接口。HAMSTER 的论点：轨迹比点集表达能力更强。</li>
+<li><strong>Track-any-point policies</strong>（Track2Act、ATM、Gen2Act）: 基于 object trajectory 条件化，与 HAMSTER 的 end-effector trajectory 是对偶选择；文中提到该框架可自然扩展到 object trajectory。</li>
+<li><strong><a href="../Papers/2502-HiRobot" class="internal alias" data-slug="Papers/2502-HiRobot">Hi Robot</a> / <a href="../Papers/2503-MoManipVLA" class="internal alias" data-slug="Papers/2503-MoManipVLA">MoManipVLA</a></strong>: 其他 hierarchical VLA 工作；HAMSTER 的独特切分是”2D path 作为语言之外的显式几何接口”。</li>
+<li><a href="../Papers/2407-ECoT" class="internal alias" data-slug="Papers/2407-ECoT">ECoT</a>: 也在 VLA 里插入中间表示（CoT + bounding box + gripper pos），但用于监督 action prediction 而非作为 policy 输入。</li>
+</ul>
+<hr/>
+<h2 id="论文点评">论文点评<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#论文点评" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="strengths">Strengths<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>问题选得漂亮</strong>: “monolithic VLA 被 on-robot 数据量卡死”是真痛点；“找一个便宜可得、embodiment-agnostic 的中间表征” 是 first-principles 的问题重构。</li>
+<li><strong>Off-domain 数据配方具体可复制</strong>: RoboPoint + RLBench + Bridge/DROID + VQA co-train 的比例给得明确；选择 VILA-1.5-13B 也有理由（interleaved + video caption 预训练让它对 path-in-image 任务有 inductive bias）。</li>
+<li><strong>关键 ablation 都做了</strong>: RLBench vs no-RLBench、overlay vs concat、50% data、camera view 变化、VQA 保持，分别对应 off-domain 有用性 / 路径注入方式 / 数据效率 / 几何泛化 / catastrophic forgetting。</li>
+<li><strong>生成数据的自动化</strong>: 2D path 监督从 proprio 投影得到，不需要额外人标；这是方法能 scale 的前提。</li>
+<li><strong>跨非抓取任务的可迁移性</strong>: press button / knock down / unfold towel / open drawer 都验证了，不是 pick-place only。</li>
+</ol>
+<h3 id="weaknesses">Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>“Once per episode” 推理假设被低调处理</strong>: long-horizon 多子任务场景下 VLM 显然要多次调用，但触发机制、error recovery、replanning 都没讨论。Figure 8 的 long-horizon rollout 更像是人工拼接。</li>
+<li><strong>2D path 的信息瓶颈已在 Colosseum 的几何轴上显形</strong>: camera pos / manip obj size 轴提升有限，作者没诚实讨论这是”因为 2D 表征天然不编码深度”的结构问题。</li>
+<li><strong>低层仍需 task-specific demo</strong>: 320 条真机 data，新任务仍然要重新收。文中 framing 让人误以为 off-domain data 解决了所有问题，但其实只解决了 VLM 那层；“data efficiency” 是相对 3D-DA 的 2x，不是绝对意义上的 zero-shot。</li>
+<li><strong>Cross-embodiment 的 claim 被夸大</strong>: VLM 层见过 WidowX（Bridge）数据，但下游 policy 仍然 specific to测试机器人（Franka？未明确）。所谓”embodiment-agnostic 的 2D path”主要是从 pretraining 角度。</li>
+<li><strong>Repo 状态 beta 且停滞</strong>: <code>liyi14/HAMSTER_beta</code>，pushed 369 天前，90 天 0 commits，issues 未关——这对一篇 ICLR 被接收的工作不太合适，复现成本高。作者 claim “fully open-sourced enabler”与 repo 现状有落差。</li>
+<li><strong>Baseline 公平性存疑</strong>: OpenVLA 用的是原版 7B，HAMSTER 用 13B VILA；对比的 FLOPs / 参数量没 align。</li>
+</ol>
+<h3 id="可信评估">可信评估<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#可信评估" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="artifact-可获取性">Artifact 可获取性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#artifact-可获取性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><strong>代码</strong>: inference + training（Gradio demo server + training scripts based on VILA 仓库），但 repo 标 beta 且长期未更新。</li>
+<li><strong>模型权重</strong>: HuggingFace 上有 VLM checkpoint（README 提到），具体名称未列出。</li>
+<li><strong>训练细节</strong>: 仅高层描述——数据规模、VLM base model、共训练比例给了；具体超参、学习率、训练步数、compute 在 Appendix B（未完全阅读）。</li>
+<li><strong>数据集</strong>: RoboPoint / RLBench / Bridge / DROID 均公开，320 条真机 demo 未公开。</li>
+</ul>
+<h4 id="claim-可验证性">Claim 可验证性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#claim-可验证性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>✅ “20% avg improvement over OpenVLA across 7 axes”：74 tasks × 3 trials ×多 baseline 的实验规模明确，Table 5 (appendix) 给了 per-task 分数，可核验。</li>
+<li>✅ “hierarchical VLM benefits from off-domain data”：RLBench ablation（加 vs 不加）给了真机对比数据，OpenVLA 同 RLBench 微调对照也控制住了。</li>
+<li>⚠️ “demonstration efficient (2x with 50% data)“：只在 Colosseum 5 任务子集上验证；5 任务 + 5 seeds 统计力有限，置信区间给出但未报告 p-value。</li>
+<li>⚠️ “strong cross-embodiment generalization”：VLM 训练数据包含异构机器人视频，但 eval 仍然 Franka；claim 的是 VLM 可以跨，不是完整系统跨。</li>
+<li>⚠️ “can scale VLM to any size due to async inference”：每 episode 单次推理的假设未充分验证在 dynamic 任务上是否成立。</li>
+<li>❌ 无明显 marketing 话术。</li>
+</ul>
+<h3 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>与 <a href="../Papers/2503-MoManipVLA" class="internal" data-slug="Papers/2503-MoManipVLA">2503-MoManipVLA</a>、<a href="../Papers/2502-HiRobot" class="internal" data-slug="Papers/2502-HiRobot">2502-HiRobot</a> 的关系值得展开</strong>: 三者都是 hierarchical VLA 的当下范式；HAMSTER 选 2D path，MoManipVLA 选 waypoint + base trajectory，HiRobot 选 language subgoal。信息带宽、可监督性、robustness 三个维度各有优劣。</li>
+<li><strong>2D path vs object-centric flow</strong>: Gen2Act、Track2Act 用 object trajectory；这对 articulated / deformable 场景可能更鲁棒。值得对比：end-effector 轨迹 vs object 轨迹 vs 二者都要，哪个是更 general 的接口？</li>
+<li><strong>Concat > overlay 的 finding 是 methodologically 有趣的小发现</strong>: 它暗示当前的 path-conditioning 可能都被 overlay 的碎片化损伤；未来做 VLA benchmark 评估 path-based 方法时应控制这一变量。</li>
+<li><strong>为什么选 2D 而不是深度图/3D 路径？</strong>: 作者没正面回答。推测是”2D 能从 monocular 视频/sim 无缝提取、3D 会把 off-domain 数据池缩小”——这是 accept bandwidth loss 换 data coverage 的理性选择。</li>
+</ul>
+<h3 id="rating">Rating<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#rating" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Metrics</strong> (as of 2026-04-22): citation=96, influential=3 (3.1%), velocity=6.67/mo; HF upvotes=0; github 59⭐ / forks=7 / 90d commits=0 / pushed 369d ago · <strong>stale</strong></p>
+<p><strong>分数</strong>: 2 - Frontier</p>
+<p><strong>理由</strong>: citation 96 + velocity 6.67/mo（14 个月）表明该工作在 hierarchical VLA / path-conditioned policy 这条线上被广泛引用和讨论，是当前 frontier 的代表之一；但 influential/total 仅 3.1%（远低于典型 10%）说明它更多被当作 <em>landmark reference</em> 而非技术被实质继承——这与 2D path 接口偏窄、下游需要 task-specific demo 的局限相吻合。Repo is_stale、HF upvotes=0 也说明社区未把它作为可直接用的开源基座。综上不达 Foundation 档（对比 <a href="../Papers/2406-OpenVLA" class="internal alias" data-slug="Papers/2406-OpenVLA">OpenVLA</a>、<a href="../Papers/2410-Pi0" class="internal alias" data-slug="Papers/2410-Pi0">π0</a> 这类真正定义范式的工作），但明显高于 Archived 档——后续研究 hierarchical VLA 或 2D path conditioning 时必须引用与对比。</p></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="dts0pv" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#body" data-for="body">Body</a></li><li class="depth-1"><a href="#1-motivation-monolithic-vla-的数据瓶颈" data-for="1-motivation-monolithic-vla-的数据瓶颈">1. Motivation: Monolithic VLA 的数据瓶颈</a></li><li class="depth-1"><a href="#2-method" data-for="2-method">2. Method</a></li><li class="depth-1"><a href="#3-experiments" data-for="3-experiments">3. Experiments</a></li><li class="depth-1"><a href="#4-limitations作者自述--我的观察" data-for="4-limitations作者自述--我的观察">4. Limitations（作者自述 + 我的观察）</a></li><li class="depth-0"><a href="#关联工作" data-for="关联工作">关联工作</a></li><li class="depth-1"><a href="#基于" data-for="基于">基于</a></li><li class="depth-1"><a href="#对比" data-for="对比">对比</a></li><li class="depth-1"><a href="#方法相关" data-for="方法相关">方法相关</a></li><li class="depth-0"><a href="#论文点评" data-for="论文点评">论文点评</a></li><li class="depth-1"><a href="#strengths" data-for="strengths">Strengths</a></li><li class="depth-1"><a href="#weaknesses" data-for="weaknesses">Weaknesses</a></li><li class="depth-1"><a href="#可信评估" data-for="可信评估">可信评估</a></li><li class="depth-1"><a href="#notes" data-for="notes">Notes</a></li><li class="depth-1"><a href="#rating" data-for="rating">Rating</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+</script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>

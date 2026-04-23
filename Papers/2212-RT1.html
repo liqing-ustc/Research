@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en"><head><title>RT-1: Robotics Transformer for Real-World Control at Scale</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="RT-1: Robotics Transformer for Real-World Control at Scale"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="RT-1: Robotics Transformer for Real-World Control at Scale"/><meta name="twitter:description" content="Summary RT-1: Robotics Transformer for Real-World Control at Scale 核心: 用一个 35M-param decoder-only Transformer 把 image + language 映射到 discretized action tokens，在 130k episodes ..."/><meta property="og:description" content="Summary RT-1: Robotics Transformer for Real-World Control at Scale 核心: 用一个 35M-param decoder-only Transformer 把 image + language 映射到 discretized action tokens，在 130k episodes ..."/><meta property="og:image:alt" content="Summary RT-1: Robotics Transformer for Real-World Control at Scale 核心: 用一个 35M-param decoder-only Transformer 把 image + language 映射到 discretized action tokens，在 130k episodes ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2212-RT1"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2212-RT1"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary RT-1: Robotics Transformer for Real-World Control at Scale 核心: 用一个 35M-param decoder-only Transformer 把 image + language 映射到 discretized action tokens，在 130k episodes ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  padding: 2rem;
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2212-RT1"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="zuf0s6"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/embodied-reasoning" class="sidebar-tag-pill">#embodied-reasoning</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/computer-use" class="sidebar-tag-pill">#computer-use</a><a href="/mindflow/tags/agentic-RL" class="sidebar-tag-pill">#agentic-RL</a><a href="/mindflow/tags/world-model" class="sidebar-tag-pill">#world-model</a><a href="/mindflow/tags/gui-agent" class="sidebar-tag-pill">#gui-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2212-RT1</a></div></nav><h1 class="article-title">RT-1: Robotics Transformer for Real-World Control at Scale</h1><div class="paper-meta"><span class="paper-venue">arXiv / RSS 2023</span><span class="paper-authors"><span class="meta-sep">·</span>Anthony Brohan <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, Noah Brown</span><span>, Justice Carbajal</span><span>, Yevgen Chebotar</span><span>, Chelsea Finn</span><span>, Keerthana Gopalakrishnan</span><span>, Karol Hausman</span><span>, Brian Ichter</span><span>, Alex Irpan</span><span>, Dmitry Kalashnikov</span><span>, Sergey Levine</span><span>, Yao Lu</span><span>, Ofir Nachum</span><span>, Karl Pertsch</span><span>, Kanishka Rao</span><span>, Michael Ryoo</span><span>, Quan Vuong</span><span>, Fei Xia</span><span>, Ted Xiao</span><span>, et al.</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2022-12-13T00:00:00.000Z">Dec 13, 2022</time><span>17 min read</span></p><ul class="tags"><li><a href="../tags/VLA" class="internal tag-link">VLA</a></li><li><a href="../tags/manipulation" class="internal tag-link">manipulation</a></li><li><a href="../tags/imitation-learning" class="internal tag-link">imitation-learning</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>RT-1: Robotics Transformer for Real-World Control at Scale </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><strong>核心</strong>: 用一个 35M-param decoder-only Transformer 把 image + language 映射到 discretized action tokens，在 130k episodes / 700+ tasks 的真实数据上证明 robot policy 也能”吸收数据”。</li>
+<li><strong>方法</strong>: FiLM-conditioned EfficientNet-B3 产生 vision-language tokens → TokenLearner 压缩 81→8 tokens → 8-layer Transformer 输出 11 维离散 action（arm 7 + base 3 + mode 1），每维 256 bins，3 Hz 闭环控制。</li>
+<li><strong>结果</strong>: seen tasks 97%，unseen 76%（+24% vs. baseline），distractor 83%（+36%），background 59%（+18%）；能吸收 sim 数据与 Kuka QT-Opt 数据而几乎不伤原任务；在 SayCan 中完成 50 步 long-horizon 指令。</li>
+<li><strong>Sources</strong>: <a href="https://arxiv.org/abs/2212.06817" class="external">paper<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://robotics-transformer1.github.io/" class="external">website<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://github.com/google-research/robotics_transformer" class="external">github<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><strong>Rating</strong>: 3 - Foundation （AR-token-VLA 范式的奠基工作，RT-2 / Octo / OpenVLA 等后续 VLA 无一不从这里继承”vision+language→discretized action tokens”的设计和大规模多任务 BC 配方。）</li>
+</ul>
+</div>
+</blockquote>
+<p><strong>Key Takeaways:</strong></p>
+<ol>
+<li><strong>Action tokenization + decoder-only Transformer 是 scalable robot policy 的可行配方</strong>：把 11 维连续动作每维离散成 256 bins 后当 token 预测，统一了 language、vision 与 control 的接口，这一设计被 RT-2/Octo/OpenVLA 直接继承。</li>
+<li><strong>Data diversity > data quantity</strong>：去掉 25% 的 tasks（保留 97% 的 data）比减掉 49% 的 data 对 generalization 的伤害还大。这是后来 Open-X / DROID 等跨任务、跨 embodiment 数据集扩张的核心依据。</li>
+<li><strong>Cross-embodiment 迁移 “免费”</strong>：把 Kuka QT-Opt 的 209k bin-picking episodes 混入训练，EDR 机器人在 bin-picking 上从 22%→39%，几乎 2×；反证”single-robot, narrow-task”策略在泛化上是局部最优。</li>
+<li><strong>实时性 ≠ 大模型</strong>：为了 3 Hz 控制，模型只能 35M params；TokenLearner（81→8 token）把推理加速 2.4×，缓存 tokens 再加 1.7×。RT-1 展示了”架构工程 + 数据规模”比”裸堆参数”更重要。</li>
+<li><strong>局限很诚实</strong>：BC-only，不能超过 demonstrator；generalization 限于已见概念的组合，学不到全新运动；dexterity 不足。</li>
+</ol>
+<p><strong>Teaser. RT-1 在真实厨房中执行多种 pick / place / move / drawer 指令的 mosaic 演示。</strong>
+<video src="https://robotics-transformer1.github.io/img/rt1_mosaic_comp.mp4" controls muted playsinline width="720"></video></p>
+<hr/>
+<h2 id="问题设定与动机">问题设定与动机<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#问题设定与动机" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>问题</strong>：能否训练一个 single, capable, large multi-task backbone，在<strong>开放集</strong>的语言指令下控制真实机器人，并像 vision/NLP 领域的大模型一样表现出 zero-shot 泛化？</p>
+<p><strong>之前尝试为什么不够</strong>：</p>
+<ul>
+<li><strong>Gato</strong>（Reed et al. 2022）：generalist 声势大，但真实机器人任务只覆盖 colored block stacking，generalization 未评估。</li>
+<li><strong>BC-Z</strong>（Jang et al. 2021）：100 tasks, feedforward ResNet，continuous actions，generalization 有限。</li>
+<li><strong>CLIPort / Perceiver-Actor</strong>：少量 demo 下高效学习特定任务，但不关心 scale。</li>
+</ul>
+<p><strong>RT-1 的 bet</strong>：问题不在架构花哨，而在 (a) 收集够大够 diverse 的真实数据，(b) 设计一个 high-capacity 但 real-time 的 Transformer。</p>
+<h2 id="数据13-robots--17-months--130k-episodes--744-tasks">数据：13 robots × 17 months × 130k episodes × 744 tasks<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#数据13-robots--17-months--130k-episodes--744-tasks" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>数据规模</strong>：~130k demonstrations，13 台 Everyday Robots mobile manipulator，17 个月，3 个 kitchen-based 环境（1 个 training classroom + 2 个 real office kitchens）。</p>
+<p><strong>任务组织</strong>：每条 episode 配一条自然语言指令（verb + noun(s)），按 verb 归成 skill。</p>
+<p><strong>Table 1. Skill 分布（共 744 tasks）</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Skill</th><th>Count</th><th>Example</th></tr></thead><tbody><tr><td>Pick Object</td><td>130</td><td>pick iced tea can</td></tr><tr><td>Move Object Near Object</td><td>337</td><td>move pepsi can near rxbar blueberry</td></tr><tr><td>Place Object Upright</td><td>8</td><td>place water bottle upright</td></tr><tr><td>Knock Object Over</td><td>8</td><td>knock redbull can over</td></tr><tr><td>Open / Close Drawer</td><td>6</td><td>open the top drawer</td></tr><tr><td>Place Object into Receptacle</td><td>84</td><td>place brown chip bag into white bowl</td></tr><tr><td>Pick from Receptacle and Place</td><td>162</td><td>pick jalapeno chip bag from paper bowl and place on counter</td></tr><tr><td>Long-horizon additions</td><td>9</td><td>pull napkin out of dispenser</td></tr><tr><td><strong>Total</strong></td><td><strong>744</strong></td><td></td></tr></tbody></table></div>
+<p><strong>采集方式</strong>：2 VR remote teleop；系统自动给 operator 采样指令 + 场景随机化，保证覆盖均衡。</p>
+<blockquote>
+<p>❓ 744 tasks 里 Move-Near 就占 337 / Pick 占 130，分布相当 long-tail。后续 data ablation 证明 diversity 比 quantity 更关键，但”数据不平衡”本身没有被系统 ablation——RT-1 可能对 dominant skill 做得特别好、对 8-count 的 upright/knock 学得很勉强（paper 的 per-skill 细表在 Appendix）。</p>
+</blockquote>
+<h2 id="模型架构">模型架构<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#模型架构" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Figure 3. RT-1 架构：Instruction → USE embedding → FiLM-conditioned EfficientNet-B3 → TokenLearner → Transformer → Action tokens</strong>
+<img src="https://arxiv.org/html/x2.png" alt/></p>
+<p><strong>Input</strong>：6 张 300×300 的历史图像 + 自然语言指令。</p>
+<p><strong>Instruction &amp; image tokenization</strong>（16M params）：</p>
+<ul>
+<li>指令先经 <strong>Universal Sentence Encoder</strong> 产生 embedding。</li>
+<li>EfficientNet-B3（ImageNet pretrained）在 26 层 MBConv 中被 <strong>identity-initialized FiLM</strong> 层调制——FiLM 的 affine 参数初始化为 0，保证预训练权重初始等价，随后再慢慢接管。</li>
+<li>每张 image 输出 9×9×512 feature map → flatten 成 81 vision-language tokens。</li>
+<li>与 Gato 的关键差异：<strong>不</strong>把图 patchify 后独立 tokenize，而是<strong>早融合</strong>语言到视觉 backbone 里。</li>
+</ul>
+<p><strong>TokenLearner</strong>：每张图的 81 tokens 被 soft-selected 到 <strong>8 tokens</strong>，6 帧共 48 tokens 喂给 Transformer。推理加速 2.4×。</p>
+<p><strong>Transformer</strong>（19M params）：decoder-only，8 self-attention layers，causal masking。</p>
+<p><strong>Action tokenization</strong>：每个 action dim 离散成 <strong>256 bins</strong>。Action 空间：arm 7 维（x, y, z, roll, pitch, yaw, gripper）+ base 3 维（x, y, yaw）+ 1 个 mode 切换（arm / base / terminate）= 11 维。</p>
+<p><strong>Loss</strong>：standard categorical cross-entropy + causal masking（同 Gato / Multi-game DT）。</p>
+<p><strong>Inference</strong>：3 Hz，&lt; 100 ms budget。TokenLearner 省 2.4×，缓存过去帧的 tokens 再省 1.7×。另加 280 ms fixed-time waiting 保证 jitter-free。</p>
+<h2 id="实验">实验<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#实验" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>评估规模</strong>：3000+ real-world rollouts——当时最大规模的 robot learning evaluation 之一。</p>
+<h3 id="62-overall-rt-1-vs-gato-vs-bc-z--bc-z-xl">6.2 Overall: RT-1 vs. Gato vs. BC-Z / BC-Z XL<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#62-overall-rt-1-vs-gato-vs-bc-z--bc-z-xl" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>所有 baseline 都<strong>在 RT-1 同一份数据上训练</strong>（而非各自原版小数据），确保对比公平。Gato 从 1.2B 缩到 37M 以达到 3 Hz。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Category</th><th>RT-1</th><th>Gato</th><th>BC-Z</th><th>BC-Z XL</th></tr></thead><tbody><tr><td>Seen tasks (>200)</td><td><strong>97%</strong></td><td>65%</td><td>72%</td><td>72%</td></tr><tr><td>Unseen tasks (21)</td><td><strong>76%</strong></td><td>~45%</td><td>52%</td><td>52%</td></tr><tr><td>Distractors (30)</td><td><strong>83%</strong></td><td>~47%</td><td>~47%</td><td>~47%</td></tr><tr><td>Backgrounds (22)</td><td><strong>59%</strong></td><td>~35%</td><td>~41%</td><td>~41%</td></tr></tbody></table></div>
+<blockquote>
+<p>❓ 数字从 Table 2 读出，paper 未给全部小数点，本表以正文 “+24% / +36% / +18%” 回推近似值；严格比较要看 paper Table 2 的 screenshot。</p>
+</blockquote>
+<p><strong>Realistic L1/L2/L3（Table 3）</strong>：真实厨房三个难度。RT-1 70% / 88 / 75 / 50，BC-Z XL 55 / 63 / 75 / 38，Gato 30 / 63 / 25 / 0。L3（全新物体/位置）Gato 完全失败，RT-1 仍有 50%。</p>
+<h3 id="63-异构数据吸收">6.3 异构数据吸收<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#63-异构数据吸收" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Sim + Real（Table 4）</strong>：加 sim 数据对 real seen tasks <strong>没有 degrade</strong>；对”只在 sim 见过的物体”的 real 测试：23%→87%（+64%）；对”物体在 sim 训练但 skill 组合未见过”的 real 测试：7%→33%（+26%）。</p>
+<p><strong>Kuka QT-Opt + EDR（Table 5）</strong>：混入 Kuka 209k bin-picking episodes（RL 采集、不同 action 分布、不同 morphology、不同环境）：</p>
+<ul>
+<li>Classroom eval：仅 -2%</li>
+<li>Bin-picking eval：22% → <strong>39%</strong>（~2×）</li>
+<li>单独用 Kuka 数据训后 EDR 跑 bin-picking：0%（印证直接迁移无效）</li>
+</ul>
+<p>这是 <strong>cross-embodiment transfer</strong> 的一个早期强证据，直接催生了后续 Open-X-Embodiment 数据集的思想。</p>
+<h3 id="64-long-horizon-via-saycan">6.4 Long-horizon via SayCan<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#64-long-horizon-via-saycan" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>把 RT-1 接进 <a href="../Papers/2204-SayCan" class="internal alias" data-slug="Papers/2204-SayCan">SayCan</a> 框架（LLM 做 high-level 规划，value function 过滤不可执行动作）。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Setting</th><th>Planning / Execution @ Kitchen1</th><th>@ Kitchen2</th></tr></thead><tbody><tr><td>Original SayCan</td><td>73 / 47</td><td>-</td></tr><tr><td>SayCan + Gato</td><td>87 / 33</td><td>87 / 0</td></tr><tr><td>SayCan + BC-Z</td><td>87 / 53</td><td>87 / 13</td></tr><tr><td><strong>SayCan + RT-1</strong></td><td><strong>87 / 67</strong></td><td><strong>87 / 67</strong></td></tr></tbody></table></div>
+<p>RT-1 的关键是<strong>换厨房（Kitchen2 是 full OOD）不掉</strong>，这使 50-step 指令成为可能。</p>
+<h3 id="65-data-quantity-vs-diversity-table-7">6.5 Data quantity vs. diversity (Table 7)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#65-data-quantity-vs-diversity-table-7" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>构造 diversity-narrow vs. quantity-small 两轴 ablation：</p>
+<ul>
+<li>保 97% 数据但砍掉 25% tasks → generalization 跌幅 ≈ 减去 49% 数据。</li>
+<li><strong>结论：data diversity 更关键</strong>。</li>
+</ul>
+<p>这一结论被后续 Open-X、DROID 的 scaling 实验反复验证，可以说是真实机器人学习领域最稳的一条”scaling law”。</p>
+<h2 id="关联工作">关联工作<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#关联工作" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="基于">基于<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#基于" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Transformer (Vaswani+ 2017)</strong>: 直接的架构底座。</li>
+<li><strong>Decision Transformer / Multi-game DT (Chen+ 2021, Lee+ 2022a)</strong>: “sequence modeling for control” 的思想源。</li>
+<li><strong>Gato (Reed+ 2022)</strong>: generalist transformer agent；RT-1 明确对比并论证 Gato 的 image patch tokenize、无 language 早融合、无 real-time 考虑的不足。</li>
+<li><strong>BC-Z (Jang+ 2021)</strong>: language-conditioned BC 的 ResNet baseline；RT-1 的数据与 task 设置在精神上延续。</li>
+<li><strong>SayCan (Ahn+ 2022)</strong>: LLM planner，被用作 long-horizon eval harness。</li>
+<li><strong>FiLM (Perez+ 2018) / EfficientNet (Tan+ 2019) / TokenLearner (Ryoo+ 2021) / USE (Cer+ 2018)</strong>: 组件级基石。</li>
+<li><strong>QT-Opt (Kalashnikov+ 2018)</strong>: 提供 Kuka bin-picking 的跨形态训练数据。</li>
+</ul>
+<h3 id="对比">对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Gato / BC-Z / BC-Z XL</strong>: 主要 baseline。RT-1 通过在同一份数据上重新训证明<strong>架构 + token 化设计</strong>本身贡献了可观的 delta，不是单纯”数据多”。</li>
+<li><strong>Behavior Transformer (Shafiullah+ 2022), CLIPort (Shridhar+ 2021), Perceiver-Actor (Shridhar+ 2022), VIMA (Jiang+ 2022)</strong>: 都是同期或稍前的 transformer-based robot policy，但各自在任务广度、数据规模、real-time 方面有所取舍。</li>
+</ul>
+<h3 id="方法相关下游继承">方法相关（下游继承）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#方法相关下游继承" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><a href="../Papers/2307-RT2" class="internal alias" data-slug="Papers/2307-RT2">RT-2</a>: 把 RT-1 的 action tokenization 直接塞进 PaLI/PaLM-E VLM 里做 co-finetune——RT-1 的 token 化是 RT-2 得以 work 的前提。</li>
+<li><a href="../Papers/2405-Octo" class="internal alias" data-slug="Papers/2405-Octo">Octo</a>: 在 Open-X 上训的 generalist policy，保留 RT-1 式 tokenized action 接口。</li>
+<li><a href="../Papers/2406-OpenVLA" class="internal alias" data-slug="Papers/2406-OpenVLA">OpenVLA</a>: 开源版 RT-2 思路，action tokenizer 几乎直接沿用。</li>
+<li><a href="../Papers/2303-PaLME" class="internal alias" data-slug="Papers/2303-PaLME">PaLM-E</a>: 同期的 multimodal embodied 模型，策略接口风格不同（PaLM-E 主要做 planning，RT-1 主要做 low-level control），两条路后来在 RT-2 汇合。</li>
+<li><strong>Open-X-Embodiment / RT-X (2023)</strong>: 把 RT-1 的 “mix-robot-data improves generalization” 直接 scale 成社区级数据集。</li>
+</ul>
+<h2 id="论文点评">论文点评<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#论文点评" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="strengths">Strengths<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>Scale + Rigor 兼备的系统工作</strong>：17 个月、13 台机器人、3000+ real-world rollouts，在 robot learning 里几乎是 “AlexNet moment” 级别的工程投入。数据规模让结论 statistically meaningful。</li>
+<li><strong>架构决策 grounded in real-time 约束</strong>：从一开始就把 3 Hz / 100ms budget 写进问题定义，TokenLearner、token caching、35M params 都是围绕这个 constraint 设计的——这比”先堆大再谈落地”健康得多。</li>
+<li><strong>Token-based action representation 是决定性 contribution</strong>：把 continuous control 变成离散语言-like token，打通了 RT-2/Octo/OpenVLA/π0 整条后续 AR-VLA 技术线。这个抽象的影响力远超单个 RT-1 模型。</li>
+<li><strong>Data-diversity > data-quantity 的 ablation</strong>：结论简单但极 actionable，给社区指明了”要多样，不要大”的资源分配方向。</li>
+<li><strong>Cross-embodiment 的实证</strong>：Kuka + EDR 混训不伤原任务且 2× 提升 bin-picking，直接为 Open-X 铺路。</li>
+<li><strong>诚实的 limitations 段</strong>：明确说 BC only、不能超过 demonstrator、不能学全新运动、dexterity 不足。</li>
+</ol>
+<h3 id="weaknesses">Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>架构组合偏复杂</strong>：FiLM + EfficientNet + TokenLearner + USE + decoder-only Transformer 的拼装工程味重，组件之间的 credit assignment 在 Appendix D.4 才做，main text 没充分讲清”哪个组件最 load-bearing”。后来的 OpenVLA 直接用 LLaVA backbone 简化掉，说明 RT-1 的 tokenizer 部分不是必要的。</li>
+<li><strong>Task 分布 long-tail 但没被 ablate</strong>：Move-Near 占 337 / Pick 占 130，8-count 的 skill 几乎不可能贡献统计意义的 generalization 信号。“744 tasks” 数字 impressive，实际 effective task count 小得多。</li>
+<li><strong>Baseline 被 nerf</strong>：Gato 从 1.2B 缩到 37M 以满足 3 Hz，原本 Gato 的 scaling 优势被迫放弃。这让 Gato 看起来弱于实际——公平性打折。</li>
+<li><strong>Generalization 定义偏弱</strong>：unseen tasks 仍是”已见 verb + 已见 noun 的未见组合”，真正的 novel motion / novel affordance 没测。</li>
+<li><strong>Data / task set 没完全开源</strong>：虽有 RT-1-data-release 的部分数据，但 744 tasks 对应的完整 teleop 数据、instruction 列表、随机化 script 未全部释放；后续 Open-X 里的 RT-1 subset 才算部分补齐。</li>
+<li><strong>3 Hz 对 dexterity 是硬 ceiling</strong>：很多细粒度操作需要 >10 Hz 控制；RT-1 的架构选择把自己限在 coarse manipulation。</li>
+</ol>
+<h3 id="可信评估">可信评估<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#可信评估" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="artifact-可获取性">Artifact 可获取性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#artifact-可获取性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><strong>代码</strong>: inference-only（TF SavedModel 推理脚本 + 架构代码）；训练 pipeline 未开源。repo 已 archived，pushed 于 2024-01-31，stars 1708。</li>
+<li><strong>模型权重</strong>: 3 个 TF SavedModel checkpoint—— <code>rt1main</code>（700 tasks 主模型）、<code>rt1multirobot</code>（EDR + Kuka 联训）、<code>rt1simreal</code>（sim+real 联训）。</li>
+<li><strong>训练细节</strong>: 超参与 high-level 数据配比在 paper Appendix 有，完整训练步数、优化器 schedule、data sampling 概率分布未全披露。</li>
+<li><strong>数据集</strong>: 部分公开（<code>gresearch/rt-1-data-release</code> GCS bucket）；744 tasks 完整 teleop 数据未一次性释出，社区后来在 Open-X-Embodiment 中见到 RT-1 的 subset。</li>
+</ul>
+<h4 id="claim-可验证性">Claim 可验证性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#claim-可验证性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>✅ <strong>97% seen / 76% unseen / 83% distractor / 59% background</strong>：3000+ rollouts 支撑，paper Table 2 + Appendix 细分，社区多次引用且未出现反证。</li>
+<li>✅ <strong>Sim + real 混训不伤 real、显著改善 sim-only 物体的 real 表现</strong>：Table 4 数字来自受控 ablation。</li>
+<li>✅ <strong>Kuka + EDR 混训 2× bin-picking</strong>：Table 5 数字受控；Open-X 后续扩展实验进一步佐证跨形态混训的正向效应。</li>
+<li>✅ <strong>Data diversity > quantity</strong>：Table 7 的设计是<strong>匹配对</strong>（相近 data % 下比 task %），归因相对干净。</li>
+<li>⚠️ <strong>“能做 50 步 long-horizon 任务”</strong>：主要靠 SayCan 的 planner 能”断掉”失败步重规划；RT-1 本身的 per-step success 在 Kitchen2 仍约 67%，50 步成功率几何衰减——视频 demo 是 cherry-picked 成功案例的可能性不能排除。</li>
+<li>⚠️ <strong>Gato baseline 对比</strong>：Gato 在 RT-1 数据上从 1.2B 缩到 37M 重训，不是真正的 Gato 原模型——结论是”在这个数据+参数预算下 RT-1 好”，不能直接读成”RT-1 架构优于 Gato 架构”。</li>
+<li>❌ <strong>“Robotics Transformer 1”（命名暗示持续演进）</strong>：严格说是 marketing 命名而非技术 claim，但也确实为 RT-2 / RT-X 的 sequel 铺了路，没什么可指责的。</li>
+</ul>
+<h3 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>RT-1 的历史定位：它是<strong>把 “next-token prediction” 范式从 NLP 搬到 robot control 的第一次大规模、real-world、有说服力的 demonstration</strong>。后续 VLA（RT-2、Octo、OpenVLA、π0）的 action 接口基本都是 RT-1 的变种。</li>
+<li>读这篇论文最大的启发不是某个技术细节，而是**“要投多大的工程才叫做完一个问题”**——17 月 + 13 机器人 + 3000 rollouts 的 scale 是小 lab 复现不动的，但也告诉我们：robot learning 里方法论的证伪/证实需要这种体量的真实实验，toy-scale 的 ablation 得出的结论未必 hold。</li>
+<li>一个值得追问的对立假设：<strong>如果当年给 Gato 同等的 3 Hz 预算 + TokenLearner，Gato 是不是也能达到 RT-1 的数字？</strong> paper 没直接回答。看后续 OpenVLA 把 LLaVA backbone 直接塞进来也能做到 RT-1+ 的水平，说明 RT-1 的”FiLM-EfficientNet + TokenLearner”组合可能不是必要而是充分条件。</li>
+<li><strong>对自己的研究</strong>：VLA 方向要认真读这条主线 RT-1 → RT-2 → Open-X → Octo → OpenVLA → π0，每一篇都在修正前一篇的假设。RT-1 的”data diversity > quantity”结论在今天 Open-X scale 下是否还成立，是值得重新验证的问题。</li>
+</ul>
+<h3 id="rating">Rating<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#rating" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Metrics</strong> (as of 2026-04-22): citation=2079, influential=173 (8.3%), velocity=52.0/mo; HF upvotes=5; github 1708⭐ / forks=198 / 90d commits=0 / pushed 812d ago · stale</p>
+<p><strong>分数</strong>：3 - Foundation</p>
+<p><strong>理由</strong>：citation 2079、52/月 velocity 稳在 VLA 方向 top-tier，influential/total ~8.3% 接近典型 10%——比 RT-2 的 “高引高曝光但继承性弱” 略低、但比一般 workshop paper 高得多，体现”被实质继承 + 被广泛引用”的双重地位。repo 已 archived（stale），但这恰恰是因为社区继承者（Octo / OpenVLA / Open-X）把 RT-1 的核心思路 superseded 成更开放的生态——历史性地位而非当前活跃度决定它是 Foundation。读 VLA 不读 RT-1 是不可能建立完整 mental model 的，这是 “3 vs. 2” 的分水岭。</p></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="dts0pv" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#问题设定与动机" data-for="问题设定与动机">问题设定与动机</a></li><li class="depth-0"><a href="#数据13-robots--17-months--130k-episodes--744-tasks" data-for="数据13-robots--17-months--130k-episodes--744-tasks">数据：13 robots × 17 months × 130k episodes × 744 tasks</a></li><li class="depth-0"><a href="#模型架构" data-for="模型架构">模型架构</a></li><li class="depth-0"><a href="#实验" data-for="实验">实验</a></li><li class="depth-1"><a href="#62-overall-rt-1-vs-gato-vs-bc-z--bc-z-xl" data-for="62-overall-rt-1-vs-gato-vs-bc-z--bc-z-xl">6.2 Overall: RT-1 vs. Gato vs. BC-Z / BC-Z XL</a></li><li class="depth-1"><a href="#63-异构数据吸收" data-for="63-异构数据吸收">6.3 异构数据吸收</a></li><li class="depth-1"><a href="#64-long-horizon-via-saycan" data-for="64-long-horizon-via-saycan">6.4 Long-horizon via SayCan</a></li><li class="depth-1"><a href="#65-data-quantity-vs-diversity-table-7" data-for="65-data-quantity-vs-diversity-table-7">6.5 Data quantity vs. diversity (Table 7)</a></li><li class="depth-0"><a href="#关联工作" data-for="关联工作">关联工作</a></li><li class="depth-1"><a href="#基于" data-for="基于">基于</a></li><li class="depth-1"><a href="#对比" data-for="对比">对比</a></li><li class="depth-1"><a href="#方法相关下游继承" data-for="方法相关下游继承">方法相关（下游继承）</a></li><li class="depth-0"><a href="#论文点评" data-for="论文点评">论文点评</a></li><li class="depth-1"><a href="#strengths" data-for="strengths">Strengths</a></li><li class="depth-1"><a href="#weaknesses" data-for="weaknesses">Weaknesses</a></li><li class="depth-1"><a href="#可信评估" data-for="可信评估">可信评估</a></li><li class="depth-1"><a href="#notes" data-for="notes">Notes</a></li><li class="depth-1"><a href="#rating" data-for="rating">Rating</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+</script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>

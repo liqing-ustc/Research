@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en"><head><title>Pure Vision-Language-Action (VLA) Models: A Comprehensive Survey</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="Pure Vision-Language-Action (VLA) Models: A Comprehensive Survey"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Pure Vision-Language-Action (VLA) Models: A Comprehensive Survey"/><meta name="twitter:description" content="Summary Pure Vision-Language-Action (VLA) Models: A Comprehensive Survey 核心: 一篇整理了 300+ 篇 VLA 工作的综述，把 VLA 方法按策略生成范式划分为四大类——autoregression-based、diffusion-based、reinforcement-based、hybrid/specialized——并补充 ..."/><meta property="og:description" content="Summary Pure Vision-Language-Action (VLA) Models: A Comprehensive Survey 核心: 一篇整理了 300+ 篇 VLA 工作的综述，把 VLA 方法按策略生成范式划分为四大类——autoregression-based、diffusion-based、reinforcement-based、hybrid/specialized——并补充 ..."/><meta property="og:image:alt" content="Summary Pure Vision-Language-Action (VLA) Models: A Comprehensive Survey 核心: 一篇整理了 300+ 篇 VLA 工作的综述，把 VLA 方法按策略生成范式划分为四大类——autoregression-based、diffusion-based、reinforcement-based、hybrid/specialized——并补充 ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2509-PureVLA"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2509-PureVLA"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Summary Pure Vision-Language-Action (VLA) Models: A Comprehensive Survey 核心: 一篇整理了 300+ 篇 VLA 工作的综述，把 VLA 方法按策略生成范式划分为四大类——autoregression-based、diffusion-based、reinforcement-based、hybrid/specialized——并补充 ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  padding: 2rem;
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2509-PureVLA"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="zuf0s6"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/embodied-reasoning" class="sidebar-tag-pill">#embodied-reasoning</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/computer-use" class="sidebar-tag-pill">#computer-use</a><a href="/mindflow/tags/agentic-RL" class="sidebar-tag-pill">#agentic-RL</a><a href="/mindflow/tags/world-model" class="sidebar-tag-pill">#world-model</a><a href="/mindflow/tags/gui-agent" class="sidebar-tag-pill">#gui-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2509-PureVLA</a></div></nav><h1 class="article-title">Pure Vision-Language-Action (VLA) Models: A Comprehensive Survey</h1><div class="paper-meta"><span class="paper-venue">arXiv</span><span class="paper-authors"><span class="meta-sep">·</span>Dapeng Zhang <button class="et-al-btn" aria-expanded="false">et al.</button><span class="authors-full" style="display:none"><span>, Jing Sun</span><span>, Chenghui Hu</span><span>, Xiaoyan Wu</span><span>, Zhenlong Yuan</span><span>, Rui Zhou</span><span>, Fei Shen</span><span>, Qingguo Zhou</span></span></span></div><p show-comma="true" class="content-meta"><time datetime="2025-09-23T00:00:00.000Z">Sep 23, 2025</time><span>15 min read</span></p><ul class="tags"><li><a href="../tags/VLA" class="internal tag-link">VLA</a></li><li><a href="../tags/manipulation" class="internal tag-link">manipulation</a></li><li><a href="../tags/embodied-reasoning" class="internal tag-link">embodied-reasoning</a></li></ul></div></div><article class="popover-hint"><h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Pure Vision-Language-Action (VLA) Models: A Comprehensive Survey </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><strong>核心</strong>: 一篇整理了 300+ 篇 VLA 工作的综述，把 VLA 方法按<strong>策略生成范式</strong>划分为四大类——autoregression-based、diffusion-based、reinforcement-based、hybrid/specialized——并补充 dataset、simulator、hardware、challenges 四个附录式章节。</li>
+<li><strong>方法</strong>: 沿时间轴做 bucket sort，每个 bucket 再细分子类（如 autoregression 下分 generalist / reasoning+planning / trajectory generation / structural optimization）；每类附一张时间顺序的表格列代表工作的 year + 一句话创新。</li>
+<li><strong>结果</strong>: 无实验，无 benchmark 再跑；定性总结每个 bucket 的 “Innovations / Limitations”，结尾列出 5 个 challenges（data scarcity / arch heterogeneity / inference cost / pseudo-interaction / eval limitations）和 4 个 opportunities（world modeling / causal reasoning / sim-real integration / societal embedding）。</li>
+<li><strong>Sources</strong>: <a href="https://arxiv.org/abs/2509.19012" class="external">paper<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><strong>Rating</strong>: 1 - Archived。组织清晰但 taxonomy 按 “生成器类型” 切，信息密度不及同期 Action-Tokenization 视角的 VLA 综述；citation=29、influential=1、无 github，对研究议程无 load-bearing 作用。</li>
+</ul>
+</div>
+</blockquote>
+<p><strong>Key Takeaways:</strong></p>
+<ol>
+<li><strong>四分法 taxonomy</strong>：autoregression / diffusion / RL-finetune / hybrid+specialized。这不是一个严格正交的轴——很多现代 VLA（如 π0、HybridVLA）本身就跨桶，作者把它们塞进 “hybrid” 而非正面承认 taxonomy 的崩坏。</li>
+<li><strong>“Pure VLA” 的定义模糊</strong>：标题强调 “Pure” 但正文从未明确定义什么叫 pure、与什么对立（大约是与 hierarchical / code-generation / LLM-planner-only 对立）。这是 positioning 问题，不是 technical 问题。</li>
+<li><strong>每个 bucket 的 Discussion 段都是模板化的 “Innovations / Limitations”</strong>——Innovations 罗列方法名，Limitations 几乎套用同一套话术（算力贵、数据缺、泛化差、安全难），缺乏真正的 cross-cutting insight。</li>
+<li><strong>Dataset/Simulator 章节 表格价值</strong>：Table V 汇总了 MIME→OXE 的 15 个真实+10 个仿真数据集，带 episode/task 数，可作为挑 dataset 时的 quick lookup。</li>
+<li><strong>Challenges 段</strong> 提出的 “understanding the instruction but failing to execute”（语义懂但身体不会）是全文唯一一句有张力的 framing，但随后没有展开成具体的技术路线判断。</li>
+</ol>
+<p><strong>Teaser. Survey 的整体组织与章节关系图（Figure 1）。</strong>
+<img src="../assets/PureVLA/fig_org.png" alt/></p>
+<hr/>
+<h3 id="taxonomy-骨架">Taxonomy 骨架<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#taxonomy-骨架" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Figure 1. 调研按方法论分类 + 资源 (dataset / simulator / hardware) + challenges &amp; opportunities 两大块组织。</strong><br/>
+结构上：Background → 4 类方法 → Data/Simulator/Hardware → Challenges &amp; Future，是教科书式的 survey 写法，没有跨章节的 unifying thread。</p>
+<p><strong>Figure 2. VLA skeleton 示意图——抽象出 VLM backbone → action head 的通用管线。</strong>
+<img src="../assets/PureVLA/fig_skeleton.png" alt/></p>
+<p><strong>Figure 3. Taxonomy tree：沿时间轴给每个 paradigm 标代表作。</strong>
+<img src="../assets/PureVLA/fig_taxonomy.png" alt/></p>
+<blockquote>
+<p>❓ 这种 “时间轴 + paradigm 分桶” 的可视化在 survey 里很常见，但它隐含了一个未被论证的假设：paradigm 之间是 parallel 发展的独立 branch。实际上 autoregression 和 diffusion 在 action head 选择上是<strong>替代关系</strong>而非 parallel branch，而 RL fine-tune 是<strong>正交</strong>的训练手段（可以叠在任何 action head 上）。这套 taxonomy 混了 architectural choice 和 training recipe 两个正交维度。</p>
+</blockquote>
+<hr/>
+<h2 id="3-四大-paradigm-详解">3 四大 Paradigm 详解<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-四大-paradigm-详解" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="31-autoregression-based">3.1 Autoregression-based<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#31-autoregression-based" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>作者把这一桶再切成 4 小类：</p>
+<ol>
+<li><strong>Autoregressive Generalist VLA</strong>：RT-2、OpenVLA 一脉——把 action 离散化成 token，接在 LLM 语言 token 之后 next-token-predict。</li>
+<li><strong>Reasoning + Semantic Planning with LLMs</strong>：LLM 负责 high-level 任务分解 / plan，再下发给低层 policy。与 “pure VLA” 的 positioning 其实矛盾——作者没解释为什么这种 hierarchical 方案还算 “pure”。</li>
+<li><strong>Trajectory Generation + Visual Alignment</strong>：把 autoregressive head 的输出改造成 trajectory 或 waypoint，而非 raw joint action。</li>
+<li><strong>Structural Optimization &amp; Efficient Inference</strong>：FAST tokenizer、action chunking、并行解码等加速手段。RT-2 的 8Hz 推理瓶颈催生出来的这一子类其实是全章最有 cross-cutting 意义的部分，但被压成最后一个小节。</li>
+</ol>
+<p><strong>讨论段的立场</strong>：作者承认 autoregressive 路线在 “high-frequency control” 上仍有延迟瓶颈，但对 “continuous vs discrete action” 的根本权衡没有给出明确判断——这正是后来 diffusion head 崛起的驱动力。</p>
+<h3 id="32-diffusion-based">3.2 Diffusion-based<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#32-diffusion-based" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>进一步分成 3 个子类：</p>
+<ol>
+<li><strong>Diffusion Generalist</strong>：SE(3)-DiffusionFields、Diffusion Policy、以及一众把 denoising 直接套到 action space 上的工作。</li>
+<li><strong>Multimodal Architectural Fusion</strong>：如何把 vision/language condition 喂进去——cross-attention、classifier-free guidance、ControlNet 式的 adapter。</li>
+<li><strong>Application Optimization &amp; Deployment</strong>：蒸馏、一步/少步采样、flow matching 取代 DDPM 等工程优化。</li>
+</ol>
+<p><strong>隐含的 claim</strong>（作者没挑明但字里行间传达）：diffusion head 的动机是<strong>连续动作分布的 multimodality</strong>——相比 autoregressive 的离散 token，diffusion 更自然地建模多峰动作分布。这确实是 Diffusion Policy 原论文的核心 insight，但本综述没把这个 first-principle 论证拉到 paradigm 层面。</p>
+<h3 id="33-reinforcement-based-fine-tune">3.3 Reinforcement-based Fine-Tune<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#33-reinforcement-based-fine-tune" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Table III</strong>（节选——共 22 条）给出 RL-VLA 时间线，列出每个工作的核心 RL 创新：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Method</th><th>Year</th><th>Innovation</th></tr></thead><tbody><tr><td>VIP / LIV</td><td>2023</td><td>visual-language reward 预训练，frozen VLM 也能做 reward proxy</td></tr><tr><td>GRAPE</td><td>2024</td><td>trajectory-level preference alignment</td></tr><tr><td>SafeVLA</td><td>2025</td><td>constrained policy optimization + safety critic</td></tr><tr><td>SimpleVLA-RL</td><td>2025</td><td>单轨迹 + binary reward 在线 RL</td></tr><tr><td>ConRFT</td><td>2025</td><td>offline BC + Q-learning + online consistency 的 hybrid</td></tr><tr><td>VLA-RL</td><td>2025</td><td>online RL + VLM-as-reward-model</td></tr><tr><td>LeVERB / NaVILA</td><td>2025</td><td>RL 驱动 humanoid/quadruped whole-body control</td></tr></tbody></table></div>
+<p><strong>作者的立场</strong>：RL fine-tune 能补 SFT 的 distribution shift 和 sparse-reward 问题，但 reward engineering 仍 “indirect or noisy”，training stability 受 SFT-RL 博弈影响。</p>
+<blockquote>
+<p>❓ 这章和 <a href="../Papers/2411-RewardHacking" class="internal alias" data-slug="Papers/2411-RewardHacking">Reward Hacking</a>、Agentic RL 领域的共性讨论几乎没交集——作者把 RL-VLA 当成 VLA 的 sub-branch 来讲，错过了一个有价值的 framing：<strong>RL fine-tune 是 training recipe</strong>，应该跨 autoregression/diffusion paradigm 正交讨论，而不是作为第三类并列 paradigm。这是前面提到的 taxonomy 维度混淆的典型表现。</p>
+</blockquote>
+<h3 id="34-hybrid--specialized">3.4 Hybrid / Specialized<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#34-hybrid--specialized" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>一个 catch-all 桶，再切 6 小类：hybrid arch、多模态融合 + 空间理解、domain adaptation（driving / humanoid / GUI）、foundation-scale 模型、deployment（效率/安全/HRI）、discussion。 把 π0.5、HybridVLA、GR00T 这类跨范式或大模型都塞进来。这一节最能暴露 taxonomy 的 leaky abstraction——真正的前沿工作往往不属于前 3 桶里的任何一个。</p>
+<hr/>
+<h2 id="4-datasets--benchmarks">4 Datasets &amp; Benchmarks<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-datasets--benchmarks" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Table V 精选</strong>（完整表约 25 行）：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Dataset</th><th>Year</th><th>Sensors</th><th>Episodes</th><th>Tasks</th></tr></thead><tbody><tr><td>MIME</td><td>2018</td><td>RGBD</td><td>8.3K</td><td>20</td></tr><tr><td>BridgeData</td><td>2021</td><td>RGBD</td><td>60.1K</td><td>24</td></tr><tr><td>RT-1</td><td>2022</td><td>RGB</td><td>13K</td><td>700</td></tr><tr><td>RH20T</td><td>2024</td><td>RGBD</td><td>110K</td><td>147</td></tr><tr><td>DROID</td><td>2024</td><td>RGBD</td><td>76K</td><td>–</td></tr><tr><td>OXE</td><td>2025</td><td>RGBD</td><td>>1M</td><td>160,266</td></tr><tr><td>LIBERO (sim)</td><td>2023</td><td>RGB</td><td>5K</td><td>100</td></tr><tr><td>RoboCasa (sim)</td><td>2024</td><td>RGBD</td><td>>100K</td><td>100</td></tr></tbody></table></div>
+<p><strong>真实数据集</strong>：从早期 MIME / BridgeData 的 10K 量级，到 2024-2025 的 RH20T / OXE 的 100K→1M 量级；OXE 作为 22 个数据集的 consolidator 现已成为事实标准。<br/>
+<strong>仿真数据集</strong>：LIBERO、RoboCasa、Meta-World、RLBench、VIMA、CALVIN 是 VLA 论文 benchmark 的主流选择。</p>
+<p><strong>4.3 Discussion</strong>：作者承认”real 贵、sim 不真”是老命题，承认当前 benchmark 的 success rate / trajectory L2 不足以覆盖 language grounding、long-horizon reasoning、safety，但没有提出具体的新评测协议建议。</p>
+<hr/>
+<h2 id="5-6-simulators--hardware">5-6 Simulators + Hardware<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#5-6-simulators--hardware" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Simulators</strong>：THOR、Habitat 1/2、iGibson 1/2、MuJoCo、Isaac Gym、CARLA、LGSVL 等——这部分是 embodied AI 的标配资源清单，本综述没有新增信息。</p>
+<p><strong>Hardware</strong>（§6 短短一页）：泛泛提到 sensors / actuators / control / power 四件套，没有具体分析 manipulator vs quadruped vs humanoid 的硬件差异对 VLA 设计的约束。这一章基本是<strong>凑篇幅性质</strong>。</p>
+<hr/>
+<h2 id="7-challenges--opportunities">7 Challenges &amp; Opportunities<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#7-challenges--opportunities" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="challenges5-条">Challenges（5 条）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#challenges5-条" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>Scarcity of Robotic Data</strong>：OXE 主要覆盖 tabletop，sim-real gap 未解。</li>
+<li><strong>Architectural Heterogeneity</strong>：vision backbone (ViT / DINOv2 / SigLIP)、LLM (PaLM / LLaMA / Qwen)、action head (discrete token / continuous / diffusion) 的 cross product 导致难以横向对比。</li>
+<li><strong>Real-Time Inference</strong>：autoregressive decode 的 token-by-token 延迟 + 大模型内存占用让 VLA 在 embedded 平台上 “太慢或太贵”。</li>
+<li><strong>Pseudo-Interaction</strong>：模型依赖 statistical co-occurrence 而非真正的 causal probing。这是全文唯一一句有力 framing：“<strong>understanding the instruction but failing to execute</strong>”。</li>
+<li><strong>Evaluation Limitations</strong>：benchmark 局限于 lab setting + tabletop manipulation，outdoor / industrial / home 场景覆盖率低。</li>
+</ol>
+<h3 id="opportunities4-条">Opportunities（4 条）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#opportunities4-条" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>World Modeling + Cross-Modal Unification</strong>：把 language/vision/action 统一进 single token stream，让 VLA 演化成 proto-world-model。</li>
+<li><strong>Causal Reasoning + Genuine Interaction</strong>：从 “静态分布 prediction” 转向 “interactive probing + feedback adaptation”。</li>
+<li><strong>Virtual-Real Integration + Large-Scale Data Generation</strong>：类比 GPT 用 internet-scale corpus，embodied 需要 trillion-trajectory 数据生态。</li>
+<li><strong>Societal Embedding + Trustworthy Ecosystems</strong>：安全、可解释、问责框架。</li>
+</ol>
+<blockquote>
+<p>❓ Opportunities 这四条都是当下 embodied AI 社区的 consensus（world model / causal / data-scale / safety），综述没提出作者独有的判断——比如”四条里哪个是真正的瓶颈、哪个是伪命题、哪个最接近突破”。</p>
+</blockquote>
+<hr/>
+<h2 id="关联工作">关联工作<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#关联工作" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="对比">对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong><a href="../Papers/2411-WorldModelSurvey" class="internal alias" data-slug="Papers/2411-WorldModelSurvey">World Model Survey</a></strong>: 同时期的综述，按 domain 切（gaming / autonomous driving / embodied），与本综述按 paradigm 切形成对比。World Model 综述把 VLA 作为应用方向之一，本综述把 world model 作为 VLA 的 future opportunity——两者互补。</li>
+<li><strong>Action Tokenization Survey (arXiv 2507.01925)</strong>: 2025-07 的另一篇 VLA 综述，从 <strong>action tokenization</strong> 这个统一维度切入——比本综述”按生成器分类”的 taxonomy 更深、更 first-principle。两篇覆盖面类似，但那篇抓住了”如何把 action 离散化 / 连续化 / 层级化”这一关键技术维度。本综述在 novelty 上被压制。</li>
+<li><strong><a href="../Papers/2501-ACUSurvey" class="internal alias" data-slug="Papers/2501-ACUSurvey"> Computer-use Agent Survey</a></strong>: 另一个 “action-producing agent” survey，但在 digital（GUI）领域。对比可见 embodied VLA 与 GUI agent 在 taxonomy 维度上其实面临相同问题：如何在 “LLM backbone × action representation × training recipe” 三维矩阵里组织工作。</li>
+</ul>
+<h3 id="涵盖的代表工作本-vault-已有笔记">涵盖的代表工作（本 vault 已有笔记）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#涵盖的代表工作本-vault-已有笔记" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Autoregression 代表：<a href="../Papers/2307-RT2" class="internal alias" data-slug="Papers/2307-RT2">RT-2</a>、<a href="../Papers/2406-OpenVLA" class="internal alias" data-slug="Papers/2406-OpenVLA">OpenVLA</a>、<a href="../Papers/2502-OpenVLA-OFT" class="internal alias" data-slug="Papers/2502-OpenVLA-OFT">OpenVLA-OFT</a></li>
+<li>Diffusion 代表：<a href="../Papers/2405-Octo" class="internal alias" data-slug="Papers/2405-Octo">Octo</a>、<a href="../Papers/2412-RoboVLMs" class="internal alias" data-slug="Papers/2412-RoboVLMs">RoboVLMs</a>、<a href="../Papers/2506-SmolVLA" class="internal alias" data-slug="Papers/2506-SmolVLA">SmolVLA</a></li>
+<li>Hybrid / Foundation：<a href="../Papers/2410-Pi0" class="internal alias" data-slug="Papers/2410-Pi0">π0</a>、<a href="../Papers/2504-Pi05" class="internal alias" data-slug="Papers/2504-Pi05">π0.5</a>、<a href="../Papers/2502-HiRobot" class="internal alias" data-slug="Papers/2502-HiRobot">Hi Robot</a>、<a href="../Papers/2503-GR00TN1" class="internal alias" data-slug="Papers/2503-GR00TN1">GR00T N1</a>、<a href="../Papers/2503-MoManipVLA" class="internal alias" data-slug="Papers/2503-MoManipVLA">MoManipVLA</a></li>
+</ul>
+<h3 id="方法相关">方法相关<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#方法相关" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Flow Matching / Diffusion Policy</strong>: Section 3.2 的核心技术底座；π0、SmolVLA 系列已把 flow matching 当成 action head 标配。</li>
+<li><strong>Action Chunking + FAST tokenizer</strong>: Section 3.1.4 efficient inference 子类的关键技术。</li>
+<li><strong>OXE / DROID</strong>: 作为 VLA 训练数据的 de facto 基础，已被反复引用。</li>
+</ul>
+<hr/>
+<h2 id="论文点评">论文点评<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#论文点评" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="strengths">Strengths<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>覆盖面确实广</strong>：300+ 篇论文、含 autonomous driving 和 humanoid 分支，作为 “entry point reading list” 对新入场的研究者有用。</li>
+<li><strong>Table 形式高效</strong>：Table I–IV 每张表都按年份列 method + 一句话 innovation，适合查表而非通读。</li>
+<li><strong>Dataset + Simulator 汇总有 quick-lookup 价值</strong>：Table V 给了 episodes / tasks 数量，是挑 benchmark 时的便利参考。</li>
+<li><strong>“Pseudo-Interaction” 和 “语义懂但身体不会” 的 framing 有洞察</strong>——可惜没展开成章。</li>
+</ol>
+<h3 id="weaknesses">Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>Taxonomy 的维度混淆</strong>：autoregression / diffusion 是 action head 的选择，RL-finetune 是 training recipe，hybrid / specialized 是 catch-all。这四桶不正交，导致后期工作（π0、HybridVLA）难以归类，只好塞进 “hybrid” 桶。一个更诚实的 taxonomy 应该把 action representation、training recipe、deployment target 作为三个正交轴。</li>
+<li><strong>“Pure VLA” 定义缺失</strong>：标题的 “Pure” 从未在正文被定义；估计是想与 hierarchical / LLM-as-planner 划界，但没有明说。positioning 模糊。</li>
+<li><strong>Discussion 段同质化</strong>：每桶的 “Innovations / Limitations” 两段模板几乎雷同——“算力贵 / 数据缺 / 泛化差 / 安全难”。缺少真正的 cross-cutting 观点，如”diffusion head 相比 autoregressive head 在什么任务上有 consistent 优势、什么任务上没有”。</li>
+<li><strong>被同期综述压制</strong>：2025-07 的 Action-Tokenization 综述从单一技术维度切，深度更好；本文 2025-09 发表但在 taxonomy 创新上没超过前者。</li>
+<li><strong>无 github、无 reading list</strong>：VLA 综述在 Awesome-VLA repo 满天飞的当下不配套 GitHub，对实用价值是明显减分。</li>
+<li><strong>第 6 章 Hardware 极简</strong>：一页泛泛介绍 actuator/sensor，与 VLA 方法几乎无交互，是凑篇幅段落。</li>
+</ol>
+<h3 id="可信评估">可信评估<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#可信评估" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="artifact-可获取性">Artifact 可获取性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#artifact-可获取性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><strong>代码</strong>: 未开源（Survey 本身无 artifact）</li>
+<li><strong>模型权重</strong>: N/A</li>
+<li><strong>训练细节</strong>: N/A</li>
+<li><strong>数据集</strong>: N/A（只是综述，不产 dataset）</li>
+</ul>
+<h4 id="claim-可验证性">Claim 可验证性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#claim-可验证性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>✅ “300+ studies synthesized”：references 确有 300+ 条，表面核查可信。</li>
+<li>⚠️ “Comprehensive taxonomy”：taxonomy 确实覆盖面广，但前述维度混淆让”comprehensive”要打折——正交性不足导致后期工作难归位。</li>
+<li>⚠️ “Classifies VLA approaches into several paradigms”：分类成立，但”是否是 useful 的分类”未被论证。</li>
+<li>❌ “A clear taxonomy” —— “clear” 是 marketing 修辞，与正文 hybrid 桶的 leaky abstraction 相矛盾。</li>
+</ul>
+<h3 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>值得从本综述中挑走的只有 Table V（dataset 汇总）和 Challenges 段的 “pseudo-interaction” framing；其余内容可以被同期的 Action-Tokenization 综述和各篇原始论文替代。</li>
+<li>对于<strong>已有 VLA 方向 context 的读者</strong>（我们），本文的新增信息量接近零；对于<strong>入门读者</strong>可作为 reading list 的起点。</li>
+<li>综述 paradigm 分桶的教训：按”方法家族”切 taxonomy 容易落入”把工作塞桶”的陷阱，而不是回答”这些工作共同在回答什么问题”。后者才是有 insight 的 survey 组织方式。</li>
+</ul>
+<h3 id="rating">Rating<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#rating" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Metrics</strong> (as of 2026-04-22): citation=29, influential=1 (3.4%), velocity=4.1/mo; HF upvotes=0; github N/A（无代码仓库）</p>
+<p><strong>分数</strong>：1 - Archived<br/>
+<strong>理由</strong>：发表 7 个月 citation=29（velocity 4.1/mo）在”VLA survey”这个拥挤赛道里是中等偏下——同期 Action-Tokenization 综述和更早的 World Model / ACU Survey 都在更好地占据 taxonomy 位置；influential citation 仅 1 篇 (3.4%)，远低于典型 ~10%，说明被真正引用为”这一方向 foundational reference”的工作极少，多数是被当作 related-work 列表里顺手一提。无 github、无 reading list repo，社区传播渠道也弱。综上：不到 Frontier（不够新、不够深、不够有 positioning），归 Archived——作为 reading list 的起点翻一次足矣，不值得重读。</p></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="dts0pv" class="overflow"><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-1"><a href="#taxonomy-骨架" data-for="taxonomy-骨架">Taxonomy 骨架</a></li><li class="depth-0"><a href="#3-四大-paradigm-详解" data-for="3-四大-paradigm-详解">3 四大 Paradigm 详解</a></li><li class="depth-1"><a href="#31-autoregression-based" data-for="31-autoregression-based">3.1 Autoregression-based</a></li><li class="depth-1"><a href="#32-diffusion-based" data-for="32-diffusion-based">3.2 Diffusion-based</a></li><li class="depth-1"><a href="#33-reinforcement-based-fine-tune" data-for="33-reinforcement-based-fine-tune">3.3 Reinforcement-based Fine-Tune</a></li><li class="depth-1"><a href="#34-hybrid--specialized" data-for="34-hybrid--specialized">3.4 Hybrid / Specialized</a></li><li class="depth-0"><a href="#4-datasets--benchmarks" data-for="4-datasets--benchmarks">4 Datasets &amp; Benchmarks</a></li><li class="depth-0"><a href="#5-6-simulators--hardware" data-for="5-6-simulators--hardware">5-6 Simulators + Hardware</a></li><li class="depth-0"><a href="#7-challenges--opportunities" data-for="7-challenges--opportunities">7 Challenges &amp; Opportunities</a></li><li class="depth-1"><a href="#challenges5-条" data-for="challenges5-条">Challenges（5 条）</a></li><li class="depth-1"><a href="#opportunities4-条" data-for="opportunities4-条">Opportunities（4 条）</a></li><li class="depth-0"><a href="#关联工作" data-for="关联工作">关联工作</a></li><li class="depth-1"><a href="#对比" data-for="对比">对比</a></li><li class="depth-1"><a href="#涵盖的代表工作本-vault-已有笔记" data-for="涵盖的代表工作本-vault-已有笔记">涵盖的代表工作（本 vault 已有笔记）</a></li><li class="depth-1"><a href="#方法相关" data-for="方法相关">方法相关</a></li><li class="depth-0"><a href="#论文点评" data-for="论文点评">论文点评</a></li><li class="depth-1"><a href="#strengths" data-for="strengths">Strengths</a></li><li class="depth-1"><a href="#weaknesses" data-for="weaknesses">Weaknesses</a></li><li class="depth-1"><a href="#可信评估" data-for="可信评估">可信评估</a></li><li class="depth-1"><a href="#notes" data-for="notes">Notes</a></li><li class="depth-1"><a href="#rating" data-for="rating">Rating</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+</script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>

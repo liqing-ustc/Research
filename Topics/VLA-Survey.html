@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><title>Vision-Language-Action (VLA) Models Survey</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="Vision-Language-Action (VLA) Models Survey"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Vision-Language-Action (VLA) Models Survey"/><meta name="twitter:description" content="Overview Vision-Language-Action (VLA) 模型是将预训练 Vision-Language Models (VLMs) 扩展为 robot policy 的新范式，旨在通过统一视觉感知、语言理解和动作生成，构建跨任务、跨平台的通用机器人基础模型。该领域自 2023 年 RT-2 开创以来，经历了爆发式增长，短短三年内从”概念验证”演进到”真实家庭部署”。 ..."/><meta property="og:description" content="Overview Vision-Language-Action (VLA) 模型是将预训练 Vision-Language Models (VLMs) 扩展为 robot policy 的新范式，旨在通过统一视觉感知、语言理解和动作生成，构建跨任务、跨平台的通用机器人基础模型。该领域自 2023 年 RT-2 开创以来，经历了爆发式增长，短短三年内从”概念验证”演进到”真实家庭部署”。 ..."/><meta property="og:image:alt" content="Overview Vision-Language-Action (VLA) 模型是将预训练 Vision-Language Models (VLMs) 扩展为 robot policy 的新范式，旨在通过统一视觉感知、语言理解和动作生成，构建跨任务、跨平台的通用机器人基础模型。该领域自 2023 年 RT-2 开创以来，经历了爆发式增长，短短三年内从”概念验证”演进到”真实家庭部署”。 ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Topics/VLA-Survey"/><meta property="twitter:url" content="https://liqing.io/mindflow/Topics/VLA-Survey"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Overview Vision-Language-Action (VLA) 模型是将预训练 Vision-Language Models (VLMs) 扩展为 robot policy 的新范式，旨在通过统一视觉感知、语言理解和动作生成，构建跨任务、跨平台的通用机器人基础模型。该领域自 2023 年 RT-2 开创以来，经历了爆发式增长，短短三年内从”概念验证”演进到”真实家庭部署”。 ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+<html lang="en"><head><title>Vision-Language-Action Models</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="Vision-Language-Action Models"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Vision-Language-Action Models"/><meta name="twitter:description" content="从 2022 RT-1 到 2026 π0.7 / GEN-1 的 VLA 全景——按 action 表示与 data recipe 双轴组织，覆盖 AR token / 连续 flow matching / hierarchical / latent / reasoning-augmented / hybrid / world-model-conditioned / RL-post-trained 八类技术路线，重点分析 scaling law、cross-embodiment 统一、real-world RL、reasoning-action 融合、data engine 工学术分化等前沿议题"/><meta property="og:description" content="从 2022 RT-1 到 2026 π0.7 / GEN-1 的 VLA 全景——按 action 表示与 data recipe 双轴组织，覆盖 AR token / 连续 flow matching / hierarchical / latent / reasoning-augmented / hybrid / world-model-conditioned / RL-post-trained 八类技术路线，重点分析 scaling law、cross-embodiment 统一、real-world RL、reasoning-action 融合、data engine 工学术分化等前沿议题"/><meta property="og:image:alt" content="从 2022 RT-1 到 2026 π0.7 / GEN-1 的 VLA 全景——按 action 表示与 data recipe 双轴组织，覆盖 AR token / 连续 flow matching / hierarchical / latent / reasoning-augmented / hybrid / world-model-conditioned / RL-post-trained 八类技术路线，重点分析 scaling law、cross-embodiment 统一、real-world RL、reasoning-action 融合、data engine 工学术分化等前沿议题"/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Topics/VLA-Survey"/><meta property="twitter:url" content="https://liqing.io/mindflow/Topics/VLA-Survey"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="从 2022 RT-1 到 2026 π0.7 / GEN-1 的 VLA 全景——按 action 表示与 data recipe 双轴组织，覆盖 AR token / 连续 flow matching / hierarchical / latent / reasoning-augmented / hybrid / world-model-conditioned / RL-post-trained 八类技术路线，重点分析 scaling law、cross-embodiment 统一、real-world RL、reasoning-action 融合、data engine 工学术分化等前沿议题"/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
   position: absolute;
   display: flex;
   float: right;
@@ -116,140 +116,257 @@ pre:hover > .expand-button {
   padding: 0 12px;
   font-size: 14px;
 }
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Topics/VLA-Survey"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="ob8giq"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/embodied-reasoning" class="sidebar-tag-pill">#embodied-reasoning</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/computer-use" class="sidebar-tag-pill">#computer-use</a><a href="/mindflow/tags/agentic-RL" class="sidebar-tag-pill">#agentic-RL</a><a href="/mindflow/tags/gui-agent" class="sidebar-tag-pill">#gui-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/world-model" class="sidebar-tag-pill">#world-model</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Topics/">Topics</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>VLA-Survey</a></div></nav><h1 class="article-title">Vision-Language-Action (VLA) Models Survey</h1><p show-comma="true" class="content-meta"><time datetime="2026-04-21T14:55:27.330Z">Apr 21, 2026</time><span>21 min read</span></p><ul class="tags"><li><a href="../tags/VLA" class="internal tag-link">VLA</a></li><li><a href="../tags/manipulation" class="internal tag-link">manipulation</a></li><li><a href="../tags/flow-matching" class="internal tag-link">flow-matching</a></li></ul></div></div><article class="popover-hint"><h2 id="overview">Overview<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#overview" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<p>Vision-Language-Action (VLA) 模型是将预训练 Vision-Language Models (VLMs) 扩展为 robot policy 的新范式，旨在通过统一视觉感知、语言理解和动作生成，构建跨任务、跨平台的通用机器人基础模型。该领域自 2023 年 RT-2 开创以来，经历了爆发式增长，短短三年内从”概念验证”演进到”真实家庭部署”。</p>
-<p><strong>核心问题</strong>：如何让机器人像 LLM 理解文本一样理解物理世界，并将互联网规模的视觉-语言知识迁移到机器人控制？传统 robot learning 受限于数据稀缺和 task-specific 设计，VLA 范式通过利用预训练 VLM 的泛化能力，有望突破这一瓶颈。</p>
-<p><strong>研究活跃度</strong>：2024-2026 年是 VLA 研究的井喷期——仅 arXiv 上的 VLA survey 就有 8+ 篇，主要会议（CoRL, RSS, ICML, NeurIPS, ICLR 2026）均有大量 VLA 论文。竞争格局从 Physical Intelligence 一家独大扩展为多巨头混战：Google DeepMind（Gemini Robotics）、NVIDIA（GR00T N1）、Figure AI（Helix）、Physical Intelligence（π 系列）、GigaAI（GigaBrain）以及开源社区（OpenVLA、SmolVLA、X-VLA）形成了多层次的技术路线竞争。</p>
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Topics/VLA-Survey"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;DomainMaps\&quot;,\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Projects\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.slug?.startsWith(\&quot;Papers/\&quot;)&amp;&amp;b.slug?.startsWith(\&quot;Papers/\&quot;)?b.displayName.localeCompare(a.displayName):a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="zuf0s6"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/embodied-reasoning" class="sidebar-tag-pill">#embodied-reasoning</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/computer-use" class="sidebar-tag-pill">#computer-use</a><a href="/mindflow/tags/agentic-RL" class="sidebar-tag-pill">#agentic-RL</a><a href="/mindflow/tags/world-model" class="sidebar-tag-pill">#world-model</a><a href="/mindflow/tags/gui-agent" class="sidebar-tag-pill">#gui-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Topics/">Topics</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>VLA-Survey</a></div></nav><h1 class="article-title">Vision-Language-Action Models</h1><p show-comma="true" class="content-meta"><time datetime="2026-04-23T07:02:34.683Z">Apr 23, 2026</time><span>31 min read</span></p><ul class="tags"><li><a href="../tags/VLA" class="internal tag-link">VLA</a></li><li><a href="../tags/manipulation" class="internal tag-link">manipulation</a></li><li><a href="../tags/embodied-reasoning" class="internal tag-link">embodied-reasoning</a></li></ul></div></div><article class="popover-hint"><h2 id="overview">Overview<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#overview" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>VLA 把预训练 VLM 扩展为端到端机器人策略，将 internet-scale 的视觉-语言知识迁移到连续高频的 motor control，目标是替代 task-specific 手工设计、走向通用 embodied agent。</p>
+<p><strong>领域活跃度（2024-2026）</strong>：</p>
+<ul>
+<li><strong>时间线</strong>：<a href="../Papers/2212-RT1" class="internal alias" data-slug="Papers/2212-RT1">RT-1</a> (2022) 奠定 AR 范式 → <a href="../Papers/2307-RT2" class="internal alias" data-slug="Papers/2307-RT2">RT-2</a> (2023) 注入 web VLM → <a href="../Papers/2410-Pi0" class="internal alias" data-slug="Papers/2410-Pi0">π0</a> (2024) flow matching 跨 50 Hz → <a href="../Papers/2504-Pi05" class="internal alias" data-slug="Papers/2504-Pi05">π0.5</a> (2025) 家庭长程 → <a href="../Papers/2511-PiStar06" class="internal alias" data-slug="Papers/2511-PiStar06">π*0.6</a> (2025-11) real-world RL → <a href="../Papers/2604-Pi07" class="internal alias" data-slug="Papers/2604-Pi07">π0.7</a> / <a href="../Papers/2604-GEN1" class="internal alias" data-slug="Papers/2604-GEN1">GEN-1</a> (2026Q1-Q2) 宣称跨越商业阈值，仅三年从概念验证走到 deployment 讨论。</li>
+<li><strong>参与格局</strong>：工业方向 Physical Intelligence（π 系列）/ Generalist AI（GEN 系列）/ Google DeepMind（Gemini Robotics）/ NVIDIA（GR00T / DreamZero）/ Figure AI（Helix）/ AgiBot（<a href="../Papers/2512-GenieReasoner" class="internal alias" data-slug="Papers/2512-GenieReasoner">GenieReasoner</a>）/ Xiaomi（<a href="../Papers/2602-XiaomiRobotics0" class="internal alias" data-slug="Papers/2602-XiaomiRobotics0">Xiaomi-Robotics-0</a>）/ Dexmal·StepFun（<a href="../Papers/2602-DM0" class="internal alias" data-slug="Papers/2602-DM0">DM0</a>）；开源方向 <a href="../Papers/2406-OpenVLA" class="internal alias" data-slug="Papers/2406-OpenVLA">OpenVLA</a> / <a href="../Papers/2506-SmolVLA" class="internal alias" data-slug="Papers/2506-SmolVLA">SmolVLA</a> / <a href="../Papers/2510-XVLA" class="internal alias" data-slug="Papers/2510-XVLA">X-VLA</a> / LeRobot 生态持续跟进。</li>
+<li><strong>学术产出</strong>：2025H2-2026H1 主要会议（NeurIPS / ICLR / ICRA 2026）VLA 论文密度激增，arXiv VLA survey 8+ 篇；本笔记覆盖 65 篇核心 + 3 篇 survey（<a href="../Papers/2507-VLATokenizationSurvey" class="internal" data-slug="Papers/2507-VLATokenizationSurvey">2507-VLATokenizationSurvey</a>、<a href="../Papers/2509-PureVLA" class="internal" data-slug="Papers/2509-PureVLA">2509-PureVLA</a>、<a href="../Papers/2510-EfficientVLASurvey" class="internal" data-slug="Papers/2510-EfficientVLASurvey">2510-EfficientVLASurvey</a>）。</li>
+</ul>
 <p><strong>整体趋势</strong>：</p>
 <ol>
-<li><strong>Action representation 从 discrete 到 continuous</strong>：RT-2 的 token 预测 → Octo 的 diffusion → π₀ 的 flow matching，控制频率从 3 Hz 提升到 50-200 Hz</li>
-<li><strong>Dual-System 架构成为共识</strong>：π0.5、GR00T N1、Gemini Robotics、Helix 均采用 System 2（VLM 语义推理，~10 Hz）+ System 1（action 生成，50-200 Hz）的分层设计</li>
-<li><strong>从 imitation 到 world model-conditioned RL</strong>：π*₀.₆ 的 Recap → GigaBrain 的 RAMP，RL 自我改进正从简单 advantage conditioning 演化为 world model-conditioned learning</li>
-<li><strong>从大模型到高效模型</strong>：SmolVLA（0.45B）、X-VLA（0.9B）、DM0（2B）证明精心设计的小模型可匹敌甚至超越大模型（3-4B）</li>
-<li><strong>从实验室到真实世界</strong>：π0.5 在全新家庭环境完成 10-15 分钟长时域任务，Gemini Robotics 折纸 100% 成功率，GR00T N1 humanoid 双臂操作 76.8%</li>
-<li><strong>Embodied-Native vs. Pretrain-then-Adapt 范式之争</strong>：DM0 挑战了主流的先 VLM 预训练再 robot fine-tune 范式，提出从一开始就融入 physical data</li>
-<li><strong>Embodied Reasoning 成为新核心能力</strong>：ECoT → Robot-R1 → VLASER → Embodied-R1 → Lumo-1 的演进清晰展示了”先推理再行动”的新范式——通过 structured reasoning trace（CoT、pointing、bbox、keypoint）增强 VLA 的泛化能力和可解释性，GRPO-based RL 成为该方向的标准训练范式</li>
-<li><strong>实时部署进入工程化阶段</strong>：Xiaomi-Robotics-0 在消费级 GPU（RTX 4090）上实现 80ms 延迟的实时 VLA 执行，LIBERO 98.7% SOTA，异步执行方案解决了推理延迟导致的动作不连贯问题</li>
-<li><strong>Self-correction 成为新方向</strong>：CycleVLA 首次系统性引入 VLA 自纠错机制，long-horizon 任务提升 39.9%</li>
+<li><strong>Action representation 从 discrete 到 continuous</strong>：RT-2 token（3 Hz）→ Octo diffusion → π0 flow matching（50 Hz chunk-level），continuous path 已是默认；离散路线退守到”辅助监督”角色（<a href="../Papers/2504-Pi05" class="internal" data-slug="Papers/2504-Pi05">2504-Pi05</a> FAST + flow 双头、<a href="../Papers/2512-GenieReasoner" class="internal" data-slug="Papers/2512-GenieReasoner">2512-GenieReasoner</a> FACT = VQ + flow decoder）。</li>
+<li><strong>Dual-system 成 industry default</strong>：System 2 VLM 1-10 Hz + System 1 action 20-200 Hz 的分层解耦被 π0.5 / GR00T N1 / Gemini Robotics / Helix / NaVILA 同时采纳；hierarchical with language intermediate 的历史包袱（语义表达力不足）由 latent action / reasoning trace / 2D trajectory 等替代中间表征消化。</li>
+<li><strong>Data recipe > model size</strong>：<a href="../Papers/2506-SmolVLA" class="internal alias" data-slug="Papers/2506-SmolVLA">SmolVLA</a> 0.45B、<a href="../Papers/2510-XVLA" class="internal alias" data-slug="Papers/2510-XVLA">X-VLA</a> 0.9B、<a href="../Papers/2602-DM0" class="internal alias" data-slug="Papers/2602-DM0">DM0</a> 2B 反复在主流 benchmark 击败 3-7B baseline；<a href="../Papers/2511-GEN0" class="internal alias" data-slug="Papers/2511-GEN0">GEN-0</a> 虽然在 7B 观察到”intelligence threshold”相变，但跨越阈值后 data scaling 的 ROI 远大于继续扩参。</li>
+<li><strong>Real-world RL 和 data engine 改写 ceiling</strong>：[[2511-PiStar06|π<em>0.6]] 的 advantage conditioning + HIL rollout 首次让 4B 级 flow matching VLA 真实自改进；[[2602-GigaBrain05M|GigaBrain-0.5M</em>]] 的 RAMP 把它推广到”latent-conditioned”；<a href="../Papers/2511-GEN0" class="internal alias" data-slug="Papers/2511-GEN0">GEN-0</a> / <a href="../Papers/2604-GEN1" class="internal alias" data-slug="Papers/2604-GEN1">GEN-1</a> 的 500K 小时 wearable 数据路线让”数据天花板”从学术共识变成工业实验室专属筹码。</li>
+<li><strong>评测从 lab saturation 转向 real-robot mastery</strong>：LIBERO（98.7）/ CALVIN ABCD→D（4.80）接近饱和；战场迁移到 RoboChallenge Table30、<a href="../Papers/2511-PiStar06" class="internal alias" data-slug="Papers/2511-PiStar06">π*0.6</a> 商业部署、AC-One long-horizon、<a href="../Papers/2604-GEN1" class="internal alias" data-slug="Papers/2604-GEN1">GEN-1</a> 6-task mastery suite 等 real-robot 评测——但这些评测各自为政，尚无统一 leaderboard。</li>
 </ol>
-<h2 id="技术路线">技术路线<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#技术路线" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<h3 id="路线-1autoregressive-token-prediction离散动作生成">路线 1：Autoregressive Token Prediction（离散动作生成）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#路线-1autoregressive-token-prediction离散动作生成" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p><strong>代表论文</strong>：<a href="../Papers/2307-RT2" class="internal alias" data-slug="Papers/2307-RT2">RT-2</a>、<a href="../Papers/2406-OpenVLA" class="internal alias" data-slug="Papers/2406-OpenVLA">OpenVLA</a></p>
-<p><strong>核心思路</strong>：将 robot action 离散化为 token（256 bins），复用 VLM 的 autoregressive next-token prediction 进行动作生成。这是最早也是最直观的 VLA 范式——“actions as language tokens”。</p>
-<p><strong>优势</strong>：</p>
+<h2 id="problem--motivation">Problem &amp; Motivation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#problem--motivation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>VLA 试图解决的核心问题可以用 <a href="../Papers/2509-PureVLA" class="internal" data-slug="Papers/2509-PureVLA">2509-PureVLA</a> 的一句 framing 概括——<strong>“understanding the instruction but failing to execute”</strong>。大型 VLM 已具备视觉-语言理解能力，但把”懂指令”变成”真的做到”隔着<strong>三重不对齐</strong>：</p>
+<ol>
+<li><strong>模态不对齐</strong>：VLM 输出空间是 language token；机器人需要的是连续、高频、embodiment-specific 的 motor command。</li>
+<li><strong>数据不对齐</strong>：internet-scale VL 数据 ≈ 10¹² tokens，OXE 作为目前最大真实机器人数据聚合仅 ≈ 10⁷ tokens，<strong>相差 5 个数量级</strong>（<a href="../Papers/2507-VLATokenizationSurvey" class="internal" data-slug="Papers/2507-VLATokenizationSurvey">2507-VLATokenizationSurvey</a> §12）。</li>
+<li><strong>时间尺度不对齐</strong>：LLM 接受秒级延迟；机器人闭环控制需要 20-50 Hz。token-by-token 解码天然冲突（<a href="../Papers/2307-RT2" class="internal alias" data-slug="Papers/2307-RT2">RT-2</a> 55B 只能 1-3 Hz）。</li>
+</ol>
+<p>额外两个近期被放大的问题：</p>
+<ol start="4">
+<li><strong>Generalization vs compositional novelty</strong>：VLA 即便在训练分布内指令也常需要 task-specific fine-tune；<a href="../Papers/2604-Pi07" class="internal alias" data-slug="Papers/2604-Pi07">π0.7</a> 明确指出 LLM 的 “compositional generalization” 在 VLA 上长期缺席。</li>
+<li><strong>Reasoning-action 割裂</strong>：VLM backbone 擅长语义推理，但 fine-tune action 会侵蚀 VLM 表征（<a href="../Papers/2502-RoboBrain" class="internal alias" data-slug="Papers/2502-RoboBrain">RoboBrain</a> / <a href="../Papers/2506-VeBrain" class="internal" data-slug="Papers/2506-VeBrain">2506-VeBrain</a> 的 MMVet 掉 16.3%；<a href="../Papers/2602-XiaomiRobotics0" class="internal" data-slug="Papers/2602-XiaomiRobotics0">2602-XiaomiRobotics0</a> w/o VL co-train 的 VL benchmark 全部归零）。</li>
+</ol>
+<p><strong>为什么值得现在做</strong>：</p>
 <ul>
-<li>直接复用 VLM 架构和预训练权重，无需额外 action head</li>
-<li>天然支持 language-conditioned control</li>
-<li>RT-2 展示了 emergent reasoning（符号推理、常识迁移）</li>
+<li><strong>为什么不直接 IL / RL</strong>：经典 IL 在开放指令和新物体上泛化差，经典 RL 在高维 + sparse reward 下样本灾难。VLM backbone 提供<strong>语义先验</strong>使 skill transfer 可行（RT-2 首次证明 “emergent generalization” 来自 web 知识 + co-fine-tuning）。</li>
+<li><strong>为什么不停留在 VLM + primitive planner</strong>：SayCan / VoxPoser / Code as Policies 等 “LLM 挑 primitive” 路线在细粒度控制和新物体上受限；<a href="../Papers/2305-TidyBot" class="internal alias" data-slug="Papers/2305-TidyBot">TidyBot</a> 仍依赖 predefined skill library。</li>
+<li><strong>为什么现在爆发</strong>：(1) open-source VLM 成熟（SigLIP / Gemma3 / PaliGemma / Qwen2.5-VL / Qwen3-VL）；(2) 真实机器人数据跨过 100K episodes 门槛（OXE / DROID / AgiBot World）；(3) diffusion / flow matching 提供 scalable 的 continuous action 生成范式；(4) 2025 年起 real-world RL（π*0.6 / RAMP）和 data engine（GEN-0/1）的突破改变了”数据 ceiling 在哪里”的判断。</li>
 </ul>
-<p><strong>劣势</strong>：</p>
+<h2 id="技术路线对比">技术路线对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#技术路线对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>借用 <a href="../Papers/2507-VLATokenizationSurvey" class="internal" data-slug="Papers/2507-VLATokenizationSurvey">2507-VLATokenizationSurvey</a> 的 “action token 形态” 框架但合并到 8 条实际技术路线。每条路线分析核心思路、实际效果（代表数字）、优势、痛点，嵌入代表作。</p>
+<h3 id="1-autoregressive-raw-action-token">1. Autoregressive Raw Action Token<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-autoregressive-raw-action-token" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li>控制频率低（RT-2 约 3 Hz），无法进行灵巧操作</li>
-<li>离散化损失动作精度</li>
-<li>Autoregressive 生成慢，序列长度线性增加延迟</li>
-</ul>
-<p><strong>现状</strong>：作为 VLA 范式的奠基工作具有历史意义，但已被 continuous action 方法全面超越。OpenVLA 作为开源 baseline 仍广泛用于对比实验。<a href="../Papers/2502-OpenVLA-OFT" class="internal alias" data-slug="Papers/2502-OpenVLA-OFT">OpenVLA-OFT</a> 通过 parallel decoding + continuous action + L1 regression 将 OpenVLA 性能从 76.5% 提升至 97.1%（LIBERO），证明 fine-tuning 设计选择比模型规模更重要。</p>
-<h3 id="路线-2flow-matching--diffusion-action-generation连续动作生成">路线 2：Flow Matching / Diffusion Action Generation（连续动作生成）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#路线-2flow-matching--diffusion-action-generation连续动作生成" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p><strong>代表论文</strong>：<a href="../Papers/2410-Pi0" class="internal alias" data-slug="Papers/2410-Pi0">π₀</a>、<a href="../Papers/2405-Octo" class="internal alias" data-slug="Papers/2405-Octo">Octo</a>、<a href="../Papers/2506-SmolVLA" class="internal alias" data-slug="Papers/2506-SmolVLA">SmolVLA</a></p>
-<p><strong>核心思路</strong>：用 flow matching（或 diffusion）建模连续 action 分布，通过 action expert 独立于 VLM backbone 进行动作生成。Action chunking（一次预测多步）进一步提升控制频率。</p>
-<p><strong>优势</strong>：</p>
+<li><strong>核心思路</strong>：把连续 action 离散化（uniform binning / VQ-VAE / FAST DCT），接在 VLM language token 之后做 next-token prediction，训练 loss 与 LLM pretraining 完全同构。谱系：<a href="../Papers/2212-RT1" class="internal" data-slug="Papers/2212-RT1">2212-RT1</a> → <a href="../Papers/2307-RT2" class="internal" data-slug="Papers/2307-RT2">2307-RT2</a> → <a href="../Papers/2406-OpenVLA" class="internal" data-slug="Papers/2406-OpenVLA">2406-OpenVLA</a> → <a href="../Papers/2502-OpenVLA-OFT" class="internal" data-slug="Papers/2502-OpenVLA-OFT">2502-OpenVLA-OFT</a> → FAST tokenizer → <a href="../Papers/2512-GenieReasoner" class="internal" data-slug="Papers/2512-GenieReasoner">2512-GenieReasoner</a>（FACT = VQ + flow-matching decoder）。</li>
+<li><strong>实际效果</strong>：RT-1 130K episodes / 744 tasks / 3Hz 做出 AR VLA 首次规模化 demo；OpenVLA 7B 在 BridgeData 超 RT-2-X 55B +16.5%；OpenVLA-OFT 用 parallel decoding + action chunking 把推理从 166ms 压到 ~73ms，LIBERO 平均 97.1%（超 π0 的 94.2%）；GenieReasoner 用 FACT 在 ERIQ 拿 82.72% vs base 58.64%。</li>
+<li><strong>优势</strong>：与 VLM 训练范式同构；可复用 LLM 生态（KV cache、speculative decoding、int4 量化——<a href="../Papers/2406-OpenVLA" class="internal alias" data-slug="Papers/2406-OpenVLA">OpenVLA</a> 证明 7B 直接 int4 不掉点）；token 离散便于 RL（advantage conditioning 通过 text prefix 天然可插）。</li>
+<li><strong>痛点</strong>：
 <ul>
-<li>高频连续控制（π₀ 达 50 Hz），支持灵巧操作</li>
-<li>Action expert 的 MoE 设计避免 action loss 破坏 VLM 预训练分布</li>
-<li>Flow matching 对 multimodal action distribution 建模更准确</li>
+<li><strong>推理延迟</strong>：token-by-token AR 在 7B 上天然 1-6 Hz（RT-2 55B 只有 1-3 Hz），靠 OFT 的并行解码或 FAST tokenizer 缩短 action 序列才能进入 20+ Hz。</li>
+<li><strong>Multi-modal action 分布丢失</strong>：256-bin 对多峰连续分布近似差（Diffusion Policy 的核心 critique）。</li>
+<li><strong>精度-token-length 冲突</strong>：uniform binning 精度 vs token 数线性 trade-off；<a href="../Papers/2604-DAERT" class="internal alias" data-slug="Papers/2604-DAERT">DAERT</a> 展示 VLA 对<strong>语言层面微小 rephrase</strong> 的脆弱性（π0 LIBERO 93%→5.85%），部分原因即离散 token 对 prompt shortcut 敏感。</li>
 </ul>
-<p><strong>劣势</strong>：</p>
+</li>
+</ul>
+<h3 id="2-continuous-flow-matching--diffusion-action-head">2. Continuous Flow-Matching / Diffusion Action Head<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-continuous-flow-matching--diffusion-action-head" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li>需要额外的 action expert 参数（π₀ 的 300M action expert）</li>
-<li>Flow matching 的 denoising 步骤增加推理计算</li>
-<li>最优 action chunk 长度需要 task-specific 调优</li>
-</ul>
-<p><strong>现状</strong>：目前性能最强的 VLA 技术路线。π₀ 系列占据该路线的领导地位，SmolVLA（0.45B）和 <a href="../Papers/2510-XVLA" class="internal alias" data-slug="Papers/2510-XVLA">X-VLA</a>（0.9B，ICLR 2026）证明 flow matching 在极小参数量下也能高效工作。<a href="../Papers/2503-GR00TN1" class="internal alias" data-slug="Papers/2503-GR00TN1">GR00T N1</a>（NVIDIA）将该范式扩展到 humanoid，120 Hz 控制频率。<a href="../Papers/2412-RoboVLMs" class="internal alias" data-slug="Papers/2412-RoboVLMs">RoboVLMs</a> 的 600+ 实验系统验证了 continuous action + policy head history fusion 是最优配置。<a href="../Papers/2603-DAMVLA" class="internal alias" data-slug="Papers/2603-DAMVLA">DAM-VLA</a> 进一步将 diffusion action head 拆分为 arm/gripper 双头，针对不同操作模式独立建模。<a href="../Papers/2602-XiaomiRobotics0" class="internal alias" data-slug="Papers/2602-XiaomiRobotics0">Xiaomi-Robotics-0</a>（4.7B）在消费级 RTX 4090 上实现 80ms 实时推理，LIBERO 98.7% / CALVIN 4.80 均为 SOTA，其 Λ-Shape Attention Mask + RoPE Offsetting 的异步执行方案解决了推理延迟导致的动作不连贯问题。</p>
-<h3 id="路线-3hierarchical-vlm-vla分层架构">路线 3：Hierarchical VLM-VLA（分层架构）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#路线-3hierarchical-vlm-vla分层架构" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p><strong>代表论文</strong>：<a href="../Papers/2504-Pi05" class="internal alias" data-slug="Papers/2504-Pi05">π0.5</a>、<a href="../Papers/2502-HiRobot" class="internal alias" data-slug="Papers/2502-HiRobot">Hi Robot</a>、<a href="../Papers/2412-NaVILA" class="internal alias" data-slug="Papers/2412-NaVILA">NaVILA</a>、<a href="../Papers/2503-GR00TN1" class="internal alias" data-slug="Papers/2503-GR00TN1">GR00T N1</a>、<a href="../Papers/2503-GeminiRobotics" class="internal alias" data-slug="Papers/2503-GeminiRobotics">Gemini Robotics</a></p>
-<p><strong>核心思路</strong>：将 policy 分为两层——高层 VLM 进行语义推理和子任务规划（“what to do”），低层 VLA 生成精细动作（“how to do”）。这对应认知科学中的 System 2（deliberative）+ System 1（reactive）。</p>
-<p><strong>优势</strong>：</p>
+<li><strong>核心思路</strong>：把 action 生成建模为 conditional DDPM 或 flow matching 的 denoising 过程，直接在 continuous space 学习轨迹分布。谱系：<a href="../Papers/2303-DiffusionPolicy" class="internal" data-slug="Papers/2303-DiffusionPolicy">2303-DiffusionPolicy</a>（奠基）→ <a href="../Papers/2405-Octo" class="internal" data-slug="Papers/2405-Octo">2405-Octo</a> → <a href="../Papers/2410-Pi0" class="internal" data-slug="Papers/2410-Pi0">2410-Pi0</a> → <a href="../Papers/2504-Pi05" class="internal" data-slug="Papers/2504-Pi05">2504-Pi05</a> → <a href="../Papers/2506-SmolVLA" class="internal" data-slug="Papers/2506-SmolVLA">2506-SmolVLA</a> → <a href="../Papers/2510-XVLA" class="internal" data-slug="Papers/2510-XVLA">2510-XVLA</a> → <a href="../Papers/2604-Pi07" class="internal" data-slug="Papers/2604-Pi07">2604-Pi07</a>。同族变体：<a href="../Papers/2409-TinyVLA" class="internal" data-slug="Papers/2409-TinyVLA">2409-TinyVLA</a>（&lt;1.4B VLM + Diffusion Policy head, 20× 加速）、<a href="../Papers/2503-GR00TN1" class="internal" data-slug="Papers/2503-GR00TN1">2503-GR00TN1</a>（Eagle-2 VLM + flow matching DiT）、<a href="../Papers/2512-Motus" class="internal" data-slug="Papers/2512-Motus">2512-Motus</a>（Wan2.2 VGM + Tri-modal Joint Attention）。</li>
+<li><strong>实际效果</strong>：π0 将 3B 模型推到 50Hz chunk-level 控制；π0.5 首次在真实 Airbnb 完成 kitchen/bedroom 15 分钟级长程任务；π0.6 上 SmolVLA 的 453M + Hugging Face LeRobot 生态验证小模型路线；X-VLA 0.9B 在 Simpler-WidowX 73.8% → 89.6%（PEFT 9M/1% 参数即可逼近全量 π0）；π0.7 zero-shot UR5e laundry folding 匹配<strong>人类 top-2% teleoperator</strong>（task progress 85.6% / success 80%）。</li>
+<li><strong>优势</strong>：天然建模 multi-modal 连续分布；flow matching 1-4 步采样（比 DDPM 10+ 步快）；chunk-level 生成 + Real-Time Chunking（RTC）/async inference 解决 AR 延迟。</li>
+<li><strong>痛点</strong>：
 <ul>
-<li>自然解耦语义理解和运动控制，各层可独立优化</li>
-<li>支持 open-ended 指令理解和实时用户纠正（Hi Robot）</li>
-<li>适用于 long-horizon 多步任务</li>
-<li>架构天然兼容 navigation + manipulation 统一（NaVILA 用语言动作桥接）</li>
+<li><strong>Likelihood 不可解析</strong>：PPO / trust region 不兼容；π*0.6 的 “advantage conditioning”（二值 advantage 作 text prefix + CFG 推理）是目前最成熟的 RL 绕行方案。</li>
+<li><strong>梯度污染 VLM</strong>：Continuous flow matching loss 会侵蚀 VLM 语义（<a href="../Papers/2504-Pi05" class="internal" data-slug="Papers/2504-Pi05">2504-Pi05</a> Knowledge Insulation 用 stop-gradient + FAST 离散辅助监督解决；<a href="../Papers/2512-GenieReasoner" class="internal" data-slug="Papers/2512-GenieReasoner">2512-GenieReasoner</a> FACT 用离散 VQ token 学 + flow decoder 重构）。</li>
+<li><strong>延迟一致性</strong>：Action chunk 边界不连续；π0.7 训练时注入 0-12 step inference delay 模拟 RTC；<a href="../Papers/2604-SnapFlow" class="internal" data-slug="Papers/2604-SnapFlow">2604-SnapFlow</a> 用 corrected consistency self-distillation 把 10 步 denoising 压到 1 步（π0.5 LIBERO 97.75%→98.75%，端到端 274ms→83ms 3.3×）。</li>
 </ul>
-<p><strong>劣势</strong>：</p>
+</li>
+</ul>
+<h3 id="3-hierarchical-with-language-intermediates">3. Hierarchical with Language Intermediates<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-hierarchical-with-language-intermediates" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li>高层和低层通常独立训练，缺乏 end-to-end joint optimization</li>
-<li>高层推理延迟（~1 Hz）与低层控制频率（10-50 Hz）不匹配</li>
-<li>Error propagation：低层失败时高层不一定能感知</li>
-</ul>
-<p><strong>现状</strong>：成为 2025-2026 年的绝对主流。π0.5 在全新家庭完成 10-15 分钟任务，Hi Robot 超越 GPT-4o 40%+。这一架构已被工业界全面采纳：NVIDIA GR00T N1（Eagle-2 VLM @10Hz + DiT @120Hz）、Google Gemini Robotics（Cloud Gemini 2.0 + Local Action Decoder @50Hz）、Figure AI Helix（VLM @7-9Hz + Policy @200Hz）均采用 System 2 + System 1 设计。Dual-system 已不只是学术方案，而是 industry consensus。</p>
-<h3 id="路线-4rl-self-improvement强化学习自我改进">路线 4：RL Self-Improvement（强化学习自我改进）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#路线-4rl-self-improvement强化学习自我改进" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p><strong>代表论文</strong>：[[2511-PiStar06|π<em>₀.₆]]、<a href="../Papers/2603-RoboClaw" class="internal alias" data-slug="Papers/2603-RoboClaw">RoboClaw</a>、[[2602-GigaBrain|GigaBrain-0.5M</em>]]</p>
-<p><strong>核心思路</strong>：在 imitation learning 之后，通过真实世界部署经验进行 RL fine-tuning，突破 demonstration 数据质量的性能上限。π*₀.₆ 的 Recap 算法用 advantage-conditioned policy extraction 绕过了 PPO 对 flow matching 的兼容性问题。</p>
-<p><strong>优势</strong>：</p>
+<li><strong>核心思路</strong>：两层结构——上层 VLM 产出 language subtask（自然语言 / language motion / bounding box + trajectory），下层轻量 policy 条件执行。谱系：<a href="../Papers/2204-SayCan" class="internal" data-slug="Papers/2204-SayCan">2204-SayCan</a> / <a href="../Papers/2303-PaLME" class="internal" data-slug="Papers/2303-PaLME">2303-PaLME</a>（早期 LLM planner）→ <a href="../Papers/2403-RTH" class="internal" data-slug="Papers/2403-RTH">2403-RTH</a>（language motion “move arm forward 75cm”）→ <a href="../Papers/2502-HiRobot" class="internal" data-slug="Papers/2502-HiRobot">2502-HiRobot</a> / <a href="../Papers/2412-NaVILA" class="internal" data-slug="Papers/2412-NaVILA">2412-NaVILA</a> / <a href="../Papers/2504-Pi05" class="internal" data-slug="Papers/2504-Pi05">2504-Pi05</a> / <a href="../Papers/2503-GR00TN1" class="internal" data-slug="Papers/2503-GR00TN1">2503-GR00TN1</a>（近期 System 1/2 dual-rate）→ <a href="../Papers/2502-HAMSTER" class="internal" data-slug="Papers/2502-HAMSTER">2502-HAMSTER</a>（2D trajectory 作为 embodiment-agnostic 桥接）→ <a href="../Papers/2512-WholeBodyVLA" class="internal" data-slug="Papers/2512-WholeBodyVLA">2512-WholeBodyVLA</a>（humanoid loco-manipulation 的 dual LAM + discrete locomotion command）。</li>
+<li><strong>实际效果</strong>：π0.5 对 unseen 家庭的 zero-shot 长程泛化；HiRobot 用 synthetic interaction data 实现 situated grounding 吊打 GPT-4o；GR00T N1 在 2.2B 参数下做 humanoid full-body；NaVILA 在 VLN-CE R2R Val-Unseen RGB-only 设置下 SR 54% / SPL 49%（ICRA 2026）；HAMSTER 相对 OpenVLA +50%。</li>
+<li><strong>优势</strong>：
 <ul>
-<li>突破 imitation learning 天花板，从自身错误中学习</li>
-<li>Advantage conditioning 是 model-agnostic 的 RL 方法，兼容 flow matching</li>
-<li>支持异构数据（demos + autonomous rollouts + interventions）统一训练</li>
+<li>语言中间表征可被 web / egocentric video co-training 增强。</li>
+<li>可解释、可 human-in-the-loop 干预（RT-H 的 language motion 可当场纠正）。</li>
+<li><strong>数据分离</strong>：高层 task 语义稀疏，低层 motion 稠密，缓解数据稀疏。</li>
+<li><strong>频率分离</strong>：高层 1-2 Hz，底层 20-50 Hz（NaVILA 的 Dual-Frequency Architecture、π0.5 的 async planning）。</li>
 </ul>
-<p><strong>劣势</strong>：</p>
+</li>
+<li><strong>痛点</strong>：
 <ul>
-<li>仍需人工 reward labeling 和 intervention</li>
-<li>Exploration 策略简单，无 sophisticated exploration</li>
-<li>Batch offline RL，非 continuous online learning</li>
+<li><strong>语言表达力不足</strong>：contact-rich / deformable / 精细运动在语言层难表示，<a href="../Papers/2507-VLATokenizationSurvey" class="internal" data-slug="Papers/2507-VLATokenizationSurvey">2507-VLATokenizationSurvey</a> 建议 language 只做 high-level planning，细节交给 affordance / trajectory / goal video。</li>
+<li><strong>上下层接口脆弱</strong>：语义太窄限制下层，太宽下层难训练；上层延迟卡死整体频率。</li>
+<li><strong>“并行但不协同”</strong>：<a href="../Papers/2604-BiCoord" class="internal" data-slug="Papers/2604-BiCoord">2604-BiCoord</a> 的 STI 指标揭示 RLBench2 SMP 97% 但 ARD 115%——并行执行不等于紧耦合协同。</li>
 </ul>
-<p><strong>现状</strong>：VLA 研究的最新前沿。π*₀.₆ 在 laundry folding 等任务上实现 >2× throughput 提升，13 小时连续部署验证了实用性。<a href="../2602-GigaBrain" class="internal alias" data-slug="2602-GigaBrain">GigaBrain-0.5M*</a> 的 RAMP 框架将 world model latent representation 引入 RL 训练，理论证明 RECAP 是 RAMP 的退化特例，在 RoboChallenge 上排名第一（51.67%）。RoboClaw 的 EAP（Entangled Action Pairs）提供了自主数据收集的替代方案。RL self-improvement 正从简单的 advantage conditioning 演化为 world model-conditioned learning。</p>
-<h3 id="路线-5embodied-native-training原生物理训练">路线 5：Embodied-Native Training（原生物理训练）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#路线-5embodied-native-training原生物理训练" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p><strong>代表论文</strong>：<a href="../Papers/2602-DM0" class="internal alias" data-slug="Papers/2602-DM0">DM0</a></p>
-<p><strong>核心思路</strong>：摒弃主流的 “Pretrain-then-Adapt” 范式（先 internet VLM 预训练，再 robot fine-tune），从训练起点就将 physical data 作为一等公民，统一 web text、autonomous driving 和 embodied interaction 数据进行联合训练。</p>
-<p><strong>优势</strong>：</p>
+</li>
+</ul>
+<h3 id="4-latent-action-from-unlabeled-video">4. Latent Action from Unlabeled Video<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-latent-action-from-unlabeled-video" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li>模型从一开始就获得 physical priors，避免 domain gap</li>
-<li>Gradient decoupling 有效防止 action training 侵蚀 VLM semantic capacity</li>
-<li>Spatial Scaffolding（subtask → bbox → trajectory → action）构成自然的 coarse-to-fine 课程</li>
-<li>单一模型统一 manipulation 和 navigation</li>
-</ul>
-<p><strong>劣势</strong>：</p>
+<li><strong>核心思路</strong>：从 action-free video（人类 / 跨 embodiment）无监督学 latent action space，先用 VLM 预测 latent，再以少量 action-labeled 数据做 decoder fine-tune。打开 internet-scale video 作为训练数据源。谱系：<a href="../Papers/2402-Genie" class="internal" data-slug="Papers/2402-Genie">2402-Genie</a>（generative interactive environment，VQ-VAE + ST-transformer）→ <a href="../Papers/2410-LAPA" class="internal" data-slug="Papers/2410-LAPA">2410-LAPA</a>（VQ-VAE 从 SSv2 人类视频预训练，7B VLM + 30-40× compute 超 OpenVLA +6.22%）→ UniVLA → <a href="../Papers/2505-DreamGen" class="internal" data-slug="Papers/2505-DreamGen">2505-DreamGen</a>（video diffusion 作为 offline data engine，log-linear NT scaling，GR00T N1 new-behavior 0% → 43%）→ <a href="../Papers/2512-WholeBodyVLA" class="internal" data-slug="Papers/2512-WholeBodyVLA">2512-WholeBodyVLA</a>（双 LAM：manipulation + locomotion）。</li>
+<li><strong>实际效果</strong>：LAPA 用纯 human video 预训练正迁移到 Franka；DreamGen 证明 Cosmos / WAN2.1 fine-tune 后的 video 生成 + IDM 提取 pseudo-action 能在 GR1 humanoid 上实现 new behavior 43.2%（vs baseline 11.2%）、new env 28.5%（vs 0%）；<a href="../Papers/2602-DreamZero" class="internal" data-slug="Papers/2602-DreamZero">2602-DreamZero</a>（NVIDIA GEAR）把 video diffusion 14B 直接作为 VLA backbone，AgiBot unseen env+object 任务 task progress 62.2% 比最强 VLA baseline 翻倍（且 5B→14B scaling 信号明显）。</li>
+<li><strong>优势</strong>：绕过 action-label 瓶颈；跨 embodiment 友好；VLM 预训练目标容易收敛（比 raw action 的 continuous regression 简单）。</li>
+<li><strong>痛点</strong>：
 <ul>
-<li>数据工程复杂度极高（1.2T tokens pretraining + 200M mid-training）</li>
-<li>三阶段 pipeline 复现成本大</li>
-<li>Real-world navigation 评测不足</li>
+<li><strong>不可解释</strong>：latent 无法像 language motion 那样被人当场纠正。</li>
+<li><strong>Latent 混杂</strong>：LAPA 承认 latent 把 camera motion / scene change / agent action 混在一起，对 fine-grained grasping 有害。</li>
+<li><strong>Granularity / comprehensiveness / alignment 三道坎</strong>：<a href="../Papers/2507-VLATokenizationSurvey" class="internal" data-slug="Papers/2507-VLATokenizationSurvey">2507-VLATokenizationSurvey</a> 明确<strong>不推荐</strong>把 latent 纳入未来 hierarchical 架构。</li>
 </ul>
-<p><strong>现状</strong>：DM0 仅 2B 参数在 RoboChallenge Table30 达到 62% SR，超越 GigaBrain-0.1（3B, 51.67%）和 π0.5（3B, 42.67%）。Embodied-Native 理念是否真正优于 Pretrain-then-Adapt 还需更多 controlled ablation 验证，但 2B 打败 3-4B 的结果暗示 data recipe 比 model scaling 更重要。</p>
-<h3 id="路线-6self-correction--error-recovery自纠错与错误恢复">路线 6：Self-Correction / Error Recovery（自纠错与错误恢复）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#路线-6self-correction--error-recovery自纠错与错误恢复" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p><strong>代表论文</strong>：<a href="../Papers/2601-CycleVLA" class="internal alias" data-slug="Papers/2601-CycleVLA">CycleVLA</a></p>
-<p><strong>核心思路</strong>：为 VLA 赋予主动自纠错能力——在错误完全发生前检测异常并触发 subtask backtracking，而非事后被动应对。这是 VLA 走向真实世界部署的关键能力。</p>
-<p><strong>优势</strong>：</p>
+</li>
+</ul>
+<h3 id="5-reasoning-augmented-action">5. Reasoning-Augmented Action<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#5-reasoning-augmented-action" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li>Proactive 而非 reactive：通过 progress tracking 在错误萌芽阶段就介入</li>
-<li>MBR decoding 作为 zero-shot test-time scaling，无需额外训练即可提升 retry 成功率</li>
-<li>Long-horizon 任务改善极为显著（+39.9%）</li>
-</ul>
-<p><strong>劣势</strong>：</p>
+<li><strong>核心思路</strong>：显式把 reasoning chain 作为 meta-token 插在 action 前/间。纯语言 CoT → 空间化 reasoning → 联合 reasoning-action 优化三阶段演进。谱系：<a href="../Papers/2407-ECoT" class="internal" data-slug="Papers/2407-ECoT">2407-ECoT</a>（subtask → plan → bbox → gripper pixel → action 七段）→ RAD / DriveVLM / <a href="../Papers/2503-CosmosReason1" class="internal" data-slug="Papers/2503-CosmosReason1">2503-CosmosReason1</a>（Physical common sense + Embodied reasoning ontology + GRPO RL）→ <a href="../Papers/2508-EmbodiedR1" class="internal" data-slug="Papers/2508-EmbodiedR1">2508-EmbodiedR1</a>（“pointing” 作为 embodiment-agnostic 中间表示 + RFT）→ <a href="../Papers/2512-GenieReasoner" class="internal" data-slug="Papers/2512-GenieReasoner">2512-GenieReasoner</a>（统一 discrete reasoning + flow matching action）→ <a href="../Papers/2601-RoboBrain25" class="internal alias" data-slug="Papers/2601-RoboBrain25">RoboBrain 2.5</a>（3D <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">d</span><span class="mclose">)</span></span></span></span> + hop-normalized temporal value）→ <a href="../Papers/2602-RynnBrain" class="internal" data-slug="Papers/2602-RynnBrain">2602-RynnBrain</a>（Chain-of-Point 交错 textual-spatial reasoning）。</li>
+<li><strong>实际效果</strong>：ECoT 在 Bridge 上把成功率提 28%（2407）；Embodied-R1 3B 在 11 个 spatial benchmark rank 2.1 超 13B SOTA，xArm 真机 8 任务 zero-shot 87.5%（vs FSD 25%）；Cosmos-Reason1 在 intuitive physics (arrow of time, object permanence) 从 42%→81.5%（GPT-5、Gemini-2.5 几乎随机猜）；GenieReasoner 在 ERIQ 82.72%；Lumo-1 用 spatial action tokenizer + subtask completeness prediction，在 6 个 fine-tune 任务上全面超 π0/π0.5；RoboBrain 2.5 用 hop-based value 做<strong>Reverse VOC</strong>（time-reversed task progress prediction），把 GPT-5.2 的 reverse 10-20% 拉到 87-95%。</li>
+<li><strong>优势</strong>：可解释、可 debug；reasoning 跨 embodiment 一致；可复用 LLM RL 栈；RL 优于 CoT 本身（<a href="../Papers/2508-EmbodiedR1" class="internal" data-slug="Papers/2508-EmbodiedR1">2508-EmbodiedR1</a> Table 6 RL > Think）。</li>
+<li><strong>痛点</strong>：
 <ul>
-<li>依赖可逆性假设（contact-rich 或不可逆操作中不成立）</li>
-<li>需要外部 VLM（GPT-5.2）作为 failure predictor</li>
-<li>目前仅在 simulation 验证</li>
+<li><strong>显著拖慢推理</strong>：<a href="../Papers/2407-ECoT" class="internal" data-slug="Papers/2407-ECoT">2407-ECoT</a> 350 token/step，N-step freeze / async 摊销后仍 1-2 Hz；<a href="../Papers/2509-AnywhereVLA" class="internal" data-slug="Papers/2509-AnywhereVLA">2509-AnywhereVLA</a> 把 VLM 部署到云端 0.5 Hz，高频控制依赖 point tracker 15 Hz。</li>
+<li><strong>High-quality reasoning 数据稀缺</strong>：ECoT / RAD / Cosmos-Reason1 都用 auto-generation pipeline。</li>
+<li><strong>“Action-token-based reasoning” 未实证</strong>：<a href="../Papers/2507-VLATokenizationSurvey" class="internal" data-slug="Papers/2507-VLATokenizationSurvey">2507-VLATokenizationSurvey</a> 提出”不只在语言空间思考”的激进方向，目前无工作。</li>
 </ul>
-<p><strong>现状</strong>：CycleVLA 在 LIBERO 上平均 +18.8%，long-horizon +39.9%。Self-correction 是 VLA 安全部署的关键缺失能力，但当前方法仍有较强假设约束。</p>
-<h3 id="路线-7embodied-reasoning-vla推理增强动作生成">路线 7：Embodied Reasoning VLA（推理增强动作生成）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#路线-7embodied-reasoning-vla推理增强动作生成" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<p><strong>代表论文</strong>：<a href="../Papers/2407-ECoT" class="internal alias" data-slug="Papers/2407-ECoT">ECoT</a>、<a href="../Papers/2506-RobotR1" class="internal alias" data-slug="Papers/2506-RobotR1">Robot-R1</a>、<a href="../Papers/2510-VLASER" class="internal alias" data-slug="Papers/2510-VLASER">VLASER</a>、<a href="../Papers/2508-EmbodiedR1" class="internal alias" data-slug="Papers/2508-EmbodiedR1">Embodied-R1</a>、<a href="../Papers/2512-Lumo1" class="internal alias" data-slug="Papers/2512-Lumo1">Lumo-1</a></p>
-<p><strong>核心思路</strong>：在 action 生成前插入显式的 embodied reasoning 过程——通过 structured reasoning trace（CoT、bounding box、keypoint、pointing、trajectory waypoint）将视觉理解与动作决策显式关联。核心 insight：<strong>action 应当是 structured reasoning 的产物，而非 observation 的直接映射</strong>。GRPO-based RL 成为该方向的标准训练范式。</p>
-<p><strong>优势</strong>：</p>
+</li>
+</ul>
+<h3 id="6-hybrid-architectures">6. Hybrid Architectures<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#6-hybrid-architectures" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li>泛化能力显著提升：ECoT 在 OOD 场景 +28%，Embodied-R1 真机 87.5% zero-shot</li>
-<li>可解释性强：推理链天然支持 failure diagnosis 和人类纠错（ECoT +48%）</li>
-<li>Embodiment-agnostic：Embodied-R1 的 pointing 表征和 Lumo-1 的 spatial action tokenizer 均支持 cross-embodiment</li>
-<li>RL > SFT：Robot-R1、Embodied-R1、Lumo-1 一致证明 GRPO 在 embodied reasoning 上显著优于 SFT</li>
-</ul>
-<p><strong>劣势</strong>：</p>
+<li><strong>核心思路</strong>：单模型内同时保留 AR discrete + continuous flow/diffusion 两条 action path，用 gating 或 CFG 融合。代表：<a href="../Papers/2503-HybridVLA" class="internal" data-slug="Papers/2503-HybridVLA">2503-HybridVLA</a>（diffusion noise + timestep 投影为 continuous token 放 AR token 前，共享 LLaMA-2 7B / Phi-2 2.7B）、<a href="../Papers/2504-Pi05" class="internal" data-slug="Papers/2504-Pi05">2504-Pi05</a> 的 discrete FAST + continuous flow matching 双监督、<a href="../Papers/2512-GenieReasoner" class="internal" data-slug="Papers/2512-GenieReasoner">2512-GenieReasoner</a> FACT tokenizer。</li>
+<li><strong>实际效果</strong>：HybridVLA-7B 在 RLBench 10 任务超 OpenVLA +33% / CogACT +14%；π0.5 的两路设计是 “pre-train discrete / post-train continuous” 的范式化。</li>
+<li><strong>优势</strong>：取 AR 的可解释 + continuous 的 multi-modality；共享 backbone 减少参数；discrete 分支天然抗 VLM 语义退化。</li>
+<li><strong>痛点</strong>：
 <ul>
-<li>推理链引入额外 inference latency，限制高频控制</li>
-<li>In-domain reasoning data 是关键（VLASER 核心发现：OOD reasoning 几乎不迁移到 VLA）</li>
-<li>绝对成功率仍有提升空间（Robot-R1 EmbodiedBench 11.68%）</li>
-<li>推理结构通常固定，缺乏自适应</li>
+<li>工程复杂度高，两路互相干扰时难 debug。</li>
+<li>Gate 阈值 / loss 权重 / 共享参数比例 设计空间大。</li>
+<li><a href="../Papers/2510-EfficientVLASurvey" class="internal" data-slug="Papers/2510-EfficientVLASurvey">2510-EfficientVLASurvey</a> 把 hybrid 归入 “specialized catch-all”；<a href="../Papers/2509-PureVLA" class="internal" data-slug="Papers/2509-PureVLA">2509-PureVLA</a> 把跨 paradigm 工作塞 hybrid 看作”taxonomy 崩坏”的信号。</li>
 </ul>
-<p><strong>现状</strong>：2024-2025 年增长最快的 VLA 方向。ECoT 开创了 embodied CoT（+28%），Robot-R1（NeurIPS 2025）首次将 GRPO 系统性用于 embodied manipulation reasoning，VLASER 系统性回答了”哪种 reasoning data 对 VLA 有用”（答案：in-domain data 压倒性优势），Embodied-R1 以 3B 参数量通过 pointing 中间表征实现 SIMPLEREnv 56.2% + 真机 87.5%，Lumo-1（Astribot）将 reasoning-action 统一到 407B tokens 的三阶段训练中并通过 GRPO 对齐 reasoning 与 action。该方向正在与 Flow Matching（路线 2）融合——VLASER 和 Lumo-1 均采用 flow-matching action expert + embodied reasoning 的组合。</p>
+</li>
+</ul>
+<h3 id="7-cross-embodiment-soft-prompt--unified-scaffold">7. Cross-Embodiment Soft Prompt / Unified Scaffold<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#7-cross-embodiment-soft-prompt--unified-scaffold" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>核心思路</strong>：把 heterogeneity 从 action output head 推到 input 端——每个数据源学一组 soft prompt embedding，或者用 spatial intelligence 作为共享 scaffold。代表：<a href="../Papers/2510-XVLA" class="internal" data-slug="Papers/2510-XVLA">2510-XVLA</a>（Learnable per-source soft prompt + Florence VLM + wrist encoder，ICLR 2026 接收 + LeRobot 集成）、<a href="../Papers/2603-ACEBrain0" class="internal" data-slug="Papers/2603-ACEBrain0">2603-ACEBrain0</a>（Scaffold-Specialize-Reconcile 范式：先 spatial scaffold，再分支训 AD/UAV expert，最后 data-free WUDI model merging）。</li>
+<li><strong>实际效果</strong>：X-VLA 6/6 sim benchmark 5 个 SOTA，Simpler-WidowX 95.8% vs 71.9%，PEFT 9M 参数逼近全量 π0；T-SNE 显示 prompt 学到的是 hardware 语义而非 dataset ID；ACE-Brain-0 在 24 个 benchmark 中 20 个最佳，Gemini-3-Pro 被压过。</li>
+<li><strong>优势</strong>：把 cross-embodiment 变成 multi-task prompt 学习问题；input-side conditioning 保留 VLM 预训练分布；prompt retrieval 为 zero-shot transfer 新 embodiment 提供 concrete 路径。</li>
+<li><strong>痛点</strong>：
+<ul>
+<li>每数据源一组 prompt 在 OXE-scale (1000+ 数据源) 下 scalability 未验证。</li>
+<li>Action representation 仍要统一（EEF + Rotate6D），对 mobile base / humanoid / dexterous hand 等异构 morphology 的扩展未证。</li>
+<li>Soft prompt 与 action head 是否真互斥？Table 1 里两者并存是最终版。</li>
+</ul>
+</li>
+</ul>
+<h3 id="8-world-model-conditioning--rl-post-training">8. World Model Conditioning / RL Post-Training<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#8-world-model-conditioning--rl-post-training" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>核心思路</strong>：把 world model 从”生成训练数据”（DreamGen 路线）转向”推理时 condition”——VLA policy 接收 world model 预测的未来 state 和 value，作为 planning 信号。或者用 world model 内跑 RL，闭环 refine policy。代表：<a href="../Papers/2511-PiStar06" class="internal alias" data-slug="Papers/2511-PiStar06">π*0.6</a>（Recap = value function + advantage conditioning + HIL rollout）→ <a href="../Papers/2602-GigaBrain05M" class="internal" data-slug="Papers/2602-GigaBrain05M">2602-GigaBrain05M</a>（RAMP: RECAP 形式化为”对 z 边缘化的特例”，加 future visual latent 做条件）→ <a href="../Papers/2602-WorldVLALoop" class="internal" data-slug="Papers/2602-WorldVLALoop">2602-WorldVLALoop</a>（Closed-loop co-evolving world model + VLA via SANS dataset）。<a href="../Papers/2511-GEN0" class="internal" data-slug="Papers/2511-GEN0">2511-GEN0</a> / <a href="../Papers/2604-GEN1" class="internal" data-slug="Papers/2604-GEN1">2604-GEN1</a> 代表<strong>数据-first</strong> 路线。</li>
+<li><strong>实际效果</strong>：π*0.6 连续 13 小时咖啡馆做 espresso / 2 小时家庭折 laundry / 59 个巧克力包装盒工厂部署；GigaBrain-0 在 RoboChallenge 51.67%（超 π0.5 42.67%），RAMP 在 Box Packing / Espresso 长程任务上比 RECAP +30%；WorldVLALoop 在 real-world 从 SFT 13.3% → RL 第一轮 36.7% → 第二轮 50%；GEN-0 首次在 robotics 观察到 ossification 相变（≥7B “intelligence threshold”）+ power-law scaling <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3567em;margin-left:-0.0037em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">D</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1433em;"><span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>；GEN-1 把数据扩到 500K 小时 wearable、1h robot fine-tune 达 99% SR × 3× speed（blog only）；DreamZero 把 Wan2.1 14B 作为 WAM backbone，unseen env+object 62.2%，38× 推理加速后 7 Hz 部署。</li>
+<li><strong>优势</strong>：
+<ul>
+<li>突破 BC 天花板（π*0.6 throughput 2× 不靠增量 demo）。</li>
+<li>World model latent 提供 dense supervision，缓解 sparse reward。</li>
+<li>数据路线：wearable / synthetic 绕开 teleop 瓶颈。</li>
+</ul>
+</li>
+<li><strong>痛点</strong>：
+<ul>
+<li><strong>推理成本</strong>：DreamZero 默认 5.7s/chunk，要 2× GB200 才 7 Hz；WAM 的 long-horizon drift (>200 帧) 至今未解。</li>
+<li><strong>Reward hacking</strong>：world model 的盲区被 policy exploit（<a href="../Papers/2602-WorldVLALoop" class="internal" data-slug="Papers/2602-WorldVLALoop">2602-WorldVLALoop</a> Fig 5 展示 policy 学会抓杯子背面），要 iterative close loop 才能稳住。</li>
+<li><strong>数据壁垒</strong>：GEN-0/1 完全 proprietary，500K 小时 wearable 数据 + 数据采集方法论不公开。学术社区系统性落后于工业实验室。</li>
+</ul>
+</li>
+</ul>
+<h3 id="8-条路线的实质-trade-off">8 条路线的实质 trade-off<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#8-条路线的实质-trade-off" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>轴</th><th>AR</th><th>Flow/Diff</th><th>Hierarchical</th><th>Latent</th><th>Reasoning</th><th>Hybrid</th><th>SoftPrompt</th><th>WM/RL</th></tr></thead><tbody><tr><td>动作表达力</td><td>中（bin）</td><td>高</td><td>取决于低层</td><td>差可解</td><td>—</td><td>高</td><td>高</td><td>高</td></tr><tr><td>推理频率</td><td>1-6 Hz</td><td>20-50 Hz</td><td>10-50 Hz async</td><td>继承底层</td><td>显著更慢</td><td>gate 决定</td><td>同 flow</td><td>1-7 Hz</td></tr><tr><td>数据利用</td><td>action-labeled</td><td>action-labeled</td><td>VLM co-train 易</td><td>可用 video</td><td>需 CoT 数据</td><td>action-labeled</td><td>multi-source</td><td>video/wearable</td></tr><tr><td>可解释性</td><td>中</td><td>低</td><td>高</td><td>低</td><td>高</td><td>中</td><td>中</td><td>部分</td></tr><tr><td>VLM 生态复用</td><td>最佳</td><td>需 KI 隔离</td><td>高层复用</td><td>部分</td><td>高</td><td>复杂</td><td>好</td><td>中</td></tr><tr><td>代表作 rating</td><td>RT-2/OpenVLA 3</td><td>π0/π0.5/π0.7 3</td><td>SayCan/π0.5 3</td><td>LAPA 2/Genie 3</td><td>Cosmos-Reason 2</td><td>HybridVLA 2</td><td>X-VLA 3</td><td>π*0.6 2/GEN-0 3</td></tr></tbody></table></div>
+<h3 id="2025-2026-的-convergence-观察">2025-2026 的 convergence 观察<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2025-2026-的-convergence-观察" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>综合 65 篇笔记看到的几个<strong>跨路线整合信号</strong>：</p>
+<ol>
+<li><strong>Flow matching + hierarchical + prompt expansion = 当前主流主干</strong>（PI 系列 π0 → π0.5 → π*0.6 → π0.7 + 追随者 GR00T N1 / X-VLA / SmolVLA / Motus）。</li>
+<li><strong>离散 + 连续双监督成为标配</strong>：π0.5 的 FAST discrete + flow continuous 双头、GenieReasoner 的 FACT、π0.7 的 Knowledge Insulation 都属于同一范式。</li>
+<li><strong>Scaling law 正在浮现</strong>：GEN-0 的 7B ossification / <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3567em;margin-left:-0.0037em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">D</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1433em;"><span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>；GEN-1 继续外推（64% → 99%）；DreamZero 5B→14B 在 VLA 上 +29pp（vs 同规模纯 VLA 仍 0%）。但学术社区数据规模与工业差距正在拉大。</li>
+<li><strong>Cross-embodiment 从 “per-embodiment head” 迁移到 “input-side soft prompt / latent action”</strong>（X-VLA / LAPA / DreamZero / π0.7 UR5e 迁移 / 2602-DM0 的 Embodied-Native）。</li>
+<li><strong>Real-world RL 范式转变</strong>：π*0.6 的 advantage conditioning 是”绕开 flow matching PPO 难题”的工程胜利，被 RAMP / WorldVLALoop 沿用；RL 的瓶颈正从”算法”移到”世界模型保真度 + reward 引擎”。</li>
+<li><strong>Reasoning-action 从 shallow CoT 走向 unified discrete framework</strong>（GenieReasoner FACT / Lumo-1 spatial action tokenizer / RoboBrain 2.5 3D+temporal）；“在 action space 做 reasoning” 的激进方向仍无实证。</li>
+<li><strong>Memory 成为 long-horizon 明确子问题</strong>：<a href="../Papers/2603-MEM" class="internal alias" data-slug="Papers/2603-MEM">MEM</a>（video encoder + language memory，15min 任务）、<a href="../Papers/2511-EchoVLA" class="internal" data-slug="Papers/2511-EchoVLA">2511-EchoVLA</a>（dual PHC+hippocampus memory）、<a href="../Papers/2507-StreamVLN" class="internal" data-slug="Papers/2507-StreamVLN">2507-StreamVLN</a>（streaming KV-cache + voxel pruning）都在 2025-2026 集中出现。</li>
+<li><strong>Deployment 工程栈成熟</strong>：async inference（SmolVLA）、RTC（π0.7）、1-step flow matching（SnapFlow 274→83ms）、int4 量化（OpenVLA）、Λ-mask 防 shortcut（Xiaomi-Robotics-0）、paged attention（GEN-1）——“VLA 推理延迟是核心瓶颈”的共识正在推动专用优化技术涌现。</li>
+</ol>
 <h2 id="datasets--benchmarks">Datasets &amp; Benchmarks<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#datasets--benchmarks" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="training-datasets">Training Datasets<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#training-datasets" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 
 
 
@@ -318,88 +435,333 @@ pre:hover > .expand-button {
 
 
 
-<div class="table-container"><table><thead><tr><th style="text-align:left;">Dataset/Benchmark</th><th style="text-align:left;">规模</th><th style="text-align:left;">评估指标</th><th style="text-align:left;">SOTA</th><th style="text-align:left;">特点</th></tr></thead><tbody><tr><td style="text-align:left;">LIBERO</td><td style="text-align:left;">130 tasks, 5 suites</td><td style="text-align:left;">Success Rate</td><td style="text-align:left;">98.7% (Xiaomi-Robotics-0)</td><td style="text-align:left;">多任务桌面操作，最广泛使用的 VLA benchmark</td></tr><tr><td style="text-align:left;">SIMPLER / SimplerEnv</td><td style="text-align:left;">Google Robot + WidowX</td><td style="text-align:left;">Success Rate</td><td style="text-align:left;">83% (DAM-VLA)</td><td style="text-align:left;">基于 MuJoCo 的标准化仿真评测</td></tr><tr><td style="text-align:left;">CALVIN</td><td style="text-align:left;">34 tasks, ABCD→D split</td><td style="text-align:left;">Avg Completed Tasks</td><td style="text-align:left;">4.80 (Xiaomi-Robotics-0)</td><td style="text-align:left;">长序列多任务组合</td></tr><tr><td style="text-align:left;">RoboTwin</td><td style="text-align:left;">多 embodiment</td><td style="text-align:left;">Success Rate</td><td style="text-align:left;">87.02% (Motus)</td><td style="text-align:left;">双臂操作 benchmark</td></tr><tr><td style="text-align:left;">Table30 / RoboChallenge</td><td style="text-align:left;">30 tasks</td><td style="text-align:left;">Success Rate</td><td style="text-align:left;">62% (DM0)</td><td style="text-align:left;">新兴的统一桌面操作评测</td></tr><tr><td style="text-align:left;">EmbodiedBench</td><td style="text-align:left;">3 domains, 70+ tasks</td><td style="text-align:left;">Success Rate</td><td style="text-align:left;">28.9% (GPT-4o)</td><td style="text-align:left;">覆盖 navigation + manipulation + 高层 planning</td></tr><tr><td style="text-align:left;">R2R-CE</td><td style="text-align:left;">连续环境导航</td><td style="text-align:left;">SR / SPL</td><td style="text-align:left;">65% SR (ETP-R1)</td><td style="text-align:left;">VLN 标准 benchmark（部分 VLA 也在此评测）</td></tr><tr><td style="text-align:left;">Robot-R1 Bench</td><td style="text-align:left;">多维度 QA</td><td style="text-align:left;">Score</td><td style="text-align:left;">7B > GPT-4o (Robot-R1)</td><td style="text-align:left;">Embodied reasoning 能力系统评测</td></tr></tbody></table></div>
-<h2 id="key-takeaways">Key Takeaways<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-takeaways" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<ol>
-<li>
-<p><strong>Dual-System + Flow Matching 已成为工业界共识</strong>：不再仅是学术方案——NVIDIA GR00T N1、Google Gemini Robotics、Figure AI Helix、Physical Intelligence π 系列均采用 System 2（VLM ~10 Hz）+ System 1（action generation 50-200 Hz）架构，flow matching 是 action generation 的事实标准。</p>
-</li>
-<li>
-<p><strong>Fine-tuning 设计和 data recipe 比模型规模更重要</strong>：DM0（2B）超越 π0.5（3B）和 GigaBrain（3B）在 Table30 上 20+ 百分点；SmolVLA（0.45B）超越 OpenVLA（7B）；X-VLA（0.9B）在 LIBERO 上达到 SOTA。“小而精”持续挑战 “bigger is better”。（建议加入 DomainMaps：Established Knowledge）</p>
-</li>
-<li>
-<p><strong>Data diversity >> Data specificity，但数据整合方式是关键</strong>：π0.5 的 co-training + post-training、GR00T N1 的 Data Pyramid（人类视频 → 合成数据 → 真实数据）、DM0 的 Embodied-Native 三阶段训练，三种不同的 data recipe 策略均有效，共识是异构数据整合本身比单一来源的数据量更重要。</p>
-</li>
-<li>
-<p><strong>RL 正从 advantage conditioning 演化为 world model-conditioned learning</strong>：π*₀.₆ 的 RECAP 开创了 VLA RL 自我改进，GigaBrain 的 RAMP 理论证明 RECAP 是其退化特例——通过引入 world model latent representation 进一步提升 foresight 能力。这标志着 VLA RL 从简单的 reward labeling 走向结构化的 world knowledge 利用。（建议加入 DomainMaps：Active Debates）</p>
-</li>
-<li>
-<p><strong>Cross-embodiment 进入实用阶段</strong>：X-VLA 的 soft prompt（1% 参数适配新平台）、GR00T N1 的 embodiment-specific MLPs + latent action、Gemini Robotics 的 cross-embodiment 迁移（ALOHA 2 → Franka → Apollo），三种方案证明 cross-embodiment 不再只是理想，而是可工程化的能力。</p>
-</li>
-<li>
-<p><strong>Embodied Reasoning 成为泛化关键</strong>：ECoT（+28% OOD）→ Robot-R1（NeurIPS 2025，7B 超 GPT-4o）→ VLASER（in-domain data 决定性）→ Embodied-R1（3B 真机 87.5%）→ Lumo-1（reasoning-action 统一）构成了”先推理再行动”的完整技术演进。GRPO-based RL 已成为 embodied reasoning 的 de facto 训练范式（Robot-R1、Embodied-R1、Lumo-1 一致证明 RL >> SFT）。VLASER 的核心发现尤为重要：<strong>out-of-domain embodied reasoning 几乎不迁移到 VLA，in-domain reasoning data 才是关键</strong>。</p>
-</li>
-<li>
-<p><strong>实时部署从瓶颈走向解决</strong>：Xiaomi-Robotics-0 在 RTX 4090 上实现 80ms/step 的 VLA 实时推理，LIBERO 98.7% / CALVIN 4.80 均为 SOTA。其 Λ-Shape Attention Mask + RoPE Offsetting 异步执行方案优雅地解决了推理延迟导致的动作不连贯问题，为 VLA 工程化部署提供了可复用的技术方案。</p>
-</li>
-<li>
-<p><strong>Self-correction 是安全部署的缺失关键能力</strong>：CycleVLA 首次系统性引入 VLA proactive self-correction，long-horizon +39.9% 的提升证明了其价值。但当前方案受限于可逆性假设和外部 VLM 依赖，real-world self-correction 仍有很大探索空间。</p>
-</li>
-<li>
-<p><strong>开源生态持续加速</strong>：从 Octo → OpenVLA → SmolVLA → X-VLA → GR00T N1 → Xiaomi-Robotics-0，开源 VLA 的能力不断提升。X-VLA 已集成到 LeRobot 平台，GR00T N1 和 Xiaomi-Robotics-0 均开源了模型+代码。开源使得学术组以 0.9B-2B 参数量就能竞争甚至超越工业界闭源大模型。</p>
-</li>
-</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Dataset</th><th>Year</th><th>规模</th><th>Embodiment</th><th>代表使用</th><th>特点</th></tr></thead><tbody><tr><td><a href="../Papers/2212-RT1" class="internal alias" data-slug="Papers/2212-RT1">RT-1</a> 自采</td><td>2022</td><td>130K episodes / 744 tasks</td><td>Everyday Robots mobile manip.</td><td><a href="../Papers/2307-RT2" class="internal alias" data-slug="Papers/2307-RT2">RT-2</a> / <a href="../Papers/2406-OpenVLA" class="internal alias" data-slug="Papers/2406-OpenVLA">OpenVLA</a> / RT-2-X</td><td>13 机器人 × 17 月，奠定 AR-VLA 数据范式</td></tr><tr><td>BridgeData V2</td><td>2023</td><td>~60K episodes</td><td>WidowX</td><td><a href="../Papers/2405-Octo" class="internal alias" data-slug="Papers/2405-Octo">Octo</a> / <a href="../Papers/2410-LAPA" class="internal alias" data-slug="Papers/2410-LAPA">LAPA</a> pretrain / SimplerEnv WidowX 基准</td><td>早期开源通用 BC</td></tr><tr><td>OXE (Open X-Embodiment)</td><td>2024</td><td>>1M episodes / 22 数据集聚合</td><td>跨 embodiment</td><td><a href="../Papers/2406-OpenVLA" class="internal alias" data-slug="Papers/2406-OpenVLA">OpenVLA</a> / <a href="../Papers/2405-Octo" class="internal alias" data-slug="Papers/2405-Octo">Octo</a> / <a href="../Papers/2410-Pi0" class="internal alias" data-slug="Papers/2410-Pi0">π0</a> pretrain</td><td>跨机构 de facto 标准</td></tr><tr><td>DROID</td><td>2024</td><td>~76K episodes</td><td>Franka 多实验室</td><td><a href="../Papers/2512-Motus" class="internal alias" data-slug="Papers/2512-Motus">Motus</a> / <a href="../Papers/2510-XVLA" class="internal alias" data-slug="Papers/2510-XVLA">X-VLA</a> / <a href="../Papers/2602-XiaomiRobotics0" class="internal alias" data-slug="Papers/2602-XiaomiRobotics0">Xiaomi-Robotics-0</a></td><td>Franka-centric multi-lab</td></tr><tr><td>RH20T</td><td>2023</td><td>110K episodes / 147 primitive skills</td><td>多 Franka platforms</td><td><a href="../Papers/2502-HAMSTER" class="internal alias" data-slug="Papers/2502-HAMSTER">HAMSTER</a> / <a href="../Papers/2509-PureVLA" class="internal alias" data-slug="Papers/2509-PureVLA">PureVLA</a></td><td>Primitive skill pool</td></tr><tr><td>AgiBot World</td><td>2024-2025</td><td>~728K episodes</td><td>Genie-1 / 自研 dual-arm</td><td><a href="../Papers/2503-GR00TN1" class="internal alias" data-slug="Papers/2503-GR00TN1">GR00T-N1</a> / <a href="../Papers/2512-Motus" class="internal alias" data-slug="Papers/2512-Motus">Motus</a> / <a href="../Papers/2602-DM0" class="internal alias" data-slug="Papers/2602-DM0">DM0</a> / <a href="../Papers/2512-GenieReasoner" class="internal alias" data-slug="Papers/2512-GenieReasoner">GenieReasoner</a></td><td>humanoid + 双臂大规模开源</td></tr><tr><td>EgoDex</td><td>2024</td><td>~230K clips</td><td>Human egocentric</td><td><a href="../Papers/2512-Motus" class="internal alias" data-slug="Papers/2512-Motus">Motus</a> latent action pretrain</td><td>action-free 人类视频，跨 embodiment 桥接</td></tr><tr><td>Physical Intelligence 自采</td><td>2024-2026</td><td>~10K hr teleop (aggregate)</td><td>多 robot</td><td><a href="../Papers/2410-Pi0" class="internal alias" data-slug="Papers/2410-Pi0">π0</a> / <a href="../Papers/2504-Pi05" class="internal alias" data-slug="Papers/2504-Pi05">π0.5</a> / <a href="../Papers/2511-PiStar06" class="internal alias" data-slug="Papers/2511-PiStar06">π*0.6</a> / <a href="../Papers/2604-Pi07" class="internal alias" data-slug="Papers/2604-Pi07">π0.7</a></td><td>私有；π0.5 训练中 97.6% 来自非目标平台</td></tr><tr><td>Generalist AI wearable</td><td>2025-2026</td><td>270K hr → 500K hr；10K hr/week</td><td>零 robot data</td><td><a href="../Papers/2511-GEN0" class="internal alias" data-slug="Papers/2511-GEN0">GEN-0</a> / <a href="../Papers/2604-GEN1" class="internal alias" data-slug="Papers/2604-GEN1">GEN-1</a></td><td>完全 proprietary，wearable 采集范式</td></tr><tr><td>GigaWorld 合成视频</td><td>2025-2026</td><td>~6.65K hr 合成</td><td>多 embodiment</td><td><a href="../Papers/2602-GigaBrain05M" class="internal alias" data-slug="Papers/2602-GigaBrain05M">GigaBrain-0.5</a> pretrain（61% 合成 + 39% 真机）</td><td>synthetic data 首次在 VLA pretrain 占多数</td></tr></tbody></table></div>
+<h3 id="manipulation-sim-benchmarks">Manipulation sim benchmarks<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#manipulation-sim-benchmarks" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Benchmark</th><th>规模 / 定位</th><th>Metric</th><th>SOTA (2026-04)</th></tr></thead><tbody><tr><td>LIBERO</td><td>4 suite × 10 task 短程</td><td>4-suite avg SR</td><td><strong>98.7%</strong> (<a href="../Papers/2602-XiaomiRobotics0" class="internal alias" data-slug="Papers/2602-XiaomiRobotics0">Xiaomi-Robotics-0</a> 4.7B) <br/>98.2% (EO-1) <br/>98.1% (<a href="../Papers/2510-XVLA" class="internal alias" data-slug="Papers/2510-XVLA">X-VLA</a> 0.9B)</td></tr><tr><td>LIBERO-Long</td><td>长程子集</td><td>SR</td><td>97.6% (<a href="../Papers/2512-Motus" class="internal alias" data-slug="Papers/2512-Motus">Motus</a> / <a href="../Papers/2510-XVLA" class="internal alias" data-slug="Papers/2510-XVLA">X-VLA</a> 并列) <br/>97.2% (<a href="../Papers/2602-XiaomiRobotics0" class="internal alias" data-slug="Papers/2602-XiaomiRobotics0">Xiaomi-Robotics-0</a>)</td></tr><tr><td>CALVIN ABCD→D</td><td>In-dist 长程</td><td>Avg task length /5</td><td><strong>4.80</strong> (<a href="../Papers/2602-XiaomiRobotics0" class="internal alias" data-slug="Papers/2602-XiaomiRobotics0">Xiaomi-Robotics-0</a>)</td></tr><tr><td>CALVIN ABC→D</td><td>OOD 长程</td><td>Avg task length /5</td><td><strong>4.75</strong> (<a href="../Papers/2602-XiaomiRobotics0" class="internal alias" data-slug="Papers/2602-XiaomiRobotics0">Xiaomi-Robotics-0</a>, vs 次优 FLOWER 4.53)</td></tr><tr><td>SimplerEnv Google Robot VM</td><td>Real-to-sim</td><td>avg SR</td><td><strong>85.5%</strong> (<a href="../Papers/2602-XiaomiRobotics0" class="internal alias" data-slug="Papers/2602-XiaomiRobotics0">Xiaomi-Robotics-0</a>) <br/>80.4% (<a href="../Papers/2510-XVLA" class="internal alias" data-slug="Papers/2510-XVLA">X-VLA</a>)</td></tr><tr><td>SimplerEnv Google Robot VA</td><td>Real-to-sim</td><td>avg SR</td><td>75.7% (<a href="../Papers/2510-XVLA" class="internal alias" data-slug="Papers/2510-XVLA">X-VLA</a>) <br/>74.7% (<a href="../Papers/2602-XiaomiRobotics0" class="internal alias" data-slug="Papers/2602-XiaomiRobotics0">Xiaomi-Robotics-0</a>)</td></tr><tr><td>SimplerEnv WidowX</td><td>Real-to-sim</td><td>avg SR</td><td><strong>95.8%</strong> (<a href="../Papers/2510-XVLA" class="internal alias" data-slug="Papers/2510-XVLA">X-VLA</a>, vs 前 SOTA MemoryVLA 71.9) <br/>79.2% (<a href="../Papers/2602-XiaomiRobotics0" class="internal alias" data-slug="Papers/2602-XiaomiRobotics0">Xiaomi-Robotics-0</a>)</td></tr><tr><td>RoboCasa Kitchen Easy / Hard</td><td>100 photorealistic 厨房任务</td><td>SR</td><td>70.0 / 39.0 (<a href="../Papers/2510-XVLA" class="internal alias" data-slug="Papers/2510-XVLA">X-VLA</a>)</td></tr><tr><td>VLABench</td><td>VLA-centric 综合</td><td>Avg.PS</td><td>51.1 (<a href="../Papers/2510-XVLA" class="internal alias" data-slug="Papers/2510-XVLA">X-VLA</a>)</td></tr><tr><td>RoboTwin 2.0 Randomized</td><td>50-task bimanual Aloha</td><td>avg SR</td><td><strong>87.02%</strong> (<a href="../Papers/2512-Motus" class="internal alias" data-slug="Papers/2512-Motus">Motus</a>) <br/>72.84% (<a href="../Papers/2510-XVLA" class="internal alias" data-slug="Papers/2510-XVLA">X-VLA</a>) <br/>43.84% (<a href="../Papers/2504-Pi05" class="internal alias" data-slug="Papers/2504-Pi05">π0.5</a>)</td></tr><tr><td>BiCoord</td><td>18 bimanual 长程紧耦合</td><td>single-task avg SR</td><td>46.4% (<a href="../Papers/2410-Pi0" class="internal alias" data-slug="Papers/2410-Pi0">π0</a>, 次 <a href="../Papers/2502-OpenVLA-OFT" class="internal alias" data-slug="Papers/2502-OpenVLA-OFT">OpenVLA-OFT</a> 40.5 / RDT 39.5 / DP 33.1) <br/>27.2% (<a href="../Papers/2410-Pi0" class="internal alias" data-slug="Papers/2410-Pi0">π0</a> multi-task, 相比 single-task −19pp)</td></tr></tbody></table></div>
+<h3 id="real-robot-benchmarks">Real-robot benchmarks<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#real-robot-benchmarks" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Benchmark</th><th>平台</th><th>Metric</th><th>SOTA</th></tr></thead><tbody><tr><td>RoboChallenge Table30 Specialist</td><td>UR5 / Franka / ARX5 / ALOHA</td><td>avg SR (30 tasks)</td><td><strong>62.00%</strong> (<a href="../Papers/2602-DM0" class="internal alias" data-slug="Papers/2602-DM0">DM0</a> 2B) <br/>51.67% (GigaBrain-0.1 3B, 中间版 2026-02-09 榜首) <br/>51.00% (Spirit-v1.5 4B) <br/>42.67% (<a href="../Papers/2504-Pi05" class="internal alias" data-slug="Papers/2504-Pi05">π0.5</a> 3B)</td></tr><tr><td>RoboChallenge Table30 Generalist</td><td>同上</td><td>avg SR / score</td><td><strong>37.3% / 49.08</strong> (<a href="../Papers/2602-DM0" class="internal alias" data-slug="Papers/2602-DM0">DM0</a> 2B) <br/>17.67% / 31.27 (<a href="../Papers/2504-Pi05" class="internal alias" data-slug="Papers/2504-Pi05">π0.5</a>-G) <br/>9.0% / 20.22 (<a href="../Papers/2410-Pi0" class="internal alias" data-slug="Papers/2410-Pi0">π0</a>-G)</td></tr><tr><td>AC-One (10 long-horizon: coffee / laundry / fold)</td><td>ARX Aloha</td><td>partial SR (subgoal-weighted)</td><td><strong>63.22%</strong> (<a href="../Papers/2512-Motus" class="internal alias" data-slug="Papers/2512-Motus">Motus</a>) <br/>14.79% (<a href="../Papers/2504-Pi05" class="internal alias" data-slug="Papers/2504-Pi05">π0.5</a>)</td></tr><tr><td>Agilex-Aloha-2</td><td>Agilex 双臂</td><td>partial SR</td><td>59.30% (<a href="../Papers/2512-Motus" class="internal alias" data-slug="Papers/2512-Motus">Motus</a>)</td></tr><tr><td><a href="../Papers/2604-Pi07" class="internal alias" data-slug="Papers/2604-Pi07">π0.7</a> UR5e zero-shot laundry</td><td>未见过的 UR5e</td><td>task-progress / SR</td><td><strong>85.6 / 80.0</strong> (<a href="../Papers/2604-Pi07" class="internal alias" data-slug="Papers/2604-Pi07">π0.7</a>, 匹配人类 top-2% teleoperator)</td></tr><tr><td><a href="../Papers/2511-PiStar06" class="internal alias" data-slug="Papers/2511-PiStar06">π*0.6</a> 商业部署</td><td>咖啡馆 / 家庭 / 工厂</td><td>连续运行</td><td>13 h espresso / 2 h laundry / 59 个巧克力包装盒 (<a href="../Papers/2511-PiStar06" class="internal alias" data-slug="Papers/2511-PiStar06">π*0.6</a>)</td></tr><tr><td><a href="../Papers/2602-GigaBrain05M" class="internal alias" data-slug="Papers/2602-GigaBrain05M">GigaBrain-0.5M*</a> RAMP</td><td>PiPER / G1 humanoid</td><td>长程 task SR vs RECAP baseline</td><td>Box Packing / Espresso 接近满分，vs RECAP <strong>+30pp</strong> (<a href="../Papers/2602-GigaBrain05M" class="internal alias" data-slug="Papers/2602-GigaBrain05M">GigaBrain-0.5M*</a>)</td></tr><tr><td><a href="../Papers/2604-GEN1" class="internal alias" data-slug="Papers/2604-GEN1">GEN-1</a> mastery suite (6 tasks)</td><td>多平台商用</td><td>avg SR (~1 h robot-data fine-tune)</td><td><strong>99%</strong> (<a href="../Papers/2604-GEN1" class="internal alias" data-slug="Papers/2604-GEN1">GEN-1</a>) <br/>64% (<a href="../Papers/2511-GEN0" class="internal alias" data-slug="Papers/2511-GEN0">GEN-0</a>) <br/>19% (from-scratch)</td></tr><tr><td><a href="../Papers/2604-GEN1" class="internal alias" data-slug="Papers/2604-GEN1">GEN-1</a> box folding</td><td>同上</td><td>单任务完成时长</td><td>~12 s (<a href="../Papers/2604-GEN1" class="internal alias" data-slug="Papers/2604-GEN1">GEN-1</a>, <strong>2.8×</strong> vs <a href="../Papers/2410-Pi0" class="internal alias" data-slug="Papers/2410-Pi0">π0</a> / <a href="../Papers/2511-GEN0" class="internal alias" data-slug="Papers/2511-GEN0">GEN-0</a> ~34 s)</td></tr></tbody></table></div>
+<h3 id="navigation-benchmarks-vln-ce-val-unseen">Navigation benchmarks (VLN-CE Val-Unseen)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#navigation-benchmarks-vln-ce-val-unseen" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Benchmark</th><th>设置</th><th>Metric</th><th>SOTA</th></tr></thead><tbody><tr><td>VLN-CE R2R Val-Unseen</td><td>RGB-only</td><td>SR / SPL</td><td><strong>58.9 / 54.0</strong> (<a href="../Papers/2603-PROSPECT" class="internal alias" data-slug="Papers/2603-PROSPECT">PROSPECT</a>†) <br/> 56.9 / 51.9 (<a href="../Papers/2507-StreamVLN" class="internal alias" data-slug="Papers/2507-StreamVLN">StreamVLN</a>) <br/> 54.0 / 49.0 (<a href="../Papers/2412-NaVILA" class="internal alias" data-slug="Papers/2412-NaVILA">NaVILA</a>†)</td></tr><tr><td>VLN-CE RxR Val-Unseen</td><td>RGB-only</td><td>SR / SPL</td><td><strong>54.6 / 46.2</strong> (<a href="../Papers/2603-PROSPECT" class="internal alias" data-slug="Papers/2603-PROSPECT">PROSPECT</a>†) <br/> 52.9 / 46.0 (<a href="../Papers/2507-StreamVLN" class="internal alias" data-slug="Papers/2507-StreamVLN">StreamVLN</a>)</td></tr><tr><td>ScanQA</td><td>3D scene QA (16 frames)</td><td>Bleu-4 / CIDEr / EM</td><td>15.7 / 19.8 / 28.8 (<a href="../Papers/2507-StreamVLN" class="internal alias" data-slug="Papers/2507-StreamVLN">StreamVLN</a>, 略超 <a href="../Papers/2412-NaVILA" class="internal alias" data-slug="Papers/2412-NaVILA">NaVILA</a>)</td></tr></tbody></table></div>
+<p>† = 加 ScaleVLN + MMC4 训练配方；RGB-only 单视角已追平 panoramic + depth + waypoint 的 ETPNav（R2R SR ≈ 57 / SPL ≈ 49）。</p>
+<h3 id="reasoning--embodied-cognition-benchmarks">Reasoning / embodied-cognition benchmarks<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#reasoning--embodied-cognition-benchmarks" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Benchmark</th><th>定位</th><th>Metric</th><th>SOTA</th></tr></thead><tbody><tr><td>ERIQ (4 维 × 15 子任务 × 6,052 QA)</td><td>reasoning 解耦 action</td><td>avg acc</td><td><strong>82.72%</strong> (<a href="../Papers/2512-GenieReasoner" class="internal alias" data-slug="Papers/2512-GenieReasoner">GenieReasoner</a>-3B) <br/> 80.55% (Gemini-2.5-pro) <br/> 77.61% (GPT-4o-mini) <br/> 58.64% (Qwen2.5-VL-3B base)</td></tr><tr><td>Embodied reasoning 11-bench rank (ERQA / Where2Place / SAT / …)</td><td>spatial / embodied reasoning</td><td>rank</td><td>rank 2.1 (<a href="../Papers/2508-EmbodiedR1" class="internal alias" data-slug="Papers/2508-EmbodiedR1">Embodied-R1</a> 3B, 超 13B SOTA)</td></tr><tr><td>xArm 8-task real-world manipulation</td><td>zero-shot real-robot</td><td>SR</td><td>87.5% (<a href="../Papers/2508-EmbodiedR1" class="internal alias" data-slug="Papers/2508-EmbodiedR1">Embodied-R1</a>, vs FSD baseline 25%)</td></tr><tr><td>Cosmos intuitive physics (arrow of time / object permanence)</td><td>physical reasoning</td><td>acc</td><td>42% → <strong>81.5%</strong> (<a href="../Papers/2503-CosmosReason1" class="internal alias" data-slug="Papers/2503-CosmosReason1">Cosmos-Reason1</a>, vs GPT-5 / Gemini-2.5-pro ≈ random)</td></tr><tr><td>Reverse VOC (time-reversed task progress)</td><td>temporal reasoning</td><td>acc</td><td><strong>87–95%</strong> (<a href="../Papers/2601-RoboBrain25" class="internal alias" data-slug="Papers/2601-RoboBrain25">RoboBrain 2.5</a>, vs GPT-5.2 10–20%)</td></tr></tbody></table></div>
+<h3 id="数据量级核心数字">数据量级核心数字<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#数据量级核心数字" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>OXE : LLM corpus ≈ 1 : 200,000</strong>（<a href="../Papers/2507-VLATokenizationSurvey" class="internal" data-slug="Papers/2507-VLATokenizationSurvey">2507-VLATokenizationSurvey</a> §12）——VLA 与 LLM 能力鸿沟的最硬物质约束。</li>
+<li><strong>Generalist AI wearable 数据：500K hr，10K hr/week 增长</strong>（<a href="../Papers/2604-GEN1" class="internal" data-slug="Papers/2604-GEN1">2604-GEN1</a>）——单家公司 proprietary 数据 ≥ 整个学术社区开源 robotics 数据总和；1 h robot data fine-tune 即可达 99% SR。</li>
+<li><strong>π0.5 co-training 中 97.6% 来自非目标平台</strong>（<a href="../Papers/2504-Pi05" class="internal" data-slug="Papers/2504-Pi05">2504-Pi05</a>）——cross-embodiment 在大 mix 下成为 free transfer 而非 noise 源。</li>
+<li><strong><a href="../Papers/2602-GigaBrain05M" class="internal alias" data-slug="Papers/2602-GigaBrain05M">GigaBrain-0.5</a> pretraining = 61% 合成 + 39% 真机</strong>（10,931 hr total，6,653 hr GigaWorld 合成）——合成数据首次在 VLA pretrain 占多数，边际收益尚未独立 ablate。</li>
+<li><strong><a href="../Papers/2604-BiCoord" class="internal alias" data-slug="Papers/2604-BiCoord">BiCoord</a> STI = 42.16% vs RoboTwin 2.0 / RLBench2 ~8–11%</strong>——首次用标量同时刻画”空间近 + 时间并行”，暴露现有 bimanual benchmark 的伪协同（RLBench2 SMP 97% 但 ARD 115%——并行 ≠ 协同）。</li>
+</ul>
+<h3 id="benchmark-饱和度与评测-crisis">Benchmark 饱和度与评测 crisis<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#benchmark-饱和度与评测-crisis" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>LIBERO 已近饱和</strong>：4-suite avg 98.7 / 98.2 / 98.1 差距在噪声量级；long-horizon sub-suite 仍可分辨（<a href="../Papers/2602-XiaomiRobotics0" class="internal alias" data-slug="Papers/2602-XiaomiRobotics0">Xiaomi</a> 97.2 vs 次优 FLOWER 94.9）。</li>
+<li><strong>CALVIN ABC→D OOD 仍有 headroom</strong>：Xiaomi 88.1 vs FLOWER 77.8（Task-5 列）——10pp gap 尚未收窄。</li>
+<li><strong>Real-robot 评测多样化但碎片化</strong>：RoboChallenge、<a href="../Papers/2511-PiStar06" class="internal alias" data-slug="Papers/2511-PiStar06">π*0.6</a> business trial、AC-One long-horizon、PI UR5e 部署、<a href="../Papers/2604-GEN1" class="internal alias" data-slug="Papers/2604-GEN1">GEN-1</a> 6-task mastery suite 各自独立；“RoboChallenge Specialist 榜首” 在月级时间尺度频繁易主。</li>
+<li><strong>自建 benchmark bias</strong>：<a href="../Papers/2601-RoboBrain25" class="internal alias" data-slug="Papers/2601-RoboBrain25">RoboBrain 2.5</a> / <a href="../Papers/2602-RynnBrain" class="internal alias" data-slug="Papers/2602-RynnBrain">RynnBrain</a> / <a href="../2510-Vlaser" class="internal alias" data-slug="2510-Vlaser">Vlaser</a> / <a href="../Papers/2603-ACEBrain0" class="internal alias" data-slug="Papers/2603-ACEBrain0">ACE-Brain-0</a> / <a href="../Papers/2511-PelicanVL" class="internal alias" data-slug="Papers/2511-PelicanVL">Pelican-VL</a> 各自在自家 benchmark 领先——横向对比困难；<a href="../Papers/2512-GenieReasoner" class="internal alias" data-slug="Papers/2512-GenieReasoner">GenieReasoner</a> ERIQ 试图用 “action-decoupled reasoning benchmark” 标准化但尚未被社区采纳。</li>
+<li><strong>Metric 口径不齐</strong>：<a href="../Papers/2410-Pi0" class="internal alias" data-slug="Papers/2410-Pi0">π0</a> 50 Hz 是 chunk-level、<a href="../Papers/2406-OpenVLA" class="internal alias" data-slug="Papers/2406-OpenVLA">OpenVLA</a> 6 Hz 是 token-level；TL（trajectory length）只算成功 episode → selection bias（<a href="../Papers/2604-BiCoord" class="internal" data-slug="Papers/2604-BiCoord">2604-BiCoord</a>）；partial SR / subgoal-weighted score 不同工作定义不同。</li>
+<li><strong>OOD 定义模糊</strong>：<a href="../Papers/2604-Pi07" class="internal" data-slug="Papers/2604-Pi07">2604-Pi07</a> 自承”训练集太大无法严格定义 unseen”，compositional generalization claim 难证伪。</li>
+</ul>
 <h2 id="open-problems">Open Problems<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#open-problems" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<ol>
-<li>
-<p><strong>Navigation + Manipulation 统一</strong>：DM0 迈出了重要一步（在单一模型中统一两者，specialist 62% SR），但其 navigation 能力主要来自 Habitat simulation，real-world 验证不足。如何在真实部署中同时支持 building-scale navigation 和灵巧操作仍是核心开放问题。参见 <a href="../Topics/VLN-VLA-Unification" class="internal" data-slug="Topics/VLN-VLA-Unification">VLN-VLA-Unification</a>。</p>
-</li>
-<li>
-<p><strong>长期记忆与空间理解</strong>：MEM 初步解决了 15 分钟级记忆，但缺乏 explicit spatial memory。GR00T N1 和 Gemini Robotics 均无 spatial memory 组件。如何让 VLA 维护 persistent、incrementally updated 的空间表示（如 3D scene graph）以支持跨房间任务？</p>
-</li>
-<li>
-<p><strong>Fully Autonomous Self-Improvement</strong>：尽管 RL 方向快速推进（RECAP → RAMP），GigaBrain 的 RAMP 仍需 human-in-the-loop rollout collection，RoboClaw 的 EAP 减少但未消除人工。World model 是否能提供足够准确的 reward signal 来完全替代人工标注？</p>
-</li>
-<li>
-<p><strong>World Model 在 VLA 中的最优角色</strong>：GigaBrain 用 world model 做 latent conditioning，WorldVLALoop 用 world model 做 reward prediction，DreamGen 用 world model 生成 synthetic trajectories。World model 应作为 training signal provider、data augmenter 还是 inference-time planner？这三种角色是否可以统一？</p>
-</li>
-<li>
-<p><strong>Cross-Embodiment 的最优处理方式</strong>：X-VLA 的 soft prompt、GR00T N1 的 embodiment-specific MLPs + latent action、DM0 的 gradient decoupling、Gemini Robotics 的 foundation model 迁移——四种方案各有优劣。什么条件下哪种方案最优？Zero-shot cross-embodiment（无需 fine-tuning 直接部署新平台）何时可行？</p>
-</li>
-<li>
-<p><strong>Self-Correction 与安全部署</strong>：CycleVLA 开创性地引入了 proactive self-correction，但受限于可逆性假设和外部 VLM 依赖。对于 contact-rich、不可逆操作（切割、倒液体），如何实现 self-correction？如何在不显著增加延迟的前提下集成 safety monitoring？</p>
-</li>
-<li>
-<p><strong>VLA 的 Scaling Law</strong>：SmolVLA（0.45B）、X-VLA（0.9B）、DM0（2B）频繁超越更大模型，暗示 VLA 的 scaling law 与 LLM 有根本不同。模型规模、数据规模、数据多样性、training recipe 之间的 scaling 关系尚不清楚。X-VLA 报告三个维度均未饱和，但系统性 scaling 研究缺失。</p>
-</li>
-<li>
-<p><strong>Embodied Reasoning 的最优形式尚未确定</strong>：ECoT 的 6 步 CoT、Embodied-R1 的 pointing、VLASER 的 in-domain QA、Lumo-1 的 spatial action tokenizer 代表了不同的 reasoning 表征方案。哪种 reasoning 形式在 accuracy-latency trade-off 上最优？Full reasoning 与 partial reasoning（Lumo-1 的两种模式）如何自适应切换？Reasoning 与 flow matching action expert 的最优耦合方式是什么？</p>
-</li>
-<li>
-<p><strong>Benchmark 碎片化</strong>：LIBERO、SIMPLER、CALVIN、Table30、RoboChallenge 等 benchmark 各有侧重，不同论文在不同 benchmark 上声称 SOTA，缺乏统一的、全面的评测标准。Xiaomi-Robotics-0 在 LIBERO 98.7% 接近饱和，社区需要更具挑战性的统一 benchmark。</p>
-</li>
-</ol>
+<h3 id="1-scaling-law-的临界规模与-weight-level-机制">1. Scaling law 的临界规模与 weight-level 机制<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-scaling-law-的临界规模与-weight-level-机制" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><a href="../Papers/2511-GEN0" class="internal" data-slug="Papers/2511-GEN0">2511-GEN0</a> 给出首个”robotics 有 scaling law”的可测形式 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3567em;margin-left:-0.0037em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">D</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1433em;"><span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span> 在 16 个任务集一致；<a href="../Papers/2604-GEN1" class="internal" data-slug="Papers/2604-GEN1">2604-GEN1</a> 数据扩 1.85× 后 64% → 99%，验证幂律外推有 headroom。但：</p>
+<ul>
+<li><strong>Intelligence threshold 为何是 7B</strong>？GEN-0 只有 1B/6B/7B 三个 size，缺 6.5B/7.5B 细扫描；是否是 data diversity 的函数？</li>
+<li><strong>Ossification 的 weight-level 机制</strong>？当前只是行为层面观察，没有 effective rank / gradient norm 诊断。</li>
+<li><strong>Commercial threshold 的泛化性</strong>：“mastery 三元组（reliability+speed+improvisation）” 中 improvisation 完全定性，GEN-1 没给 quantitative breakdown。</li>
+<li><strong>Scaling 在学术数据上是否成立</strong>？<a href="../Papers/2412-RoboVLMs" class="internal" data-slug="Papers/2412-RoboVLMs">2412-RoboVLMs</a> 等小规模实验反而发现 “in-domain > cross-embodiment”，与 GEN-0 大规模结论冲突——可能是 capacity 临界点问题，小模型 + 少数据下跨 embodiment 是 noise，大模型 + 长训练后变 signal。</li>
+</ul>
+<h3 id="2-real-world-rl-for-large-vlas">2. Real-world RL for large VLAs<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-real-world-rl-for-large-vlas" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><a href="../Papers/2511-PiStar06" class="internal" data-slug="Papers/2511-PiStar06">2511-PiStar06</a> 的 Recap 首次在 4B+ flow matching VLA 上跑通真实 RL 自改进；<a href="../Papers/2602-GigaBrain05M" class="internal" data-slug="Papers/2602-GigaBrain05M">2602-GigaBrain05M</a> 把它形式化为 RAMP 的特例并加 future visual latent；<a href="../Papers/2602-WorldVLALoop" class="internal" data-slug="Papers/2602-WorldVLALoop">2602-WorldVLALoop</a> 用 closed-loop world model 迭代。仍未解：</p>
+<ul>
+<li>只覆盖 episode-level sparse reward；dense / preference-based reward 未系统探索。</li>
+<li><strong>可 RL 修复 vs 结构性 failure</strong>（hardware / perception bug）未区分。</li>
+<li>与 Upside-Down RL / Decision Transformer / CFGRL 的理论联系尚不完整。</li>
+<li>RL 的 compute scaling 和 improvement 曲线不清楚（π*0.6 只跑了 2 轮迭代，box assembly 第 3 轮会饱和还是继续提升？）。</li>
+</ul>
+<h3 id="3-cross-embodiment-的正确抽象层">3. Cross-embodiment 的正确抽象层<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-cross-embodiment-的正确抽象层" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Per-embodiment action head（π0 / GR00T N1 / RDT）→ input-side soft prompt（X-VLA）→ 统一 latent action（LAPA / UniVLA）的演化线尚未收敛。</li>
+<li>Morphology 巨差（gripper vs dexterous hand / single-arm vs humanoid loco-manipulation）能否共享 backbone？<a href="../Papers/2604-Pi07" class="internal" data-slug="Papers/2604-Pi07">2604-Pi07</a> UR5e 匹配人类 top-2% 是正面信号但 case-level。</li>
+<li><a href="../Papers/2512-WholeBodyVLA" class="internal" data-slug="Papers/2512-WholeBodyVLA">2512-WholeBodyVLA</a> 用<strong>双 LAM</strong>（manipulation LAM + locomotion LAM）解耦”camera 静止 vs 移动”的 attention 冲突——提示未来 VLA 可能需要按 motion modality 拆解 latent space。</li>
+<li>OXE-scale（1000+ 数据源）下 per-source soft prompt 是否仍可行未验证；分层 prompt（embodiment-level + setup-level）可能是下一步。</li>
+</ul>
+<h3 id="4-reasoning-action-unification">4. Reasoning-action unification<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-reasoning-action-unification" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>现有路线仍是”在语言空间思考 → 产生动作”（ECoT / DriveVLM / Cosmos-Reason1 / GenieReasoner）。<a href="../Papers/2507-VLATokenizationSurvey" class="internal" data-slug="Papers/2507-VLATokenizationSurvey">2507-VLATokenizationSurvey</a> 提出的 <strong>action-token-based reasoning</strong>（直接在动作空间做 CoT）暂无实证。<a href="../Papers/2508-EmbodiedR1" class="internal" data-slug="Papers/2508-EmbodiedR1">2508-EmbodiedR1</a> Table 6 发现 RL 比 Think 重要得多（Where2Place +20 vs +2.5），暗示当前 CoT 的价值可能主要是 representation shaping 而非 inference-time planning。</p>
+<h3 id="5-evaluation--reproducibility-危机">5. Evaluation / reproducibility 危机<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#5-evaluation--reproducibility-危机" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Lab tabletop 饱和</strong>：LIBERO 98+ 已在噪声量级，CALVIN ABCD→D 接近上限。</li>
+<li><strong>自建 benchmark bias</strong>：RoboBrain 2.5 / RynnBrain / Vlaser / ACE-Brain-0 / Pelican-VL 都在自家 benchmark 上领先——难以横向对比。</li>
+<li><strong>Metric 口径不齐</strong>：π0 的 50 Hz 是 chunk-level，OpenVLA 的 6 Hz 是 token-level；TL（trajectory length）只算成功 episode 引入 selection bias（<a href="../Papers/2604-BiCoord" class="internal" data-slug="Papers/2604-BiCoord">2604-BiCoord</a>）。</li>
+<li><strong>OOD 定义模糊</strong>：<a href="../Papers/2604-Pi07" class="internal" data-slug="Papers/2604-Pi07">2604-Pi07</a> 自己承认”训练集太大无法严格定义 unseen”，compositional generalization claim 难证伪。</li>
+<li><strong>ERIQ / BiCoord / RoboChallenge</strong> 是 2025-2026 的新尝试（reasoning/coordination/real-robot），尚未社区采纳。</li>
+</ul>
+<h3 id="6-data-engine-的工程-vs-学术-gap">6. Data engine 的工程 vs 学术 gap<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#6-data-engine-的工程-vs-学术-gap" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><a href="../Papers/2511-GEN0" class="internal" data-slug="Papers/2511-GEN0">2511-GEN0</a> 270K hr + <a href="../Papers/2604-GEN1" class="internal" data-slug="Papers/2604-GEN1">2604-GEN1</a> 500K hr wearable + 10K hr/week，全 proprietary + Early Access Partner only；开源社区最大到 OXE / DROID / AgiBot World 百 K episodes 量级。若 scaling law 成立，学术社区将<strong>系统性落后工业实验室</strong>——类似 LLM 2023 后的 Anthropic/OpenAI/DeepMind 局面。更棘手的是 GEN 系列数据采集形态（wearable 传感器组合、action 空间对齐）完全不公开，<strong>复现门槛不是”钱”而是”方法论本身不公开”</strong>。</p>
+<h3 id="7-memory-与-long-horizon">7. Memory 与 long-horizon<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#7-memory-与-long-horizon" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>MEM（video encoder + language memory 解耦，15min 任务）、EchoVLA（PHC+hippocampus 双 memory）、StreamVLN（streaming KV cache + voxel pruning）、Pi0.7（MEM 集成）在 2025H2-2026H1 集中出现。共同开放问题：</p>
+<ul>
+<li>Memory 的<strong>压缩粒度</strong>（token / frame / 语义摘要）跨任务最优策略？</li>
+<li>Explicit voxel 3D memory 在动态遮挡下失灵（EchoVLA OR 任务输给 baseline），explicit vs implicit memory trade-off 未系统化。</li>
+<li>长于 1 小时的 memory 几乎无工作；GEN-1 “连续 200+ 次无干预”demo 未开放评测协议。</li>
+</ul>
+<h3 id="8-safety--alignment-for-embodied-intelligence">8. Safety / alignment for embodied intelligence<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#8-safety--alignment-for-embodied-intelligence" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>Linguistic fragility</strong>：<a href="../Papers/2604-DAERT" class="internal" data-slug="Papers/2604-DAERT">2604-DAERT</a> 证明仅改写语言指令即可把 π0 LIBERO 93%→5.85%，且具跨架构迁移性。</li>
+<li><strong>Emergent improvisation 的 double-edge</strong>：GEN-1 blog 承认 emergent recovery 既是 capability 也是 alignment liability——机器人”自由解释任务”可能造成物理损害。</li>
+<li><strong>No-action probe</strong>：DAERT 用 “no action” prompt 发现 π0.5 仍 54.9% 成功（退化成 vision-only），揭示当前 VLA 对语言依赖度的 hidden bias。</li>
+<li>现有 safety 工作（ASIMOV-2.0 / Auto-Red-Teaming / Semantic Action Safety）主要围绕 semantic content，未触及物理 action 的 hazard 层面；Inference-Time Policy Steering 是可能方向。</li>
+</ul>
 <h2 id="调研日志">调研日志<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#调研日志" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
-<h3 id="第三轮更新2026-04-01">第三轮更新（2026-04-01）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#第三轮更新2026-04-01" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
 <ul>
-<li><strong>调研日期</strong>: 2026-04-01</li>
-<li><strong>论文统计</strong>: vault 已有 20 篇 + 新整合 6 篇，总计 26 篇</li>
-<li><strong>新增论文</strong>: ECoT, Robot-R1, VLASER, Embodied-R1, Lumo-1, Xiaomi-Robotics-0</li>
-<li><strong>新增技术路线</strong>: 路线 7 Embodied Reasoning VLA</li>
-<li><strong>新增 section</strong>: Datasets &amp; Benchmarks</li>
+<li><strong>日期</strong>：2026-04-23</li>
+<li><strong>侦察 survey</strong>：3 篇（<a href="../Papers/2509-PureVLA" class="internal" data-slug="Papers/2509-PureVLA">2509-PureVLA</a>、<a href="../Papers/2510-EfficientVLASurvey" class="internal" data-slug="Papers/2510-EfficientVLASurvey">2510-EfficientVLASurvey</a>、<a href="../Papers/2507-VLATokenizationSurvey" class="internal" data-slug="Papers/2507-VLATokenizationSurvey">2507-VLATokenizationSurvey</a>）</li>
+<li><strong>候选论文清单</strong>：
+<ul>
+<li>需 digest（本次全部新 digest）：<a href="../Papers/2212-RT1" class="internal" data-slug="Papers/2212-RT1">2212-RT1</a>、<a href="../Papers/2303-DiffusionPolicy" class="internal" data-slug="Papers/2303-DiffusionPolicy">2303-DiffusionPolicy</a>、<a href="../Papers/2307-VoxPoser" class="internal" data-slug="Papers/2307-VoxPoser">2307-VoxPoser</a>、<a href="../Papers/2409-TinyVLA" class="internal" data-slug="Papers/2409-TinyVLA">2409-TinyVLA</a>、<a href="../Papers/2410-LAPA" class="internal" data-slug="Papers/2410-LAPA">2410-LAPA</a>、<a href="../Papers/2502-HAMSTER" class="internal" data-slug="Papers/2502-HAMSTER">2502-HAMSTER</a>、<a href="../Papers/2503-HybridVLA" class="internal" data-slug="Papers/2503-HybridVLA">2503-HybridVLA</a>（共 7 篇 rating ≥ 2；<a href="../Papers/2406-RoboMamba" class="internal" data-slug="Papers/2406-RoboMamba">2406-RoboMamba</a> rating 1 跳过）</li>
+<li>已有笔记（VLA 相关 rating ≥ 2）：~58 篇</li>
 </ul>
-<h3 id="第二轮更新2026-03-30">第二轮更新（2026-03-30）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#第二轮更新2026-03-30" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<ul>
-<li><strong>调研日期</strong>: 2026-03-30</li>
-<li><strong>论文统计</strong>: vault 已有 13 篇 + 新 digest 7 篇（成功 7 / 跳过 0 / 失败 0），总计 20 篇</li>
-<li><strong>新增论文</strong>: GR00T N1, Gemini Robotics, X-VLA, CycleVLA, DM0, GigaBrain-0.5M*, DAM-VLA</li>
-<li><strong>未能获取</strong>: Figure AI Helix（无 arXiv 论文，仅 blog post）</li>
-</ul>
-<h3 id="第一轮2026-03-27">第一轮（2026-03-27）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#第一轮2026-03-27" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
-<ul>
-<li><strong>调研日期</strong>: 2026-03-27</li>
-<li><strong>论文统计</strong>: vault 已有 10 篇 + 新 digest 3 篇 + 跳过 0 篇</li>
-<li><strong>未能获取</strong>: 无</li>
-</ul></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="gvlw1h" class="overflow"><li class="depth-0"><a href="#overview" data-for="overview">Overview</a></li><li class="depth-0"><a href="#技术路线" data-for="技术路线">技术路线</a></li><li class="depth-1"><a href="#路线-1autoregressive-token-prediction离散动作生成" data-for="路线-1autoregressive-token-prediction离散动作生成">路线 1：Autoregressive Token Prediction（离散动作生成）</a></li><li class="depth-1"><a href="#路线-2flow-matching--diffusion-action-generation连续动作生成" data-for="路线-2flow-matching--diffusion-action-generation连续动作生成">路线 2：Flow Matching / Diffusion Action Generation（连续动作生成）</a></li><li class="depth-1"><a href="#路线-3hierarchical-vlm-vla分层架构" data-for="路线-3hierarchical-vlm-vla分层架构">路线 3：Hierarchical VLM-VLA（分层架构）</a></li><li class="depth-1"><a href="#路线-4rl-self-improvement强化学习自我改进" data-for="路线-4rl-self-improvement强化学习自我改进">路线 4：RL Self-Improvement（强化学习自我改进）</a></li><li class="depth-1"><a href="#路线-5embodied-native-training原生物理训练" data-for="路线-5embodied-native-training原生物理训练">路线 5：Embodied-Native Training（原生物理训练）</a></li><li class="depth-1"><a href="#路线-6self-correction--error-recovery自纠错与错误恢复" data-for="路线-6self-correction--error-recovery自纠错与错误恢复">路线 6：Self-Correction / Error Recovery（自纠错与错误恢复）</a></li><li class="depth-1"><a href="#路线-7embodied-reasoning-vla推理增强动作生成" data-for="路线-7embodied-reasoning-vla推理增强动作生成">路线 7：Embodied Reasoning VLA（推理增强动作生成）</a></li><li class="depth-0"><a href="#datasets--benchmarks" data-for="datasets--benchmarks">Datasets &amp; Benchmarks</a></li><li class="depth-0"><a href="#key-takeaways" data-for="key-takeaways">Key Takeaways</a></li><li class="depth-0"><a href="#open-problems" data-for="open-problems">Open Problems</a></li><li class="depth-0"><a href="#调研日志" data-for="调研日志">调研日志</a></li><li class="depth-1"><a href="#第三轮更新2026-04-01" data-for="第三轮更新2026-04-01">第三轮更新（2026-04-01）</a></li><li class="depth-1"><a href="#第二轮更新2026-03-30" data-for="第二轮更新2026-03-30">第二轮更新（2026-03-30）</a></li><li class="depth-1"><a href="#第一轮2026-03-27" data-for="第一轮2026-03-27">第一轮（2026-03-27）</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+</li>
+<li><strong>新增论文数</strong>：65 篇（全部 rating ≥ 2 均完整读过，无截断）</li>
+<li><strong>未能获取的论文</strong>：无；重跑相对上轮补齐了 RT-1/VoxPoser/TinyVLA/HAMSTER 的 digest，RoboMamba rating=1 按 filter 自然排除</li>
+<li><strong>关键观察</strong>：VLA 领域在 2025H2-2026H1 进入<strong>多主线 convergence 期</strong>——PI 系列（π0→π0.5→π*0.6→π0.7）以 flow matching + hierarchical + prompt expansion 为主干拿下 commercial-grade 结果；cross-embodiment 正从 per-embodiment head 迁移到 soft prompt / latent action；Generalist AI 的 GEN-0/1 以完全 proprietary 的 wearable data engine 展示 scaling law 跨越 “commercial threshold”，与学术社区差距拉大；real-world RL（Recap / RAMP / WorldVLALoop）和 reasoning-action unification（GenieReasoner / Lumo-1 / RoboBrain 2.5）两条线同时突破。系统工程（SnapFlow / Xiaomi-Robotics-0 Λ-mask / MEM memory）成为必要配套。整体格局是”方法多样性未收敛，但工程底座、评测 crisis、data engine gap 三件事正在快速定型”。</li>
+</ul></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="dts0pv" class="overflow"><li class="depth-0"><a href="#overview" data-for="overview">Overview</a></li><li class="depth-0"><a href="#problem--motivation" data-for="problem--motivation">Problem &amp; Motivation</a></li><li class="depth-0"><a href="#技术路线对比" data-for="技术路线对比">技术路线对比</a></li><li class="depth-1"><a href="#1-autoregressive-raw-action-token" data-for="1-autoregressive-raw-action-token">1. Autoregressive Raw Action Token</a></li><li class="depth-1"><a href="#2-continuous-flow-matching--diffusion-action-head" data-for="2-continuous-flow-matching--diffusion-action-head">2. Continuous Flow-Matching / Diffusion Action Head</a></li><li class="depth-1"><a href="#3-hierarchical-with-language-intermediates" data-for="3-hierarchical-with-language-intermediates">3. Hierarchical with Language Intermediates</a></li><li class="depth-1"><a href="#4-latent-action-from-unlabeled-video" data-for="4-latent-action-from-unlabeled-video">4. Latent Action from Unlabeled Video</a></li><li class="depth-1"><a href="#5-reasoning-augmented-action" data-for="5-reasoning-augmented-action">5. Reasoning-Augmented Action</a></li><li class="depth-1"><a href="#6-hybrid-architectures" data-for="6-hybrid-architectures">6. Hybrid Architectures</a></li><li class="depth-1"><a href="#7-cross-embodiment-soft-prompt--unified-scaffold" data-for="7-cross-embodiment-soft-prompt--unified-scaffold">7. Cross-Embodiment Soft Prompt / Unified Scaffold</a></li><li class="depth-1"><a href="#8-world-model-conditioning--rl-post-training" data-for="8-world-model-conditioning--rl-post-training">8. World Model Conditioning / RL Post-Training</a></li><li class="depth-1"><a href="#8-条路线的实质-trade-off" data-for="8-条路线的实质-trade-off">8 条路线的实质 trade-off</a></li><li class="depth-1"><a href="#2025-2026-的-convergence-观察" data-for="2025-2026-的-convergence-观察">2025-2026 的 convergence 观察</a></li><li class="depth-0"><a href="#datasets--benchmarks" data-for="datasets--benchmarks">Datasets &amp; Benchmarks</a></li><li class="depth-1"><a href="#training-datasets" data-for="training-datasets">Training Datasets</a></li><li class="depth-1"><a href="#manipulation-sim-benchmarks" data-for="manipulation-sim-benchmarks">Manipulation sim benchmarks</a></li><li class="depth-1"><a href="#real-robot-benchmarks" data-for="real-robot-benchmarks">Real-robot benchmarks</a></li><li class="depth-1"><a href="#navigation-benchmarks-vln-ce-val-unseen" data-for="navigation-benchmarks-vln-ce-val-unseen">Navigation benchmarks (VLN-CE Val-Unseen)</a></li><li class="depth-1"><a href="#reasoning--embodied-cognition-benchmarks" data-for="reasoning--embodied-cognition-benchmarks">Reasoning / embodied-cognition benchmarks</a></li><li class="depth-1"><a href="#数据量级核心数字" data-for="数据量级核心数字">数据量级核心数字</a></li><li class="depth-1"><a href="#benchmark-饱和度与评测-crisis" data-for="benchmark-饱和度与评测-crisis">Benchmark 饱和度与评测 crisis</a></li><li class="depth-0"><a href="#open-problems" data-for="open-problems">Open Problems</a></li><li class="depth-1"><a href="#1-scaling-law-的临界规模与-weight-level-机制" data-for="1-scaling-law-的临界规模与-weight-level-机制">1. Scaling law 的临界规模与 weight-level 机制</a></li><li class="depth-1"><a href="#2-real-world-rl-for-large-vlas" data-for="2-real-world-rl-for-large-vlas">2. Real-world RL for large VLAs</a></li><li class="depth-1"><a href="#3-cross-embodiment-的正确抽象层" data-for="3-cross-embodiment-的正确抽象层">3. Cross-embodiment 的正确抽象层</a></li><li class="depth-1"><a href="#4-reasoning-action-unification" data-for="4-reasoning-action-unification">4. Reasoning-action unification</a></li><li class="depth-1"><a href="#5-evaluation--reproducibility-危机" data-for="5-evaluation--reproducibility-危机">5. Evaluation / reproducibility 危机</a></li><li class="depth-1"><a href="#6-data-engine-的工程-vs-学术-gap" data-for="6-data-engine-的工程-vs-学术-gap">6. Data engine 的工程 vs 学术 gap</a></li><li class="depth-1"><a href="#7-memory-与-long-horizon" data-for="7-memory-与-long-horizon">7. Memory 与 long-horizon</a></li><li class="depth-1"><a href="#8-safety--alignment-for-embodied-intelligence" data-for="8-safety--alignment-for-embodied-intelligence">8. Safety / alignment for embodied intelligence</a></li><li class="depth-0"><a href="#调研日志" data-for="调研日志">调研日志</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
 </script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
 </script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>
