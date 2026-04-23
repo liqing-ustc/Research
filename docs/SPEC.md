@@ -116,7 +116,7 @@ MindFlow/
 | 论文笔记 | `Papers/` | `YYMM-ShortTitle.md`（YYMM 取自 date_publish） | `Templates/Paper.md` |
 | 研究 Idea | `Ideas/` | 描述性名称 | `Templates/Idea.md` |
 | 项目 | `Projects/` | 描述性名称 | `Templates/Project.md` |
-| 文献调研 | `Topics/` | `{Topic}-Survey.md` | `Templates/Survey.md` |
+| 文献调研 | `Topics/` | `{Topic}-Survey.md` | （无固定模板；结构由 `literature-survey` skill 根据侦察到的 survey paper 提炼） |
 | 会议 | `Meetings/` | `YYYY-MM-DD-Description.md` | `Templates/Meeting.md` |
 | 报告 | `Reports/` | 描述性名称 | `Templates/Report.md` |
 

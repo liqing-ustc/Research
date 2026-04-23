@@ -1,168 +1,104 @@
 ---
 name: literature-survey
-description: >
-  当 Supervisor 说"调研""survey""了解研究现状"，或需要系统了解某主题的文献全貌时，搜索外部文献、批量 digest、综合生成调研报告
-argument-hint: "<topic> [scope]"
-allowed-tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch
+description: 当用户说"调研""survey""了解研究现状"，或需要系统了解某主题的文献全貌时，以 DomainMap 为认知基线、近期 survey paper 为文献锚点，批量 digest 后综合生成调研报告
+argument-hint: <topic>
+allowed-tools: Read, Write, Edit, Glob, Grep, Task, WebSearch, WebFetch
 ---
 
 ## Purpose
 
-给定一个研究主题，主动搜索外部文献、自动调用 paper-digest 生成结构化笔记，最终综合所有论文产出一份领域调研报告。
+给定一个研究主题，以 `DomainMaps/` 为认知基线、以近期 survey paper 为文献锚点，批量 digest 相关论文，综合出 `Topics/{Topic}-Survey.md` —— 作为对相关 domain 当前认知的 delta 报告（无对应 DomainMap 时退化为完整领域分析）。
 
 ## Steps
 
-### Step 1：明确调研范围
+### 1. 基线建立
+- **认知基线**：读 `DomainMaps/_index.md` 找相关 domain；若有，读对应 `DomainMaps/{Name}.md`
+- **内容基线**：检查 `Topics/{Topic}-Survey.md`；若存在，读取该文件，用 frontmatter 的 `date_updated` 作为截止日期，扫描 body 中形如 `[[YYMM-ShortTitle]]`（如 `[[2510-XVLA]]`、`[[2602-DM0]]`）的 wikilinks 作为已收录论文清单，作为增量调研的起点；若无，本次是新建
 
-解析用户输入，确定以下参数：
+### 2. Scoping
 
-| 参数 | 默认值 | 说明 |
-|:-----|:-------|:-----|
-| `topic` | （必填） | 研究主题 |
-| `year_range` | 近 3 年 | 时间范围 |
-| `venue_preference` | 无 | venue 偏好 |
-| `max_papers` | 20 | 最终纳入调研的论文数量上限 |
+#### 2.1 搜索相关 Survey
+搜索本主题近期新出现的 survey paper（若 Step 1 存在内容基线，优先找其截止日期之后的）。先在已有 `Papers/`里寻找，再结合 WebSearch，挑 1-3 篇最相关的。若本 topic 无专门 survey，退而找**相邻 / 上位 topic 的 survey paper**。
 
-基于 topic 生成 **3-5 条搜索策略**，覆盖以下角度：
+为挑选出来的 survey paper 启动 subagent 并行调用 `paper-digest` 生成笔记，主 agent 读取这些 survey paper 的笔记文件。
 
-1. **核心主题**：topic 本身的直接搜索
-2. **相关方法**：该领域的主流技术路线
-3. **Survey / 综述**：搜索已有 survey 论文作为参考锚点
-4. **Benchmark / 数据集**：该领域常用的评测基准
-5. **应用场景**：下游应用或跨领域迁移
+#### 2.2 确定候选论文清单
+与 Step 1 已收录清单去重后得到候选论文清单，分两类：
+- **需 digest**：从侦察到的 survey 中提取反复引用的 canonical 论文 → 进入 Step 3
+- **已有笔记**：从 `Papers/` 搜索本 topic 相关笔记 → 无需 digest，直接参与 Step 4 综合
 
-每条策略生成 1-2 个具体的搜索 query（英文），共 5-10 个 query。
+### 3. 批量 paper-digest
+为每篇待 digest 的论文启动 subagent 并行调用 `paper-digest` 生成笔记；若 paper-digest 发现论文已有笔记，则跳过（不覆盖、不询问）。等所有 subagent 完成后，进入下一步。
 
-### Step 2：Vault-first 检索
+### 4. 综合写作
 
-在执行外部搜索之前，先检查 vault 中已有的相关内容：
+**读取笔记**：只读取候选论文清单里 rating >= 2 的论文笔记，作为新增论文（筛 rating 用 Bash 批处理 frontmatter，避免对每篇 Read）
 
-1. 用 Grep 在 `Papers/` 的 frontmatter 和正文中搜索 topic 相关关键词（2-3 个核心关键词）。
-2. 用 Grep 在 `Topics/` 中搜索是否已有相关调研或分析。
-3. 收集所有匹配的 Paper 笔记，建立"**已知论文清单**"（title 列表），后续用于去重。
-4. 若发现已有 Survey（如 `Topics/{Topic}-Survey.md` 已存在），读取其内容作为基线，后续步骤在此基础上增量更新（补充新论文、更新分析），而非从零重建。
+**确定 section 结构：**  下列必备元素为骨架；各元素内部的子分类由**已有对应 DomainMap + 已有 `Topics/{Topic}-Survey.md`（增量时） + Step 2.1 新侦察的 survey paper** 综合提炼：
 
-### Step 3：外部搜索与筛选
+- **Overview**：一句话定位 + 领域活跃度（时间线 / 参与格局 / 学术产出等） + 整体趋势
+- **Problem & Motivation**：本领域在解决什么核心问题，为什么重要，为什么适合现在做
+- **技术路线对比**：分析各主流路线的核心思路，实际效果，优缺点等，嵌入代表性论文
+- **Datasets & Benchmarks**：整理常用的 Training Datasets，Benchmarks（包含 SOTA methods 和 performance），可以用多个表格方式呈现
+- **Open Problems**：真实的 open，不是教科书式列举
+- **调研日志**：元数据（日期、论文统计、未能获取说明）
 
-依次执行 Step 1 生成的搜索 query：
+**写作基线**：Survey 定位为 DomainMap 的 delta 报告——已在对应 DomainMap 中 Established 的内容不重述，聚焦窗口内的新技术路线、对既有 claim 的支持/挑战、新 open problems；必要时用 `[[DomainMaps/{Name}#某节]]` 引用基线。无对应 DomainMap 时完整展开所有必备元素。
 
-1. 对每个 query，用 **WebSearch** 搜索（建议加 `site:arxiv.org` 或 `"论文标题" arxiv`），提取搜索结果中的论文信息。
-2. 从搜索结果中收集候选论文列表，提取：title、authors、year、venue（若可判断）、url。
-3. **去重**：将每个候选论文的 title（转小写，去标点）与已知论文清单对比，跳过已在 vault 中的论文。
-4. **搜索轮数上限**：最多执行 **10 次 WebSearch**。若某些 query 返回结果质量低（无相关论文），提前停止该策略。
+若调研中发现明显应纳入 DomainMap 的内容，在 `## 调研日志` 之前加 `## DomainMap 更新建议` 节显式列出；无则不加此节。
 
-搜索完成后，对所有候选论文进行筛选和排序：
+**Frontmatter**（新建或更新时写入/刷新）：
+```yaml
+---
+title: <Topic 全名>
+description: <一句话描述本 Survey 覆盖的范围与核心发现>
+tags: [...]
+date_updated: YYYY-MM-DD
+year_range: YYYY-YYYY
+---
+```
 
-- **相关性**：与 topic 的直接相关程度
-- **影响力**：优先选择知名 venue 或者知名机构的论文
-- **时效性**：在 year_range 内的论文优先
-- **多样性**：确保覆盖不同技术路线，避免全部来自同一方向
+**Tag 选择**：阅读 vault 目录下的 `{vault_root}/references/tags.md`，按照规范选择 tag。
 
-选取 **top-N**（N = `max_papers` 减去 vault 中已有的相关论文数，最少 3 篇）作为待 digest 的论文列表。
+**Obsidian syntax**：写入前参照 `{vault_root}/references/obsidian-syntax.md` Obsidian-specific quirks。
 
-### Step 4：批量 paper-digest
+新建或增量更新 `Topics/{Topic}-Survey.md`。
 
-对 Step 3 筛选出的每篇论文，执行 paper-digest：
-
-1. 读取 `skills/1-literature/paper-digest/SKILL.md`，按其 Steps 逐一处理每篇论文。
-2. 输入为论文的 arXiv URL（优先）或论文标题。
-3. **跳过规则**：
-   - 若 paper-digest 的去重检查发现 vault 已有该笔记，跳过。
-   - 若 WebFetch 无法获取论文内容（如非 arXiv 论文、付费墙），记录为"未能获取"并跳过，不阻塞流程。
-4. 记录每篇论文的 digest 结果：成功（文件路径）/ 跳过（原因）/ 失败（原因）。
-
-### Step 5：综合分析
-
-基于 vault 中所有相关论文笔记（Step 2 已有的 + Step 4 新 digest 的），进行综合分析：
-
-1. 用 Read 读取所有相关 Paper 笔记（重点：Summary、Method、Key Results、Strengths & Weaknesses）。
-2. 读取 `DomainMaps/_index.md`（索引页）找到相关 domain，再读取对应的 `DomainMaps/{Name}.md` 了解当前认知状态。
-
-读取`Templates/Survey.md` 按其中的 section 结构综合分析。
-
-### Step 6：产出
-
-#### 6a. 生成 Survey 文件
-
-Topic 名称根据主题生成（CamelCase，如 `VLA-Manipulation`、`DiffusionPolicy-Robotics`）。
-
-- **新建**：若 `Topics/{Topic}-Survey.md` 不存在，用 Write 按 `Templates/Survey.md` 模板创建并填充各 section。
-- **增量更新**：若已存在，用 Edit 在其基础上补充新论文、刷新分析，保留原有内容中仍然有效的部分。
-
-所有论文引用使用 `[[wikilink]]` 格式。
-
-#### 6b. 追加日志
-
-用 Edit（若文件不存在则用 Write）将以下格式的 log entry 追加到 `Workbench/logs/YYYY-MM-DD.md`：
+### 5. 日志
+追加 log entry 到 `Workbench/logs/YYYY-MM-DD.md`（文件不存在则新建并加一级标题 `# YYYY-MM-DD`）：
 
 ```markdown
 ### [HH:MM] literature-survey
-- **input**: topic: <topic> | year_range: <year_range>
+- **input**: <topic>
 - **output**: [[Topics/{Topic}-Survey]]
-- **stats**: 搜索 N 次，候选 N 篇，digest N 篇（成功 N / 跳过 N / 失败 N）
-- **observation**: <一句话概括该领域的核心发现>
-- **status**: success
+- **stats**: 侦察 survey N 篇，新增论文 N 篇
+- **observation**: <一句话领域核心发现>
+- **issues**: <未能获取的论文及原因；无则 none>
 ```
-
-若日志文件不存在，先创建文件（包含一级标题 `# YYYY-MM-DD`），再追加 entry。
-
-## Guard
-
-- **paper-digest 失败不阻塞**：单篇论文 digest 失败时记录原因并继续处理下一篇，不中断整个 survey 流程。
-- **搜索上限**：最多执行 50 次 WebSearch，避免过度消耗 token 和 API 配额。
-- **不捏造论文**：所有纳入分析的论文必须来自实际搜索结果或 vault 已有笔记，不得凭记忆编造论文信息。
-- **不直接修改 DomainMaps**：综合分析中如有值得纳入 DomainMaps 的发现，在 Survey 文件的 Key Takeaways 中标注"建议加入 DomainMaps"，不得直接修改 `DomainMaps/` 下的任何文件。
-- **Papers/ 已有笔记只读**：不得修改 vault 中已存在的 Paper 笔记，只可读取。新论文的笔记由 paper-digest 创建。
 
 ## Verify
 
-- [ ] `Topics/*-Survey.md` 已创建
-- [ ] 技术路线分类 ≥2 条
-- [ ] Datasets & Benchmarks 表非空
-- [ ] Open Problems 节非空
+### Step 1 · 基线建立
+- [ ] 认知基线：已读 `DomainMaps/_index.md`；若 topic 对应某已有 domain，已读对应 DomainMap
+- [ ] 内容基线：若 `Topics/{Topic}-Survey.md` 已存在，已从 frontmatter 读 `date_updated`、从 body wikilinks 重建论文清单
 
-## Examples
+### Step 2 · Scoping
+- [ ] 搜索 survey 的尝试路径已走过（本主题→相邻/上位）；若均无，Survey 调研日志中明示"无参考 survey"
+- [ ] 候选论文清单已对 Step 1 已收录清单去重
 
-**示例 1：调研一个主题**
+### Step 3 · 批量 paper-digest
+- [ ] "需 digest" bucket 中每篇 canonical 论文均已启动 paper-digest；issues 仅允许记录 paper-digest 实际失败（PDF 不可得 / API 错误等），不允许为控时长 / 规模而主观跳过
 
-```
-"调研一下 VLA for manipulation 的研究现状"
-```
+### Step 4 · 综合写作
+- [ ] 所有新增论文（候选论文清单中 rating >= 2） 的笔记已**全部完整读取，无跳过，无截断**
+- [ ] 6 条必备元素（Overview / Problem & Motivation / 技术路线对比 / Datasets & Benchmarks / Open Problems / 调研日志）全部出现
+- [ ] 若 Step 2.1 有 survey 输出，本次笔记的 section 结构可追溯到其 taxonomy
+- [ ] 技术路线对比有分析深度——不止罗列 method 是什么，还说清楚各自的实际效果与优缺点
+- [ ] 若有对应 DomainMap，Survey 未大段重述其 Established Knowledge
+- [ ] Survey 中每篇引用都用 `[[wikilink]]`，且 vault 中存在对应笔记（未能获取的论文在调研日志中明示）
+- [ ] Survey 中无遗留的 `%%...%%` 注释或占位符
+- [ ] 若 `{Topic}-Survey.md` 已存在：新内容与旧内容已 merge，未无故删除仍然有效的旧论据
+- [ ] 有 DomainMap 更新建议时已作为独立 section 列出；未直接修改 `DomainMaps/` 下任何文件
 
-执行过程：
-
-1. 解析：topic = "VLA for manipulation"，year_range = 2023-2026
-2. 生成搜索策略：
-   - "Vision-Language-Action models manipulation arxiv"
-   - "VLA robot manipulation policy learning"
-   - "VLA survey embodied AI"
-   - "manipulation benchmark evaluation VLA"
-3. Grep `Papers/` 搜索已有 VLA 相关笔记，发现 3 篇
-4. WebSearch 执行 6 次搜索，收集 20 篇候选，去重后剩 14 篇
-5. 筛选 top-5
-6. 逐一 paper-digest：成功 4 篇，失败 1 篇（付费墙）
-7. 综合分析 7 篇论文（3 已有 + 4 新增），生成调研报告
-8. Write `Topics/VLA-Manipulation-Survey.md`
-9. 追加日志到 `Workbench/logs/2026-03-27.md`
-
-输出文件：`Topics/VLA-Manipulation-Survey.md`
-
----
-
-**示例 2：带约束的调研**
-
-```
-"survey diffusion policy in robotics，只看 2024 年以后的 top venue 论文，最多 5 篇"
-```
-
-执行过程：
-
-1. 解析：topic = "diffusion policy in robotics"，year_range = 2024-2026，venue_preference = top-tier
-2. Grep `Papers/` 发现 1 篇已有
-3. WebSearch 搜索，优先筛选 CoRL / RSS / ICRA / NeurIPS / ICML 论文
-4. 筛选 top-4
-5. 逐一 paper-digest
-6. 综合分析，生成报告
-7. Write `Topics/DiffusionPolicy-Robotics-Survey.md`
-
-输出文件：`Topics/DiffusionPolicy-Robotics-Survey.md`
+### Step 5 · 日志
+- [ ] 日志 entry 已追加到 `Workbench/logs/YYYY-MM-DD.md`，失败论文已记入 issues
