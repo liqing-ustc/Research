@@ -53,15 +53,48 @@ allowed-tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 | 文件不完整                        | 全部      | 返回上一步，重新抓取                            |
 | video 和 figure 的 URL 丢失或者不完整 | website | 用 `curl` 抓取 raw HTML，找到完整 URL 后补充到源文件 |
 
+#### Step 2.4：影响力指标
+
+按源存在性抓取，产 `/tmp/{ShortTitle}/metrics.json`。缺失源对应块 `null`，不省略字段。
+
+**Citation** — Semantic Scholar `/paper/batch` POST（单篇也用 batch，避免 429 累积 IP 惩罚）：
+
+```bash
+curl -sX POST 'https://api.semanticscholar.org/graph/v1/paper/batch?fields=citationCount,influentialCitationCount,publicationDate' \
+  ${S2_API_KEY:+-H "x-api-key: $S2_API_KEY"} \
+  -H 'Content-Type: application/json' -d '{"ids":["arXiv:<arxiv_id>"]}'
+```
+
+批量复核 ≥10 篇需 `S2_API_KEY`，否则中途必被封。S2 返 429/5xx 且无 key 时 fallback：WebFetch `https://scholar.google.com/scholar?q=arxiv+<arxiv_id>` 取 top hit 的 "Cited by N"，**单发间隔 ≥30s**（并发必 CAPTCHA），`citation_source="scholar"` + `influential_citations=null`。
+
+**HF upvotes** — `curl -s "https://huggingface.co/api/papers/<arxiv_id>"` 取 `.upvotes`，404 → null。
+
+**GitHub** — 优先 `gh api "repos/<owner>/<repo>"` + `gh api "repos/<owner>/<repo>/commits?since=<90d ago ISO>&per_page=100"`（5000/hr）；未登录时 fallback `curl https://api.github.com/...`（60/hr，≥30 repo 会 403）。取 `stargazers_count` / `forks_count` / `open_issues_count` / `pushed_at`；commits 数组长度即 90d commits（上限 100 标 `"100+"`）。派生 `pushed_days_ago`，`is_stale = pushed_days_ago > 180 AND commits_last_90d == 0`。
+
+**Schema**：
+
+```json
+{
+  "measured_at": "YYYY-MM-DD",
+  "paper":  {"citation_count": N, "influential_citations": N, "citation_velocity_per_month": N.N, "months_since_publish": N, "citation_source": "s2"|"scholar"},
+  "hf":     {"upvotes": N},
+  "github": {"stars": N, "forks": N, "open_issues": N, "pushed_days_ago": N, "commits_last_90d": "N"|"100+", "is_stale": bool}
+}
+```
+
+`citation_velocity_per_month = citationCount / max(months_since_publish, 1)`。单 API 失败 → 对应块 `null`，原因记 Step 5 log 的 `issues`，不阻塞 digest。
+
+各 API 单独失败（网络错、404、schema 变化）→ 对应块置 `null` 并把原因记入 Step 5 log 的 `issues`，不因此阻塞整个 digest。
+
 ---
 
 ### Step 3：笔记生成与保存
 
 仔细阅读生成的所有源文件，生成笔记。
 
-**读取两个参考文件**（都在本 skill 目录内，`{skill_dir}/references/...`）：
-- **模板**：`paper-note-template.md` 
-- **Syntax 参考**：`obsidian-syntax.md` —— 公式 / 图 / 视频 / 表格的 Obsidian-specific 语法 quirks
+**读取两个参考文件**：
+- **模板**：`{skill_dir}/references/paper-note-template.md`
+- **Syntax 参考**：vault 根目录 `references/obsidian-syntax.md` —— 公式 / 图 / 视频 / 表格的 Obsidian-specific 语法 quirks（全局，写任何笔记都应遵守）
 
 #### 笔记结构
 
@@ -72,7 +105,7 @@ allowed-tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 **撰写逻辑**：每一步的产出都依赖前面已写的内容，倒序写以保证每个判断都 grounded 在已有内容上，而不是凭印象先填。
 - **Body**：论文本身的解读，不依赖其他段落。
 - **关联工作**：论文在 landscape 中的位置，需先理解论文本身。
-- **论文点评**：价值判断，依赖对论文本身的解读，以及和关联工作之间的关系。
+- **论文点评**：价值判断，依赖对论文本身的解读、和关联工作之间的关系、论文影响力指标。
 - **Summary**：笔记全文总结，依赖对论文本身的理解以及其点评。
 - **Frontmatter**：根据笔记内容的简单回填。
 
@@ -159,6 +192,7 @@ Glob DomainMaps/*<TermCamelCase>*.md   # 若目录存在
 - [ ] 三类源（paper / website / github）均已尝试发现；WebSearch 兜底已对每一类跑过（不可跳过）
 - [ ] paper / website 源已通过 defuddle 抓到 `/tmp/{ShortTitle}/paper.json` 或 `website.json`；github 源已通过 `curl` 抓到同目录下的 `github.md`
 - [ ] Step 2.3 两项检查（文件完整性；website 的 video/figure URL 完整性）均已过；未过的已记入 Step 5 log 的 `issues`
+- [ ] Step 2.4 已产出 `/tmp/{ShortTitle}/metrics.json`，含 `measured_at`；存在的源对应 metrics 块非 null；缺失源对应块为 null；API 失败已记入 Step 5 log 的 `issues`
 
 ### Step 3 (Compose & Save) 自检
 - [ ] `Papers/{笔记文件名}.md` 已创建
@@ -170,6 +204,7 @@ Glob DomainMaps/*<TermCamelCase>*.md   # 若目录存在
 - [ ] **每个嵌入元素都有紧邻的描述**，说明这张图/表/视频在展示什么，而不是光秃秃嵌入或重复 section 标题
 - [ ] **每个元素的嵌入位置与其描述在语境上一致**：元素不应被放在会误导读者的上下文（例：一段讲 "zero-shot 失败" 的文字下方不能紧接一个展示成功的视频）。若描述和周围文字冲突，更换嵌入的位置
 - [ ] **Rating 三处一致**：Summary 里的 Rating、frontmatter 的 `rating` 字段、`### Rating` 段的分数完全对应
+- [ ] **Rating 段有 Metrics 行**：`### Rating` 段首行是 `**Metrics** (as of YYYY-MM-DD): ...`，数字来自 `/tmp/{ShortTitle}/metrics.json`，缺失源对应字段写 "N/A（原因）"
 
 ### Step 4 (Wikilink 注入) 自检 
 

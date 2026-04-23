@@ -111,7 +111,7 @@ $$
 %% Rating Rubric — 语义：这篇论文（方法、benchmark/dataset）在我关心的研究方向里的位置。
 
 - **3 — Foundation**：方向必读、必引的奠基工作。
-  - 方法：具备开创性 / 奠基性 / 颠覆性，社区影响力大（citation 高，github repo star 多等）。
+  - 方法：具备开创性 / 奠基性 / 颠覆性，社区影响力大（高 citation、高 influential citations、高 github stars）。
   - Benchmark / Dataset：已成为方向的 de facto 标准评测或基础数据（如 ImageNet、DROID 级别）。
   - 准入门槛：只读 rating=3 的论文就能理解这个方向的主要脉络和发展过程。
 
@@ -124,9 +124,17 @@ $$
   - Benchmark / Dataset：使用量低 / 范围过窄 / 被更通用的 benchmark 取代。
   - 预期不再主动翻。
 
+**特例处理**：
+- **发布 < 3 个月**：绝对 citation 必然低，不作为降档依据；看 `influential_citations > 0`、github star 增速、HF upvotes 作为 early signal。
+- **`is_stale == true`（pushed > 180d 且 90d commits = 0）**：github stars 仅反映历史影响力，不作为当前活跃度的加分项。
+- **Influential / total 比例**：典型 ~10%；远高（如 π0 的 19%）= 技术被实质继承；远低（如 RT-2 的 6%）= 被当 landmark reference 频繁提及但继承性弱。两种形态都可能对应 Foundation，判断时结合方法解读。
+
 注：rating 是动态的——SOTA 会过气降为 1；被时间验证的重要工作可能从 2 升为 3；benchmark 也会随社区采纳情况升降；方向 pivot 或新证据出现后需要重新评估。 %%
 
+**Metrics** (as of YYYY-MM-DD): citation={N}, influential={N} ({pct}%), velocity={N.N}/mo; HF upvotes={N or N/A}; github {N}⭐ / forks={N} / 90d commits={N or "100+"} / pushed {N}d ago{ · stale if applicable}
+%% 来源：影响力指标 `/tmp/{ShortTitle}/metrics.json` ；缺失的源对应字段写 "N/A（简短原因）"。%%
+
 **分数**：{3 - Foundation / 2 - Frontier / 1 - Archived}
-**理由**：{2-3 句，必须 grounded 在本笔记已写内容上，要引用已写内容的具体判断，而非凭印象。说清楚"为什么是这个档，而不是相邻档"。}
+**理由**：{2-3 句，必须 grounded 在本笔记已写内容和 Metrics 上。说清楚"为什么是这个档，而不是相邻档"。}
 
 %% 决定分数后，回填：(1) Summary 里的 Rating 一句话，(2) frontmatter 的 rating 字段。三处保持一致。 %%
