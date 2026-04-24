@@ -32,10 +32,10 @@ date_added: 2026-04-22
 **Teaser. 三支柱 taxonomy 鸟瞰图。** 作者把 efficient VLA 的所有方法折叠进 3 个顶级支柱、10+ 二级子类，是全文的主线图。
 
 **Figure 1. Taxonomy overview（三支柱 + 示意图标）**
-![](assets/EfficientVLASurvey/fig1_taxonomy.png)
+![](Papers/assets/EfficientVLASurvey/fig1_taxonomy.png)
 
 **Figure 2. 完整 taxonomy 树（方法-子类对应关系）**
-![](assets/EfficientVLASurvey/fig2_taxonomy_tree.png)
+![](Papers/assets/EfficientVLASurvey/fig2_taxonomy_tree.png)
 
 ---
 
@@ -46,7 +46,7 @@ date_added: 2026-04-22
 VLA 的标准架构可拆成三个模块：vision encoder → LLM backbone → action decoder。
 
 **Figure 3. VLA 三段式管线：Vision Encoder / LLM Backbone / Action Decoder**
-![](assets/EfficientVLASurvey/fig3_vla_overview.png)
+![](Papers/assets/EfficientVLASurvey/fig3_vla_overview.png)
 
 **Equation 1. Vision Encoding**
 
@@ -86,7 +86,7 @@ Vision encoder 常用 ViT / SigLIP / DINOv2 / CLIP；LLM backbone 跨 Qwen / PaL
 > ❓ 表格引用的是论文自报频率，没统一硬件口径（π0 的 50 Hz 是 chunk-level 而不是 token-level），这是行业普遍问题但综述没拆明白。
 
 **Figure 4. Foundational VLA vs Efficient VLA timeline**：2023-2025 两条并行发展曲线，Efficient VLA 自 2024 下半年起进入爆发期。
-![](assets/EfficientVLASurvey/fig4_timeline.png)
+![](Papers/assets/EfficientVLASurvey/fig4_timeline.png)
 
 ### 2.3 与其它 VLA Survey 的差异
 
@@ -97,7 +97,7 @@ Vision encoder 常用 ViT / SigLIP / DINOv2 / CLIP；LLM backbone 跨 Qwen / PaL
 ## 3 Efficient Model Design
 
 **Figure 5. Efficient Architecture 六子类**：(a) efficient attention；(b) transformer alternatives；(c) efficient action decoding；(d) lightweight component；(e) MoE；(f) hierarchical systems。
-![](assets/EfficientVLASurvey/fig5_efficient_arch.png)
+![](Papers/assets/EfficientVLASurvey/fig5_efficient_arch.png)
 
 ### 3.1 Efficient Architectures
 
@@ -119,7 +119,7 @@ Vision encoder 常用 ViT / SigLIP / DINOv2 / CLIP；LLM backbone 跨 Qwen / PaL
 ### 3.2 Model Compression
 
 **Figure 6. Model Compression 三子类**：layer pruning / quantization / token optimization（compression / pruning / caching）。
-![](assets/EfficientVLASurvey/fig6_model_compression.png)
+![](Papers/assets/EfficientVLASurvey/fig6_model_compression.png)
 
 **3.2.1 Layer Pruning.** DeeR-VLA 的 multi-exit dynamic early termination；MoLe-VLA 的 spatial-temporal layer skipping；[[2506-SmolVLA|SmolVLA]] 直接砍 L/2 层；EfficientVLA 做 training-free 跨层 redundancy 分析；RLRC 用 RL 在 pruning 之后恢复性能；FLOWER 用 modality fusion 腾出 50% LLM 层给 diffusion head。
 
@@ -143,7 +143,7 @@ Vision encoder 常用 ViT / SigLIP / DINOv2 / CLIP；LLM backbone 跨 Qwen / PaL
 ## 4 Efficient Training
 
 **Figure 7. Efficient Training 两阶段**：(a) Efficient Pre-Training（data-efficient / action representation / 其它）；(b) Efficient Post-Training（SFT / RL）。
-![](assets/EfficientVLASurvey/fig7_training.png)
+![](Papers/assets/EfficientVLASurvey/fig7_training.png)
 
 ### 4.1 Efficient Pre-Training
 
@@ -176,7 +176,7 @@ Vision encoder 常用 ViT / SigLIP / DINOv2 / CLIP；LLM backbone 跨 Qwen / PaL
 ## 5 Efficient Data Collection
 
 **Figure 8. Efficient Data Collection 五类**：human-in-the-loop / simulation / internet-scale & cross-domain / self-exploration / augmentation。
-![](assets/EfficientVLASurvey/fig8_data.png)
+![](Papers/assets/EfficientVLASurvey/fig8_data.png)
 
 ### 5.1 Human-in-the-Loop
 

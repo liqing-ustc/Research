@@ -30,7 +30,7 @@ date_added: 2026-04-20
 
 **Teaser. Robot-R1 framework 概览**
 
-![](assets/RobotR1/fig1.png)
+![](Papers/assets/RobotR1/fig1.png)
 > 左：从 expert demonstrations 提取 (observation, state, keypoint)；中：reformulate 成三类 MCQA（next state / current state / movement）；右：GRPO 训练 LVLM 生成 `<think>...</think><answer>...</answer>`，answer 命中正确选项给 reward。
 
 ---
@@ -88,7 +88,7 @@ DeepSeek-R1-Zero 风格：policy 输出 `<think>...</think><answer>...</answer>`
 
 新 benchmark 设计动机：现有 VQA bench 不评估 robot-specific reasoning；现有 robotics bench 只看 task success 不评估 reasoning。
 
-![](assets/RobotR1/fig2.png)
+![](Papers/assets/RobotR1/fig2.png)
 > Bench 流程：人类专家围绕 demo 图像写问题与参考答案 → 被测 LVLM 看图答题 → GPT-4o 按 rubric 与参考答案打 [0,3] 分。
 
 - **数据**：RLBench 10 tasks × 5 frames = 50 images
@@ -135,7 +135,7 @@ DeepSeek-R1-Zero 风格：policy 输出 `<think>...</think><answer>...</answer>`
 
 Planning 反而**略降**——作者归因为训练目标只看 next keypoint 而非长程；High-level Action 涨了但仍不及 GPT-4o。
 
-![](assets/RobotR1/fig4.png)
+![](Papers/assets/RobotR1/fig4.png)
 > Figure 3 可视化：低层控制 reasoning 上 Robot-R1 系统性领先 commercial models。
 
 ### 3.4 EmbodiedBench Manipulation（迁移）

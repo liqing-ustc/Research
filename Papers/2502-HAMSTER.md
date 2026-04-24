@@ -30,7 +30,7 @@ date_added: 2026-04-22
 
 **Teaser. Hierarchical VLA 概览——VLM 输出 2D 轨迹，3D policy 按轨迹执行。**
 
-![](assets/HAMSTER/fig1_overview.png)
+![](Papers/assets/HAMSTER/fig1_overview.png)
 
 ---
 
@@ -53,7 +53,7 @@ date_added: 2026-04-22
 
 **Figure 2. HAMSTER 执行流程：VLM 单次推理生成 2D 路径，低层 policy 按路径与环境交互。**
 
-![](assets/HAMSTER/fig2_execution.png)
+![](Papers/assets/HAMSTER/fig2_execution.png)
 
 #### 2.1 高层：VLM 路径生成
 
@@ -78,7 +78,7 @@ date_added: 2026-04-22
 
 **Figure 3. 三类 off-domain 数据的输入/输出示例。**
 
-![](assets/HAMSTER/fig3_data.png)
+![](Papers/assets/HAMSTER/fig3_data.png)
 
 #### 2.2 低层：Path-conditioned 3D Policy
 
@@ -104,7 +104,7 @@ date_added: 2026-04-22
 
 **Figure 4. 跨 7 条泛化轴的 success score（对比 OpenVLA / RVT-2 / 3D-DA）。**
 
-![](assets/HAMSTER/fig4_results.png)
+![](Papers/assets/HAMSTER/fig4_results.png)
 
 泛化轴：object/goal 组合、visual（纹理、灯光、distractor）、language（candy→sweet object）、spatial（位置关系）、novel object、multiple（组合）。
 
@@ -136,7 +136,7 @@ Table 3（跨 15 种视觉变化轴 full Colosseum）：
 
 **Figure 7. VLM 在未见场景下的 path 生成：world-knowledge 任务、手绘 sketch 输入、sim → real 迁移。**
 
-![](assets/HAMSTER/fig7_vlm_gen.png)
+![](Papers/assets/HAMSTER/fig7_vlm_gen.png)
 
 Appendix D.1 ablation（未嵌图）：
 - HAMSTER VLM 在 path 任务上显著优于 zero-shot prompting 闭源 VLM（对应 RT-Trajectory、Code-as-Policies 的设定）。

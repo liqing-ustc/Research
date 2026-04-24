@@ -29,7 +29,7 @@ date_added: "2026-04-20"
 
 **Teaser. 三种训练范式的对比**——Static Data Tuning（固定人工标注）、Consensus Self-Evolve（model voting 的 biased GT）、SpatialEvo（DGE 从 3D asset 精确计算 GT）。图里的 framing 很清晰，把"consensus 作为 proxy"挑出来当成主要攻击目标。
 
-![](assets/SpatialEvo/fig1_paradigm.png)
+![](Papers/assets/SpatialEvo/fig1_paradigm.png)
 
 ---
 %% ═══ Body （内容解读）  ═══  %%
@@ -50,7 +50,7 @@ Self-evolving 范式的常见玩法是：模型自己 propose 问题和答案，
 
 **Figure 2. SpatialEvo 框架图**——DGE 从 point cloud + camera pose 计算 zero-noise GT，Spatial-Grounded GRPO 驱动单一 VLM 在 Questioner / Solver 两个 role 之间交替优化。
 
-![](assets/SpatialEvo/fig2_framework.png)
+![](Papers/assets/SpatialEvo/fig2_framework.png)
 
 框架拆成两块：**Deterministic Geometric Environment (DGE)** + **Spatial-Grounded Policy Co-Evolution**。
 
@@ -170,7 +170,7 @@ $$
 
 **Figure 3. Training dynamics**——(左) Questioner Validity Reward 快速升到接近 1.0；(中) Solver Accuracy 稳步上升、Invalid Ratio 同步下降；(右) Adaptive Scheduler 让难任务（Rel. Dir. 21.8%、Rel. Dist. 18.7%）采样权重超过 uniform 的 16.7%，简单任务（Room Area 12.5%、Obj. Size 13.4%）被下调。
 
-![](assets/SpatialEvo/fig3_dynamics.png)
+![](Papers/assets/SpatialEvo/fig3_dynamics.png)
 
 **Table 4 的发现值得关注**：
 

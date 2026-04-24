@@ -29,7 +29,7 @@ date_added: 2026-04-22
 5. **Challenges 段** 提出的 "understanding the instruction but failing to execute"（语义懂但身体不会）是全文唯一一句有张力的 framing，但随后没有展开成具体的技术路线判断。
 
 **Teaser. Survey 的整体组织与章节关系图（Figure 1）。** 
-![](assets/PureVLA/fig_org.png)
+![](Papers/assets/PureVLA/fig_org.png)
 
 ---
 
@@ -39,10 +39,10 @@ date_added: 2026-04-22
 结构上：Background → 4 类方法 → Data/Simulator/Hardware → Challenges & Future，是教科书式的 survey 写法，没有跨章节的 unifying thread。
 
 **Figure 2. VLA skeleton 示意图——抽象出 VLM backbone → action head 的通用管线。**
-![](assets/PureVLA/fig_skeleton.png)
+![](Papers/assets/PureVLA/fig_skeleton.png)
 
 **Figure 3. Taxonomy tree：沿时间轴给每个 paradigm 标代表作。**
-![](assets/PureVLA/fig_taxonomy.png)
+![](Papers/assets/PureVLA/fig_taxonomy.png)
 
 > ❓ 这种 "时间轴 + paradigm 分桶" 的可视化在 survey 里很常见，但它隐含了一个未被论证的假设：paradigm 之间是 parallel 发展的独立 branch。实际上 autoregression 和 diffusion 在 action head 选择上是**替代关系**而非 parallel branch，而 RL fine-tune 是**正交**的训练手段（可以叠在任何 action head 上）。这套 taxonomy 混了 architectural choice 和 training recipe 两个正交维度。
 

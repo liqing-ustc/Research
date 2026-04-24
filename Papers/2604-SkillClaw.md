@@ -29,7 +29,7 @@ date_added: 2026-04-21
 
 **Teaser. SkillClaw 整体 pipeline：独立 agent 在各自环境里产生 trajectory → 按 skill 聚合成 evidence → agentic evolver 决定 refine/create → 验证后同步回所有 agent。**
 
-![](assets/SkillClaw/fig1_overview.png)
+![](Papers/assets/SkillClaw/fig1_overview.png)
 
 ---
 
@@ -203,19 +203,19 @@ Table 4-7 详细列出每晚的 candidate skill、验证决策、变化总结。
 
 **Figure 2. Slack message analysis**——典型的 procedural fix。原 agent 不知道 mock API 端口在 9110（盲跑 9100 fail 后才发现），evolved skill 把正确端口和"先 scan preview 再 selectively retrieve full message"的 workflow 写进 skill。
 
-![](assets/SkillClaw/fig2_slack_case.png)
+![](Papers/assets/SkillClaw/fig2_slack_case.png)
 
 **Figure 3. ICCV 2025 oral paper SJTU/FDU first-affiliation 计数**——evolved skill 增加了 "first affiliation 必须按 PDF first-page structure 严格定义" 和 "noisy 抽取要 manual second-pass" 两条规则，纠正了原 agent 用 university name presence 做匹配的错误。
 
-![](assets/SkillClaw/fig3_iccv_case.png)
+![](Papers/assets/SkillClaw/fig3_iccv_case.png)
 
 **Figure 4. SAM3 推理脚本**——evolved skill 加了 environment precheck 和 nearby-asset search，让 agent 不再因为 `/tmp_workspace/results` 缺失就 block，也学会去 patch CUDA 依赖跑 CPU 推理。
 
-![](assets/SkillClaw/fig4_sam3_case.png)
+![](Papers/assets/SkillClaw/fig4_sam3_case.png)
 
 **Figure 5. 多约束手机选购**——evolved skill 引入 calibrated decision making：no candidate fully satisfies 时显式说"no match"并给 partial breakdown，而不是强行匹配 partial-fit 候选当作答案。
 
-![](assets/SkillClaw/fig5_phone_case.png)
+![](Papers/assets/SkillClaw/fig5_phone_case.png)
 
 > 这 4 个 case 暴露了 SkillClaw 真正的功能边界：**它擅长把"个体经验中发现的 environment fact 和 procedural rigor"写回 skill**，但所有 case 的 fix 都是人 audit 完能立即点头同意的 trivial-in-hindsight 改动。这并不令人惊讶——LLM evolver 拿到 success+failure trace 后做出这种总结是 within-distribution 的能力。真正难的是 skill 的 "discovery"——发现一个全新的 reusable abstraction——这点论文几乎没展示。
 

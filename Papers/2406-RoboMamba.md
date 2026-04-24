@@ -28,7 +28,7 @@ date_added: 2026-04-22
 4. **推理速度优势主要来自 2.7B 体量 + linear scan**：3× / 7× 的提速和 Mamba 架构本身耦合，但和"同等 2.7B 的 Transformer LLM"的头对头比较缺席（作者只对比了 7B 的 LLaMA-AdapterV2 / ManipLLM），因此"Mamba 相对 Transformer 的胜出"其实是体量差与架构差的混淆。
 
 **Teaser. RoboMamba 总览：Mamba LLM 做骨干，policy head 仅 3.7M 参数，推理频率超过其他 VLA baseline。**
-![](assets/RoboMamba/fig1.png)
+![](Papers/assets/RoboMamba/fig1.png)
 
 ---
 
@@ -44,7 +44,7 @@ date_added: 2026-04-22
 
 ### 架构
 
-![](assets/RoboMamba/fig2.png)
+![](Papers/assets/RoboMamba/fig2.png)
 **Figure 2. RoboMamba 总体框架**：CLIP ViT-L 提取视觉特征 $f_v \in \mathbb{R}^{B\times N\times 1024}$，经 MLP projector 投影到 Mamba 的 token embedding 空间 $\mathbb{R}^{B\times N\times 2560}$，与文本 token 拼接后输入 Mamba-2.7B。输出语言 token 用于 reasoning，pooled global token 送入两个 MLP policy head 分别预测 position / direction。
 
 **设计选择**：
@@ -108,13 +108,13 @@ Seen +7%、Unseen +2% 超过 ManipLLM；update 参数 3.7M（0.1%）vs ManipLLM 
 > ❓ Unseen 只 +2%，且 RoboFlamingo / ManipLLM 已在 0.43–0.51 区间——"强 reasoning 带来更好 generalization" 在数字上很弱，接近 noise。
 
 **Ablation（Figure 3）**：
-![](assets/RoboMamba/fig3.png)
+![](Papers/assets/RoboMamba/fig3.png)
 **Figure 3. 左**：Mamba-2.7B vs RWKV-3B（另一种 linear-complexity LLM）——Mamba 在通用与机器人 reasoning 上都显著更强。**右**：reasoning 能力更强的 MLLM（Ours-2.7B > Ours-1.4B > LLaMA-AdapterV2 > OpenFlamingo）拿到的 manipulation 成功率更高；同时 Ours-2.7B (w/o C)（去掉 co-training 里的 RoboVQA）明显掉点，尤其 unseen。
 
 这个 ablation 的信号是合理的：reasoning 强 → 冻结骨干后的 pooled token 对下游 policy 更 informative；co-training 的 robotic data 对 unseen 泛化关键。
 
 **Real-world（Figure 4）**：Franka Emika 机械臂操作 household articulated objects，展示 task planning、长程规划、affordance、past/future prediction、以及 6-DoF pose 预测。
-![](assets/RoboMamba/fig4.png)
+![](Papers/assets/RoboMamba/fig4.png)
 **Figure 4. 真实场景下的 reasoning + 低层 pose 预测可视化**：红点表示接触点、末端执行器姿态投影到 2D 图。只给定性 demo，没给成功率数字。
 
 ### 局限（作者自述 + 我的补充）
