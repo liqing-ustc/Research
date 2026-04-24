@@ -121,7 +121,7 @@ curl -sX POST 'https://api.semanticscholar.org/graph/v1/paper/batch?fields=citat
 
 - **装饰性图片**：OG image / social card / banner / favicon 一律不嵌入。
 - **模板注释**：模板里的 `%% ... %%` 提示必须全部替换或整块删除，禁止外泄到正文。
-- **PDF 源的 images**：把需要嵌入的图从 `/tmp/{ShortTitle}/images/` 拷到 `Papers/assets/{ShortTitle}/`，再用 `![](Papers/assets/{ShortTitle}/fig_N.png)` 引用。
+- **PDF 源的 images**：把需要嵌入的图从 `/tmp/{ShortTitle}/images/` 拷到 `Papers/assets/{ShortTitle}/`，**拷贝时重命名为 `fig{N}-{FigureTitle}.{ext}`**——`N` 是图在论文中的编号，`FigureTitle` 是从 caption 提炼的短标题。笔记中用 `![](Papers/assets/{ShortTitle}/fig{N}-{FigureTitle}.{ext})` 引用。
 
 #### 文件名 + Tag + Write
 
