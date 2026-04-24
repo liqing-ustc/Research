@@ -57,15 +57,14 @@ allowed-tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, WebFetch
 
 按源存在性抓取，产 `/tmp/{ShortTitle}/metrics.json`。缺失源对应块 `null`，不省略字段。
 
-**Citation** — Semantic Scholar `/paper/batch` POST（单篇也用 batch，避免 429 累积 IP 惩罚）：
+**Citation** — Semantic Scholar `/paper/batch` POST 匿名模式（单篇也用 batch，避免 429 累积 IP 惩罚）：
 
 ```bash
 curl -sX POST 'https://api.semanticscholar.org/graph/v1/paper/batch?fields=citationCount,influentialCitationCount,publicationDate' \
-  ${S2_API_KEY:+-H "x-api-key: $S2_API_KEY"} \
   -H 'Content-Type: application/json' -d '{"ids":["arXiv:<arxiv_id>"]}'
 ```
 
-批量复核 ≥10 篇需 `S2_API_KEY`，否则中途必被封。S2 返 429/5xx 且无 key 时 fallback：WebFetch `https://scholar.google.com/scholar?q=arxiv+<arxiv_id>` 取 top hit 的 "Cited by N"，**单发间隔 ≥30s**（并发必 CAPTCHA），`citation_source="scholar"` + `influential_citations=null`。
+匿名模式共享 IP 配额，偶发 429 正常 —— retry 1 次 + 30s backoff；仍失败则 fallback：WebFetch `https://scholar.google.com/scholar?q=arxiv+<arxiv_id>` 取 top hit 的 "Cited by N"，**单发间隔 ≥30s**（并发必 CAPTCHA），`citation_source="scholar"` + `influential_citations=null`。两路都失败则 `paper` 块置 `null`，不阻塞 digest。批量复核（≥10 篇）时 S2 极易触发 >24h IP 锁定，优先串行 + 每篇间隔 ≥3s，并准备好接受中途降级为 Scholar-only 或 `null`。
 
 **HF upvotes** — `curl -s "https://huggingface.co/api/papers/<arxiv_id>"` 取 `.upvotes`，404 → null。
 
